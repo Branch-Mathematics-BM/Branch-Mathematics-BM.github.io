@@ -2,28 +2,58 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Passports | Branch Mathematics Encyclopedia</title>
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
-  <meta name="description" content="Passport structures in Branch Mathematics and GURF, including distinctions, observations, admissibility, compatibility, sufficiency, and lawful interfaces.">
+  <title>
+    Passports | Branch Mathematics and GURF
+  </title>
+
+  <meta name="description"
+        content="Formal Passport mathematics in Branch Mathematics and GURF: observations, equivalence, fibres, quotients, congruence, sufficiency, compatibility, stochastic semantics, nondeterministic semantics, repair, and Root transfer.">
 
   <meta name="robots" content="index, follow">
 
+  <!-- MathJax -->
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']]
+      }
+    };
+  </script>
+
+  <script async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
       margin: 0;
-      line-height: 1.7;
+      line-height: 1.75;
       color: #202124;
-      background: white;
+      background: #ffffff;
     }
 
     header {
       background: #111827;
       color: white;
-      padding: 45px 20px;
+      padding: 55px 20px;
       text-align: center;
+    }
+
+    header h1 {
+      margin-bottom: 10px;
+      font-size: 2.6rem;
+    }
+
+    header p {
+      max-width: 850px;
+      margin: auto;
+      font-size: 1.15rem;
     }
 
     nav {
@@ -35,12 +65,12 @@
     nav a {
       color: white;
       text-decoration: none;
-      margin: 8px 14px;
+      margin: 7px 11px;
       display: inline-block;
     }
 
     main {
-      max-width: 950px;
+      max-width: 1000px;
       margin: auto;
       padding: 35px 20px;
     }
@@ -48,271 +78,1562 @@
     h2 {
       border-bottom: 2px solid #e5e7eb;
       padding-bottom: 8px;
-      margin-top: 45px;
+      margin-top: 55px;
+    }
+
+    h3 {
+      margin-top: 28px;
+    }
+
+    .lead {
+      font-size: 1.08rem;
     }
 
     .card {
       border: 1px solid #d1d5db;
       border-radius: 8px;
-      padding: 20px;
+      padding: 22px;
       margin: 18px 0;
     }
 
-    .status {
-      font-weight: bold;
-      font-size: 0.9rem;
+    .mathbox {
+      background: #f8fafc;
+      border-left: 4px solid #374151;
+      padding: 18px;
+      margin: 22px 0;
+      overflow-x: auto;
+    }
+
+    .statusbox {
+      background: #f3f4f6;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+
+    .warning {
+      border-left: 4px solid #6b7280;
+      background: #fafafa;
+      padding: 18px;
+      margin: 22px 0;
+    }
+
+    .example {
+      border: 1px solid #9ca3af;
+      background: #fafafa;
+      border-radius: 8px;
+      padding: 22px;
+      margin: 22px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 25px 0;
+    }
+
+    th,
+    td {
+      border: 1px solid #d1d5db;
+      padding: 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f3f4f6;
     }
 
     footer {
       background: #111827;
       color: white;
       text-align: center;
-      padding: 25px;
-      margin-top: 40px;
+      padding: 28px;
+      margin-top: 60px;
     }
   </style>
 </head>
 
+
 <body>
 
 <header>
+
   <h1>Passports</h1>
+
   <p>
-    Mathematical structures governing distinctions, admissibility,
-    compatibility, observation, and lawful passage between structures.
+    Formal mathematical structures for specifying which distinctions,
+    observations, constraints, invariants, admissibility conditions,
+    and compatibility requirements must survive across a mathematical
+    interface.
   </p>
+
 </header>
 
+
 <nav>
+
   <a href="index.html">Home</a>
+
   <a href="branch-mathematics.html">Branch Mathematics</a>
+
   <a href="gurf.html">GURF</a>
+
   <a href="encyclopedia.html">Encyclopedia</a>
-  <a href="structures.html">Structures</a>
+
   <a href="definitions.html">Definitions</a>
+
   <a href="theorems.html">Theorems</a>
+
   <a href="equations.html">Equations</a>
+
+  <a href="structures.html">Structures</a>
+
+  <a href="roots.html">Roots</a>
+
   <a href="research.html">Research</a>
+
   <a href="changelog.html">Changelog</a>
+
 </nav>
+
 
 <main>
 
+
 <section>
-  <h2>Definition</h2>
+
+  <h2>1. What a Passport Is</h2>
+
+  <p class="lead">
+    A Passport specifies the information and mathematical conditions that
+    must remain available for a representation, transformation, interaction,
+    export, Root attachment, or response to remain lawful.
+  </p>
+
+  <p>
+    Passports are not permission labels.
+  </p>
+
+  <p>
+    They are mathematical specifications.
+  </p>
+
+  <p>
+    A Passport may describe:
+  </p>
 
   <div class="card">
-    <h3>Passport</h3>
 
-    <p class="status">Active core structure</p>
+    observations · preserved distinctions · admissible states · invariants ·
+    constraints · interface requirements · task requirements · law context ·
+    quantifiers · approximation tolerances · coupling requirements
 
-    <p>
-      A Passport is a formal specification of the distinctions,
-      observations, constraints, compatibility requirements,
-      admissibility conditions, or information required for lawful
-      mathematical passage across an interface.
-    </p>
   </div>
+
 </section>
 
 
+
 <section>
-  <h2>Purpose</h2>
 
-  <div class="card">
-    <h3>Distinction Preservation</h3>
-    <p>
-      A Passport records which distinctions must remain available when
-      mathematical information is transformed, reduced, exported,
-      composed, or re-entered.
-    </p>
+  <h2>2. General Working Form</h2>
+
+  <p>
+    A useful general representation of a Passport is
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    P
+    =
+    \left(
+    X,
+    \mathcal C,
+    \{b_c\}_{c\in\mathcal C},
+    \mathcal A
+    \right),
+    \]
+
   </div>
 
-  <div class="card">
-    <h3>Admissibility</h3>
-    <p>
-      A Passport may specify conditions that must hold before an object,
-      operation, Branch, Root, or response may participate in a given
-      mathematical structure.
-    </p>
-  </div>
+  <p>
+    where:
+  </p>
 
-  <div class="card">
-    <h3>Compatibility</h3>
-    <p>
-      A Passport may determine whether two mathematical structures are
-      compatible enough to interact or compose lawfully.
-    </p>
-  </div>
+  <table>
 
-  <div class="card">
-    <h3>Sufficiency</h3>
-    <p>
-      In response problems, a Passport may record whether the available
-      information preserves enough distinctions to support the required
-      task or continuation.
-    </p>
-  </div>
+    <tr>
+      <th>Object</th>
+      <th>Meaning</th>
+    </tr>
+
+    <tr>
+      <td>\(X\)</td>
+      <td>
+        underlying mathematical state or object space
+      </td>
+    </tr>
+
+    <tr>
+      <td>\(\mathcal C\)</td>
+      <td>
+        index set of Passport conditions or observations
+      </td>
+    </tr>
+
+    <tr>
+      <td>\(b_c:X\to Y_c\)</td>
+      <td>
+        observation, invariant, test, or distinction map
+      </td>
+    </tr>
+
+    <tr>
+      <td>\(\mathcal A\)</td>
+      <td>
+        admissibility, compatibility, law, or interface requirements
+      </td>
+    </tr>
+
+  </table>
+
+  <p>
+    This tuple is a general working form. Individual mathematical categories
+    may require additional or different structure.
+  </p>
+
 </section>
 
 
+
 <section>
-  <h2>Passport Information</h2>
+
+  <h2>3. Passport Observation Map</h2>
 
   <p>
-    Depending on the mathematical setting, a Passport may contain or refer to:
+    A family of Passport observations
   </p>
 
-  <div class="card">
-    Observations and observable quantities
+  <div class="mathbox">
+
+    \[
+    b_c:
+    X
+    \longrightarrow
+    Y_c,
+    \qquad
+    c\in\mathcal C
+    \]
+
   </div>
 
-  <div class="card">
-    Preserved distinctions
+  <p>
+    can be combined into one product observation
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    B_P:
+    X
+    \longrightarrow
+    \prod_{c\in\mathcal C}Y_c
+    \]
+
   </div>
 
-  <div class="card">
-    Equivalence or quotient conditions
+  <p>
+    defined by
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \boxed{
+    B_P(x)
+    =
+    \left(
+    b_c(x)
+    \right)_{c\in\mathcal C}.
+    }
+    \]
+
   </div>
 
-  <div class="card">
-    Input and output types
-  </div>
+  <p>
+    The combined Passport therefore records every active Passport observation
+    simultaneously.
+  </p>
 
-  <div class="card">
-    Constraints and admissibility rules
-  </div>
-
-  <div class="card">
-    Interface compatibility requirements
-  </div>
-
-  <div class="card">
-    Conserved mathematical quantities
-  </div>
-
-  <div class="card">
-    Task-specific sufficiency requirements
-  </div>
 </section>
 
 
+
 <section>
-  <h2>Passport Semantics</h2>
+
+  <h2>4. Raw Passport Equivalence</h2>
 
   <p>
-    Passport semantics must match the mathematical category in which they
-    operate.
+    Passport observations induce an observational equivalence relation.
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \boxed{
+    x
+    \sim_P
+    x'
+    \quad\Longleftrightarrow\quad
+    b_c(x)
+    =
+    b_c(x')
+    \quad
+    \forall c\in\mathcal C.
+    }
+    \]
+
+  </div>
+
+  <p>
+    Equivalently,
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    x\sim_P x'
+    \quad\Longleftrightarrow\quad
+    B_P(x)=B_P(x').
+    \]
+
+  </div>
+
+  <p>
+    States in the same Passport equivalence class are indistinguishable under
+    the active Passport observations.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>5. Passport Equivalence Is an Equivalence Relation</h2>
+
+  <p>
+    When the observation maps \(b_c\) are ordinary well-defined functions,
+    \(\sim_P\) is automatically an equivalence relation.
+  </p>
+
+  <h3>Reflexivity</h3>
+
+  <div class="mathbox">
+
+    \[
+    b_c(x)=b_c(x)
+    \]
+
+  </div>
+
+  <p>
+    for every \(c\), hence
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    x\sim_P x.
+    \]
+
+  </div>
+
+  <h3>Symmetry</h3>
+
+  <div class="mathbox">
+
+    \[
+    x\sim_P x'
+    \Longrightarrow
+    b_c(x)=b_c(x')
+    \]
+
+  </div>
+
+  <p>
+    and therefore
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    b_c(x')=b_c(x),
+    \]
+
+  </div>
+
+  <p>
+    giving
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    x'\sim_P x.
+    \]
+
+  </div>
+
+  <h3>Transitivity</h3>
+
+  <p>
+    If
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    x\sim_P x'
+    \quad\text{and}\quad
+    x'\sim_P x'',
+    \]
+
+  </div>
+
+  <p>
+    then
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    b_c(x)
+    =
+    b_c(x')
+    =
+    b_c(x'')
+    \]
+
+  </div>
+
+  <p>
+    for every \(c\), hence
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    x\sim_P x''.
+    \]
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>6. Passport Classes</h2>
+
+  <p>
+    The equivalence class of \(x\) is
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    [x]_P
+    =
+    \left\{
+    x'\in X:
+    x'\sim_P x
+    \right\}.
+    \]
+
+  </div>
+
+  <p>
+    The Passport quotient set is
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    X/{\sim_P}.
+    \]
+
+  </div>
+
+  <p>
+    Each element of the quotient is a collection of states that the Passport
+    does not distinguish.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>7. Passport Fibres</h2>
+
+  <p>
+    Let
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \ell
+    =
+    (\ell_c)_{c\in\mathcal C}
+    \]
+
+  </div>
+
+  <p>
+    be a Passport observation value.
+  </p>
+
+  <p>
+    Its Passport fibre is
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \boxed{
+    \mathfrak C_P(\ell)
+    =
+    B_P^{-1}(\ell).
+    }
+    \]
+
+  </div>
+
+  <p>
+    Expanding the product observation gives
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \boxed{
+    \mathfrak C_P(\ell)
+    =
+    \bigcap_{c\in\mathcal C}
+    b_c^{-1}(\ell_c).
+    }
+    \]
+
+  </div>
+
+  <p>
+    This is the set of every underlying state compatible with all active
+    Passport observations.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>8. Empty, Singleton, and Nontrivial Fibres</h2>
+
+  <h3>Inconsistent Passport data</h3>
+
+  <div class="mathbox">
+
+    \[
+    \mathfrak C_P(\ell)
+    =
+    \varnothing.
+    \]
+
+  </div>
+
+  <p>
+    No state satisfies every Passport condition simultaneously.
+  </p>
+
+  <h3>Unique completion</h3>
+
+  <div class="mathbox">
+
+    \[
+    \left|
+    \mathfrak C_P(\ell)
+    \right|
+    =
+    1.
+    \]
+
+  </div>
+
+  <p>
+    The Passport data determines one compatible state.
+  </p>
+
+  <h3>Nontrivial completion</h3>
+
+  <div class="mathbox">
+
+    \[
+    \left|
+    \mathfrak C_P(\ell)
+    \right|
+    >
+    1.
+    \]
+
+  </div>
+
+  <p>
+    Multiple underlying states remain possible.
+  </p>
+
+  <p>
+    This is not automatically a defect. The remaining ambiguity may be
+    irrelevant to the required task.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>9. Task Sufficiency</h2>
+
+  <p>
+    Let the required task be
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    T:
+    X
+    \longrightarrow
+    W.
+    \]
+
+  </div>
+
+  <p>
+    Passport \(P\) is sufficient for \(T\) when there exists
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \widetilde T:
+    B_P(X)
+    \longrightarrow
+    W
+    \]
+
+  </div>
+
+  <p>
+    satisfying
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \boxed{
+    T
+    =
+    \widetilde T
+    \circ
+    B_P.
+    }
+    \]
+
+  </div>
+
+  <p>
+    The task can then be computed using only Passport information.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>10. Fibre Criterion for Passport Sufficiency</h2>
+
+  <p>
+    Passport sufficiency is equivalent to
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    B_P(x)=B_P(x')
+    \]
+
+    \[
+    \Longrightarrow
+    \]
+
+    \[
+    T(x)=T(x').
+    \]
+
+  </div>
+
+  <p>
+    Using Passport equivalence,
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \boxed{
+    x\sim_P x'
+    \Longrightarrow
+    T(x)=T(x').
+    }
+    \]
+
+  </div>
+
+  <p>
+    Therefore the Passport may discard distinctions only when those
+    distinctions do not alter the required task.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>11. Equivalence-Relation Form of Sufficiency</h2>
+
+  <p>
+    Define task equivalence by
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    x
+    \sim_T
+    x'
+    \quad\Longleftrightarrow\quad
+    T(x)=T(x').
+    \]
+
+  </div>
+
+  <p>
+    Then Passport sufficiency is exactly
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \boxed{
+    \sim_P
+    \subseteq
+    \sim_T.
+    }
+    \]
+
+  </div>
+
+  <p>
+    Every identification made by the Passport must also be an identification
+    that the task is willing to make.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>12. Passport Refinement</h2>
+
+  <p>
+    Let \(P\) and \(Q\) be two Passports on the same state space.
+  </p>
+
+  <p>
+    \(P\) is at least as informative as \(Q\) when
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \boxed{
+    \sim_P
+    \subseteq
+    \sim_Q.
+    }
+    \]
+
+  </div>
+
+  <p>
+    A finer Passport identifies fewer states.
+  </p>
+
+  <p>
+    A coarser Passport identifies more states.
+  </p>
+
+  <p>
+    Thus Passport systems naturally admit an information-refinement ordering.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>13. Combined Passports</h2>
+
+  <p>
+    Suppose \(P\) and \(Q\) use observation maps
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    B_P:X\to Y
+    \]
+
+  </div>
+
+  <p>
+    and
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    B_Q:X\to Z.
+    \]
+
+  </div>
+
+  <p>
+    Their joint observation is
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    (B_P,B_Q):
+    X
+    \longrightarrow
+    Y\times Z.
+    \]
+
+  </div>
+
+  <p>
+    The joint equivalence relation satisfies
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    x
+    \sim_{P\wedge Q}
+    x'
+    \]
+
+    \[
+    \Longleftrightarrow
+    \]
+
+    \[
+    x\sim_P x'
+    \quad\text{and}\quad
+    x\sim_Q x'.
+    \]
+
+  </div>
+
+  <p>
+    Hence
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \sim_{P\wedge Q}
+    =
+    \sim_P
+    \cap
+    \sim_Q.
+    \]
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>14. Combined Passport Fibres</h2>
+
+  <p>
+    If Passport \(P\) gives observation \(y\) and Passport \(Q\) gives
+    observation \(z\), then
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \boxed{
+    \mathfrak C_{P\wedge Q}(y,z)
+    =
+    \mathfrak C_P(y)
+    \cap
+    \mathfrak C_Q(z).
+    }
+    \]
+
+  </div>
+
+  <p>
+    Adding Passport information therefore refines the candidate state set by
+    intersection.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>15. Joint Feasibility Is Stronger Than Separate Feasibility</h2>
+
+  <p>
+    Suppose condition \(c\) has feasible set
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    P_c
+    \subseteq
+    X.
+    \]
+
+  </div>
+
+  <p>
+    Separate feasibility means
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    P_c\neq\varnothing
+    \qquad
+    \forall c.
+    \]
+
+  </div>
+
+  <p>
+    Joint feasibility requires
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \boxed{
+    \bigcap_{c\in\mathcal C}
+    P_c
+    \neq
+    \varnothing.
+    }
+    \]
+
+  </div>
+
+  <p>
+    Each Passport condition can be individually satisfiable while the whole
+    Passport remains impossible.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>16. Witness Reuse</h2>
+
+  <p>
+    Quantifier scope matters.
+  </p>
+
+  <p>
+    The statement
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \forall c
+    \;
+    \exists x_c
+    \in P_c
+    \]
+
+  </div>
+
+  <p>
+    does not imply
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \exists x
+    \;
+    \forall c,
+    \quad
+    x\in P_c.
+    \]
+
+  </div>
+
+  <p>
+    The first allows a different witness for every condition.
+  </p>
+
+  <p>
+    The second requires one common witness.
+  </p>
+
+  <p>
+    A Passport must state which semantics is intended.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>17. Passport Quotients</h2>
+
+  <p>
+    The raw Passport quotient is
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    X/{\sim_P}.
+    \]
+
+  </div>
+
+  <p>
+    But forming a set-theoretic quotient does not prove that every operation
+    on \(X\) descends to the quotient.
+  </p>
+
+  <p>
+    This distinction is central to structured Passport mathematics.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>18. Operation Compatibility</h2>
+
+  <p>
+    Let
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \sigma:
+    X^n
+    \longrightarrow
+    X
+    \]
+
+  </div>
+
+  <p>
+    be an admissible operation.
+  </p>
+
+  <p>
+    To define
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \overline{\sigma}
+    \left(
+    [x_1]_P,\ldots,[x_n]_P
+    \right)
+    =
+    \left[
+    \sigma(x_1,\ldots,x_n)
+    \right]_P,
+    \]
+
+  </div>
+
+  <p>
+    the result must be independent of representatives.
+  </p>
+
+  <p>
+    Therefore one requires
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    x_i
+    \sim_P
+    y_i
+    \qquad
+    \forall i
+    \]
+
+    \[
+    \Longrightarrow
+    \]
+
+    \[
+    \boxed{
+    \sigma(x_1,\ldots,x_n)
+    \sim_P
+    \sigma(y_1,\ldots,y_n).
+    }
+    \]
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>19. Congruence Condition</h2>
+
+  <p>
+    In a finitary algebra
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    A=(X,\Sigma),
+    \]
+
+  </div>
+
+  <p>
+    Passport equivalence must be compatible with every operation whose
+    structure is intended to survive the quotient.
+  </p>
+
+  <p>
+    That is,
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \forall \sigma\in\Sigma,
+    \]
+
+    \[
+    x_i\sim_P y_i
+    \quad
+    \forall i
+    \]
+
+    \[
+    \Longrightarrow
+    \]
+
+    \[
+    \sigma(x_1,\ldots,x_n)
+    \sim_P
+    \sigma(y_1,\ldots,y_n).
+    \]
+
+  </div>
+
+  <p>
+    Under this condition, \(\sim_P\) is a congruence for the algebraic
+    structure being preserved.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>20. Why Raw Passport Equivalence May Fail</h2>
+
+  <p>
+    A Passport may correctly describe current observations while still being
+    too coarse for later mathematics.
+  </p>
+
+  <p>
+    Suppose
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    x\sim_P x'.
+    \]
+
+  </div>
+
+  <p>
+    If a later admissible operation gives
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \sigma(x)
+    \not\sim_P
+    \sigma(x'),
+    \]
+
+  </div>
+
+  <p>
+    then the operation can detect a distinction that the raw Passport
+    quotient removed.
+  </p>
+
+  <div class="warning">
+
+    <strong>
+      Observational equivalence is not automatically structural equivalence.
+    </strong>
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>21. Structured Passport Quotient</h2>
+
+  <p>
+    A lawful structured quotient therefore requires two separate checks:
   </p>
 
   <div class="card">
-    <h3>Deterministic</h3>
+
     <p>
-      Deterministic Passports may track exact mappings and distinctions.
+      <strong>Observation condition</strong>
     </p>
-  </div>
 
-  <div class="card">
-    <h3>Stochastic</h3>
     <p>
-      Stochastic Passports must preserve probability-law semantics rather
-      than being silently reduced to deterministic equivalence.
+      Which states are identified by the Passport?
     </p>
-  </div>
 
-  <div class="card">
-    <h3>Nondeterministic or Game-Based</h3>
     <p>
-      Passports involving multiple possible outcomes must state the relevant
-      existential, universal, path, witness, or strategy quantifiers
-      explicitly.
+      <strong>Operation condition</strong>
     </p>
-  </div>
 
-  <div class="card">
-    <h3>Approximate</h3>
     <p>
-      Approximate Passports must identify the metric, divergence, tolerance,
-      or other mathematical notion defining approximation.
+      Which mathematical operations remain well-defined after those
+      identifications?
     </p>
+
   </div>
+
+  <p>
+    Only after compatibility is established can the relevant quotient
+    structure be inherited lawfully.
+  </p>
+
 </section>
+
 
 
 <section>
-  <h2>Joint Compatibility</h2>
 
-  <p>
-    Passing several Passport conditions separately does not automatically
-    establish that they can all be satisfied simultaneously.
-  </p>
+  <h2>22. Worked Example: A Simple Passport</h2>
 
-  <p>
-    Joint feasibility requires either a common compatible witness,
-    a nonempty joint feasible set, or an explicitly stated coupling law.
-  </p>
+  <div class="example">
+
+    <p>
+      Let
+    </p>
+
+    <div class="mathbox">
+
+      \[
+      X
+      =
+      \mathbb R^2.
+      \]
+
+    </div>
+
+    <p>
+      Write states as
+    </p>
+
+    <div class="mathbox">
+
+      \[
+      x=(x_1,x_2).
+      \]
+
+    </div>
+
+    <p>
+      Define Passport observation
+    </p>
+
+    <div class="mathbox">
+
+      \[
+      b(x_1,x_2)
+      =
+      x_1.
+      \]
+
+    </div>
+
+    <p>
+      Then
+    </p>
+
+    <div class="mathbox">
+
+      \[
+      (x_1,x_2)
+      \sim_P
+      (y_1,y_2)
+      \]
+
+      \[
+      \Longleftrightarrow
+      \]
+
+      \[
+      x_1=y_1.
+      \]
+
+    </div>
+
+    <p>
+      The Passport preserves the first coordinate and forgets the second.
+    </p>
+
+  </div>
+
 </section>
+
 
 
 <section>
-  <h2>Conservative Passports</h2>
+
+  <h2>23. Worked Example: A Task the Passport Preserves</h2>
 
   <p>
-    Some mathematical reductions remove information from an active
-    representation while still requiring certain quantities to persist.
+    Define
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    T(x_1,x_2)
+    =
+    x_1^2.
+    \]
+
+  </div>
+
+  <p>
+    If
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    (x_1,x_2)
+    \sim_P
+    (y_1,y_2),
+    \]
+
+  </div>
+
+  <p>
+    then
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    x_1=y_1,
+    \]
+
+  </div>
+
+  <p>
+    and therefore
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    x_1^2=y_1^2.
+    \]
+
+  </div>
+
+  <p>
+    So the Passport is sufficient for \(T\).
   </p>
 
   <p>
-    A conservative Passport may therefore carry quantities such as energy,
-    momentum, charge, invariants, or other conserved structure through a
-    compatible transformation even when those quantities are not represented
-    directly in the reduced object.
+    The induced task on Passport space is simply
   </p>
 
-  <p class="status">
-    Status: Active research structure; exact implementation depends on the
-    mathematical domain.
+  <div class="mathbox">
+
+    \[
+    \widetilde T(u)=u^2.
+    \]
+
+  </div>
+
+  <p>
+    Hence
   </p>
+
+  <div class="mathbox">
+
+    \[
+    T
+    =
+    \widetilde T
+    \circ
+    b.
+    \]
+
+  </div>
+
 </section>
+
 
 
 <section>
-  <h2>Passport Registry</h2>
+
+  <h2>24. Worked Example: A Task the Passport Destroys</h2>
 
   <p>
-    Formal Passports may receive stable identifiers in the BM Passport
-    registry.
+    Now define
   </p>
+
+  <div class="mathbox">
+
+    \[
+    S(x_1,x_2)
+    =
+    x_2.
+    \]
+
+  </div>
 
   <p>
-    The registry is intended to record Passport type, domain, required
-    distinctions, interface conditions, admissibility rules, dependencies,
-    and revision status.
+    Consider
   </p>
-</section>
 
+  <div class="mathbox">
 
-<section>
-  <h2>Research Status</h2>
+    \[
+    x=(1,2)
+    \]
+
+  </div>
 
   <p>
-    Passport theory is an active part of Branch Mathematics and GURF.
-    Individual Passport constructions must be proved or validated according
-    to the mathematics of the structures in which they operate.
+    and
   </p>
+
+  <div class="mathbox">
+
+    \[
+    x'=(1,9).
+    \]
+
+  </div>
 
   <p>
-    A Passport does not override the laws of its mathematical domain.
-    Its role is to state and preserve the conditions required for lawful
-    representation, interaction, transformation, or response.
+    The Passport gives
   </p>
-</section>
 
-</main>
+  <div class="mathbox">
 
-<footer>
-  <p>Branch Mathematics Research Encyclopedia</p>
-</footer>
+    \[
+    b(x)=b(x')=1.
+    \]
 
-</body>
-</html>
+  </div>
+
+  <p>
+    But
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    S(x)=2
+    \]
+
+  </div>
+
+  <p>
+    while
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    S(x')=9.
+    \]
+
+  </div>
+
+  <p>
+    There
