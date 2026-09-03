@@ -2,19 +2,37 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Encyclopedia | Branch Mathematics</title>
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
-  <meta name="description" content="The Branch Mathematics research encyclopedia: definitions, theorems, equations, structures, GURF, research, and mathematical applications.">
+  <title>
+    Encyclopedia | Branch Mathematics and GURF
+  </title>
+
+  <meta name="description"
+        content="Master encyclopedia and mathematical index for Branch Mathematics, GURF, definitions, theorems, equations, Passports, Roots, structures, and active mathematical research.">
 
   <meta name="robots" content="index, follow">
 
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']]
+      }
+    };
+  </script>
+
+  <script async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
       margin: 0;
-      line-height: 1.6;
+      line-height: 1.75;
       color: #202124;
       background: #ffffff;
     }
@@ -22,8 +40,19 @@
     header {
       background: #111827;
       color: white;
-      padding: 40px 20px;
+      padding: 55px 20px;
       text-align: center;
+    }
+
+    header h1 {
+      margin-bottom: 10px;
+      font-size: 2.6rem;
+    }
+
+    header p {
+      max-width: 900px;
+      margin: auto;
+      font-size: 1.15rem;
     }
 
     nav {
@@ -35,12 +64,12 @@
     nav a {
       color: white;
       text-decoration: none;
-      margin: 8px 14px;
+      margin: 7px 11px;
       display: inline-block;
     }
 
     main {
-      max-width: 950px;
+      max-width: 1100px;
       margin: auto;
       padding: 35px 20px;
     }
@@ -48,270 +77,1984 @@
     h2 {
       border-bottom: 2px solid #e5e7eb;
       padding-bottom: 8px;
-      margin-top: 45px;
+      margin-top: 55px;
+    }
+
+    h3 {
+      margin-top: 28px;
+    }
+
+    .lead {
+      font-size: 1.08rem;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns:
+        repeat(auto-fit, minmax(270px, 1fr));
+      gap: 20px;
+      margin: 25px 0;
     }
 
     .card {
       border: 1px solid #d1d5db;
       border-radius: 8px;
-      padding: 18px;
-      margin: 15px 0;
+      padding: 22px;
+      background: #ffffff;
     }
 
-    .status {
+    .card h3 {
+      margin-top: 0;
+    }
+
+    .card a {
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .mathbox {
+      background: #f8fafc;
+      border-left: 4px solid #374151;
+      padding: 18px;
+      margin: 22px 0;
+      overflow-x: auto;
+    }
+
+    .statusbox {
       background: #f3f4f6;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+
+    .warning {
+      border-left: 4px solid #6b7280;
+      background: #fafafa;
+      padding: 18px;
+      margin: 22px 0;
+    }
+
+    .index {
+      columns: 2;
+      column-gap: 45px;
+      margin: 20px 0;
+    }
+
+    .index p {
+      break-inside: avoid;
+      margin: 8px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 25px 0;
+    }
+
+    th,
+    td {
+      border: 1px solid #d1d5db;
       padding: 12px;
-      border-radius: 6px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f3f4f6;
     }
 
     footer {
       background: #111827;
       color: white;
       text-align: center;
-      padding: 25px;
-      margin-top: 40px;
+      padding: 28px;
+      margin-top: 60px;
+    }
+
+    @media (max-width: 650px) {
+      .index {
+        columns: 1;
+      }
     }
   </style>
 </head>
 
+
 <body>
 
 <header>
-  <h1>Branch Mathematics Encyclopedia</h1>
+
+  <h1>Branch Mathematics Research Encyclopedia</h1>
+
   <p>
-    Mathematical definitions, structures, theorems, equations, research,
-    applications, and open problems.
+    Master index to the formal mathematics, definitions, equations,
+    theorems, structural objects, GURF response framework, and active
+    research programs.
   </p>
+
 </header>
 
+
 <nav>
+
   <a href="index.html">Home</a>
   <a href="branch-mathematics.html">Branch Mathematics</a>
   <a href="gurf.html">GURF</a>
-  <a href="theorems.html">Theorems</a>
-  <a href="research.html">Research</a>
-  <a href="changelog.html">Changelog</a>
   <a href="definitions.html">Definitions</a>
+  <a href="theorems.html">Theorems</a>
   <a href="equations.html">Equations</a>
   <a href="structures.html">Structures</a>
   <a href="passports.html">Passports</a>
   <a href="roots.html">Roots</a>
+  <a href="research.html">Research</a>
+  <a href="changelog.html">Changelog</a>
+
 </nav>
+
 
 <main>
 
+
 <section>
-  <h2>About the Encyclopedia</h2>
 
-  <p>
-    This encyclopedia is a formal reference for Branch Mathematics,
-    GURF, and associated mathematical research.
+  <h2>1. Purpose of the Encyclopedia</h2>
+
+  <p class="lead">
+    This encyclopedia is the public mathematical record of Branch
+    Mathematics, GURF, their formal structures, and associated research.
   </p>
 
   <p>
-    Entries are organized by mathematical subject rather than by the
-    chronological process through which the mathematics was developed.
+    It is organized around mathematics rather than the history of the
+    conversations through which the research was developed.
   </p>
 
-  <div class="status">
-    <strong>Research status system:</strong>
-    Established · Derived · Conditional · Experimental · Conjectural · Open
-  </div>
-</section>
+  <p>
+    Definitions, proofs, equations, corrections, assumptions, numerical
+    figures, open problems, and research status are intended to be directly
+    inspectable.
+  </p>
 
+  <div class="mathbox">
 
-<section id="bm">
-  <h2>Branch Mathematics</h2>
+    \[
+    \boxed{
+    \text{definitions}
+    \longrightarrow
+    \text{structures}
+    \longrightarrow
+    \text{equations}
+    \longrightarrow
+    \text{theorems}
+    \longrightarrow
+    \text{research}
+    }
+    \]
 
-  <div class="card">
-    <h3>Branch</h3>
-    <p>
-      A typed mathematical carrier of information, distinctions, structure,
-      and lawful mathematical behavior.
-    </p>
-  </div>
-
-  <div class="card">
-    <h3>Interaction</h3>
-    <p>
-      A lawful joint action or relationship between mathematical branches.
-    </p>
-  </div>
-
-  <div class="card">
-    <h3>Leaf</h3>
-    <p>
-      Mathematical information extracted from an interaction between branches.
-    </p>
-  </div>
-
-  <div class="card">
-    <h3>Tree</h3>
-    <p>
-      An organized structure of branches and interactions capable of producing
-      a mathematical response.
-    </p>
-  </div>
-
-  <div class="card">
-    <h3>Root</h3>
-    <p>
-      A mathematical response or structure capable of attaching to existing
-      mathematics and generating further lawful response.
-    </p>
-  </div>
-
-  <div class="card">
-    <h3>Passport</h3>
-    <p>
-      A formal specification of distinctions, observations, constraints,
-      admissibility conditions, or information required across a mathematical
-      interface.
-    </p>
   </div>
 
 </section>
 
-
-<section id="gurf">
-  <h2>GURF</h2>
-
-  <p>
-    GURF is a mathematical framework for lawful system responses.
-  </p>
-
-  <p>
-    It studies which distinctions in underlying states are required for a
-    task and whether observation, compression, evolution, constraints, or
-    interventions preserve enough information for future response.
-  </p>
-
-  <div class="card">
-    <h3>Core Questions</h3>
-    <p>
-      What information must be preserved? What information may be removed?
-      What prevents lawful continuation? What additional information repairs
-      the obstruction?
-    </p>
-  </div>
-
-</section>
-
-
-<section id="theorems">
-  <h2>Theorems and Mathematical Results</h2>
-
-  <p>
-    Formal theorem entries will contain:
-  </p>
-
-  <div class="card">
-    Statement · Assumptions · Definitions · Proof · Consequences ·
-    Limitations · Status · References
-  </div>
-
-  <p>
-    The theorem registry will be expanded as the encyclopedia is organized.
-  </p>
-</section>
 
 
 <section>
-  <h2>Mathematical Structures</h2>
 
-  <div class="card">
-    Branches
-  </div>
+  <h2>2. Start Here</h2>
 
-  <div class="card">
-    Interactions
-  </div>
+  <div class="card-grid">
 
-  <div class="card">
-    Roots
-  </div>
+    <div class="card">
 
-  <div class="card">
-    Passports
-  </div>
+      <h3>Branch Mathematics</h3>
 
-  <div class="card">
-    Leaves
-  </div>
+      <p>
+        The governing meta-structural mathematics of lawful representation,
+        transformation, composition, interfaces, realization, Roots,
+        Passports, and re-entry.
+      </p>
 
-  <div class="card">
-    Trees
-  </div>
+      <p>
+        <a href="branch-mathematics.html">
+          Read Branch Mathematics →
+        </a>
+      </p>
 
-  <div class="card">
-    Operations
-  </div>
-
-  <div class="card">
-    Configurations
-  </div>
-
-  <div class="card">
-    Interfaces and Composition
-  </div>
-
-</section>
+    </div>
 
 
-<section id="research">
-  <h2>Research Areas</h2>
+    <div class="card">
 
-  <div class="card">
-    Mathematical Physics
-  </div>
+      <h3>GURF</h3>
 
-  <div class="card">
-    Gravity and Spacetime
-  </div>
+      <p>
+        The response-specialized framework for tasks, observation,
+        information sufficiency, continuation, intervention, regimes,
+        obstruction, and repair.
+      </p>
 
-  <div class="card">
-    Quantum Theory
-  </div>
+      <p>
+        <a href="gurf.html">
+          Read GURF →
+        </a>
+      </p>
 
-  <div class="card">
-    Navier–Stokes and Fluid Dynamics
-  </div>
+    </div>
 
-  <div class="card">
-    Yang–Mills Theory
-  </div>
 
-  <div class="card">
-    Electromagnetism and Radiation
-  </div>
+    <div class="card">
 
-  <div class="card">
-    Computation and Information
+      <h3>Research Program</h3>
+
+      <p>
+        Active mathematical and mathematical-physics work, including
+        Navier–Stokes, Yang–Mills, gravity, quantum theory, radiation,
+        computation, and engineering realization.
+      </p>
+
+      <p>
+        <a href="research.html">
+          Explore Research →
+        </a>
+      </p>
+
+    </div>
+
   </div>
 
 </section>
+
 
 
 <section>
-  <h2>Revision Policy</h2>
 
-  <p>
-    Mathematical entries may be corrected, strengthened, generalized,
-    restricted, or replaced as proofs and tests develop.
-  </p>
+  <h2>3. Core Mathematical References</h2>
 
-  <p>
-    Revisions are recorded as mathematical versions and research changelogs.
-    The encyclopedia presents the current mathematical form as the primary
-    reference.
-  </p>
+  <div class="card-grid">
+
+    <div class="card">
+
+      <h3>Definitions</h3>
+
+      <p>
+        Canonical and working definitions for Branches, Interactions,
+        Leaves, Trees, Responses, Roots, Passports, Operations,
+        configurations, interfaces, sufficiency, obstruction, repair,
+        regimes, interventions, and related terms.
+      </p>
+
+      <p>
+        <a href="definitions.html">
+          Definitions Registry →
+        </a>
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>Theorems</h3>
+
+      <p>
+        Proved statements, propositions, lemmas, corollaries,
+        counterexamples, dependencies, and formal proof status.
+      </p>
+
+      <p>
+        Includes the structured-quotient result
+        <strong>BM-SQ-01</strong>.
+      </p>
+
+      <p>
+        <a href="theorems.html">
+          Theorem Registry →
+        </a>
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>Equations</h3>
+
+      <p>
+        Formal equations, identities, factorization conditions,
+        quantitative diagnostics, worked models, and scientific
+        visualization.
+      </p>
+
+      <p>
+        <a href="equations.html">
+          Equation Registry →
+        </a>
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>Structures</h3>
+
+      <p>
+        Typed structural architecture: Branches, Interactions, Leaves,
+        Trees, Responses, Operations, configurations, networks,
+        interfaces, composition, coherence, realization, and re-entry.
+      </p>
+
+      <p>
+        <a href="structures.html">
+          Structural Registry →
+        </a>
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>Passports</h3>
+
+      <p>
+        Observation families, Passport equivalence, fibres,
+        structured quotients, sufficiency, refinement, stochastic and
+        nondeterministic semantics, conservation, and repair.
+      </p>
+
+      <p>
+        <a href="passports.html">
+          Passport Mathematics →
+        </a>
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>Roots</h3>
+
+      <p>
+        Mathematical responses that remain available for further lawful
+        interaction, including Root formation, compatibility,
+        repeated Rooting, transfer, stability, and realization.
+      </p>
+
+      <p>
+        <a href="roots.html">
+          Root Mathematics →
+        </a>
+      </p>
+
+    </div>
+
+  </div>
+
 </section>
+
+
+
+<section>
+
+  <h2>4. Branch Mathematics at a Glance</h2>
+
+  <p>
+    Branch Mathematics is organized around the principle that different
+    mathematical structures may interact without being collapsed into one
+    undifferentiated formalism.
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \boxed{
+    \text{lawful Branches}
+    \longrightarrow
+    \text{lawful Interaction}
+    \longrightarrow
+    \text{combined mathematical response}
+    \longrightarrow
+    \text{Root or law result}
+    }
+    \]
+
+  </div>
+
+  <p>
+    Each Branch retains its native laws.
+  </p>
+
+  <p>
+    BM adds explicit machinery for determining whether transformations,
+    interfaces, quotienting, composition, and re-entry preserve what later
+    mathematics requires.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>5. GURF at a Glance</h2>
+
+  <p>
+    GURF becomes relevant when a mathematical problem contains a required
+    response or task.
+  </p>
+
+  <p>
+    Let
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    r:
+    X
+    \longrightarrow
+    Y
+    \]
+
+  </div>
+
+  <p>
+    be the retained representation and
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    T:
+    X
+    \longrightarrow
+    W
+    \]
+
+  </div>
+
+  <p>
+    the required task.
+  </p>
+
+  <p>
+    Exact sufficiency means
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \boxed{
+    r(x)=r(x')
+    \Longrightarrow
+    T(x)=T(x').
+    }
+    \]
+
+  </div>
+
+  <p>
+    Equivalently,
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    T
+    =
+    \widetilde T
+    \circ r.
+    \]
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>6. Core BM Structural Vocabulary</h2>
+
+  <table>
+
+    <tr>
+      <th>Structure</th>
+      <th>Role</th>
+      <th>Reference</th>
+    </tr>
+
+    <tr>
+      <td>Branch</td>
+      <td>
+        typed mathematical carrier of information and distinctions
+      </td>
+      <td>
+        <a href="structures.html">Structures</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Interaction</td>
+      <td>
+        lawful joint mathematical action
+      </td>
+      <td>
+        <a href="structures.html">Structures</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Leaf</td>
+      <td>
+        extracted interacting information
+      </td>
+      <td>
+        <a href="structures.html">Structures</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Tree</td>
+      <td>
+        organized response-producing Branch structure
+      </td>
+      <td>
+        <a href="structures.html">Structures</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Response</td>
+      <td>
+        law-valued output
+      </td>
+      <td>
+        <a href="structures.html">Structures</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Root</td>
+      <td>
+        Response available for further lawful response
+      </td>
+      <td>
+        <a href="roots.html">Roots</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Passport</td>
+      <td>
+        required distinctions and compatibility information
+      </td>
+      <td>
+        <a href="passports.html">Passports</a>
+      </td>
+    </tr>
+
+  </table>
+
+</section>
+
+
+
+<section>
+
+  <h2>7. Representation and Information</h2>
+
+  <div class="card-grid">
+
+    <div class="card">
+
+      <h3>Observation</h3>
+
+      <div class="mathbox">
+
+        \[
+        r:X\to Y
+        \]
+
+      </div>
+
+      <p>
+        Describes what information remains accessible.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>Fibre</h3>
+
+      <div class="mathbox">
+
+        \[
+        r^{-1}(y)
+        =
+        \{x:r(x)=y\}
+        \]
+
+      </div>
+
+      <p>
+        Every underlying state compatible with one representation value.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>Task Sufficiency</h3>
+
+      <div class="mathbox">
+
+        \[
+        T
+        =
+        \widetilde T\circ r
+        \]
+
+      </div>
+
+      <p>
+        The task can be recovered entirely from the retained information.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>8. Completion Fibres</h2>
+
+  <p>
+    For a family of observations
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    r_\alpha:
+    X
+    \longrightarrow
+    Y_\alpha,
+    \]
+
+  </div>
+
+  <p>
+    the compatible state set is
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \boxed{
+    \mathfrak C_A(\ell)
+    =
+    \bigcap_{\alpha\in A}
+    r_\alpha^{-1}(\ell_\alpha).
+    }
+    \]
+
+  </div>
+
+  <p>
+    This construction appears throughout the GURF recovery and sufficiency
+    program.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>9. Structured Quotients</h2>
+
+  <p>
+    BM distinguishes ordinary observational equivalence from equivalence that
+    is also compatible with mathematical operations.
+  </p>
+
+  <p>
+    For
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \sigma:
+    X^n
+    \longrightarrow
+    X,
+    \]
+
+  </div>
+
+  <p>
+    operation compatibility requires
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \boxed{
+    x_i\sim_P y_i
+    \quad\forall i
+    \Longrightarrow
+    \sigma(x_1,\ldots,x_n)
+    \sim_P
+    \sigma(y_1,\ldots,y_n).
+    }
+    \]
+
+  </div>
+
+  <p>
+    The finitary algebraic result is recorded as
+    <strong>BM-SQ-01</strong>.
+  </p>
+
+  <p>
+    <a href="theorems.html">
+      Read BM-SQ-01 and its proof →
+    </a>
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>10. Interfaces and Coherence</h2>
+
+  <p>
+    One exact interface condition is
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \boxed{
+    P_2\circ F
+    =
+    G\circ P_1.
+    }
+    \]
+
+  </div>
+
+  <p>
+    The broader coherence program includes:
+  </p>
+
+  <div class="statusbox">
+
+    parallel paths · equalizers · pullbacks · coequalizers · gluing ·
+    path closure · naturality · approximate coherence · higher coherence
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>11. Obstruction and Repair</h2>
+
+  <p>
+    GURF identifies a task obstruction when
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \boxed{
+    r(x)=r(x')
+    \quad\text{but}\quad
+    T(x)\neq T(x').
+    }
+    \]
+
+  </div>
+
+  <p>
+    Repair adds information \(q\) so that the combined observation
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    (r,q):
+    X
+    \longrightarrow
+    Y\times Z
+    \]
+
+  </div>
+
+  <p>
+    becomes sufficient for the task.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>12. Dynamic Continuation</h2>
+
+  <p>
+    If evolution is
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \Phi_t:
+    X
+    \longrightarrow
+    X,
+    \]
+
+  </div>
+
+  <p>
+    then the present representation remains sufficient for a future task when
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \boxed{
+    T\circ\Phi_t
+    =
+    \widetilde T_t\circ r.
+    }
+    \]
+
+  </div>
+
+  <p>
+    A distinction irrelevant now may become essential later.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>13. Deterministic, Stochastic, and Nondeterministic Semantics</h2>
+
+  <table>
+
+    <tr>
+      <th>Semantics</th>
+      <th>Mathematical representation</th>
+    </tr>
+
+    <tr>
+      <td>Deterministic</td>
+      <td>
+        \(F:X\to Y\)
+      </td>
+    </tr>
+
+    <tr>
+      <td>Stochastic</td>
+      <td>
+        \(M:X\to\mathcal P(Y)\)
+      </td>
+    </tr>
+
+    <tr>
+      <td>Nondeterministic</td>
+      <td>
+        \(R\subseteq X\times Y\)
+      </td>
+    </tr>
+
+    <tr>
+      <td>Approximate</td>
+      <td>
+        metric, divergence, tolerance, or error bound
+      </td>
+    </tr>
+
+  </table>
+
+  <p>
+    These semantics are deliberately kept separate throughout the formal
+    framework.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>14. Root Mathematics</h2>
+
+  <p>
+    A Root is a mathematical Response that remains admissible for further
+    mathematical use.
+  </p>
+
+  <p>
+    One repeated-Root model is
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    R_{n+1}
+    =
+    F(R_n).
+    \]
+
+  </div>
+
+  <p>
+    A fixed Root satisfies
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    R_*
+    =
+    F(R_*).
+    \]
+
+  </div>
+
+  <p>
+    <a href="roots.html">
+      Read the full Root treatment →
+    </a>
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>15. Scientific Equation Figures</h2>
+
+  <p>
+    The encyclopedia uses quantitative figures when equations produce
+    meaningful mathematical behavior.
+  </p>
+
+  <p>
+    The first public example appears in the Equation Registry for
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    R_{n+1}
+    =
+    \frac12R_n+1,
+    \]
+
+  </div>
+
+  <p>
+    which converges to
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    R_*=2.
+    \]
+
+  </div>
+
+  <p>
+    <a href="equations.html">
+      View equations and scientific figures →
+    </a>
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>16. Active Research Programs</h2>
+
+  <div class="card-grid">
+
+    <div class="card">
+
+      <h3>BM Foundations</h3>
+
+      <p>
+        Representation, transformation, structured quotients, composition,
+        coherence, Roots, Passports, and realization.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>GURF Foundations</h3>
+
+      <p>
+        Sufficiency, completion fibres, obstruction, repair, continuation,
+        interventions, and response semantics.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>Navier–Stokes</h3>
+
+      <p>
+        Nonlinear transfer, derivative covariance, helicity, spectral
+        structure, and continuation variables.
+      </p>
+
+      <p>
+        No Clay Millennium solution is claimed.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>Yang–Mills</h3>
+
+      <p>
+        Boundary susceptibility, leakage, coherent return, shell structure,
+        Gauss-law support, and spectral estimates.
+      </p>
+
+      <p>
+        The four-dimensional mass-gap problem remains unsolved.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>Gravity and Spacetime</h3>
+
+      <p>
+        Geodesic behavior, tidal response, observation, proper time, lensing,
+        and forward-causal geometry.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>Quantum Theory</h3>
+
+      <p>
+        Distinguishability, measurement, entanglement, control, response, and
+        quantum Passport structure.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>Radiation and Light</h3>
+
+      <p>
+        Radio through gamma radiation, propagation, absorption, emission,
+        reflection, observation, and thermal radiation.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>Computation</h3>
+
+      <p>
+        Compression, compilation, abstraction, privacy, security,
+        state reduction, and information preservation.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>Engineering Realization</h3>
+
+      <p>
+        Energy, thermal systems, materials, nuclear systems, propulsion,
+        resource recovery, and feasibility.
+      </p>
+
+    </div>
+
+  </div>
+
+  <p>
+    <a href="research.html">
+      Read the full research map →
+    </a>
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>17. Navier–Stokes Status</h2>
+
+  <div class="statusbox">
+
+    <p>
+      <strong>Status:</strong>
+      active derived Leaves and theorem-kernel mathematics.
+    </p>
+
+    <p>
+      The project contains derived structures involving derivative covariance,
+      strain-gradient information, helical decomposition, triad interactions,
+      loading, redistribution, and related continuation quantities.
+    </p>
+
+    <p>
+      These results are not currently presented as a proof of global
+      regularity or as a Clay Millennium solution.
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>18. Yang–Mills Status</h2>
+
+  <div class="statusbox">
+
+    <p>
+      <strong>Status:</strong>
+      active conditional research.
+    </p>
+
+    <p>
+      Current mathematics includes boundary susceptibility, first-exit
+      leakage, coherent return, shell-depth recursion, local thresholds,
+      Gauss-law support, and global-return obstruction.
+    </p>
+
+    <p>
+      The four-dimensional Yang–Mills existence and mass-gap problem remains
+      open.
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>19. Gravity Status</h2>
+
+  <div class="statusbox">
+
+    <p>
+      <strong>Status:</strong>
+      active mathematical-physics investigation.
+    </p>
+
+    <p>
+      General Relativity remains an essential comparison theory.
+    </p>
+
+    <p>
+      Alternative response or information-geometric descriptions require
+      independent derivation, physical consistency, observable consequences,
+      and falsifiable comparison.
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>20. Quantum Status</h2>
+
+  <div class="statusbox">
+
+    <p>
+      <strong>Status:</strong>
+      active mathematical and interpretive investigation.
+    </p>
+
+    <p>
+      Entanglement is treated through joint state structure, measurable
+      statistics, distinguishability, and information availability.
+    </p>
+
+    <p>
+      No controllable superluminal communication mechanism is assumed.
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>21. Equation Classification</h2>
+
+  <table>
+
+    <tr>
+      <th>Type</th>
+      <th>Meaning</th>
+    </tr>
+
+    <tr>
+      <td>Definition</td>
+      <td>introduces a mathematical object</td>
+    </tr>
+
+    <tr>
+      <td>Exact identity</td>
+      <td>holds exactly under stated assumptions</td>
+    </tr>
+
+    <tr>
+      <td>Derived relation</td>
+      <td>obtained by mathematical derivation</td>
+    </tr>
+
+    <tr>
+      <td>Conditional relation</td>
+      <td>depends on additional hypotheses</td>
+    </tr>
+
+    <tr>
+      <td>Approximation</td>
+      <td>includes explicit error or limiting conditions</td>
+    </tr>
+
+    <tr>
+      <td>Structural schema</td>
+      <td>describes mathematical architecture</td>
+    </tr>
+
+    <tr>
+      <td>Worked example</td>
+      <td>illustrates behavior without asserting a universal law</td>
+    </tr>
+
+    <tr>
+      <td>Candidate model</td>
+      <td>active model still under investigation</td>
+    </tr>
+
+  </table>
+
+</section>
+
+
+
+<section>
+
+  <h2>22. Theorem Classification</h2>
+
+  <table>
+
+    <tr>
+      <th>Type</th>
+      <th>Meaning</th>
+    </tr>
+
+    <tr>
+      <td>Theorem</td>
+      <td>proved under stated assumptions</td>
+    </tr>
+
+    <tr>
+      <td>Proposition</td>
+      <td>proved supporting result</td>
+    </tr>
+
+    <tr>
+      <td>Lemma</td>
+      <td>proved intermediate result</td>
+    </tr>
+
+    <tr>
+      <td>Corollary</td>
+      <td>direct consequence of another proved result</td>
+    </tr>
+
+    <tr>
+      <td>Counterexample</td>
+      <td>construction disproving a stronger assertion</td>
+    </tr>
+
+  </table>
+
+</section>
+
+
+
+<section>
+
+  <h2>23. Research Classification</h2>
+
+  <table>
+
+    <tr>
+      <th>Status</th>
+      <th>Interpretation</th>
+    </tr>
+
+    <tr>
+      <td>Proved</td>
+      <td>mathematically established under stated assumptions</td>
+    </tr>
+
+    <tr>
+      <td>Derived</td>
+      <td>obtained inside current development</td>
+    </tr>
+
+    <tr>
+      <td>Conditional</td>
+      <td>depends on unresolved or explicit hypotheses</td>
+    </tr>
+
+    <tr>
+      <td>Numerically tested</td>
+      <td>checked on defined numerical examples</td>
+    </tr>
+
+    <tr>
+      <td>Active</td>
+      <td>currently under development</td>
+    </tr>
+
+    <tr>
+      <td>Candidate</td>
+      <td>proposed structure awaiting stronger support</td>
+    </tr>
+
+    <tr>
+      <td>Open</td>
+      <td>unresolved</td>
+    </tr>
+
+    <tr>
+      <td>Quarantined</td>
+      <td>retained for audit but not relied upon</td>
+    </tr>
+
+  </table>
+
+</section>
+
+
+
+<section>
+
+  <h2>24. Mathematical Index</h2>
+
+  <div class="index">
+
+    <p>Admissibility</p>
+    <p>Approximate Sufficiency</p>
+    <p>Branch</p>
+    <p>Branch Information</p>
+    <p>Coherence</p>
+    <p>Completion Fibre</p>
+    <p>Composition</p>
+    <p>Configuration</p>
+    <p>Congruence</p>
+    <p>Constraint</p>
+    <p>Continuation</p>
+    <p>Coupling</p>
+    <p>Deterministic Semantics</p>
+    <p>Dynamic Closure</p>
+    <p>Export</p>
+    <p>Fibre</p>
+    <p>Gluing</p>
+    <p>GURF</p>
+    <p>Higher Coherence</p>
+    <p>Information Refinement</p>
+    <p>Interaction</p>
+    <p>Interface</p>
+    <p>Interface Defect</p>
+    <p>Intervention</p>
+    <p>Joint Feasibility</p>
+    <p>Law Passport</p>
+    <p>Law Space</p>
+    <p>Leaf</p>
+    <p>Mathematical Realizability</p>
+    <p>Minimal Repair</p>
+    <p>Network</p>
+    <p>Nondeterministic Semantics</p>
+    <p>Observation</p>
+    <p>Obstruction</p>
+    <p>Operation</p>
+    <p>Passport</p>
+    <p>Passport Equivalence</p>
+    <p>Physical Realizability</p>
+    <p>Re-entry</p>
+    <p>Rebranching</p>
+    <p>Refinement</p>
+    <p>Regime</p>
+    <p>Repair</p>
+    <p>Representation</p>
+    <p>Response</p>
+    <p>Root</p>
+    <p>Root Passport Transfer</p>
+    <p>Rooting</p>
+    <p>Seed</p>
+    <p>Seed State</p>
+    <p>Stochastic Semantics</p>
+    <p>Structured Quotient</p>
+    <p>Task</p>
+    <p>Task Diameter</p>
+    <p>Task Equivalence</p>
+    <p>Transformation</p>
+    <p>Tree</p>
+    <p>Typed Path</p>
+
+  </div>
+
+  <p>
+    Formal definitions for these terms are maintained in the
+    <a href="definitions.html">Definitions Registry</a>.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>25. Research Index</h2>
+
+  <div class="index">
+
+    <p>BM Foundations</p>
+    <p>GURF Foundations</p>
+    <p>Structured Quotients</p>
+    <p>Interface Mathematics</p>
+    <p>Higher Coherence</p>
+    <p>Root Mathematics</p>
+    <p>Seed Mathematics</p>
+    <p>Navier–Stokes</p>
+    <p>Yang–Mills</p>
+    <p>Gravity</p>
+    <p>Spacetime</p>
+    <p>Quantum Theory</p>
+    <p>Entanglement</p>
+    <p>Electromagnetism</p>
+    <p>Photon Propagation</p>
+    <p>Radio Waves</p>
+    <p>Microwaves</p>
+    <p>Infrared</p>
+    <p>Visible Light</p>
+    <p>X-rays</p>
+    <p>Gamma Rays</p>
+    <p>Thermal Physics</p>
+    <p>Computation</p>
+    <p>Secure Compilation</p>
+    <p>Differential Privacy</p>
+    <p>Control</p>
+    <p>Model Reduction</p>
+    <p>Energy Systems</p>
+    <p>Nuclear Systems</p>
+    <p>Propulsion</p>
+    <p>Engineering Realization</p>
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>26. Worked Mathematics</h2>
+
+  <p>
+    Worked examples are used to demonstrate the behavior of formal
+    definitions without silently promoting the examples into universal laws.
+  </p>
+
+  <p>
+    For example,
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    R_{n+1}
+    =
+    \frac12R_n+1
+    \]
+
+  </div>
+
+  <p>
+    is used to demonstrate a repeated-Root dynamical system.
+  </p>
+
+  <p>
+    Its fixed point is
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    R_*=2,
+    \]
+
+  </div>
+
+  <p>
+    and for \(R_0=0\),
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    R_n
+    =
+    2(1-2^{-n}).
+    \]
+
+  </div>
+
+  <p>
+    The Equation Registry includes the corresponding quantitative
+    convergence figure.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>27. Proof Backbone</h2>
+
+  <p>
+    Several foundational results currently organize the formal corpus.
+  </p>
+
+  <div class="statusbox">
+
+    Passport Equivalence Theorem · Exact Recoverability Theorem ·
+    Completion-Fibre Sufficiency · Parallel Observation Refinement ·
+    Deterministic Serial Information Loss · BM-SQ-01 · Interface
+    Factorization · Dynamic Continuation · Repair Refinement ·
+    Dynamic Closure
+
+  </div>
+
+  <p>
+    Full statements and proofs are maintained in the
+    <a href="theorems.html">Theorem Registry</a>.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>28. Relationship Between Proof and Framework</h2>
+
+  <div class="warning">
+
+    <p>
+      BM/GURF terminology does not turn a statement into a theorem.
+    </p>
+
+    <p>
+      Mathematical validity comes from definitions, assumptions, and valid
+      derivation.
+    </p>
+
+    <p>
+      Framework placement determines how a mathematical result is used, not
+      whether it is true.
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>29. Internal Status and External Status</h2>
+
+  <p>
+    The encyclopedia distinguishes three separate questions.
+  </p>
+
+  <table>
+
+    <tr>
+      <th>Question</th>
+      <th>Current meaning</th>
+    </tr>
+
+    <tr>
+      <td>Internal formal status</td>
+      <td>
+        whether the structure is accepted within the current research
+        architecture
+      </td>
+    </tr>
+
+    <tr>
+      <td>External novelty or priority</td>
+      <td>
+        whether equivalent mathematical structure is already known elsewhere
+      </td>
+    </tr>
+
+    <tr>
+      <td>Independent validation</td>
+      <td>
+        whether the work has been reproduced, reviewed, or accepted outside
+        the internal development process
+      </td>
+    </tr>
+
+  </table>
+
+  <p>
+    These questions are not interchangeable.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>30. Scientific Visualization Policy</h2>
+
+  <p>
+    Equation-driven figures may include:
+  </p>
+
+  <div class="statusbox">
+
+    function plots · convergence curves · parameter sweeps · phase portraits ·
+    spectra · vector fields · PDE fields · heatmaps · stability maps ·
+    response surfaces · residuals · uncertainty distributions
+
+  </div>
+
+  <p>
+    A figure should expose mathematical behavior rather than decorate the
+    page.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>31. Structural Diagram Policy</h2>
+
+  <div class="warning">
+
+    <p>
+      The original BM/GURF structural diagrams have not yet been recreated
+      for this public encyclopedia.
+    </p>
+
+    <p>
+      Substitute structural diagrams will not be invented merely to fill the
+      visual space.
+    </p>
+
+    <p>
+      Formal diagrams will be added after the corresponding diagram
+      definitions and relationships have been reconstructed and reviewed.
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>32. Revision Record</h2>
+
+  <p>
+    Mathematical evolution is recorded through explicit revisions rather than
+    conversation history.
+  </p>
+
+  <p>
+    The public record includes changes such as:
+  </p>
+
+  <div class="statusbox">
+
+    corrected definitions · strengthened hypotheses · generalized equations ·
+    proof corrections · theorem-status changes · failed conjectures ·
+    replaced models · new quantitative tests · prior-art findings
+
+  </div>
+
+  <p>
+    <a href="changelog.html">
+      View the mathematical changelog →
+    </a>
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>33. Current Public Corpus</h2>
+
+  <table>
+
+    <tr>
+      <th>Page</th>
+      <th>Primary purpose</th>
+    </tr>
+
+    <tr>
+      <td>
+        <a href="branch-mathematics.html">
+          Branch Mathematics
+        </a>
+      </td>
+      <td>
+        formal BM foundations
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <a href="gurf.html">
+          GURF
+        </a>
+      </td>
+      <td>
+        response mathematics
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <a href="definitions.html">
+          Definitions
+        </a>
+      </td>
+      <td>
+        canonical and working vocabulary
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <a href="theorems.html">
+          Theorems
+        </a>
+      </td>
+      <td>
+        statements, proofs, corollaries, and counterexamples
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <a href="equations.html">
+          Equations
+        </a>
+      </td>
+      <td>
+        formal equations and scientific figures
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <a href="structures.html">
+          Structures
+        </a>
+      </td>
+      <td>
+        structural architecture
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <a href="passports.html">
+          Passports
+        </a>
+      </td>
+      <td>
+        distinction and compatibility mathematics
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <a href="roots.html">
+          Roots
+        </a>
+      </td>
+      <td>
+        reusable response mathematics
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <a href="research.html">
+          Research
+        </a>
+      </td>
+      <td>
+        active research programs and their status
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <a href="changelog.html">
+          Changelog
+        </a>
+      </td>
+      <td>
+        mathematical revisions and corrections
+      </td>
+    </tr>
+
+  </table>
+
+</section>
+
+
+
+<section>
+
+  <h2>34. Future Encyclopedia Expansion</h2>
+
+  <p>
+    The current encyclopedia contains the foundational backbone.
+  </p>
+
+  <p>
+    The next expansion stage is to split major research programs into
+    dedicated mathematical articles.
+  </p>
+
+  <div class="statusbox">
+
+    Navier–Stokes · Yang–Mills · gravity and spacetime · quantum theory ·
+    entanglement · electromagnetism and light · thermal physics · computation ·
+    secure compilation · model reduction · engineering realization
+
+  </div>
+
+  <p>
+    Each dedicated article should eventually contain its own notation,
+    equations, derivations, theorem kernels, quantitative figures,
+    assumptions, tests, failure conditions, and references.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>35. Encyclopedia Principle</h2>
+
+  <div class="mathbox">
+
+    \[
+    \boxed{
+    \text{The public record should make the mathematics easier to inspect
+    than the process that produced it.}
+    }
+    \]
+
+  </div>
+
+  <p>
+    The encyclopedia therefore prioritizes formal structure, derivation,
+    proof, quantitative behavior, correction, and research status.
+  </p>
+
+</section>
+
 
 </main>
 
+
 <footer>
-  <p>Branch Mathematics Research Encyclopedia</p>
+
+  <p>
+    Branch Mathematics Research Encyclopedia
+  </p>
+
 </footer>
+
 
 </body>
 </html>
