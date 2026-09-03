@@ -1636,4 +1636,1650 @@
   </div>
 
   <p>
-    There
+    Therefore
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    b(x)=b(x')
+    \quad\not\Rightarrow\quad
+    S(x)=S(x').
+    \]
+
+  </div>
+
+  <p>
+    The Passport is insufficient for \(S\).
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>25. Worked Example: Repair</h2>
+
+  <p>
+    Add a second observation
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    q(x_1,x_2)
+    =
+    x_2.
+    \]
+
+  </div>
+
+  <p>
+    The repaired Passport becomes
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    (b,q):
+    \mathbb R^2
+    \longrightarrow
+    \mathbb R^2
+    \]
+
+  </div>
+
+  <p>
+    with
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    (b,q)(x_1,x_2)
+    =
+    (x_1,x_2).
+    \]
+
+  </div>
+
+  <p>
+    The lost distinction has now been restored completely.
+  </p>
+
+  <p>
+    A real GURF repair problem usually asks whether something smaller than
+    full reconstruction would be enough.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>26. Worked Example: Structural Compatibility</h2>
+
+  <p>
+    Keep the Passport
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    (x_1,x_2)
+    \sim_P
+    (y_1,y_2)
+    \quad\Longleftrightarrow\quad
+    x_1=y_1.
+    \]
+
+  </div>
+
+  <p>
+    Under vector addition,
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    (x_1,x_2)
+    +
+    (u_1,u_2)
+    =
+    (x_1+u_1,x_2+u_2).
+    \]
+
+  </div>
+
+  <p>
+    If
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    x_1=y_1
+    \quad\text{and}\quad
+    u_1=v_1,
+    \]
+
+  </div>
+
+  <p>
+    then
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    x_1+u_1
+    =
+    y_1+v_1.
+    \]
+
+  </div>
+
+  <p>
+    Thus this Passport equivalence is compatible with vector addition.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>27. Worked Example: Structural Failure</h2>
+
+  <p>
+    Consider the coordinate-swap operation
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \sigma(x_1,x_2)
+    =
+    (x_2,x_1).
+    \]
+
+  </div>
+
+  <p>
+    Take
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    x=(1,2),
+    \qquad
+    x'=(1,9).
+    \]
+
+  </div>
+
+  <p>
+    Initially,
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    x\sim_P x'.
+    \]
+
+  </div>
+
+  <p>
+    But
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \sigma(x)
+    =
+    (2,1)
+    \]
+
+  </div>
+
+  <p>
+    and
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \sigma(x')
+    =
+    (9,1).
+    \]
+
+  </div>
+
+  <p>
+    Their first coordinates differ, so
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \sigma(x)
+    \not\sim_P
+    \sigma(x').
+    \]
+
+  </div>
+
+  <p>
+    Therefore the Passport equivalence is not compatible with the swap
+    operation.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>28. Passport Interfaces</h2>
+
+  <p>
+    Suppose an object is transformed by
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    F:
+    X
+    \longrightarrow
+    Y.
+    \]
+
+  </div>
+
+  <p>
+    Let the source Passport be
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    P_X:
+    X
+    \longrightarrow
+    Q_X
+    \]
+
+  </div>
+
+  <p>
+    and the receiving Passport be
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    P_Y:
+    Y
+    \longrightarrow
+    Q_Y.
+    \]
+
+  </div>
+
+  <p>
+    A Passport-level transformation
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    G:
+    Q_X
+    \longrightarrow
+    Q_Y
+    \]
+
+  </div>
+
+  <p>
+    is exactly compatible when
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \boxed{
+    P_Y\circ F
+    =
+    G\circ P_X.
+    }
+    \]
+
+  </div>
+
+  <p>
+    This expresses interface consistency between the full mathematical
+    transformation and its Passport-level representation.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>29. Exact Compatibility Is Not Universal</h2>
+
+  <p>
+    Some mathematical categories require a weaker or different notion than
+    literal equality.
+  </p>
+
+  <p>
+    Depending on the domain, interface compatibility may instead involve:
+  </p>
+
+  <div class="card">
+
+    equivalence classes · isomorphism · homotopy · almost-sure equality ·
+    equality in distribution · bounded error · divergence bounds ·
+    order relations · simulation relations
+
+  </div>
+
+  <p>
+    The notion used must be stated explicitly.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>30. Approximate Passports</h2>
+
+  <p>
+    Exact equality may be inappropriate when observations are noisy or
+    numerical.
+  </p>
+
+  <p>
+    Let
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    d_c:
+    Y_c\times Y_c
+    \longrightarrow
+    [0,\infty)
+    \]
+
+  </div>
+
+  <p>
+    be a metric or discrepancy measure.
+  </p>
+
+  <p>
+    An approximate Passport condition may take the form
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    d_c
+    \left(
+    b_c(x),
+    b_c(x')
+    \right)
+    \le
+    \varepsilon_c.
+    \]
+
+  </div>
+
+  <p>
+    Approximation must therefore specify both the discrepancy measure and its
+    tolerance.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>31. Task Error Inside a Passport Fibre</h2>
+
+  <p>
+    Suppose task space \(W\) carries metric \(d_W\).
+  </p>
+
+  <p>
+    Define Passport task diameter
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    D_{P,T}(\ell)
+    =
+    \sup_{
+      x,x'
+      \in
+      \mathfrak C_P(\ell)
+    }
+    d_W
+    \left(
+    T(x),
+    T(x')
+    \right).
+    \]
+
+  </div>
+
+  <p>
+    Exact task sufficiency gives
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    D_{P,T}(\ell)=0.
+    \]
+
+  </div>
+
+  <p>
+    Approximate sufficiency may require
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    D_{P,T}(\ell)
+    \le
+    \varepsilon.
+    \]
+
+  </div>
+
+  <p>
+    This is an example of a Passport quantity that can later be plotted
+    numerically across observation or parameter space.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>32. Stochastic Passports</h2>
+
+  <p>
+    A stochastic observation may be a Markov kernel
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    M:
+    X
+    \longrightarrow
+    \mathcal P(Y).
+    \]
+
+  </div>
+
+  <p>
+    The Passport output is then a probability law rather than one
+    deterministic point in \(Y\).
+  </p>
+
+  <p>
+    For a test function
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \varphi:
+    Y
+    \longrightarrow
+    \mathbb R,
+    \]
+
+  </div>
+
+  <p>
+    the kernel acts through
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \boxed{
+    M^\dagger\varphi(x)
+    =
+    \mathbb E[
+    \varphi(Y)
+    \mid
+    X=x
+    ].
+    }
+    \]
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>33. Stochastic Equivalence</h2>
+
+  <p>
+    A natural exact stochastic equivalence is
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    x
+    \sim_M
+    x'
+    \quad\Longleftrightarrow\quad
+    M(x,\cdot)
+    =
+    M(x',\cdot).
+    \]
+
+  </div>
+
+  <p>
+    Equivalently,
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    M^\dagger\varphi(x)
+    =
+    M^\dagger\varphi(x')
+    \]
+
+  </div>
+
+  <p>
+    for every test function in a determining class.
+  </p>
+
+  <div class="warning">
+
+    Stochastic Passport semantics must not be silently replaced with
+    deterministic equivalence.
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>34. Approximate Stochastic Passports</h2>
+
+  <p>
+    Two probability laws may be considered approximately equivalent using a
+    specified divergence or metric
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    D
+    \left(
+    M(x,\cdot),
+    M(x',\cdot)
+    \right)
+    \le
+    \varepsilon.
+    \]
+
+  </div>
+
+  <p>
+    Possible choices depend on the domain and may include total variation,
+    Wasserstein distance, relative entropy, or another justified measure.
+  </p>
+
+  <p>
+    The choice is part of the Passport specification.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>35. Nondeterministic Passports</h2>
+
+  <p>
+    Suppose system response is represented by
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    R
+    \subseteq
+    X\times Y.
+    \]
+
+  </div>
+
+  <p>
+    For target set
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    U\subseteq Y,
+    \]
+
+  </div>
+
+  <p>
+    existential reachability is
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \Diamond_R(U)
+    =
+    \left\{
+    x:
+    \exists y\in U,
+    \;
+    xRy
+    \right\}.
+    \]
+
+  </div>
+
+  <p>
+    Universal containment is
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \Box_R(U)
+    =
+    \left\{
+    x:
+    \forall y,
+    \;
+    xRy
+    \Rightarrow
+    y\in U
+    \right\}.
+    \]
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>36. Quantifier Firewall</h2>
+
+  <p>
+    The two statements
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \exists y
+    \]
+
+  </div>
+
+  <p>
+    and
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \forall y
+    \]
+
+  </div>
+
+  <p>
+    represent fundamentally different Passport requirements.
+  </p>
+
+  <p>
+    Strategy-based systems may additionally require statements such as
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \exists \pi
+    \;
+    \forall \omega
+    \]
+
+  </div>
+
+  <p>
+    or
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \forall \omega
+    \;
+    \exists \pi_\omega.
+    \]
+
+  </div>
+
+  <p>
+    These cannot be interchanged.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>37. Coupling Passports</h2>
+
+  <p>
+    Suppose two stochastic requirements have marginal laws
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \mu
+    \quad\text{and}\quad
+    \nu.
+    \]
+
+  </div>
+
+  <p>
+    A joint realization requires a coupling
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \gamma
+    \in
+    \Gamma(\mu,\nu).
+    \]
+
+  </div>
+
+  <p>
+    Separate marginal feasibility does not establish joint feasibility.
+  </p>
+
+  <p>
+    A Passport involving several stochastic tasks must therefore state whether
+    one shared coupling is required.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>38. Law Passports</h2>
+
+  <p>
+    The active mathematical law or regime may itself be required information.
+  </p>
+
+  <p>
+    Let
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \lambda
+    \in
+    \Lambda
+    \]
+
+  </div>
+
+  <p>
+    identify the active regime.
+  </p>
+
+  <p>
+    The effective state may then be
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    (x,\lambda)
+    \in
+    X\times\Lambda.
+    \]
+
+  </div>
+
+  <p>
+    Two states with identical observable \(x\) may still require different
+    responses when their governing regimes differ.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>39. Conservative Passports</h2>
+
+  <div class="statusbox">
+
+    <strong>Status: active candidate research structure.</strong>
+
+  </div>
+
+  <p>
+    A transformation may remove a quantity from the active representation
+    while the mathematics still requires that quantity to persist.
+  </p>
+
+  <p>
+    A conservative Passport is intended to carry such required information
+    across the transformation.
+  </p>
+
+  <p>
+    Candidate conserved quantities may include
+  </p>
+
+  <div class="card">
+
+    energy · momentum · charge · mass · probability normalization · algebraic
+    invariants · topological invariants · other domain-defined conserved data
+
+  </div>
+
+  <p>
+    Conservation is never created merely by placing a quantity in a Passport.
+  </p>
+
+  <p>
+    The relevant conservation law must already follow from the mathematics of
+    the domain.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>40. Root Passport Transfer</h2>
+
+  <div class="statusbox">
+
+    <strong>Status: active candidate BM structure.</strong>
+
+  </div>
+
+  <p>
+    Information removed from one representation may remain required by a
+    later Root or Branch.
+  </p>
+
+  <p>
+    A candidate transfer mechanism may be represented schematically as
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    P_{\mathrm{source}}
+    \longrightarrow
+    P_{\mathrm{root}}
+    \longrightarrow
+    P_{\mathrm{receiver}}.
+    \]
+
+  </div>
+
+  <p>
+    The transfer is lawful only when type, invariant, interface, and
+    compatibility requirements are satisfied.
+  </p>
+
+  <p>
+    This expression is an algebraic process notation, not a recreated BM
+    structural diagram.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>41. Passport Promotion</h2>
+
+  <p>
+    Information may begin as a local condition and later become structurally
+    important enough to be promoted into a persistent Passport requirement.
+  </p>
+
+  <p>
+    Promotion should occur only when later mathematics genuinely depends on
+    that distinction.
+  </p>
+
+  <p>
+    Schematically:
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \text{local distinction}
+    \longrightarrow
+    \text{persistent requirement}
+    \longrightarrow
+    \text{Passport component}.
+    \]
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>42. Passport Repair</h2>
+
+  <p>
+    Suppose Passport \(P\) is insufficient for task \(T\).
+  </p>
+
+  <p>
+    A repair Passport \(Q\) succeeds when the joint Passport
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    P\wedge Q
+    \]
+
+  </div>
+
+  <p>
+    becomes sufficient:
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \boxed{
+    \sim_{P\wedge Q}
+    \subseteq
+    \sim_T.
+    }
+    \]
+
+  </div>
+
+  <p>
+    Repair therefore refines the Passport equivalence until every remaining
+    identification is safe for the task.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>43. Minimal Passport Repair</h2>
+
+  <p>
+    If several repairs are possible, one may seek a minimal or low-cost
+    repair.
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \min_Q
+    \operatorname{Cost}(Q)
+    \]
+
+    \[
+    \text{subject to}
+    \]
+
+    \[
+    \sim_{P\wedge Q}
+    \subseteq
+    \sim_T.
+    \]
+
+  </div>
+
+  <p>
+    Depending on the application, cost may measure:
+  </p>
+
+  <div class="card">
+
+    number of measurements · dimension · bandwidth · storage · computational
+    complexity · experimental effort · energy · communication cost
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>44. Passport Failure Modes</h2>
+
+  <p>
+    A Passport can fail in several mathematically distinct ways.
+  </p>
+
+  <table>
+
+    <tr>
+      <th>Failure</th>
+      <th>Meaning</th>
+    </tr>
+
+    <tr>
+      <td>Task insufficiency</td>
+      <td>
+        Passport merges states requiring different task outputs
+      </td>
+    </tr>
+
+    <tr>
+      <td>Structural incompatibility</td>
+      <td>
+        Passport equivalence is not preserved by a required operation
+      </td>
+    </tr>
+
+    <tr>
+      <td>Empty joint fibre</td>
+      <td>
+        Passport requirements cannot all be satisfied simultaneously
+      </td>
+    </tr>
+
+    <tr>
+      <td>Wrong quantifier scope</td>
+      <td>
+        separate witnesses are mistaken for a common witness
+      </td>
+    </tr>
+
+    <tr>
+      <td>Missing coupling</td>
+      <td>
+        marginal feasibility is mistaken for joint feasibility
+      </td>
+    </tr>
+
+    <tr>
+      <td>Semantic mismatch</td>
+      <td>
+        stochastic or nondeterministic behavior is treated as deterministic
+      </td>
+    </tr>
+
+    <tr>
+      <td>Lost invariant</td>
+      <td>
+        information required by a conservation law is discarded
+      </td>
+    </tr>
+
+    <tr>
+      <td>Interface mismatch</td>
+      <td>
+        receiving structure cannot lawfully interpret the Passport output
+      </td>
+    </tr>
+
+  </table>
+
+</section>
+
+
+
+<section>
+
+  <h2>45. Passport Composition</h2>
+
+  <p>
+    Suppose
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    P_1:
+    X\longrightarrow Y
+    \]
+
+  </div>
+
+  <p>
+    and
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    P_2:
+    Y\longrightarrow Z.
+    \]
+
+  </div>
+
+  <p>
+    Their serial composition is
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    P_2\circ P_1:
+    X\longrightarrow Z.
+    \]
+
+  </div>
+
+  <p>
+    If
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    P_1(x)=P_1(x'),
+    \]
+
+  </div>
+
+  <p>
+    then necessarily
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    P_2(P_1(x))
+    =
+    P_2(P_1(x')).
+    \]
+
+  </div>
+
+  <p>
+    Therefore deterministic serial Passport processing cannot recover a
+    distinction already erased upstream.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>46. Passport Re-entry</h2>
+
+  <p>
+    When a Passport or Passport-derived object re-enters another Branch, the
+    receiving Branch determines what counts as admissible.
+  </p>
+
+  <p>
+    If
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    E:
+    X
+    \longrightarrow
+    P
+    \]
+
+  </div>
+
+  <p>
+    exports Passport information and
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    R:
+    P
+    \longrightarrow
+    Y
+    \]
+
+  </div>
+
+  <p>
+    performs re-entry, then
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    R\circ E
+    \]
+
+  </div>
+
+  <p>
+    is lawful only if the receiving mathematics on \(Y\) accepts the exported
+    information and its associated conditions.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>47. Passport Sufficiency Can Be Task-Dependent</h2>
+
+  <p>
+    A Passport may be sufficient for task \(T_1\) but insufficient for
+    task \(T_2\).
+  </p>
+
+  <p>
+    Formally,
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \sim_P
+    \subseteq
+    \sim_{T_1}
+    \]
+
+  </div>
+
+  <p>
+    while
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \sim_P
+    \not\subseteq
+    \sim_{T_2}.
+    \]
+
+  </div>
+
+  <p>
+    There is therefore no universal statement that a representation is simply
+    "sufficient" without naming the task or law family for which sufficiency
+    is being claimed.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>48. Passport Sufficiency Can Be Time-Dependent</h2>
+
+  <p>
+    Suppose evolution is
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \Phi_t:
+    X
+    \longrightarrow
+    X.
+    \]
+
+  </div>
+
+  <p>
+    Future task \(T\) becomes
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    T_t
+    =
+    T\circ\Phi_t.
+    \]
+
+  </div>
+
+  <p>
+    Passport \(P\) remains sufficient at time \(t\) only when
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \boxed{
+    \sim_P
+    \subseteq
+    \sim_{T\circ\Phi_t}.
+    }
+    \]
+
+  </div>
+
+  <p>
+    A distinction irrelevant now may become essential later.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>49. Quantitative Passport Diagnostics</h2>
+
+  <p>
+    Passport analysis can produce numerical quantities suitable for
+    scientific visualization.
+  </p>
+
+  <p>
+    Examples include:
+  </p>
+
+  <div class="card">
+
+    fibre diameter · task ambiguity · approximation error · information
+    refinement · repair cost · sensitivity · coupling defect · invariant drift
+    · continuation failure time
+
+  </div>
+
+  <p>
+    For example,
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    D_{P,T}(\ell)
+    =
+    \sup_{
+      x,x'\in\mathfrak C_P(\ell)
+    }
+    d_W(T(x),T(x'))
+    \]
+
+  </div>
+
+  <p>
+    can be plotted as a function of \(\ell\), time, regime, or system
+    parameters.
+  </p>
+
+  <p>
+    Those quantitative figures will be added where actual research equations
+    and numerical data justify them.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>50. Passport Registry</h2>
+
+  <p>
+    Formal BM Passports may receive stable identifiers.
+  </p>
+
+  <p>
+    A registry entry should eventually record:
+  </p>
+
+  <div class="card">
+
+    identifier · mathematical domain · source Branch · receiving Branch ·
+    observation maps · preserved distinctions · equivalence relation ·
+    admissibility conditions · operations preserved · task requirements ·
+    quantifier semantics · conservation requirements · dependencies · status ·
+    revision
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>51. Passport Status Labels</h2>
+
+  <table>
+
+    <tr>
+      <th>Status</th>
+      <th>Meaning</th>
+    </tr>
+
+    <tr>
+      <td>Canonical</td>
+      <td>
+        accepted as part of the current BM/GURF architecture
+      </td>
+    </tr>
+
+    <tr>
+      <td>Proved</td>
+      <td>
+        supported by a complete mathematical proof under stated assumptions
+      </td>
+    </tr>
+
+    <tr>
+      <td>Conditional</td>
+      <td>
+        mathematically valid when stated hypotheses hold
+      </td>
+    </tr>
+
+    <tr>
+      <td>Active</td>
+      <td>
+        currently used but still undergoing formal refinement
+      </td>
+    </tr>
+
+    <tr>
+      <td>Candidate</td>
+      <td>
+        proposed structure not yet accepted as canonical
+      </td>
+    </tr>
+
+    <tr>
+      <td>Experimental</td>
+      <td>
+        being tested in applications or numerical models
+      </td>
+    </tr>
+
+  </table>
+
+</section>
+
+
+
+<section>
+
+  <h2>52. What a Passport Does Not Do</h2>
+
+  <div class="warning">
+
+    <p>
+      A Passport does not override the mathematics of a Branch.
+    </p>
+
+    <p>
+      It does not make an invalid quotient valid.
+    </p>
+
+    <p>
+      It does not create a conservation law.
+    </p>
+
+    <p>
+      It does not make incompatible interfaces compatible.
+    </p>
+
+    <p>
+      It does not turn separate witnesses into one common witness.
+    </p>
+
+    <p>
+      It does not convert stochastic or nondeterministic semantics into
+      deterministic semantics.
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>53. Central Passport Principle</h2>
+
+  <p>
+    Passport mathematics can be summarized by:
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \boxed{
+    \text{A distinction may be discarded only when the mathematics
+    that follows no longer requires it.}
+    }
+    \]
+
+  </div>
+
+  <p>
+    The Passport therefore sits between representation and future lawful use.
+  </p>
+
+  <p>
+    It records what a mathematical object must continue to carry in order for
+    later transformation, interaction, quotienting, response, Rooting, or
+    re-entry to remain valid.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>54. Structural Diagram Status</h2>
+
+  <p>
+    Formal BM Passport diagrams have not yet been recreated for this public
+    encyclopedia.
+  </p>
+
+  <p>
+    No new structural figures are being treated as canonical until those
+    diagrams are reconstructed, mathematically reviewed, and approved.
+  </p>
+
+  <p>
+    Equation-driven scientific figures are handled separately and will be
+    included whenever the underlying mathematics produces meaningful
+    quantitative visualization.
+  </p>
+
+</section>
+
+
+</main>
+
+
+<footer>
+
+  <p>
+    Branch Mathematics Research Encyclopedia
+  </p>
+
+</footer>
+
+
+</body>
+</html>
