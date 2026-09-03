@@ -2,28 +2,57 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Research | Branch Mathematics</title>
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
-  <meta name="description" content="Research using Branch Mathematics and GURF across mathematics, physics, computation, information, and engineering.">
+  <title>
+    Research | Branch Mathematics and GURF
+  </title>
+
+  <meta name="description"
+        content="Research program for Branch Mathematics and GURF, including foundations, structured quotients, coherence, Navier-Stokes, Yang-Mills, gravity, quantum theory, radiation, computation, information, engineering, and mathematical validation.">
 
   <meta name="robots" content="index, follow">
 
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']]
+      }
+    };
+  </script>
+
+  <script async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
       margin: 0;
-      line-height: 1.7;
+      line-height: 1.75;
       color: #202124;
-      background: white;
+      background: #ffffff;
     }
 
     header {
       background: #111827;
       color: white;
-      padding: 45px 20px;
+      padding: 55px 20px;
       text-align: center;
+    }
+
+    header h1 {
+      margin-bottom: 10px;
+      font-size: 2.6rem;
+    }
+
+    header p {
+      max-width: 900px;
+      margin: auto;
+      font-size: 1.15rem;
     }
 
     nav {
@@ -35,12 +64,12 @@
     nav a {
       color: white;
       text-decoration: none;
-      margin: 8px 14px;
+      margin: 7px 11px;
       display: inline-block;
     }
 
     main {
-      max-width: 950px;
+      max-width: 1050px;
       margin: auto;
       padding: 35px 20px;
     }
@@ -48,194 +77,1994 @@
     h2 {
       border-bottom: 2px solid #e5e7eb;
       padding-bottom: 8px;
-      margin-top: 45px;
+      margin-top: 55px;
     }
 
-    .card {
+    h3 {
+      margin-top: 28px;
+    }
+
+    .lead {
+      font-size: 1.08rem;
+    }
+
+    .research-card {
       border: 1px solid #d1d5db;
       border-radius: 8px;
+      padding: 24px;
+      margin: 24px 0;
+    }
+
+    .mathbox {
+      background: #f8fafc;
+      border-left: 4px solid #374151;
+      padding: 18px;
+      margin: 22px 0;
+      overflow-x: auto;
+    }
+
+    .statusbox {
+      background: #f3f4f6;
+      border-radius: 8px;
       padding: 20px;
-      margin: 15px 0;
+      margin: 20px 0;
+    }
+
+    .warning {
+      border-left: 4px solid #6b7280;
+      background: #fafafa;
+      padding: 18px;
+      margin: 22px 0;
+    }
+
+    .note {
+      background: #f8fafc;
+      border-radius: 8px;
+      padding: 18px;
+      margin: 20px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 25px 0;
+    }
+
+    th,
+    td {
+      border: 1px solid #d1d5db;
+      padding: 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f3f4f6;
     }
 
     footer {
       background: #111827;
       color: white;
       text-align: center;
-      padding: 25px;
-      margin-top: 40px;
+      padding: 28px;
+      margin-top: 60px;
     }
   </style>
 </head>
 
+
 <body>
 
 <header>
-  <h1>Research</h1>
+
+  <h1>Research Program</h1>
+
   <p>
-    Mathematical research developed, tested, and organized using
-    Branch Mathematics and GURF.
+    Active mathematical and mathematical-physics research developed through
+    Branch Mathematics, GURF, and conventional domain mathematics, with proof
+    status, assumptions, numerical validation, failure conditions, and open
+    questions kept separate.
   </p>
+
 </header>
 
+
 <nav>
+
   <a href="index.html">Home</a>
   <a href="branch-mathematics.html">Branch Mathematics</a>
   <a href="gurf.html">GURF</a>
   <a href="encyclopedia.html">Encyclopedia</a>
-  <a href="changelog.html">Changelog</a>
   <a href="definitions.html">Definitions</a>
   <a href="theorems.html">Theorems</a>
   <a href="equations.html">Equations</a>
   <a href="structures.html">Structures</a>
   <a href="passports.html">Passports</a>
   <a href="roots.html">Roots</a>
+  <a href="changelog.html">Changelog</a>
+
 </nav>
+
 
 <main>
 
-<section>
-  <h2>Research Program</h2>
 
-  <p>
-    This section contains mathematical investigations, derived results,
-    conjectures, applications, computational studies, and open problems.
+<section>
+
+  <h2>1. Purpose of the Research Registry</h2>
+
+  <p class="lead">
+    This page records what is being investigated, what has been formally
+    derived, what remains conditional, and what has not been established.
   </p>
 
   <p>
-    Each research area is evaluated according to its own mathematics.
-    Branch Mathematics provides the governing meta-structural framework,
-    while GURF is used where genuine response semantics are present.
-  </p>
-</section>
-
-
-<section>
-  <h2>Pure Mathematics</h2>
-
-  <div class="card">
-    <h3>Branch Mathematics Foundations</h3>
-    <p>
-      Representation, transformation, interaction, composition, Roots,
-      Passports, Leaves, Trees, interfaces, realization, and re-entry.
-    </p>
-  </div>
-
-  <div class="card">
-    <h3>Structural Quotients and Equivalence</h3>
-    <p>
-      Study of lawful quotienting, preserved distinctions, congruence,
-      abstraction, realization, and compatibility.
-    </p>
-  </div>
-
-  <div class="card">
-    <h3>Coherence and Composition</h3>
-    <p>
-      Typed interfaces, commuting diagrams, path compatibility,
-      gluing, re-entry, and higher structural coherence.
-    </p>
-  </div>
-</section>
-
-
-<section>
-  <h2>Mathematical Physics</h2>
-
-  <div class="card">
-    <h3>Gravity and Spacetime</h3>
-    <p>
-      Geometry, tidal response, observation, propagation, gravitational
-      structure, and candidate extensions.
-    </p>
-  </div>
-
-  <div class="card">
-    <h3>Quantum Theory</h3>
-    <p>
-      Distinguishability, observation, entanglement, information,
-      response structure, and lawful continuation.
-    </p>
-  </div>
-
-  <div class="card">
-    <h3>Yang–Mills Theory</h3>
-    <p>
-      Spectral structure, mass-gap related mathematics, boundary response,
-      shell structure, variational methods, and obstruction analysis.
-    </p>
-  </div>
-
-  <div class="card">
-    <h3>Navier–Stokes and Fluid Dynamics</h3>
-    <p>
-      Vorticity, strain, scale interaction, spectral structure,
-      continuation variables, and nonlinear fluid behavior.
-    </p>
-  </div>
-</section>
-
-
-<section>
-  <h2>Electromagnetism and Radiation</h2>
-
-  <div class="card">
-    <p>
-      Light, photons, radio waves, microwaves, infrared, ultraviolet,
-      X-rays, gamma rays, transmission, absorption, reflection,
-      thermal radiation, and electromagnetic propagation.
-    </p>
-  </div>
-</section>
-
-
-<section>
-  <h2>Computation and Information</h2>
-
-  <div class="card">
-    <p>
-      Information preservation, computation, compression, control,
-      secure transformation, stochastic systems, nondeterministic systems,
-      and mathematical response structures.
-    </p>
-  </div>
-</section>
-
-
-<section>
-  <h2>Engineering and Physical Systems</h2>
-
-  <div class="card">
-    <p>
-      Applications may include energy systems, propulsion, nuclear systems,
-      radiation transport, thermal systems, fluids, communications,
-      control systems, and other engineering domains.
-    </p>
-  </div>
-</section>
-
-
-<section>
-  <h2>Research Status</h2>
-
-  <p>
-    Research entries distinguish among established mathematics,
-    direct derivations, conditional results, numerical or experimental
-    evidence, conjectures, proposed physical interpretations, and open
-    questions.
+    It is not a list of claims of discovery.
   </p>
 
   <p>
-    A mathematical derivation does not by itself establish external novelty,
-    physical realization, or independent validation.
+    A research program may contain mathematically proved intermediate results
+    without having solved the larger problem that motivated them.
   </p>
+
+  <div class="mathbox">
+
+    \[
+    \boxed{
+    \text{proved intermediate mathematics}
+    \neq
+    \text{solution of the entire research problem}
+    }
+    \]
+
+  </div>
+
 </section>
+
+
+
+<section>
+
+  <h2>2. Research Status System</h2>
+
+  <table>
+
+    <tr>
+      <th>Status</th>
+      <th>Meaning</th>
+    </tr>
+
+    <tr>
+      <td>Proved</td>
+      <td>
+        conclusion follows from stated assumptions
+      </td>
+    </tr>
+
+    <tr>
+      <td>Derived</td>
+      <td>
+        mathematically obtained within the current formal development
+      </td>
+    </tr>
+
+    <tr>
+      <td>Conditional</td>
+      <td>
+        valid only when explicitly stated hypotheses hold
+      </td>
+    </tr>
+
+    <tr>
+      <td>Numerically tested</td>
+      <td>
+        checked on specific numerical models or datasets
+      </td>
+    </tr>
+
+    <tr>
+      <td>Active</td>
+      <td>
+        current research direction
+      </td>
+    </tr>
+
+    <tr>
+      <td>Candidate</td>
+      <td>
+        proposed mathematical structure awaiting stronger formal support
+      </td>
+    </tr>
+
+    <tr>
+      <td>Open</td>
+      <td>
+        unresolved mathematical question
+      </td>
+    </tr>
+
+    <tr>
+      <td>Quarantined</td>
+      <td>
+        result, source, or argument retained for audit but not relied upon
+      </td>
+    </tr>
+
+  </table>
+
+</section>
+
+
+
+<section>
+
+  <h2>3. Governing Research Rule</h2>
+
+  <div class="warning">
+
+    <p>
+      Branch Mathematics and GURF organize mathematical reasoning.
+    </p>
+
+    <p>
+      They do not override proof requirements in algebra, analysis,
+      probability, geometry, PDE theory, physics, computation, or any other
+      native mathematical domain.
+    </p>
+
+  </div>
+
+  <p>
+    The governing research sequence is:
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \boxed{
+    \text{formalize}
+    \longrightarrow
+    \text{derive}
+    \longrightarrow
+    \text{audit}
+    \longrightarrow
+    \text{test}
+    \longrightarrow
+    \text{compare}
+    }
+    \]
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>4. Branch Mathematics Foundations</h2>
+
+  <div class="research-card">
+
+    <p><strong>Status:</strong> active formal development</p>
+
+    <p>
+      The foundational BM program studies lawful representation and
+      transformation across distinct mathematical structures.
+    </p>
+
+    <p>
+      Core research areas include:
+    </p>
+
+    <div class="note">
+
+      typed Branches · Interactions · Leaves · Trees · Responses · Passports ·
+      Roots · operations · structured quotients · interfaces · realization ·
+      export · re-entry · composition · coherence
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>5. Structured Quotients</h2>
+
+  <div class="research-card">
+
+    <p><strong>Status:</strong> active, with proved finitary algebraic core</p>
+
+    <p>
+      A central BM question is when observational or Passport equivalence can
+      support a genuine mathematical quotient.
+    </p>
+
+    <p>
+      For
+    </p>
+
+    <div class="mathbox">
+
+      \[
+      A=(X,\Sigma),
+      \]
+
+    </div>
+
+    <p>
+      operation compatibility requires
+    </p>
+
+    <div class="mathbox">
+
+      \[
+      x_i\sim_P y_i
+      \quad\forall i
+      \]
+
+      \[
+      \Longrightarrow
+      \]
+
+      \[
+      \sigma(x_1,\ldots,x_n)
+      \sim_P
+      \sigma(y_1,\ldots,y_n).
+      \]
+
+    </div>
+
+    <p>
+      This finitary algebraic result is recorded as
+      <strong>BM-SQ-01</strong>.
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>6. Quotient Generalization Program</h2>
+
+  <p>
+    Research extends beyond finitary algebra toward other categories of
+    mathematical structure.
+  </p>
+
+  <p>
+    Questions include:
+  </p>
+
+  <div class="note">
+
+    topology · measure · probability kernels · operator spaces · dynamical
+    systems · PDE solution spaces · graphs · geometric structures ·
+    nondeterministic relations · infinite products and limits
+
+  </div>
+
+  <p>
+    No universal quotient theorem is assumed merely from success in the
+    finitary algebraic sector.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>7. Interface and Coherence Program</h2>
+
+  <div class="research-card">
+
+    <p><strong>Status:</strong> active</p>
+
+    <p>
+      BM studies whether multiple lawful mathematical paths remain compatible.
+    </p>
+
+    <div class="mathbox">
+
+      \[
+      P_2\circ F
+      =
+      G\circ P_1
+      \]
+
+    </div>
+
+    <p>
+      is one exact interface condition.
+    </p>
+
+    <p>
+      Broader research includes:
+    </p>
+
+    <div class="note">
+
+      path closure · parallel-path compatibility · equalizers · pullbacks ·
+      coequalizers · gluing · naturality · higher coherence · approximate
+      coherence
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>8. Root Mathematics</h2>
+
+  <div class="research-card">
+
+    <p><strong>Status:</strong> core Root role established internally;
+    extended Rooting mechanisms remain active/candidate research</p>
+
+    <p>
+      Root research studies when a mathematical response can become lawful
+      input to additional mathematical structure.
+    </p>
+
+    <div class="mathbox">
+
+      \[
+      R_{n+1}
+      =
+      F(R_n)
+      \]
+
+    </div>
+
+    <p>
+      is one possible repeated-Root model.
+    </p>
+
+    <p>
+      Current questions include:
+    </p>
+
+    <div class="note">
+
+      repeated Rooting · fixed Roots · stability · attachment · rebranching ·
+      Root Passport transfer · conservation · rate limits · accumulation ·
+      realization
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>9. Seed Mathematics</h2>
+
+  <div class="research-card">
+
+    <p><strong>Status:</strong> candidate primitive under development</p>
+
+    <p>
+      A Seed is intended to model information that undergoes lawful
+      generative evolution before meeting an export condition and producing a
+      Root.
+    </p>
+
+    <div class="mathbox">
+
+      \[
+      S_{n+1}
+      =
+      G(S_n)
+    \]
+
+    </div>
+
+    <p>
+      may represent one iterative realization.
+    </p>
+
+    <p>
+      Current questions include growth, termination, recursive behavior,
+      branching, stability, and Root-export conditions.
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>10. GURF Foundations</h2>
+
+  <div class="research-card">
+
+    <p><strong>Status:</strong> active response framework</p>
+
+    <p>
+      GURF studies whether the distinctions retained by a system are sufficient
+      for specified responses, tasks, or future continuation.
+    </p>
+
+    <p>
+      A central exact condition is
+    </p>
+
+    <div class="mathbox">
+
+      \[
+      r(x)=r(x')
+      \Longrightarrow
+      T(x)=T(x').
+      \]
+
+    </div>
+
+    <p>
+      Equivalently,
+    </p>
+
+    <div class="mathbox">
+
+      \[
+      T
+      =
+      \widetilde T
+      \circ r.
+      \]
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>11. Completion and Recovery</h2>
+
+  <p>
+    For observations
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    r_\alpha:
+    X
+    \longrightarrow
+    Y_\alpha,
+    \]
+
+  </div>
+
+  <p>
+    GURF uses the completion fibre
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \boxed{
+    \mathfrak C_A(\ell)
+    =
+    \bigcap_{\alpha\in A}
+    r_\alpha^{-1}(\ell_\alpha).
+    }
+    \]
+
+  </div>
+
+  <p>
+    Exact recovery of task \(T\) requires \(T\) to be constant across this
+    fibre.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>12. Obstruction and Repair</h2>
+
+  <div class="research-card">
+
+    <p><strong>Status:</strong> active</p>
+
+    <p>
+      GURF identifies an obstruction when
+    </p>
+
+    <div class="mathbox">
+
+      \[
+      r(x)=r(x')
+      \quad\text{but}\quad
+      T(x)\neq T(x').
+      \]
+
+    </div>
+
+    <p>
+      Repair augments the representation using additional information
+    </p>
+
+    <div class="mathbox">
+
+      \[
+      q:
+      X\longrightarrow Z
+    \]
+
+    </div>
+
+    <p>
+      so that
+    </p>
+
+    <div class="mathbox">
+
+      \[
+      (r,q)(x)
+      =
+      (r,q)(x')
+      \Longrightarrow
+      T(x)=T(x').
+      \]
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>13. Dynamic Continuation</h2>
+
+  <div class="research-card">
+
+    <p><strong>Status:</strong> active</p>
+
+    <p>
+      If system evolution is
+    </p>
+
+    <div class="mathbox">
+
+      \[
+      \Phi_t:
+      X
+      \longrightarrow
+      X,
+      \]
+
+    </div>
+
+    <p>
+      then future sufficiency requires
+    </p>
+
+    <div class="mathbox">
+
+      \[
+      \boxed{
+      T\circ\Phi_t
+      =
+      \widetilde T_t
+      \circ r.
+      }
+      \]
+
+    </div>
+
+    <p>
+      The research question is not merely whether a representation works now,
+      but whether it preserves distinctions needed later.
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>14. Stochastic and Nondeterministic Semantics</h2>
+
+  <p>
+    GURF explicitly separates deterministic, stochastic, and
+    nondeterministic response.
+  </p>
+
+  <p>
+    Stochastic response:
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    M:
+    X
+    \longrightarrow
+    \mathcal P(Y).
+    \]
+
+  </div>
+
+  <p>
+    Nondeterministic response:
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    R
+    \subseteq
+    X\times Y.
+    \]
+
+  </div>
+
+  <p>
+    Existential and universal semantics remain distinct:
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \Diamond_R(U)
+    \neq
+    \Box_R(U)
+    \]
+
+  </div>
+
+  <p>
+    in general.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>15. Navier–Stokes Research</h2>
+
+  <div class="research-card">
+
+    <p>
+      <strong>Status:</strong>
+      active derived Leaves and theorem-kernel results;
+      <strong>not a Clay Millennium solution</strong>
+    </p>
+
+    <p>
+      The project investigates Navier–Stokes through continuation,
+      localization, spectral interaction, derivative structure, helicity, and
+      information required to control nonlinear transfer.
+    </p>
+
+    <p>
+      Current derived objects include:
+    </p>
+
+    <div class="note">
+
+      dual palinstrophy representation · normalized strain-gradient covariance
+      tensor · co-location numerator · derivative-covariance hierarchy ·
+      triad amplitude/coherence variables · quartic neighboring-triad forcing ·
+      helical loading identities · spectral redistribution variables
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>16. Navier–Stokes Continuation Question</h2>
+
+  <p>
+    The research seeks quantities capable of distinguishing states that may
+    appear similar under coarse observables but possess different future
+    nonlinear behavior.
+  </p>
+
+  <p>
+    GURF expresses this abstractly as:
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    r(u)=r(v)
+    \]
+
+    \[
+    \text{but}
+    \]
+
+    \[
+    T(\Phi_t(u))
+    \neq
+    T(\Phi_t(v)).
+    \]
+
+  </div>
+
+  <p>
+    Such a pair demonstrates that the chosen reduced representation is
+    insufficient for that future task.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>17. Navier–Stokes Operation Order</h2>
+
+  <p>
+    The research also tracks order-sensitive operations such as
+  </p>
+
+  <div class="note">
+
+    differentiation · filtering · localization · reconstruction · spectral
+    projection · coarse-graining
+
+  </div>
+
+  <p>
+    because in general
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    F\circ G
+    \neq
+    G\circ F.
+    \]
+
+  </div>
+
+  <p>
+    This matters whenever operation order changes task-relevant information.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>18. Yang–Mills Research</h2>
+
+  <div class="research-card">
+
+    <p>
+      <strong>Status:</strong>
+      active conditional mathematical research;
+      <strong>the four-dimensional Yang–Mills existence and mass-gap problem
+      remains unsolved</strong>
+    </p>
+
+    <p>
+      The project investigates spectral leakage, boundary susceptibility,
+      coherent return, shell structure, variational bounds, and Gauss-law
+      constraints.
+    </p>
+
+    <p>
+      Derived or retained objects include:
+    </p>
+
+    <div class="note">
+
+      environment block structure · boundary susceptibility · tail floor ·
+      coherent-return quantity · first-exit leakage · Green-matrix
+      representation · shell-depth recursion · local coherent-return
+      thresholds · Gauss-law shell support · global-return obstruction
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>19. Yang–Mills Variational Firewall</h2>
+
+  <p>
+    For nested trial spaces
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    V_1
+    \subseteq
+    V_2
+    \subseteq
+    \cdots,
+    \]
+
+  </div>
+
+  <p>
+    ordered Ritz eigenvalue approximations have standard variational
+    monotonicity properties under the appropriate hypotheses.
+  </p>
+
+  <p>
+    However,
+  </p>
+
+  <div class="warning">
+
+    differences between approximate eigenvalues do not automatically inherit
+    monotonicity.
+
+  </div>
+
+  <p>
+    Any mass-gap argument therefore requires separate error control rather
+    than assuming that spectral-gap differences are variationally monotone.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>20. Quarantined Yang–Mills Arguments</h2>
+
+  <p>
+    Arguments or external sources that fail mathematical audit are retained
+    only as case studies.
+  </p>
+
+  <p>
+    They are not used as proof foundations.
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \boxed{
+    \text{interesting argument}
+    \neq
+    \text{accepted proof}
+    }
+    \]
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>21. Gravity and Spacetime Research</h2>
+
+  <div class="research-card">
+
+    <p><strong>Status:</strong> active mathematical-physics research</p>
+
+    <p>
+      The project investigates gravity through geometry, tidal response,
+      geodesic structure, observational information, and possible emergent or
+      response-based descriptions.
+    </p>
+
+    <p>
+      General Relativity remains a primary comparison theory.
+    </p>
+
+    <p>
+      BM/GURF analysis does not make an alternative description physically
+      correct merely because it can be represented mathematically.
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>22. Forward-Causal Geometry</h2>
+
+  <p>
+    Physical investigation emphasizes forward-causal geometric phenomena such
+    as:
+  </p>
+
+  <div class="note">
+
+    proper-time gradients · geodesic deflection · tidal stretching and
+    squeezing · frame dragging · focusing and defocusing · lensing ·
+    redshift · propagation delay
+
+  </div>
+
+  <p>
+    Closed timelike curves and backward-time constructions may be examined as
+    mathematical geometry without being assumed physically realizable.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>23. Observation and Motion</h2>
+
+  <p>
+    Astrophysical observation is treated as an observer-dependent information
+    problem.
+  </p>
+
+  <p>
+    Measured frequency, direction, intensity, timing, polarization, and
+    inferred distance depend on the physical state of source, observer, and
+    intervening geometry.
+  </p>
+
+  <p>
+    A BM/GURF analysis therefore requires the observation map itself to be
+    modeled:
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    O:
+    X_{\mathrm{physical}}
+    \longrightarrow
+    X_{\mathrm{observed}}.
+    \]
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>24. Quantum Theory</h2>
+
+  <div class="research-card">
+
+    <p><strong>Status:</strong> active</p>
+
+    <p>
+      Quantum research focuses on distinguishability, measurement,
+      entanglement, response, control, information preservation, and the
+      relationship between quantum state descriptions and accessible
+      observations.
+    </p>
+
+    <p>
+      The project does not assume that entanglement permits controllable
+      superluminal information transfer.
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>25. Quantum Passport Problem</h2>
+
+  <p>
+    A quantum Passport must distinguish between the full quantum state and
+    the information available under a specified measurement family.
+  </p>
+
+  <p>
+    For density operator
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \rho,
+    \]
+
+  </div>
+
+  <p>
+    and measurement operators \(E_i\), accessible probabilities are
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    p_i
+    =
+    \operatorname{Tr}(\rho E_i).
+    \]
+
+  </div>
+
+  <p>
+    The research question becomes which distinctions in \(\rho\) remain
+    necessary for the intended future quantum task.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>26. Entanglement Research</h2>
+
+  <p>
+    Entanglement is treated as a joint-state and joint-observation problem,
+    not as evidence that one subsystem locally transmits an arbitrary usable
+    message to another.
+  </p>
+
+  <p>
+    Relevant mathematical questions include:
+  </p>
+
+  <div class="note">
+
+    reduced states · joint measurement statistics · correlations · Bell-type
+    constraints · conditional states · measurement compatibility · joint
+    witness structure · information availability
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>27. Electromagnetism and Radiation</h2>
+
+  <div class="research-card">
+
+    <p><strong>Status:</strong> active multi-scale research program</p>
+
+    <p>
+      The project studies electromagnetic radiation across:
+    </p>
+
+    <div class="note">
+
+      HF · VHF · UHF · radio · microwave · infrared · visible light ·
+      ultraviolet · X-ray · gamma-ray regimes
+
+    </div>
+
+    <p>
+      Topics include propagation, emission, absorption, reflection,
+      scattering, attenuation, thermal radiation, vacuum-to-medium
+      transmission, and observation limits.
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>28. Light Propagation and Observation</h2>
+
+  <p>
+    Research distinguishes:
+  </p>
+
+  <div class="note">
+
+    propagation of the electromagnetic field · probability of detection ·
+    finite detector sensitivity · geometric spreading · absorption ·
+    scattering · redshift · source evolution · observational horizon
+
+  </div>
+
+  <p>
+    Failure to detect a photon or source at large distance does not by itself
+    establish that electromagnetic propagation has a universal finite
+    termination distance.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>29. Thermal Physics</h2>
+
+  <p>
+    The thermal program includes:
+  </p>
+
+  <div class="note">
+
+    black-body radiation · grey-body radiation · heat transfer · thermal
+    expansion · emission and absorption · frictional heating · radiative
+    cooling · material response
+
+  </div>
+
+  <p>
+    BM/GURF analysis tracks which macroscopic representations preserve enough
+    microscopic information for the desired thermal task.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>30. Computation and Information</h2>
+
+  <div class="research-card">
+
+    <p><strong>Status:</strong> active</p>
+
+    <p>
+      Computational research uses BM/GURF to study lawful information loss
+      across transformations such as:
+    </p>
+
+    <div class="note">
+
+      source code → intermediate representation → machine code · compression ·
+      optimization · abstraction · privacy transformation · secure compilation
+      · state reduction · inference
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>31. Secure Compilation</h2>
+
+  <p>
+    A compiler transformation
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    C:
+    S
+    \longrightarrow
+    M
+    \]
+
+  </div>
+
+  <p>
+    may preserve some source-level distinctions, erase others, and expose
+    distinctions absent at the source level.
+  </p>
+
+  <p>
+    BM/GURF asks which observational equivalences and security properties
+    survive compilation.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>32. Property Versus Hyperproperty</h2>
+
+  <p>
+    Some security statements concern one execution.
+  </p>
+
+  <p>
+    Others concern relations among multiple executions.
+  </p>
+
+  <p>
+    A transformation that preserves ordinary state properties does not
+    automatically preserve hyperproperties.
+  </p>
+
+  <p>
+    This distinction is part of the active secure-transformation research
+    program.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>33. Differential Privacy</h2>
+
+  <p>
+    Differential privacy is not represented faithfully by ordinary exact
+    equivalence relations alone.
+  </p>
+
+  <p>
+    It requires probability-law comparison through a divergence or
+    multiplicative/additive bound.
+  </p>
+
+  <p>
+    Thus approximate or stochastic Passport semantics are required.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>34. Control and Model Reduction</h2>
+
+  <p>
+    Reduced models are studied through the closure condition
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \boxed{
+    R\circ\Phi
+    =
+    \widetilde\Phi
+    \circ R.
+    }
+    \]
+
+  </div>
+
+  <p>
+    When this fails, hidden information in the original state influences the
+    reduced future.
+  </p>
+
+  <p>
+    Related areas include lumpability, observability, controllability, state
+    estimation, and closure modeling.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>35. Engineering Research</h2>
+
+  <div class="research-card">
+
+    <p><strong>Status:</strong> application and feasibility research</p>
+
+    <p>
+      Engineering applications are treated as realization problems.
+    </p>
+
+    <p>
+      A mathematical concept must survive:
+    </p>
+
+    <div class="note">
+
+      materials limits · thermal limits · structural loads · power balance ·
+      control stability · manufacturability · reliability · maintainability ·
+      cost · environmental constraints · physical law
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>36. Energy Systems</h2>
+
+  <p>
+    Energy-system research includes:
+  </p>
+
+  <div class="note">
+
+    nuclear energy · heat transfer · closed and open cooling loops ·
+    desalination · seawater systems · thermal utilization · material
+    degradation · resource recovery · waste minimization
+
+  </div>
+
+  <p>
+    Speculative transmutation or material-conversion concepts are not treated
+    as viable engineering merely because a nuclear reaction can be written.
+  </p>
+
+  <p>
+    Reaction cross-sections, energy balance, isotope production, radiation,
+    separation cost, and safety remain decisive.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>37. Propulsion</h2>
+
+  <p>
+    Propulsion research is treated through conservation of momentum, energy,
+    field interaction, thermodynamics, and realizability.
+  </p>
+
+  <p>
+    BM can organize interacting mathematical branches, but it cannot waive
+    conservation laws or experimental constraints.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>38. Mathematical Physics Validation</h2>
+
+  <p>
+    Candidate physical results should be tested against established limits.
+  </p>
+
+  <p>
+    Examples include:
+  </p>
+
+  <div class="note">
+
+    dimensional consistency · known analytic limits · conservation laws ·
+    symmetries · perturbative limits · numerical benchmarks · laboratory data ·
+    astrophysical observations
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>39. Numerical Validation</h2>
+
+  <p>
+    Numerical agreement is evidence about a model, not automatic proof of its
+    underlying mathematical claims.
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \boxed{
+    \text{numerical agreement}
+    \not\Rightarrow
+    \text{mathematical theorem}
+    }
+    \]
+
+  </div>
+
+  <p>
+    Numerical tests are nevertheless essential for:
+  </p>
+
+  <div class="note">
+
+    detecting algebraic mistakes · testing scaling · identifying unstable
+    regimes · comparing approximations · checking limiting behavior ·
+    evaluating physical relevance
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>40. Scientific Figures</h2>
+
+  <p>
+    Research pages will use equation-driven figures when they reveal actual
+    mathematical behavior.
+  </p>
+
+  <p>
+    Appropriate figures include:
+  </p>
+
+  <div class="note">
+
+    spectra · phase portraits · PDE fields · vector fields · response surfaces ·
+    parameter sweeps · convergence plots · stability maps · heatmaps ·
+    residual plots · error bounds · probability distributions
+
+  </div>
+
+  <p>
+    Structural BM/GURF diagrams remain separate and will not be invented as
+    substitutes for the unrecreated originals.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>41. Falsifiability</h2>
+
+  <p>
+    Physical research must eventually produce observations capable of
+    distinguishing a proposed model from its competitors.
+  </p>
+
+  <p>
+    A useful test has the form:
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \boxed{
+    \text{Model A prediction}
+    \neq
+    \text{Model B prediction}
+    }
+    \]
+
+  </div>
+
+  <p>
+    within an experimentally accessible regime.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>42. Free Parameters</h2>
+
+  <p>
+    A model with unconstrained adjustable parameters may fit data without
+    making a strong prediction.
+  </p>
+
+  <p>
+    Therefore active research aims to determine parameters from:
+  </p>
+
+  <div class="note">
+
+    mathematical consistency · symmetry · conservation · known constants ·
+    independent experiments · dimensional relations · boundary conditions
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>43. Units and Dimensional Analysis</h2>
+
+  <p>
+    Physical equations must be dimensionally consistent.
+  </p>
+
+  <p>
+    If a proposed relation is
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    A=B+C,
+    \]
+
+  </div>
+
+  <p>
+    then \(A\), \(B\), and \(C\) must have compatible dimensions.
+  </p>
+
+  <p>
+    Dimensionless constants must be distinguished from quantities carrying
+    physical units.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>44. Limits</h2>
+
+  <p>
+    New models should recover known behavior in regimes where established
+    theories have already been tested.
+  </p>
+
+  <p>
+    A proposed correction
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    F_\varepsilon
+    \]
+
+  </div>
+
+  <p>
+    may be expected to satisfy a limit such as
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \lim_{\varepsilon\to0}
+    F_\varepsilon
+    =
+    F_0
+    \]
+
+  </div>
+
+  <p>
+    when \(F_0\) is the established limiting theory.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>45. Failure Preservation</h2>
+
+  <p>
+    Failed derivations and counterexamples are part of the research record.
+  </p>
+
+  <p>
+    They should not be silently deleted merely because they do not support the
+    desired result.
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \boxed{
+    \text{failed route}
+    \Longrightarrow
+    \text{constraint on future routes}
+    }
+    \]
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>46. External Prior Art</h2>
+
+  <p>
+    Once a mathematical result has been derived internally, external
+    literature is used to determine:
+  </p>
+
+  <div class="note">
+
+    whether the result is already known · whether stronger results exist ·
+    whether terminology conflicts · which standard theorem contains it ·
+    whether the integrated construction may still be distinctive
+
+  </div>
+
+  <p>
+    Prior-art review does not determine whether an internal derivation is
+    mathematically correct.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>47. Research Re-entry</h2>
+
+  <p>
+    A result derived in one domain may return to BM as a reusable mathematical
+    structure only after its domain assumptions are separated from its
+    portable mathematical core.
+  </p>
+
+  <p>
+    Schematically:
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \text{application result}
+    \longrightarrow
+    \text{portable mathematical kernel}
+    \longrightarrow
+    \text{BM re-entry}.
+    \]
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>48. Portability Test</h2>
+
+  <p>
+    A mathematical construction is a candidate for promotion into BM when it
+    can be stated without essential response semantics and remains meaningful
+    across several mathematical domains.
+  </p>
+
+  <p>
+    Structures whose identity fundamentally depends on tasks, interventions,
+    observations, regimes, or responses remain primarily GURF structures.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>49. Research Page Architecture</h2>
+
+  <p>
+    As the encyclopedia grows, each major research program should receive its
+    own page containing:
+  </p>
+
+  <div class="note">
+
+    problem statement · established background · notation · equations ·
+    derivations · theorem kernels · counterexamples · numerical tests ·
+    quantitative figures · assumptions · failure modes · open questions ·
+    external literature · revision history
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>50. Planned Dedicated Research Sections</h2>
+
+  <table>
+
+    <tr>
+      <th>Program</th>
+      <th>Current public status</th>
+    </tr>
+
+    <tr>
+      <td>Branch Mathematics Foundations</td>
+      <td>active</td>
+    </tr>
+
+    <tr>
+      <td>GURF Foundations</td>
+      <td>active</td>
+    </tr>
+
+    <tr>
+      <td>Structured Quotients</td>
+      <td>active / proved finitary core</td>
+    </tr>
+
+    <tr>
+      <td>Coherence and Interfaces</td>
+      <td>active</td>
+    </tr>
+
+    <tr>
+      <td>Root Mathematics</td>
+      <td>active</td>
+    </tr>
+
+    <tr>
+      <td>Seed Mathematics</td>
+      <td>candidate</td>
+    </tr>
+
+    <tr>
+      <td>Navier–Stokes</td>
+      <td>active; no Clay solution claimed</td>
+    </tr>
+
+    <tr>
+      <td>Yang–Mills</td>
+      <td>active; mass-gap problem unsolved</td>
+    </tr>
+
+    <tr>
+      <td>Gravity and Spacetime</td>
+      <td>active</td>
+    </tr>
+
+    <tr>
+      <td>Quantum Information</td>
+      <td>active</td>
+    </tr>
+
+    <tr>
+      <td>Electromagnetism and Radiation</td>
+      <td>active</td>
+    </tr>
+
+    <tr>
+      <td>Computation and Information</td>
+      <td>active</td>
+    </tr>
+
+    <tr>
+      <td>Engineering Realization</td>
+      <td>application research</td>
+    </tr>
+
+  </table>
+
+</section>
+
+
+
+<section>
+
+  <h2>51. Public Research Standard</h2>
+
+  <div class="warning">
+
+    <p>
+      The public encyclopedia will not present an active hypothesis as an
+      established physical law.
+    </p>
+
+    <p>
+      It will not present an intermediate theorem as a solution to a larger
+      unsolved problem.
+    </p>
+
+    <p>
+      It will not erase counterexamples or failed routes.
+    </p>
+
+    <p>
+      It will not claim external novelty before prior-art review.
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>52. Research Principle</h2>
+
+  <div class="mathbox">
+
+    \[
+    \boxed{
+    \text{derive aggressively}
+    \quad
+    \text{but classify conservatively}
+    }
+    \]
+
+  </div>
+
+  <p>
+    The research program is intended to push mathematical structures as far
+    as valid derivation permits while keeping proof, hypothesis, numerical
+    evidence, physical interpretation, and novelty as separate questions.
+  </p>
+
+</section>
+
 
 </main>
 
+
 <footer>
-  <p>Branch Mathematics Research Encyclopedia</p>
+
+  <p>
+    Branch Mathematics Research Encyclopedia
+  </p>
+
 </footer>
+
 
 </body>
 </html>
