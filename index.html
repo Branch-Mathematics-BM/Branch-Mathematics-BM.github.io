@@ -2,19 +2,40 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Branch Mathematics | Mathematical Research Encyclopedia</title>
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
-  <meta name="description" content="Branch Mathematics is a public mathematical research encyclopedia covering Branch Mathematics, GURF, mathematical structures, theorems, definitions, and research applications.">
+  <title>
+    Branch Mathematics | BM and GURF Research Encyclopedia
+  </title>
+
+  <meta name="description"
+        content="Branch Mathematics and GURF mathematical research encyclopedia covering lawful representation, transformation, Passports, Roots, structured quotients, information sufficiency, continuation, mathematical physics, equations, proofs, and active research.">
 
   <meta name="robots" content="index, follow">
 
+  <link rel="canonical"
+        href="https://branch-mathematics-bm.github.io/">
+
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']]
+      }
+    };
+  </script>
+
+  <script async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
       margin: 0;
-      line-height: 1.6;
+      line-height: 1.75;
       color: #202124;
       background: #ffffff;
     }
@@ -22,19 +43,27 @@
     header {
       background: #111827;
       color: white;
-      padding: 50px 20px;
+      padding: 70px 20px;
       text-align: center;
     }
 
     header h1 {
-      margin: 0;
-      font-size: 2.5rem;
+      font-size: 3rem;
+      margin: 0 0 15px 0;
+    }
+
+    header h2 {
+      border: 0;
+      margin: 0 0 15px 0;
+      padding: 0;
+      font-size: 1.45rem;
+      font-weight: normal;
     }
 
     header p {
-      max-width: 750px;
-      margin: 15px auto 0;
-      font-size: 1.1rem;
+      max-width: 900px;
+      margin: auto;
+      font-size: 1.15rem;
     }
 
     nav {
@@ -46,188 +75,1572 @@
     nav a {
       color: white;
       text-decoration: none;
-      margin: 8px 14px;
+      margin: 7px 11px;
       display: inline-block;
     }
 
     main {
-      max-width: 900px;
+      max-width: 1100px;
       margin: auto;
       padding: 35px 20px;
-    }
-
-    section {
-      margin-bottom: 50px;
     }
 
     h2 {
       border-bottom: 2px solid #e5e7eb;
       padding-bottom: 8px;
+      margin-top: 55px;
+    }
+
+    h3 {
+      margin-top: 25px;
+    }
+
+    .lead {
+      font-size: 1.1rem;
+    }
+
+    .hero-math {
+      background: #f8fafc;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      padding: 25px;
+      margin: 30px 0;
+      text-align: center;
+      overflow-x: auto;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns:
+        repeat(auto-fit, minmax(270px, 1fr));
+      gap: 20px;
+      margin: 25px 0;
     }
 
     .card {
       border: 1px solid #d1d5db;
-      padding: 20px;
-      margin: 15px 0;
       border-radius: 8px;
+      padding: 22px;
+      background: white;
+    }
+
+    .card h3 {
+      margin-top: 0;
+    }
+
+    .card a {
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .mathbox {
+      background: #f8fafc;
+      border-left: 4px solid #374151;
+      padding: 18px;
+      margin: 22px 0;
+      overflow-x: auto;
+    }
+
+    .statusbox {
+      background: #f3f4f6;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+
+    .warning {
+      border-left: 4px solid #6b7280;
+      background: #fafafa;
+      padding: 18px;
+      margin: 22px 0;
+    }
+
+    .figure {
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      padding: 18px;
+      margin: 25px 0;
+      background: #ffffff;
+    }
+
+    canvas {
+      width: 100%;
+      max-width: 900px;
+      height: 360px;
+      display: block;
+      margin: auto;
+      border: 1px solid #d1d5db;
+      background: white;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 25px 0;
+    }
+
+    th,
+    td {
+      border: 1px solid #d1d5db;
+      padding: 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f3f4f6;
     }
 
     footer {
       background: #111827;
       color: white;
       text-align: center;
-      padding: 25px;
-      margin-top: 40px;
+      padding: 30px;
+      margin-top: 60px;
     }
   </style>
 </head>
 
+
 <body>
 
 <header>
+
   <h1>Branch Mathematics</h1>
 
+  <h2>
+    BM and GURF Mathematical Research Encyclopedia
+  </h2>
+
   <p>
-    A public mathematical research encyclopedia devoted to lawful
-    representation, transformation, interaction, and mathematical structure.
+    Formal mathematics for lawful representation, transformation,
+    interaction, information preservation, response, structured quotienting,
+    composition, realization, and multi-domain mathematical research.
   </p>
+
 </header>
 
+
 <nav>
+
   <a href="branch-mathematics.html">Branch Mathematics</a>
   <a href="gurf.html">GURF</a>
   <a href="encyclopedia.html">Encyclopedia</a>
-  <a href="research.html">Research</a>
-  <a href="changelog.html">Changelog</a>
-  <a href="#about">About</a>
-  <a href="theorems.html">Theorems</a>
   <a href="definitions.html">Definitions</a>
+  <a href="theorems.html">Theorems</a>
   <a href="equations.html">Equations</a>
   <a href="structures.html">Structures</a>
   <a href="passports.html">Passports</a>
   <a href="roots.html">Roots</a>
-  
+  <a href="research.html">Research</a>
+  <a href="changelog.html">Changelog</a>
+
 </nav>
+
 
 <main>
 
-<section id="welcome">
-  <h2>Welcome</h2>
 
-  <p>
-    This site is the public research home of Branch Mathematics and related
-    mathematical work.
+<section>
+
+  <h2>What This Site Contains</h2>
+
+  <p class="lead">
+    This website is the public mathematical corpus for Branch Mathematics,
+    GURF, their formal structures, and the research programs developed through
+    them.
   </p>
 
   <p>
-    The encyclopedia presents definitions, mathematical structures,
-    equations, theorems, derivations, applications, research questions,
-    revisions, and open problems.
+    The focus is the mathematics itself:
+    definitions, equations, proofs, formal structures, quantitative examples,
+    research status, corrections, and open problems.
   </p>
 
   <p>
-    Mathematical claims are separated by status, including established
-    results, derived results, conditional results, experimental research,
-    and open questions.
+    Development conversations are not the public mathematical record.
   </p>
+
 </section>
 
 
-<section id="bm">
+
+<section>
+
   <h2>Branch Mathematics</h2>
 
-  <div class="card">
-    <p>
-      <strong>Branch Mathematics (BM)</strong> is meta-structural mathematics
-      for lawful representation and transformation.
-    </p>
+  <p>
+    Branch Mathematics is defined as:
+  </p>
 
-    <p>
-      BM studies mathematical branches, interactions, roots, passports,
-      leaves, trees, operations, configurations, interfaces, composition,
-      realization, and re-entry while preserving the mathematical laws
-      governing each structure.
-    </p>
+  <div class="hero-math">
+
+    <strong>
+      Branch Mathematics is meta-structural mathematics of lawful
+      representation and transformation.
+    </strong>
+
   </div>
+
+  <p>
+    BM studies how several mathematically distinct structures can participate
+    in one problem while preserving the laws, types, distinctions, and
+    admissibility conditions belonging to each structure.
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \boxed{
+    \text{lawful Branches}
+    \longrightarrow
+    \text{lawful Interaction}
+    \longrightarrow
+    \text{combined mathematical response}
+    \longrightarrow
+    \text{Root or law result}
+    }
+    \]
+
+  </div>
+
+  <p>
+    <a href="branch-mathematics.html">
+      Read the full Branch Mathematics foundations →
+    </a>
+  </p>
+
 </section>
 
 
-<section id="gurf">
+
+<section>
+
   <h2>GURF</h2>
 
-  <div class="card">
-    <p>
-      <strong>GURF</strong> is a mathematical framework for lawful system
-      responses.
-    </p>
+  <p>
+    GURF is the response-specialized framework used when the mathematical
+    problem asks what information must remain available for a task, response,
+    intervention, or future continuation.
+  </p>
 
-    <p>
-      It studies which distinctions in underlying states are required for
-      particular tasks and when observation, compression, constraints,
-      evolution, or intervention remove information required for future
-      responses.
-    </p>
+  <p>
+    For observation
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    r:
+    X
+    \longrightarrow
+    Y
+    \]
+
   </div>
+
+  <p>
+    and task
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    T:
+    X
+    \longrightarrow
+    W,
+    \]
+
+  </div>
+
+  <p>
+    exact sufficiency requires
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \boxed{
+    r(x)=r(x')
+    \Longrightarrow
+    T(x)=T(x').
+    }
+    \]
+
+  </div>
+
+  <p>
+    Equivalently,
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    T
+    =
+    \widetilde T
+    \circ r.
+    \]
+
+  </div>
+
+  <p>
+    <a href="gurf.html">
+      Read the full GURF foundations →
+    </a>
+  </p>
+
 </section>
 
 
-<section id="encyclopedia">
-  <h2>Mathematical Encyclopedia</h2>
+
+<section>
+
+  <h2>Core Mathematical Corpus</h2>
+
+  <div class="card-grid">
+
+    <div class="card">
+
+      <h3>Encyclopedia</h3>
+
+      <p>
+        Master table of contents and mathematical index for the entire public
+        corpus.
+      </p>
+
+      <p>
+        <a href="encyclopedia.html">
+          Open Encyclopedia →
+        </a>
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>Definitions</h3>
+
+      <p>
+        Canonical and working definitions for BM, GURF, Branches,
+        Interactions, Leaves, Trees, Responses, Roots, Passports, operations,
+        interfaces, continuation, obstruction, repair, and more.
+      </p>
+
+      <p>
+        <a href="definitions.html">
+          Open Definitions →
+        </a>
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>Theorems</h3>
+
+      <p>
+        Formal statements, assumptions, proofs, corollaries,
+        counterexamples, and dependency structure.
+      </p>
+
+      <p>
+        Includes the canonical finitary structured-quotient theorem
+        BM-SQ-01.
+      </p>
+
+      <p>
+        <a href="theorems.html">
+          Open Theorem Registry →
+        </a>
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>Equations</h3>
+
+      <p>
+        Mathematical relations, exact identities, conditional equations,
+        quantitative diagnostics, worked examples, and scientific figures.
+      </p>
+
+      <p>
+        <a href="equations.html">
+          Open Equation Registry →
+        </a>
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>Structures</h3>
+
+      <p>
+        Branches, Interactions, Leaves, Trees, Responses, networks,
+        operations, configurations, interfaces, composition, gluing,
+        realization, export, and re-entry.
+      </p>
+
+      <p>
+        <a href="structures.html">
+          Open Structural Registry →
+        </a>
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>Passports</h3>
+
+      <p>
+        Distinction preservation, observation fibres, task sufficiency,
+        structured quotients, refinement, coupling, stochastic semantics,
+        conservation, and repair.
+      </p>
+
+      <p>
+        <a href="passports.html">
+          Open Passport Mathematics →
+        </a>
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>Roots</h3>
+
+      <p>
+        Reusable mathematical responses, Root formation, repeated Rooting,
+        fixed Roots, stability, Passport transfer, realization, and
+        attachment.
+      </p>
+
+      <p>
+        <a href="roots.html">
+          Open Root Mathematics →
+        </a>
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>Research</h3>
+
+      <p>
+        Active mathematics and mathematical physics with explicit separation
+        between proved, conditional, numerical, candidate, and open results.
+      </p>
+
+      <p>
+        <a href="research.html">
+          Open Research Program →
+        </a>
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>Changelog</h3>
+
+      <p>
+        Mathematical revisions, corrections, promotions, status changes, and
+        formal development history.
+      </p>
+
+      <p>
+        <a href="changelog.html">
+          Open Changelog →
+        </a>
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>Current Formal Backbone</h2>
 
   <p>
-    The encyclopedia is being organized into a searchable collection of
-    mathematical objects and research material.
+    Several exact results currently anchor the public formal system.
   </p>
 
-  <div class="card">
-    <strong>Planned reference areas</strong>
+  <div class="statusbox">
+
+    Passport Equivalence · Exact Recoverability · Completion-Fibre
+    Sufficiency · Parallel Observation Refinement · Deterministic Serial
+    Information Loss · BM-SQ-01 Structured Quotient · Interface
+    Factorization · Dynamic Continuation · Repair Refinement · Dynamic
+    Closure
+
+  </div>
+
+  <p>
+    These results and their proof status are maintained in the
+    <a href="theorems.html">Theorem Registry</a>.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>BM-SQ-01</h2>
+
+  <p>
+    In the finitary algebraic sector, Passport equivalence supports a lawful
+    structured quotient exactly when it is compatible with the relevant
+    operations.
+  </p>
+
+  <p>
+    For
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    A=(X,\Sigma)
+    \]
+
+  </div>
+
+  <p>
+    and operation
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \sigma:
+    X^n
+    \longrightarrow
+    X,
+    \]
+
+  </div>
+
+  <p>
+    the compatibility condition is
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \boxed{
+    x_i\sim_P y_i
+    \quad\forall i
+    \Longrightarrow
+    \sigma(x_1,\ldots,x_n)
+    \sim_P
+    \sigma(y_1,\ldots,y_n).
+    }
+    \]
+
+  </div>
+
+  <p>
+    This prevents a quotient from being treated as structurally valid merely
+    because an observational equivalence relation exists.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>Passports</h2>
+
+  <p>
+    A Passport records mathematical distinctions or conditions that must
+    survive later use.
+  </p>
+
+  <p>
+    For observation family
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    b_c:
+    X
+    \longrightarrow
+    Y_c,
+    \]
+
+  </div>
+
+  <p>
+    Passport equivalence is
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \boxed{
+    x\sim_Px'
+    \Longleftrightarrow
+    b_c(x)=b_c(x')
+    \quad
+    \forall c.
+    }
+    \]
+
+  </div>
+
+  <p>
+    Passports do not override native mathematics. They record what later
+    mathematics requires.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>Completion Fibres</h2>
+
+  <p>
+    Multiple observations constrain the compatible state space through
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \boxed{
+    \mathfrak C_A(\ell)
+    =
+    \bigcap_{\alpha\in A}
+    r_\alpha^{-1}(\ell_\alpha).
+    }
+    \]
+
+  </div>
+
+  <p>
+    This provides a direct way to ask whether several hidden states remain
+    compatible with what has been observed.
+  </p>
+
+  <p>
+    A task may still be exactly recoverable even when the completion fibre
+    contains many states, provided the task takes the same value on all of
+    them.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>Obstruction and Repair</h2>
+
+  <p>
+    An information obstruction is exposed by a pair satisfying
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    r(x)=r(x')
+    \]
+
+  </div>
+
+  <p>
+    while
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    T(x)\neq T(x').
+    \]
+
+  </div>
+
+  <p>
+    Repair adds enough information to separate states whose difference is
+    required by the task.
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    (r,q)(x)
+    =
+    (r,q)(x')
+    \Longrightarrow
+    T(x)=T(x').
+    \]
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>Dynamic Continuation</h2>
+
+  <p>
+    A representation may be sufficient for a present task but fail for a
+    future task.
+  </p>
+
+  <p>
+    If evolution is
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \Phi_t:
+    X
+    \longrightarrow
+    X,
+    \]
+
+  </div>
+
+  <p>
+    then future sufficiency requires
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \boxed{
+    T\circ\Phi_t
+    =
+    \widetilde T_t
+    \circ r.
+    }
+    \]
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>Roots and Repeated Response</h2>
+
+  <p>
+    A Root is a response that remains available for further lawful
+    mathematical response.
+  </p>
+
+  <p>
+    A repeated-Root model may take the form
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    R_{n+1}
+    =
+    F(R_n).
+    \]
+
+  </div>
+
+  <p>
+    This allows ordinary fixed-point and dynamical-systems mathematics to be
+    applied when the Root process genuinely has iterative form.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>Quantitative Mathematics</h2>
+
+  <p>
+    The site includes scientific plots only when an equation produces
+    meaningful quantitative behavior.
+  </p>
+
+  <p>
+    The first public example uses
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    R_{n+1}
+    =
+    \frac12R_n+1,
+    \qquad
+    R_0=0.
+    \]
+
+  </div>
+
+  <p>
+    It has the exact solution
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    R_n
+    =
+    2(1-2^{-n})
+    \]
+
+  </div>
+
+  <p>
+    and converges to
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    R_*=2.
+    \]
+
+  </div>
+
+  <div class="figure">
+
+    <strong>
+      Worked Figure — Convergence of a repeated-Root model
+    </strong>
+
+    <canvas id="rootPreview"
+            width="900"
+            height="360">
+    </canvas>
 
     <p>
-      Definitions · Theorems · Equations · Branches · Roots · Passports ·
-      Leaves · Trees · Operations · Proofs · Diagrams · Research Notes
+      This plot demonstrates the quantitative behavior of a worked repeated
+      Root model. It is not proposed as a universal law of Branch
+      Mathematics.
     </p>
+
   </div>
+
 </section>
 
 
-<section id="research">
-  <h2>Research</h2>
+
+<section>
+
+  <h2>Active Research</h2>
+
+  <div class="card-grid">
+
+    <div class="card">
+
+      <h3>Branch Mathematics Foundations</h3>
+
+      <p>
+        Structured quotients, representation, coherence, composition,
+        Passports, Roots, Seeds, interfaces, and realization.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>GURF Foundations</h3>
+
+      <p>
+        Observation, sufficiency, continuation, obstruction, repair,
+        interventions, regimes, and stochastic response.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>Navier–Stokes</h3>
+
+      <p>
+        Derivative covariance, nonlinear transfer, helical structure,
+        spectral interaction, continuation variables, and related
+        theorem-kernel mathematics.
+      </p>
+
+      <p>
+        No Clay Millennium solution is currently claimed.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>Yang–Mills</h3>
+
+      <p>
+        Boundary susceptibility, leakage, coherent return, shell-depth
+        structure, Gauss-law support, and spectral analysis.
+      </p>
+
+      <p>
+        The four-dimensional existence and mass-gap problem remains open.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>Gravity and Spacetime</h3>
+
+      <p>
+        Proper time, geodesics, tidal response, lensing, observation, and
+        forward-causal geometry.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>Quantum Theory</h3>
+
+      <p>
+        Measurement, distinguishability, entanglement, joint statistics,
+        control, and quantum information Passports.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>Radiation and Light</h3>
+
+      <p>
+        Radio through gamma regimes, propagation, detection, absorption,
+        reflection, emission, thermal radiation, and observational limits.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>Computation</h3>
+
+      <p>
+        Compression, abstraction, compilation, privacy, security, reduction,
+        and preservation of task-relevant distinctions.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>Engineering Realization</h3>
+
+      <p>
+        Energy systems, materials, nuclear systems, thermal systems,
+        propulsion, resource recovery, and feasibility.
+      </p>
+
+    </div>
+
+  </div>
 
   <p>
-    Research sections will examine Branch Mathematics and GURF across pure
-    mathematics, mathematical physics, physical systems, computation, and
-    other domains where their structures can be formally tested.
+    <a href="research.html">
+      Explore the complete research program →
+    </a>
   </p>
 
-  <p>
-    Individual research pages will distinguish mathematical derivation from
-    conjecture, physical interpretation, numerical evidence, and unresolved
-    questions.
-  </p>
 </section>
 
 
-<section id="about">
-  <h2>About This Project</h2>
 
-  <p>
-    Branch Mathematics is maintained as an evolving mathematical research
-    corpus.
-  </p>
+<section>
 
-  <p>
-    Revisions are recorded through mathematical versions and research
-    changelogs so that definitions, equations, and results can be corrected,
-    generalized, or replaced as the work develops.
-  </p>
+  <h2>Research Status</h2>
+
+  <table>
+
+    <tr>
+      <th>Area</th>
+      <th>Current public status</th>
+    </tr>
+
+    <tr>
+      <td>BM integrated framework</td>
+      <td>
+        internally established / project-approved architecture
+      </td>
+    </tr>
+
+    <tr>
+      <td>GURF</td>
+      <td>
+        active response framework
+      </td>
+    </tr>
+
+    <tr>
+      <td>BM-SQ-01</td>
+      <td>
+        proved finitary algebraic structured-quotient result
+      </td>
+    </tr>
+
+    <tr>
+      <td>Extended Rooting machinery</td>
+      <td>
+        active / candidate development
+      </td>
+    </tr>
+
+    <tr>
+      <td>Seed primitive</td>
+      <td>
+        candidate development
+      </td>
+    </tr>
+
+    <tr>
+      <td>Navier–Stokes</td>
+      <td>
+        active derived mathematics; Clay problem not solved
+      </td>
+    </tr>
+
+    <tr>
+      <td>Yang–Mills</td>
+      <td>
+        active conditional research; mass gap not solved
+      </td>
+    </tr>
+
+    <tr>
+      <td>External novelty of integrated BM</td>
+      <td>
+        open
+      </td>
+    </tr>
+
+    <tr>
+      <td>Independent external validation</td>
+      <td>
+        not yet established
+      </td>
+    </tr>
+
+  </table>
+
 </section>
+
+
+
+<section>
+
+  <h2>Proof and Novelty</h2>
+
+  <div class="warning">
+
+    <p>
+      Mathematical validity and novelty are separate questions.
+    </p>
+
+    <p>
+      A directly derived theorem may be mathematically correct while also
+      being previously known in another form.
+    </p>
+
+    <p>
+      Conversely, novelty would not rescue an invalid derivation.
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>Scientific Visualization</h2>
+
+  <p>
+    This project uses quantitative figures in the style of scientific and
+    mathematical software when the mathematics supports them.
+  </p>
+
+  <p>
+    Examples include response curves, spectra, phase portraits, parameter
+    sweeps, surfaces, heatmaps, PDE fields, stability maps, convergence
+    curves, residuals, and uncertainty distributions.
+  </p>
+
+  <p>
+    Figures are generated to expose mathematical behavior rather than provide
+    decoration.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>Structural Diagrams</h2>
+
+  <div class="warning">
+
+    <p>
+      The formal BM and GURF structural diagrams have not yet been recreated
+      for this public site.
+    </p>
+
+    <p>
+      No substitute structural diagrams are being invented.
+    </p>
+
+    <p>
+      They will be added after their original mathematical relationships are
+      reconstructed, audited, and approved.
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>How to Read the Site</h2>
+
+  <p>
+    For a first reading, begin with
+    <a href="branch-mathematics.html">Branch Mathematics</a>
+    and then
+    <a href="gurf.html">GURF</a>.
+  </p>
+
+  <p>
+    For formal reference, use
+    <a href="definitions.html">Definitions</a>,
+    <a href="theorems.html">Theorems</a>,
+    <a href="equations.html">Equations</a>,
+    and
+    <a href="structures.html">Structures</a>.
+  </p>
+
+  <p>
+    For active work and open problems, use the
+    <a href="research.html">Research Program</a>.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>Revision Policy</h2>
+
+  <p>
+    Corrections and mathematical evolution are preserved through versioned
+    definitions, revised equations, theorem status, counterexamples, and the
+    public changelog.
+  </p>
+
+  <p>
+    The objective is to preserve the mathematical development without
+    exposing raw conversational history as though it were part of the formal
+    theory.
+  </p>
+
+  <p>
+    <a href="changelog.html">
+      View the research changelog →
+    </a>
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>Central Principle</h2>
+
+  <div class="hero-math">
+
+    \[
+    \boxed{
+    \text{Keep mathematical distinctions when later mathematics requires
+    them; remove them only when their loss is proven safe.}
+    }
+    \]
+
+  </div>
+
+  <p>
+    Branch Mathematics studies this principle across mathematical structures.
+    GURF specializes it to systems whose future response or task depends on
+    which distinctions survive.
+  </p>
+
+</section>
+
 
 </main>
 
 
 <footer>
-  <p>Branch Mathematics Research Encyclopedia</p>
+
+  <p>
+    Branch Mathematics Research Encyclopedia
+  </p>
+
+  <p>
+    Formal mathematics · equations · proofs · research
+  </p>
+
 </footer>
+
+
+<script>
+(function () {
+
+  const canvas = document.getElementById("rootPreview");
+
+  if (!canvas) {
+    return;
+  }
+
+  const ctx = canvas.getContext("2d");
+
+  const width = canvas.width;
+  const height = canvas.height;
+
+  const left = 70;
+  const right = 30;
+  const top = 30;
+  const bottom = 60;
+
+  const plotWidth =
+    width - left - right;
+
+  const plotHeight =
+    height - top - bottom;
+
+  const nMax = 12;
+  const yMin = 0;
+  const yMax = 2.2;
+
+  const values = [];
+
+  let R = 0;
+
+  for (let n = 0; n <= nMax; n++) {
+
+    values.push(R);
+
+    R =
+      0.5 * R + 1;
+
+  }
+
+  function xPixel(n) {
+
+    return left +
+      (n / nMax) *
+      plotWidth;
+
+  }
+
+  function yPixel(y) {
+
+    return top +
+      (
+        1 -
+        (y - yMin) /
+        (yMax - yMin)
+      ) *
+      plotHeight;
+
+  }
+
+  ctx.clearRect(
+    0,
+    0,
+    width,
+    height
+  );
+
+  ctx.font =
+    "15px Arial";
+
+  ctx.lineWidth = 1;
+
+  /* axes */
+
+  ctx.strokeStyle =
+    "#202124";
+
+  ctx.beginPath();
+
+  ctx.moveTo(
+    left,
+    top
+  );
+
+  ctx.lineTo(
+    left,
+    height - bottom
+  );
+
+  ctx.lineTo(
+    width - right,
+    height - bottom
+  );
+
+  ctx.stroke();
+
+
+  /* horizontal grid */
+
+  const yTicks =
+    [0, 0.5, 1, 1.5, 2];
+
+  yTicks.forEach(function(y) {
+
+    const py =
+      yPixel(y);
+
+    ctx.beginPath();
+
+    ctx.moveTo(
+      left,
+      py
+    );
+
+    ctx.lineTo(
+      width - right,
+      py
+    );
+
+    ctx.strokeStyle =
+      "#e5e7eb";
+
+    ctx.stroke();
+
+    ctx.fillStyle =
+      "#202124";
+
+    ctx.fillText(
+      y.toFixed(1),
+      25,
+      py + 5
+    );
+
+  });
+
+
+  /* x labels */
+
+  for (
+    let n = 0;
+    n <= nMax;
+    n += 2
+  ) {
+
+    const px =
+      xPixel(n);
+
+    ctx.fillStyle =
+      "#202124";
+
+    ctx.fillText(
+      String(n),
+      px - 5,
+      height - bottom + 24
+    );
+
+  }
+
+
+  /* fixed point */
+
+  ctx.setLineDash(
+    [8, 6]
+  );
+
+  ctx.beginPath();
+
+  ctx.moveTo(
+    left,
+    yPixel(2)
+  );
+
+  ctx.lineTo(
+    width - right,
+    yPixel(2)
+  );
+
+  ctx.strokeStyle =
+    "#6b7280";
+
+  ctx.lineWidth = 2;
+
+  ctx.stroke();
+
+  ctx.setLineDash([]);
+
+  ctx.fillStyle =
+    "#202124";
+
+  ctx.fillText(
+    "R* = 2",
+    width - 90,
+    yPixel(2) - 8
+  );
+
+
+  /* sequence */
+
+  ctx.beginPath();
+
+  values.forEach(
+    function(value, n) {
+
+      const px =
+        xPixel(n);
+
+      const py =
+        yPixel(value);
+
+      if (n === 0) {
+
+        ctx.moveTo(
+          px,
+          py
+        );
+
+      } else {
+
+        ctx.lineTo(
+          px,
+          py
+        );
+
+      }
+
+    }
+  );
+
+  ctx.strokeStyle =
+    "#111827";
+
+  ctx.lineWidth = 3;
+
+  ctx.stroke();
+
+
+  values.forEach(
+    function(value, n) {
+
+      const px =
+        xPixel(n);
+
+      const py =
+        yPixel(value);
+
+      ctx.beginPath();
+
+      ctx.arc(
+        px,
+        py,
+        4,
+        0,
+        2 * Math.PI
+      );
+
+      ctx.fillStyle =
+        "#111827";
+
+      ctx.fill();
+
+    }
+  );
+
+
+  ctx.fillStyle =
+    "#202124";
+
+  ctx.font =
+    "16px Arial";
+
+  ctx.fillText(
+    "Iteration n",
+    width / 2 - 35,
+    height - 15
+  );
+
+
+  ctx.save();
+
+  ctx.translate(
+    18,
+    height / 2 + 30
+  );
+
+  ctx.rotate(
+    -Math.PI / 2
+  );
+
+  ctx.fillText(
+    "Root value R_n",
+    0,
+    0
+  );
+
+  ctx.restore();
+
+})();
+</script>
+
 
 </body>
 </html>
