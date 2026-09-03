@@ -2,28 +2,58 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>GURF | General Response Framework</title>
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
-  <meta name="description" content="GURF is a mathematical framework for lawful system responses, information sufficiency, continuation, intervention, and response structure.">
+  <title>
+    GURF | Mathematical Framework for Lawful System Response
+  </title>
+
+  <meta name="description"
+        content="GURF is a mathematical framework for lawful system responses, information sufficiency, observation, intervention, constraints, regimes, continuation, obstruction, repair, and response semantics.">
 
   <meta name="robots" content="index, follow">
 
+  <!-- MathJax -->
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']]
+      }
+    };
+  </script>
+
+  <script async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
       margin: 0;
-      line-height: 1.7;
+      line-height: 1.75;
       color: #202124;
-      background: white;
+      background: #ffffff;
     }
 
     header {
       background: #111827;
       color: white;
-      padding: 45px 20px;
+      padding: 55px 20px;
       text-align: center;
+    }
+
+    header h1 {
+      margin-bottom: 10px;
+      font-size: 2.6rem;
+    }
+
+    header p {
+      max-width: 850px;
+      margin: auto;
+      font-size: 1.15rem;
     }
 
     nav {
@@ -34,6 +64,1469 @@
 
     nav a {
       color: white;
+      text-decoration: none;
+      margin: 7px 11px;
+      display: inline-block;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: auto;
+      padding: 35px 20px;
+    }
+
+    h2 {
+      border-bottom: 2px solid #e5e7eb;
+      padding-bottom: 8px;
+      margin-top: 55px;
+    }
+
+    h3 {
+      margin-top: 28px;
+    }
+
+    .lead {
+      font-size: 1.08rem;
+    }
+
+    .card {
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      padding: 22px;
+      margin: 18px 0;
+    }
+
+    .mathbox {
+      background: #f8fafc;
+      border-left: 4px solid #374151;
+      padding: 18px;
+      margin: 22px 0;
+      overflow-x: auto;
+    }
+
+    .statusbox {
+      background: #f3f4f6;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+
+    .warning {
+      border-left: 4px solid #6b7280;
+      background: #fafafa;
+      padding: 18px;
+      margin: 22px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 25px 0;
+    }
+
+    th,
+    td {
+      border: 1px solid #d1d5db;
+      padding: 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f3f4f6;
+    }
+
+    footer {
+      background: #111827;
+      color: white;
+      text-align: center;
+      padding: 28px;
+      margin-top: 60px;
+    }
+  </style>
+</head>
+
+
+<body>
+
+<header>
+
+  <h1>GURF</h1>
+
+  <p>
+    A mathematical framework for determining which distinctions in a system
+    are necessary for a task, whether those distinctions survive observation,
+    compression, evolution, constraints, and intervention, and whether lawful
+    response or continuation remains possible.
+  </p>
+
+</header>
+
+
+<nav>
+
+  <a href="index.html">Home</a>
+
+  <a href="branch-mathematics.html">Branch Mathematics</a>
+
+  <a href="encyclopedia.html">Encyclopedia</a>
+
+  <a href="definitions.html">Definitions</a>
+
+  <a href="theorems.html">Theorems</a>
+
+  <a href="equations.html">Equations</a>
+
+  <a href="structures.html">Structures</a>
+
+  <a href="passports.html">Passports</a>
+
+  <a href="roots.html">Roots</a>
+
+  <a href="research.html">Research</a>
+
+  <a href="changelog.html">Changelog</a>
+
+</nav>
+
+
+<main>
+
+
+<section>
+
+  <h2>1. What GURF Is</h2>
+
+  <p class="lead">
+    GURF is a mathematical framework for lawful system responses.
+  </p>
+
+  <p>
+    Its central concern is not merely the state of a system, but whether the
+    information currently available about that state is sufficient for a
+    specified task, continuation, intervention, or response.
+  </p>
+
+  <p>
+    The governing question can be written conceptually as:
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \boxed{
+    \text{What must remain distinguishable now
+    for the required response to remain possible later?}
+    }
+    \]
+
+  </div>
+
+  <p>
+    GURF therefore studies systems together with their observations,
+    constraints, regimes, interventions, tasks, and lawful responses.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>2. Relationship to Branch Mathematics</h2>
+
+  <p>
+    Branch Mathematics is the broader meta-structural mathematics governing
+    lawful representation, transformation, composition, interfaces,
+    realization, export, and re-entry.
+  </p>
+
+  <p>
+    GURF specializes that broader machinery to problems that possess genuine
+    <strong>response semantics</strong>.
+  </p>
+
+  <p>
+    Schematically:
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \boxed{
+    \text{BM}
+    \supset
+    \text{response-specialized BM structure}
+    =
+    \text{GURF}
+    }
+    \]
+
+  </div>
+
+  <p>
+    BM does not need to be interpreted as a response theory.
+  </p>
+
+  <p>
+    GURF becomes relevant when the mathematics specifically asks what a
+    system can observe, preserve, lose, recover, continue, or produce in
+    response to a task or intervention.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>3. Basic System Object</h2>
+
+  <p>
+    Let
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    X
+    \]
+
+  </div>
+
+  <p>
+    denote the underlying state space of a system.
+  </p>
+
+  <p>
+    A state is
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    x\in X.
+    \]
+
+  </div>
+
+  <p>
+    The space \(X\) may be finite, continuous, discrete, geometric,
+    stochastic, functional, infinite-dimensional, or otherwise structured.
+  </p>
+
+  <p>
+    GURF does not assume one universal type of state space.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>4. Tasks</h2>
+
+  <p>
+    A task specifies what information must ultimately be determined or what
+    response must be produced.
+  </p>
+
+  <p>
+    A deterministic task may be represented as
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    T:
+    X
+    \longrightarrow
+    W,
+    \]
+
+  </div>
+
+  <p>
+    where \(W\) is the task-output space.
+  </p>
+
+  <p>
+    Examples include:
+  </p>
+
+  <div class="card">
+
+    prediction · classification · control · reconstruction · decision ·
+    continuation · estimation · admissibility testing · physical response
+
+  </div>
+
+  <p>
+    GURF is therefore task-relative.
+  </p>
+
+  <p>
+    Information that is irrelevant to one task may be essential to another.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>5. Observations</h2>
+
+  <p>
+    Suppose the full state \(x\in X\) is not directly available.
+  </p>
+
+  <p>
+    Instead, the system is observed through a map
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    r:
+    X
+    \longrightarrow
+    Y.
+    \]
+
+  </div>
+
+  <p>
+    The observed state is
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    y
+    =
+    r(x).
+    \]
+
+  </div>
+
+  <p>
+    The map \(r\) may represent measurement, compression, coarse-graining,
+    projection, filtering, sensor output, discretization, or another
+    information-reducing operation.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>6. Observational Equivalence</h2>
+
+  <p>
+    Observation induces an equivalence relation:
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    x
+    \sim_r
+    x'
+    \quad\Longleftrightarrow\quad
+    r(x)
+    =
+    r(x').
+    \]
+
+  </div>
+
+  <p>
+    Thus two underlying states become indistinguishable whenever the
+    observation map gives them the same observed value.
+  </p>
+
+  <p>
+    The observational class of \(x\) is
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    [x]_r
+    =
+    \left\{
+    x'\in X:
+    r(x')=r(x)
+    \right\}.
+    \]
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>7. Observation Fibres</h2>
+
+  <p>
+    The fibre over an observed value \(y\in Y\) is
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    r^{-1}(y)
+    =
+    \left\{
+    x\in X:
+    r(x)=y
+    \right\}.
+    \]
+
+  </div>
+
+  <p>
+    The fibre represents every underlying state still compatible with the
+    observation.
+  </p>
+
+  <p>
+    If
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    |r^{-1}(y)|>1,
+    \]
+
+  </div>
+
+  <p>
+    then the observation does not uniquely identify the underlying state.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>8. Multiple Observations</h2>
+
+  <p>
+    Suppose observations are indexed by
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \alpha\in A
+    \]
+
+  </div>
+
+  <p>
+    with maps
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    r_\alpha:
+    X
+    \longrightarrow
+    Y_\alpha.
+    \]
+
+  </div>
+
+  <p>
+    The combined observation is
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    r_A(x)
+    =
+    \left(
+    r_\alpha(x)
+    \right)_{\alpha\in A}.
+    \]
+
+  </div>
+
+  <p>
+    If the observed values are
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \ell
+    =
+    \left(
+    \ell_\alpha
+    \right)_{\alpha\in A},
+    \]
+
+  </div>
+
+  <p>
+    then the states compatible with all observations form the
+    <strong>completion fibre</strong>.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>9. Completion Fibre</h2>
+
+  <div class="mathbox">
+
+    \[
+    \boxed{
+    \mathfrak C_A(\ell)
+    =
+    \bigcap_{\alpha\in A}
+    r_\alpha^{-1}(\ell_\alpha)
+    }
+    \]
+
+  </div>
+
+  <p>
+    The completion fibre is the set of all underlying states satisfying every
+    observation in the active observation family.
+  </p>
+
+  <p>
+    If
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \mathfrak C_A(\ell)
+    =
+    \varnothing,
+    \]
+
+  </div>
+
+  <p>
+    then the observation set is mutually inconsistent.
+  </p>
+
+  <p>
+    If
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \left|
+    \mathfrak C_A(\ell)
+    \right|
+    =
+    1,
+    \]
+
+  </div>
+
+  <p>
+    then the observations identify a unique compatible state.
+  </p>
+
+  <p>
+    But unique state reconstruction is not always required.
+  </p>
+
+  <p>
+    A task may be recoverable even when many underlying states remain
+    possible.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>10. Exact Task Sufficiency</h2>
+
+  <p>
+    Let
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    T:
+    X
+    \longrightarrow
+    W
+    \]
+
+  </div>
+
+  <p>
+    be the task of interest.
+  </p>
+
+  <p>
+    The observation \(r\) is sufficient for \(T\) when there exists
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \widetilde T:
+    Y
+    \longrightarrow
+    W
+    \]
+
+  </div>
+
+  <p>
+    such that
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \boxed{
+    T
+    =
+    \widetilde T
+    \circ
+    r
+    }.
+    \]
+
+  </div>
+
+  <p>
+    This means the task can be computed entirely from the observed
+    representation.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>11. Fibre Criterion for Exact Sufficiency</h2>
+
+  <p>
+    Exact sufficiency is equivalent to requiring that the task be constant on
+    every observation fibre:
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    r(x)
+    =
+    r(x')
+    \]
+
+    \[
+    \Longrightarrow
+    \]
+
+    \[
+    T(x)
+    =
+    T(x').
+    \]
+
+  </div>
+
+  <p>
+    Therefore information may be discarded safely whenever the discarded
+    distinctions do not alter the required task.
+  </p>
+
+  <p>
+    Conversely, if
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    r(x)=r(x')
+    \quad\text{but}\quad
+    T(x)\neq T(x'),
+    \]
+
+  </div>
+
+  <p>
+    then the observation has destroyed information necessary for the task.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>12. Completion-Fibre Task Criterion</h2>
+
+  <p>
+    Using the completion fibre, exact task determination requires
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    T(x)
+    =
+    T(x')
+    \qquad
+    \forall
+    x,x'
+    \in
+    \mathfrak C_A(\ell).
+    \]
+
+  </div>
+
+  <p>
+    Equivalently,
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \boxed{
+    \left|
+    T\left(
+    \mathfrak C_A(\ell)
+    \right)
+    \right|
+    =
+    1
+    }.
+    \]
+
+  </div>
+
+  <p>
+    The completion fibre may therefore contain many states while still being
+    perfectly sufficient for the task.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>13. Approximate Sufficiency</h2>
+
+  <p>
+    Exact equality may be too strong in numerical, statistical, experimental,
+    or physical settings.
+  </p>
+
+  <p>
+    Let \(d_W\) be a metric on task space \(W\).
+  </p>
+
+  <p>
+    A representation may be approximately sufficient at tolerance
+    \(\varepsilon\) when
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    d_W
+    \left(
+    T(x),
+    T(x')
+    \right)
+    \le
+    \varepsilon
+    \]
+
+  </div>
+
+  <p>
+    whenever
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    r(x)=r(x').
+    \]
+
+  </div>
+
+  <p>
+    Equivalently, one may require a reconstruction
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \widetilde T:
+    Y
+    \longrightarrow
+    W
+    \]
+
+  </div>
+
+  <p>
+    satisfying
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    d_W
+    \left(
+    T(x),
+    \widetilde T(r(x))
+    \right)
+    \le
+    \varepsilon.
+    \]
+
+  </div>
+
+  <p>
+    The metric and tolerance must be stated explicitly.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>14. Response Relations</h2>
+
+  <p>
+    A response need not always be represented by an ordinary function.
+  </p>
+
+  <p>
+    A general response relation may be written
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \mathcal R:
+    X
+    \rightrightarrows
+    Y.
+    \]
+
+  </div>
+
+  <p>
+    For a state \(x\), the admissible responses are
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \mathcal R(x)
+    \subseteq
+    Y.
+    \]
+
+  </div>
+
+  <p>
+    A deterministic response is the special case
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \left|
+    \mathcal R(x)
+    \right|
+    =
+    1
+    \]
+
+  </div>
+
+  <p>
+    for every admissible \(x\).
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>15. Continuation</h2>
+
+  <p>
+    Continuation asks whether the current representation contains enough
+    information to support a required future response.
+  </p>
+
+  <p>
+    Suppose evolution is described by
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \Phi_t:
+    X
+    \longrightarrow
+    X.
+    \]
+
+  </div>
+
+  <p>
+    A future task at time \(t\) is
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    T_t
+    =
+    T
+    \circ
+    \Phi_t.
+    \]
+
+  </div>
+
+  <p>
+    Observation \(r\) remains sufficient for that future task if there exists
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \widetilde T_t:
+    Y
+    \longrightarrow
+    W
+    \]
+
+  </div>
+
+  <p>
+    satisfying
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \boxed{
+    T
+    \circ
+    \Phi_t
+    =
+    \widetilde T_t
+    \circ
+    r
+    }.
+    \]
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>16. Continuation Failure</h2>
+
+  <p>
+    Suppose two states are currently observationally indistinguishable:
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    r(x)
+    =
+    r(x').
+    \]
+
+  </div>
+
+  <p>
+    If evolution produces
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    T(\Phi_t(x))
+    \neq
+    T(\Phi_t(x')),
+    \]
+
+  </div>
+
+  <p>
+    then the current representation is insufficient for the future task.
+  </p>
+
+  <p>
+    The missing distinction may have been irrelevant at the observation time
+    but becomes relevant after evolution.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>17. Regimes</h2>
+
+  <p>
+    System laws may depend on an active regime.
+  </p>
+
+  <p>
+    Let
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \lambda
+    \in
+    \Lambda
+    \]
+
+  </div>
+
+  <p>
+    denote a regime parameter.
+  </p>
+
+  <p>
+    Evolution may then take the form
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \Phi_t^{(\lambda)}:
+    X
+    \longrightarrow
+    X.
+    \]
+
+  </div>
+
+  <p>
+    Different regimes may therefore induce different continuation conditions,
+    admissible responses, or required distinctions.
+  </p>
+
+  <p>
+    Regime information is part of the law context and should not be silently
+    omitted when it changes the system response.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>18. Law Passports</h2>
+
+  <p>
+    A response problem may require not only state information but information
+    identifying the law or regime governing the state.
+  </p>
+
+  <p>
+    Schematically, one may treat the effective response context as
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    (x,\lambda)
+    \in
+    X\times\Lambda.
+    \]
+
+  </div>
+
+  <p>
+    A law Passport records the law-context distinctions necessary for lawful
+    interpretation or continuation.
+  </p>
+
+  <p>
+    Thus two identical state descriptions may still require different
+    responses if they belong to different active regimes.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>19. Constraints</h2>
+
+  <p>
+    Let the admissible state set be
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    K
+    \subseteq
+    X.
+    \]
+
+  </div>
+
+  <p>
+    A lawful response may require
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    x\in K.
+    \]
+
+  </div>
+
+  <p>
+    Under evolution, viability may require
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \Phi_t(x)
+    \in
+    K
+    \qquad
+    \forall t
+    \text{ in the required interval}.
+    \]
+
+  </div>
+
+  <p>
+    Constraints therefore affect both the available state space and the
+    admissible continuation.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>20. Interventions</h2>
+
+  <p>
+    Let
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    u
+    \in
+    U
+    \]
+
+  </div>
+
+  <p>
+    denote an intervention or control.
+  </p>
+
+  <p>
+    A controlled evolution may be represented by
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \Phi_t:
+    X\times U
+    \longrightarrow
+    X.
+    \]
+
+  </div>
+
+  <p>
+    or more generally by
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \Phi_t^{(\lambda,u)}
+    \]
+
+  </div>
+
+  <p>
+    when both regime and intervention matter.
+  </p>
+
+  <p>
+    A representation that is sufficient without intervention may become
+    insufficient once interventions alter which distinctions matter.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>21. Response Under Intervention</h2>
+
+  <p>
+    Suppose a task depends on both state and intervention:
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    T:
+    X\times U
+    \longrightarrow
+    W.
+    \]
+
+  </div>
+
+  <p>
+    If only \(r(x)\) is retained, exact intervention-aware sufficiency requires
+    a map
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \widetilde T:
+    Y\times U
+    \longrightarrow
+    W
+    \]
+
+  </div>
+
+  <p>
+    such that
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \boxed{
+    T(x,u)
+    =
+    \widetilde T(r(x),u)
+    }.
+    \]
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>22. Obstruction</h2>
+
+  <p>
+    An obstruction occurs when the currently retained information does not
+    determine the response required by the task.
+  </p>
+
+  <p>
+    For an observation value \(y\), define the task image of its fibre:
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    T(r^{-1}(y))
+    =
+    \left\{
+    T(x):
+    x\in r^{-1}(y)
+    \right\}.
+    \]
+
+  </div>
+
+  <p>
+    Exact recovery fails whenever
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \left|
+    T(r^{-1}(y))
+    \right|
+    >
+    1.
+    \]
+
+  </div>
+
+  <p>
+    The spread of possible task values inside one observational fibre is a
+    direct mathematical signature of task obstruction.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>23. Repair</h2>
+
+  <p>
+    Repair introduces additional information sufficient to eliminate an
+    identified obstruction.
+  </p>
+
+  <p>
+    Suppose an additional observation is
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    q:
+    X
+    \longrightarrow
+    Z.
+    \]
+
+  </div>
+
+  <p>
+    The repaired observation becomes
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    (r,q):
+    X
+    \longrightarrow
+    Y\times Z.
+    \]
+
+  </div>
+
+  <p>
+    Repair succeeds for task \(T\) when
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    (r,q)(x)
+    =
+    (r,q)(x')
+    \]
+
+    \[
+    \Longrightarrow
+    \]
+
+    \[
+    T(x)
+    =
+    T(x').
+    \]
+
+  </div>
+
+  <p>
+    Thus repair does not require reconstructing every lost detail.
+  </p>
+
+  <p>
+    It requires restoring enough information for the task.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>24. Minimal Repair Question</h2>
+
+  <p>
+    A natural optimization problem is to seek the smallest additional
+    information that restores task sufficiency.
+  </p>
+
+  <p>
+    Schematically:
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \boxed{
+    \min_q
+    \operatorname{Cost}(q)
+    }
+    \]
+
+    \[
+    \text{subject to}
+    \]
+
+    \[
+    T
+    =
+    \widetilde T
+    \circ
+    (r,q).
+    \]
       text-decoration: none;
       margin: 8px 14px;
       display: inline-block;
