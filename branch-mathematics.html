@@ -1352,192 +1352,497 @@
   </p>
 
   <p>
-    If an abstract sp      text-decoration: none;
-      margin: 8px 14px;
-      display: inline-block;
-    }
+    If an abstract specification is denoted by \(S\), a realization may be
+    represented by
+  </p>
 
-    main {
-      max-width: 950px;
-      margin: auto;
-      padding: 35px 20px;
-    }
+  <div class="mathbox">
 
-    h2 {
-      border-bottom: 2px solid #e5e7eb;
-      padding-bottom: 8px;
-      margin-top: 45px;
-    }
+    \[
+    \rho:
+    S
+    \longrightarrow
+    X
+    \]
 
-    .card {
-      border: 1px solid #d1d5db;
-      border-radius: 8px;
-      padding: 20px;
-      margin: 15px 0;
-    }
+  </div>
 
-    footer {
-      background: #111827;
-      color: white;
-      text-align: center;
-      padding: 25px;
-      margin-top: 40px;
-    }
-  </style>
-</head>
+  <p>
+    subject to the laws defining admissible objects in \(X\).
+  </p>
 
-<body>
+  <p>
+    Formal description alone does not guarantee realizability.
+  </p>
 
-<header>
-  <h1>Branch Mathematics</h1>
-  <p>Meta-structural mathematics of lawful representation and transformation.</p>
-</header>
+</section>
 
-<nav>
-  <a href="index.html">Home</a>
-  <a href="encyclopedia.html">Encyclopedia</a>
-  <a href="research.html">Research</a>
-  <a href="definitions.html">Definitions</a>
-  <a href="theorems.html">Theorems</a>
-  <a href="changelog.html">Changelog</a>
-  <a href="equations.html">Equations</a>
-  <a href="#foundations">Foundations</a>
-  <a href="structures.html">Structures</a>
-  <a href="passports.html">Passports</a>
-  <a href="roots.html">Roots</a>
-  <a href="#status">Status</a>
-</nav>
 
-<main>
 
 <section>
-  <h2>What is Branch Mathematics?</h2>
+
+  <h2>19. Export and Re-entry</h2>
 
   <p>
-    Branch Mathematics (BM) is a mathematical framework for carrying a
-    mathematical problem through multiple distinct mathematical structures
-    while preserving the laws, distinctions, and admissibility conditions
-    belonging to each structure.
+    BM distinguishes producing a result from lawfully inserting that result
+    into another mathematical context.
   </p>
 
   <p>
-    Its purpose is not to reduce all mathematics to a single representation.
-    Instead, BM provides formal machinery for lawful representation,
-    transformation, interaction, composition, reduction, realization,
-    export, and re-entry across mathematical structures.
+    An export may take the form
   </p>
-</section>
 
+  <div class="mathbox">
 
-<section id="foundations">
-  <h2>Foundational Principle</h2>
+    \[
+    E:
+    X
+    \longrightarrow
+    Y.
+    \]
 
-  <div class="card">
-    <strong>Many lawful mathematical branches</strong>
-    <p>
-      Different mathematical structures may participate in the same problem
-      without losing their individual mathematical identities.
-    </p>
   </div>
 
-  <div class="card">
-    <strong>Lawful interaction</strong>
-    <p>
-      Interactions between branches must respect the mathematical laws and
-      interface requirements governing the participating structures.
-    </p>
+  <p>
+    A later re-entry map
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    R:
+    Y
+    \longrightarrow
+    X'
+    \]
+
   </div>
 
-  <div class="card">
-    <strong>Combined computation</strong>
-    <p>
-      Information produced across branches may be combined when the required
-      compatibility and admissibility conditions are satisfied.
-    </p>
+  <p>
+    must satisfy the mathematical requirements of the receiving structure
+    \(X'\).
+  </p>
+
+  <p>
+    BM therefore treats
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    X
+    \xrightarrow{E}
+    Y
+    \xrightarrow{R}
+    X'
+    \]
+
   </div>
 
-  <div class="card">
-    <strong>Root or law result</strong>
-    <p>
-      A lawful interaction may produce a result that can participate in
-      additional mathematical structure and further response.
-    </p>
-  </div>
-</section>
-
-
-<section id="structures">
-  <h2>Core Structures</h2>
-
-  <div class="card">
-    <h3>Branch</h3>
-    <p>
-      A typed mathematical carrier of information, distinctions, structure,
-      and lawful behavior.
-    </p>
-  </div>
-
-  <div class="card">
-    <h3>Interaction</h3>
-    <p>
-      A lawful joint mathematical action or relationship between branches.
-    </p>
-  </div>
-
-  <div class="card">
-    <h3>Leaf</h3>
-    <p>
-      Mathematical information extracted from an interaction.
-    </p>
-  </div>
-
-  <div class="card">
-    <h3>Tree</h3>
-    <p>
-      An organized structure of branches and interactions that produces a
-      mathematical response.
-    </p>
-  </div>
-
-  <div class="card">
-    <h3>Root</h3>
-    <p>
-      A response capable of participating in further lawful mathematical
-      structure or response.
-    </p>
-  </div>
-
-  <div class="card">
-    <h3>Passport</h3>
-    <p>
-      A formal carrier of the distinctions, observations, compatibility
-      conditions, and admissibility requirements needed across an interface.
-    </p>
-  </div>
+  <p>
+    as a typed mathematical process whose interfaces must be checked rather
+    than assumed.
+  </p>
 
 </section>
 
 
-<section id="status">
-  <h2>Research Status</h2>
+
+<section>
+
+  <h2>20. Deterministic, Stochastic, and Nondeterministic Semantics</h2>
 
   <p>
-    Branch Mathematics is an internally developed formal mathematical
-    framework under continuing mathematical review, proof development,
-    testing, comparison with existing mathematics, and application research.
+    BM does not assume that every Branch uses deterministic functions.
+  </p>
+
+  <h3>Deterministic</h3>
+
+  <div class="mathbox">
+
+    \[
+    F:X\longrightarrow Y.
+    \]
+
+  </div>
+
+  <h3>Stochastic</h3>
+
+  <p>
+    A stochastic Branch may instead use a Markov kernel
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    M:
+    X
+    \longrightarrow
+    \mathcal P(Y),
+    \]
+
+  </div>
+
+  <p>
+    where \(\mathcal P(Y)\) denotes probability laws on \(Y\).
   </p>
 
   <p>
-    Mathematical validity, external novelty, and independent external
-    validation are treated as separate questions.
+    Acting on a test function \(\varphi:Y\to\mathbb R\),
   </p>
+
+  <div class="mathbox">
+
+    \[
+    M^\dagger\varphi(x)
+    =
+    \mathbb E[
+    \varphi(Y)
+    \mid
+    X=x
+    ].
+    \]
+
+  </div>
+
+  <p>
+    Stochastic equality cannot automatically be replaced with deterministic
+    equality.
+  </p>
+
+  <h3>Nondeterministic</h3>
+
+  <p>
+    A nondeterministic relation may be written
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    R
+    \subseteq
+    X\times Y.
+    \]
+
+  </div>
+
+  <p>
+    Existential and universal response conditions are different:
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \Diamond_R(U)
+    =
+    \left\{
+    x\in X:
+    \exists y\in U,\ xRy
+    \right\},
+    \]
+
+    \[
+    \Box_R(U)
+    =
+    \left\{
+    x\in X:
+    \forall y,\,
+    xRy
+    \Rightarrow
+    y\in U
+    \right\}.
+    \]
+
+  </div>
+
+  <p>
+    BM requires these quantifier distinctions to remain explicit.
+  </p>
+
 </section>
+
+
+
+<section>
+
+  <h2>21. Joint Feasibility</h2>
+
+  <p>
+    Passing several conditions independently does not necessarily mean they
+    can all be satisfied by the same mathematical object.
+  </p>
+
+  <p>
+    If task \(c\) admits feasible set
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    P_c
+    \subseteq
+    X,
+    \]
+
+  </div>
+
+  <p>
+    then simultaneous feasibility requires
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \boxed{
+    \bigcap_{c\in\mathcal C}
+    P_c
+    \neq
+    \varnothing
+    }.
+    \]
+
+  </div>
+
+  <p>
+    When separate witnesses are allowed, that quantifier structure must be
+    stated explicitly instead.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>22. What Branch Mathematics Does Not Do</h2>
+
+  <div class="warning">
+
+    <p>
+      BM does not replace ordinary mathematics.
+    </p>
+
+    <p>
+      It does not make an invalid algebraic step valid, turn a non-solution of
+      a differential equation into a solution, override conservation laws,
+      remove the need for proof, or establish physical realization merely by
+      assigning BM terminology to an object.
+    </p>
+
+  </div>
+
+  <p>
+    Truth inside each mathematical structure is still determined by the
+    mathematics governing that structure.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>23. Relationship Between BM and GURF</h2>
+
+  <p>
+    Branch Mathematics is the broader governing meta-structural mathematics.
+  </p>
+
+  <p>
+    GURF specializes this machinery to problems with genuine
+    <strong>response semantics</strong>, including:
+  </p>
+
+  <div class="card">
+
+    states · tasks · observations · constraints · regimes · interventions ·
+    continuation · information sufficiency · obstruction · repair · response
+
+  </div>
+
+  <p>
+    Therefore BM may be used without GURF when no response semantics are
+    needed.
+  </p>
+
+  <p>
+    GURF is invoked when the mathematical question specifically concerns what
+    a system can observe, preserve, lose, recover, or lawfully do in response
+    to a task or intervention.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>24. Mathematical Status</h2>
+
+  <div class="statusbox">
+
+    <h3>Integrated formal-framework status</h3>
+
+    <p>
+      <strong>
+        Established internally / project-approved architecture.
+      </strong>
+    </p>
+
+    <p>
+      The principal BM architecture—Branches, Passports, operations,
+      structured quotienting, interaction, interfaces, composition,
+      realization, Roots, export, and re-entry—is treated as an integrated
+      formal research framework.
+    </p>
+
+  </div>
+
+  <div class="statusbox">
+
+    <h3>External novelty and priority</h3>
+
+    <p>
+      <strong>Open.</strong>
+    </p>
+
+    <p>
+      Many individual mathematical ingredients have established prior art.
+      Their inclusion inside BM does not make those ingredients new.
+    </p>
+
+    <p>
+      The novelty or priority of BM as an integrated mathematical package
+      requires separate external comparison.
+    </p>
+
+  </div>
+
+  <div class="statusbox">
+
+    <h3>Independent external validation</h3>
+
+    <p>
+      <strong>Not yet established.</strong>
+    </p>
+
+    <p>
+      Internal derivation and testing are not substitutes for independent
+      mathematical review.
+    </p>
+
+  </div>
+
+  <div class="statusbox">
+
+    <h3>Applied and bridge research</h3>
+
+    <p>
+      <strong>Active experimental research.</strong>
+    </p>
+
+    <p>
+      BM is being tested against multiple mathematical and physical domains,
+      but application-specific claims remain subject to the mathematics and
+      evidence of those domains.
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>25. Equation Figures and Scientific Visualization</h2>
+
+  <p>
+    This encyclopedia will use quantitative scientific figures where the
+    underlying mathematics produces meaningful visual structure.
+  </p>
+
+  <p>
+    These may include:
+  </p>
+
+  <div class="card">
+
+    function plots · parameter sweeps · surfaces · vector fields · phase
+    portraits · spectra · heatmaps · stability regions · convergence plots ·
+    response curves · PDE fields · numerical comparisons
+
+  </div>
+
+  <p>
+    Structural BM diagrams are being treated separately and will not be
+    reconstructed on this site until their formal versions have been reviewed
+    and approved.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>26. Research Direction</h2>
+
+  <p>
+    Current development focuses on making the architecture precise enough that
+    every BM construction can answer:
+  </p>
+
+  <div class="card">
+
+    <p>
+      <strong>What mathematical object is being carried?</strong>
+    </p>
+
+    <p>
+      <strong>Which distinctions are preserved?</strong>
+    </p>
+
+    <p>
+      <strong>Which laws remain binding?</strong>
+    </p>
+
+    <p>
+      <strong>Which transformations are admissible?</strong>
+    </p>
+
+    <p>
+      <strong>Which interfaces are compatible?</strong>
+    </p>
+
+    <p>
+      <strong>What information is lost?</strong>
+    </p>
+
+    <p>
+      <strong>Can later tasks still be recovered?</strong>
+    </p>
+
+    <p>
+      <strong>Does a resulting Root support further lawful response?</strong>
+    </p>
+
+  </div>
+
+</section>
+
 
 </main>
 
+
 <footer>
-  <p>Branch Mathematics Research Encyclopedia</p>
+
+  <p>
+    Branch Mathematics Research Encyclopedia
+  </p>
+
 </footer>
+
 
 </body>
 </html>
