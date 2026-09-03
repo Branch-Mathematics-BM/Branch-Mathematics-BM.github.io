@@ -1,191 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
 
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
 
-  <title>
-    GURF | Mathematical Framework for Lawful System Response
-  </title>
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
-  <meta name="description"
-        content="GURF is a mathematical framework for lawful system responses, information sufficiency, observation, intervention, constraints, regimes, continuation, obstruction, repair, and response semantics.">
+<title>
+GURF | General Unified Response Framework
+</title>
 
-  <meta name="robots" content="index, follow">
+<meta name="description"
+      content="Formal mathematical foundations and complete extension architecture of GURF: Core, SOE, ACE, IRE, UKE, GRDE, HDE, and GHSE, with response systems, observation, recoverability, constraints, kernels, continuation, halo domains, glue-hold states, interventions, obstruction, and repair.">
 
-  <!-- MathJax -->
-  <script>
-    MathJax = {
-      tex: {
-        inlineMath: [['\\(', '\\)']],
-        displayMath: [['\\[', '\\]']]
-      }
-    };
-  </script>
+<meta name="robots" content="index, follow">
 
-  <script async
-    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-  </script>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']]
+  }
+};
+</script>
 
-  <style>
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      margin: 0;
-      line-height: 1.75;
-      color: #202124;
-      background: #ffffff;
-    }
+<script async
+src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
 
-    header {
-      background: #111827;
-      color: white;
-      padding: 55px 20px;
-      text-align: center;
-    }
 
-    header h1 {
-      margin-bottom: 10px;
-      font-size: 2.6rem;
-    }
+<style>
 
-    header p {
-      max-width: 850px;
-      margin: auto;
-      font-size: 1.15rem;
-    }
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  line-height: 1.75;
+  color: #202124;
+  background: #ffffff;
+}
 
-    nav {
-      background: #1f2937;
-      text-align: center;
-      padding: 12px;
-    }
+header {
+  background: #111827;
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
+}
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 7px 11px;
-      display: inline-block;
-    }
+header h1 {
+  margin-bottom: 10px;
+  font-size: 2.7rem;
+}
 
-    main {
-      max-width: 1000px;
-      margin: auto;
-      padding: 35px 20px;
-    }
+header p {
+  max-width: 920px;
+  margin: auto;
+  font-size: 1.15rem;
+}
 
-    h2 {
-      border-bottom: 2px solid #e5e7eb;
-      padding-bottom: 8px;
-      margin-top: 55px;
-    }
+nav {
+  background: #1f2937;
+  text-align: center;
+  padding: 12px;
+}
 
-    h3 {
-      margin-top: 28px;
-    }
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 7px 11px;
+  display: inline-block;
+}
 
-    .lead {
-      font-size: 1.08rem;
-    }
+main {
+  max-width: 1100px;
+  margin: auto;
+  padding: 35px 20px;
+}
 
-    .card {
-      border: 1px solid #d1d5db;
-      border-radius: 8px;
-      padding: 22px;
-      margin: 18px 0;
-    }
+h2 {
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 8px;
+  margin-top: 58px;
+}
 
-    .mathbox {
-      background: #f8fafc;
-      border-left: 4px solid #374151;
-      padding: 18px;
-      margin: 22px 0;
-      overflow-x: auto;
-    }
+h3 {
+  margin-top: 30px;
+}
 
-    .statusbox {
-      background: #f3f4f6;
-      border-radius: 8px;
-      padding: 20px;
-      margin: 20px 0;
-    }
+.lead {
+  font-size: 1.08rem;
+}
 
-    .warning {
-      border-left: 4px solid #6b7280;
-      background: #fafafa;
-      padding: 18px;
-      margin: 22px 0;
-    }
+.mathbox {
+  background: #f8fafc;
+  border-left: 4px solid #374151;
+  padding: 18px;
+  margin: 22px 0;
+  overflow-x: auto;
+}
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 25px 0;
-    }
+.card {
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 22px;
+  margin: 20px 0;
+}
 
-    th,
-    td {
-      border: 1px solid #d1d5db;
-      padding: 12px;
-      text-align: left;
-      vertical-align: top;
-    }
+.extension {
+  border: 1px solid #9ca3af;
+  border-radius: 8px;
+  padding: 24px;
+  margin: 25px 0;
+}
 
-    th {
-      background: #f3f4f6;
-    }
+.statusbox {
+  background: #f3f4f6;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px 0;
+}
 
-    footer {
-      background: #111827;
-      color: white;
-      text-align: center;
-      padding: 28px;
-      margin-top: 60px;
-    }
-  </style>
+.warning {
+  background: #fafafa;
+  border-left: 4px solid #6b7280;
+  padding: 18px;
+  margin: 22px 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns:
+    repeat(auto-fit, minmax(250px, 1fr));
+  gap: 18px;
+  margin: 25px 0;
+}
+
+.grid-card {
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 25px 0;
+}
+
+th,
+td {
+  border: 1px solid #d1d5db;
+  padding: 12px;
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  background: #f3f4f6;
+}
+
+code {
+  background: #f3f4f6;
+  padding: 2px 5px;
+  border-radius: 4px;
+}
+
+footer {
+  background: #111827;
+  color: white;
+  text-align: center;
+  padding: 30px;
+  margin-top: 60px;
+}
+
+</style>
+
 </head>
 
 
 <body>
 
+
 <header>
 
-  <h1>GURF</h1>
+<h1>GURF</h1>
 
-  <p>
-    A mathematical framework for determining which distinctions in a system
-    are necessary for a task, whether those distinctions survive observation,
-    compression, evolution, constraints, and intervention, and whether lawful
-    response or continuation remains possible.
-  </p>
+<p>
+The General Unified Response Framework: mathematical architecture for
+responses, observations, tasks, information sufficiency, admissibility,
+operations, inference, kernels, continuation, extended response domains,
+glue-hold states, interventions, obstruction, and repair.
+</p>
 
 </header>
 
 
 <nav>
 
-  <a href="index.html">Home</a>
-
-  <a href="branch-mathematics.html">Branch Mathematics</a>
-
-  <a href="encyclopedia.html">Encyclopedia</a>
-
-  <a href="definitions.html">Definitions</a>
-
-  <a href="theorems.html">Theorems</a>
-
-  <a href="equations.html">Equations</a>
-
-  <a href="structures.html">Structures</a>
-
-  <a href="passports.html">Passports</a>
-
-  <a href="roots.html">Roots</a>
-
-  <a href="research.html">Research</a>
-
-  <a href="changelog.html">Changelog</a>
+<a href="index.html">Home</a>
+<a href="branch-mathematics.html">Branch Mathematics</a>
+<a href="encyclopedia.html">Encyclopedia</a>
+<a href="definitions.html">Definitions</a>
+<a href="theorems.html">Theorems</a>
+<a href="equations.html">Equations</a>
+<a href="structures.html">Structures</a>
+<a href="passports.html">Passports</a>
+<a href="roots.html">Roots</a>
+<a href="research.html">Research</a>
+<a href="changelog.html">Changelog</a>
 
 </nav>
 
@@ -195,84 +218,40 @@
 
 <section>
 
-  <h2>1. What GURF Is</h2>
+<h2>1. What GURF Is</h2>
 
-  <p class="lead">
-    GURF is a mathematical framework for lawful system responses.
-  </p>
+<p class="lead">
+GURF is the response-specialized mathematical framework used when a problem
+contains genuine response semantics.
+</p>
 
-  <p>
-    Its central concern is not merely the state of a system, but whether the
-    information currently available about that state is sufficient for a
-    specified task, continuation, intervention, or response.
-  </p>
+<p>
+Its governing question is:
+</p>
 
-  <p>
-    The governing question can be written conceptually as:
-  </p>
+<div class="mathbox">
 
-  <div class="mathbox">
+\[
+\boxed{
+\text{Which distinctions in the underlying state must survive
+for the responses, tasks, interventions, or future continuations
+that matter?}
+}
+\]
 
-    \[
-    \boxed{
-    \text{What must remain distinguishable now
-    for the required response to remain possible later?}
-    }
-    \]
+</div>
 
-  </div>
+<p>
+GURF studies the relationship among:
+</p>
 
-  <p>
-    GURF therefore studies systems together with their observations,
-    constraints, regimes, interventions, tasks, and lawful responses.
-  </p>
+<div class="statusbox">
 
-</section>
+source state · response law · observation · retained information · task ·
+constraints · regime · intervention · continuation · uncertainty ·
+recoverability · obstruction · repair
 
-
-
-<section>
-
-  <h2>2. Relationship to Branch Mathematics</h2>
-
-  <p>
-    Branch Mathematics is the broader meta-structural mathematics governing
-    lawful representation, transformation, composition, interfaces,
-    realization, export, and re-entry.
-  </p>
-
-  <p>
-    GURF specializes that broader machinery to problems that possess genuine
-    <strong>response semantics</strong>.
-  </p>
-
-  <p>
-    Schematically:
-  </p>
-
-  <div class="mathbox">
-
-    \[
-    \boxed{
-    \text{BM}
-    \supset
-    \text{response-specialized BM structure}
-    =
-    \text{GURF}
-    }
-    \]
-
-  </div>
-
-  <p>
-    BM does not need to be interpreted as a response theory.
-  </p>
-
-  <p>
-    GURF becomes relevant when the mathematics specifically asks what a
-    system can observe, preserve, lose, recover, continue, or produce in
-    response to a task or intervention.
-  </p>
+</div>
 
 </section>
 
@@ -280,44 +259,39 @@
 
 <section>
 
-  <h2>3. Basic System Object</h2>
+<h2>2. GURF Under Branch Mathematics</h2>
 
-  <p>
-    Let
-  </p>
+<p>
+Branch Mathematics provides the higher meta-structural mathematics governing
+lawful representation, transformation, distinction preservation, composition,
+realization, interfaces, export, and re-entry.
+</p>
 
-  <div class="mathbox">
+<p>
+GURF specializes that architecture when the mathematical problem explicitly
+contains response semantics.
+</p>
 
-    \[
-    X
-    \]
+<div class="mathbox">
 
-  </div>
+\[
+\boxed{
+\text{BM}
+\supset
+\text{response-specialized GURF use}
+}
+\]
 
-  <p>
-    denote the underlying state space of a system.
-  </p>
+</div>
 
-  <p>
-    A state is
-  </p>
+<p>
+This does not mean every BM problem requires GURF.
+</p>
 
-  <div class="mathbox">
-
-    \[
-    x\in X.
-    \]
-
-  </div>
-
-  <p>
-    The space \(X\) may be finite, continuous, discrete, geometric,
-    stochastic, functional, infinite-dimensional, or otherwise structured.
-  </p>
-
-  <p>
-    GURF does not assume one universal type of state space.
-  </p>
+<p>
+If response semantics provide no additional mathematical leverage, GURF need
+not be invoked.
+</p>
 
 </section>
 
@@ -325,145 +299,112 @@
 
 <section>
 
-  <h2>4. Tasks</h2>
+<h2>3. Complete Canonical GURF Architecture</h2>
 
-  <p>
-    A task specifies what information must ultimately be determined or what
-    response must be produced.
-  </p>
+<table>
 
-  <p>
-    A deterministic task may be represented as
-  </p>
+<tr>
+<th>Component</th>
+<th>Role</th>
+<th>Status</th>
+</tr>
 
-  <div class="mathbox">
+<tr>
+<td><strong>Core</strong></td>
+<td>
+source, response, observation, task, fibres, sufficiency,
+continuation, obstruction, repair
+</td>
+<td>Stable / canonical</td>
+</tr>
 
-    \[
-    T:
-    X
-    \longrightarrow
-    W,
-    \]
+<tr>
+<td><strong>SOE</strong></td>
+<td>
+typed operations, ordering, composition, handoffs,
+interventions, operation discipline
+</td>
+<td>Stable / canonical extension</td>
+</tr>
 
-  </div>
+<tr>
+<td><strong>ACE</strong></td>
+<td>
+admissibility, constraints, coercivity, convexity,
+viability and stability gates
+</td>
+<td>Stable / canonical extension</td>
+</tr>
 
-  <p>
-    where \(W\) is the task-output space.
-  </p>
+<tr>
+<td><strong>IRE</strong></td>
+<td>
+inference, inverse recovery, ambiguity, certificates,
+task-relative identifiability and uncertainty
+</td>
+<td>Stable / canonical extension</td>
+</tr>
 
-  <p>
-    Examples include:
-  </p>
+<tr>
+<td><strong>UKE</strong></td>
+<td>
+advanced kernel, nullspace, Green, resolvent, spectral,
+causal, reproducing and memory machinery
+</td>
+<td>Stable / canonical extension</td>
+</tr>
 
-  <div class="card">
+<tr>
+<td><strong>GRDE</strong></td>
+<td>
+diagrammatic response representation and response-structure calculus
+</td>
+<td>Frozen at GURF-GRDE-008</td>
+</tr>
 
-    prediction · classification · control · reconstruction · decision ·
-    continuation · estimation · admissibility testing · physical response
+<tr>
+<td><strong>HDE</strong></td>
+<td>
+extended or halo response domains and halo-domain response behavior
+</td>
+<td>Active canonical extension</td>
+</tr>
 
-  </div>
+<tr>
+<td><strong>GHSE</strong></td>
+<td>
+glue, hold, joined-state persistence and state-transition structure
+</td>
+<td>Active canonical extension</td>
+</tr>
 
-  <p>
-    GURF is therefore task-relative.
-  </p>
+</table>
 
-  <p>
-    Information that is irrelevant to one task may be essential to another.
-  </p>
+<div class="mathbox">
 
-</section>
+\[
+\boxed{
+\mathrm{GURF}
+=
+\mathrm{Core}
++
+\mathrm{SOE}
++
+\mathrm{ACE}
++
+\mathrm{IRE}
++
+\mathrm{UKE}
++
+\mathrm{GRDE}
++
+\mathrm{HDE}
++
+\mathrm{GHSE}.
+}
+\]
 
-
-
-<section>
-
-  <h2>5. Observations</h2>
-
-  <p>
-    Suppose the full state \(x\in X\) is not directly available.
-  </p>
-
-  <p>
-    Instead, the system is observed through a map
-  </p>
-
-  <div class="mathbox">
-
-    \[
-    r:
-    X
-    \longrightarrow
-    Y.
-    \]
-
-  </div>
-
-  <p>
-    The observed state is
-  </p>
-
-  <div class="mathbox">
-
-    \[
-    y
-    =
-    r(x).
-    \]
-
-  </div>
-
-  <p>
-    The map \(r\) may represent measurement, compression, coarse-graining,
-    projection, filtering, sensor output, discretization, or another
-    information-reducing operation.
-  </p>
-
-</section>
-
-
-
-<section>
-
-  <h2>6. Observational Equivalence</h2>
-
-  <p>
-    Observation induces an equivalence relation:
-  </p>
-
-  <div class="mathbox">
-
-    \[
-    x
-    \sim_r
-    x'
-    \quad\Longleftrightarrow\quad
-    r(x)
-    =
-    r(x').
-    \]
-
-  </div>
-
-  <p>
-    Thus two underlying states become indistinguishable whenever the
-    observation map gives them the same observed value.
-  </p>
-
-  <p>
-    The observational class of \(x\) is
-  </p>
-
-  <div class="mathbox">
-
-    \[
-    [x]_r
-    =
-    \left\{
-    x'\in X:
-    r(x')=r(x)
-    \right\}.
-    \]
-
-  </div>
+</div>
 
 </section>
 
@@ -471,45 +412,35 @@
 
 <section>
 
-  <h2>7. Observation Fibres</h2>
+<h2>4. Extension Principle</h2>
 
-  <p>
-    The fibre over an observed value \(y\in Y\) is
-  </p>
+<p>
+An extension does not replace or repeatedly redefine the Core.
+</p>
 
-  <div class="mathbox">
+<p>
+Instead, each extension attaches specialized mathematics to the same response
+system when the problem requires that machinery.
+</p>
 
-    \[
-    r^{-1}(y)
-    =
-    \left\{
-    x\in X:
-    r(x)=y
-    \right\}.
-    \]
+<div class="mathbox">
 
-  </div>
+\[
+\boxed{
+\text{Core response contract}
++
+\text{specialized requirement}
+\longrightarrow
+\text{extension activation}.
+}
+\]
 
-  <p>
-    The fibre represents every underlying state still compatible with the
-    observation.
-  </p>
+</div>
 
-  <p>
-    If
-  </p>
-
-  <div class="mathbox">
-
-    \[
-    |r^{-1}(y)|>1,
-    \]
-
-  </div>
-
-  <p>
-    then the observation does not uniquely identify the underlying state.
-  </p>
+<p>
+This prevents every application from expanding the Core until the Core loses
+a precise mathematical identity.
+</p>
 
 </section>
 
@@ -517,144 +448,73 @@
 
 <section>
 
-  <h2>8. Multiple Observations</h2>
+<h2>5. Minimal Response System</h2>
 
-  <p>
-    Suppose observations are indexed by
-  </p>
+<p>
+A useful deterministic Core object is
+</p>
 
-  <div class="mathbox">
+<div class="mathbox">
 
-    \[
-    \alpha\in A
-    \]
+\[
+\boxed{
+\mathfrak G
+=
+\left(
+X,
+Y,
+\mathfrak R,
+\mathcal O,
+\preceq,
+\mathcal A
+\right).
+}
+\]
 
-  </div>
+</div>
 
-  <p>
-    with maps
-  </p>
+<p>
+Here:
+</p>
 
-  <div class="mathbox">
+<table>
 
-    \[
-    r_\alpha:
-    X
-    \longrightarrow
-    Y_\alpha.
-    \]
+<tr>
+<th>Object</th>
+<th>Meaning</th>
+</tr>
 
-  </div>
+<tr>
+<td>\(X\)</td>
+<td>source or system state space</td>
+</tr>
 
-  <p>
-    The combined observation is
-  </p>
+<tr>
+<td>\(Y\)</td>
+<td>physical or mathematical response space</td>
+</tr>
 
-  <div class="mathbox">
+<tr>
+<td>\(\mathfrak R\)</td>
+<td>response law or response relation</td>
+</tr>
 
-    \[
-    r_A(x)
-    =
-    \left(
-    r_\alpha(x)
-    \right)_{\alpha\in A}.
-    \]
+<tr>
+<td>\(\mathcal O\)</td>
+<td>observation map or observation family</td>
+</tr>
 
-  </div>
+<tr>
+<td>\(\preceq\)</td>
+<td>declared information or degradation order</td>
+</tr>
 
-  <p>
-    If the observed values are
-  </p>
+<tr>
+<td>\(\mathcal A\)</td>
+<td>admissibility structure</td>
+</tr>
 
-  <div class="mathbox">
-
-    \[
-    \ell
-    =
-    \left(
-    \ell_\alpha
-    \right)_{\alpha\in A},
-    \]
-
-  </div>
-
-  <p>
-    then the states compatible with all observations form the
-    <strong>completion fibre</strong>.
-  </p>
-
-</section>
-
-
-
-<section>
-
-  <h2>9. Completion Fibre</h2>
-
-  <div class="mathbox">
-
-    \[
-    \boxed{
-    \mathfrak C_A(\ell)
-    =
-    \bigcap_{\alpha\in A}
-    r_\alpha^{-1}(\ell_\alpha)
-    }
-    \]
-
-  </div>
-
-  <p>
-    The completion fibre is the set of all underlying states satisfying every
-    observation in the active observation family.
-  </p>
-
-  <p>
-    If
-  </p>
-
-  <div class="mathbox">
-
-    \[
-    \mathfrak C_A(\ell)
-    =
-    \varnothing,
-    \]
-
-  </div>
-
-  <p>
-    then the observation set is mutually inconsistent.
-  </p>
-
-  <p>
-    If
-  </p>
-
-  <div class="mathbox">
-
-    \[
-    \left|
-    \mathfrak C_A(\ell)
-    \right|
-    =
-    1,
-    \]
-
-  </div>
-
-  <p>
-    then the observations identify a unique compatible state.
-  </p>
-
-  <p>
-    But unique state reconstruction is not always required.
-  </p>
-
-  <p>
-    A task may be recoverable even when many underlying states remain
-    possible.
-  </p>
+</table>
 
 </section>
 
@@ -662,64 +522,46 @@
 
 <section>
 
-  <h2>10. Exact Task Sufficiency</h2>
+<h2>6. Response and Observation Must Remain Distinct</h2>
 
-  <p>
-    Let
-  </p>
+<p>
+The response map and observation map are different mathematical objects.
+</p>
 
-  <div class="mathbox">
+<div class="mathbox">
 
-    \[
-    T:
-    X
-    \longrightarrow
-    W
-    \]
+\[
+x
+\xrightarrow{\mathfrak R}
+y
+\xrightarrow{\mathcal O}
+z.
+\]
 
-  </div>
+</div>
 
-  <p>
-    be the task of interest.
-  </p>
+<p>
+The complete observable map is
+</p>
 
-  <p>
-    The observation \(r\) is sufficient for \(T\) when there exists
-  </p>
+<div class="mathbox">
 
-  <div class="mathbox">
+\[
+\boxed{
+F_{\mathfrak G}
+=
+\mathcal O
+\circ
+\mathfrak R.
+}
+\]
 
-    \[
-    \widetilde T:
-    Y
-    \longrightarrow
-    W
-    \]
+</div>
 
-  </div>
-
-  <p>
-    such that
-  </p>
-
-  <div class="mathbox">
-
-    \[
-    \boxed{
-    T
-    =
-    \widetilde T
-    \circ
-    r
-    }.
-    \]
-
-  </div>
-
-  <p>
-    This means the task can be computed entirely from the observed
-    representation.
-  </p>
+<p>
+A detector output, compressed representation, measured quantity, or inferred
+parameter must not automatically be identified with the underlying response.
+</p>
 
 </section>
 
@@ -727,55 +569,33 @@
 
 <section>
 
-  <h2>11. Fibre Criterion for Exact Sufficiency</h2>
+<h2>7. Task</h2>
 
-  <p>
-    Exact sufficiency is equivalent to requiring that the task be constant on
-    every observation fibre:
-  </p>
+<p>
+A task is a required mathematical output
+</p>
 
-  <div class="mathbox">
+<div class="mathbox">
 
-    \[
-    r(x)
-    =
-    r(x')
-    \]
+\[
+T:
+X
+\longrightarrow
+W.
+\]
 
-    \[
-    \Longrightarrow
-    \]
+</div>
 
-    \[
-    T(x)
-    =
-    T(x').
-    \]
+<p>
+Examples include:
+</p>
 
-  </div>
+<div class="statusbox">
 
-  <p>
-    Therefore information may be discarded safely whenever the discarded
-    distinctions do not alter the required task.
-  </p>
+prediction · classification · reconstruction · control · future continuation ·
+parameter inference · safety decision · physical observable
 
-  <p>
-    Conversely, if
-  </p>
-
-  <div class="mathbox">
-
-    \[
-    r(x)=r(x')
-    \quad\text{but}\quad
-    T(x)\neq T(x'),
-    \]
-
-  </div>
-
-  <p>
-    then the observation has destroyed information necessary for the task.
-  </p>
+</div>
 
 </section>
 
@@ -783,136 +603,54 @@
 
 <section>
 
-  <h2>12. Completion-Fibre Task Criterion</h2>
+<h2>8. Observable Equivalence</h2>
 
-  <p>
-    Using the completion fibre, exact task determination requires
-  </p>
+<p>
+For
+</p>
 
-  <div class="mathbox">
+<div class="mathbox">
 
-    \[
-    T(x)
-    =
-    T(x')
-    \qquad
-    \forall
-    x,x'
-    \in
-    \mathfrak C_A(\ell).
-    \]
+\[
+F:
+X
+\longrightarrow
+Z,
+\]
 
-  </div>
+</div>
 
-  <p>
-    Equivalently,
-  </p>
+<p>
+define
+</p>
 
-  <div class="mathbox">
+<div class="mathbox">
 
-    \[
-    \boxed{
-    \left|
-    T\left(
-    \mathfrak C_A(\ell)
-    \right)
-    \right|
-    =
-    1
-    }.
-    \]
+\[
+\boxed{
+x\sim_Fx'
+\quad\Longleftrightarrow\quad
+F(x)=F(x').
+}
+\]
 
-  </div>
+</div>
 
-  <p>
-    The completion fibre may therefore contain many states while still being
-    perfectly sufficient for the task.
-  </p>
+<p>
+The equivalence class
+</p>
 
-</section>
+<div class="mathbox">
 
+\[
+[x]_F
+\]
 
+</div>
 
-<section>
-
-  <h2>13. Approximate Sufficiency</h2>
-
-  <p>
-    Exact equality may be too strong in numerical, statistical, experimental,
-    or physical settings.
-  </p>
-
-  <p>
-    Let \(d_W\) be a metric on task space \(W\).
-  </p>
-
-  <p>
-    A representation may be approximately sufficient at tolerance
-    \(\varepsilon\) when
-  </p>
-
-  <div class="mathbox">
-
-    \[
-    d_W
-    \left(
-    T(x),
-    T(x')
-    \right)
-    \le
-    \varepsilon
-    \]
-
-  </div>
-
-  <p>
-    whenever
-  </p>
-
-  <div class="mathbox">
-
-    \[
-    r(x)=r(x').
-    \]
-
-  </div>
-
-  <p>
-    Equivalently, one may require a reconstruction
-  </p>
-
-  <div class="mathbox">
-
-    \[
-    \widetilde T:
-    Y
-    \longrightarrow
-    W
-    \]
-
-  </div>
-
-  <p>
-    satisfying
-  </p>
-
-  <div class="mathbox">
-
-    \[
-    d_W
-    \left(
-    T(x),
-    \widetilde T(r(x))
-    \right)
-    \le
-    \varepsilon.
-    \]
-
-  </div>
-
-  <p>
-    The metric and tolerance must be stated explicitly.
-  </p>
+<p>
+contains all states that the retained observation cannot distinguish.
+</p>
 
 </section>
 
@@ -920,60 +658,30 @@
 
 <section>
 
-  <h2>14. Response Relations</h2>
+<h2>9. Fibre</h2>
 
-  <p>
-    A response need not always be represented by an ordinary function.
-  </p>
+<p>
+For \(z\in Z\),
+</p>
 
-  <p>
-    A general response relation may be written
-  </p>
+<div class="mathbox">
 
-  <div class="mathbox">
+\[
+\boxed{
+\mathcal F_F(z)
+=
+F^{-1}(z)
+=
+\{x\in X:F(x)=z\}.
+}
+\]
 
-    \[
-    \mathcal R:
-    X
-    \rightrightarrows
-    Y.
-    \]
+</div>
 
-  </div>
-
-  <p>
-    For a state \(x\), the admissible responses are
-  </p>
-
-  <div class="mathbox">
-
-    \[
-    \mathcal R(x)
-    \subseteq
-    Y.
-    \]
-
-  </div>
-
-  <p>
-    A deterministic response is the special case
-  </p>
-
-  <div class="mathbox">
-
-    \[
-    \left|
-    \mathcal R(x)
-    \right|
-    =
-    1
-    \]
-
-  </div>
-
-  <p>
-    for every admissible \(x\).
-  </p>
+<p>
+The fibre is one of the main Core objects because it directly exposes hidden
+ambiguity.
+</p>
 
 </section>
 
@@ -981,78 +689,46 @@
 
 <section>
 
-  <h2>15. Continuation</h2>
+<h2>10. Completion Fibre</h2>
 
-  <p>
-    Continuation asks whether the current representation contains enough
-    information to support a required future response.
-  </p>
+<p>
+For an observation family
+</p>
 
-  <p>
-    Suppose evolution is described by
-  </p>
+<div class="mathbox">
 
-  <div class="mathbox">
+\[
+r_\alpha:
+X
+\longrightarrow
+Y_\alpha,
+\qquad
+\alpha\in A,
+\]
 
-    \[
-    \Phi_t:
-    X
-    \longrightarrow
-    X.
-    \]
+</div>
 
-  </div>
+<p>
+define
+</p>
 
-  <p>
-    A future task at time \(t\) is
-  </p>
+<div class="mathbox">
 
-  <div class="mathbox">
+\[
+\boxed{
+\mathfrak C_A(\ell)
+=
+\bigcap_{\alpha\in A}
+r_\alpha^{-1}(\ell_\alpha).
+}
+\]
 
-    \[
-    T_t
-    =
-    T
-    \circ
-    \Phi_t.
-    \]
+</div>
 
-  </div>
-
-  <p>
-    Observation \(r\) remains sufficient for that future task if there exists
-  </p>
-
-  <div class="mathbox">
-
-    \[
-    \widetilde T_t:
-    Y
-    \longrightarrow
-    W
-    \]
-
-  </div>
-
-  <p>
-    satisfying
-  </p>
-
-  <div class="mathbox">
-
-    \[
-    \boxed{
-    T
-    \circ
-    \Phi_t
-    =
-    \widetilde T_t
-    \circ
-    r
-    }.
-    \]
-
-  </div>
+<p>
+This is the set of states simultaneously compatible with the active
+observations.
+</p>
 
 </section>
 
@@ -1060,99 +736,56 @@
 
 <section>
 
-  <h2>16. Continuation Failure</h2>
+<h2>11. Exact Task Sufficiency</h2>
 
-  <p>
-    Suppose two states are currently observationally indistinguishable:
-  </p>
+<p>
+Observation \(F\) is exactly sufficient for task \(T\) when
+</p>
 
-  <div class="mathbox">
+<div class="mathbox">
 
-    \[
-    r(x)
-    =
-    r(x').
-    \]
+\[
+\boxed{
+F(x)=F(x')
+\Longrightarrow
+T(x)=T(x').
+}
+\]
 
-  </div>
+</div>
 
-  <p>
-    If evolution produces
-  </p>
+<p>
+Equivalently, there exists
+</p>
 
-  <div class="mathbox">
+<div class="mathbox">
 
-    \[
-    T(\Phi_t(x))
-    \neq
-    T(\Phi_t(x')),
-    \]
+\[
+\widetilde T:
+F(X)
+\longrightarrow
+W
+\]
 
-  </div>
+</div>
 
-  <p>
-    then the current representation is insufficient for the future task.
-  </p>
+<p>
+such that
+</p>
 
-  <p>
-    The missing distinction may have been irrelevant at the observation time
-    but becomes relevant after evolution.
-  </p>
+<div class="mathbox">
 
-</section>
+\[
+\boxed{
+T
+=
+\widetilde T
+\circ
+F.
+}
+\]
 
-
-
-<section>
-
-  <h2>17. Regimes</h2>
-
-  <p>
-    System laws may depend on an active regime.
-  </p>
-
-  <p>
-    Let
-  </p>
-
-  <div class="mathbox">
-
-    \[
-    \lambda
-    \in
-    \Lambda
-    \]
-
-  </div>
-
-  <p>
-    denote a regime parameter.
-  </p>
-
-  <p>
-    Evolution may then take the form
-  </p>
-
-  <div class="mathbox">
-
-    \[
-    \Phi_t^{(\lambda)}:
-    X
-    \longrightarrow
-    X.
-    \]
-
-  </div>
-
-  <p>
-    Different regimes may therefore induce different continuation conditions,
-    admissible responses, or required distinctions.
-  </p>
-
-  <p>
-    Regime information is part of the law context and should not be silently
-    omitted when it changes the system response.
-  </p>
+</div>
 
 </section>
 
@@ -1160,92 +793,44 @@
 
 <section>
 
-  <h2>18. Law Passports</h2>
+<h2>12. Full-State Recovery Is Stronger</h2>
 
-  <p>
-    A response problem may require not only state information but information
-    identifying the law or regime governing the state.
-  </p>
+<p>
+Recovering a task does not require recovering the entire state.
+</p>
 
-  <p>
-    Schematically, one may treat the effective response context as
-  </p>
+<div class="mathbox">
 
-  <div class="mathbox">
+\[
+F(x)=F(x')
+\not\Rightarrow
+x=x'
+\]
 
-    \[
-    (x,\lambda)
-    \in
-    X\times\Lambda.
-    \]
+</div>
 
-  </div>
+<p>
+may hold while
+</p>
 
-  <p>
-    A law Passport records the law-context distinctions necessary for lawful
-    interpretation or continuation.
-  </p>
+<div class="mathbox">
 
-  <p>
-    Thus two identical state descriptions may still require different
-    responses if they belong to different active regimes.
-  </p>
+\[
+F(x)=F(x')
+\Rightarrow
+T(x)=T(x')
+\]
 
-</section>
+</div>
 
+<p>
+also holds.
+</p>
 
-
-<section>
-
-  <h2>19. Constraints</h2>
-
-  <p>
-    Let the admissible state set be
-  </p>
-
-  <div class="mathbox">
-
-    \[
-    K
-    \subseteq
-    X.
-    \]
-
-  </div>
-
-  <p>
-    A lawful response may require
-  </p>
-
-  <div class="mathbox">
-
-    \[
-    x\in K.
-    \]
-
-  </div>
-
-  <p>
-    Under evolution, viability may require
-  </p>
-
-  <div class="mathbox">
-
-    \[
-    \Phi_t(x)
-    \in
-    K
-    \qquad
-    \forall t
-    \text{ in the required interval}.
-    \]
-
-  </div>
-
-  <p>
-    Constraints therefore affect both the available state space and the
-    admissible continuation.
-  </p>
+<p>
+Thus full identifiability and task-relative recoverability must remain
+distinct.
+</p>
 
 </section>
 
@@ -1253,61 +838,31 @@
 
 <section>
 
-  <h2>20. Interventions</h2>
+<h2>13. Approximate Sufficiency</h2>
 
-  <p>
-    Let
-  </p>
+<p>
+Let \(d_W\) be a declared metric or discrepancy.
+</p>
 
-  <div class="mathbox">
+<p>
+An approximate task criterion may be
+</p>
 
-    \[
-    u
-    \in
-    U
-    \]
+<div class="mathbox">
 
-  </div>
+\[
+F(x)=F(x')
+\Longrightarrow
+d_W(T(x),T(x'))
+\le
+\varepsilon.
+\]
 
-  <p>
-    denote an intervention or control.
-  </p>
+</div>
 
-  <p>
-    A controlled evolution may be represented by
-  </p>
-
-  <div class="mathbox">
-
-    \[
-    \Phi_t:
-    X\times U
-    \longrightarrow
-    X.
-    \]
-
-  </div>
-
-  <p>
-    or more generally by
-  </p>
-
-  <div class="mathbox">
-
-    \[
-    \Phi_t^{(\lambda,u)}
-    \]
-
-  </div>
-
-  <p>
-    when both regime and intervention matter.
-  </p>
-
-  <p>
-    A representation that is sufficient without intervention may become
-    insufficient once interventions alter which distinctions matter.
-  </p>
+<p>
+The metric and tolerance are part of the mathematical specification.
+</p>
 
 </section>
 
@@ -1315,54 +870,42 @@
 
 <section>
 
-  <h2>21. Response Under Intervention</h2>
+<h2>14. Task Diameter</h2>
 
-  <p>
-    Suppose a task depends on both state and intervention:
-  </p>
+<p>
+A quantitative fibre diagnostic is
+</p>
 
-  <div class="mathbox">
+<div class="mathbox">
 
-    \[
-    T:
-    X\times U
-    \longrightarrow
-    W.
-    \]
+\[
+\boxed{
+D_{F,T}(z)
+=
+\sup_{
+x,x'\in F^{-1}(z)
+}
+d_W
+\left(
+T(x),
+T(x')
+\right).
+}
+\]
 
-  </div>
+</div>
 
-  <p>
-    If only \(r(x)\) is retained, exact intervention-aware sufficiency requires
-    a map
-  </p>
+<p>
+Exact sufficiency gives
+</p>
 
-  <div class="mathbox">
+<div class="mathbox">
 
-    \[
-    \widetilde T:
-    Y\times U
-    \longrightarrow
-    W
-    \]
+\[
+D_{F,T}(z)=0.
+\]
 
-  </div>
-
-  <p>
-    such that
-  </p>
-
-  <div class="mathbox">
-
-    \[
-    \boxed{
-    T(x,u)
-    =
-    \widetilde T(r(x),u)
-    }.
-    \]
-
-  </div>
+</div>
 
 </section>
 
@@ -1370,50 +913,24 @@
 
 <section>
 
-  <h2>22. Obstruction</h2>
+<h2>15. Obstruction</h2>
 
-  <p>
-    An obstruction occurs when the currently retained information does not
-    determine the response required by the task.
-  </p>
+<p>
+A response obstruction occurs when retained information merges states that a
+required task must distinguish.
+</p>
 
-  <p>
-    For an observation value \(y\), define the task image of its fibre:
-  </p>
+<div class="mathbox">
 
-  <div class="mathbox">
+\[
+\boxed{
+F(x)=F(x')
+\quad\text{but}\quad
+T(x)\neq T(x').
+}
+\]
 
-    \[
-    T(r^{-1}(y))
-    =
-    \left\{
-    T(x):
-    x\in r^{-1}(y)
-    \right\}.
-    \]
-
-  </div>
-
-  <p>
-    Exact recovery fails whenever
-  </p>
-
-  <div class="mathbox">
-
-    \[
-    \left|
-    T(r^{-1}(y))
-    \right|
-    >
-    1.
-    \]
-
-  </div>
-
-  <p>
-    The spread of possible task values inside one observational fibre is a
-    direct mathematical signature of task obstruction.
-  </p>
+</div>
 
 </section>
 
@@ -1421,74 +938,55 @@
 
 <section>
 
-  <h2>23. Repair</h2>
+<h2>16. Repair</h2>
 
-  <p>
-    Repair introduces additional information sufficient to eliminate an
-    identified obstruction.
-  </p>
+<p>
+Introduce additional information
+</p>
 
-  <p>
-    Suppose an additional observation is
-  </p>
+<div class="mathbox">
 
-  <div class="mathbox">
+\[
+q:
+X
+\longrightarrow
+Q.
+\]
 
-    \[
-    q:
-    X
-    \longrightarrow
-    Z.
-    \]
+</div>
 
-  </div>
+<p>
+The repaired carrier is
+</p>
 
-  <p>
-    The repaired observation becomes
-  </p>
+<div class="mathbox">
 
-  <div class="mathbox">
+\[
+(F,q):
+X
+\longrightarrow
+Z\times Q.
+\]
 
-    \[
-    (r,q):
-    X
-    \longrightarrow
-    Y\times Z.
-    \]
+</div>
 
-  </div>
+<p>
+Repair succeeds when
+</p>
 
-  <p>
-    Repair succeeds for task \(T\) when
-  </p>
+<div class="mathbox">
 
-  <div class="mathbox">
+\[
+\boxed{
+(F,q)(x)
+=
+(F,q)(x')
+\Longrightarrow
+T(x)=T(x').
+}
+\]
 
-    \[
-    (r,q)(x)
-    =
-    (r,q)(x')
-    \]
-
-    \[
-    \Longrightarrow
-    \]
-
-    \[
-    T(x)
-    =
-    T(x').
-    \]
-
-  </div>
-
-  <p>
-    Thus repair does not require reconstructing every lost detail.
-  </p>
-
-  <p>
-    It requires restoring enough information for the task.
-  </p>
+</div>
 
 </section>
 
@@ -1496,45 +994,35 @@
 
 <section>
 
-  <h2>24. Minimal Repair Question</h2>
+<h2>17. Minimal Repair</h2>
 
-  <p>
-    A natural optimization problem is to seek the smallest additional
-    information that restores task sufficiency.
-  </p>
+<p>
+If observation has an information or implementation cost,
+minimal repair may be written
+</p>
 
-  <p>
-    Schematically:
-  </p>
+<div class="mathbox">
 
-  <div class="mathbox">
+\[
+\boxed{
+\min_q
+\operatorname{Cost}(q)
+}
+\]
 
-    \[
-    \boxed{
-    \min_q
-    \operatorname{Cost}(q)
-    }
-    \]
+\[
+\text{subject to}
+\]
 
-    \[
-    \text{subject to}
-    \]
+\[
+T
+=
+\widetilde T
+\circ
+(F,q).
+\]
 
-    \[
-    T
-    =
-    \widetilde T
-    \circ
-    (r,q).
-    \]
-
-  </div>
-
-  <p>
-    The cost may represent dimension, bandwidth, number of measurements,
-    computational complexity, energy, storage, experimental effort, or
-    another domain-specific quantity.
-  </p>
+</div>
 
 </section>
 
@@ -1542,56 +1030,47 @@
 
 <section>
 
-  <h2>25. Serial Information Loss</h2>
+<h2>18. Continuation</h2>
 
-  <p>
-    Suppose information passes through
-  </p>
+<p>
+Let
+</p>
 
-  <div class="mathbox">
+<div class="mathbox">
 
-    \[
-    X
-    \xrightarrow{r}
-    Y
-    \xrightarrow{s}
-    Z.
-    \]
+\[
+\Phi_t:
+X
+\longrightarrow
+X
+\]
 
-  </div>
+</div>
 
-  <p>
-    If
-  </p>
+<p>
+describe evolution.
+</p>
 
-  <div class="mathbox">
+<p>
+Present information remains sufficient for future task \(T\) when
+</p>
 
-    \[
-    r(x)
-    =
-    r(x'),
-    \]
+<div class="mathbox">
 
-  </div>
+\[
+\boxed{
+T\circ\Phi_t
+=
+\widetilde T_t
+\circ F.
+}
+\]
 
-  <p>
-    then necessarily
-  </p>
+</div>
 
-  <div class="mathbox">
-
-    \[
-    s(r(x))
-    =
-    s(r(x')).
-    \]
-
-  </div>
-
-  <p>
-    A deterministic downstream transformation cannot distinguish states that
-    an upstream deterministic transformation has already merged.
-  </p>
+<p>
+A representation may therefore be sufficient now and insufficient later.
+</p>
 
 </section>
 
@@ -1599,61 +1078,59 @@
 
 <section>
 
-  <h2>26. Parallel Information Gain</h2>
+<h2>19. Regime and Law Passport</h2>
 
-  <p>
-    If two observations are available,
-  </p>
+<p>
+Let
+</p>
 
-  <div class="mathbox">
+<div class="mathbox">
 
-    \[
-    r:
-    X\longrightarrow Y,
-    \]
+\[
+\lambda
+\in
+\Lambda
+\]
 
-    \[
-    q:
-    X\longrightarrow Z,
-    \]
+</div>
 
-  </div>
+<p>
+denote the active regime.
+</p>
 
-  <p>
-    then the joint observation is
-  </p>
+<p>
+A regime-dependent response may be
+</p>
 
-  <div class="mathbox">
+<div class="mathbox">
 
-    \[
-    (r,q):
-    X
-    \longrightarrow
-    Y\times Z.
-    \]
+\[
+\mathfrak R_\lambda:
+X
+\longrightarrow
+Y.
+\]
 
-  </div>
+</div>
 
-  <p>
-    Its fibre satisfies
-  </p>
+<p>
+When future response depends on both state and active law,
+the effective state may need to be
+</p>
 
-  <div class="mathbox">
+<div class="mathbox">
 
-    \[
-    (r,q)^{-1}(y,z)
-    =
-    r^{-1}(y)
-    \cap
-    q^{-1}(z).
-    \]
+\[
+(x,\lambda)
+\in
+X\times\Lambda.
+\]
 
-  </div>
+</div>
 
-  <p>
-    Joint observation can therefore refine the candidate state set and remove
-    an obstruction that neither observation removes individually.
-  </p>
+<p>
+This is the role of the law Passport.
+</p>
 
 </section>
 
@@ -1661,47 +1138,43 @@
 
 <section>
 
-  <h2>27. Joint Feasibility</h2>
+<h2>20. Intervention</h2>
 
-  <p>
-    Suppose task \(c\) admits a feasible set
-  </p>
+<p>
+For intervention or control \(u\in U\),
+a controlled response may be
+</p>
 
-  <div class="mathbox">
+<div class="mathbox">
 
-    \[
-    P_c
-    \subseteq
-    X.
-    \]
+\[
+\mathfrak R:
+X\times U
+\longrightarrow
+Y.
+\]
 
-  </div>
+</div>
 
-  <p>
-    Solving every task separately does not automatically establish that one
-    common state solves them all.
-  </p>
+<p>
+or controlled evolution may be
+</p>
 
-  <p>
-    Joint feasibility requires
-  </p>
+<div class="mathbox">
 
-  <div class="mathbox">
+\[
+\Phi_t:
+X\times U
+\longrightarrow
+X.
+\]
 
-    \[
-    \boxed{
-    \bigcap_{c\in\mathcal C}
-    P_c
-    \neq
-    \varnothing
-    }.
-    \]
+</div>
 
-  </div>
-
-  <p>
-    This is the difference between separate witnesses and one shared witness.
-  </p>
+<p>
+Task sufficiency must then be checked relative to the intervention family
+actually allowed.
+</p>
 
 </section>
 
@@ -1709,46 +1182,29 @@
 
 <section>
 
-  <h2>28. Coupling and Witness Reuse</h2>
+<h2>21. Joint Feasibility</h2>
 
-  <p>
-    In many systems, separate marginal possibilities do not determine a valid
-    joint realization.
-  </p>
+<p>
+If multiple requirements define feasible sets \(P_c\subseteq X\),
+joint feasibility requires
+</p>
 
-  <p>
-    If two outputs have admissible marginals
-  </p>
+<div class="mathbox">
 
-  <div class="mathbox">
+\[
+\boxed{
+\bigcap_{c\in\mathcal C}
+P_c
+\neq
+\varnothing.
+}
+\]
 
-    \[
-    \mu
-    \quad\text{and}\quad
-    \nu,
-    \]
+</div>
 
-  </div>
-
-  <p>
-    a joint law requires a coupling
-  </p>
-
-  <div class="mathbox">
-
-    \[
-    \gamma
-    \in
-    \Gamma(\mu,\nu).
-    \]
-
-  </div>
-
-  <p>
-    GURF therefore requires explicit attention to whether different tasks are
-    allowed to use different witnesses or require one compatible joint
-    realization.
-  </p>
+<p>
+This is stronger than requiring each \(P_c\) to be individually nonempty.
+</p>
 
 </section>
 
@@ -1756,70 +1212,30 @@
 
 <section>
 
-  <h2>29. Stochastic Response</h2>
+<h2>22. Quantifier Firewall</h2>
 
-  <p>
-    A stochastic system may be represented by a Markov kernel
-  </p>
+<div class="warning">
 
-  <div class="mathbox">
+\[
+\forall c\,
+\exists x_c
+\]
 
-    \[
-    M:
-    X
-    \longrightarrow
-    \mathcal P(Y),
-    \]
+<p>
+does not generally imply
+</p>
 
-  </div>
+\[
+\exists x\,
+\forall c.
+\]
 
-  <p>
-    where \(\mathcal P(Y)\) is a space of probability measures on \(Y\).
-  </p>
+</div>
 
-  <p>
-    For a test function
-  </p>
-
-  <div class="mathbox">
-
-    \[
-    \varphi:
-    Y
-    \longrightarrow
-    \mathbb R,
-    \]
-
-  </div>
-
-  <p>
-    the induced expectation operator is
-  </p>
-
-  <div class="mathbox">
-
-    \[
-    \boxed{
-    M^\dagger\varphi(x)
-    =
-    \mathbb E[
-    \varphi(Y)
-    \mid
-    X=x
-    ]
-    }.
-    \]
-
-  </div>
-
-  <p>
-    Stochastic response semantics must remain probabilistic.
-  </p>
-
-  <p>
-    They cannot be silently replaced by deterministic equivalence unless the
-    required mathematical conditions are proved.
-  </p>
+<p>
+GURF preserves the distinction between separate witnesses and one common
+witness.
+</p>
 
 </section>
 
@@ -1827,51 +1243,45 @@
 
 <section>
 
-  <h2>30. Stochastic Task Sufficiency</h2>
+<h2>23. Stochastic Response</h2>
 
-  <p>
-    Suppose a task depends only on the response distribution produced by
-    \(M\).
-  </p>
+<p>
+A stochastic response may be represented by a Markov kernel
+</p>
 
-  <p>
-    Observation \(r\) is sufficient for that stochastic response when there
-    exists a kernel
-  </p>
+<div class="mathbox">
 
-  <div class="mathbox">
+\[
+M:
+X
+\longrightarrow
+\mathcal P(Y).
+\]
 
-    \[
-    \widetilde M:
-    Y
-    \longrightarrow
-    \mathcal P(Z)
-    \]
+</div>
 
-  </div>
+<p>
+For test function \(\varphi\),
+</p>
 
-  <p>
-    such that
-  </p>
+<div class="mathbox">
 
-  <div class="mathbox">
+\[
+\boxed{
+M^\dagger\varphi(x)
+=
+\mathbb E[
+\varphi(Y)\mid X=x
+].
+}
+\]
 
-    \[
-    \boxed{
-    M
-    =
-    \widetilde M
-    \circ
-    r
-    }.
-    \]
+</div>
 
-  </div>
-
-  <p>
-    Informally, states merged by \(r\) must induce the same task-relevant
-    response law.
-  </p>
+<p>
+Equality of deterministic outputs must not be substituted automatically for
+equality of probability laws.
+</p>
 
 </section>
 
@@ -1879,83 +1289,53 @@
 
 <section>
 
-  <h2>31. Nondeterministic Response</h2>
+<h2>24. Nondeterministic Response</h2>
 
-  <p>
-    A nondeterministic response relation may be written
-  </p>
+<p>
+A nondeterministic response may be
+</p>
 
-  <div class="mathbox">
+<div class="mathbox">
 
-    \[
-    R
-    \subseteq
-    X\times Y.
-    \]
+\[
+R
+\subseteq
+X\times Y.
+\]
 
-  </div>
+</div>
 
-  <p>
-    For a target set
-  </p>
+<p>
+Existential response:
+</p>
 
-  <div class="mathbox">
+<div class="mathbox">
 
-    \[
-    U
-    \subseteq
-    Y,
-    \]
+\[
+\Diamond_R(U)
+=
+\{x:\exists y\in U,\ xRy\}.
+\]
 
-  </div>
+</div>
 
-  <p>
-    existential reachability is
-  </p>
+<p>
+Universal response:
+</p>
 
-  <div class="mathbox">
+<div class="mathbox">
 
-    \[
-    \Diamond_R(U)
-    =
-    \left\{
-    x:
-    \exists y\in U
-    \text{ with }
-    xRy
-    \right\}.
-    \]
+\[
+\Box_R(U)
+=
+\{x:\forall y,\ xRy\Rightarrow y\in U\}.
+\]
 
-  </div>
+</div>
 
-  <p>
-    Universal safety is
-  </p>
-
-  <div class="mathbox">
-
-    \[
-    \Box_R(U)
-    =
-    \left\{
-    x:
-    \forall y,\,
-    xRy
-    \Rightarrow
-    y\in U
-    \right\}.
-    \]
-
-  </div>
-
-  <p>
-    These are mathematically different requirements.
-  </p>
-
-  <p>
-    GURF therefore requires explicit existential, universal, path, witness,
-    or strategy quantifiers whenever nondeterministic semantics are present.
-  </p>
+<p>
+These have different semantics and cannot be merged.
+</p>
 
 </section>
 
@@ -1963,60 +1343,54 @@
 
 <section>
 
-  <h2>32. Operation Order</h2>
+<h2>25. Serial Information Loss</h2>
 
-  <p>
-    Operations that look individually reasonable may fail to commute.
-  </p>
+<p>
+For
+</p>
 
-  <p>
-    If
-  </p>
+<div class="mathbox">
 
-  <div class="mathbox">
+\[
+X
+\xrightarrow{F}
+Y
+\xrightarrow{G}
+Z,
+\]
 
-    \[
-    F:X\longrightarrow Y
-    \]
+</div>
 
-  </div>
+<p>
+if
+</p>
 
-  <p>
-    and
-  </p>
+<div class="mathbox">
 
-  <div class="mathbox">
+\[
+F(x)=F(x'),
+\]
 
-    \[
-    G:X\longrightarrow Z,
-    \]
+</div>
 
-  </div>
+<p>
+then necessarily
+</p>
 
-  <p>
-    then performing transformations in different orders may produce
-    mathematically different results:
-  </p>
+<div class="mathbox">
 
-  <div class="mathbox">
+\[
+(G\circ F)(x)
+=
+(G\circ F)(x').
+\]
 
-    \[
-    F\circ G
-    \neq
-    G\circ F
-    \]
+</div>
 
-  </div>
-
-  <p>
-    whenever both compositions are meaningful but noncommuting.
-  </p>
-
-  <p>
-    In applied work this becomes important for operations such as filtering,
-    differentiation, localization, reconstruction, coarse-graining,
-    projection, intervention, and evolution.
-  </p>
+<p>
+A deterministic downstream map cannot recover a distinction already erased
+upstream unless new information enters.
+</p>
 
 </section>
 
@@ -2024,71 +1398,59 @@
 
 <section>
 
-  <h2>33. Information Before and After an Operation</h2>
+<h2>26. Parallel Refinement</h2>
 
-  <p>
-    Suppose
-  </p>
+<p>
+For
+</p>
 
-  <div class="mathbox">
+<div class="mathbox">
 
-    \[
-    F:
-    X
-    \longrightarrow
-    Y.
-    \]
+\[
+F:
+X\to Y,
+\qquad
+G:
+X\to Z,
+\]
 
-  </div>
+</div>
 
-  <p>
-    An operation changes the available distinction structure from that of
-    \(X\) to that induced by \(F\).
-  </p>
+<p>
+the joint observation is
+</p>
 
-  <p>
-    A later task
-  </p>
+<div class="mathbox">
 
-  <div class="mathbox">
+\[
+F\parallel G
+=
+(F,G).
+\]
 
-    \[
-    T:
-    X
-    \longrightarrow
-    W
-    \]
+</div>
 
-  </div>
+<p>
+Its fibre is
+</p>
 
-  <p>
-    survives the operation only when
-  </p>
+<div class="mathbox">
 
-  <div class="mathbox">
+\[
+\boxed{
+[x]_{F\parallel G}
+=
+[x]_F
+\cap
+[x]_G.
+}
+\]
 
-    \[
-    F(x)
-    =
-    F(x')
-    \]
+</div>
 
-    \[
-    \Longrightarrow
-    \]
-
-    \[
-    T(x)
-    =
-    T(x').
-    \]
-
-  </div>
-
-  <p>
-    This is the central information-preservation test repeated throughout
-    GURF.
-  </p>
+<p>
+Parallel observation can therefore refine ambiguity.
+</p>
 
 </section>
 
@@ -2096,49 +1458,28 @@
 
 <section>
 
-  <h2>34. Response Equivalence</h2>
+<h2>27. Core Versus Extensions</h2>
 
-  <p>
-    Two states may be considered equivalent relative to a task when they
-    produce the same required response.
-  </p>
+<div class="mathbox">
 
-  <p>
-    Define
-  </p>
+\[
+\boxed{
+\text{Core asks what response information exists and what it supports.}
+}
+\]
 
-  <div class="mathbox">
+</div>
 
-    \[
-    x
-    \sim_T
-    x'
-    \quad\Longleftrightarrow\quad
-    T(x)
-    =
-    T(x').
-    \]
+<div class="mathbox">
 
-  </div>
+\[
+\boxed{
+\text{Extensions answer specialized questions about how that
+response system operates.}
+}
+\]
 
-  <p>
-    Observation \(r\) is sufficient for \(T\) exactly when
-  </p>
-
-  <div class="mathbox">
-
-    \[
-    \sim_r
-    \;\subseteq\;
-    \sim_T.
-    \]
-
-  </div>
-
-  <p>
-    In words: whenever the observation identifies two states, the task must
-    also identify them.
-  </p>
+</div>
 
 </section>
 
@@ -2146,44 +1487,31 @@
 
 <section>
 
-  <h2>35. Refinement Ordering</h2>
+<h2>28. SOE — Typed Operations and Composition</h2>
 
-  <p>
-    Suppose observations \(r_1\) and \(r_2\) induce equivalence relations
-  </p>
+<div class="extension">
 
-  <div class="mathbox">
+<p>
+<strong>Status:</strong> stable canonical GURF extension.
+</p>
 
-    \[
-    \sim_{r_1}
-    \quad\text{and}\quad
-    \sim_{r_2}.
-    \]
+<p>
+SOE controls lawful operations performed on response systems.
+</p>
 
-  </div>
+<p>
+Its role includes:
+</p>
 
-  <p>
-    If
-  </p>
+<div class="statusbox">
 
-  <div class="mathbox">
+typing · operation order · composition · localization · filtering ·
+differentiation · reconstruction · intervention · handoff · rebinding ·
+feedback discipline
 
-    \[
-    \sim_{r_1}
-    \subseteq
-    \sim_{r_2},
-    \]
+</div>
 
-  </div>
-
-  <p>
-    then \(r_1\) preserves at least as many distinctions as \(r_2\).
-  </p>
-
-  <p>
-    This gives a natural information-refinement ordering between
-    representations.
-  </p>
+</div>
 
 </section>
 
@@ -2191,60 +1519,36 @@
 
 <section>
 
-  <h2>36. Exact Reconstruction Is Stronger Than Task Sufficiency</h2>
+<h2>29. SOE Operation Contract</h2>
 
-  <p>
-    Full state reconstruction requires the observation to distinguish every
-    task-relevant state uniquely.
-  </p>
+<p>
+A general operation may have form
+</p>
 
-  <p>
-    Exact reconstruction may require
-  </p>
+<div class="mathbox">
 
-  <div class="mathbox">
+\[
+O:
+D_O
+\subseteq
+X_1\times\cdots\times X_n
+\longrightarrow
+Y.
+\]
 
-    \[
-    r(x)=r(x')
-    \Longrightarrow
-    x=x'.
-    \]
+</div>
 
-  </div>
+<p>
+SOE requires at least:
+</p>
 
-  <p>
-    Task sufficiency requires only
-  </p>
+<div class="statusbox">
 
-  <div class="mathbox">
+input type · output type · admissible domain · active regime ·
+required information · preserved information · operation order ·
+failure conditions
 
-    \[
-    r(x)=r(x')
-    \Longrightarrow
-    T(x)=T(x').
-    \]
-
-  </div>
-
-  <p>
-    Therefore:
-  </p>
-
-  <div class="mathbox">
-
-    \[
-    \boxed{
-    \text{state reconstruction}
-    \;\Longrightarrow\;
-    \text{task sufficiency}
-    }
-    \]
-
-  </div>
-
-  <p>
-    but the converse need not hold.
-  </p>
+</div>
 
 </section>
 
@@ -2252,65 +1556,41 @@
 
 <section>
 
-  <h2>37. GURF and Compression</h2>
+<h2>30. SOE Composition Domain</h2>
 
-  <p>
-    Let
-  </p>
+<p>
+For
+</p>
 
-  <div class="mathbox">
+<div class="mathbox">
 
-    \[
-    C:
-    X
-    \longrightarrow
-    Z
-    \]
+\[
+F:X\to Y,
+\qquad
+G:D_G\subseteq Y\to Z,
+\]
 
-  </div>
+</div>
 
-  <p>
-    be a compression.
-  </p>
+<p>
+the actual composite domain is
+</p>
 
-  <p>
-    Compression is acceptable for task \(T\) when
-  </p>
+<div class="mathbox">
 
-  <div class="mathbox">
+\[
+\boxed{
+D_{G\circ F}
+=
+\{x\in D_F:F(x)\in D_G\}.
+}
+\]
 
-    \[
-    \exists
-    \widetilde T:
-    Z\longrightarrow W
-    \]
+</div>
 
-  </div>
-
-  <p>
-    such that
-  </p>
-
-  <div class="mathbox">
-
-    \[
-    T
-    =
-    \widetilde T
-    \circ
-    C.
-    \]
-
-  </div>
-
-  <p>
-    Thus GURF does not ask whether compression loses information in the
-    absolute sense.
-  </p>
-
-  <p>
-    It asks whether compression loses information required by the task.
-  </p>
+<p>
+Codomain matching alone does not prove admissibility.
+</p>
 
 </section>
 
@@ -2318,72 +1598,42 @@
 
 <section>
 
-  <h2>38. GURF and Model Reduction</h2>
+<h2>31. SOE Operation Order</h2>
 
-  <p>
-    Suppose a high-dimensional state
-  </p>
+<p>
+SOE does not assume
+</p>
 
-  <div class="mathbox">
+<div class="mathbox">
 
-    \[
-    x\in X
-    \]
+\[
+F\circ G
+=
+G\circ F.
+\]
 
-  </div>
+</div>
 
-  <p>
-    is reduced to
-  </p>
+<p>
+For many response problems:
+</p>
 
-  <div class="mathbox">
+<div class="mathbox">
 
-    \[
-    z
-    =
-    R(x)
-    \in
-    Z.
-    \]
+\[
+\boxed{
+F\circ G
+\neq
+G\circ F.
+}
+\]
 
-  </div>
+</div>
 
-  <p>
-    A reduced evolution
-  </p>
-
-  <div class="mathbox">
-
-    \[
-    \widetilde\Phi_t:
-    Z
-    \longrightarrow
-    Z
-    \]
-
-  </div>
-
-  <p>
-    is dynamically compatible when
-  </p>
-
-  <div class="mathbox">
-
-    \[
-    \boxed{
-    R\circ\Phi_t
-    =
-    \widetilde\Phi_t
-    \circ R
-    }.
-    \]
-
-  </div>
-
-  <p>
-    Exact commutation may be relaxed only when the approximation criterion is
-    stated explicitly.
-  </p>
+<p>
+This is important for filtering, differentiation, localization,
+projection, reconstruction, intervention, and coarse-graining.
+</p>
 
 </section>
 
@@ -2391,59 +1641,38 @@
 
 <section>
 
-  <h2>39. Dynamic Closure</h2>
+<h2>32. SOE Parallel and Serial Algebra</h2>
 
-  <p>
-    A reduced representation is dynamically closed when its future evolution
-    can be determined from the reduced state itself.
-  </p>
+<p>
+Parallel composition retains both outputs:
+</p>
 
-  <p>
-    If
-  </p>
+<div class="mathbox">
 
-  <div class="mathbox">
+\[
+F\parallel G
+=
+(F,G).
+\]
 
-    \[
-    z
-    =
-    R(x),
-    \]
+</div>
 
-  </div>
+<p>
+Serial composition propagates through:
+</p>
 
-  <p>
-    dynamic closure requires an evolution law
-  </p>
+<div class="mathbox">
 
-  <div class="mathbox">
+\[
+G\circ F.
+\]
 
-    \[
-    \widetilde\Phi_t(z)
-    \]
+</div>
 
-  </div>
-
-  <p>
-    independent of which underlying state in
-  </p>
-
-  <div class="mathbox">
-
-    \[
-    R^{-1}(z)
-    \]
-
-  </div>
-
-  <p>
-    produced the reduced state.
-  </p>
-
-  <p>
-    If different hidden states with the same reduced state evolve into
-    different task-relevant futures, closure fails.
-  </p>
+<p>
+Unrestricted distributivity between serial and parallel operations is not
+assumed.
+</p>
 
 </section>
 
@@ -2451,78 +1680,31 @@
 
 <section>
 
-  <h2>40. Obstruction as Fibre Spread</h2>
+<h2>33. SOE Product-Separable Compatibility</h2>
 
-  <p>
-    For numerical task space \(W\), the ambiguity inside a fibre may be
-    quantified.
-  </p>
+<p>
+A valid product-separable relation is
+</p>
 
-  <p>
-    For a metric \(d_W\), define the task diameter
-  </p>
+<div class="mathbox">
 
-  <div class="mathbox">
+\[
+\boxed{
+(T_Y\times T_Z)
+\circ
+(F\parallel G)
+=
+(T_Y\circ F)
+\parallel
+(T_Z\circ G).
+}
+\]
 
-    \[
-    \operatorname{diam}_T
-    \left(
-    r^{-1}(y)
-    \right)
-    =
-    \sup_{
-      x,x'
-      \in
-      r^{-1}(y)
-    }
-    d_W
-    \left(
-    T(x),
-    T(x')
-    \right).
-    \]
+</div>
 
-  </div>
-
-  <p>
-    Exact sufficiency corresponds to
-  </p>
-
-  <div class="mathbox">
-
-    \[
-    \operatorname{diam}_T
-    \left(
-    r^{-1}(y)
-    \right)
-    =
-    0.
-    \]
-
-  </div>
-
-  <p>
-    Approximate sufficiency may require
-  </p>
-
-  <div class="mathbox">
-
-    \[
-    \operatorname{diam}_T
-    \left(
-    r^{-1}(y)
-    \right)
-    \le
-    \varepsilon.
-    \]
-
-  </div>
-
-  <p>
-    Quantities such as this are natural candidates for future MATLAB-style
-    visualizations because they can be plotted across state, parameter, or
-    regime space.
-  </p>
+<p>
+This is narrower than unrestricted distributivity.
+</p>
 
 </section>
 
@@ -2530,53 +1712,34 @@
 
 <section>
 
-  <h2>41. Response Surfaces</h2>
+<h2>34. SOE Adaptive Systems</h2>
 
-  <p>
-    When a response is numerical and depends on parameters, GURF can study a
-    response surface
-  </p>
+<p>
+If an adaptive policy is frozen and recorded,
+one may write
+</p>
 
-  <div class="mathbox">
+<div class="mathbox">
 
-    \[
-    R:
-    \Theta
-    \longrightarrow
-    \mathbb R^m,
-    \]
+\[
+A(x)
+=
+\left(
+F(x),
+G_{F(x)}(x)
+\right).
+\]
 
-  </div>
+</div>
 
-  <p>
-    where
-  </p>
+<p>
+General feedback reduces to an ordinary function only when the resulting
+closed-loop response is single-valued.
+</p>
 
-  <div class="mathbox">
-
-    \[
-    \theta
-    \in
-    \Theta
-    \]
-
-  </div>
-
-  <p>
-    contains parameters, interventions, initial conditions, or regime values.
-  </p>
-
-  <p>
-    Scientific figures may then show:
-  </p>
-
-  <div class="card">
-
-    response magnitude · sensitivity · stability boundaries · bifurcations ·
-    uncertainty · fibre diameter · repair cost · regime transitions ·
-    continuation failure
-
-  </div>
+<p>
+Otherwise stochastic or set-valued semantics are required.
+</p>
 
 </section>
 
@@ -2584,58 +1747,31 @@
 
 <section>
 
-  <h2>42. Sensitivity</h2>
+<h2>35. ACE — Admissibility and Constraint Structure</h2>
 
-  <p>
-    When a differentiable response
-  </p>
+<div class="extension">
 
-  <div class="mathbox">
+<p>
+<strong>Status:</strong> stable canonical GURF extension.
+</p>
 
-    \[
-    R:
-    \mathbb R^n
-    \longrightarrow
-    \mathbb R^m
-    \]
+<p>
+ACE governs mathematical admissibility and constraint-sensitive response.
+</p>
 
-  </div>
+<p>
+Its scope includes:
+</p>
 
-  <p>
-    is available, local sensitivity is encoded by the Jacobian
-  </p>
+<div class="statusbox">
 
-  <div class="mathbox">
+admissible state sets · hard constraints · soft constraints · convexity ·
+coercivity · viability · positivity · constraint activation ·
+stability gates · boundary conditions
 
-    \[
-    J_R(x)
-    =
-    \frac{\partial R}{\partial x}.
-    \]
+</div>
 
-  </div>
-
-  <p>
-    Directions in state space with large response derivatives may correspond
-    to distinctions that become especially important for prediction or
-    control.
-  </p>
-
-  <p>
-    Directions lying approximately in the kernel
-  </p>
-
-  <div class="mathbox">
-
-    \[
-    \ker J_R(x)
-    \]
-
-  </div>
-
-  <p>
-    may locally have little first-order effect on that particular response.
-  </p>
+</div>
 
 </section>
 
@@ -2643,35 +1779,30 @@
 
 <section>
 
-  <h2>43. Local Versus Global Sufficiency</h2>
+<h2>36. ACE Admissible Set</h2>
 
-  <p>
-    Local insensitivity does not automatically imply global equivalence.
-  </p>
+<p>
+Let
+</p>
 
-  <p>
-    Even when
-  </p>
+<div class="mathbox">
 
-  <div class="mathbox">
+\[
+\mathcal A
+\subseteq
+X
+\]
 
-    \[
-    J_R(x)v
-    =
-    0,
-    \]
+</div>
 
-  </div>
+<p>
+be the admissible state space.
+</p>
 
-  <p>
-    finite displacement along \(v\) may still alter the response through
-    higher-order terms or nonlinear structure.
-  </p>
-
-  <p>
-    Therefore local differential analysis and global fibre analysis must not
-    be confused.
-  </p>
+<p>
+A response theorem asserted over \(\mathcal A\) does not automatically extend
+to all of \(X\).
+</p>
 
 </section>
 
@@ -2679,59 +1810,38 @@
 
 <section>
 
-  <h2>44. Why Nonlinearity Matters</h2>
+<h2>37. ACE Constraint Intersection</h2>
 
-  <p>
-    Suppose
-  </p>
+<p>
+If constraints define
+</p>
 
-  <div class="mathbox">
+<div class="mathbox">
 
-    \[
-    R(x)
-    \]
+\[
+K_1,\ldots,K_m
+\subseteq
+X,
+\]
 
-  </div>
+</div>
 
-  <p>
-    is nonlinear.
-  </p>
+<p>
+then the simultaneously admissible state set may be
+</p>
 
-  <p>
-    Then
-  </p>
+<div class="mathbox">
 
-  <div class="mathbox">
+\[
+\boxed{
+\mathcal A
+=
+\bigcap_{j=1}^{m}
+K_j.
+}
+\]
 
-    \[
-    R
-    \left(
-    \lambda x
-    +
-    (1-\lambda)y
-    \right)
-    \]
-
-  </div>
-
-  <p>
-    need not equal
-  </p>
-
-  <div class="mathbox">
-
-    \[
-    \lambda R(x)
-    +
-    (1-\lambda)R(y).
-    \]
-
-  </div>
-
-  <p>
-    Hence averaging, filtering, coarse-graining, or probabilistic mixing may
-    alter response structure in ways that are invisible to linear analysis.
-  </p>
+</div>
 
 </section>
 
@@ -2739,65 +1849,30 @@
 
 <section>
 
-  <h2>45. GURF as a Response Audit</h2>
+<h2>38. ACE Constraint Activation</h2>
 
-  <p>
-    A practical GURF analysis asks:
-  </p>
+<p>
+Some constraints are active only in particular regions or regimes.
+</p>
 
-  <div class="card">
+<p>
+One may represent an activation function by
+</p>
 
-    <p>
-      <strong>1. State:</strong>
-      What is the underlying mathematical state?
-    </p>
+<div class="mathbox">
 
-    <p>
-      <strong>2. Task:</strong>
-      What response must ultimately be determined?
-    </p>
+\[
+a_j:
+X\times\Lambda
+\longrightarrow
+\{0,1\}.
+\]
 
-    <p>
-      <strong>3. Observation:</strong>
-      What information is actually available?
-    </p>
+</div>
 
-    <p>
-      <strong>4. Fibre:</strong>
-      Which underlying states remain compatible with that information?
-    </p>
-
-    <p>
-      <strong>5. Sufficiency:</strong>
-      Is the task constant across the fibre?
-    </p>
-
-    <p>
-      <strong>6. Evolution:</strong>
-      Does sufficiency survive future dynamics?
-    </p>
-
-    <p>
-      <strong>7. Regime:</strong>
-      Which law context is active?
-    </p>
-
-    <p>
-      <strong>8. Intervention:</strong>
-      Can external action change which distinctions matter?
-    </p>
-
-    <p>
-      <strong>9. Obstruction:</strong>
-      Which unresolved distinctions block the response?
-    </p>
-
-    <p>
-      <strong>10. Repair:</strong>
-      What additional information removes that obstruction?
-    </p>
-
-  </div>
+<p>
+The effective constraint family then depends on state and regime.
+</p>
 
 </section>
 
@@ -2805,31 +1880,27 @@
 
 <section>
 
-  <h2>46. What GURF Does Not Do</h2>
+<h2>39. ACE Coercivity</h2>
 
-  <div class="warning">
+<p>
+For a functional \(E\), a coercive estimate may take form
+</p>
 
-    <p>
-      GURF does not make an invalid physical or mathematical model valid.
-    </p>
+<div class="mathbox">
 
-    <p>
-      It does not replace probability theory, control theory, dynamical
-      systems, PDE theory, information theory, geometry, statistics, or other
-      established mathematics.
-    </p>
+\[
+E(x)
+\ge
+c\|x\|^p-C,
+\qquad
+c>0.
+\]
 
-    <p>
-      It does not establish physical realizability merely because a response
-      relation can be written formally.
-    </p>
+</div>
 
-  </div>
-
-  <p>
-    The mathematical structures used in a GURF construction remain governed
-    by their native mathematics.
-  </p>
+<p>
+The precise norm, power, domain, and constants must be specified.
+</p>
 
 </section>
 
@@ -2837,51 +1908,34 @@
 
 <section>
 
-  <h2>47. Research Semantics Must Stay Distinct</h2>
+<h2>40. ACE Convexity</h2>
 
-  <p>
-    GURF distinguishes several mathematical situations that must not be
-    silently merged:
-  </p>
+<p>
+A functional \(E\) is convex on a convex admissible domain when
+</p>
 
-  <table>
+<div class="mathbox">
 
-    <tr>
-      <th>Semantic type</th>
-      <th>Representative structure</th>
-    </tr>
+\[
+E(
+\theta x+(1-\theta)y
+)
+\le
+\theta E(x)
++
+(1-\theta)E(y)
+\]
 
-    <tr>
-      <td>Deterministic</td>
-      <td>\(F:X\to Y\)</td>
-    </tr>
+</div>
 
-    <tr>
-      <td>Stochastic</td>
-      <td>\(M:X\to\mathcal P(Y)\)</td>
-    </tr>
+<p>
+for \(0\le\theta\le1\).
+</p>
 
-    <tr>
-      <td>Nondeterministic</td>
-      <td>\(R\subseteq X\times Y\)</td>
-    </tr>
-
-    <tr>
-      <td>Approximate</td>
-      <td>metric, divergence, tolerance, or error bound</td>
-    </tr>
-
-    <tr>
-      <td>Controlled</td>
-      <td>\(\Phi:X\times U\to X\)</td>
-    </tr>
-
-    <tr>
-      <td>Regime-dependent</td>
-      <td>\(\Phi^{(\lambda)}\)</td>
-    </tr>
-
-  </table>
+<p>
+Convexity can support optimization or existence arguments but does not by
+itself prove full physical stability.
+</p>
 
 </section>
 
@@ -2889,59 +1943,27 @@
 
 <section>
 
-  <h2>48. Current Mathematical Status</h2>
+<h2>41. ACE Static/Dynamic Firewall</h2>
 
-  <div class="statusbox">
+<div class="warning">
 
-    <h3>Framework status</h3>
+<p>
+Static positivity is not automatically:
+</p>
 
-    <p>
-      <strong>Active formal research framework.</strong>
-    </p>
+<div class="statusbox">
 
-    <p>
-      GURF is used as the response-specialized framework beneath the broader
-      Branch Mathematics architecture.
-    </p>
+hyperbolicity · dynamical stability · ghost freedom · gradient stability ·
+spectral stability · nonlinear global stability
 
-  </div>
+</div>
 
-  <div class="statusbox">
+</div>
 
-    <h3>Mathematical admissibility</h3>
-
-    <p>
-      Determined by direct derivation and the mathematics of the structures
-      involved.
-    </p>
-
-  </div>
-
-  <div class="statusbox">
-
-    <h3>External novelty</h3>
-
-    <p>
-      Must be evaluated separately from mathematical validity.
-    </p>
-
-    <p>
-      Individual components may overlap established mathematics even when
-      their organization inside GURF serves a broader response-analysis role.
-    </p>
-
-  </div>
-
-  <div class="statusbox">
-
-    <h3>Independent external validation</h3>
-
-    <p>
-      Not established merely by internal development, examples, or numerical
-      success.
-    </p>
-
-  </div>
+<p>
+ACE requires the claimed stability notion to match the actual mathematical
+test performed.
+</p>
 
 </section>
 
@@ -2949,35 +1971,29 @@
 
 <section>
 
-  <h2>49. Scientific Visualization Policy</h2>
+<h2>42. ACE Viability</h2>
 
-  <p>
-    GURF research pages will include quantitative scientific figures whenever
-    the equations produce meaningful numerical or geometric structure.
-  </p>
+<p>
+For admissible set \(K\subseteq X\),
+a trajectory is viable over interval \(I\) when
+</p>
 
-  <p>
-    Appropriate figures include:
-  </p>
+<div class="mathbox">
 
-  <div class="card">
+\[
+\Phi_t(x)
+\in
+K
+\qquad
+\forall t\in I.
+\]
 
-    response curves · state-space plots · phase portraits · parameter sweeps ·
-    error surfaces · fibre-diameter plots · stability boundaries · heatmaps ·
-    spectra · vector fields · sensitivity maps · convergence plots ·
-    uncertainty bands
+</div>
 
-  </div>
-
-  <p>
-    These figures will be used to expose mathematical behavior, not as
-    decoration.
-  </p>
-
-  <p>
-    Structural GURF and BM diagrams will be reconstructed separately before
-    being treated as canonical public figures.
-  </p>
+<p>
+A model that begins in the admissible set but exits it under evolution has
+failed a continuation gate.
+</p>
 
 </section>
 
@@ -2985,31 +2001,2417 @@
 
 <section>
 
-  <h2>50. Central GURF Principle</h2>
+<h2>43. IRE — Inference and Recovery</h2>
 
-  <p>
-    The central mathematical idea of GURF can be summarized as follows:
-  </p>
+<div class="extension">
 
-  <div class="mathbox">
+<p>
+<strong>Status:</strong> stable canonical GURF extension.
+</p>
 
-    \[
-    \boxed{
-    \text{A representation is adequate only relative to
-    the responses it must still support.}
-    }
-    \]
+<p>
+IRE is the current inference/recovery extension.
+</p>
 
-  </div>
+<p>
+Its scope includes:
+</p>
 
-  <p>
-    Losing information is therefore not automatically a failure.
-  </p>
+<div class="statusbox">
 
-  <p>
-    The failure occurs when a distinction required by the current or future
-    task is removed without a lawful way to reconstruct, replace, or repair it.
-  </p>
+inverse recovery · feasible fibres · ambiguity · task-relative
+identifiability · uncertainty · inverse certificates · reconstruction ·
+stability · inference complexity
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<section>
+
+<h2>44. IRE Historical Lineage</h2>
+
+<p>
+Earlier project material used <strong>GURE</strong> for much of the inverse
+recovery and feasible-fibre program.
+</p>
+
+<p>
+The current architecture consolidates that role under
+<strong>IRE</strong>.
+</p>
+
+<div class="mathbox">
+
+\[
+\boxed{
+\mathrm{GURE}
+\longrightarrow
+\mathrm{IRE}
+}
+\]
+
+</div>
+
+<p>
+GURE is therefore historical lineage rather than an additional active
+extension beside IRE.
+</p>
+
+</section>
+
+
+
+<section>
+
+<h2>45. IRE Feasible Inverse Set</h2>
+
+<p>
+For observation \(F:X\to Y\) and datum \(y\),
+the exact feasible set is
+</p>
+
+<div class="mathbox">
+
+\[
+\boxed{
+\mathcal C(y)
+=
+\{x\in\mathcal A:F(x)=y\}.
+}
+\]
+
+</div>
+
+<p>
+Inference should begin from the entire admissible compatible set rather than
+assuming one fitted estimate is automatically unique.
+</p>
+
+</section>
+
+
+
+<section>
+
+<h2>46. IRE Task-Relative Identifiability</h2>
+
+<p>
+Full state identifiability requires
+</p>
+
+<div class="mathbox">
+
+\[
+F(x)=F(x')
+\Longrightarrow
+x=x'.
+\]
+
+</div>
+
+<p>
+Task identifiability requires only
+</p>
+
+<div class="mathbox">
+
+\[
+F(x)=F(x')
+\Longrightarrow
+T(x)=T(x').
+\]
+
+</div>
+
+<p>
+IRE therefore distinguishes reconstruction of the entire source from recovery
+of a specific target.
+</p>
+
+</section>
+
+
+
+<section>
+
+<h2>47. IRE Stable Recovery</h2>
+
+<p>
+Exact uniqueness does not guarantee useful inversion.
+</p>
+
+<p>
+A stability condition may require a modulus
+\(\omega\) satisfying
+</p>
+
+<div class="mathbox">
+
+\[
+\boxed{
+d_X(x,x')
+\le
+\omega
+\left(
+d_Y(F(x),F(x'))
+\right).
+}
+\]
+
+</div>
+
+<p>
+The exact form depends on the inverse problem.
+</p>
+
+</section>
+
+
+
+<section>
+
+<h2>48. IRE Uncertainty Fibre</h2>
+
+<p>
+With observational tolerance \(\delta\),
+define
+</p>
+
+<div class="mathbox">
+
+\[
+\boxed{
+\mathcal C_\delta(y)
+=
+\{
+x\in\mathcal A:
+d_Y(F(x),y)\le\delta
+\}.
+}
+\]
+
+</div>
+
+<p>
+The target uncertainty set is
+</p>
+
+<div class="mathbox">
+
+\[
+T(
+\mathcal C_\delta(y)
+).
+\]
+
+</div>
+
+</section>
+
+
+
+<section>
+
+<h2>49. IRE Regularization Firewall</h2>
+
+<div class="warning">
+
+<p>
+A regularizer may select one solution from a broad feasible set.
+</p>
+
+<p>
+That does not prove that the observation itself uniquely identified the
+source.
+</p>
+
+</div>
+
+<div class="mathbox">
+
+\[
+\boxed{
+\text{unique optimizer}
+\neq
+\text{physical identifiability}.
+}
+\]
+
+</div>
+
+</section>
+
+
+
+<section>
+
+<h2>50. IRE Recovery Certificate</h2>
+
+<p>
+An inverse certificate should state what is actually certified.
+</p>
+
+<div class="statusbox">
+
+existence · uniqueness · task uniqueness · stability · uncertainty radius ·
+admissibility · computational approximation · model dependence
+
+</div>
+
+<p>
+Different certificate strengths must not be silently merged.
+</p>
+
+</section>
+
+
+
+<section>
+
+<h2>51. UKE — Unified Kernel Extension</h2>
+
+<div class="extension">
+
+<p>
+<strong>Status:</strong> stable canonical GURF extension.
+</p>
+
+<p>
+UKE contains advanced kernel-specific response mathematics.
+</p>
+
+<p>
+Kernels remain usable throughout GURF; UKE is not a quarantine that removes
+them from the Core.
+</p>
+
+</div>
+
+</section>
+
+
+
+<section>
+
+<h2>52. UKE Kernel Typing Firewall</h2>
+
+<p>
+The word <em>kernel</em> has multiple mathematical meanings.
+</p>
+
+<h3>Nullspace kernel</h3>
+
+<div class="mathbox">
+
+\[
+\ker F
+=
+\{x:F(x)=0\}.
+\]
+
+</div>
+
+<p>
+This describes invisible directions of a linear map.
+</p>
+
+<h3>Integral or operator kernel</h3>
+
+<div class="mathbox">
+
+\[
+(Tf)(x)
+=
+\int
+K(x,y)f(y)\,dy.
+\]
+
+</div>
+
+<p>
+These two meanings must remain typed separately.
+</p>
+
+</section>
+
+
+
+<section>
+
+<h2>53. UKE-N — Nullspace Sector</h2>
+
+<p>
+UKE-N covers:
+</p>
+
+<div class="statusbox">
+
+nullspaces · quotient spaces · generalized inverses · Fredholm structure ·
+nullspace stratification · hidden modes
+
+</div>
+
+<p>
+For a linear response map,
+</p>
+
+<div class="mathbox">
+
+\[
+[x]_F
+=
+x+\ker F.
+\]
+
+</div>
+
+</section>
+
+
+
+<section>
+
+<h2>54. UKE-I — Integral and Convolution Kernels</h2>
+
+<p>
+An integral response may be
+</p>
+
+<div class="mathbox">
+
+\[
+R(x)
+=
+\int
+K(x,y)s(y)\,dy.
+\]
+
+</div>
+
+<p>
+A translation-invariant special case may reduce to convolution:
+</p>
+
+<div class="mathbox">
+
+\[
+R
+=
+K*s.
+\]
+
+</div>
+
+</section>
+
+
+
+<section>
+
+<h2>55. UKE-G — Green and Causal Kernels</h2>
+
+<p>
+For operator \(L\), a Green function may satisfy
+</p>
+
+<div class="mathbox">
+
+\[
+L_xG(x,x')
+=
+\delta(x-x').
+\]
+
+</div>
+
+<p>
+The Green function is not complete without its boundary, causal, or
+distributional prescription.
+</p>
+
+</section>
+
+
+
+<section>
+
+<h2>56. UKE-S — Spectral and Resolvent Kernels</h2>
+
+<p>
+For operator \(L\), the resolvent is formally
+</p>
+
+<div class="mathbox">
+
+\[
+R(z)
+=
+(L-zI)^{-1}
+\]
+
+</div>
+
+<p>
+where defined.
+</p>
+
+<p>
+UKE-S tracks poles, spectra, transfer structure, spectral response and
+resolvent behavior.
+</p>
+
+</section>
+
+
+
+<section>
+
+<h2>57. UKE-RK — Reproducing Kernels</h2>
+
+<p>
+For reproducing-kernel Hilbert space \(\mathcal H\),
+a kernel may satisfy
+</p>
+
+<div class="mathbox">
+
+\[
+f(x)
+=
+\langle
+f,
+K_x
+\rangle_{\mathcal H}.
+\]
+
+</div>
+
+<p>
+Kernel-induced geometry may then become part of the response representation.
+</p>
+
+</section>
+
+
+
+<section>
+
+<h2>58. UKE-M — Memory and Nonlocal Response</h2>
+
+<p>
+A history-dependent response may take form
+</p>
+
+<div class="mathbox">
+
+\[
+R(t)
+=
+\int_{-\infty}^{t}
+K(t,s)x(s)\,ds.
+\]
+
+</div>
+
+<p>
+The present response can therefore depend on past system history rather than
+only the instantaneous state.
+</p>
+
+</section>
+
+
+
+<section>
+
+<h2>59. UKE Kernel Origin Firewall</h2>
+
+<div class="warning">
+
+<p>
+A mathematically convenient kernel is not automatically a physically derived
+response law.
+</p>
+
+</div>
+
+<div class="mathbox">
+
+\[
+\boxed{
+\text{chosen kernel}
+\neq
+\text{derived physical mechanism}.
+}
+\]
+
+</div>
+
+<p>
+Origin, domain, causality, boundary conditions, degrees of freedom, and
+admissibility must be established.
+</p>
+
+</section>
+
+
+
+<section>
+
+<h2>60. GRDE — Diagrammatic Response Extension</h2>
+
+<div class="extension">
+
+<p>
+<strong>Status:</strong> frozen at
+<code>GURF-GRDE-008</code>.
+</p>
+
+<p>
+GRDE is an optional response-structure representation calculus.
+</p>
+
+<p>
+Its recorded scope includes:
+</p>
+
+<div class="statusbox">
+
+response fibres and refinement · state versus carrier rails · writers ·
+response cuts and provenance · response fusion · higher-order or jet response
+information
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<section>
+
+<h2>61. GRDE Is Not a Separate Mathematical Field</h2>
+
+<p>
+GRDE represents response mathematics defined elsewhere.
+</p>
+
+<div class="mathbox">
+
+\[
+\boxed{
+\text{formal mathematics}
+\longrightarrow
+\text{GRDE representation}
+}
+\]
+
+</div>
+
+<p>
+The representation cannot substitute for the underlying theorem, equation,
+or admissibility proof.
+</p>
+
+</section>
+
+
+
+<section>
+
+<h2>62. GRDE Frozen Status</h2>
+
+<p>
+GRDE remains frozen at
+</p>
+
+<div class="mathbox">
+
+\[
+\boxed{
+\text{GURF-GRDE-008}.
+}
+\]
+
+</div>
+
+<p>
+Additional diagrammatic machinery should not be added casually while the
+frozen architecture is being reconstructed.
+</p>
+
+</section>
+
+
+
+<section>
+
+<h2>63. Public GRDE Diagram Policy</h2>
+
+<p>
+The public website does not currently reproduce the original formal GRDE or
+BM structural diagrams.
+</p>
+
+<div class="warning">
+
+<p>
+No substitute diagrams are being invented.
+</p>
+
+<p>
+Formal diagrams will be published after their mathematical relationships have
+been reconstructed and reviewed.
+</p>
+
+</div>
+
+</section>
+
+
+
+<section>
+
+<h2>64. HDE — Halo Domain Extension</h2>
+
+<div class="extension">
+
+<p>
+<strong>Status:</strong> active canonical GURF extension.
+</p>
+
+<p>
+HDE handles response problems in which the relevant response domain extends
+beyond a narrowly localized source or primary region.
+</p>
+
+<p>
+Its role is not restricted to one specific physical halo theory.
+</p>
+
+<p>
+The extension is used to study extended response support, domain propagation,
+halo-flow behavior, boundary transfer, retained response structure, and
+observation across an enlarged domain.
+</p>
+
+</div>
+
+</section>
+
+
+
+<section>
+
+<h2>65. HDE Domain Pair</h2>
+
+<p>
+A useful working abstraction distinguishes a primary response domain
+\(D\) from an extended response region \(H\).
+</p>
+
+<div class="mathbox">
+
+\[
+D
+\subseteq
+D_{\mathrm{ext}}
+\]
+
+</div>
+
+<p>
+with
+</p>
+
+<div class="mathbox">
+
+\[
+H
+=
+D_{\mathrm{ext}}
+\setminus D
+\]
+
+</div>
+
+<p>
+when such a set decomposition is appropriate.
+</p>
+
+<div class="warning">
+
+<p>
+This is a working formalization, not a universal definition requiring all
+HDE applications to use literal nested spatial sets.
+</p>
+
+</div>
+
+</section>
+
+
+
+<section>
+
+<h2>66. HDE Extended Response State</h2>
+
+<p>
+A response state may require both local and halo-domain information:
+</p>
+
+<div class="mathbox">
+
+\[
+x_{\mathrm{ext}}
+=
+(x_D,x_H).
+\]
+
+</div>
+
+<p>
+A task may depend on
+</p>
+
+<div class="mathbox">
+
+\[
+T(x_D,x_H)
+\]
+
+</div>
+
+<p>
+even if a local observation retains only \(x_D\).
+</p>
+
+<p>
+This produces a natural GURF continuation question:
+</p>
+
+<div class="mathbox">
+
+\[
+x_D=x_D'
+\quad\text{but}\quad
+T(x_D,x_H)
+\neq
+T(x_D',x_H').
+\]
+
+</div>
+
+</section>
+
+
+
+<section>
+
+<h2>67. HDE Halo-Information Loss</h2>
+
+<p>
+A local carrier
+</p>
+
+<div class="mathbox">
+
+\[
+P_D:
+X_D\times X_H
+\longrightarrow
+X_D
+\]
+
+</div>
+
+<p>
+forgets halo state.
+</p>
+
+<p>
+It is task-sufficient only if
+</p>
+
+<div class="mathbox">
+
+\[
+P_D(x)=P_D(x')
+\Longrightarrow
+T(x)=T(x').
+\]
+
+</div>
+
+<p>
+HDE therefore provides a natural extension of the Core fibre test to extended
+domains.
+</p>
+
+</section>
+
+
+
+<section>
+
+<h2>68. HDE Propagation</h2>
+
+<p>
+A local-to-halo response transfer may be represented by
+</p>
+
+<div class="mathbox">
+
+\[
+P_t:
+X_D
+\longrightarrow
+X_H
+\]
+
+</div>
+
+<p>
+or, when history matters,
+</p>
+
+<div class="mathbox">
+
+\[
+P:
+\mathcal H_D
+\longrightarrow
+X_H,
+\]
+
+</div>
+
+<p>
+where \(\mathcal H_D\) is an appropriate source-history space.
+</p>
+
+<p>
+The exact propagation law remains domain-specific.
+</p>
+
+</section>
+
+
+
+<section>
+
+<h2>69. HDE Persistence Question</h2>
+
+<p>
+A central HDE question is whether extended response information persists after
+the original local configuration changes.
+</p>
+
+<p>
+Abstractly, one may ask whether
+</p>
+
+<div class="mathbox">
+
+\[
+x_D(t_1)
+=
+x_D'(t_1)
+\]
+
+</div>
+
+<p>
+while
+</p>
+
+<div class="mathbox">
+
+\[
+x_H(t_1)
+\neq
+x_H'(t_1)
+\]
+
+</div>
+
+<p>
+because the two systems had different histories.
+</p>
+
+<p>
+This makes HDE naturally compatible with UKE-M memory analysis.
+</p>
+
+</section>
+
+
+
+<section>
+
+<h2>70. HDE Observation</h2>
+
+<p>
+Local and extended observations may differ:
+</p>
+
+<div class="mathbox">
+
+\[
+O_D:
+X_{\mathrm{ext}}
+\longrightarrow
+Y_D,
+\]
+
+</div>
+
+<div class="mathbox">
+
+\[
+O_H:
+X_{\mathrm{ext}}
+\longrightarrow
+Y_H.
+\]
+
+</div>
+
+<p>
+Their joint observation is
+</p>
+
+<div class="mathbox">
+
+\[
+(O_D,O_H):
+X_{\mathrm{ext}}
+\longrightarrow
+Y_D\times Y_H.
+\]
+
+</div>
+
+<p>
+Parallel refinement can therefore determine whether halo-domain information
+removes an ambiguity remaining under local observation.
+</p>
+
+</section>
+
+
+
+<section>
+
+<h2>71. GHSE — Glue-Hold State Extension</h2>
+
+<div class="extension">
+
+<p>
+<strong>Status:</strong> active canonical GURF extension.
+</p>
+
+<p>
+GHSE studies response states whose behavior depends on lawful joining,
+attachment, holding, persistence, release, or transition among coupled
+components.
+</p>
+
+<p>
+It provides a response-semantic home for glue/hold behavior without turning
+all attachment mathematics into GURF Core.
+</p>
+
+</div>
+
+</section>
+
+
+
+<section>
+
+<h2>72. GHSE Joined State</h2>
+
+<p>
+Suppose components have state spaces
+</p>
+
+<div class="mathbox">
+
+\[
+X_A,
+\qquad
+X_B.
+\]
+
+</div>
+
+<p>
+A joined state occupies an admissible subset
+</p>
+
+<div class="mathbox">
+
+\[
+\boxed{
+\mathcal H
+\subseteq
+X_A\times X_B.
+}
+\]
+
+</div>
+
+<p>
+Membership in \(\mathcal H\) represents satisfaction of the active glue/hold
+conditions.
+</p>
+
+</section>
+
+
+
+<section>
+
+<h2>73. GHSE Hold Predicate</h2>
+
+<p>
+A simple working hold predicate may be
+</p>
+
+<div class="mathbox">
+
+\[
+h:
+X_A\times X_B
+\longrightarrow
+\{0,1\}.
+\]
+
+</div>
+
+<p>
+with
+</p>
+
+<div class="mathbox">
+
+\[
+h(a,b)=1
+\]
+
+</div>
+
+<p>
+when the coupled state satisfies the declared hold condition.
+</p>
+
+<p>
+The actual hold criterion may instead be relational, probabilistic,
+inequality-defined, geometric, or dynamical.
+</p>
+
+</section>
+
+
+
+<section>
+
+<h2>74. GHSE Glue Operation</h2>
+
+<p>
+A working glue operation may be
+</p>
+
+<div class="mathbox">
+
+\[
+J:
+D_J
+\subseteq
+X_A\times X_B
+\longrightarrow
+X_{AB}.
+\]
+
+</div>
+
+<p>
+The operation is lawful only for admissible pairs.
+</p>
+
+<div class="mathbox">
+
+\[
+(a,b)
+\in
+D_J.
+\]
+
+</div>
+
+<p>
+GHSE does not treat arbitrary joining as admissible.
+</p>
+
+</section>
+
+
+
+<section>
+
+<h2>75. GHSE Hold Transition</h2>
+
+<p>
+Let
+</p>
+
+<div class="mathbox">
+
+\[
+s_t
+\in
+\{\text{free},\text{glued},\text{held},\text{released}\}
+\]
+
+</div>
+
+<p>
+be a schematic state label.
+</p>
+
+<p>
+A transition law may be represented as
+</p>
+
+<div class="mathbox">
+
+\[
+s_{t+1}
+=
+\Theta(s_t,x_t,u_t).
+\]
+
+</div>
+
+<div class="warning">
+
+<p>
+These labels are a working response-state formalization and not a claim that
+every GHSE realization is discrete.
+</p>
+
+</div>
+
+</section>
+
+
+
+<section>
+
+<h2>76. GHSE Persistence</h2>
+
+<p>
+A held state may persist while a hold condition remains satisfied:
+</p>
+
+<div class="mathbox">
+
+\[
+h(x(t))=1
+\quad
+\forall t\in[t_0,t_1].
+\]
+
+</div>
+
+<p>
+Loss of the condition may trigger release or transition.
+</p>
+
+<p>
+The native physical or mathematical theory determines the actual transition
+law.
+</p>
+
+</section>
+
+
+
+<section>
+
+<h2>77. GHSE and ACE</h2>
+
+<p>
+GHSE determines the response semantics of glue/hold states.
+</p>
+
+<p>
+ACE determines whether those states satisfy the necessary constraints.
+</p>
+
+<div class="mathbox">
+
+\[
+\boxed{
+\text{GHSE state}
++
+\text{ACE admissibility}
+\longrightarrow
+\text{lawful held response}.
+}
+\]
+
+</div>
+
+</section>
+
+
+
+<section>
+
+<h2>78. GHSE and HDE</h2>
+
+<p>
+A held or attached structure may generate an extended response domain.
+</p>
+
+<p>
+Conversely, halo-domain state may influence whether a glue/hold condition
+remains satisfied.
+</p>
+
+<div class="mathbox">
+
+\[
+\boxed{
+\mathrm{GHSE}
+\leftrightarrow
+\mathrm{HDE}
+}
+\]
+
+</div>
+
+<p>
+when the application genuinely contains both kinds of response semantics.
+</p>
+
+</section>
+
+
+
+<section>
+
+<h2>79. Cross-Extension Composition</h2>
+
+<p>
+Extensions may operate together without being collapsed into one extension.
+</p>
+
+<table>
+
+<tr>
+<th>Combination</th>
+<th>Typical question</th>
+</tr>
+
+<tr>
+<td>SOE + ACE</td>
+<td>
+Is this operation both correctly typed and admissible?
+</td>
+</tr>
+
+<tr>
+<td>IRE + UKE</td>
+<td>
+Can an inverse problem be recovered through a kernel-defined response?
+</td>
+</tr>
+
+<tr>
+<td>ACE + IRE</td>
+<td>
+How do constraints shrink the feasible inverse fibre?
+</td>
+</tr>
+
+<tr>
+<td>UKE + HDE</td>
+<td>
+Does a nonlocal or memory kernel propagate information into an extended domain?
+</td>
+</tr>
+
+<tr>
+<td>HDE + GHSE</td>
+<td>
+How does an extended response affect attachment, hold, persistence, or release?
+</td>
+</tr>
+
+<tr>
+<td>SOE + GHSE</td>
+<td>
+Is a glue/hold transition an admissible ordered operation?
+</td>
+</tr>
+
+</table>
+
+</section>
+
+
+
+<section>
+
+<h2>80. Extension Interface Contract</h2>
+
+<p>
+Let the Core system be
+</p>
+
+<div class="mathbox">
+
+\[
+\mathfrak G.
+\]
+
+</div>
+
+<p>
+An extension \(E\) should attach through a declared interface
+</p>
+
+<div class="mathbox">
+
+\[
+\iota_E:
+\mathfrak G
+\longrightarrow
+\mathfrak G_E
+\]
+
+</div>
+
+<p>
+without silently altering the meaning of the original Core objects.
+</p>
+
+<div class="mathbox">
+
+\[
+\boxed{
+\text{extension}
+\neq
+\text{unannounced Core mutation}.
+}
+\]
+
+</div>
+
+</section>
+
+
+
+<section>
+
+<h2>81. Extension Activation Rule</h2>
+
+<p>
+Not every problem should activate every extension.
+</p>
+
+<div class="mathbox">
+
+\[
+\boxed{
+\text{Use an extension only when its specialized response semantics
+are actually present.}
+}
+\]
+
+</div>
+
+<p>
+Examples:
+</p>
+
+<div class="grid">
+
+<div class="grid-card">
+<strong>SOE</strong>
+<p>Use when operation order or composition matters.</p>
+</div>
+
+<div class="grid-card">
+<strong>ACE</strong>
+<p>Use when admissibility or constraints matter.</p>
+</div>
+
+<div class="grid-card">
+<strong>IRE</strong>
+<p>Use when inference or inverse recovery matters.</p>
+</div>
+
+<div class="grid-card">
+<strong>UKE</strong>
+<p>Use when advanced kernel structure matters.</p>
+</div>
+
+<div class="grid-card">
+<strong>GRDE</strong>
+<p>Use when frozen diagrammatic response representation is useful.</p>
+</div>
+
+<div class="grid-card">
+<strong>HDE</strong>
+<p>Use when extended or halo response domains matter.</p>
+</div>
+
+<div class="grid-card">
+<strong>GHSE</strong>
+<p>Use when glue/hold state semantics matter.</p>
+</div>
+
+</div>
+
+</section>
+
+
+
+<section>
+
+<h2>82. Historical and Superseded Extension Lineage</h2>
+
+<table>
+
+<tr>
+<th>Earlier structure</th>
+<th>Current placement</th>
+</tr>
+
+<tr>
+<td>GURE</td>
+<td>
+historical inference/recovery lineage superseded by IRE
+</td>
+</tr>
+
+<tr>
+<td>CAR</td>
+<td>
+its surviving functions absorbed into ACE and GHSE
+</td>
+</tr>
+
+<tr>
+<td>GALC</td>
+<td>
+consolidated into UKE
+</td>
+</tr>
+
+<tr>
+<td>XEXT</td>
+<td>
+closed as an architecture layer; useful reduction/provenance lessons retained
+</td>
+</tr>
+
+<tr>
+<td>ACDRE lineage</td>
+<td>
+moved to applied-context / bridge role rather than active Core extension
+</td>
+</tr>
+
+</table>
+
+<p>
+Supersession means the surviving mathematics is moved to the structure that
+now owns it; it does not mean useful results are discarded.
+</p>
+
+</section>
+
+
+
+<section>
+
+<h2>83. Structures That Are Not GURF Extensions</h2>
+
+<div class="warning">
+
+<p>
+The following should not be added to the GURF extension roster merely because
+GURF uses or calls them.
+</p>
+
+</div>
+
+<table>
+
+<tr>
+<th>Structure</th>
+<th>Current placement</th>
+</tr>
+
+<tr>
+<td>HEC</td>
+<td>BM calculus</td>
+</tr>
+
+<tr>
+<td>HEC-S</td>
+<td>internal sector of HEC</td>
+</tr>
+
+<tr>
+<td>Defect Calculus</td>
+<td>domain-independent mathematics under BM</td>
+</tr>
+
+<tr>
+<td>Attachment Complex</td>
+<td>bridge object</td>
+</tr>
+
+<tr>
+<td>Application-specific experimental additions</td>
+<td>application layer unless promoted by portability test</td>
+</tr>
+
+</table>
+
+</section>
+
+
+
+<section>
+
+<h2>84. Portability Firewall</h2>
+
+<p>
+If a mathematical construction can be stated without essential response
+semantics and survives across several mathematical categories, its portable
+kernel belongs naturally under Branch Mathematics.
+</p>
+
+<div class="mathbox">
+
+\[
+\boxed{
+\text{domain-independent mathematical kernel}
+\longrightarrow
+\text{BM}.
+}
+\]
+
+</div>
+
+<p>
+If its identity fundamentally depends on observation, task, intervention,
+regime, response, continuation, or response-state semantics, it remains a
+GURF structure.
+</p>
+
+</section>
+
+
+
+<section>
+
+<h2>85. GURF Does Not Replace Native Mathematics</h2>
+
+<div class="warning">
+
+<p>
+GURF does not determine the native truth of:
+</p>
+
+<div class="statusbox">
+
+PDE estimates · spectral theorems · quantum mechanics · general relativity ·
+probability theory · topology · algebra · numerical analysis · control theory
+</div>
+
+<p>
+Those fields determine their own mathematical truth.
+</p>
+
+<p>
+GURF organizes how their response information is represented, combined,
+observed, constrained, inferred, and propagated.
+</p>
+
+</div>
+
+</section>
+
+
+
+<section>
+
+<h2>86. Example: Inverse Problem Through IRE + ACE</h2>
+
+<p>
+Suppose
+</p>
+
+<div class="mathbox">
+
+\[
+F:
+X
+\longrightarrow
+Y
+\]
+
+</div>
+
+<p>
+and observation \(y\) is known.
+</p>
+
+<p>
+IRE gives the feasible inverse fibre
+</p>
+
+<div class="mathbox">
+
+\[
+F^{-1}(y).
+\]
+
+</div>
+
+<p>
+ACE restricts this to admissible states:
+</p>
+
+<div class="mathbox">
+
+\[
+\boxed{
+\mathcal C_{\mathrm{adm}}(y)
+=
+F^{-1}(y)
+\cap
+\mathcal A.
+}
+\]
+
+</div>
+
+<p>
+The inference is unique only if the required target is constant on this
+restricted fibre.
+</p>
+
+</section>
+
+
+
+<section>
+
+<h2>87. Example: Kernel Inverse Through UKE + IRE</h2>
+
+<p>
+Suppose
+</p>
+
+<div class="mathbox">
+
+\[
+y(x)
+=
+\int
+K(x,s)f(s)\,ds.
+\]
+
+</div>
+
+<p>
+UKE analyzes the kernel-defined forward operator.
+</p>
+
+<p>
+IRE asks whether \(f\), or a target \(T(f)\), is recoverable from \(y\).
+</p>
+
+<div class="mathbox">
+
+\[
+F(f)=F(g)
+\Longrightarrow
+T(f)=T(g).
+\]
+
+</div>
+
+<p>
+The two extensions perform distinct roles.
+</p>
+
+</section>
+
+
+
+<section>
+
+<h2>88. Example: Operation Pipeline Through SOE</h2>
+
+<p>
+Consider
+</p>
+
+<div class="mathbox">
+
+\[
+u
+\xrightarrow{\text{filter}}
+u_f
+\xrightarrow{\nabla}
+\nabla u_f
+\xrightarrow{\text{projection}}
+v.
+\]
+
+</div>
+
+<p>
+SOE requires comparison with alternate orderings such as
+</p>
+
+<div class="mathbox">
+
+\[
+u
+\xrightarrow{\nabla}
+\nabla u
+\xrightarrow{\text{filter}}
+(\nabla u)_f.
+\]
+
+</div>
+
+<p>
+If
+</p>
+
+<div class="mathbox">
+
+\[
+\nabla(Fu)
+\neq
+F(\nabla u),
+\]
+
+</div>
+
+<p>
+the operation order must be retained as part of the response history.
+</p>
+
+</section>
+
+
+
+<section>
+
+<h2>89. Example: HDE + UKE Memory Response</h2>
+
+<p>
+Suppose extended-domain response is generated by
+</p>
+
+<div class="mathbox">
+
+\[
+x_H(t)
+=
+\int_{-\infty}^{t}
+K(t,s)x_D(s)\,ds.
+\]
+
+</div>
+
+<p>
+UKE-M provides the memory-kernel structure.
+</p>
+
+<p>
+HDE identifies \(x_H\) as part of the extended response domain.
+</p>
+
+<p>
+Two systems can therefore have the same present local state but different
+halo states:
+</p>
+
+<div class="mathbox">
+
+\[
+x_D(t)=x_D'(t)
+\]
+
+</div>
+
+<p>
+while
+</p>
+
+<div class="mathbox">
+
+\[
+x_H(t)\neq x_H'(t).
+\]
+
+</div>
+
+<p>
+Whether this mathematical structure has a physical realization must be
+determined separately.
+</p>
+
+</section>
+
+
+
+<section>
+
+<h2>90. Example: GHSE Hold State</h2>
+
+<p>
+Let two components satisfy a hold constraint
+</p>
+
+<div class="mathbox">
+
+\[
+C(a,b)
+\le
+c_*.
+\]
+
+</div>
+
+<p>
+Then one possible admissible hold set is
+</p>
+
+<div class="mathbox">
+
+\[
+\mathcal H
+=
+\{
+(a,b):
+C(a,b)\le c_*
+\}.
+\]
+
+</div>
+
+<p>
+ACE determines admissibility of the constraint.
+</p>
+
+<p>
+GHSE tracks the response semantics of entering, remaining in, or leaving the
+held state.
+</p>
+
+</section>
+
+
+
+<section>
+
+<h2>91. Application: Navier–Stokes</h2>
+
+<p>
+GURF can organize a Navier–Stokes continuation problem using:
+</p>
+
+<div class="statusbox">
+
+Core — task and continuation sufficiency<br><br>
+SOE — filtering, differentiation, localization and reconstruction order<br><br>
+ACE — admissibility and analytic constraints<br><br>
+IRE — what can be recovered from reduced observables<br><br>
+UKE — heat kernels, Green operators or spectral response when needed
+</div>
+
+<p>
+These extensions do not by themselves prove global regularity.
+</p>
+
+</section>
+
+
+
+<section>
+
+<h2>92. Application: Yang–Mills</h2>
+
+<p>
+A Yang–Mills response audit may require:
+</p>
+
+<div class="statusbox">
+
+ACE — Gauss-law and admissibility constraints<br><br>
+IRE — observable-sector recovery and ambiguity<br><br>
+UKE — spectral, resolvent and Green-function machinery<br><br>
+SOE — lawful quotient and operation sequencing
+</div>
+
+<p>
+A mass-gap proof still requires construction of the relevant quantum theory
+and an actual uniform spectral gap.
+</p>
+
+</section>
+
+
+
+<section>
+
+<h2>93. Application: Experimental Inference</h2>
+
+<p>
+An experiment may require
+</p>
+
+<div class="mathbox">
+
+\[
+\mathfrak G_{\mathrm{exp}}
+=
+(
+X,
+Y,
+\mathfrak R,
+\mathcal O,
+\mathcal C,
+\mathcal S,
+\mathcal A,
+\mathcal N,
+T,
+\mathcal I
+).
+\]
+
+</div>
+
+<p>
+Here controls, selection/coarsening, noise, target, and inference may become
+explicit.
+</p>
+
+<p>
+These are typed application structures, not reasons to redefine the GURF Core
+for every experiment.
+</p>
+
+</section>
+
+
+
+<section>
+
+<h2>94. Evidence Versus Assumption</h2>
+
+<p>
+GURF distinguishes new evidence from stronger assumptions.
+</p>
+
+<div class="mathbox">
+
+\[
+\boxed{
+\text{smaller feasible fibre}
+}
+\]
+
+</div>
+
+<p>
+may result from either:
+</p>
+
+<div class="statusbox">
+
+additional measurement information<br><br>
+or<br><br>
+a stronger admissibility assumption
+</div>
+
+<p>
+Those are not epistemically equivalent.
+</p>
+
+</section>
+
+
+
+<section>
+
+<h2>95. Response Improvement Audit</h2>
+
+<p>
+An apparently better result may arise because:
+</p>
+
+<div class="statusbox">
+
+new evidence was added · the task was weakened · a prior was strengthened ·
+the admissible state class was narrowed · the algorithm changed · calibration
+improved · the response model changed
+
+</div>
+
+<p>
+GURF requires the source of the improvement to be identified.
+</p>
+
+</section>
+
+
+
+<section>
+
+<h2>96. Approximation Must Be Typed</h2>
+
+<p>
+Replacing
+</p>
+
+<div class="mathbox">
+
+\[
+F=G
+\]
+
+</div>
+
+<p>
+with
+</p>
+
+<div class="mathbox">
+
+\[
+d(F,G)
+\le
+\varepsilon
+\]
+
+</div>
+
+<p>
+creates a different mathematical claim.
+</p>
+
+<p>
+The metric, tolerance, domain, and propagation of the approximation must be
+specified.
+</p>
+
+</section>
+
+
+
+<section>
+
+<h2>97. Extension Status Is Not Novelty Status</h2>
+
+<p>
+A canonical extension is canonical within the project architecture.
+</p>
+
+<p>
+This does not imply its ingredients are externally novel.
+</p>
+
+<div class="mathbox">
+
+\[
+\boxed{
+\text{project-canonical}
+\neq
+\text{historically novel}.
+}
+\]
+
+</div>
+
+<p>
+External novelty remains a separate literature and theorem comparison
+question.
+</p>
+
+</section>
+
+
+
+<section>
+
+<h2>98. Mathematical Status</h2>
+
+<table>
+
+<tr>
+<th>Question</th>
+<th>Status</th>
+</tr>
+
+<tr>
+<td>Internal GURF architecture</td>
+<td>established within the project</td>
+</tr>
+
+<tr>
+<td>Core factorization/fibre mathematics</td>
+<td>mathematically established, largely standard mathematics</td>
+</tr>
+
+<tr>
+<td>SOE architecture</td>
+<td>canonical / stable</td>
+</tr>
+
+<tr>
+<td>ACE architecture</td>
+<td>canonical / stable</td>
+</tr>
+
+<tr>
+<td>IRE architecture</td>
+<td>canonical / stable</td>
+</tr>
+
+<tr>
+<td>UKE architecture</td>
+<td>canonical / stable</td>
+</tr>
+
+<tr>
+<td>GRDE</td>
+<td>frozen at GURF-GRDE-008</td>
+</tr>
+
+<tr>
+<td>HDE</td>
+<td>active canonical extension</td>
+</tr>
+
+<tr>
+<td>GHSE</td>
+<td>active canonical extension</td>
+</tr>
+
+<tr>
+<td>External novelty of integrated package</td>
+<td>open</td>
+</tr>
+
+<tr>
+<td>Independent external validation</td>
+<td>not yet established</td>
+</tr>
+
+</table>
+
+</section>
+
+
+
+<section>
+
+<h2>99. What GURF Does Not Claim</h2>
+
+<div class="warning">
+
+<p>
+GURF does not claim that every system is best understood as a response system.
+</p>
+
+<p>
+It does not replace ordinary mathematical proof.
+</p>
+
+<p>
+It does not convert inference into physical mechanism.
+</p>
+
+<p>
+It does not convert static admissibility into dynamical stability.
+</p>
+
+<p>
+It does not convert a chosen kernel into a derived law of nature.
+</p>
+
+<p>
+It does not convert a fitted model into unique physical identification.
+</p>
+
+<p>
+It does not make its extensions independent mathematical fields merely by
+naming them.
+</p>
+
+</div>
+
+</section>
+
+
+
+<section>
+
+<h2>100. Current GURF Hierarchy</h2>
+
+<div class="mathbox">
+
+\[
+\boxed{
+\begin{aligned}
+\mathrm{GURF}
+&=
+\mathrm{Core}
+\\[3pt]
+&\quad+
+\mathrm{SOE}
+\\
+&\quad+
+\mathrm{ACE}
+\\
+&\quad+
+\mathrm{IRE}
+\\
+&\quad+
+\mathrm{UKE}
+\\
+&\quad+
+\mathrm{GRDE}_{\mathrm{frozen}}
+\\
+&\quad+
+\mathrm{HDE}
+\\
+&\quad+
+\mathrm{GHSE}.
+\end{aligned}
+}
+\]
+
+</div>
+
+<p>
+The extensions remain distinct because they answer different mathematical
+questions.
+</p>
+
+</section>
+
+
+
+<section>
+
+<h2>101. Central GURF Principle</h2>
+
+<div class="mathbox">
+
+\[
+\boxed{
+\text{A representation is adequate only relative to the responses,
+tasks, constraints, interventions, and continuations it must still support.}
+}
+\]
+
+</div>
+
+<p>
+The Core determines the response-information question.
+</p>
+
+<p>
+The extensions provide specialized mathematics for the parts of that
+question that require operation structure, constraints, inverse recovery,
+kernels, diagrammatic representation, extended domains, or glue-hold state
+behavior.
+</p>
+
+</section>
+
+
+
+<section>
+
+<h2>102. Public Development Direction</h2>
+
+<p>
+Future GURF encyclopedia expansion should now proceed extension by extension
+rather than repeatedly enlarging one giant Core section.
+</p>
+
+<table>
+
+<tr>
+<th>Future article</th>
+<th>Purpose</th>
+</tr>
+
+<tr>
+<td>soe.html</td>
+<td>full typed-operation and composition mathematics</td>
+</tr>
+
+<tr>
+<td>ace.html</td>
+<td>full admissibility and constraint mathematics</td>
+</tr>
+
+<tr>
+<td>ire.html</td>
+<td>full inference and inverse-recovery mathematics</td>
+</tr>
+
+<tr>
+<td>uke.html</td>
+<td>full kernel extension</td>
+</tr>
+
+<tr>
+<td>grde.html</td>
+<td>frozen diagrammatic registry once diagrams are reconstructed</td>
+</tr>
+
+<tr>
+<td>hde.html</td>
+<td>halo-domain mathematics and Halo Flow research</td>
+</tr>
+
+<tr>
+<td>ghse.html</td>
+<td>glue-hold state mathematics</td>
+</tr>
+
+</table>
+
+<p>
+The main GURF page should remain the integrated entry point linking those
+specialized treatments together.
+</p>
 
 </section>
 
@@ -3019,12 +4421,17 @@
 
 <footer>
 
-  <p>
-    Branch Mathematics Research Encyclopedia
-  </p>
+<p>
+Branch Mathematics Research Encyclopedia
+</p>
+
+<p>
+GURF Core + SOE + ACE + IRE + UKE + GRDE + HDE + GHSE
+</p>
 
 </footer>
 
 
 </body>
+
 </html>
