@@ -1527,185 +1527,1504 @@
     \circ
     (r,q).
     \]
-      text-decoration: none;
-      margin: 8px 14px;
-      display: inline-block;
-    }
 
-    main {
-      max-width: 950px;
-      margin: auto;
-      padding: 35px 20px;
-    }
-
-    h2 {
-      border-bottom: 2px solid #e5e7eb;
-      padding-bottom: 8px;
-      margin-top: 45px;
-    }
-
-    .card {
-      border: 1px solid #d1d5db;
-      border-radius: 8px;
-      padding: 20px;
-      margin: 15px 0;
-    }
-
-    footer {
-      background: #111827;
-      color: white;
-      text-align: center;
-      padding: 25px;
-      margin-top: 40px;
-    }
-  </style>
-</head>
-
-<body>
-
-<header>
-  <h1>GURF</h1>
-  <p>
-    A mathematical framework for lawful system responses.
-  </p>
-</header>
-
-<nav>
-  <a href="index.html">Home</a>
-  <a href="branch-mathematics.html">Branch Mathematics</a>
-  <a href="encyclopedia.html">Encyclopedia</a>
-  <a href="research.html">Research</a>
-  <a href="definitions.html">Definitions</a>
-  <a href="theorems.html">Theorems</a>
-  <a href="changelog.html">Changelog</a>
-  <a href="equations.html">Equations</a>
-  <a href="structures.html">Structures</a>
-  <a href="passports.html">Passports</a>
-  <a href="roots.html">Roots</a>
-  <a href="#core">Core</a>
-  <a href="#status">Status</a>
-</nav>
-
-<main>
-
-<section>
-  <h2>What is GURF?</h2>
+  </div>
 
   <p>
-    GURF is a mathematical framework for studying lawful system responses.
+    The cost may represent dimension, bandwidth, number of measurements,
+    computational complexity, energy, storage, experimental effort, or
+    another domain-specific quantity.
   </p>
 
-  <p>
-    It asks which distinctions in an underlying state are necessary for a
-    task, and whether observation, compression, constraints, evolution, or
-    intervention preserve enough information for lawful continuation.
-  </p>
-
-  <p>
-    Branch Mathematics provides the broader meta-structural mathematics.
-    GURF specializes that machinery to systems with genuine response
-    semantics.
-  </p>
 </section>
 
-
-<section id="core">
-  <h2>Core Questions</h2>
-
-  <div class="card">
-    <h3>Required Information</h3>
-    <p>
-      Which distinctions in the underlying system must remain available for
-      the current or future task?
-    </p>
-  </div>
-
-  <div class="card">
-    <h3>Observation and Compression</h3>
-    <p>
-      Does an observation or reduced representation preserve the information
-      required for later response?
-    </p>
-  </div>
-
-  <div class="card">
-    <h3>Continuation</h3>
-    <p>
-      Can the system continue lawfully from the information that remains?
-    </p>
-  </div>
-
-  <div class="card">
-    <h3>Obstruction</h3>
-    <p>
-      What missing distinction, constraint, or structural incompatibility
-      prevents the required response?
-    </p>
-  </div>
-
-  <div class="card">
-    <h3>Repair</h3>
-    <p>
-      What additional information or lawful structural change is sufficient
-      to restore the required continuation?
-    </p>
-  </div>
-
-</section>
 
 
 <section>
-  <h2>Response Structure</h2>
+
+  <h2>25. Serial Information Loss</h2>
 
   <p>
-    GURF may represent states, observations, interventions, constraints,
-    regimes, tasks, continuations, and responses using explicitly typed
-    mathematical structures.
+    Suppose information passes through
   </p>
 
+  <div class="mathbox">
+
+    \[
+    X
+    \xrightarrow{r}
+    Y
+    \xrightarrow{s}
+    Z.
+    \]
+
+  </div>
+
   <p>
-    Exact, stochastic, nondeterministic, approximate, and other response
-    semantics must remain distinguished when their mathematical laws differ.
+    If
   </p>
+
+  <div class="mathbox">
+
+    \[
+    r(x)
+    =
+    r(x'),
+    \]
+
+  </div>
+
+  <p>
+    then necessarily
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    s(r(x))
+    =
+    s(r(x')).
+    \]
+
+  </div>
+
+  <p>
+    A deterministic downstream transformation cannot distinguish states that
+    an upstream deterministic transformation has already merged.
+  </p>
+
 </section>
+
 
 
 <section>
-  <h2>Relationship to Branch Mathematics</h2>
+
+  <h2>26. Parallel Information Gain</h2>
 
   <p>
-    Branch Mathematics governs domain-independent representation,
-    transformation, composition, interfaces, realization, and re-entry.
+    If two observations are available,
   </p>
 
+  <div class="mathbox">
+
+    \[
+    r:
+    X\longrightarrow Y,
+    \]
+
+    \[
+    q:
+    X\longrightarrow Z,
+    \]
+
+  </div>
+
   <p>
-    GURF is invoked when a problem specifically concerns system response,
-    information sufficiency, interventions, observations, constraints,
-    regimes, or continuation.
+    then the joint observation is
   </p>
+
+  <div class="mathbox">
+
+    \[
+    (r,q):
+    X
+    \longrightarrow
+    Y\times Z.
+    \]
+
+  </div>
+
+  <p>
+    Its fibre satisfies
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    (r,q)^{-1}(y,z)
+    =
+    r^{-1}(y)
+    \cap
+    q^{-1}(z).
+    \]
+
+  </div>
+
+  <p>
+    Joint observation can therefore refine the candidate state set and remove
+    an obstruction that neither observation removes individually.
+  </p>
+
 </section>
 
 
-<section id="status">
-  <h2>Research Status</h2>
+
+<section>
+
+  <h2>27. Joint Feasibility</h2>
 
   <p>
-    GURF is an active mathematical research framework under continuing
-    formalization, proof development, testing, comparison with existing
-    mathematics, and application research.
+    Suppose task \(c\) admits a feasible set
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    P_c
+    \subseteq
+    X.
+    \]
+
+  </div>
+
+  <p>
+    Solving every task separately does not automatically establish that one
+    common state solves them all.
   </p>
 
   <p>
-    Mathematical validity, novelty, physical interpretation, and external
-    validation are treated as separate questions.
+    Joint feasibility requires
   </p>
+
+  <div class="mathbox">
+
+    \[
+    \boxed{
+    \bigcap_{c\in\mathcal C}
+    P_c
+    \neq
+    \varnothing
+    }.
+    \]
+
+  </div>
+
+  <p>
+    This is the difference between separate witnesses and one shared witness.
+  </p>
+
 </section>
+
+
+
+<section>
+
+  <h2>28. Coupling and Witness Reuse</h2>
+
+  <p>
+    In many systems, separate marginal possibilities do not determine a valid
+    joint realization.
+  </p>
+
+  <p>
+    If two outputs have admissible marginals
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \mu
+    \quad\text{and}\quad
+    \nu,
+    \]
+
+  </div>
+
+  <p>
+    a joint law requires a coupling
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \gamma
+    \in
+    \Gamma(\mu,\nu).
+    \]
+
+  </div>
+
+  <p>
+    GURF therefore requires explicit attention to whether different tasks are
+    allowed to use different witnesses or require one compatible joint
+    realization.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>29. Stochastic Response</h2>
+
+  <p>
+    A stochastic system may be represented by a Markov kernel
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    M:
+    X
+    \longrightarrow
+    \mathcal P(Y),
+    \]
+
+  </div>
+
+  <p>
+    where \(\mathcal P(Y)\) is a space of probability measures on \(Y\).
+  </p>
+
+  <p>
+    For a test function
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \varphi:
+    Y
+    \longrightarrow
+    \mathbb R,
+    \]
+
+  </div>
+
+  <p>
+    the induced expectation operator is
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \boxed{
+    M^\dagger\varphi(x)
+    =
+    \mathbb E[
+    \varphi(Y)
+    \mid
+    X=x
+    ]
+    }.
+    \]
+
+  </div>
+
+  <p>
+    Stochastic response semantics must remain probabilistic.
+  </p>
+
+  <p>
+    They cannot be silently replaced by deterministic equivalence unless the
+    required mathematical conditions are proved.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>30. Stochastic Task Sufficiency</h2>
+
+  <p>
+    Suppose a task depends only on the response distribution produced by
+    \(M\).
+  </p>
+
+  <p>
+    Observation \(r\) is sufficient for that stochastic response when there
+    exists a kernel
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \widetilde M:
+    Y
+    \longrightarrow
+    \mathcal P(Z)
+    \]
+
+  </div>
+
+  <p>
+    such that
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \boxed{
+    M
+    =
+    \widetilde M
+    \circ
+    r
+    }.
+    \]
+
+  </div>
+
+  <p>
+    Informally, states merged by \(r\) must induce the same task-relevant
+    response law.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>31. Nondeterministic Response</h2>
+
+  <p>
+    A nondeterministic response relation may be written
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    R
+    \subseteq
+    X\times Y.
+    \]
+
+  </div>
+
+  <p>
+    For a target set
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    U
+    \subseteq
+    Y,
+    \]
+
+  </div>
+
+  <p>
+    existential reachability is
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \Diamond_R(U)
+    =
+    \left\{
+    x:
+    \exists y\in U
+    \text{ with }
+    xRy
+    \right\}.
+    \]
+
+  </div>
+
+  <p>
+    Universal safety is
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \Box_R(U)
+    =
+    \left\{
+    x:
+    \forall y,\,
+    xRy
+    \Rightarrow
+    y\in U
+    \right\}.
+    \]
+
+  </div>
+
+  <p>
+    These are mathematically different requirements.
+  </p>
+
+  <p>
+    GURF therefore requires explicit existential, universal, path, witness,
+    or strategy quantifiers whenever nondeterministic semantics are present.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>32. Operation Order</h2>
+
+  <p>
+    Operations that look individually reasonable may fail to commute.
+  </p>
+
+  <p>
+    If
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    F:X\longrightarrow Y
+    \]
+
+  </div>
+
+  <p>
+    and
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    G:X\longrightarrow Z,
+    \]
+
+  </div>
+
+  <p>
+    then performing transformations in different orders may produce
+    mathematically different results:
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    F\circ G
+    \neq
+    G\circ F
+    \]
+
+  </div>
+
+  <p>
+    whenever both compositions are meaningful but noncommuting.
+  </p>
+
+  <p>
+    In applied work this becomes important for operations such as filtering,
+    differentiation, localization, reconstruction, coarse-graining,
+    projection, intervention, and evolution.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>33. Information Before and After an Operation</h2>
+
+  <p>
+    Suppose
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    F:
+    X
+    \longrightarrow
+    Y.
+    \]
+
+  </div>
+
+  <p>
+    An operation changes the available distinction structure from that of
+    \(X\) to that induced by \(F\).
+  </p>
+
+  <p>
+    A later task
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    T:
+    X
+    \longrightarrow
+    W
+    \]
+
+  </div>
+
+  <p>
+    survives the operation only when
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    F(x)
+    =
+    F(x')
+    \]
+
+    \[
+    \Longrightarrow
+    \]
+
+    \[
+    T(x)
+    =
+    T(x').
+    \]
+
+  </div>
+
+  <p>
+    This is the central information-preservation test repeated throughout
+    GURF.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>34. Response Equivalence</h2>
+
+  <p>
+    Two states may be considered equivalent relative to a task when they
+    produce the same required response.
+  </p>
+
+  <p>
+    Define
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    x
+    \sim_T
+    x'
+    \quad\Longleftrightarrow\quad
+    T(x)
+    =
+    T(x').
+    \]
+
+  </div>
+
+  <p>
+    Observation \(r\) is sufficient for \(T\) exactly when
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \sim_r
+    \;\subseteq\;
+    \sim_T.
+    \]
+
+  </div>
+
+  <p>
+    In words: whenever the observation identifies two states, the task must
+    also identify them.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>35. Refinement Ordering</h2>
+
+  <p>
+    Suppose observations \(r_1\) and \(r_2\) induce equivalence relations
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \sim_{r_1}
+    \quad\text{and}\quad
+    \sim_{r_2}.
+    \]
+
+  </div>
+
+  <p>
+    If
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \sim_{r_1}
+    \subseteq
+    \sim_{r_2},
+    \]
+
+  </div>
+
+  <p>
+    then \(r_1\) preserves at least as many distinctions as \(r_2\).
+  </p>
+
+  <p>
+    This gives a natural information-refinement ordering between
+    representations.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>36. Exact Reconstruction Is Stronger Than Task Sufficiency</h2>
+
+  <p>
+    Full state reconstruction requires the observation to distinguish every
+    task-relevant state uniquely.
+  </p>
+
+  <p>
+    Exact reconstruction may require
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    r(x)=r(x')
+    \Longrightarrow
+    x=x'.
+    \]
+
+  </div>
+
+  <p>
+    Task sufficiency requires only
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    r(x)=r(x')
+    \Longrightarrow
+    T(x)=T(x').
+    \]
+
+  </div>
+
+  <p>
+    Therefore:
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \boxed{
+    \text{state reconstruction}
+    \;\Longrightarrow\;
+    \text{task sufficiency}
+    }
+    \]
+
+  </div>
+
+  <p>
+    but the converse need not hold.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>37. GURF and Compression</h2>
+
+  <p>
+    Let
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    C:
+    X
+    \longrightarrow
+    Z
+    \]
+
+  </div>
+
+  <p>
+    be a compression.
+  </p>
+
+  <p>
+    Compression is acceptable for task \(T\) when
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \exists
+    \widetilde T:
+    Z\longrightarrow W
+    \]
+
+  </div>
+
+  <p>
+    such that
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    T
+    =
+    \widetilde T
+    \circ
+    C.
+    \]
+
+  </div>
+
+  <p>
+    Thus GURF does not ask whether compression loses information in the
+    absolute sense.
+  </p>
+
+  <p>
+    It asks whether compression loses information required by the task.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>38. GURF and Model Reduction</h2>
+
+  <p>
+    Suppose a high-dimensional state
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    x\in X
+    \]
+
+  </div>
+
+  <p>
+    is reduced to
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    z
+    =
+    R(x)
+    \in
+    Z.
+    \]
+
+  </div>
+
+  <p>
+    A reduced evolution
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \widetilde\Phi_t:
+    Z
+    \longrightarrow
+    Z
+    \]
+
+  </div>
+
+  <p>
+    is dynamically compatible when
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \boxed{
+    R\circ\Phi_t
+    =
+    \widetilde\Phi_t
+    \circ R
+    }.
+    \]
+
+  </div>
+
+  <p>
+    Exact commutation may be relaxed only when the approximation criterion is
+    stated explicitly.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>39. Dynamic Closure</h2>
+
+  <p>
+    A reduced representation is dynamically closed when its future evolution
+    can be determined from the reduced state itself.
+  </p>
+
+  <p>
+    If
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    z
+    =
+    R(x),
+    \]
+
+  </div>
+
+  <p>
+    dynamic closure requires an evolution law
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \widetilde\Phi_t(z)
+    \]
+
+  </div>
+
+  <p>
+    independent of which underlying state in
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    R^{-1}(z)
+    \]
+
+  </div>
+
+  <p>
+    produced the reduced state.
+  </p>
+
+  <p>
+    If different hidden states with the same reduced state evolve into
+    different task-relevant futures, closure fails.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>40. Obstruction as Fibre Spread</h2>
+
+  <p>
+    For numerical task space \(W\), the ambiguity inside a fibre may be
+    quantified.
+  </p>
+
+  <p>
+    For a metric \(d_W\), define the task diameter
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \operatorname{diam}_T
+    \left(
+    r^{-1}(y)
+    \right)
+    =
+    \sup_{
+      x,x'
+      \in
+      r^{-1}(y)
+    }
+    d_W
+    \left(
+    T(x),
+    T(x')
+    \right).
+    \]
+
+  </div>
+
+  <p>
+    Exact sufficiency corresponds to
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \operatorname{diam}_T
+    \left(
+    r^{-1}(y)
+    \right)
+    =
+    0.
+    \]
+
+  </div>
+
+  <p>
+    Approximate sufficiency may require
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \operatorname{diam}_T
+    \left(
+    r^{-1}(y)
+    \right)
+    \le
+    \varepsilon.
+    \]
+
+  </div>
+
+  <p>
+    Quantities such as this are natural candidates for future MATLAB-style
+    visualizations because they can be plotted across state, parameter, or
+    regime space.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>41. Response Surfaces</h2>
+
+  <p>
+    When a response is numerical and depends on parameters, GURF can study a
+    response surface
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    R:
+    \Theta
+    \longrightarrow
+    \mathbb R^m,
+    \]
+
+  </div>
+
+  <p>
+    where
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \theta
+    \in
+    \Theta
+    \]
+
+  </div>
+
+  <p>
+    contains parameters, interventions, initial conditions, or regime values.
+  </p>
+
+  <p>
+    Scientific figures may then show:
+  </p>
+
+  <div class="card">
+
+    response magnitude · sensitivity · stability boundaries · bifurcations ·
+    uncertainty · fibre diameter · repair cost · regime transitions ·
+    continuation failure
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>42. Sensitivity</h2>
+
+  <p>
+    When a differentiable response
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    R:
+    \mathbb R^n
+    \longrightarrow
+    \mathbb R^m
+    \]
+
+  </div>
+
+  <p>
+    is available, local sensitivity is encoded by the Jacobian
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    J_R(x)
+    =
+    \frac{\partial R}{\partial x}.
+    \]
+
+  </div>
+
+  <p>
+    Directions in state space with large response derivatives may correspond
+    to distinctions that become especially important for prediction or
+    control.
+  </p>
+
+  <p>
+    Directions lying approximately in the kernel
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \ker J_R(x)
+    \]
+
+  </div>
+
+  <p>
+    may locally have little first-order effect on that particular response.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>43. Local Versus Global Sufficiency</h2>
+
+  <p>
+    Local insensitivity does not automatically imply global equivalence.
+  </p>
+
+  <p>
+    Even when
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    J_R(x)v
+    =
+    0,
+    \]
+
+  </div>
+
+  <p>
+    finite displacement along \(v\) may still alter the response through
+    higher-order terms or nonlinear structure.
+  </p>
+
+  <p>
+    Therefore local differential analysis and global fibre analysis must not
+    be confused.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>44. Why Nonlinearity Matters</h2>
+
+  <p>
+    Suppose
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    R(x)
+    \]
+
+  </div>
+
+  <p>
+    is nonlinear.
+  </p>
+
+  <p>
+    Then
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    R
+    \left(
+    \lambda x
+    +
+    (1-\lambda)y
+    \right)
+    \]
+
+  </div>
+
+  <p>
+    need not equal
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \lambda R(x)
+    +
+    (1-\lambda)R(y).
+    \]
+
+  </div>
+
+  <p>
+    Hence averaging, filtering, coarse-graining, or probabilistic mixing may
+    alter response structure in ways that are invisible to linear analysis.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>45. GURF as a Response Audit</h2>
+
+  <p>
+    A practical GURF analysis asks:
+  </p>
+
+  <div class="card">
+
+    <p>
+      <strong>1. State:</strong>
+      What is the underlying mathematical state?
+    </p>
+
+    <p>
+      <strong>2. Task:</strong>
+      What response must ultimately be determined?
+    </p>
+
+    <p>
+      <strong>3. Observation:</strong>
+      What information is actually available?
+    </p>
+
+    <p>
+      <strong>4. Fibre:</strong>
+      Which underlying states remain compatible with that information?
+    </p>
+
+    <p>
+      <strong>5. Sufficiency:</strong>
+      Is the task constant across the fibre?
+    </p>
+
+    <p>
+      <strong>6. Evolution:</strong>
+      Does sufficiency survive future dynamics?
+    </p>
+
+    <p>
+      <strong>7. Regime:</strong>
+      Which law context is active?
+    </p>
+
+    <p>
+      <strong>8. Intervention:</strong>
+      Can external action change which distinctions matter?
+    </p>
+
+    <p>
+      <strong>9. Obstruction:</strong>
+      Which unresolved distinctions block the response?
+    </p>
+
+    <p>
+      <strong>10. Repair:</strong>
+      What additional information removes that obstruction?
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>46. What GURF Does Not Do</h2>
+
+  <div class="warning">
+
+    <p>
+      GURF does not make an invalid physical or mathematical model valid.
+    </p>
+
+    <p>
+      It does not replace probability theory, control theory, dynamical
+      systems, PDE theory, information theory, geometry, statistics, or other
+      established mathematics.
+    </p>
+
+    <p>
+      It does not establish physical realizability merely because a response
+      relation can be written formally.
+    </p>
+
+  </div>
+
+  <p>
+    The mathematical structures used in a GURF construction remain governed
+    by their native mathematics.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>47. Research Semantics Must Stay Distinct</h2>
+
+  <p>
+    GURF distinguishes several mathematical situations that must not be
+    silently merged:
+  </p>
+
+  <table>
+
+    <tr>
+      <th>Semantic type</th>
+      <th>Representative structure</th>
+    </tr>
+
+    <tr>
+      <td>Deterministic</td>
+      <td>\(F:X\to Y\)</td>
+    </tr>
+
+    <tr>
+      <td>Stochastic</td>
+      <td>\(M:X\to\mathcal P(Y)\)</td>
+    </tr>
+
+    <tr>
+      <td>Nondeterministic</td>
+      <td>\(R\subseteq X\times Y\)</td>
+    </tr>
+
+    <tr>
+      <td>Approximate</td>
+      <td>metric, divergence, tolerance, or error bound</td>
+    </tr>
+
+    <tr>
+      <td>Controlled</td>
+      <td>\(\Phi:X\times U\to X\)</td>
+    </tr>
+
+    <tr>
+      <td>Regime-dependent</td>
+      <td>\(\Phi^{(\lambda)}\)</td>
+    </tr>
+
+  </table>
+
+</section>
+
+
+
+<section>
+
+  <h2>48. Current Mathematical Status</h2>
+
+  <div class="statusbox">
+
+    <h3>Framework status</h3>
+
+    <p>
+      <strong>Active formal research framework.</strong>
+    </p>
+
+    <p>
+      GURF is used as the response-specialized framework beneath the broader
+      Branch Mathematics architecture.
+    </p>
+
+  </div>
+
+  <div class="statusbox">
+
+    <h3>Mathematical admissibility</h3>
+
+    <p>
+      Determined by direct derivation and the mathematics of the structures
+      involved.
+    </p>
+
+  </div>
+
+  <div class="statusbox">
+
+    <h3>External novelty</h3>
+
+    <p>
+      Must be evaluated separately from mathematical validity.
+    </p>
+
+    <p>
+      Individual components may overlap established mathematics even when
+      their organization inside GURF serves a broader response-analysis role.
+    </p>
+
+  </div>
+
+  <div class="statusbox">
+
+    <h3>Independent external validation</h3>
+
+    <p>
+      Not established merely by internal development, examples, or numerical
+      success.
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<section>
+
+  <h2>49. Scientific Visualization Policy</h2>
+
+  <p>
+    GURF research pages will include quantitative scientific figures whenever
+    the equations produce meaningful numerical or geometric structure.
+  </p>
+
+  <p>
+    Appropriate figures include:
+  </p>
+
+  <div class="card">
+
+    response curves · state-space plots · phase portraits · parameter sweeps ·
+    error surfaces · fibre-diameter plots · stability boundaries · heatmaps ·
+    spectra · vector fields · sensitivity maps · convergence plots ·
+    uncertainty bands
+
+  </div>
+
+  <p>
+    These figures will be used to expose mathematical behavior, not as
+    decoration.
+  </p>
+
+  <p>
+    Structural GURF and BM diagrams will be reconstructed separately before
+    being treated as canonical public figures.
+  </p>
+
+</section>
+
+
+
+<section>
+
+  <h2>50. Central GURF Principle</h2>
+
+  <p>
+    The central mathematical idea of GURF can be summarized as follows:
+  </p>
+
+  <div class="mathbox">
+
+    \[
+    \boxed{
+    \text{A representation is adequate only relative to
+    the responses it must still support.}
+    }
+    \]
+
+  </div>
+
+  <p>
+    Losing information is therefore not automatically a failure.
+  </p>
+
+  <p>
+    The failure occurs when a distinction required by the current or future
+    task is removed without a lawful way to reconstruct, replace, or repair it.
+  </p>
+
+</section>
+
 
 </main>
 
+
 <footer>
-  <p>Branch Mathematics Research Encyclopedia</p>
+
+  <p>
+    Branch Mathematics Research Encyclopedia
+  </p>
+
 </footer>
+
 
 </body>
 </html>
