@@ -15,3 +15,15 @@ User-agent: OAI-SearchBot
 Allow: /
 
 Sitemap: https://branch-mathematics-bm.github.io/sitemap.xml
+
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Explicit allow for Microsoft Copilot crawler
+User-agent: Copilot
+Allow: /
+
+# Prevent accidental blocking by wildcard rules
+User-agent: *
+Disallow:
