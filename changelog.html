@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +8,7 @@
 
   <meta
     name="description"
-    content="Formal revision history for Branch Mathematics, GURF, definitions, theorems, equations, structures, Passports, Roots, research status, corrections, ownership changes, and public mathematical documentation."
+    content="Formal revision history for Branch Mathematics and GURF: definitions, theorems, equations, structures, Passports, Roots, examples, research status, corrections, supersessions, ownership changes, and public-corpus synchronization."
   >
 
   <meta name="robots" content="index, follow">
@@ -20,46 +19,41 @@
         inlineMath: [['\\(', '\\)']],
         displayMath: [['\\[', '\\]']]
       },
-      svg: {
-        fontCache: 'global'
-      }
+      svg: { fontCache: 'global' }
     };
   </script>
 
-  <script
-    id="MathJax-script"
-    async
+  <script id="MathJax-script" async
     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
   </script>
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: Arial, Helvetica, sans-serif;
       margin: 0;
-      line-height: 1.68;
+      line-height: 1.7;
       color: #202124;
-      background: #ffffff;
+      background: #fff;
     }
 
     header {
       background: #111827;
       color: white;
-      padding: 55px 20px;
+      padding: 58px 20px;
       text-align: center;
     }
 
     header h1 {
-      margin: 0;
-      font-size: 2.6rem;
+      margin: 0 0 10px;
+      font-size: 2.55rem;
     }
 
     header p {
-      max-width: 940px;
-      margin: 18px auto 0;
+      max-width: 1000px;
+      margin: auto;
       color: #e5e7eb;
       font-size: 1.08rem;
     }
@@ -73,22 +67,21 @@
     nav a {
       color: white;
       text-decoration: none;
-      margin: 7px 11px;
+      margin: 7px 10px;
       display: inline-block;
     }
 
-    nav a:hover {
-      text-decoration: underline;
-    }
+    nav a:hover { text-decoration: underline; }
 
     main {
-      max-width: 1000px;
+      max-width: 1120px;
       margin: auto;
-      padding: 38px 20px;
+      padding: 40px 20px;
     }
 
     section {
-      margin-bottom: 52px;
+      margin-bottom: 58px;
+      scroll-margin-top: 18px;
     }
 
     h2 {
@@ -97,22 +90,39 @@
       margin-top: 0;
     }
 
-    h3 {
-      margin-top: 28px;
+    h3 { margin-top: 22px; }
+    p { margin: 10px 0; }
+
+    ul { padding-left: 25px; }
+    li { margin: 6px 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 22px 0;
     }
+
+    th, td {
+      border: 1px solid #d1d5db;
+      padding: 11px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th { background: #f3f4f6; }
 
     .entry {
       border: 1px solid #d1d5db;
-      border-radius: 8px;
-      padding: 22px;
+      border-radius: 9px;
+      padding: 24px;
       margin: 20px 0;
-      background: #ffffff;
+      background: #fff;
     }
 
     .date {
       font-weight: bold;
       color: #374151;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
 
     .tag {
@@ -122,94 +132,88 @@
       border-radius: 5px;
       padding: 3px 8px;
       margin: 3px 5px 3px 0;
-      font-size: 0.88rem;
+      font-size: 0.84rem;
       font-weight: bold;
     }
 
     .schema {
       border-left: 4px solid #374151;
       padding: 18px 22px;
-      margin: 24px 0;
-      background: #f9fafb;
+      margin: 22px 0;
+      background: #f8fafc;
       overflow-x: auto;
+    }
+
+    .status-note,
+    .warning {
+      padding: 18px 20px;
+      margin: 20px 0;
+      background: #f8fafc;
+    }
+
+    .status-note {
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
     }
 
     .warning {
       border-left: 4px solid #6b7280;
-      background: #f9fafb;
-      padding: 18px 22px;
-      margin: 22px 0;
     }
 
-    .status-note {
-      background: #f9fafb;
-      border: 1px solid #d1d5db;
-      border-radius: 8px;
-      padding: 18px 22px;
-      margin: 20px 0;
+    .quick-index {
+      columns: 3 300px;
+      column-gap: 35px;
     }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 20px 0;
+    .quick-index li {
+      break-inside: avoid;
+      margin: 5px 0;
     }
 
-    th,
-    td {
-      border: 1px solid #d1d5db;
-      padding: 11px 12px;
-      text-align: left;
-      vertical-align: top;
+    .quick-index a { text-decoration: none; }
+    .quick-index a:hover { text-decoration: underline; }
+
+    .crosslinks {
+      border-top: 1px solid #d1d5db;
+      margin-top: 22px;
+      padding-top: 14px;
+      font-size: 0.94rem;
     }
 
-    th {
-      background: #f3f4f6;
+    .crosslinks a {
+      text-decoration: none;
+      font-weight: bold;
     }
 
-    ul {
-      padding-left: 24px;
-    }
+    .crosslinks a:hover { text-decoration: underline; }
 
     footer {
       background: #111827;
       color: white;
       text-align: center;
       padding: 28px 20px;
-      margin-top: 40px;
+      margin-top: 55px;
     }
 
-    footer p {
-      margin: 5px 0;
-    }
-
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 2rem;
-      }
-
-      main {
-        padding: 28px 16px;
-      }
+    @media (max-width: 700px) {
+      header h1 { font-size: 2rem; }
+      main { padding: 28px 16px; }
+      .quick-index { columns: 1; }
+      .entry { padding: 19px; }
     }
   </style>
 </head>
 
-
 <body>
-
 <header>
-
   <h1>Mathematical Changelog</h1>
-
   <p>
-    Formal revision history for Branch Mathematics, GURF, definitions,
-    theorems, equations, structures, Passports, Roots, research status,
-    ownership, corrections, failures, and the public mathematical corpus.
+    Formal revision history for Branch Mathematics and GURF. The changelog
+    records corrections, generalizations, proof-status changes, ownership
+    changes, candidate promotions or demotions, supersessions, research
+    verdicts, and synchronization of the public mathematical corpus.
   </p>
-
 </header>
-
 
 <nav>
   <a href="index.html">Home</a>
@@ -217,2686 +221,1202 @@
   <a href="gurf.html">GURF</a>
   <a href="encyclopedia.html">Encyclopedia</a>
   <a href="definitions.html">Definitions</a>
+  <a href="examples.html">Examples</a>
   <a href="theorems.html">Theorems</a>
   <a href="equations.html">Equations</a>
   <a href="structures.html">Structures</a>
   <a href="passports.html">Passports</a>
   <a href="roots.html">Roots</a>
   <a href="research.html">Research</a>
+  <a href="changelog.html">Changelog</a>
 </nav>
-
 
 <main>
 
-
-<!-- ========================================================= -->
-<!-- PURPOSE -->
-<!-- ========================================================= -->
-
 <section id="purpose">
-
   <h2>1. Purpose of the Changelog</h2>
 
   <p>
-    This changelog records substantive changes to the mathematics,
-    framework architecture, research status, ownership, and formal
-    public presentation of Branch Mathematics and GURF.
+    This is the formal mathematical revision ledger. It records what changed,
+    why it changed, what the corrected form is, which dependencies are
+    affected, and what status follows.
   </p>
-
-  <p>
-    It is not a conversation archive.
-  </p>
-
-  <p>
-    The intended record answers questions such as:
-  </p>
-
-  <p>
-    What definition changed? · What assumption was strengthened? ·
-    Which theorem was corrected? · What object changed ownership? ·
-    What failed? · Which result was promoted or downgraded? ·
-    Which equation was generalized? · What research status changed? ·
-    Which public registry was synchronized?
-  </p>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- PRINCIPLES -->
-<!-- ========================================================= -->
-
-<section id="principles">
-
-  <h2>2. Revision Principles</h2>
 
   <div class="schema">
-
     \[
     \boxed{
-    \text{correction}
-    \neq
-    \text{erasure}.
+    \text{previous form}
+    \longrightarrow
+    \text{mathematical reason}
+    \longrightarrow
+    \text{corrected form}
+    \longrightarrow
+    \text{dependency update}
+    \longrightarrow
+    \text{new status}.
     }
     \]
-
   </div>
 
   <p>
-    A substantive revision should preserve enough information to show:
+    Informal drafting chronology and cosmetic edits do not belong in the
+    mathematical record.
   </p>
+</section>
 
-  <p>
-    previous form · reason for revision · corrected form · affected
-    dependencies · resulting status
-  </p>
+<section id="principles">
+  <h2>2. Revision Principles</h2>
 
   <div class="schema">
-
     \[
     \boxed{
-    \text{truth}
+    \text{correction}\neq\text{erasure}.
+    }
+    \]
+    \[
+    \boxed{
+    \text{mathematical truth}
     \neq
-    \text{novelty}
+    \text{historical novelty}
+    \neq
+    \text{physical realization}
     \neq
     \text{external validation}.
     }
     \]
-
   </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- SEPT 3 MASTER NORMALIZATION -->
-<!-- ========================================================= -->
-
-<section id="sept3-normalization">
-
-  <h2>3. September 3, 2026 — Corpus-Wide Mathematical Normalization</h2>
-
-  <div class="entry">
-
-    <div class="date">September 3, 2026</div>
-
-    <span class="tag">BM</span>
-    <span class="tag">GURF</span>
-    <span class="tag">WEBSITE</span>
-    <span class="tag">CORRECTION</span>
-
-    <h3>Core public pages synchronized to the current architecture</h3>
-
-    <p>
-      The public mathematical corpus was reviewed for cross-page
-      consistency.
-    </p>
-
-    <p>
-      The governing BM direction is:
-    </p>
-
-    <div class="schema">
-
-      \[
-      \boxed{
-      \text{lawful Branches}
-      \longrightarrow
-      \text{lawful Interactions}
-      \longrightarrow
-      \text{combined computation}
-      \longrightarrow
-      \text{Response}
-      \longrightarrow
-      \begin{cases}
-      \text{terminal result},\\[4pt]
-      \text{Root if downstream admissible}.
-      \end{cases}
-      }
-      \]
-
-    </div>
-
-    <p>
-      Older formulations ending in “Root or law result” were retired
-      because a Response is not restricted to a law.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- BM IDENTITY -->
-<!-- ========================================================= -->
-
-<section id="bm-identity">
-
-  <h2>4. Branch Mathematics Identity Retained</h2>
-
-  <div class="entry">
-
-    <div class="date">September 3, 2026</div>
-
-    <span class="tag">BM</span>
-    <span class="tag">FOUNDATIONS</span>
-
-    <p>
-      The canonical public identity remains:
-    </p>
-
-    <div class="schema">
-
-      \[
-      \boxed{
-      \text{Branch Mathematics is meta-structural mathematics
-      of lawful representation and transformation.}
-      }
-      \]
-
-    </div>
-
-    <p>
-      The framework is not reduced to Passport theory, abstraction
-      theory, Root theory, or response theory.
-    </p>
-
-    <p>
-      Branches retain their native mathematics.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- INTERACTION -->
-<!-- ========================================================= -->
-
-<section id="interaction-revision">
-
-  <h2>5. Interaction Arity Clarified</h2>
-
-  <div class="entry">
-
-    <div class="date">September 3, 2026</div>
-
-    <span class="tag">BM</span>
-    <span class="tag">DEFINITION</span>
-    <span class="tag">CORRECTION</span>
-
-    <p>
-      Earlier public wording described Interaction as involving
-      two or more Branches.
-    </p>
-
-    <p>
-      Current wording is:
-    </p>
-
-    <div class="schema">
-
-      \[
-      \boxed{
-      \text{Interaction}
-      =
-      \text{lawful typed mathematical action involving one or more
-      Branches, with multi-Branch interaction central.}
-      }
-      \]
-
-    </div>
-
-    <p>
-      This allows unary Branch participation without weakening the
-      central multi-Branch use of Interaction.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- LEAF -->
-<!-- ========================================================= -->
-
-<section id="leaf-revision">
-
-  <h2>6. Leaf Notation and Provenance Corrected</h2>
-
-  <div class="entry">
-
-    <div class="date">September 3, 2026</div>
-
-    <span class="tag">BM</span>
-    <span class="tag">LEAF</span>
-    <span class="tag">NOTATION</span>
-
-    <p>
-      Earlier notation reused \(L_j\) for both a Leaf codomain and an
-      extracted Leaf value.
-    </p>
-
-    <p>
-      The corrected notation is:
-    </p>
-
-    <div class="schema">
-
-      \[
-      \ell_j:
-      Z_I
-      \longrightarrow
-      \mathcal L_j,
-      \]
-
-      \[
-      \boxed{
-      \lambda_j
-      =
-      \ell_j
-      \left(
-      I(x_1,\ldots,x_n)
-      \right)
-      \in
-      \mathcal L_j.
-      }
-      \]
-
-    </div>
-
-    <p>
-      \(\mathcal L_j\) is the Leaf space,
-      \(\ell_j\) is the extraction map,
-      and \(\lambda_j\) is the Leaf value.
-    </p>
-
-    <p>
-      A derived quantity is no longer called a formal BM Leaf merely
-      because it arose during BM-guided research.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- TREE RESPONSE ROOT -->
-<!-- ========================================================= -->
-
-<section id="tree-response-root">
-
-  <h2>7. Tree, Response, and Root Roles Separated</h2>
-
-  <div class="entry">
-
-    <div class="date">September 3, 2026</div>
-
-    <span class="tag">BM</span>
-    <span class="tag">STRUCTURES</span>
-    <span class="tag">CORRECTION</span>
-
-    <p>
-      The earlier public schema could be read as placing Tree after Leaf
-      in a universal linear sequence.
-    </p>
-
-    <p>
-      The corrected structural distinction is:
-    </p>
-
-    <div class="schema">
-
-      \[
-      \boxed{
-      \text{Tree}
-      \xrightarrow{\text{combined computation}}
-      \text{Response}.
-      }
-      \]
-
-      \[
-      \boxed{
-      \text{Response}
-      \longrightarrow
-      \begin{cases}
-      \text{terminal result},\\[4pt]
-      \text{Root if downstream admissible}.
-      \end{cases}
-      }
-      \]
-
-    </div>
-
-    <p>
-      Tree is the organized computational structure.
-      Response is its typed output.
-      Root is a downstream role available only after admissibility is
-      established.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- RESPONSE -->
-<!-- ========================================================= -->
-
-<section id="response-generalization">
-
-  <h2>8. Response Generalized Beyond Law-Valued Output</h2>
-
-  <div class="entry">
-
-    <div class="date">September 3, 2026</div>
-
-    <span class="tag">BM</span>
-    <span class="tag">RESPONSE</span>
-    <span class="tag">GENERALIZATION</span>
-
-    <p>
-      Earlier public wording described Response too narrowly as a
-      law-valued output.
-    </p>
-
-    <p>
-      Response is now defined as a typed mathematical output and may be:
-    </p>
-
-    <p>
-      value · state · function · law · relation · operator ·
-      classification · structured object · family · another valid
-      mathematical output
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- RECOVERABILITY -->
-<!-- ========================================================= -->
-
-<section id="factorization-domain">
-
-  <h2>9. Exact Recoverability Domain Corrected</h2>
-
-  <div class="entry">
-
-    <div class="date">September 3, 2026</div>
-
-    <span class="tag">BM</span>
-    <span class="tag">GURF</span>
-    <span class="tag">FACTORISATION</span>
-
-    <p>
-      For
-    </p>
-
-    \[
-    F:
-    X
-    \longrightarrow
-    Z,
-    \qquad
-    T:
-    X
-    \longrightarrow
-    W,
-    \]
-
-    <p>
-      exact deterministic recovery naturally requires
-    </p>
-
-    <div class="schema">
-
-      \[
-      \boxed{
-      \widetilde T:
-      F(X)
-      \longrightarrow
-      W,
-      \qquad
-      T
-      =
-      \widetilde T\circ F.
-      }
-      \]
-
-    </div>
-
-    <p>
-      A total extension
-    </p>
-
-    \[
-    \widetilde T:
-    Z
-    \longrightarrow
-    W
-    \]
-
-    <p>
-      is a stronger additional requirement and is no longer silently
-      assumed.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- GURF ARCHITECTURE -->
-<!-- ========================================================= -->
-
-<section id="gurf-architecture">
-
-  <h2>10. Complete GURF Architecture Recorded</h2>
-
-  <div class="entry">
-
-    <div class="date">September 3, 2026</div>
-
-    <span class="tag">GURF</span>
-    <span class="tag">ARCHITECTURE</span>
-
-    <p>
-      The current integrated architecture is:
-    </p>
-
-    <div class="schema">
-
-      \[
-      \boxed{
-      \mathrm{GURF}
-      =
-      \mathrm{Core}
-      +
-      \mathrm{SOE}
-      +
-      \mathrm{ACE}
-      +
-      \mathrm{IRE}
-      +
-      \mathrm{UKE}
-      +
-      \mathrm{GRDE}
-      +
-      \mathrm{HDE}
-      +
-      \mathrm{GHSE}.
-      }
-      \]
-
-    </div>
-
-    <table>
-
-      <thead>
-        <tr>
-          <th>Component</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-
-      <tbody>
-
-        <tr>
-          <td>Core</td>
-          <td>Stable / canonical</td>
-        </tr>
-
-        <tr>
-          <td>SOE</td>
-          <td>Stable canonical extension</td>
-        </tr>
-
-        <tr>
-          <td>ACE</td>
-          <td>Stable canonical extension</td>
-        </tr>
-
-        <tr>
-          <td>IRE</td>
-          <td>Stable canonical extension</td>
-        </tr>
-
-        <tr>
-          <td>UKE</td>
-          <td>Stable canonical extension</td>
-        </tr>
-
-        <tr>
-          <td>GRDE</td>
-          <td>Frozen at GURF-GRDE-008</td>
-        </tr>
-
-        <tr>
-          <td>HDE</td>
-          <td>Active canonical extension</td>
-        </tr>
-
-        <tr>
-          <td>GHSE</td>
-          <td>Active canonical extension</td>
-        </tr>
-
-      </tbody>
-
-    </table>
-
-  </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- EXTENSION ACTIVATION -->
-<!-- ========================================================= -->
-
-<section id="extension-activation">
-
-  <h2>11. GURF Extension Activation Rule Formalized</h2>
-
-  <div class="entry">
-
-    <div class="date">September 3, 2026</div>
-
-    <span class="tag">GURF</span>
-    <span class="tag">GOVERNANCE</span>
-
-    <div class="schema">
-
-      \[
-      \boxed{
-      \text{Use a GURF extension only when its specialized
-      response semantics are genuinely present.}
-      }
-      \]
-
-    </div>
-
-    <p>
-      Extensions attach specialized mathematics to the Core rather than
-      repeatedly redefining the Core.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- OWNERSHIP -->
-<!-- ========================================================= -->
-
-<section id="ownership">
-
-  <h2>12. Mathematics Ownership Migration Recorded</h2>
-
-  <div class="entry">
-
-    <div class="date">September 3, 2026</div>
-
-    <span class="tag">BM</span>
-    <span class="tag">GURF</span>
-    <span class="tag">OWNERSHIP</span>
-
-    <p>
-      Domain-independent mathematical structures were separated from
-      response-specialized GURF extensions.
-    </p>
-
-    <table>
-
-      <thead>
-        <tr>
-          <th>Structure</th>
-          <th>Current Placement</th>
-        </tr>
-      </thead>
-
-      <tbody>
-
-        <tr>
-          <td>HEC</td>
-          <td>BM calculus</td>
-        </tr>
-
-        <tr>
-          <td>HEC-S</td>
-          <td>Internal sector of HEC</td>
-        </tr>
-
-        <tr>
-          <td>Defect Calculus</td>
-          <td>Domain-independent mathematics under BM</td>
-        </tr>
-
-        <tr>
-          <td>Attachment Complex</td>
-          <td>Bridge object</td>
-        </tr>
-
-      </tbody>
-
-    </table>
-
-    <p>
-      These structures are not counted as GURF extensions merely because
-      GURF may use them.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- PORTABILITY -->
-<!-- ========================================================= -->
-
-<section id="portability">
-
-  <h2>13. Portability Firewall Formalized</h2>
-
-  <div class="entry">
-
-    <div class="date">September 3, 2026</div>
-
-    <span class="tag">BM</span>
-    <span class="tag">GURF</span>
-    <span class="tag">GOVERNANCE</span>
-
-    <div class="schema">
-
-      \[
-      \boxed{
-      \text{domain-independent mathematical kernel}
-      \longrightarrow
-      \text{BM}
-      }
-      \]
-
-      \[
-      \boxed{
-      \text{essential response semantics}
-      \longrightarrow
-      \text{GURF}.
-      }
-      \]
-
-    </div>
-
-    <p>
-      Portability across multiple mathematical contexts is now an
-      explicit ownership test.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- GURF LINEAGE -->
-<!-- ========================================================= -->
-
-<section id="gurf-lineage">
-
-  <h2>14. GURF Historical Lineage Consolidated</h2>
-
-  <div class="entry">
-
-    <div class="date">September 3, 2026</div>
-
-    <span class="tag">GURF</span>
-    <span class="tag">SUPERSESSION</span>
-
-    <table>
-
-      <thead>
-        <tr>
-          <th>Earlier Structure</th>
-          <th>Current Placement</th>
-        </tr>
-      </thead>
-
-      <tbody>
-
-        <tr>
-          <td>GURE</td>
-          <td>Superseded by / consolidated into IRE</td>
-        </tr>
-
-        <tr>
-          <td>CAR</td>
-          <td>Functions absorbed into ACE and GHSE</td>
-        </tr>
-
-        <tr>
-          <td>GALC</td>
-          <td>Consolidated into UKE</td>
-        </tr>
-
-        <tr>
-          <td>XEXT</td>
-          <td>
-            Closed as architecture layer; useful lessons retained
-          </td>
-        </tr>
-
-        <tr>
-          <td>ACDRE lineage</td>
-          <td>Applied-context / bridge role</td>
-        </tr>
-
-      </tbody>
-
-    </table>
-
-  </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- ROOT DEFINITION -->
-<!-- ========================================================= -->
-
-<section id="root-definition">
-
-  <h2>15. Root Definition Tightened</h2>
-
-  <div class="entry">
-
-    <div class="date">September 3, 2026</div>
-
-    <span class="tag">BM</span>
-    <span class="tag">ROOT</span>
-
-    <p>
-      Root status is now explicitly a downstream role:
-    </p>
-
-    <div class="schema">
-
-      \[
-      \boxed{
-      \text{Root role}
-      =
-      \text{Response}
-      +
-      \text{verified downstream admissibility}.
-      }
-      \]
-
-    </div>
-
-    <p>
-      Root does not imply:
-    </p>
-
-    <p>
-      invertibility · conservation · recursion · physical realization ·
-      compatibility with every receiver
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- ROOTING ATTACHMENT -->
-<!-- ========================================================= -->
-
-<section id="rooting-attachment">
-
-  <h2>16. Rooting Attachment Site Generalized</h2>
-
-  <div class="entry">
-
-    <div class="date">September 3, 2026</div>
-
-    <span class="tag">BM</span>
-    <span class="tag">ROOTING</span>
-    <span class="tag">CORRECTION</span>
-
-    <p>
-      Earlier Rooting language could be read as requiring attachment to
-      an interior point.
-    </p>
-
-    <p>
-      Rooting is now defined through a compatible mathematical
-      attachment site:
-    </p>
-
-    <div class="schema">
-
-      \[
-      \mathcal A:
-      D_{\mathcal A}
-      \subseteq
-      X_A\times X_R
-      \longrightarrow
-      X'.
-      \]
-
-    </div>
-
-    <p>
-      Attachment may be terminal or nonterminal.
-      Interior attachment is permitted when the native mathematics
-      admits it, but is not universally required.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- REBRANCHING -->
-<!-- ========================================================= -->
-
-<section id="rebranching">
-
-  <h2>17. Rebranching Kept Separate From Rooting</h2>
-
-  <div class="entry">
-
-    <div class="date">September 3, 2026</div>
-
-    <span class="tag">BM</span>
-    <span class="tag">CANDIDATE</span>
-
-    <p>
-      Rooting and Rebranching remain distinct candidate structures.
-    </p>
-
-    <div class="schema">
-
-      \[
-      \boxed{
-      \text{lawful Rooting}
-      \not\Rightarrow
-      \text{Rebranching}.
-      }
-      \]
-
-    </div>
-
-    <p>
-      A lawful attachment may terminate without producing any additional
-      Branch development.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- ROOT ITERATION -->
-<!-- ========================================================= -->
-
-<section id="root-iteration">
-
-  <h2>18. Repeated Rooting Closure Requirement Added</h2>
-
-  <div class="entry">
-
-    <div class="date">September 3, 2026</div>
-
-    <span class="tag">ROOT</span>
-    <span class="tag">DYNAMICS</span>
-    <span class="tag">CORRECTION</span>
-
-    <p>
-      Earlier wording connected
-    </p>
-
-    \[
-    R_{n+1}=F(R_n)
-    \]
-
-    <p>
-      directly to standard iteration.
-    </p>
-
-    <p>
-      The corrected condition requires closure:
-    </p>
-
-    <div class="schema">
-
-      \[
-      \boxed{
-      F:
-      X_R
-      \longrightarrow
-      X_R
-      }
-      \]
-
-    </div>
-
-    <p>
-      or an invariant admissible domain
-    </p>
-
-    \[
-    A_R\subseteq X_R,
-    \qquad
-    \boxed{
-    F(A_R)\subseteq A_R.
-    }
-    \]
-
-    <p>
-      Only then may ordinary iteration and dynamical-systems results be
-      applied directly.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- ROOT CHAIN -->
-<!-- ========================================================= -->
-
-<section id="root-chain">
-
-  <h2>19. General Root Chain Distinguished From Iteration</h2>
-
-  <div class="entry">
-
-    <div class="date">September 3, 2026</div>
-
-    <span class="tag">ROOT</span>
-    <span class="tag">GENERALIZATION</span>
-
-    <p>
-      A more general Root chain may use changing spaces and maps:
-    </p>
-
-    <div class="schema">
-
-      \[
-      R_n\in X_n,
-      \qquad
-      F_n:
-      D_n\subseteq X_n
-      \longrightarrow
-      X_{n+1},
-      \]
-
-      \[
-      \boxed{
-      R_{n+1}
-      =
-      F_n(R_n).
-      }
-      \]
-
-    </div>
-
-    <p>
-      Such a chain is not automatically iteration of a single
-      endomorphism.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- AFFINE -->
-<!-- ========================================================= -->
-
-<section id="affine">
-
-  <h2>20. Affine Repeated-Root Convergence Corrected</h2>
-
-  <div class="entry">
-
-    <div class="date">September 3, 2026</div>
-
-    <span class="tag">EQUATIONS</span>
-    <span class="tag">ROOT</span>
-    <span class="tag">CORRECTION</span>
-
-    <p>
-      For
-    </p>
-
-    \[
-    R_{n+1}
-    =
-    \alpha R_n+\beta,
-    \qquad
-    \alpha\neq1,
-    \]
-
-    <p>
-      the fixed point is
-    </p>
-
-    \[
-    R_*
-    =
-    \frac{\beta}{1-\alpha},
-    \]
-
-    <p>
-      and
-    </p>
-
-    <div class="schema">
-
-      \[
-      \boxed{
-      R_n-R_*
-      =
-      \alpha^n(R_0-R_*).
-      }
-      \]
-
-    </div>
-
-    <p>
-      Therefore, for the scalar affine model on \(\mathbb R\),
-    </p>
-
-    <div class="schema">
-
-      \[
-      \boxed{
-      |\alpha|<1
-      \Longrightarrow
-      R_n\to R_*
-      \text{ for every finite }R_0\in\mathbb R.
-      }
-      \]
-
-    </div>
-
-    <p>
-      The result is global for this affine model, not merely local.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- LOCAL ROOT STABILITY -->
-<!-- ========================================================= -->
-
-<section id="local-stability">
-
-  <h2>21. Nonlinear Root Stability Kept Local</h2>
-
-  <div class="entry">
-
-    <div class="date">September 3, 2026</div>
-
-    <span class="tag">ROOT</span>
-    <span class="tag">STABILITY</span>
-
-    <p>
-      For a differentiable nonlinear Root map, the Jacobian criterion
-    remains a local statement.
-    </p>
-
-    <div class="schema">
-
-      \[
-      \boxed{
-      \rho(J_F(R_*))<1
-      }
-      \]
-
-    </div>
-
-    <p>
-      is used under standard hypotheses as a sufficient local
-      asymptotic-attraction condition.
-    </p>
-
-    <p>
-      This local result is not conflated with the global affine result.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- PASSPORT -->
-<!-- ========================================================= -->
-
-<section id="passport">
-
-  <h2>22. Passport Mathematics Expanded</h2>
-
-  <div class="entry">
-
-    <div class="date">September 3, 2026</div>
-
-    <span class="tag">PASSPORT</span>
-    <span class="tag">BM</span>
-    <span class="tag">GURF</span>
-
-    <p>
-      The working Passport representation remains
-    </p>
-
-    <div class="schema">
-
-      \[
-      P
-      =
-      \left(
-      X,
-      \mathcal C,
-      \{b_c\}_{c\in\mathcal C},
-      \mathcal A
-      \right).
-      \]
-
-    </div>
-
-    <p>
-      Public Passport mathematics now explicitly includes:
-    </p>
-
-    <p>
-      exact equivalence · fibres · Task sufficiency · refinement ·
-      structured quotients · stochastic semantics · nondeterministic
-      semantics · joint feasibility · coupling · Law Passports ·
-      Conservative Passports · Root Passport Transfer · dynamic closure ·
-      privacy semantics · repair · export · re-entry
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- PASSPORT DYNAMIC CLOSURE -->
-<!-- ========================================================= -->
-
-<section id="passport-closure">
-
-  <h2>23. Passport Dynamic Closure Added</h2>
-
-  <div class="entry">
-
-    <div class="date">September 3, 2026</div>
-
-    <span class="tag">PASSPORT</span>
-    <span class="tag">DYNAMICS</span>
-
-    <p>
-      Static Task sufficiency is now explicitly distinguished from
-      autonomous reduced evolution.
-    </p>
-
-    <p>
-      For Passport representation
-    </p>
-
-    \[
-    B_P:
-    X
-    \longrightarrow
-    Q
-    \]
-
-    <p>
-      and full evolution
-    </p>
-
-    \[
-    \Phi:
-    X
-    \longrightarrow
-    X,
-    \]
-
-    <p>
-      dynamic closure requires
-    </p>
-
-    <div class="schema">
-
-      \[
-      \boxed{
-      B_P\circ\Phi
-      =
-      \widetilde\Phi_P\circ B_P
-      }
-      \]
-
-    </div>
-
-    <p>
-      for some
-    </p>
-
-    \[
-    \widetilde\Phi_P:
-    B_P(X)
-    \longrightarrow
-    B_P(X).
-    \]
-
-    <div class="schema">
-
-      \[
-      \boxed{
-      \text{Task sufficiency}
-      \not\Rightarrow
-      \text{dynamic closure}.
-      }
-      \]
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- MINIMAL REPAIR -->
-<!-- ========================================================= -->
-
-<section id="minimal-repair">
-
-  <h2>24. Minimal Repair Optimization Corrected</h2>
-
-  <div class="entry">
-
-    <div class="date">September 3, 2026</div>
-
-    <span class="tag">GURF</span>
-    <span class="tag">PASSPORT</span>
-    <span class="tag">OPTIMIZATION</span>
-    <span class="tag">CORRECTION</span>
-
-    <p>
-      Earlier public formulas used an unconditional minimum:
-    </p>
-
-    \[
-    \min_q\operatorname{Cost}(q).
-    \]
-
-    <p>
-      Because existence of a minimizing repair need not be known, the
-      general formulation is now
-    </p>
-
-    <div class="schema">
-
-      \[
-      \boxed{
-      \inf_{
-        q\in\mathcal Q_{\mathrm{adm}}
-      }
-      \operatorname{Cost}(q)
-      }
-      \]
-
-    </div>
-
-    <p>
-      subject to the required repair condition.
-    </p>
-
-    <p>
-      The symbol \(\min\) is reserved for cases where attainment is
-      established.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- REENTRY -->
-<!-- ========================================================= -->
-
-<section id="passport-reentry">
-
-  <h2>25. Passport Re-entry Made Explicitly Partial</h2>
-
-  <div class="entry">
-
-    <div class="date">September 3, 2026</div>
-
-    <span class="tag">PASSPORT</span>
-    <span class="tag">RE-ENTRY</span>
-    <span class="tag">CORRECTION</span>
-
-    <p>
-      Export does not automatically imply re-entry.
-    </p>
-
-    <p>
-      If
-    </p>
-
-    \[
-    E:
-    X
-    \longrightarrow
-    Y_E
-    \]
-
-    <p>
-      exports Passport information and the receiver accepts only
-    </p>
-
-    \[
-    R:
-    D_R
-    \subseteq
-    Y_E
-    \longrightarrow
-    Z,
-    \]
-
-    <p>
-      then
-    </p>
-
-    <div class="schema">
-
-      \[
-      \boxed{
-      D_{R\circ E}
-      =
-      \{x\in X:E(x)\in D_R\}.
-      }
-      \]
-
-    </div>
-
-    <p>
-      Re-entry is lawful only on this actual composite domain and under
-      all additional receiving constraints.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- STRUCTURED QUOTIENT -->
-<!-- ========================================================= -->
-
-<section id="structured-quotient">
-
-  <h2>26. BM-SQ-01 Structured Quotient Result</h2>
-
-  <div class="entry">
-
-    <span class="tag">BM-SQ-01</span>
-    <span class="tag">PROVED</span>
-    <span class="tag">FINITARY ALGEBRA</span>
-
-    <p>
-      In the finitary algebraic sector, a Passport equivalence supports
-      descended Operations only when it is compatible with those
-      Operations:
-    </p>
-
-    <div class="schema">
-
-      \[
-      \boxed{
-      x_i\sim_Py_i
-      \quad
-      \forall i
-      \Longrightarrow
-      \sigma(x_1,\ldots,x_n)
-      \sim_P
-      \sigma(y_1,\ldots,y_n).
-      }
-      \]
-
-    </div>
-
-    <p>
-      Under this condition,
-    </p>
-
-    \[
-    \overline\sigma
-    ([x_1]_P,\ldots,[x_n]_P)
-    =
-    [\sigma(x_1,\ldots,x_n)]_P
-    \]
-
-    <p>
-      is well-defined.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- QUOTIENT COUNTEREXAMPLE -->
-<!-- ========================================================= -->
-
-<section id="quotient-counterexample">
-
-  <h2>27. Structured Quotient Counterexample Preserved</h2>
-
-  <div class="entry">
-
-    <span class="tag">COUNTEREXAMPLE</span>
-    <span class="tag">BM</span>
-
-    <p>
-      On
-    </p>
-
-    \[
-    X=\mathbb R^2,
-    \]
-
-    <p>
-      define
-    </p>
-
-    \[
-    (x_1,x_2)\sim_P(y_1,y_2)
-    \Longleftrightarrow
-    x_1=y_1.
-    \]
-
-    <p>
-      Coordinate swapping can distinguish classes that the raw
-      equivalence had identified.
-    </p>
-
-    <p>
-      The example remains an explicit demonstration that:
-    </p>
-
-    <div class="schema">
-
-      \[
-      \boxed{
-      \text{equivalence relation}
-      \not\Rightarrow
-      \text{operation-compatible quotient}.
-      }
-      \]
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- STOCHASTIC -->
-<!-- ========================================================= -->
-
-<section id="stochastic">
-
-  <h2>28. Stochastic Semantics Firewall</h2>
-
-  <div class="entry">
-
-    <span class="tag">STOCHASTIC</span>
-    <span class="tag">CORRECTION</span>
-
-    <p>
-      Stochastic transformations are represented using appropriate
-      kernels rather than deterministic function semantics.
-    </p>
-
-    <div class="schema">
-
-      \[
-      M:
-      X
-      \longrightarrow
-      \mathcal P(Y),
-      \]
-
-      \[
-      \boxed{
-      M^\dagger\varphi(x)
-      =
-      \mathbb E
-      [
-      \varphi(Y)\mid X=x
-      ].
-      }
-      \]
-
-    </div>
-
-    <p>
-      Measurability, probability-law equality, and coupling remain
-      explicit.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- NONDET -->
-<!-- ========================================================= -->
-
-<section id="nondeterministic">
-
-  <h2>29. Nondeterministic Quantifier Firewall</h2>
-
-  <div class="entry">
-
-    <span class="tag">NONDETERMINISTIC</span>
-    <span class="tag">CORRECTION</span>
-
-    <div class="schema">
-
-      \[
-      \Diamond_R(U)
-      =
-      \{x:\exists y\in U,\ xRy\},
-      \]
-
-      \[
-      \Box_R(U)
-      =
-      \{x:\forall y,\ xRy\Rightarrow y\in U\}.
-      \]
-
-    </div>
-
-    <p>
-      Existential reachability and universal safety remain distinct.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- FEASIBILITY -->
-<!-- ========================================================= -->
-
-<section id="feasibility">
-
-  <h2>30. Joint Feasibility Firewall</h2>
-
-  <div class="entry">
-
-    <span class="tag">QUANTIFIERS</span>
-    <span class="tag">CORRECTION</span>
-
-    <p>
-      The distinction
-    </p>
-
-    \[
-    \forall c\;\exists x_c
-    \]
-
-    <p>
-      versus
-    </p>
-
-    \[
-    \exists x\;\forall c
-    \]
-
-    <p>
-      is now explicit.
-    </p>
-
-    <p>
-      Common feasibility requires
-    </p>
-
-    <div class="schema">
-
-      \[
-      \boxed{
-      \bigcap_{c\in\mathcal C}
-      P_c
-      \neq
-      \varnothing.
-      }
-      \]
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- PRIVACY -->
-<!-- ========================================================= -->
-
-<section id="privacy">
-
-  <h2>31. Differential Privacy Representation Corrected</h2>
-
-  <div class="entry">
-
-    <span class="tag">PRIVACY</span>
-    <span class="tag">STOCHASTIC</span>
-    <span class="tag">CORRECTION</span>
-
-    <p>
-      Differential privacy was separated from ordinary exact Passport
-      equivalence.
-    </p>
-
-    <p>
-      For neighboring inputs
-    </p>
-
-    \[
-    x\sim_{\mathrm{adj}}x'
-    \]
-
-    <p>
-      and randomized mechanism \(M\),
-    </p>
-
-    <div class="schema">
-
-      \[
-      \boxed{
-      \Pr[M(x)\in S]
-      \le
-      e^\varepsilon
-      \Pr[M(x')\in S]
-      +
-      \delta.
-      }
-      \]
-
-    </div>
-
-    <p>
-      Privacy therefore requires probabilistic comparison of output laws
-      rather than exact equality classes.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- NAVIER STOKES -->
-<!-- ========================================================= -->
-
-<section id="navier-stokes">
-
-  <h2>32. Navier–Stokes Status Corrected</h2>
-
-  <div class="entry">
-
-    <div class="date">September 3, 2026</div>
-
-    <span class="tag">NAVIER–STOKES</span>
-    <span class="tag">STATUS</span>
-    <span class="tag">CORRECTION</span>
-
-    <p>
-      Earlier public wording classified the current program as
-      “active derived Leaves and theorem-kernel mathematics.”
-    </p>
-
-    <p>
-      That wording was too broad because formal BM Leaf status requires
-      explicit Interaction provenance and a Leaf-extraction map.
-    </p>
-
-    <p>
-      The corrected status is:
-    </p>
-
-    <div class="schema">
-
-      \[
-      \boxed{
-      \text{active derived mathematical objects, relations,
-      and theorem-kernel results}.
-      }
-      \]
-
-    </div>
-
-    <p>
-      Individual results may be promoted to formal Leaf status only when
-      their Interaction and extraction map are explicitly specified.
-    </p>
-
-    <p>
-      No Clay Millennium solution is claimed.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- YM -->
-<!-- ========================================================= -->
-
-<section id="yang-mills">
-
-  <h2>33. Yang–Mills Status Retained</h2>
-
-  <div class="entry">
-
-    <span class="tag">YANG–MILLS</span>
-    <span class="tag">CONDITIONAL</span>
-
-    <p>
-      The four-dimensional Yang–Mills existence and mass-gap problem
-      remains open.
-    </p>
-
-    <p>
-      Current research includes:
-    </p>
-
-    <p>
-      boundary susceptibility · first-exit leakage · tail floors ·
-      Green-matrix structure · shell-depth recursion · coherent return ·
-      Gauss-law support · local thresholds · global-return obstruction ·
-      variational bounds
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- YM VARIATIONAL -->
-<!-- ========================================================= -->
-
-<section id="ym-variational">
-
-  <h2>34. Yang–Mills Variational Correction Preserved</h2>
-
-  <div class="entry">
-
-    <span class="tag">YANG–MILLS</span>
-    <span class="tag">VARIATIONAL</span>
-    <span class="tag">CORRECTION</span>
-
-    <p>
-      Ordered Ritz values may satisfy standard nested-space
-      variational monotonicity under appropriate hypotheses.
-    </p>
-
-    <p>
-      Spectral-gap differences do not automatically inherit that
-      monotonicity.
-    </p>
-
-    <div class="schema">
-
-      \[
-      \boxed{
-      \text{monotonic Ritz values}
-      \not\Rightarrow
-      \text{monotonic Ritz gap}.
-      }
-      \]
-
-    </div>
-
-    <p>
-      Separate error certification is required for gap claims.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- GRAVITY -->
-<!-- ========================================================= -->
-
-<section id="gravity">
-
-  <h2>35. Gravity and Time-Geometry Scope Clarified</h2>
-
-  <div class="entry">
-
-    <span class="tag">GRAVITY</span>
-    <span class="tag">PHYSICS</span>
-
-    <p>
-      Physical investigation emphasizes forward-causal geometric effects
-      including:
-    </p>
-
-    <p>
-      proper-time gradients · geodesic behavior · frame dragging ·
-      tidal stretch and squeeze · focusing · defocusing · lensing ·
-      propagation delay
-    </p>
-
-    <p>
-      Closed-timelike-curve or backward-time constructions may be studied
-      mathematically without being treated as established physical
-      mechanisms.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- QUANTUM -->
-<!-- ========================================================= -->
-
-<section id="quantum">
-
-  <h2>36. Quantum Interpretation Firewall Retained</h2>
-
-  <div class="entry">
-
-    <span class="tag">QUANTUM</span>
-    <span class="tag">ENTANGLEMENT</span>
-
-    <p>
-      Entanglement is treated through joint state structure,
-      measurement statistics, correlations, distinguishability, and
-      admissible operations.
-    </p>
-
-    <div class="schema">
-
-      \[
-      \boxed{
-      \text{nonclassical correlation}
-      \not\Rightarrow
-      \text{controllable superluminal signalling}.
-      }
-      \]
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- DYNAMIC CLOSURE -->
-<!-- ========================================================= -->
-
-<section id="dynamic-closure">
-
-  <h2>37. Dynamic Closure Promoted as a Cross-Domain Audit</h2>
-
-  <div class="entry">
-
-    <span class="tag">BM</span>
-    <span class="tag">GURF</span>
-    <span class="tag">DYNAMICS</span>
-
-    <p>
-      For representation
-    </p>
-
-    \[
-    R:
-    X
-    \longrightarrow
-    Z
-    \]
-
-    <p>
-      and full evolution
-    </p>
-
-    \[
-    \Phi:
-    X
-    \longrightarrow
-    X,
-    \]
-
-    <p>
-      exact deterministic closure requires
-    </p>
-
-    <div class="schema">
-
-      \[
-      \boxed{
-      R\circ\Phi
-      =
-      \widetilde\Phi\circ R,
-      }
-      \]
-
-    </div>
-
-    <p>
-      with
-    </p>
-
-    \[
-    \widetilde\Phi:
-    R(X)
-    \longrightarrow
-    R(X).
-    \]
-
-    <p>
-      This audit is now explicitly separated from one-time Task
-      sufficiency.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- DEFINITIONS REGISTRY -->
-<!-- ========================================================= -->
-
-<section id="definitions">
-
-  <h2>38. Definitions Registry Expanded</h2>
-
-  <div class="entry">
-
-    <div class="date">September 3, 2026</div>
-
-    <span class="tag">DEFINITIONS</span>
-    <span class="tag">PUBLICATION</span>
-
-    <p>
-      Definitions were expanded from short glossary descriptions into
-      mathematical specifications including:
-    </p>
-
-    <p>
-      identity · formal data · characteristics · abilities · limits ·
-      admissibility · failure modes · sector scope · framework ownership
-    </p>
-
-    <p>
-      The registry now includes explicit definitions for:
-    </p>
-
-    <p>
-      GURF Core · SOE · ACE · IRE · UKE · GRDE · HDE · GHSE ·
-      HEC · HEC-S · Defect Calculus · Attachment Complex ·
-      extension activation · portability
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- THEOREMS -->
-<!-- ========================================================= -->
-
-<section id="theorems">
-
-  <h2>39. Theorem Registry Formalized</h2>
-
-  <div class="entry">
-
-    <span class="tag">THEOREMS</span>
-    <span class="tag">PROOFS</span>
-
-    <p>
-      The public theorem page distinguishes:
-    </p>
-
-    <p>
-      theorem · proposition · lemma · corollary · conditional result ·
-      counterexample
-    </p>
-
-    <p>
-      Current supporting results include:
-    </p>
-
-    <p>
-      Passport Equivalence · Exact Recoverability ·
-      Completion-Fibre Sufficiency · Parallel Observation Refinement ·
-      Deterministic Serial Information Loss · BM-SQ-01 ·
-      Interface Factorization · Dynamic Continuation ·
-      Repair Refinement · Dynamic Closure
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- EQUATIONS -->
-<!-- ========================================================= -->
-
-<section id="equations">
-
-  <h2>40. Equation Registry Normalized</h2>
-
-  <div class="entry">
-
-    <span class="tag">EQUATIONS</span>
-    <span class="tag">PUBLICATION</span>
-
-    <p>
-      Equations are classified as:
-    </p>
-
-    <p>
-      definition · exact identity · derived relation · conditional
-      relation · approximation · structural schema · worked example ·
-      candidate model
-    </p>
-
-    <p>
-      The registry now includes the canonical Leaf extraction equation,
-      repeated-Root closure requirements, GURF extension equations, and
-      the corrected global affine convergence result.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- STRUCTURES -->
-<!-- ========================================================= -->
-
-<section id="structures">
-
-  <h2>41. Structural Registry Expanded</h2>
-
-  <div class="entry">
-
-    <span class="tag">STRUCTURES</span>
-    <span class="tag">BM</span>
-
-    <p>
-      The current structural registry covers:
-    </p>
-
-    <p>
-      Branch · Interaction · Leaf · Tree · Response · Root · Rooting ·
-      Rebranching · Passport · Root Passport Transfer · Seed · Operation ·
-      Interface · Configuration · Network · typed paths · coherence ·
-      equalizers · pullbacks · coequalizers · structured quotients ·
-      realization · export · re-entry · gluing · Law Spaces ·
-      conservation
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- RESEARCH -->
-<!-- ========================================================= -->
-
-<section id="research">
-
-  <h2>42. Research Registry Expanded</h2>
-
-  <div class="entry">
-
-    <span class="tag">RESEARCH</span>
-    <span class="tag">STATUS</span>
-
-    <p>
-      Research programs are publicly separated by evidence status.
-    </p>
-
-    <p>
-      Current major sectors include:
-    </p>
-
-    <p>
-      BM foundations · structured quotients · coherence · HEC ·
-      Defect Calculus · Roots · Seeds · GURF Core · SOE · ACE · IRE ·
-      UKE · GRDE · HDE · GHSE · Navier–Stokes · Yang–Mills · gravity ·
-      quantum theory · electromagnetism · radiation · thermal physics ·
-      computation · privacy · secure compilation · control · engineering
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- FIGURES -->
-<!-- ========================================================= -->
-
-<section id="figures">
-
-  <h2>43. Quantitative Figure Policy Established</h2>
-
-  <div class="entry">
-
-    <span class="tag">FIGURES</span>
-    <span class="tag">PUBLICATION</span>
-
-    <p>
-      Mathematical visuals should be generated from equations, numerical
-      models, or data.
-    </p>
-
-    <p>
-      Preferred figures include:
-    </p>
-
-    <p>
-      curves · surfaces · phase portraits · vector fields · spectra ·
-      heatmaps · parameter sweeps · stability maps · convergence curves ·
-      PDE fields · response surfaces · uncertainty plots
-    </p>
-
-    <p>
-      Decorative mathematical-looking plots without substantive
-      mathematical content are excluded.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- DIAGRAMS -->
-<!-- ========================================================= -->
-
-<section id="diagrams">
-
-  <h2>44. Structural Diagram Policy Established</h2>
-
-  <div class="entry">
-
-    <span class="tag">DIAGRAMS</span>
-    <span class="tag">PUBLICATION</span>
-
-    <p>
-      The public encyclopedia does not invent substitute BM or GURF
-      structural diagrams.
-    </p>
-
-    <p>
-      Canonical diagrams will be published only after their objects,
-      maps, relationships, typing, and coherence structure have been
-      reconstructed and audited.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- STATUS -->
-<!-- ========================================================= -->
-
-<section id="framework-status">
-
-  <h2>45. Integrated BM Status Split Into Separate Questions</h2>
-
-  <div class="entry">
-
-    <span class="tag">STATUS</span>
-    <span class="tag">GOVERNANCE</span>
-
-    <table>
-
-      <thead>
-        <tr>
-          <th>Status Dimension</th>
-          <th>Current Status</th>
-        </tr>
-      </thead>
-
-      <tbody>
-
-        <tr>
-          <td>Integrated formal BM architecture</td>
-          <td>Established internally / project-approved</td>
-        </tr>
-
-        <tr>
-          <td>External novelty or historical priority</td>
-          <td>Not established</td>
-        </tr>
-
-        <tr>
-          <td>Independent external validation</td>
-          <td>Not yet established</td>
-        </tr>
-
-      </tbody>
-
-    </table>
-
-    <p>
-      Mathematical correctness remains a separate question from all
-      three status dimensions.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- FAILURE -->
-<!-- ========================================================= -->
-
-<section id="failure">
-
-  <h2>46. Failure Preservation Policy</h2>
-
-  <div class="entry">
-
-    <span class="tag">RESEARCH METHOD</span>
-    <span class="tag">FAILURE</span>
-
-    <p>
-      Failed arguments, counterexamples, invalid generalizations, and
-      broken assumptions are preserved when they constrain future
-      research.
-    </p>
-
-    <div class="schema">
-
-      \[
-      \boxed{
-      \text{failed derivation}
-      \Longrightarrow
-      \text{new mathematical constraint}.
-      }
-      \]
-
-    </div>
-
-    <p>
-      Corrections should identify why the earlier route failed rather
-      than silently removing it from the formal record.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- NOVELTY -->
-<!-- ========================================================= -->
-
-<section id="novelty">
-
-  <h2>47. Novelty Policy</h2>
-
-  <div class="entry">
-
-    <span class="tag">RESEARCH METHOD</span>
-    <span class="tag">PRIOR ART</span>
-
-    <p>
-      Mathematical derivation determines whether a claimed consequence
-      follows from stated assumptions.
-    </p>
-
-    <p>
-      Literature review determines whether an equivalent result was
-      already known.
-    </p>
-
-    <div class="schema">
-
-      \[
-      \boxed{
-      \text{mathematical truth}
-      \neq
-      \text{historical novelty}.
-      }
-      \]
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- PUBLIC SITE -->
-<!-- ========================================================= -->
-
-<section id="site">
-
-  <h2>48. Public Encyclopedia Architecture</h2>
-
-  <table>
-
-    <thead>
-      <tr>
-        <th>Page</th>
-        <th>Primary Function</th>
-      </tr>
-    </thead>
-
-    <tbody>
-
-      <tr>
-        <td>Home</td>
-        <td>Public orientation and framework overview</td>
-      </tr>
-
-      <tr>
-        <td>Branch Mathematics</td>
-        <td>BM foundations</td>
-      </tr>
-
-      <tr>
-        <td>GURF</td>
-        <td>Response-specialized framework and extensions</td>
-      </tr>
-
-      <tr>
-        <td>Encyclopedia</td>
-        <td>Integrated corpus index</td>
-      </tr>
-
-      <tr>
-        <td>Definitions</td>
-        <td>Formal vocabulary and status</td>
-      </tr>
-
-      <tr>
-        <td>Theorems</td>
-        <td>Statements, assumptions, proofs, counterexamples</td>
-      </tr>
-
-      <tr>
-        <td>Equations</td>
-        <td>Formal relations and quantitative mathematics</td>
-      </tr>
-
-      <tr>
-        <td>Structures</td>
-        <td>BM structural architecture</td>
-      </tr>
-
-      <tr>
-        <td>Passports</td>
-        <td>Distinction, sufficiency, quotient, and transfer mathematics</td>
-      </tr>
-
-      <tr>
-        <td>Roots</td>
-        <td>Root roles and candidate Rooting mathematics</td>
-      </tr>
-
-      <tr>
-        <td>Research</td>
-        <td>Active mathematical and scientific programs</td>
-      </tr>
-
-      <tr>
-        <td>Changelog</td>
-        <td>Formal revision history</td>
-      </tr>
-
-    </tbody>
-
-  </table>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- EARLIER SITE -->
-<!-- ========================================================= -->
-
-<section id="site-establishment">
-
-  <h2>49. Earlier Public-Site Establishment</h2>
-
-  <div class="entry">
-
-    <span class="tag">WEBSITE</span>
-
-    <p>
-      A public GitHub Pages mathematical research encyclopedia was
-      established for Branch Mathematics and GURF.
-    </p>
-
-    <p>
-      Machine-readable discovery support was also established through
-      normal site indexing infrastructure.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- WHAT BELONGS -->
-<!-- ========================================================= -->
-
-<section id="what-belongs">
-
-  <h2>50. What Belongs in This Changelog</h2>
 
   <p>
-    Substantive entries should be created for changes to:
+    A correction should make the framework more precisely typed, scoped, and
+    testable. Historical entries remain visible when they explain why the
+    current form exists.
   </p>
+</section>
 
-  <ul>
-    <li>definitions;</li>
-    <li>theorem statements;</li>
-    <li>proofs;</li>
-    <li>assumptions;</li>
-    <li>counterexamples;</li>
-    <li>equation forms;</li>
-    <li>mathematical ownership;</li>
-    <li>framework architecture;</li>
-    <li>research status;</li>
-    <li>numerical validation;</li>
-    <li>physical interpretation;</li>
-    <li>realization status;</li>
-    <li>prior-art findings;</li>
-    <li>formal diagrams;</li>
-    <li>important cross-page synchronization corrections.</li>
-  </ul>
+<section id="index">
+  <h2>3. Revision Index</h2>
+  <ol class="quick-index">
+<li><a href="#sept4-normalization">September 4 corpus synchronization</a></li>
+<li><a href="#sept4-branch">Current Branch specification synchronized</a></li>
+<li><a href="#sept4-interaction">Interaction domains moved to admissible Branch domains</a></li>
+<li><a href="#sept4-leaf">Leaf propagation and provenance strengthened</a></li>
+<li><a href="#sept4-tree">Tree/Response/Root teaching architecture strengthened</a></li>
+<li><a href="#sept4-seed">Seed status retained as candidate</a></li>
+<li><a href="#sept4-theorems">Theorem registry rebuilt</a></li>
+<li><a href="#sept4-equations">Equation registry rebuilt</a></li>
+<li><a href="#sept4-structures">Structural registry rebuilt</a></li>
+<li><a href="#sept4-passports">Passport registry rebuilt</a></li>
+<li><a href="#sept4-roots">Root registry rebuilt</a></li>
+<li><a href="#sept4-research">Research registry rebuilt</a></li>
+<li><a href="#sept4-examples">Examples registry expanded</a></li>
+<li><a href="#sept4-rooting-domain">Rooting attachment domain superseded</a></li>
+<li><a href="#sept4-root-reuse">Root reuse domain superseded</a></li>
+<li><a href="#sept4-research-gates">Open-problem promotion gates strengthened</a></li>
+<li><a href="#sept3-normalization">September 3 corpus-wide normalization</a></li>
+<li><a href="#bm-identity">BM identity retained</a></li>
+<li><a href="#interaction-revision">Interaction arity clarified</a></li>
+<li><a href="#leaf-revision">Leaf provenance correction</a></li>
+<li><a href="#tree-response-root">Tree/Response/Root separation</a></li>
+<li><a href="#response-generalization">Response generalized</a></li>
+<li><a href="#factorization-domain">Recoverability factor domain corrected</a></li>
+<li><a href="#gurf-architecture">GURF architecture recorded</a></li>
+<li><a href="#extension-activation">Extension activation rule</a></li>
+<li><a href="#ownership">Mathematics ownership migration</a></li>
+<li><a href="#portability">Portability firewall</a></li>
+<li><a href="#gurf-lineage">GURF supersession lineage</a></li>
+<li><a href="#root-definition">Root definition tightened</a></li>
+<li><a href="#rooting-attachment">Historical Rooting attachment generalization</a></li>
+<li><a href="#rebranching">Rooting/Rebranching separation</a></li>
+<li><a href="#root-iteration">Repeated Root closure</a></li>
+<li><a href="#root-chain">General Root chain</a></li>
+<li><a href="#affine">Affine repeated-Root correction</a></li>
+<li><a href="#local-stability">Nonlinear local stability</a></li>
+<li><a href="#passport">Passport expansion</a></li>
+<li><a href="#passport-closure">Passport Dynamic Closure</a></li>
+<li><a href="#minimal-repair">Minimal repair correction</a></li>
+<li><a href="#passport-reentry">Passport re-entry partiality</a></li>
+<li><a href="#structured-quotient">BM-SQ-01</a></li>
+<li><a href="#quotient-counterexample">Structured quotient counterexample</a></li>
+<li><a href="#stochastic">Stochastic firewall</a></li>
+<li><a href="#nondeterministic">Nondeterministic firewall</a></li>
+<li><a href="#feasibility">Joint feasibility firewall</a></li>
+<li><a href="#privacy">Differential-privacy firewall</a></li>
+<li><a href="#navier-stokes">Navier–Stokes status</a></li>
+<li><a href="#yang-mills">Yang–Mills status</a></li>
+<li><a href="#ym-variational">Yang–Mills variational correction</a></li>
+<li><a href="#gravity">Gravity scope</a></li>
+<li><a href="#quantum">Quantum interpretation firewall</a></li>
+<li><a href="#dynamic-closure">Dynamic Closure</a></li>
+<li><a href="#definitions">Definitions registry</a></li>
+<li><a href="#theorems">Theorem registry</a></li>
+<li><a href="#equations">Equation registry</a></li>
+<li><a href="#structures">Structural registry</a></li>
+<li><a href="#passports-page">Passport page</a></li>
+<li><a href="#roots-page">Roots page</a></li>
+<li><a href="#research">Research registry</a></li>
+<li><a href="#figures">Scientific figure policy</a></li>
+<li><a href="#status">Status separation</a></li>
+<li><a href="#failure">Failure preservation</a></li>
+<li><a href="#novelty">Novelty policy</a></li>
+<li><a href="#site">Public encyclopedia architecture</a></li>
+<li><a href="#site-establishment">Public-site establishment</a></li>
+<li><a href="#what-belongs">What belongs</a></li>
+<li><a href="#what-does-not-belong">What does not belong</a></li>
+<li><a href="#template">Revision template</a></li>
+<li><a href="#principle">Central changelog principle</a></li>
+  </ol>
+</section>
+<section id="sept4-normalization"><h2>4. September 4, 2026 — Corpus Synchronization</h2>
+<div class="entry">
+  <div class="date">September 4, 2026</div>
+  <span class="tag">BM</span><span class="tag">GURF</span><span class="tag">CORPUS</span><span class="tag">SYNCHRONIZATION</span>
+  <h3>Definitions, Examples, Theorems, Equations, Structures, Passports, Roots, and Research synchronized</h3>
+  <p>
+    The principal public mathematical registries were rebuilt against the
+    current BM/GURF architecture. The goal of the pass was not cosmetic
+    uniformity; it was elimination of cross-page mathematical drift.
+    </p>
+  <div class="schema">\[
+    \boxed{
+    \text{one current object}
+    \Longrightarrow
+    \text{one current definition, equation, theorem status,
+    structure, example role, and research status}.
+    }
+    \]</div>
+  
+  <p><strong>Affected public pages:</strong> definitions.html · examples.html · theorems.html · equations.html · structures.html · passports.html · roots.html · research.html</p>
+</div>
+</section><section id="sept4-branch"><h2>5. Current Branch Specification Synchronized</h2>
+
+<div class="entry">
+  <div class="date">September 4, 2026</div>
+  <span class="tag">BM</span><span class="tag">BRANCH</span><span class="tag">CORRECTION</span>
+  <h3>Seven-field Branch specification made governing across corrected registries</h3>
+  <p>The public Branch structure now consistently exposes sector, type,
+carrier, admissibility, laws, native Operations, and Passport/Interface
+obligations.</p>
+  <div class="schema">\[
+\boxed{
+B=
+(\mathsf S_B,\tau_B,X_B,A_B,\mathcal L_B,\mathcal O_B,\mathcal P_B).
+}
+\]</div>
+  <p><strong>Supersedes / refines:</strong> older compact four-field public uses where they were being treated as the complete current Branch specification</p>
+  <p><strong>Affected public pages:</strong> definitions.html · equations.html · structures.html</p>
+</div>
+
+</section><section id="sept4-interaction"><h2>6. Interaction Domains Moved to Admissible Branch Domains</h2>
+
+<div class="entry">
+  <div class="date">September 4, 2026</div>
+  <span class="tag">BM</span><span class="tag">INTERACTION</span><span class="tag">DOMAIN</span><span class="tag">CORRECTION</span>
+  <h3>Interaction formulas no longer use ambient carriers as though every carrier state were admissible</h3>
+  <p>
+The governing deterministic Interaction form now uses the actual admissible
+Branch domains.</p>
+  <div class="schema">\[
+\boxed{
+I:
+D_I\subseteq
+A_{B_1}\times\cdots\times A_{B_n}
+\to Z_I.
+}
+\]</div>
+  <p><strong>Supersedes / refines:</strong> \(D_I\subseteq X_{B_1}\times\cdots\times X_{B_n}\) when that notation was used as the governing current form</p>
+  <p><strong>Affected public pages:</strong> equations.html · structures.html</p>
+</div>
+
+</section><section id="sept4-leaf"><h2>7. Leaf Propagation and Provenance Strengthened</h2>
+
+<div class="entry">
+  <div class="date">September 4, 2026</div>
+  <span class="tag">BM</span><span class="tag">LEAF</span><span class="tag">DERIVATION</span>
+  <h3>Leaves now visibly participate in later derivations</h3>
+  <p>
+The examples, theorem, equation, and structural registries now show the full
+lawful chain from Interaction output to extracted Leaf to a later receiving
+Interaction.</p>
+  <div class="schema">\[
+x\xrightarrow{I}z\xrightarrow{\ell}L
+\xrightarrow{J(\cdot,c)}w
+\xrightarrow{\ell'}L',
+\qquad
+(L,c)\in D_J.
+\]</div>
+  
+  <p><strong>Affected public pages:</strong> examples.html · theorems.html · equations.html · structures.html</p>
+</div>
+
+</section><section id="sept4-tree"><h2>8. Tree, Response, and Root Teaching Architecture Strengthened</h2>
+
+<div class="entry">
+  <div class="date">September 4, 2026</div>
+  <span class="tag">BM</span><span class="tag">TREE</span><span class="tag">RESPONSE</span><span class="tag">ROOT</span>
+  <h3>Core role separation made explicit across the teaching pages</h3>
+  <p>
+The public corpus now repeatedly separates organized computation from its
+output and from the downstream role assigned after a receiving gate passes.</p>
+  <div class="schema">\[
+\boxed{
+\text{Tree}
+\xrightarrow{\text{organized computation}}
+\text{Response}
+\longrightarrow
+\begin{cases}
+\text{terminal result},\\
+\text{Root if receiver-admissible}.
+\end{cases}
+}
+\]</div>
+  
+  <p><strong>Affected public pages:</strong> definitions.html · examples.html · equations.html · structures.html · roots.html</p>
+</div>
+
+</section><section id="sept4-seed"><h2>9. Seed Status Retained as Candidate</h2>
+
+<div class="entry">
+  <div class="date">September 4, 2026</div>
+  <span class="tag">BM</span><span class="tag">SEED</span><span class="tag">STATUS</span>
+  <h3>Seed kept optional and candidate rather than silently promoted to a mandatory primitive</h3>
+  <p>
+Seed examples were expanded, but the public status remains candidate. Initial
+data does not become a Seed merely because it appears first.</p>
+  <div class="schema">\[
+S_0\xrightarrow{G}S_1\xrightarrow{G}\cdots
+\xrightarrow{\text{export condition}}
+\text{Response candidate}.
+\]</div>
+  
+  <p><strong>Affected public pages:</strong> examples.html · structures.html · roots.html</p>
+</div>
+
+</section><section id="sept4-theorems"><h2>10. Theorem Registry Rebuilt</h2>
+
+<div class="entry">
+  <div class="date">September 4, 2026</div>
+  <span class="tag">THEOREMS</span><span class="tag">PROVENANCE</span><span class="tag">PROOFS</span>
+  <h3>Proof status separated from provenance and framework ownership</h3>
+  <p>
+The theorem registry now distinguishes classical infrastructure, BM structural
+results, GURF response results, conditional results, applied identities,
+counterexamples, and firewalls.</p>
+<p>
+The pass also added or exposed stronger cross-domain statements including
+typed composite domains, Leaf propagation, finite exact-carrier bounds,
+Task-diameter criteria, Passport-defect localization, finite Network
+evaluation, stochastic test pullback, and relational composition.
+</p>
+  
+  
+  <p><strong>Affected public pages:</strong> theorems.html</p>
+</div>
+
+</section><section id="sept4-equations"><h2>11. Equation Registry Rebuilt</h2>
+
+<div class="entry">
+  <div class="date">September 4, 2026</div>
+  <span class="tag">EQUATIONS</span><span class="tag">DOMAINS</span><span class="tag">SEMANTICS</span>
+  <h3>Equations now state objects, assumptions, semantic sector, limits, and crosslinks</h3>
+  <p>
+The equation page was changed from a formula collection into a mathematical
+registry. Structural equations, exact identities, factorization conditions,
+quantitative diagnostics, and applied identities are now classified
+explicitly.</p>
+  
+  
+  <p><strong>Affected public pages:</strong> equations.html</p>
+</div>
+
+</section><section id="sept4-structures"><h2>12. Structural Registry Rebuilt</h2>
+
+<div class="entry">
+  <div class="date">September 4, 2026</div>
+  <span class="tag">STRUCTURES</span><span class="tag">NETWORKS</span><span class="tag">COHERENCE</span>
+  <h3>BM architecture rewritten as one connected structural system</h3>
+  <p>
+Branches, Interactions, Leaves, Trees, Responses, Roots, Seeds, Passports,
+Operations, Interfaces, Configurations, Networks, typed paths, coherence,
+realization, export, and re-entry are now presented according to dependency
+rather than as isolated glossary entries.</p>
+  
+  
+  <p><strong>Affected public pages:</strong> structures.html</p>
+</div>
+
+</section><section id="sept4-passports"><h2>13. Passport Registry Rebuilt</h2>
+
+<div class="entry">
+  <div class="date">September 4, 2026</div>
+  <span class="tag">PASSPORT</span><span class="tag">SEMANTICS</span><span class="tag">SUFFICIENCY</span>
+  <h3>Exact deterministic Passports demoted from universal default to one declared semantic sector</h3>
+  <p>
+The Passport page now introduces semantic families early: exact deterministic,
+approximate, stochastic, nondeterministic, privacy, law/Regime, conservative,
+and dynamic.</p>
+  <div class="schema">\[
+\boxed{
+\text{same Passport}
+\text{ is meaningless until its comparison semantics are declared.}
+}
+\]</div>
+  
+  <p><strong>Affected public pages:</strong> passports.html</p>
+</div>
+
+</section><section id="sept4-roots"><h2>14. Root Registry Rebuilt Around Receiver-Relative Status</h2>
+
+<div class="entry">
+  <div class="date">September 4, 2026</div>
+  <span class="tag">ROOT</span><span class="tag">ADMISSIBILITY</span><span class="tag">RECEIVER</span>
+  <h3>Root status made explicitly receiver-relative throughout the page</h3>
+  <p>
+A Root is no longer allowed to read as a permanent intrinsic property of a
+value. The receiver, gate, Passport, Interface, and later domain remain part
+of the status.</p>
+  <div class="schema">\[
+\boxed{
+r\text{ is a Root for }B'
+\iff
+r\in A_R(B').
+}
+\]</div>
+  
+  <p><strong>Affected public pages:</strong> roots.html</p>
+</div>
+
+</section><section id="sept4-research"><h2>15. Research Registry Rebuilt Around Evidence and Promotion Gates</h2>
+
+<div class="entry">
+  <div class="date">September 4, 2026</div>
+  <span class="tag">RESEARCH</span><span class="tag">STATUS</span><span class="tag">FALSIFIABILITY</span>
+  <h3>Research entries now expose evidence, failure modes, and exact promotion gates</h3>
+  <p>
+The research page now separates mathematical validity, provenance, framework
+maturity, physical interpretation, realizability, empirical support,
+falsifiability, and external validation.</p>
+  <div class="schema">\[
+\boxed{
+\text{research claim}
+=
+\text{object}
++
+\text{status}
++
+\text{evidence}
++
+\text{failure conditions}
++
+\text{promotion gate}.
+}
+\]</div>
+  
+  <p><strong>Affected public pages:</strong> research.html</p>
+</div>
+
+</section><section id="sept4-examples"><h2>16. Examples Registry Expanded Into a Teaching and Derivation Layer</h2>
+
+<div class="entry">
+  <div class="date">September 4, 2026</div>
+  <span class="tag">EXAMPLES</span><span class="tag">TEACHING</span><span class="tag">DERIVATION</span>
+  <h3>Examples expanded beyond toy illustrations</h3>
+  <p>
+The Examples page now contains Leaf-to-Leaf derivations, several Tree shapes,
+Seed examples, receiver-relative Roots, mixed semantic sectors, full
+configurations, failure laboratories, and research-scale examples.</p>
+<p>
+Public authoring-roadmap language was removed so the page reads as finished
+mathematical instruction rather than website-development notes.</p>
+  
+  
+  <p><strong>Affected public pages:</strong> examples.html</p>
+</div>
+
+</section><section id="sept4-rooting-domain"><h2>17. Rooting Attachment Domain Superseded</h2>
+
+<div class="entry">
+  <div class="date">September 4, 2026</div>
+  <span class="tag">ROOTING</span><span class="tag">DOMAIN</span><span class="tag">SUPERSESSION</span>
+  <h3>Ambient attachment carriers replaced by actual admissible attachment and Root domains</h3>
+  <p>
+The September 3 entry correctly generalized attachment beyond mandatory
+interior attachment, but its displayed domain still used ambient carrier
+spaces. The current candidate form is stricter.</p>
+  <div class="schema">\[
+\boxed{
+\mathcal A:
+D_{\mathcal A}
+\subseteq
+A_A\times A_R(B')
+\to X'.
+}
+\]</div>
+  <p><strong>Supersedes / refines:</strong> the September 3 historical display \(D_{\mathcal A}\subseteq X_A\times X_R\) as the current governing form</p>
+  <p><strong>Affected public pages:</strong> structures.html · roots.html</p>
+</div>
+
+</section><section id="sept4-root-reuse"><h2>18. Root Reuse Domain Superseded</h2>
+
+<div class="entry">
+  <div class="date">September 4, 2026</div>
+  <span class="tag">ROOT</span><span class="tag">INTERACTION</span><span class="tag">DOMAIN</span>
+  <h3>Later Root reuse now retains the next receiving gate</h3>
+  <p>
+A result passing one Root gate does not become universally admissible.
+Later reuse is defined on the actual domain of the later Interaction.</p>
+  <div class="schema">\[
+J:
+D_J
+\subseteq
+A_R(B')\times A_B
+\to Z,
+\qquad
+(r,b)\in D_J.
+\]</div>
+  
+  <p><strong>Affected public pages:</strong> roots.html</p>
+</div>
+
+</section><section id="sept4-research-gates"><h2>19. Open-Problem Promotion Gates Strengthened</h2>
+
+<div class="entry">
+  <div class="date">September 4, 2026</div>
+  <span class="tag">NAVIER–STOKES</span><span class="tag">YANG–MILLS</span><span class="tag">CLAIM DISCIPLINE</span>
+  <h3>Open-problem work now states the exact mathematical gate required for stronger claims</h3>
+  <p>
+For Navier–Stokes, framework work must close a genuine proof-gap arrow by
+producing a new bound, compactness mechanism, continuation result, or blow-up
+exclusion. For Yang–Mills, effective infrared behavior or a finite truncation
+cannot substitute for theory existence, gauge-invariant state-space control,
+positivity, continuum control, and a uniform positive spectral gap.</p>
+  
+  
+  <p><strong>Affected public pages:</strong> research.html</p>
+</div>
+
+</section><section id="sept3-record"><h2>20–54. September 3, 2026 — Preserved Mathematical Record</h2><section id="sept3-normalization"><h2>20. September 3, 2026 — Corpus-Wide Mathematical Normalization</h2>
+<div class="entry">
+  <div class="date">September 3, 2026</div>
+  <span class="tag">BM</span><span class="tag">GURF</span><span class="tag">WEBSITE</span><span class="tag">CORRECTION</span>
+  <h3>September 3, 2026 — Corpus-Wide Mathematical Normalization</h3>
+  <p>The public corpus was synchronized to the governing direction</p>
+  <div class="schema">\[
+\boxed{
+\text{lawful Branches}
+\to
+\text{lawful Interactions}
+\to
+\text{combined computation}
+\to
+\text{Response}
+\to
+\begin{cases}
+\text{terminal result},\\
+\text{Root if downstream admissible}.
+\end{cases}
+}
+\]</div>
+  
+  
+</div>
+</section><section id="bm-identity"><h2>21. Branch Mathematics Identity Retained</h2>
+<div class="entry">
+  <div class="date">September 3, 2026</div>
+  <span class="tag">BM</span><span class="tag">FOUNDATIONS</span>
+  <h3>Branch Mathematics Identity Retained</h3>
+  <p>The canonical identity remained: Branch Mathematics is meta-structural mathematics of lawful representation and transformation.</p>
+  <div class="schema">\[
+\boxed{
+\text{BM is not reduced to Passport theory, Root theory, abstraction theory, or response theory.}
+}
+\]</div>
+  
+  
+</div>
+</section><section id="interaction-revision"><h2>22. Interaction Arity Clarified</h2>
+<div class="entry">
+  <div class="date">September 3, 2026</div>
+  <span class="tag">BM</span><span class="tag">DEFINITION</span><span class="tag">CORRECTION</span>
+  <h3>Interaction Arity Clarified</h3>
+  <p>Interaction was generalized to one or more Branches, while multi-Branch interaction remained central.</p>
+  
+  
+  
+</div>
+</section><section id="leaf-revision"><h2>23. Leaf Notation and Provenance Corrected</h2>
+<div class="entry">
+  <div class="date">September 3, 2026</div>
+  <span class="tag">BM</span><span class="tag">LEAF</span><span class="tag">NOTATION</span>
+  <h3>Leaf Notation and Provenance Corrected</h3>
+  <p>Formal Leaf status was restricted to explicitly declared extraction from an Interaction result; merely arising during BM-guided research was not sufficient.</p>
+  
+  
+  
+</div>
+</section><section id="tree-response-root"><h2>24. Tree, Response, and Root Roles Separated</h2>
+<div class="entry">
+  <div class="date">September 3, 2026</div>
+  <span class="tag">BM</span><span class="tag">STRUCTURES</span><span class="tag">CORRECTION</span>
+  <h3>Tree, Response, and Root Roles Separated</h3>
+  <p>Tree was separated from its Response, and Root was restricted to a downstream-admitted result.</p>
+  
+  
+  
+</div>
+</section><section id="response-generalization"><h2>25. Response Generalized Beyond Law-Valued Output</h2>
+<div class="entry">
+  <div class="date">September 3, 2026</div>
+  <span class="tag">BM</span><span class="tag">RESPONSE</span><span class="tag">GENERALIZATION</span>
+  <h3>Response Generalized Beyond Law-Valued Output</h3>
+  <p>Response was broadened to any valid typed mathematical output rather than only a law-valued output.</p>
+  
+  
+  
+</div>
+</section><section id="factorization-domain"><h2>26. Exact Recoverability Domain Corrected</h2>
+<div class="entry">
+  <div class="date">September 3, 2026</div>
+  <span class="tag">BM</span><span class="tag">GURF</span><span class="tag">FACTORIZATION</span>
+  <h3>Exact Recoverability Domain Corrected</h3>
+  <p>Exact deterministic factorization was restricted to the realized image \(F(X)\) unless a stronger total extension is separately established.</p>
+  <div class="schema">\[
+\boxed{
+\widetilde T:F(X)\to W,
+\qquad
+T=\widetilde T\circ F.
+}
+\]</div>
+  
+  
+</div>
+</section><section id="gurf-architecture"><h2>27. Complete GURF Architecture Recorded</h2>
+<div class="entry">
+  <div class="date">September 3, 2026</div>
+  <span class="tag">GURF</span><span class="tag">ARCHITECTURE</span>
+  <h3>Complete GURF Architecture Recorded</h3>
+  <p>The active architecture recorded Core, SOE, ACE, IRE, UKE, GRDE, HDE, and GHSE, with GRDE frozen at GURF-GRDE-008.</p>
+  
+  
+  
+</div>
+</section><section id="extension-activation"><h2>28. GURF Extension Activation Rule Formalized</h2>
+<div class="entry">
+  <div class="date">September 3, 2026</div>
+  <span class="tag">GURF</span><span class="tag">GOVERNANCE</span>
+  <h3>GURF Extension Activation Rule Formalized</h3>
+  <p>Extensions were restricted to situations in which their specialized response semantics are genuinely present.</p>
+  
+  
+  
+</div>
+</section><section id="ownership"><h2>29. Mathematics Ownership Migration Recorded</h2>
+<div class="entry">
+  <div class="date">September 3, 2026</div>
+  <span class="tag">BM</span><span class="tag">GURF</span><span class="tag">OWNERSHIP</span>
+  <h3>Mathematics Ownership Migration Recorded</h3>
+  <p>Domain-independent mathematical kernels were moved under BM ownership while response-specialized uses remained in GURF.</p>
+  
+  
+  
+</div>
+</section><section id="portability"><h2>30. Portability Firewall Formalized</h2>
+<div class="entry">
+  <div class="date">September 3, 2026</div>
+  <span class="tag">BM</span><span class="tag">GURF</span><span class="tag">GOVERNANCE</span>
+  <h3>Portability Firewall Formalized</h3>
+  <p>Portability across mathematical contexts became an explicit ownership test.</p>
+  <div class="schema">\[
+\boxed{
+\text{domain-independent kernel}\to\mathrm{BM},
+\qquad
+\text{essential response semantics}\to\mathrm{GURF}.
+}
+\]</div>
+  
+  
+</div>
+</section><section id="gurf-lineage"><h2>31. GURF Historical Lineage Consolidated</h2>
+<div class="entry">
+  <div class="date">September 3, 2026</div>
+  <span class="tag">GURF</span><span class="tag">SUPERSESSION</span>
+  <h3>GURF Historical Lineage Consolidated</h3>
+  <p>Earlier structures were mapped to current placements: GURE into IRE, CAR functions into ACE/GHSE, GALC into UKE, XEXT closed as an architecture layer, and ACDRE retained as applied/bridge lineage.</p>
+  
+  
+  
+</div>
+</section><section id="root-definition"><h2>32. Root Definition Tightened</h2>
+<div class="entry">
+  <div class="date">September 3, 2026</div>
+  <span class="tag">BM</span><span class="tag">ROOT</span>
+  <h3>Root Definition Tightened</h3>
+  <p>Root became explicitly Response + verified downstream admissibility.</p>
+  <div class="schema">\[
+\boxed{
+\text{Root role}
+=
+\text{Response}
++
+\text{verified downstream admissibility}.
+}
+\]</div>
+  
+  
+</div>
+</section><section id="rooting-attachment"><h2>33. Historical Rooting Attachment Site Generalized</h2>
+<div class="entry">
+  <div class="date">September 3, 2026</div>
+  <span class="tag">BM</span><span class="tag">ROOTING</span><span class="tag">HISTORICAL</span>
+  <h3>Historical Rooting Attachment Site Generalized</h3>
+  <p>Rooting was generalized beyond mandatory interior attachment. The historical September 3 display used ambient carriers; see the September 4 superseding domain correction above.</p>
+  
+  
+  
+</div>
+</section><section id="rebranching"><h2>34. Rebranching Kept Separate From Rooting</h2>
+<div class="entry">
+  <div class="date">September 3, 2026</div>
+  <span class="tag">BM</span><span class="tag">CANDIDATE</span>
+  <h3>Rebranching Kept Separate From Rooting</h3>
+  <p>Lawful Rooting was explicitly prevented from implying Rebranching.</p>
+  <div class="schema">\[
+\boxed{
+\text{lawful Rooting}\not\Rightarrow\text{Rebranching}.
+}
+\]</div>
+  
+  
+</div>
+</section><section id="root-iteration"><h2>35. Repeated Rooting Closure Requirement Added</h2>
+<div class="entry">
+  <div class="date">September 3, 2026</div>
+  <span class="tag">ROOT</span><span class="tag">DYNAMICS</span><span class="tag">CORRECTION</span>
+  <h3>Repeated Rooting Closure Requirement Added</h3>
+  <p>Ordinary iterative dynamics was permitted only when a repeated Root map is defined on a closed/invariant admissible state space.</p>
+  <div class="schema">\[
+\boxed{
+F(A_R)\subseteq A_R.
+}
+\]</div>
+  
+  
+</div>
+</section><section id="root-chain"><h2>36. General Root Chain Distinguished From Iteration</h2>
+<div class="entry">
+  <div class="date">September 3, 2026</div>
+  <span class="tag">ROOT</span><span class="tag">GENERALIZATION</span>
+  <h3>General Root Chain Distinguished From Iteration</h3>
+  <p>Changing state spaces and maps were separated from iteration of one endomorphism.</p>
+  
+  
+  
+</div>
+</section><section id="affine"><h2>37. Affine Repeated-Root Convergence Corrected</h2>
+<div class="entry">
+  <div class="date">September 3, 2026</div>
+  <span class="tag">ROOT</span><span class="tag">EQUATIONS</span><span class="tag">CORRECTION</span>
+  <h3>Affine Repeated-Root Convergence Corrected</h3>
+  <p>For the scalar affine map, the global closed form and convergence for \(|lpha|<1\) were recorded.</p>
+  <div class="schema">\[
+\boxed{
+R_n-R_*=\alpha^n(R_0-R_*).
+}
+\]</div>
+  
+  
+</div>
+</section><section id="local-stability"><h2>38. Nonlinear Root Stability Kept Local</h2>
+<div class="entry">
+  <div class="date">September 3, 2026</div>
+  <span class="tag">ROOT</span><span class="tag">STABILITY</span>
+  <h3>Nonlinear Root Stability Kept Local</h3>
+  <p>The Jacobian spectral-radius criterion was kept explicitly local for nonlinear maps.</p>
+  <div class="schema">\[
+\boxed{
+\rho(J_F(R_*))<1.
+}
+\]</div>
+  
+  
+</div>
+</section><section id="passport"><h2>39. Passport Mathematics Expanded</h2>
+<div class="entry">
+  <div class="date">September 3, 2026</div>
+  <span class="tag">PASSPORT</span><span class="tag">BM</span><span class="tag">GURF</span>
+  <h3>Passport Mathematics Expanded</h3>
+  <p>Exact equivalence, fibres, Task sufficiency, refinement, structured quotients, stochastic/nondeterministic semantics, coupling, Law Passports, Conservative Passports, Root transfer, Dynamic Closure, privacy, repair, export, and re-entry were brought into the public Passport program.</p>
+  
+  
+  
+</div>
+</section><section id="passport-closure"><h2>40. Passport Dynamic Closure Added</h2>
+<div class="entry">
+  <div class="date">September 3, 2026</div>
+  <span class="tag">PASSPORT</span><span class="tag">DYNAMICS</span>
+  <h3>Passport Dynamic Closure Added</h3>
+  <p>Static Task sufficiency was separated from autonomous reduced evolution.</p>
+  <div class="schema">\[
+\boxed{
+B_P\circ\Phi
+=
+\widetilde\Phi_P\circ B_P.
+}
+\]</div>
+  
+  
+</div>
+</section><section id="minimal-repair"><h2>41. Minimal Repair Optimization Corrected</h2>
+<div class="entry">
+  <div class="date">September 3, 2026</div>
+  <span class="tag">GURF</span><span class="tag">PASSPORT</span><span class="tag">OPTIMIZATION</span><span class="tag">CORRECTION</span>
+  <h3>Minimal Repair Optimization Corrected</h3>
+  <p>Unconditional use of \(\min\) was replaced by an infimum unless attainment is established.</p>
+  <div class="schema">\[
+\boxed{
+\inf_{q\in\mathcal Q_{\mathrm{adm}}}\operatorname{Cost}(q).
+}
+\]</div>
+  
+  
+</div>
+</section><section id="passport-reentry"><h2>42. Passport Re-entry Made Explicitly Partial</h2>
+<div class="entry">
+  <div class="date">September 3, 2026</div>
+  <span class="tag">PASSPORT</span><span class="tag">RE-ENTRY</span><span class="tag">CORRECTION</span>
+  <h3>Passport Re-entry Made Explicitly Partial</h3>
+  <p>Export was separated from lawful re-entry on the true composite domain.</p>
+  <div class="schema">\[
+\boxed{
+D_{R\circ E}=\{x:E(x)\in D_R\}.
+}
+\]</div>
+  
+  
+</div>
+</section><section id="structured-quotient"><h2>43. BM-SQ-01 Structured Quotient Result</h2>
+<div class="entry">
+  <div class="date">September 3, 2026</div>
+  <span class="tag">BM-SQ-01</span><span class="tag">PROVED</span><span class="tag">FINITARY ALGEBRA</span>
+  <h3>BM-SQ-01 Structured Quotient Result</h3>
+  <p>Operation-compatible Passport equivalence was required before algebraic Operations descend to the quotient.</p>
+  
+  
+  
+</div>
+</section><section id="quotient-counterexample"><h2>44. Structured Quotient Counterexample Preserved</h2>
+<div class="entry">
+  <div class="date">September 3, 2026</div>
+  <span class="tag">COUNTEREXAMPLE</span><span class="tag">BM</span>
+  <h3>Structured Quotient Counterexample Preserved</h3>
+  <p>An explicit counterexample showed that an equivalence relation need not be compatible with a required Operation.</p>
+  
+  
+  
+</div>
+</section><section id="stochastic"><h2>45. Stochastic Semantics Firewall</h2>
+<div class="entry">
+  <div class="date">September 3, 2026</div>
+  <span class="tag">STOCHASTIC</span><span class="tag">CORRECTION</span>
+  <h3>Stochastic Semantics Firewall</h3>
+  <p>Stochastic transformations were represented by Markov kernels and test expectations rather than deterministic function semantics.</p>
+  
+  
+  
+</div>
+</section><section id="nondeterministic"><h2>46. Nondeterministic Quantifier Firewall</h2>
+<div class="entry">
+  <div class="date">September 3, 2026</div>
+  <span class="tag">NONDETERMINISTIC</span><span class="tag">CORRECTION</span>
+  <h3>Nondeterministic Quantifier Firewall</h3>
+  <p>Existential reachability and universal safety were kept distinct.</p>
+  <div class="schema">\[
+\Diamond_R(U)=\{x:\exists y\in U,\ xRy\},
+\qquad
+\Box_R(U)=\{x:\forall y,\ xRy\Rightarrow y\in U\}.
+\]</div>
+  
+  
+</div>
+</section><section id="feasibility"><h2>47. Joint Feasibility Firewall</h2>
+<div class="entry">
+  <div class="date">September 3, 2026</div>
+  <span class="tag">QUANTIFIERS</span><span class="tag">CORRECTION</span>
+  <h3>Joint Feasibility Firewall</h3>
+  <p>Separate witnesses were distinguished from one common witness.</p>
+  <div class="schema">\[
+\boxed{
+\bigcap_{c\in\mathcal C}P_c\neq\varnothing.
+}
+\]</div>
+  
+  
+</div>
+</section><section id="privacy"><h2>48. Differential Privacy Representation Corrected</h2>
+<div class="entry">
+  <div class="date">September 3, 2026</div>
+  <span class="tag">PRIVACY</span><span class="tag">STOCHASTIC</span><span class="tag">CORRECTION</span>
+  <h3>Differential Privacy Representation Corrected</h3>
+  <p>Differential privacy was separated from exact Passport equivalence and kept in probabilistic output-law semantics.</p>
+  
+  
+  
+</div>
+</section><section id="navier-stokes"><h2>49. Navier–Stokes Status Corrected</h2>
+<div class="entry">
+  <div class="date">September 3, 2026</div>
+  <span class="tag">NAVIER–STOKES</span><span class="tag">STATUS</span>
+  <h3>Navier–Stokes Status Corrected</h3>
+  <p>The program was recorded as active derived mathematical objects, relations, and theorem-kernel results; no Clay Millennium solution was claimed.</p>
+  
+  
+  
+</div>
+</section><section id="yang-mills"><h2>50. Yang–Mills Status Retained</h2>
+<div class="entry">
+  <div class="date">September 3, 2026</div>
+  <span class="tag">YANG–MILLS</span><span class="tag">CONDITIONAL</span>
+  <h3>Yang–Mills Status Retained</h3>
+  <p>Boundary susceptibility, leakage, tail floors, Green-matrix structure, shell-depth recursion, coherent return, Gauss-law support, and conditional spectral work remained active; the four-dimensional existence and mass-gap problem remained open.</p>
+  
+  
+  
+</div>
+</section><section id="ym-variational"><h2>51. Yang–Mills Variational Correction Preserved</h2>
+<div class="entry">
+  <div class="date">September 3, 2026</div>
+  <span class="tag">YANG–MILLS</span><span class="tag">VARIATIONAL</span><span class="tag">CORRECTION</span>
+  <h3>Yang–Mills Variational Correction Preserved</h3>
+  <p>Nested trial-space Ritz eigenvalue monotonicity was separated from unproved monotonicity of spectral-gap differences.</p>
+  <div class="schema">\[
+\boxed{
+\text{monotonic Ritz values}
+\not\Rightarrow
+\text{monotonic Ritz gap}.
+}
+\]</div>
+  
+  
+</div>
+</section><section id="gravity"><h2>52. Gravity and Time-Geometry Scope Clarified</h2>
+<div class="entry">
+  <div class="date">September 3, 2026</div>
+  <span class="tag">GRAVITY</span><span class="tag">PHYSICS</span>
+  <h3>Gravity and Time-Geometry Scope Clarified</h3>
+  <p>Physical investigation was constrained to forward-causal geometric effects; backward-time/CTC constructions could remain mathematical models without being promoted to physical mechanisms.</p>
+  
+  
+  
+</div>
+</section><section id="quantum"><h2>53. Quantum Interpretation Firewall Retained</h2>
+<div class="entry">
+  <div class="date">September 3, 2026</div>
+  <span class="tag">QUANTUM</span><span class="tag">ENTANGLEMENT</span>
+  <h3>Quantum Interpretation Firewall Retained</h3>
+  <p>Entanglement was kept in joint-state/statistical/operator semantics; nonclassical correlation was not treated as controllable superluminal signalling.</p>
+  
+  
+  
+</div>
+</section><section id="dynamic-closure"><h2>54. Dynamic Closure Promoted as Cross-Domain Audit</h2>
+<div class="entry">
+  <div class="date">September 3, 2026</div>
+  <span class="tag">BM</span><span class="tag">GURF</span><span class="tag">DYNAMICS</span>
+  <h3>Dynamic Closure Promoted as Cross-Domain Audit</h3>
+  <p>Exact reduced-state closure was separated from one-time Task sufficiency.</p>
+  
+  
+  
+</div>
+</section></section>
+<section id="definitions">
+  <h2>55. Definitions Registry Expanded</h2>
+  
+<div class="entry">
+  <div class="date">September 3, 2026</div>
+  <span class="tag">DEFINITIONS</span><span class="tag">PUBLICATION</span>
+  <h3>Definitions became mathematical specifications</h3>
+  <p>Definitions were expanded to state identity, formal data, characteristics, abilities, limits, admissibility, failure modes, semantic sector, and examples.</p>
+  
+  
+  
+</div>
 
 </section>
 
+<section id="theorems">
+  <h2>56. Theorem Registry Formalized</h2>
+  
+<div class="entry">
+  <div class="date">September 3, 2026</div>
+  <span class="tag">THEOREMS</span><span class="tag">PROOFS</span>
+  <h3>Theorem, proposition, lemma, corollary, conditional result, counterexample, and provenance were separated</h3>
+  <p>The public theorem page was established as a proof/status registry rather than a list of claims.</p>
+  
+  
+  
+</div>
 
-<!-- ========================================================= -->
-<!-- WHAT DOESNT -->
-<!-- ========================================================= -->
+</section>
+
+<section id="equations">
+  <h2>57. Equation Registry Formalized</h2>
+  
+<div class="entry">
+  <div class="date">September 3, 2026</div>
+  <span class="tag">EQUATIONS</span><span class="tag">PUBLICATION</span>
+  <h3>Equation families were collected into a dedicated registry</h3>
+  <p>Definitions, identities, structural relations, applied equations, and quantitative diagnostics were separated by mathematical role.</p>
+  
+  
+  
+</div>
+
+</section>
+
+<section id="structures">
+  <h2>58. Structural Registry Formalized</h2>
+  
+<div class="entry">
+  <div class="date">September 3, 2026</div>
+  <span class="tag">STRUCTURES</span><span class="tag">PUBLICATION</span>
+  <h3>The structural architecture received a dedicated registry</h3>
+  <p>Branches, Interactions, Leaves, Trees, Responses, Roots, Passports, Seeds, Interfaces, Networks, coherence, realization, export, and re-entry were exposed as formal structural roles.</p>
+  
+  
+  
+</div>
+
+</section>
+
+<section id="passports-page">
+  <h2>59. Passport Page Established as a Dedicated Mathematical Registry</h2>
+  
+<div class="entry">
+  <div class="date">September 3, 2026</div>
+  <span class="tag">PASSPORTS</span><span class="tag">PUBLICATION</span>
+  <h3>Passport mathematics received its own public reference page</h3>
+  <p>Distinction preservation, fibres, sufficiency, quotienting, interfaces, coupling, continuation, repair, privacy, and re-entry were collected in one registry.</p>
+  
+  
+  
+</div>
+
+</section>
+
+<section id="roots-page">
+  <h2>60. Roots Page Established as a Dedicated Mathematical Registry</h2>
+  
+<div class="entry">
+  <div class="date">September 3, 2026</div>
+  <span class="tag">ROOTS</span><span class="tag">PUBLICATION</span>
+  <h3>Root roles and candidate Rooting mathematics received a dedicated page</h3>
+  <p>The page separated canonical Root status from candidate Rooting/Rebranching mechanisms and from model-specific dynamics.</p>
+  
+  
+  
+</div>
+
+</section>
+
+<section id="research">
+  <h2>61. Research Registry Expanded</h2>
+  
+<div class="entry">
+  <div class="date">September 3, 2026</div>
+  <span class="tag">RESEARCH</span><span class="tag">STATUS</span>
+  <h3>Research programs were separated by evidence and claim status</h3>
+  <p>BM foundations, GURF, Navier–Stokes, Yang–Mills, gravity, quantum theory, radiation, computation, privacy, control, and engineering were recorded as distinct research sectors.</p>
+  
+  
+  
+</div>
+
+</section>
+
+<section id="figures">
+  <h2>62. Quantitative Figure Policy Established</h2>
+  
+<div class="entry">
+  <div class="date">September 3, 2026</div>
+  <span class="tag">FIGURES</span><span class="tag">PUBLICATION</span>
+  <h3>Scientific figures must come from equations, numerical models, or data</h3>
+  <p>Preferred figures include curves, surfaces, phase portraits, vector fields, spectra, heatmaps, parameter sweeps, stability maps, convergence curves, PDE fields, response surfaces, and uncertainty plots.</p>
+  
+  
+  
+</div>
+
+</section>
+
+<section id="status">
+  <h2>63. Status Dimensions Separated</h2>
+  
+<div class="entry">
+  <div class="date">September 3, 2026</div>
+  <span class="tag">STATUS</span><span class="tag">GOVERNANCE</span>
+  <h3>Framework maturity, novelty, mathematical correctness, physical interpretation, empirical support, and external validation were kept separate</h3>
+  <p>No one status label is allowed to imply all of the others.</p>
+  
+  
+  
+</div>
+
+</section>
+
+<section id="failure">
+  <h2>64. Failure Preservation Policy</h2>
+  
+<div class="entry">
+  <div class="date">September 3, 2026</div>
+  <span class="tag">RESEARCH METHOD</span><span class="tag">FAILURE</span>
+  <h3>Failed derivations and counterexamples remain part of the mathematical record when they constrain future work</h3>
+  <p>Corrections should identify the failed assumption or invalid inference rather than silently deleting the route.</p>
+  <div class="schema">\[
+  \boxed{
+  \text{failed derivation}
+  \Longrightarrow
+  \text{new mathematical constraint}.
+  }
+  \]</div>
+  
+  
+</div>
+
+</section>
+
+<section id="novelty">
+  <h2>65. Novelty Policy</h2>
+  
+<div class="entry">
+  <div class="date">September 3, 2026</div>
+  <span class="tag">RESEARCH METHOD</span><span class="tag">PRIOR ART</span>
+  <h3>Mathematical truth and historical novelty separated</h3>
+  <p>Derivation establishes whether a consequence follows; literature review establishes whether an equivalent result was already known.</p>
+  <div class="schema">\[
+  \boxed{
+  \text{mathematical truth}
+  \neq
+  \text{historical novelty}.
+  }
+  \]</div>
+  
+  
+</div>
+
+</section>
+
+<section id="site">
+  <h2>66. Public Encyclopedia Architecture</h2>
+  <table>
+    <thead><tr><th>Page</th><th>Primary role</th></tr></thead>
+    <tbody>
+      <tr><td>Branch Mathematics</td><td>BM identity and governing architecture.</td></tr>
+      <tr><td>GURF</td><td>Response-specialized framework.</td></tr>
+      <tr><td>Definitions</td><td>Formal definitions and role boundaries.</td></tr>
+      <tr><td>Examples</td><td>Worked mathematics and structural learning.</td></tr>
+      <tr><td>Theorems</td><td>Proofs, propositions, counterexamples, and provenance.</td></tr>
+      <tr><td>Equations</td><td>Formal relations, assumptions, and quantitative mathematics.</td></tr>
+      <tr><td>Structures</td><td>BM structural architecture and dependencies.</td></tr>
+      <tr><td>Passports</td><td>Distinction, sufficiency, coupling, transfer, continuation, and privacy mathematics.</td></tr>
+      <tr><td>Roots</td><td>Receiver-relative Root roles and candidate Rooting mathematics.</td></tr>
+      <tr><td>Research</td><td>Active programs, evidence, failures, and promotion gates.</td></tr>
+      <tr><td>Changelog</td><td>Formal revision history.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="site-establishment">
+  <h2>67. Earlier Public-Site Establishment</h2>
+  
+<div class="entry">
+  <div class="date">Prior to September 3, 2026</div>
+  <span class="tag">WEBSITE</span>
+  <h3>Public GitHub Pages research encyclopedia established</h3>
+  <p>The BM/GURF corpus was placed on a public website with normal web-indexing support and dedicated mathematical registries.</p>
+  
+  
+  
+</div>
+
+</section>
+
+<section id="what-belongs">
+  <h2>68. What Belongs in This Changelog</h2>
+  <ul>
+    <li>definition changes;</li>
+    <li>theorem/proof/counterexample changes;</li>
+    <li>domain or assumption corrections;</li>
+    <li>equation generalizations or restrictions;</li>
+    <li>semantic-sector corrections;</li>
+    <li>ownership migrations;</li>
+    <li>candidate promotions, demotions, freezes, closures, and supersessions;</li>
+    <li>research-status or realization-status changes;</li>
+    <li>important numerical or experimental verdicts;</li>
+    <li>prior-art findings;</li>
+    <li>cross-page mathematical synchronization.</li>
+  </ul>
+</section>
 
 <section id="what-does-not-belong">
-
-  <h2>51. What Does Not Belong Here</h2>
-
+  <h2>69. What Does Not Belong Here</h2>
   <ul>
-    <li>raw conversation transcripts;</li>
-    <li>casual brainstorming history;</li>
+    <li>informal drafting transcripts;</li>
+    <li>casual brainstorming chronology;</li>
     <li>typographical edits with no mathematical consequence;</li>
-    <li>speculation presented as theorem-status change;</li>
+    <li>decorative layout changes;</li>
     <li>unverified discovery claims;</li>
-    <li>decorative website changes with no research significance.</li>
+    <li>speculation presented as theorem-status change.</li>
   </ul>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- TEMPLATE -->
-<!-- ========================================================= -->
 
 <section id="template">
-
-  <h2>52. Revision Record Template</h2>
-
+  <h2>70. Revision Record Template</h2>
   <table>
-
-    <thead>
-      <tr>
-        <th>Field</th>
-        <th>Content</th>
-      </tr>
-    </thead>
-
+    <thead><tr><th>Field</th><th>Required content</th></tr></thead>
     <tbody>
-
-      <tr>
-        <td>Date</td>
-        <td>Date the revision entered the formal record.</td>
-      </tr>
-
-      <tr>
-        <td>Object</td>
-        <td>
-          Definition, equation, theorem, structure, model, extension,
-          application, or research program.
-        </td>
-      </tr>
-
-      <tr>
-        <td>Previous State</td>
-        <td>Earlier mathematical formulation.</td>
-      </tr>
-
-      <tr>
-        <td>Revision</td>
-        <td>Corrected or generalized formulation.</td>
-      </tr>
-
-      <tr>
-        <td>Reason</td>
-        <td>
-          Proof, counterexample, domain correction, generalization,
-          audit, new evidence, ownership migration, or prior-art review.
-        </td>
-      </tr>
-
-      <tr>
-        <td>Dependencies</td>
-        <td>Other objects or pages affected by the change.</td>
-      </tr>
-
-      <tr>
-        <td>Status</td>
-        <td>New formal classification.</td>
-      </tr>
-
+      <tr><td>Date</td><td>Date the revision entered the formal record.</td></tr>
+      <tr><td>Object</td><td>Definition, equation, theorem, structure, model, extension, application, or research program.</td></tr>
+      <tr><td>Previous state</td><td>Earlier mathematical form or status.</td></tr>
+      <tr><td>Revision</td><td>Corrected, generalized, restricted, promoted, demoted, frozen, closed, or superseded form.</td></tr>
+      <tr><td>Reason</td><td>Proof, counterexample, domain correction, semantic correction, audit, new evidence, ownership migration, or prior-art result.</td></tr>
+      <tr><td>Dependencies</td><td>Pages, theorems, equations, Passports, examples, or research claims affected.</td></tr>
+      <tr><td>New status</td><td>Current formal status after the revision.</td></tr>
     </tbody>
-
   </table>
-
 </section>
 
-
-<!-- ========================================================= -->
-<!-- CENTRAL PRINCIPLE -->
-<!-- ========================================================= -->
-
-<section id="central-principle">
-
-  <h2>53. Central Revision Principle</h2>
-
+<section id="principle">
+  <h2>71. Central Changelog Principle</h2>
   <div class="schema">
-
     \[
     \boxed{
     \text{A mathematical framework should become more precise
     when it is corrected, not merely different.}
     }
     \]
-
   </div>
-
   <p>
-    The changelog preserves the mathematical path from weaker
-    formulations to stronger, better-scoped, and better-typed ones.
+    The changelog therefore preserves the path from weaker or overbroad
+    formulations to better-typed, better-scoped, and better-tested ones.
   </p>
 
+  <div class="crosslinks">
+    <a href="definitions.html">Definitions</a> ·
+    <a href="examples.html">Examples</a> ·
+    <a href="theorems.html">Theorems</a> ·
+    <a href="equations.html">Equations</a> ·
+    <a href="structures.html">Structures</a> ·
+    <a href="passports.html">Passports</a> ·
+    <a href="roots.html">Roots</a> ·
+    <a href="research.html">Research</a>
+  </div>
 </section>
-
 
 </main>
 
-
 <footer>
-
-  <p>
-    <strong>Branch Mathematics Research Encyclopedia</strong>
-  </p>
-
-  <p>
-    Mathematical Revision Record · BM · GURF
-  </p>
-
+  <p><strong>Branch Mathematics and GURF Mathematical Changelog</strong></p>
+  <p>Corrections · proofs · supersessions · failures · research status · corpus synchronization</p>
 </footer>
-
 </body>
-
 </html>
