@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +8,7 @@
 
   <meta
     name="description"
-    content="Formal structural registry for Branch Mathematics: Branches, Interactions, Leaves, Trees, Responses, Roots, Passports, Operations, Interfaces, Configurations, Networks, typed paths, coherence, realization, export, re-entry, Law Spaces, and candidate Seed and Rooting structures."
+    content="Formal structural registry for Branch Mathematics: Branches, Interactions, Leaves, Trees, Responses, Roots, Seeds, Passports, Operations, Interfaces, Configurations, Networks, typed paths, coherence, realization, export, re-entry, Law Spaces, and semantic-sector structures."
   >
 
   <meta name="robots" content="index, follow">
@@ -20,46 +19,41 @@
         inlineMath: [['\\(', '\\)']],
         displayMath: [['\\[', '\\]']]
       },
-      svg: {
-        fontCache: 'global'
-      }
+      svg: { fontCache: 'global' }
     };
   </script>
 
-  <script
-    id="MathJax-script"
-    async
+  <script id="MathJax-script" async
     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
   </script>
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: Arial, Helvetica, sans-serif;
       margin: 0;
-      line-height: 1.65;
+      line-height: 1.72;
       color: #202124;
-      background: #ffffff;
+      background: #fff;
     }
 
     header {
       background: #111827;
       color: white;
-      padding: 55px 20px;
+      padding: 58px 20px;
       text-align: center;
     }
 
     header h1 {
-      margin: 0;
-      font-size: 2.6rem;
+      margin: 0 0 10px;
+      font-size: 2.55rem;
     }
 
     header p {
-      max-width: 900px;
-      margin: 18px auto 0;
+      max-width: 1000px;
+      margin: auto;
       color: #e5e7eb;
       font-size: 1.08rem;
     }
@@ -73,22 +67,21 @@
     nav a {
       color: white;
       text-decoration: none;
-      margin: 7px 11px;
+      margin: 7px 10px;
       display: inline-block;
     }
 
-    nav a:hover {
-      text-decoration: underline;
-    }
+    nav a:hover { text-decoration: underline; }
 
     main {
-      max-width: 980px;
+      max-width: 1160px;
       margin: auto;
-      padding: 38px 20px;
+      padding: 40px 20px;
     }
 
     section {
-      margin-bottom: 52px;
+      margin-bottom: 58px;
+      scroll-margin-top: 18px;
     }
 
     h2 {
@@ -97,67 +90,137 @@
       margin-top: 0;
     }
 
-    h3 {
-      margin-top: 28px;
-    }
+    h3 { margin-top: 24px; }
+    h4 { margin-top: 18px; }
 
-    .card {
-      border: 1px solid #d1d5db;
-      padding: 22px;
-      margin: 18px 0;
-      border-radius: 8px;
-      background: #ffffff;
-    }
+    p { margin: 10px 0; }
 
-    .schema {
-      border-left: 4px solid #374151;
-      padding: 18px 22px;
-      margin: 24px 0;
-      background: #f9fafb;
-      overflow-x: auto;
-    }
-
-    .status-note {
-      background: #f9fafb;
-      border: 1px solid #d1d5db;
-      border-radius: 8px;
-      padding: 18px 22px;
-      margin: 20px 0;
-    }
-
-    .warning {
-      border-left: 4px solid #6b7280;
-      background: #f9fafb;
-      padding: 18px 22px;
-      margin: 22px 0;
-    }
+    ul { padding-left: 25px; }
+    li { margin: 6px 0; }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      margin: 20px 0;
+      margin: 22px 0;
     }
 
-    th,
-    td {
+    th, td {
       border: 1px solid #d1d5db;
       padding: 11px 12px;
       text-align: left;
       vertical-align: top;
     }
 
-    th {
-      background: #f3f4f6;
+    th { background: #f3f4f6; }
+
+    .lead { font-size: 1.08rem; }
+
+    .structure-card {
+      border: 1px solid #d1d5db;
+      border-radius: 9px;
+      padding: 25px;
+      margin-top: 22px;
     }
 
-    ul {
-      padding-left: 24px;
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+      gap: 8px 18px;
+      background: #f8fafc;
+      border: 1px solid #e5e7eb;
+      border-radius: 7px;
+      padding: 14px 16px;
+      margin-bottom: 20px;
+      font-size: 0.94rem;
     }
 
-    code {
-      background: #f3f4f6;
-      padding: 2px 5px;
-      border-radius: 4px;
+    .schema {
+      border-left: 4px solid #374151;
+      padding: 18px 22px;
+      margin: 22px 0;
+      background: #f8fafc;
+      overflow-x: auto;
+    }
+
+    .abilities,
+    .limits,
+    .failure,
+    .teaching,
+    .note {
+      padding: 17px 19px;
+      margin: 20px 0;
+    }
+
+    .abilities {
+      background: #f8fafc;
+      border-left: 4px solid #4b5563;
+    }
+
+    .limits {
+      background: #fafafa;
+      border-left: 4px solid #9ca3af;
+    }
+
+    .failure {
+      border: 1px dashed #9ca3af;
+      border-radius: 7px;
+    }
+
+    .teaching {
+      background: #f8fafc;
+      border-left: 4px solid #111827;
+    }
+
+    .crosslinks {
+      border-top: 1px solid #d1d5db;
+      margin-top: 22px;
+      padding-top: 14px;
+      font-size: 0.94rem;
+    }
+
+    .crosslinks a {
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .crosslinks a:hover { text-decoration: underline; }
+
+    .link-label { color: #4b5563; }
+
+    .quick-index {
+      columns: 3 280px;
+      column-gap: 34px;
+    }
+
+    .quick-index li {
+      break-inside: avoid;
+      margin: 5px 0;
+    }
+
+    .quick-index a { text-decoration: none; }
+    .quick-index a:hover { text-decoration: underline; }
+
+    .layer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(245px,1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .layer-grid div {
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 16px;
+    }
+
+    .layer-grid strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .role-table td:first-child {
+      width: 175px;
+      font-weight: bold;
     }
 
     footer {
@@ -165,38 +228,28 @@
       color: white;
       text-align: center;
       padding: 28px 20px;
-      margin-top: 40px;
+      margin-top: 55px;
     }
 
-    footer p {
-      margin: 5px 0;
-    }
-
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 2rem;
-      }
-
-      main {
-        padding: 28px 16px;
-      }
+    @media (max-width: 700px) {
+      header h1 { font-size: 2rem; }
+      main { padding: 28px 16px; }
+      .structure-card { padding: 19px; }
+      .quick-index { columns: 1; }
     }
   </style>
 </head>
 
 <body>
-
 <header>
   <h1>Structural Registry</h1>
-
   <p>
-    Formal mathematical objects and architectural structures used by
-    Branch Mathematics to organize lawful representation, transformation,
-    interaction, composition, realization, export, re-entry, response,
-    and continued mathematical participation.
+    The architecture of Branch Mathematics: what each mathematical role
+    carries, how structures connect, where admissibility enters, how
+    information is extracted and reused, and what must be checked before a
+    result can participate in further mathematics.
   </p>
 </header>
-
 
 <nav>
   <a href="index.html">Home</a>
@@ -204,3593 +257,2814 @@
   <a href="gurf.html">GURF</a>
   <a href="encyclopedia.html">Encyclopedia</a>
   <a href="definitions.html">Definitions</a>
+  <a href="examples.html">Examples</a>
   <a href="theorems.html">Theorems</a>
   <a href="equations.html">Equations</a>
+  <a href="structures.html">Structures</a>
   <a href="passports.html">Passports</a>
   <a href="roots.html">Roots</a>
   <a href="research.html">Research</a>
   <a href="changelog.html">Changelog</a>
 </nav>
 
-
 <main>
 
-  <!-- ========================================================= -->
-  <!-- PURPOSE -->
-  <!-- ========================================================= -->
+<section id="purpose">
+  <h2>1. How to Read the Structural Registry</h2>
 
-  <section id="purpose">
+  <p class="lead">
+    The structural vocabulary tells us where mathematical objects sit in a
+    larger problem and what obligations follow from that position. It does
+    not replace the algebra, geometry, probability, analysis, topology,
+    computation, or physics carried by those objects.
+  </p>
 
-    <h2>1. Purpose of the Structural Registry</h2>
-
+  <div class="teaching">
+    <strong>A useful way to learn the architecture</strong>
     <p>
-      Branch Mathematics uses a typed structural architecture so that
-      distinct mathematical objects can participate in one problem
-      without losing the mathematical laws, distinctions, domains,
-      constraints, or identities that make those objects lawful.
+      Begin with one lawful Branch. Add an Interaction only when the native
+      mathematics permits it. Extract Leaves only from declared Interaction
+      results. Organize the growing calculation as a Tree. The Tree produces
+      a Response. Test that Response against a receiving Interface before
+      calling it a Root.
     </p>
+  </div>
+</section>
+
+
+<section id="core-flow">
+  <h2>2. Core Structural Direction</h2>
+
+  <div class="schema">
+    \[
+    \boxed{
+    \text{lawful Branches}
+    \longrightarrow
+    \text{lawful Interactions}
+    \longrightarrow
+    \text{Leaves and intermediate structure}
+    \longrightarrow
+    \text{Tree computation}
+    \longrightarrow
+    \text{Response}
+    \longrightarrow
+    \begin{cases}
+    \text{terminal result},\\[3pt]
+    \text{Root if downstream admissible}.
+    \end{cases}
+    }
+    \]
+  </div>
+
+  <p>
+    This is an architectural direction, not a universal sequential algorithm.
+    A real BM structure can contain parallel paths, feedback, stochastic
+    Operations, shared constraints, several Trees, multiple Responses,
+    re-entry, or no Root at all.
+  </p>
+</section>
+
+
+<section id="layer-map">
+  <h2>3. Structural Layers</h2>
+
+  <div class="layer-grid">
+    <div><strong>Carrier layer</strong>Branches carry typed mathematical states, laws, admissibility, Operations, and Passport obligations.</div>
+    <div><strong>Interaction layer</strong>Interactions perform lawful joint mathematics and expose derived information.</div>
+    <div><strong>Extraction layer</strong>Leaves retain selected information from Interaction results for later use.</div>
+    <div><strong>Organization layer</strong>Trees and Networks coordinate dependencies, paths, Interfaces, and multiple mathematical sectors.</div>
+    <div><strong>Output layer</strong>Responses record what an organized computation produced.</div>
+    <div><strong>Continuation layer</strong>Roots, export, re-entry, Rooting, and Seeds govern lawful continued participation when those roles are actually present.</div>
+  </div>
+</section>
+
+
+<section id="role-distinction">
+  <h2>4. Core Role Distinctions</h2>
+
+  <table class="role-table">
+    <thead><tr><th>Role</th><th>What it is</th><th>What it is not</th></tr></thead>
+    <tbody>
+      <tr><td>Branch</td><td>A typed carrier with native mathematical obligations.</td><td>Not merely a variable.</td></tr>
+      <tr><td>Interaction</td><td>A lawful joint mathematical action.</td><td>Not every writable expression.</td></tr>
+      <tr><td>Leaf</td><td>Information extracted from an Interaction result.</td><td>Not every intermediate symbol.</td></tr>
+      <tr><td>Tree</td><td>The organized computation.</td><td>Not necessarily a literal graph-theoretic tree.</td></tr>
+      <tr><td>Response</td><td>The typed output of the current computation.</td><td>Not automatically reusable downstream.</td></tr>
+      <tr><td>Root</td><td>A Response/result admitted by specified downstream mathematics.</td><td>Not automatically recursive or conserved.</td></tr>
+      <tr><td>Seed</td><td>Optional generative information evolving toward an export condition.</td><td>Not synonymous with initial data.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="structure-index">
+  <h2>5. Structure Index</h2>
+  <ol class="quick-index">
+    <li><a href="#branch">Branch</a></li>
+    <li><a href="#branch-type">Branch Type</a></li>
+    <li><a href="#branch-state">Branch State</a></li>
+    <li><a href="#branch-laws">Branch Laws</a></li>
+    <li><a href="#branch-operations">Branch Operations</a></li>
+    <li><a href="#branch-passport">Branch Passport Obligations</a></li>
+    <li><a href="#interaction">Interaction</a></li>
+    <li><a href="#interaction-domain">Interaction Domain</a></li>
+    <li><a href="#interaction-output">Interaction Output</a></li>
+    <li><a href="#leaf">Leaf</a></li>
+    <li><a href="#multiple-leaves">Multiple Leaves</a></li>
+    <li><a href="#leaf-propagation">Leaf Propagation</a></li>
+    <li><a href="#leaf-sufficiency">Leaf Sufficiency</a></li>
+    <li><a href="#tree">Tree</a></li>
+    <li><a href="#sequential-tree">Sequential Tree</a></li>
+    <li><a href="#branching-tree">Branching Tree</a></li>
+    <li><a href="#parallel-tree">Parallel Tree</a></li>
+    <li><a href="#feedback-tree">Coupled / Feedback Tree</a></li>
+    <li><a href="#general-tree">General Tree</a></li>
+    <li><a href="#response">Response</a></li>
+    <li><a href="#root">Root</a></li>
+    <li><a href="#rooting">Rooting</a></li>
+    <li><a href="#rebranching">Rebranching</a></li>
+    <li><a href="#repeated-rooting">Repeated Rooting</a></li>
+    <li><a href="#passport">Passport</a></li>
+    <li><a href="#root-passport-transfer">Root Passport Transfer</a></li>
+    <li><a href="#seed">Seed</a></li>
+    <li><a href="#seed-state">Seed State</a></li>
+    <li><a href="#seed-export">Seed Export</a></li>
+    <li><a href="#operation">Operation</a></li>
+    <li><a href="#transformation">Transformation</a></li>
+    <li><a href="#admissibility">Admissibility</a></li>
+    <li><a href="#interface">Interface</a></li>
+    <li><a href="#exact-interface">Exact Interface</a></li>
+    <li><a href="#approx-interface">Approximate Interface</a></li>
+    <li><a href="#interface-defect">Interface Defect</a></li>
+    <li><a href="#configuration">Configuration</a></li>
+    <li><a href="#configuration-state">Configuration State</a></li>
+    <li><a href="#configuration-update">Configuration Update</a></li>
+    <li><a href="#transaction">Transactional Operation</a></li>
+    <li><a href="#network">Network</a></li>
+    <li><a href="#hyperinteraction">Hyperinteraction</a></li>
+    <li><a href="#typed-path">Typed Path</a></li>
+    <li><a href="#path-composite">Path Composite</a></li>
+    <li><a href="#parallel-paths">Parallel Paths</a></li>
+    <li><a href="#path-coherence">Path Coherence</a></li>
+    <li><a href="#commutativity">Commutativity</a></li>
+    <li><a href="#noncommuting">Noncommuting Operations</a></li>
+    <li><a href="#equalizer">Equalizer</a></li>
+    <li><a href="#pullback">Pullback</a></li>
+    <li><a href="#coequalizer">Coequalizer</a></li>
+    <li><a href="#quotient">Quotient</a></li>
+    <li><a href="#structured-quotient">Structured Quotient</a></li>
+    <li><a href="#realization">Mathematical Realization</a></li>
+    <li><a href="#realization-failure">Realization Failure</a></li>
+    <li><a href="#physical-realization">Physical Realization</a></li>
+    <li><a href="#export">Export</a></li>
+    <li><a href="#reentry">Re-entry</a></li>
+    <li><a href="#reentry-coherence">Re-entry Coherence</a></li>
+    <li><a href="#reentry-loss">Re-entry Loss</a></li>
+    <li><a href="#local-global">Local vs Global</a></li>
+    <li><a href="#gluing">Gluing</a></li>
+    <li><a href="#coherence">Coherence</a></li>
+    <li><a href="#higher-coherence">Higher Coherence</a></li>
+    <li><a href="#law-space">Law Space</a></li>
+    <li><a href="#conservation">Conservation</a></li>
+    <li><a href="#conservative-passport">Conservative Passport</a></li>
+    <li><a href="#deterministic">Deterministic Semantics</a></li>
+    <li><a href="#stochastic">Stochastic Semantics</a></li>
+    <li><a href="#nondeterministic">Nondeterministic Semantics</a></li>
+    <li><a href="#finite-arity">Finite-Arity Structures</a></li>
+    <li><a href="#infinite">Indexed / Infinite Structures</a></li>
+    <li><a href="#structure-preservation">Structure Preservation</a></li>
+    <li><a href="#invariant-preservation">Invariant Preservation</a></li>
+    <li><a href="#sector-firewall">Sector-Semantics Firewall</a></li>
+    <li><a href="#failure-modes">Structural Failure Modes</a></li>
+    <li><a href="#defect-localization">Defect Localization</a></li>
+    <li><a href="#network-evaluation">Finite Network Evaluation</a></li>
+    <li><a href="#bm-gurf-structure">BM / GURF Structural Split</a></li>
+    <li><a href="#central-principle">Central Structural Principle</a></li>
+  </ol>
+</section>
+
+<section id="branch">
+  <h2>6. Branch</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> core BM carrier</div></div>
+
+    <p>A Branch is the structural unit that carries one mathematically
+identifiable body of information and the obligations that make that
+information lawful.</p>
+
+    <div class="schema">\[
+\boxed{
+B=
+\left(
+\mathsf S_B,
+\tau_B,
+X_B,
+A_B,
+\mathcal L_B,
+\mathcal O_B,
+\mathcal P_B
+\right)
+}
+\]</div>
+
+    <h3>Carries</h3><ul><li>\(\mathsf S_B\): mathematical sector.</li><li>\(\tau_B\): declared type.</li><li>\(X_B\): ambient carrier or state object.</li><li>\(A_B\): admissible states or sector-correct admissible object.</li><li>\(\mathcal L_B\): laws, identities, constraints, invariants.</li><li>\(\mathcal O_B\): admissible native Operations.</li><li>\(\mathcal P_B\): Passport and Interface obligations.</li></ul>
+
+    <div class="abilities"><strong>What this structure allows</strong><ul><li>Independent mathematical identity inside a larger problem.</li><li>Participation in admissible Interactions.</li><li>Reception of compatible exported or Root-derived information.</li></ul></div>
+
+    <div class="limits"><strong>Limits</strong><ul><li>The seven-field record is organizational, not a claim that every native object intrinsically decomposes into seven independent parts.</li></ul></div>
+
+    <div class="failure"><strong>Failure conditions</strong><ul><li>Carrier supplied without an adequate type.</li><li>Admissible set inconsistent with native laws.</li><li>Operations listed outside their domains.</li><li>Missing Passport or Interface requirements.</li></ul></div>
+
+    <div class="teaching"><strong>Teaching note</strong><p>The underlying object may be completely standard mathematics. BM begins by recording enough structure that later use cannot silently change what that object means.</p></div>
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#branch">Branch</a><br><span class="link-label">Equations:</span> <a href="equations.html#branch-record">Branch record</a><br><span class="link-label">Examples:</span> <a href="examples.html#branch-basic">Scalar</a> · <a href="examples.html#branch-vector">Vector</a> · <a href="examples.html#branch-function-space">Function space</a> · <a href="examples.html#branch-matrix">Matrix</a></div>
+  </div>
+</section>
+
+<section id="branch-type">
+  <h2>7. Branch Type</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> typing layer</div></div>
+
+    <p>The Branch type records the kind of mathematical object being carried.
+It constrains which Operations, Interactions, Interfaces, exports, and
+re-entry maps are even meaningful.</p>
+
+    <div class="schema">\[
+\boxed{
+\tau_B=\tau(B).
+}
+\]</div>
+
+    <h3>Carries</h3><ul><li>Scalar/vector/matrix/function/operator type.</li><li>Algebraic, topological, measurable, geometric, probabilistic, PDE, computational, or other sector information.</li></ul>
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>A label such as 'vector' is often not enough; dimension, field, regularity, units, boundary structure, or probability semantics may also matter.</li></ul></div>
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Examples:</span> <a href="examples.html#interaction-matrix">Matrix mismatch</a></div>
+  </div>
+</section>
+
+<section id="branch-state">
+  <h2>8. Branch State</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> admissible state</div></div>
+
+    <p>A Branch state is lawful only when it belongs to the Branch's declared
+admissible region, not merely its ambient carrier.</p>
+
+    <div class="schema">\[
+x_B\in X_B,
+\qquad
+\boxed{x_B\in A_B\subseteq X_B\text{ for lawful participation}.}
+\]</div>
+
+    
+
+    
+
+    
+
+    <div class="failure"><strong>Failure conditions</strong><ul><li>State lies in the carrier but outside the admissible set.</li><li>State violates positivity, regularity, boundary, normalization, unit, or other native conditions.</li></ul></div>
+
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#admissibility">Admissibility</a><br><span class="link-label">Examples:</span> <a href="examples.html#branch-vector">Disk admissibility</a> · <a href="examples.html#branch-matrix">Positive-definite matrix</a></div>
+  </div>
+</section>
+
+<section id="branch-laws">
+  <h2>9. Branch Laws</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> native-law layer</div></div>
+
+    <p>Branch laws are the equations, identities, invariants, constraints,
+boundary conditions, equivalences, or other native mathematical structure that
+must remain valid while the Branch participates in BM.</p>
+
+    <div class="schema">\[
+\boxed{
+\mathcal L_B
+=
+\{\text{laws required to interpret }B\}.
+}
+\]</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>BM does not select native laws merely because a structural role would be convenient.</li></ul></div>
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Examples:</span> <a href="examples.html#navier-stokes-example">Navier–Stokes Branch laws</a></div>
+  </div>
+</section>
+
+<section id="branch-operations">
+  <h2>10. Branch Operations</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> native-operation layer</div></div>
+
+    <p>The Branch Operation family records transformations that are lawful
+for the Branch under their actual domains.</p>
+
+    <div class="schema">\[
+\boxed{
+\mathcal O_B=\{O_\alpha:D_\alpha\to Y_\alpha\}.
+}
+\]</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>An Operation can be partial.</li><li>Different Operations can require different admissible subdomains.</li></ul></div>
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Examples:</span> <a href="examples.html#transformation-operator">Differential Operation</a> · <a href="examples.html#transformation-normalization">Normalization</a></div>
+  </div>
+</section>
+
+<section id="branch-passport">
+  <h2>11. Branch Passport Obligations</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> downstream-information layer</div></div>
+
+    <p>Passport obligations identify information, laws, invariants,
+uncertainty, coupling, units, or other distinctions that must remain available
+for later mathematics.</p>
+
+    <div class="schema">\[
+\boxed{
+\mathcal P_B
+=
+\{\text{downstream-required obligations attached to }B\}.
+}
+\]</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>A Branch may have no nontrivial Passport for a particular problem.</li><li>Passport content is Task- and Interface-dependent.</li></ul></div>
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#passport">Passport</a><br><span class="link-label">Examples:</span> <a href="examples.html#passport-task">Task Passport</a></div>
+  </div>
+</section>
+
+<section id="interaction">
+  <h2>12. Interaction</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> core joint-action structure</div></div>
+
+    <p>An Interaction is a lawful mathematical action involving one or more
+Branches, with multi-Branch participation being the central case.</p>
+
+    <div class="schema">\[
+\boxed{
+I:
+D_I
+\subseteq
+A_{B_1}\times\cdots\times A_{B_n}
+\longrightarrow
+Z_I.
+}
+\]</div>
+
+    
+
+    <div class="abilities"><strong>What this structure allows</strong><ul><li>Combine information carried by several Branches.</li><li>Produce new mathematical structure.</li><li>Expose one or several Leaves.</li></ul></div>
+
+    <div class="limits"><strong>Limits</strong><ul><li>The displayed function is the deterministic realization; stochastic, relational, quantum, operator, geometric, or other sectors use their native Interaction object.</li></ul></div>
+
+    <div class="failure"><strong>Failure conditions</strong><ul><li>Input tuple lies outside \(D_I\).</li><li>Branches have incompatible types or laws.</li><li>Required coupling or Interface information is absent.</li></ul></div>
+
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#interaction">Interaction</a><br><span class="link-label">Equations:</span> <a href="equations.html#interaction">Interaction equation</a><br><span class="link-label">Examples:</span> <a href="examples.html#interaction-basic">Power</a> · <a href="examples.html#interaction-bayes">Bayes</a> · <a href="examples.html#interaction-matrix">Matrix</a></div>
+  </div>
+</section>
+
+<section id="interaction-domain">
+  <h2>13. Interaction Domain</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> admissible joint domain</div></div>
+
+    <p>The Interaction domain is the set of Branch-state combinations on
+which the joint mathematics is actually defined.</p>
+
+    <div class="schema">\[
+\boxed{
+D_I
+\subseteq
+A_{B_1}\times\cdots\times A_{B_n}.
+}
+\]</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>The inclusion can be strict even when every state is individually admissible in its own Branch.</li></ul></div>
+
+    <div class="failure"><strong>Failure conditions</strong><ul><li>Joint constraint failure.</li><li>Operator-domain failure.</li><li>Coupling incompatibility.</li><li>Boundary or regularity mismatch.</li></ul></div>
+
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#admissibility">Admissibility</a><br><span class="link-label">Examples:</span> <a href="examples.html#transformation-domain">Square-root domain</a></div>
+  </div>
+</section>
+
+<section id="interaction-output">
+  <h2>14. Interaction Output</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> typed result prior to extraction</div></div>
+
+    <p>The raw Interaction output is the mathematical object produced by the
+Interaction before any Leaf extraction is chosen.</p>
+
+    <div class="schema">\[
+\boxed{
+z=I(x_1,\ldots,x_n)\in Z_I.
+}
+\]</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>The entire result \(z\) need not be carried forward.</li><li>Different downstream Tasks may extract different information from the same \(z\).</li></ul></div>
+
+    
+
+    
+
+    
+  </div>
+</section>
+
+<section id="leaf">
+  <h2>15. Leaf</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> derived information structure</div></div>
+
+    <p>A Leaf is typed information extracted from an Interaction result.
+Its extraction map records where the information came from.</p>
+
+    <div class="schema">\[
+z=I(x_1,\ldots,x_n),
+\qquad
+\boxed{
+L_j=\ell_j(z).
+}
+\]</div>
+
+    
+
+    <div class="abilities"><strong>What this structure allows</strong><ul><li>Carry a derived diagnostic or quantity into later mathematics.</li><li>Feed another Interaction when the receiving domain accepts it.</li><li>Expose one aspect of a richer Interaction result without carrying the whole result.</li></ul></div>
+
+    <div class="limits"><strong>Limits</strong><ul><li>A Leaf is not automatically a Root.</li><li>A Leaf is not automatically an independent Branch.</li><li>Being a Leaf does not remove later admissibility checks.</li></ul></div>
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#leaf">Leaf</a><br><span class="link-label">Equations:</span> <a href="equations.html#leaf">Leaf extraction</a><br><span class="link-label">Examples:</span> <a href="examples.html#leaf-vector-geometry">Vector Leaves</a> · <a href="examples.html#leaf-residual-correction">Residual Leaf</a></div>
+  </div>
+</section>
+
+<section id="multiple-leaves">
+  <h2>16. Multiple Leaves</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> multi-extraction structure</div></div>
+
+    <p>One Interaction result may support several lawful extraction maps that
+retain different information.</p>
+
+    <div class="schema">\[
+\boxed{
+L_1=\ell_1(z),\quad
+L_2=\ell_2(z),\quad\ldots,\quad
+L_m=\ell_m(z).
+}
+\]</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>Different Leaves need not be mutually recoverable.</li><li>No single Leaf is presumed sufficient for every later Task.</li></ul></div>
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Examples:</span> <a href="examples.html#leaf-vector-geometry">Angle/projection Leaves</a> · <a href="examples.html#leaf-spectral-energy">Energy-mode Leaves</a></div>
+  </div>
+</section>
+
+<section id="leaf-propagation">
+  <h2>17. Leaf Propagation</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> derived-information continuation</div></div>
+
+    <p>A Leaf can become an input to later mathematics when a receiving
+Interaction accepts its type and all required Interface conditions.</p>
+
+    <div class="schema">\[
+x\xrightarrow{I}z\xrightarrow{\ell}L,
+\]
+\[
+J:D_J\subseteq X_L\times X_C\to W,
+\qquad
+\boxed{
+L'=\ell'(J(L,c))
+}
+\]
+only when
+\[
+(L,c)\in D_J.
+\]</div>
+
+    
+
+    <div class="abilities"><strong>What this structure allows</strong><ul><li>Create multi-stage derivation chains.</li><li>Track exactly which earlier derived quantities a later result depends on.</li></ul></div>
+
+    
+
+    <div class="failure"><strong>Failure conditions</strong><ul><li>Leaf type does not match the receiver.</li><li>Units or law context were lost.</li><li>A required Passport was not transferred.</li></ul></div>
+
+    
+
+    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#leaf-propagation">Leaf propagation theorem</a><br><span class="link-label">Equations:</span> <a href="equations.html#leaf-propagation">Leaf propagation equation</a><br><span class="link-label">Examples:</span> <a href="examples.html#leaf-power-energy-temperature">Power → energy → temperature</a></div>
+  </div>
+</section>
+
+<section id="leaf-sufficiency">
+  <h2>18. Leaf Sufficiency</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> Task-relative information condition</div></div>
+
+    <p>A Leaf is sufficient for a later exact deterministic Task when that
+Task factors through the Leaf extraction.</p>
+
+    <div class="schema">\[
+T:Z_I\to W,
+\qquad
+\ell:Z_I\to L,
+\]
+\[
+\boxed{
+T=\widetilde T\circ\ell
+}
+\]
+for some
+\[
+\widetilde T:\ell(Z_I)\to W.
+\]</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>Leaf sufficiency is relative to the specified Task.</li><li>Static sufficiency does not imply dynamic closure.</li></ul></div>
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#recoverability">Exact recoverability</a><br><span class="link-label">Examples:</span> <a href="examples.html#leaf-probability-decision">Posterior Leaf decision</a></div>
+  </div>
+</section>
+
+<section id="tree">
+  <h2>19. Tree</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> organized BM computation</div></div>
+
+    <p>A Tree is the organized structure coordinating Branches,
+Interactions, Leaves, Passports, Interfaces, paths, and intermediate
+mathematics that together produce a Response.</p>
+
+    <div class="schema">\[
+\boxed{
+\mathcal T
+=
+\text{organized dependency structure carrying a BM computation}.
+}
+\]</div>
+
+    <h3>Carries</h3><ul><li>Active Branches.</li><li>Interaction dependencies.</li><li>Leaves and intermediate results.</li><li>Passports and Interfaces.</li><li>Path/coherence obligations.</li><li>Response production rule.</li></ul>
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>A BM Tree need not be a literal graph-theoretic tree.</li><li>A Tree is not its Response.</li></ul></div>
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#tree">Tree</a><br><span class="link-label">Examples:</span> <a href="examples.html#tree-sequential">Sequential</a> · <a href="examples.html#tree-branching">Branching</a> · <a href="examples.html#tree-parallel">Parallel</a> · <a href="examples.html#tree-coupled">Feedback</a></div>
+  </div>
+</section>
+
+<section id="sequential-tree">
+  <h2>20. Sequential Tree as a Special Case</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> sequential Tree</div></div>
+
+    <p>A simple Tree can be realized as a chain of admissible Operations.</p>
+
+    <div class="schema">\[
+X_0\xrightarrow{I_1}X_1
+\xrightarrow{I_2}\cdots
+\xrightarrow{I_m}X_m,
+\]
+\[
+\boxed{
+\mathcal R_{\mathcal T}
+=
+I_m\circ\cdots\circ I_1
+}
+\]
+on the true composite domain.</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>This is only one Tree form.</li><li>Every intermediate domain still matters.</li></ul></div>
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Examples:</span> <a href="examples.html#tree-sequential">Power-energy-temperature</a></div>
+  </div>
+</section>
+
+<section id="branching-tree">
+  <h2>21. Branching Tree</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> one-to-many downstream use</div></div>
+
+    <p>A Branching Tree occurs when one Interaction or Leaf family supports
+several distinct downstream calculations.</p>
+
+    <div class="schema">\[
+z\xrightarrow{\ell_1}L_1,
+\qquad
+z\xrightarrow{\ell_2}L_2,
+\qquad
+z\xrightarrow{\ell_3}L_3,
+\]
+followed by distinct downstream Operations.</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>Branching does not imply that all branches are independent.</li></ul></div>
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Examples:</span> <a href="examples.html#tree-branching">Vector geometry branching</a></div>
+  </div>
+</section>
+
+<section id="parallel-tree">
+  <h2>22. Parallel Tree</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> parallel path structure</div></div>
+
+    <p>A Parallel Tree contains distinct lawful paths that originate from
+compatible source information and later meet or are compared.</p>
+
+    <div class="schema">\[
+x\xrightarrow{F_p}y_p,
+\qquad
+x\xrightarrow{F_q}y_q,
+\qquad
+\boxed{y_p\simeq y_q}
+\]
+when coherence is required.</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>Parallel paths can be individually lawful yet mutually incoherent.</li></ul></div>
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Examples:</span> <a href="examples.html#tree-parallel">Temperature paths</a></div>
+  </div>
+</section>
+
+<section id="feedback-tree">
+  <h2>23. Coupled / Feedback Tree</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> re-entry or feedback structure</div></div>
+
+    <p>A feedback Tree uses a previous Response, Root, or state update to
+modify information that participates again in later computation.</p>
+
+    <div class="schema">\[
+x_n\xrightarrow{\mathcal T}R_n
+\xrightarrow{\text{admissible update}}
+x_{n+1}.
+\]</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>Feedback does not automatically imply convergence or stability.</li></ul></div>
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Examples:</span> <a href="examples.html#tree-coupled">Thermal feedback</a></div>
+  </div>
+</section>
+
+<section id="general-tree">
+  <h2>24. General Tree</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> nonsequential organized computation</div></div>
+
+    <p>General Trees can use products, pullbacks, equalizers, shared
+constraints, stochastic transitions, hyperinteractions, conditional
+Operations, feedback, several outputs, Roots, and re-entry.</p>
+
+    
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>The mathematical structure chosen for a Tree must come from the problem; BM does not force all Trees into one universal graph formalism.</li></ul></div>
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Examples:</span> <a href="examples.html#full-system-worked-run">Full electro-thermal Tree</a></div>
+  </div>
+</section>
+
+<section id="response">
+  <h2>25. Response</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> Tree output role</div></div>
+
+    <p>A Response is the typed mathematical output produced by a Tree or
+another organized BM computation.</p>
+
+    <div class="schema">\[
+\boxed{
+\mathcal R_{\mathcal T}:D_{\mathcal T}\to Y_{\mathcal T},
+\qquad
+R=\mathcal R_{\mathcal T}(x).
+}
+\]</div>
+
+    
+
+    <div class="abilities"><strong>What this structure allows</strong><ul><li>Terminate the current calculation.</li><li>Be tested against a downstream receiver.</li><li>Become a Root if the receiving gate passes.</li></ul></div>
+
+    <div class="limits"><strong>Limits</strong><ul><li>A Response is not automatically a Root.</li></ul></div>
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#response">Response</a><br><span class="link-label">Equations:</span> <a href="equations.html#response">Response map</a><br><span class="link-label">Examples:</span> <a href="examples.html#response-example">Controller response</a></div>
+  </div>
+</section>
+
+<section id="root">
+  <h2>26. Root</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> downstream-admitted Response/result</div></div>
+
+    <p>A Root is a Response or resulting mathematical structure that has
+passed the admissibility, type, Interface, and Passport requirements needed
+for a specified downstream use.</p>
+
+    <div class="schema">\[
+\boxed{
+R\text{ is a Root for receiver }B'
+\iff
+R\in A_{B'}
+\text{ and required receiving obligations hold}.
+}
+\]</div>
+
+    
+
+    <div class="abilities"><strong>What this structure allows</strong><ul><li>Enter later Interactions.</li><li>Support export or re-entry.</li><li>Serve as an attachment candidate when Rooting is defined.</li></ul></div>
+
+    <div class="limits"><strong>Limits</strong><ul><li>Root status is receiver-relative.</li><li>A Root need not recur.</li><li>A Root need not be conserved or invertible.</li></ul></div>
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#root-relativity">Root receiver-relativity</a><br><span class="link-label">Examples:</span> <a href="examples.html#root-scalar-instance">Scalar Root</a> · <a href="examples.html#root-matrix-instance">Matrix Root</a> · <a href="examples.html#root-relative-instance">Receiver-relative Root</a></div>
+  </div>
+</section>
+
+<section id="rooting">
+  <h2>27. Rooting</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> candidate attachment structure</div><div><strong>Status:</strong> active candidate</div></div>
+
+    <p>Rooting is candidate BM machinery for attaching a Root or compatible
+law-bearing structure at an admissible site from which additional lawful
+mathematics may develop.</p>
+
+    <div class="schema">\[
+\mathcal A:
+D_{\mathcal A}
+\subseteq
+A_B\times X_R
+\longrightarrow
+X',
+\qquad
+\boxed{(x,R)\in D_{\mathcal A}}.
+\]</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>Rooting is not assumed in every BM construction.</li><li>A Root does not guarantee an admissible attachment site.</li></ul></div>
+
+    <div class="failure"><strong>Failure conditions</strong><ul><li>Attachment violates the receiver's type or law.</li><li>Required Passport transfer fails.</li><li>No lawful downstream structure exists.</li></ul></div>
+
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#rooting">Rooting</a><br><span class="link-label">Examples:</span> <a href="examples.html#rooting-example">Rooting example</a></div>
+  </div>
+</section>
+
+<section id="rebranching">
+  <h2>28. Rebranching</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> candidate post-attachment development</div><div><strong>Status:</strong> active candidate</div></div>
+
+    <p>Rebranching is candidate BM language for new lawful Branch development
+beginning from a successfully established attachment site.</p>
+
+    
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>Successful Rooting does not guarantee Rebranching.</li><li>A valid attachment can terminate if no admissible continuation exists.</li></ul></div>
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#rebranching">Rebranching</a></div>
+  </div>
+</section>
+
+<section id="repeated-rooting">
+  <h2>29. Repeated Rooting</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> conditional repeated-attachment or iteration structure</div></div>
+
+    <p>Repeated Rooting is not automatically an ordinary dynamical system.
+It becomes an iterated system only when a lawful self-map on an invariant
+Root-state space is actually defined.</p>
+
+    <div class="schema">\[
+F:A_R\to A_R,
+\qquad
+\boxed{
+R_{n+1}=F(R_n)
+}
+\]
+with all iterates remaining admissible.</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>Fixed-point, contraction, Lyapunov, cycle, and stability theory apply only when their own hypotheses are satisfied.</li></ul></div>
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#root-iteration-firewall">Root iteration firewall</a><br><span class="link-label">Examples:</span> <a href="examples.html#root-recursive">Repeated Root</a></div>
+  </div>
+</section>
+
+<section id="passport">
+  <h2>30. Passport</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> downstream-obligation structure</div></div>
+
+    <p>A Passport records distinctions, observations, invariants, law
+context, uncertainty, units, coupling, admissibility, or Task-relevant
+information that must remain available for later mathematics.</p>
+
+    <div class="schema">\[
+\boxed{
+\mathcal P
+=
+\{p_\alpha\}_{\alpha\in A}.
+}
+\]</div>
+
+    
+
+    <div class="abilities"><strong>What this structure allows</strong><ul><li>Control lawful reduction.</li><li>Audit export and re-entry.</li><li>Record information needed by later Tasks or Interfaces.</li></ul></div>
+
+    <div class="limits"><strong>Limits</strong><ul><li>Calling information a Passport does not prove it is sufficient.</li><li>Passport semantics can be exact, approximate, stochastic, relational, operator-valued, or otherwise sector-specific.</li></ul></div>
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#passport">Passport</a><br><span class="link-label">Examples:</span> <a href="examples.html#passport-basic">Basic Passport</a> · <a href="examples.html#passport-serial-loss">Serial loss</a></div>
+  </div>
+</section>
+
+<section id="root-passport-transfer">
+  <h2>31. Root Passport Transfer</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> candidate transfer structure</div><div><strong>Status:</strong> active candidate</div></div>
+
+    <p>Root Passport Transfer is candidate BM language for carrying required
+Passport information together with a Root into a compatible receiver.</p>
+
+    <div class="schema">\[
+\boxed{
+(R,\mathcal P_R)
+\xrightarrow{\text{Interface}}
+(R',\mathcal P_{R'})
+}
+\]</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>Transfer must be explicitly defined; Passport information is not presumed to survive automatically.</li></ul></div>
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#root-passport-transfer">Root Passport Transfer</a></div>
+  </div>
+</section>
+
+<section id="seed">
+  <h2>32. Seed</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> candidate generative primitive</div><div><strong>Status:</strong> candidate BM primitive</div></div>
+
+    <p>A Seed is information assigned a lawful generative role that does not
+yet directly export a Root. It generates Seed states until a declared export
+condition is reached.</p>
+
+    <div class="schema">\[
+\boxed{
+S_0\xrightarrow{G}S_1\xrightarrow{G}S_2
+\longrightarrow\cdots
+\xrightarrow{\text{export condition}}R.
+}
+\]</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>Initial data is not automatically a Seed.</li><li>Seed is optional; many BM computations do not need it.</li></ul></div>
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#seed">Seed</a><br><span class="link-label">Equations:</span> <a href="equations.html#seed-generation">Seed generation</a><br><span class="link-label">Examples:</span> <a href="examples.html#seed-newton">Newton</a> · <a href="examples.html#seed-krylov">Krylov</a> · <a href="examples.html#seed-gradient">Gradient</a></div>
+  </div>
+</section>
+
+<section id="seed-state">
+  <h2>33. Seed State</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> intermediate generative state</div></div>
+
+    <p>A Seed State is one state generated by the declared Seed update before
+the export condition has been satisfied.</p>
+
+    <div class="schema">\[
+\boxed{
+S_{n+1}=G(S_n).
+}
+\]</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>A Seed State is not automatically a Root or Response.</li></ul></div>
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Examples:</span> <a href="examples.html#seed-fixed-point">Fixed-point states</a></div>
+  </div>
+</section>
+
+<section id="seed-export">
+  <h2>34. Seed Export</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> generative export gate</div></div>
+
+    <p>Seed export occurs only after the declared mathematical criterion says
+that the generated information is ready to leave the Seed process.</p>
+
+    <div class="schema">\[
+\boxed{
+E(S_n)=\mathrm{true}
+}
+\]
+or a quantitative gate such as
+\[
+\boxed{
+\|F(S_n)\|\le\varepsilon.
+}
+\]</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>The criterion is problem-specific; BM does not supply a universal tolerance.</li></ul></div>
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Equations:</span> <a href="equations.html#seed-export">Seed export equation</a><br><span class="link-label">Examples:</span> <a href="examples.html#seed-newton">Newton export</a></div>
+  </div>
+</section>
+
+<section id="operation">
+  <h2>35. Operation</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> active mathematical step</div></div>
+
+    <p>An Operation is a declared lawful mathematical transformation used in
+a BM computation.</p>
+
+    <div class="schema">\[
+\boxed{
+O:D_O\subseteq A_{B_1}\times\cdots\times A_{B_m}\to Y.
+}
+\]</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>Operations can be partial and sector-specific.</li></ul></div>
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#operation">Operation</a><br><span class="link-label">Examples:</span> <a href="examples.html#transformation-normalization">Normalization</a></div>
+  </div>
+</section>
+
+<section id="transformation">
+  <h2>36. Transformation</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> representation/state change</div></div>
+
+    <p>A Transformation changes a mathematical state, representation, or
+structure using a lawful map, relation, kernel, operator, channel, or other
+sector-correct morphism.</p>
+
+    <div class="schema">\[
+\boxed{
+F:D_F\subseteq A_B\to A_C
+}
+\]
+in a deterministic realization.</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>Transformation validity depends on the native sector and the declared domain.</li></ul></div>
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#transformation">Transformation</a><br><span class="link-label">Examples:</span> <a href="examples.html#transformation-domain">Square root</a> · <a href="examples.html#transformation-operator">Differentiation</a></div>
+  </div>
+</section>
+
+<section id="admissibility">
+  <h2>37. Admissibility</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> global lawfulness gate</div></div>
+
+    <p>Admissibility determines whether a proposed state, input, Operation,
+Interaction, Interface, attachment, Response, Root, path, realization, or
+continuation is actually permitted.</p>
+
+    <div class="schema">\[
+\boxed{
+x\text{ may participate only when }x\in A
+}
+\]
+for a Set-like admissible domain.</div>
+
+    
+
+    <div class="abilities"><strong>What this structure allows</strong><ul><li>Make failures explicit before downstream mathematics is trusted.</li></ul></div>
+
+    <div class="limits"><strong>Limits</strong><ul><li>Admissibility can be more structured than subset membership.</li></ul></div>
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#admissibility">Admissibility</a><br><span class="link-label">Examples:</span> <a href="examples.html#branch-vector">Branch admissibility</a> · <a href="examples.html#root-example">Root gate</a></div>
+  </div>
+</section>
+
+<section id="interface">
+  <h2>38. Interface</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> transfer-compatibility structure</div></div>
+
+    <p>An Interface is the collection of conditions governing lawful
+transfer between mathematical structures.</p>
+
+    
+
+    <h3>Carries</h3><ul><li>Type and dimension.</li><li>Units and normalization.</li><li>Regularity and boundary data.</li><li>Law/Regime context.</li><li>Passport information.</li><li>Uncertainty or coupling information where required.</li></ul>
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>Matching printed codomain names do not prove compatibility.</li></ul></div>
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#interface">Interface</a><br><span class="link-label">Examples:</span> <a href="examples.html#composition-sampling">Sampling metadata</a></div>
+  </div>
+</section>
+
+<section id="exact-interface">
+  <h2>39. Exact Interface Compatibility</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> deterministic exact compatibility</div></div>
+
+    <p>One exact deterministic Interface condition is a commuting
+factorization.</p>
+
+    <div class="schema">\[
+P_1:X_1\to Q_1,
+\quad
+F:X_1\to X_2,
+\quad
+P_2:X_2\to Q_2,
+\]
+\[
+\boxed{
+P_2\circ F=G\circ P_1.
+}
+\]</div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#interface-factorization">Interface factorization</a><br><span class="link-label">Equations:</span> <a href="equations.html#interface">Exact Interface</a></div>
+  </div>
+</section>
+
+<section id="approx-interface">
+  <h2>40. Approximate Interface Compatibility</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> quantitative approximate compatibility</div></div>
+
+    <p>When a justified discrepancy is available, Interface agreement can be
+controlled quantitatively.</p>
+
+    <div class="schema">\[
+\boxed{
+d\!\left(P_2(F(x)),G(P_1(x))\right)
+\le\varepsilon.
+}
+\]</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>The metric/divergence/tolerance and comparison domain must be declared.</li></ul></div>
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Equations:</span> <a href="equations.html#interface-defect">Interface defect</a></div>
+  </div>
+</section>
+
+<section id="interface-defect">
+  <h2>41. Interface Defect</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> explicit incompatibility structure</div></div>
+
+    <p>An Interface Defect records states or magnitudes for which a proposed
+transfer violates a receiving requirement.</p>
+
+    <div class="schema">\[
+\boxed{
+\mathfrak D_{F,P}
+=
+\{x:P_{\rm in}(x)\text{ holds but }P_{\rm out}(F(x))\text{ fails}\}.
+}
+\]</div>
+
+    
+
+    <div class="abilities"><strong>What this structure allows</strong><ul><li>Localize failure.</li><li>Guide repair.</li><li>Prevent downstream reuse of data produced through a failed Interface.</li></ul></div>
+
+    
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#interface-defect">Interface defect</a><br><span class="link-label">Theorems:</span> <a href="theorems.html#passport-defect-localization">Passport defect localization</a><br><span class="link-label">Examples:</span> <a href="examples.html#coherence-calibration">Calibration defect</a></div>
+  </div>
+</section>
+
+<section id="configuration">
+  <h2>42. Configuration</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> active whole-problem state</div></div>
+
+    <p>A Configuration records the active structural state of a BM
+construction at one stage of computation.</p>
+
+    <div class="schema">\[
+\boxed{
+\mathcal X
+=
+(\mathcal B,\mathcal I,\mathcal L,\mathcal R,
+\mathcal P,\mathcal O,\mathcal F,\mathcal A,\Lambda)
+}
+\]
+as one organizational record.</div>
+
+    <h3>Carries</h3><ul><li>Active Branches.</li><li>Interactions and Leaves.</li><li>Responses/Roots.</li><li>Passports.</li><li>Operations and Interfaces.</li><li>Admissibility state.</li><li>Active law or Regime.</li></ul>
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>The tuple is organizational; not every sector has this intrinsic product structure.</li></ul></div>
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#configuration">Configuration</a><br><span class="link-label">Examples:</span> <a href="examples.html#configuration-example">Full configuration</a></div>
+  </div>
+</section>
+
+<section id="configuration-state">
+  <h2>43. Configuration State</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> snapshot of active structure</div></div>
+
+    <p>A Configuration State is the complete set of active structural
+information needed to determine what Operations are currently lawful.</p>
+
+    <div class="schema">\[
+\boxed{
+\mathcal X_n
+=
+\text{active structural data at stage }n.
+}
+\]</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>A Configuration State can contain objects from several mathematical sectors without identifying those sectors.</li></ul></div>
+
+    
+
+    
+
+    
+  </div>
+</section>
+
+<section id="configuration-update">
+  <h2>44. Configuration Update</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> structural state transition</div></div>
+
+    <p>An update changes the active structural record after a lawful
+Operation, Interaction, repair, Root event, law change, or Interface
+re-binding.</p>
+
+    <div class="schema">\[
+\boxed{
+U:\mathcal X\to\mathcal X'.
+}
+\]</div>
+
+    
+
+    <div class="abilities"><strong>What this structure allows</strong><ul><li>Activate/deactivate Branches.</li><li>Add Leaves or Roots.</li><li>Update Passports or Interfaces.</li><li>Change admissibility or active Regime.</li></ul></div>
+
+    <div class="limits"><strong>Limits</strong><ul><li>An update is lawful only if its own structural checks pass.</li></ul></div>
+
+    
+
+    
+
+    
+  </div>
+</section>
+
+<section id="transaction">
+  <h2>45. Transactional Operation</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> all-or-explicit-failure update</div></div>
+
+    <p>A transactional Operation treats a structural update as committed only
+after all required checks succeed.</p>
+
+    <div class="schema">\[
+\boxed{
+O(\mathcal X)
+=
+\begin{cases}
+\mathcal X',&\text{all required checks pass},\\
+\text{explicit failure},&\text{otherwise}.
+\end{cases}
+}
+\]</div>
+
+    
+
+    <div class="abilities"><strong>What this structure allows</strong><ul><li>Prevent silent creation of invalid Configurations.</li></ul></div>
+
+    <div class="limits"><strong>Limits</strong><ul><li>Transactional language is an organizational model, not a requirement that every mathematical sector behave like a database transaction.</li></ul></div>
+
+    
+
+    
+
+    
+  </div>
+</section>
+
+<section id="network">
+  <h2>46. Network</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> multi-Tree dependency structure</div></div>
+
+    <p>A Network coordinates several Branches, Trees, Interactions, Roots,
+Interfaces, and paths whose dependencies exceed one local Tree.</p>
+
+    <div class="schema">\[
+\boxed{
+\mathcal N
+=
+(V,E,\tau,\mathcal A,\mathcal P,\ldots)
+}
+\]
+when a graph-like realization is useful.</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>Graphs are one possible representation, not a universal BM ontology.</li><li>Cycles, stochastic edges, hyperedges, and implicit relations may require richer structures.</li></ul></div>
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#finite-network-evaluation">Finite network evaluation</a><br><span class="link-label">Examples:</span> <a href="examples.html#full-navigation-system">Navigation network</a></div>
+  </div>
+</section>
+
+<section id="hyperinteraction">
+  <h2>47. Hyperinteraction</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> multi-Branch Interaction representation</div></div>
+
+    <p>When several Branches participate simultaneously, a graph-like Network
+can represent the Interaction with a hyperedge.</p>
+
+    <div class="schema">\[
+e=\{B_1,\ldots,B_k\},
+\]
+\[
+\boxed{
+I_e:
+D_e
+\subseteq
+A_{B_1}\times\cdots\times A_{B_k}
+\to Z_e.
+}
+\]</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>Hypergraph notation is optional and does not change the native Interaction mathematics.</li></ul></div>
+
+    
+
+    
+
+    
+  </div>
+</section>
+
+<section id="typed-path">
+  <h2>48. Typed Path</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> lawful compositional route</div></div>
+
+    <p>A Typed Path is a sequence of transformations whose outputs, domains,
+types, Interfaces, and Passports match at every stage.</p>
+
+    <div class="schema">\[
+X_0\xrightarrow{F_1}X_1
+\xrightarrow{F_2}\cdots
+\xrightarrow{F_n}X_n.
+\]</div>
+
+    
+
+    
+
+    
+
+    <div class="failure"><strong>Failure conditions</strong><ul><li>Intermediate output falls outside the next domain.</li><li>Type/unit/regularity mismatch.</li><li>Passport loss.</li><li>Wrong semantic sector used at an edge.</li></ul></div>
+
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#typed-path">Typed path</a><br><span class="link-label">Examples:</span> <a href="examples.html#typed-path-example">Typed path example</a></div>
+  </div>
+</section>
+
+<section id="path-composite">
+  <h2>49. Path Composite</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> composed route</div></div>
+
+    <p>A deterministic Typed Path induces a composite map on the subset of
+source states that survive every intermediate domain.</p>
+
+    <div class="schema">\[
+\boxed{
+F_{\rm path}
+=
+F_n\circ\cdots\circ F_1
+}
+\]
+with
+\[
+D_{\rm path}
+=
+\{x:F_1(x)\in D_{F_2},\ldots\}.
+\]</div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#typed-composite-domain">Composite-domain theorem</a><br><span class="link-label">Equations:</span> <a href="equations.html#composite-domain">Composite domain</a></div>
+  </div>
+</section>
+
+<section id="parallel-paths">
+  <h2>50. Parallel Paths</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> multiple lawful routes</div></div>
+
+    <p>Parallel paths are distinct lawful routes between corresponding source
+and target structures. They can carry different intermediate information even
+when they are intended to represent the same overall transformation.</p>
+
+    <div class="schema">\[
+x\xrightarrow{F_p}y_p,
+\qquad
+x\xrightarrow{F_q}y_q.
+\]</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>Parallel lawfulness does not imply coherence.</li></ul></div>
+
+    
+
+    
+
+    
+  </div>
+</section>
+
+<section id="path-coherence">
+  <h2>51. Path Coherence</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> comparison of parallel routes</div></div>
+
+    <p>Path Coherence requires relevant parallel paths to agree under the
+destination sector's declared comparison relation.</p>
+
+    <div class="schema">\[
+\boxed{
+F_p(x)\simeq_DF_q(x)
+}
+\]
+on the shared admissible domain.</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>\(\simeq_D\) can mean equality, isomorphism, gauge equivalence, equality in distribution, tolerance, or another justified relation; these meanings are not interchangeable.</li></ul></div>
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#path-coherence">Coherence transitivity</a><br><span class="link-label">Examples:</span> <a href="examples.html#path-coherence-example">Parallel conversion</a></div>
+  </div>
+</section>
+
+<section id="commutativity">
+  <h2>52. Commutativity</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> special path-agreement property</div></div>
+
+    <p>Two Operations commute when applying them in either order gives the
+same result wherever both composite paths are defined.</p>
+
+    <div class="schema">\[
+\boxed{
+F\circ G=G\circ F
+}
+\]
+on their common composite domain.</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>BM does not assume commutativity.</li></ul></div>
+
+    
+
+    
+
+    
+  </div>
+</section>
+
+<section id="noncommuting">
+  <h2>53. Noncommuting Operations</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> order-sensitive structure</div></div>
+
+    <p>When \(F\circ G\neq G\circ F\), operation order is mathematical
+information that must remain explicit.</p>
+
+    <div class="schema">\[
+\boxed{
+F\circ G\not\simeq G\circ F.
+}
+\]</div>
+
+    
+
+    <div class="abilities"><strong>What this structure allows</strong><ul><li>Represent order-sensitive filtering, differentiation, control, measurement, constraint activation, and many other native processes.</li></ul></div>
+
+    
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Examples:</span> <a href="examples.html#navier-stokes-example">Operator order</a></div>
+  </div>
+</section>
+
+<section id="equalizer">
+  <h2>54. Equalizer-Type Compatibility</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> standard exact agreement construction</div></div>
+
+    <p>For two maps into the same destination, the equalizer selects the
+source states on which the maps agree.</p>
+
+    <div class="schema">\[
+F,G:X\to Y,
+\qquad
+\boxed{
+E(F,G)=\{x:F(x)=G(x)\}.
+}
+\]</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>The Set equalizer shown is one realization; other categories use their native equalizer object.</li></ul></div>
+
+    
+
+    
+
+    
+  </div>
+</section>
+
+<section id="pullback">
+  <h2>55. Pullback-Type Compatibility</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> standard matching-over-a-common-target construction</div></div>
+
+    <p>Given \(f:X\to Z\) and \(g:Y\to Z\), a Set-level pullback is the set
+of pairs whose images agree in \(Z\).</p>
+
+    <div class="schema">\[
+\boxed{
+X\times_ZY
+=
+\{(x,y)\in X\times Y:f(x)=g(y)\}.
+}
+\]</div>
+
+    
+
+    <div class="abilities"><strong>What this structure allows</strong><ul><li>Represent joint compatibility over shared information or constraints.</li></ul></div>
+
+    <div class="limits"><strong>Limits</strong><ul><li>The native category determines the actual pullback object.</li></ul></div>
+
+    
+
+    
+
+    
+  </div>
+</section>
+
+<section id="coequalizer">
+  <h2>56. Coequalizer-Type Identification</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> standard compatible identification</div></div>
+
+    <p>A coequalizing map identifies the outputs of two parallel maps.</p>
+
+    <div class="schema">\[
+f,g:X\to Y,
+\qquad
+\boxed{
+q\circ f=q\circ g.
+}
+\]</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>Existence and construction are category-dependent.</li></ul></div>
+
+    
+
+    
+
+    
+  </div>
+</section>
+
+<section id="quotient">
+  <h2>57. Quotient</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> Set-level identification</div></div>
+
+    <p>An equivalence relation can produce a quotient of the underlying
+carrier.</p>
+
+    <div class="schema">\[
+\boxed{
+X/{\sim}.
+}
+\]</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>A Set quotient does not automatically preserve algebraic, topological, smooth, measurable, geometric, operator, or probabilistic structure.</li></ul></div>
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#quotient">Quotient</a></div>
+  </div>
+</section>
+
+<section id="structured-quotient">
+  <h2>58. Structured Quotient</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> quotient with native structure preserved</div></div>
+
+    <p>A Structured Quotient is a quotient for which every native Operation
+or structure intended to descend has been proved compatible with the
+identification.</p>
+
+    <div class="schema">\[
+x_i\sim x_i'\ \forall i
+\Longrightarrow
+\boxed{
+\omega(x_1,\ldots,x_m)
+\sim
+\omega(x_1',\ldots,x_m')
+}
+\]
+for each required algebraic Operation \(\omega\).</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>The displayed congruence condition is algebraic; other sectors have other descent conditions.</li></ul></div>
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#bm-sq-01">BM-SQ-01</a><br><span class="link-label">Examples:</span> <a href="examples.html#structured-quotient-example">Lawful quotient</a> · <a href="examples.html#failure-false-quotient">Failure</a></div>
+  </div>
+</section>
+
+<section id="realization">
+  <h2>59. Mathematical Realization</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> existence of an abstract specification</div></div>
+
+    <p>A mathematical realization is a concrete object satisfying the
+declared abstract structural specification in the claimed sector.</p>
+
+    <div class="schema">\[
+\boxed{
+\text{abstract specification}
+\xrightarrow{\text{realization}}
+\text{actual mathematical object}.
+}
+\]</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>Writing a consistent-looking symbolic specification does not prove that such an object exists.</li></ul></div>
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#mathematical-realizability">Mathematical realizability</a></div>
+  </div>
+</section>
+
+<section id="realization-failure">
+  <h2>60. Realization Failure</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> existence obstruction</div></div>
+
+    <p>Realization fails when the requested structural obligations cannot be
+simultaneously satisfied in the target mathematical sector.</p>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="failure"><strong>Failure conditions</strong><ul><li>Contradictory constraints.</li><li>Missing object or morphism.</li><li>Nonexistent quotient/limit.</li><li>Operator-domain obstruction.</li><li>Topology or regularity incompatibility.</li><li>No admissible state satisfying all conditions.</li></ul></div>
+
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#obstruction">Obstruction</a></div>
+  </div>
+</section>
+
+<section id="physical-realization">
+  <h2>61. Physical Realization</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> empirical/application-level realization</div></div>
+
+    <p>Physical realization is stronger than mathematical realization. A
+mathematically valid object may still fail to correspond to an achievable
+physical system.</p>
+
+    <div class="schema">\[
+\boxed{
+\text{mathematically realizable}
+\not\Rightarrow
+\text{physically realizable}.
+}
+\]</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>Physical realizability depends on validated laws, causality, materials, scales, boundary/initial data, stability, implementation, and empirical evidence.</li></ul></div>
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#physical-realizability">Physical realizability</a></div>
+  </div>
+</section>
+
+<section id="export">
+  <h2>62. Export</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> leaving a local structural context</div></div>
+
+    <p>Export prepares typed information produced in one local structure for
+possible use elsewhere.</p>
+
+    <div class="schema">\[
+\boxed{
+E:D_E\subseteq X_{\rm local}\to Y_{\rm export}.
+}
+\]</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>Successful export does not prove a receiver will accept the exported object.</li></ul></div>
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#export">Export</a><br><span class="link-label">Examples:</span> <a href="examples.html#seed-fixed-point">Seed export</a></div>
+  </div>
+</section>
+
+<section id="reentry">
+  <h2>63. Re-entry</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> receiving exported information</div></div>
+
+    <p>Re-entry is the lawful introduction of exported or Root-derived
+information into another mathematical structure.</p>
+
+    <div class="schema">\[
+X\xrightarrow{E}Y
+\xrightarrow{R_{\rm in}}Z,
+\qquad
+\boxed{
+E(x)\in D_{R_{\rm in}}.
+}
+\]</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>Export and re-entry are separate gates.</li></ul></div>
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#reentry">Re-entry</a><br><span class="link-label">Examples:</span> <a href="examples.html#reentry-example">Re-entry example</a></div>
+  </div>
+</section>
+
+<section id="reentry-coherence">
+  <h2>64. Re-entry Coherence</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> comparison with a direct route</div></div>
+
+    <p>When a direct source-to-target transformation exists, export followed
+by re-entry can be audited against it.</p>
+
+    <div class="schema">\[
+F:X\to Z,
+\qquad
+X\xrightarrow{E}Y\xrightarrow{R_{\rm in}}Z,
+\]
+\[
+\boxed{
+R_{\rm in}\circ E\simeq F.
+}
+\]</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>The comparison relation must come from the destination sector.</li></ul></div>
+
+    
+
+    
+
+    
+  </div>
+</section>
+
+<section id="reentry-loss">
+  <h2>65. Re-entry Loss</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> information-loss structure</div></div>
+
+    <p>Re-entry loss occurs when the exported/re-entered representation merges
+distinctions required by the receiving mathematics.</p>
+
+    <div class="schema">\[
+E(x)=E(x')
+\quad\text{but}\quad
+\boxed{
+T_{\rm recv}(x)\neq T_{\rm recv}(x').
+}
+\]</div>
+
+    
+
+    <div class="abilities"><strong>What this structure allows</strong><ul><li>Diagnose why an apparently successful transfer cannot support the receiving Task.</li></ul></div>
+
+    
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#recoverability">Exact recoverability</a></div>
+  </div>
+</section>
+
+<section id="local-global">
+  <h2>66. Local Versus Global Structure</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> local-to-global distinction</div></div>
+
+    <p>A structure can be lawful on local domains without extending to one
+globally compatible realization.</p>
+
+    <div class="schema">\[
+U_i\subseteq X,
+\qquad
+s_i\in\mathcal S(U_i),
+\]
+with compatibility required on
+\[
+U_i\cap U_j.
+\]</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>Local validity alone does not imply global gluing.</li></ul></div>
+
+    
+
+    
+
+    
+  </div>
+</section>
+
+<section id="gluing">
+  <h2>67. Gluing</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> standard local-to-global construction</div></div>
+
+    <p>Gluing constructs a global object from compatible local objects when
+the native mathematics provides suitable restriction and overlap laws.</p>
+
+    <div class="schema">\[
+\boxed{
+s_i|_{U_i\cap U_j}
+=
+s_j|_{U_i\cap U_j}
+}
+\]
+as one exact sheaf-like compatibility condition.</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>This equation is not a universal definition of gluing across every sector.</li></ul></div>
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#gluing">Gluing</a></div>
+  </div>
+</section>
+
+<section id="coherence">
+  <h2>68. Coherence</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> agreement among lawful constructions</div></div>
+
+    <p>Coherence asks whether distinct constructions intended to represent
+the same mathematical process agree under the relevant comparison relation.</p>
+
+    <div class="schema">\[
+\boxed{
+F_2\circ F_1
+\simeq
+G_2\circ G_1.
+}
+\]</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>The meaning of \(\simeq\) is sector-dependent.</li></ul></div>
+
+    
+
+    
+
+    
+  </div>
+</section>
+
+<section id="higher-coherence">
+  <h2>69. Higher Coherence</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> compatibility among compatibility data</div><div><strong>Status:</strong> active formal development</div></div>
+
+    <p>Large Networks can contain many overlapping path comparisons,
+associativity choices, Interfaces, equivalences, and local gluings. Higher
+Coherence checks that these compatibility choices themselves fit together.</p>
+
+    
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>Pairwise path coherence need not imply a globally coherent Network.</li></ul></div>
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#higher-coherence">Higher coherence</a></div>
+  </div>
+</section>
+
+<section id="law-space">
+  <h2>70. Law Space</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> typed carrier of active laws or Regimes</div></div>
+
+    <p>A Law Space carries possible laws, parameterized rule sets, Regimes,
+constraints, or operator families when the governing law itself varies.</p>
+
+    <div class="schema">\[
+\boxed{
+\lambda\in\Lambda,
+\qquad
+\mathcal L_\lambda=\text{active law at }\lambda.
+}
+\]</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>Calling \(\Lambda\) a Law Space does not automatically provide a metric, topology, derivative, probability law, interpolation, or algebraic Operation.</li></ul></div>
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#law-space">Law Space</a></div>
+  </div>
+</section>
+
+<section id="conservation">
+  <h2>71. Conservation</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> native invariant structure</div></div>
+
+    <p>A quantity is conserved when the native evolution leaves it unchanged.</p>
+
+    <div class="schema">\[
+\Phi_t:X\to X,
+\qquad
+C:X\to V,
+\]
+\[
+\boxed{
+C(\Phi_t(x))=C(x).
+}
+\]</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>BM can track a conservation law but does not create it.</li></ul></div>
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#conservation">Conserved quantity</a></div>
+  </div>
+</section>
+
+<section id="conservative-passport">
+  <h2>72. Conservative Passport</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> candidate invariant-carrying Passport</div><div><strong>Status:</strong> active candidate</div></div>
+
+    <p>A Conservative Passport records a conserved or mandatory quantity that
+must survive representation change, export, or re-entry.</p>
+
+    <div class="schema">\[
+\boxed{
+C_{\rm out}(F(x))=C_{\rm in}(x)
+}
+\]
+when exact transfer is required.</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>The native domain must first establish the conservation law.</li></ul></div>
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#conservative-passport">Conservative Passport</a><br><span class="link-label">Examples:</span> <a href="examples.html#conservative-passport-example">Conservative Passport</a></div>
+  </div>
+</section>
+
+<section id="deterministic">
+  <h2>73. Deterministic Structural Semantics</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> single-valued sector</div></div>
+
+    <p>In deterministic semantics, each admissible input has one specified
+output.</p>
+
+    <div class="schema">\[
+\boxed{
+F:X\to Y.
+}
+\]</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>Deterministic fibre/factorization arguments do not automatically transfer to other sectors.</li></ul></div>
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#deterministic">Deterministic semantics</a></div>
+  </div>
+</section>
+
+<section id="stochastic">
+  <h2>74. Stochastic Structural Semantics</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> Markov-kernel sector</div></div>
+
+    <p>In stochastic semantics, the output at a state is a probability law.</p>
+
+    <div class="schema">\[
+\boxed{
+K:X\rightsquigarrow Y,
+\qquad
+x\mapsto K(x,\cdot).
+}
+\]</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>Composition uses integration, not ordinary function substitution.</li><li>Measurability and probability-law equality matter.</li></ul></div>
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#markov-composition">Markov composition</a><br><span class="link-label">Examples:</span> <a href="examples.html#stochastic-matrix-example">Markov example</a></div>
+  </div>
+</section>
+
+<section id="nondeterministic">
+  <h2>75. Nondeterministic Structural Semantics</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> relation/set-valued sector</div></div>
+
+    <p>In nondeterministic semantics, a state can have several possible
+successors. The Task must specify whether it asks for possibility or
+guarantee.</p>
+
+    <div class="schema">\[
+R\subseteq X\times Y,
+\qquad
+R(x)=\{y:xRy\},
+\]
+\[
+\Diamond_R(U)=\{x:\exists y\in U,\ xRy\},
+\]
+\[
+\Box_R(U)=\{x:\forall y,\ xRy\Rightarrow y\in U\}.
+\]</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>May and must semantics cannot be silently interchanged.</li></ul></div>
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#relational-composition">Relational composition</a><br><span class="link-label">Examples:</span> <a href="examples.html#nondeterministic-finite-example">Finite relation</a></div>
+  </div>
+</section>
+
+<section id="finite-arity">
+  <h2>76. Finite-Arity Structures</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> finite multi-input structure</div></div>
+
+    <p>A finite family of Branches can participate jointly when the actual
+multi-Branch admissible domain is specified.</p>
+
+    <div class="schema">\[
+\boxed{
+I:
+D_I
+\subseteq
+A_{B_1}\times\cdots\times A_{B_n}
+\to Y.
+}
+\]</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>Finite arity does not make the domain automatically equal to the full admissible product.</li></ul></div>
+
+    
+
+    
+
+    
+  </div>
+</section>
+
+<section id="infinite">
+  <h2>77. Indexed or Infinite Structures</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> conditional infinite/indexed structure</div></div>
+
+    <p>An indexed family can require products, sums, limits, inverse limits,
+direct limits, function spaces, operator domains, convergence structures, or
+other infinite constructions.</p>
+
+    <div class="schema">\[
+\{B_i\}_{i\in I},
+\qquad
+\prod_{i\in I}X_i
+\]
+when the native mathematics supplies the needed product.</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>Infinite composition or products are not authorized merely by formal notation.</li><li>Convergence, completeness, measurability, topology, or category-specific existence conditions must be checked.</li></ul></div>
+
+    
+
+    
+
+    
+  </div>
+</section>
+
+<section id="structure-preservation">
+  <h2>78. Structure Preservation</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> native-structure morphism condition</div></div>
+
+    <p>A transformation is structure-preserving only relative to the specific
+structure being discussed.</p>
+
+    <div class="schema">\[
+\boxed{
+F(x\star y)
+=
+F(x)\star'F(y)
+}
+\]
+for a binary algebraic Operation as one example.</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>Different structures require different preservation equations.</li></ul></div>
+
+    
+
+    
+
+    
+  </div>
+</section>
+
+<section id="invariant-preservation">
+  <h2>79. Invariant Preservation</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> exact invariant transfer</div></div>
+
+    <p>A transformation preserves a declared invariant when the source and
+target representations of that invariant agree after transformation.</p>
+
+    <div class="schema">\[
+C_X:X\to V,
+\qquad
+C_Y:Y\to V,
+\]
+\[
+\boxed{
+C_Y(F(x))=C_X(x).
+}
+\]</div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#invariant-transfer">Invariant-transfer criterion</a><br><span class="link-label">Equations:</span> <a href="equations.html#invariant">Invariant equation</a></div>
+  </div>
+</section>
+
+<section id="sector-firewall">
+  <h2>80. Sector-Semantics Firewall</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> cross-sector rigor constraint</div></div>
+
+    <p>A structure defined in one semantic sector can be transported into
+another only after the target sector's objects and laws have been rebuilt
+correctly.</p>
+
+    <div class="schema">\[
+\boxed{
+\text{function}
+\neq
+\text{Markov kernel}
+\neq
+\text{relation}
+\neq
+\text{quantum channel}.
+}
+\]</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>Similar notation is not evidence of identical semantics.</li></ul></div>
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#sector-firewall">Sector firewall</a><br><span class="link-label">Examples:</span> <a href="examples.html#mixed-semantic-chain">Mixed semantic chain</a></div>
+  </div>
+</section>
+
+<section id="failure-modes">
+  <h2>81. Structural Failure Modes</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> failure taxonomy</div></div>
+
+    <p>Structural failure means that a proposed BM step violates at least one
+mathematical obligation required for lawful participation.</p>
 
     <div class="schema">
+<table>
+  <thead><tr><th>Failure</th><th>Meaning</th></tr></thead>
+  <tbody>
+    <tr><td>Type failure</td><td>Receiver does not accept the produced mathematical type.</td></tr>
+    <tr><td>Domain failure</td><td>Input lies outside an Operation or Interaction domain.</td></tr>
+    <tr><td>Passport failure</td><td>Required information, distinction, law, uncertainty, or coupling is unavailable.</td></tr>
+    <tr><td>Law failure</td><td>Native equations, identities, constraints, or invariants are violated.</td></tr>
+    <tr><td>Interface failure</td><td>Transfer conditions do not match.</td></tr>
+    <tr><td>Coherence failure</td><td>Parallel lawful constructions disagree under the declared comparison.</td></tr>
+    <tr><td>Realization failure</td><td>No object satisfies the abstract structural specification.</td></tr>
+    <tr><td>Re-entry failure</td><td>Exported information is not admissible in the receiving structure.</td></tr>
+    <tr><td>Semantic failure</td><td>A theorem or construction is transported into the wrong mathematical sector.</td></tr>
+  </tbody>
+</table></div>
 
-      \[
-      \boxed{
-      \text{BM structure}
-      =
-      \text{objects}
-      +
-      \text{types}
-      +
-      \text{laws}
-      +
-      \text{interfaces}
-      +
-      \text{admissible operations}.
-      }
-      \]
+    
 
-    </div>
+    
 
-    <p>
-      The structural vocabulary describes mathematical roles.
-      It does not replace the native mathematics of the objects
-      occupying those roles.
-    </p>
+    
 
-  </section>
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Examples:</span> <a href="examples.html#failure-lab">Failure laboratory</a></div>
+  </div>
+</section>
+
+<section id="defect-localization">
+  <h2>82. Defect Localization</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> dependency-aware failure localization</div></div>
+
+    <p>In a serial structure, a failed downstream Passport can be traced to an
+earlier Interface defect or to a later defect pulled back through an upstream
+map.</p>
+
+    <div class="schema">\[
+D_f
+=
+\{a:P_A(a)\land\neg P_B(f(a))\},
+\]
+\[
+D_g
+=
+\{b:P_B(b)\land\neg P_C(g(b))\},
+\]
+\[
+\boxed{
+D_{g\circ f}
+\subseteq
+D_f\cup f^{-1}(D_g).
+}
+\]</div>
 
+    
 
-  <!-- ========================================================= -->
-  <!-- CORE STRUCTURAL FLOW -->
-  <!-- ========================================================= -->
+    <div class="abilities"><strong>What this structure allows</strong><ul><li>Repair the earliest failed obligation and then recompute downstream Leaves.</li></ul></div>
 
-  <section id="core-flow">
+    
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#passport-defect-localization">Serial defect localization</a><br><span class="link-label">Examples:</span> <a href="examples.html#failure-multi-defect-repair">Multi-defect repair</a></div>
+  </div>
+</section>
+
+<section id="network-evaluation">
+  <h2>83. Finite Network Evaluation</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> acyclic deterministic evaluation structure</div></div>
 
-    <h2>2. Core Structural Direction</h2>
+    <p>A finite acyclic deterministic Network with specified source values and
+admissible single-valued node Operations can be evaluated uniquely in
+topological order.</p>
 
-    <p>
-      The broad structural direction of BM is
-    </p>
+    <div class="schema">\[
+\boxed{
+\text{finite DAG}
++
+\text{admissible deterministic node Operations}
+\Longrightarrow
+\text{unique node-by-node evaluation}.
+}
+\]</div>
 
-    <div class="schema">
+    
 
-      \[
-      \boxed{
-      \text{lawful Branches}
-      \longrightarrow
-      \text{lawful Interactions}
-      \longrightarrow
-      \text{combined computation}
-      \longrightarrow
-      \text{Response}
-      \longrightarrow
-      \begin{cases}
-      \text{terminal result},\\[4pt]
-      \text{Root}.
-      \end{cases}
-      }
-      \]
-
-    </div>
-
-    <p>
-      This is a structural schema, not a universal linear sequence.
-      Leaves, Passports, Interfaces, Configurations, and intermediate
-      structures may appear throughout the computation.
-    </p>
-
-    <p>
-      A Tree organizes computation.
-      A Response is the output of that computation.
-      A Root is a Response or resulting structure that has verified
-      downstream admissibility.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- BRANCH -->
-  <!-- ========================================================= -->
-
-  <section id="branch">
-
-    <h2>3. Branch</h2>
-
-    <p>
-      A <strong>Branch</strong> is a typed mathematical carrier of
-      information, distinctions, structure, and lawful mathematical
-      behavior.
-    </p>
-
-    <p>
-      A working representation is
-    </p>
-
-    \[
-    B
-    =
-    \left(
-    X_B,
-    \mathcal L_B,
-    \mathcal O_B,
-    P_B
-    \right).
-    \]
-
-    <table>
-      <thead>
-        <tr>
-          <th>Component</th>
-          <th>Role</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <tr>
-          <td>\(X_B\)</td>
-          <td>Carrier, state space, or object space.</td>
-        </tr>
-
-        <tr>
-          <td>\(\mathcal L_B\)</td>
-          <td>
-            Laws, identities, equations, constraints, invariants,
-            or native mathematical structure.
-          </td>
-        </tr>
-
-        <tr>
-          <td>\(\mathcal O_B\)</td>
-          <td>Admissible operations or transformations.</td>
-        </tr>
-
-        <tr>
-          <td>\(P_B\)</td>
-          <td>
-            Passport or interface information when required.
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-    <p>
-      This tuple is organizational.
-      BM does not claim every mathematical object intrinsically consists
-      of exactly four components.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- BRANCH TYPE -->
-  <!-- ========================================================= -->
-
-  <section id="branch-type">
-
-    <h2>4. Branch Type</h2>
-
-    <p>
-      Let
-    </p>
-
-    \[
-    \tau(B)
-    \]
-
-    <p>
-      denote the mathematical type of Branch \(B\).
-    </p>
-
-    <p>
-      Examples may include:
-    </p>
-
-    <p>
-      vector space · manifold · algebra · probability space ·
-      measurable space · graph · Hilbert space · Banach space ·
-      PDE state space · operator family · finite-state system ·
-      computational representation
-    </p>
-
-    <p>
-      Type information constrains which Interactions, Operations,
-      Interfaces, exports, and re-entry maps are meaningful.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- BRANCH STATE -->
-  <!-- ========================================================= -->
-
-  <section id="branch-state">
-
-    <h2>5. Branch State</h2>
-
-    <p>
-      A state carried by Branch \(B\) may be written
-    </p>
-
-    \[
-    x_B\in X_B.
-    \]
-
-    <p>
-      If the admissible state set is
-    </p>
-
-    \[
-    A_B\subseteq X_B,
-    \]
-
-    <p>
-      then lawful Branch states satisfy
-    </p>
-
-    \[
-    \boxed{
-    x_B\in A_B.
-    }
-    \]
-
-    <p>
-      The carrier \(X_B\) and the admissible subset \(A_B\) should not
-      be confused.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- INTERACTION -->
-  <!-- ========================================================= -->
-
-  <section id="interaction">
-
-    <h2>6. Interaction</h2>
-
-    <p>
-      An <strong>Interaction</strong> is a lawful typed mathematical
-      action involving one or more Branches, with multi-Branch
-      interaction being the central case.
-    </p>
-
-    <p>
-      For Branches
-    </p>
-
-    \[
-    B_1,\ldots,B_n,
-    \]
-
-    <p>
-      a deterministic Set-like representation may be
-    </p>
-
-    \[
-    I:
-    D_I
-    \subseteq
-    X_{B_1}\times\cdots\times X_{B_n}
-    \longrightarrow
-    Z_I.
-    \]
-
-    <p>
-      The exact mathematical form of an Interaction is sector-dependent.
-      Stochastic, nondeterministic, quantum, operator-theoretic, geometric,
-      or other sectors may require different morphisms.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- INTERACTION DOMAIN -->
-  <!-- ========================================================= -->
-
-  <section id="interaction-domain">
-
-    <h2>7. Interaction Domain</h2>
-
-    <p>
-      The Interaction domain
-    </p>
-
-    \[
-    D_I
-    \]
-
-    <p>
-      records the combinations of Branch states for which the Interaction
-      is actually mathematically defined.
-    </p>
-
-    <p>
-      In general,
-    </p>
-
-    \[
-    D_I
-    \subseteq
-    X_{B_1}\times\cdots\times X_{B_n},
-    \]
-
-    <p>
-      and the inclusion may be strict.
-    </p>
-
-    <p>
-      Candidate inputs may fail through:
-    </p>
-
-    <ul>
-      <li>type incompatibility,</li>
-      <li>domain failure,</li>
-      <li>constraint violation,</li>
-      <li>boundary incompatibility,</li>
-      <li>regularity failure,</li>
-      <li>operator-domain failure,</li>
-      <li>Passport failure,</li>
-      <li>or violation of another native law.</li>
-    </ul>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- INTERACTION OUTPUT -->
-  <!-- ========================================================= -->
-
-  <section id="interaction-output">
-
-    <h2>8. Interaction Output</h2>
-
-    <p>
-      For
-    </p>
-
-    \[
-    (x_1,\ldots,x_n)\in D_I,
-    \]
-
-    <p>
-      the Interaction produces
-    </p>
-
-    \[
-    z
-    =
-    I(x_1,\ldots,x_n)
-    \in Z_I.
-    \]
-
-    <p>
-      The Interaction result may later:
-    </p>
-
-    <ul>
-      <li>remain an intermediate state,</li>
-      <li>be examined by Leaf extraction maps,</li>
-      <li>contribute to a Tree-level Response,</li>
-      <li>be exported,</li>
-      <li>enter another lawful Interaction,</li>
-      <li>or terminate without further use.</li>
-    </ul>
-
-    <p>
-      The raw Interaction output is not automatically a Leaf,
-      Response, or Root merely because it exists.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- LEAF -->
-  <!-- ========================================================= -->
-
-  <section id="leaf">
-
-    <h2>9. Leaf</h2>
-
-    <p>
-      A <strong>Leaf</strong> is extracted information from an
-      Interaction result.
-    </p>
-
-    <p>
-      If
-    </p>
-
-    \[
-    z
-    =
-    I(x_1,\ldots,x_n)
-    \in Z_I
-    \]
-
-    <p>
-      and
-    </p>
-
-    \[
-    \ell_j:
-    Z_I
-    \longrightarrow
-    \mathcal L_j
-    \]
-
-    <p>
-      is a Leaf-extraction map, then the individual Leaf value is
-    </p>
-
-    <div class="schema">
-
-      \[
-      \boxed{
-      \lambda_j
-      =
-      \ell_j(z)
-      =
-      \ell_j
-      \left(
-      I(x_1,\ldots,x_n)
-      \right)
-      \in
-      \mathcal L_j.
-      }
-      \]
-
-    </div>
-
-    <p>
-      The symbols have distinct roles:
-    </p>
-
-    <ul>
-      <li>
-        \(\mathcal L_j\) is the Leaf space or codomain;
-      </li>
-
-      <li>
-        \(\ell_j\) is the extraction map;
-      </li>
-
-      <li>
-        \(\lambda_j\) is the extracted Leaf value.
-      </li>
-    </ul>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- MULTIPLE LEAVES -->
-  <!-- ========================================================= -->
-
-  <section id="multiple-leaves">
-
-    <h2>10. Multiple Leaves</h2>
-
-    <p>
-      One Interaction result may support several extraction maps:
-    </p>
-
-    \[
-    \ell_1,
-    \ell_2,
-    \ldots,
-    \ell_m.
-    \]
-
-    <p>
-      These produce
-    </p>
-
-    \[
-    \lambda_1=\ell_1(z),
-    \quad
-    \lambda_2=\ell_2(z),
-    \quad
-    \ldots,
-    \quad
-    \lambda_m=\ell_m(z).
-    \]
-
-    <p>
-      Different Leaves may expose different mathematical information.
-    </p>
-
-    <p>
-      A Leaf need not contain the full Interaction result and is not
-      automatically sufficient for any later task.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- LEAF SUFFICIENCY -->
-  <!-- ========================================================= -->
-
-  <section id="leaf-sufficiency">
-
-    <h2>11. Leaf Sufficiency</h2>
-
-    <p>
-      Suppose a later deterministic task is
-    </p>
-
-    \[
-    T:
-    Z_I
-    \longrightarrow
-    W
-    \]
-
-    <p>
-      and a Leaf extraction is
-    </p>
-
-    \[
-    \ell:
-    Z_I
-    \longrightarrow
-    \mathcal L.
-    \]
-
-    <p>
-      The Leaf representation is sufficient for \(T\) when there exists
-    </p>
-
-    \[
-    \widetilde T:
-    \ell(Z_I)
-    \longrightarrow
-    W
-    \]
-
-    <p>
-      such that
-    </p>
-
-    \[
-    \boxed{
-    T
-    =
-    \widetilde T\circ\ell.
-    }
-    \]
-
-    <p>
-      Equivalently,
-    </p>
-
-    \[
-    \ell(z)=\ell(z')
-    \Longrightarrow
-    T(z)=T(z').
-    \]
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- TREE -->
-  <!-- ========================================================= -->
-
-  <section id="tree">
-
-    <h2>12. Tree</h2>
-
-    <p>
-      A <strong>Tree</strong> is an organized BM structure of Branches,
-      Interactions, Interfaces, and intermediate information through
-      which combined computation is performed and a Response is
-      generated.
-    </p>
-
-    <p>
-      A Tree may carry:
-    </p>
-
-    <ul>
-      <li>Branches,</li>
-      <li>Interactions,</li>
-      <li>Leaves,</li>
-      <li>Passports,</li>
-      <li>Interfaces,</li>
-      <li>intermediate representations,</li>
-      <li>constraints,</li>
-      <li>and other required mathematical information.</li>
-    </ul>
-
-    <p>
-      A Tree is not the same object as its Response.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- SEQUENTIAL TREE -->
-  <!-- ========================================================= -->
-
-  <section id="sequential-tree">
-
-    <h2>13. Sequential Tree as a Special Case</h2>
-
-    <p>
-      A simple sequential Tree may have
-    </p>
-
-    \[
-    X_0
-    \xrightarrow{I_1}
-    X_1
-    \xrightarrow{I_2}
-    X_2
-    \xrightarrow{}
-    \cdots
-    \xrightarrow{I_m}
-    X_m.
-    \]
-
-    <p>
-      Where all compositions are defined, its combined map may be
-    </p>
-
-    \[
-    \mathcal R_T
-    =
-    I_m
-    \circ
-    I_{m-1}
-    \circ
-    \cdots
-    \circ
-    I_1.
-    \]
-
-    <p>
-      This is one special realization of a Tree, not the universal
-      definition.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- GENERAL TREE -->
-  <!-- ========================================================= -->
-
-  <section id="general-tree">
-
-    <h2>14. General Tree</h2>
-
-    <p>
-      More general Trees may involve:
-    </p>
-
-    <p>
-      parallel composition · products · pullbacks · equalizers ·
-      shared constraints · feedback · conditional Operations ·
-      recursive structure · stochastic transitions · coupled systems ·
-      hyperinteractions · multiple outputs · Roots · re-entry
-    </p>
-
-    <p>
-      Such Trees may require mathematical structures other than ordinary
-      sequential function composition.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- RESPONSE -->
-  <!-- ========================================================= -->
-
-  <section id="response">
-
-    <h2>15. Response</h2>
-
-    <p>
-      A <strong>Response</strong> is the typed mathematical output
-      produced by a Tree or another organized BM computation.
-    </p>
-
-    \[
-    \mathcal R_T:
-    D_T
-    \longrightarrow
-    Y_T.
-    \]
-
-    <p>
-      For admissible input \(x\in D_T\),
-    </p>
-
-    \[
-    r
-    =
-    \mathcal R_T(x)
-    \in Y_T.
-    \]
-
-    <p>
-      A Response may be:
-    </p>
-
-    <ul>
-      <li>a value,</li>
-      <li>a state,</li>
-      <li>a function,</li>
-      <li>a law,</li>
-      <li>a relation,</li>
-      <li>an operator,</li>
-      <li>a classification,</li>
-      <li>a structured object,</li>
-      <li>a family of objects,</li>
-      <li>or another mathematically typed result.</li>
-    </ul>
-
-    <p>
-      A Response is therefore not restricted to being law-valued.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- RESPONSE VS ROOT -->
-  <!-- ========================================================= -->
-
-  <section id="response-root">
-
-    <h2>16. Response Versus Root</h2>
-
-    <p>
-      A Response may terminate the computation.
-    </p>
-
-    <p>
-      It assumes the role of a Root only when downstream admissibility
-      has been established.
-    </p>
-
-    <div class="schema">
-
-      \[
-      \boxed{
-      \text{Response}
-      \longrightarrow
-      \begin{cases}
-      \text{terminal mathematical result},\\[4pt]
-      \text{Root if downstream admissible}.
-      \end{cases}
-      }
-      \]
-
-    </div>
-
-    <p>
-      Producing a Response does not prove that any later mathematical
-      structure accepts it.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- ROOT -->
-  <!-- ========================================================= -->
-
-  <section id="root">
-
-    <h2>17. Root</h2>
-
-    <p>
-      A <strong>Root</strong> is a Response or resulting mathematical
-      structure that remains available for lawful participation in
-      additional mathematics.
-    </p>
-
-    <div class="schema">
-
-      \[
-      \boxed{
-      \text{Root role}
-      =
-      \text{Response}
-      +
-      \text{verified downstream admissibility}.
-      }
-      \]
-
-    </div>
-
-    <p>
-      Root status may require:
-    </p>
-
-    <ul>
-      <li>a receiving structure,</li>
-      <li>type compatibility,</li>
-      <li>law compatibility,</li>
-      <li>interface compatibility,</li>
-      <li>Passport sufficiency,</li>
-      <li>and satisfaction of the receiving domain.</li>
-    </ul>
-
-    <p>
-      Root status does not imply recursion, conservation,
-      invertibility, physical realization, or indefinite continuation.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- ROOTING -->
-  <!-- ========================================================= -->
-
-  <section id="rooting">
-
-    <h2>18. Rooting</h2>
-
-    <p>
-      <strong>Rooting</strong> is an active candidate BM structure
-      describing lawful attachment of a Root, compatible Branch,
-      or compatible law-bearing structure to a mathematical attachment
-      site from which further lawful development may occur.
-    </p>
-
-    \[
-    \mathcal A:
-    D_{\mathcal A}
-    \subseteq
-    X\times X_R
-    \longrightarrow
-    X'.
-    \]
-
-    <p>
-      Attachment is lawful only when
-    </p>
-
-    \[
-    (x,r)\in D_{\mathcal A}.
-    \]
-
-    <p>
-      An attachment site may be terminal or interior when the underlying
-      mathematics permits that attachment.
-    </p>
-
-    <div class="warning">
-      Rooting remains active candidate machinery.
-      It is not assumed to occur in every BM construction.
-    </div>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- REBRANCHING -->
-  <!-- ========================================================= -->
-
-  <section id="rebranching">
-
-    <h2>19. Rebranching</h2>
-
-    <p>
-      <strong>Rebranching</strong> is the candidate generation of new
-      lawful Branch development from a site created or activated by
-      Rooting.
-    </p>
-
-    <p>
-      Rooting does not guarantee Rebranching.
-      A valid attachment may still terminate if no admissible
-      downstream structure exists.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- REPEATED ROOTING -->
-  <!-- ========================================================= -->
-
-  <section id="repeated-rooting">
-
-    <h2>20. Repeated Rooting</h2>
-
-    <p>
-      Repeated Rooting is not automatically a dynamical system.
-    </p>
-
-    <p>
-      If an iterative Root transformation is actually defined on a
-      closed or invariant Root state space,
-    </p>
-
-    \[
-    F:
-    X_R
-    \longrightarrow
-    X_R,
-    \]
-
-    <p>
-      and all required iterates remain admissible, then
-    </p>
-
-    \[
-    R_{n+1}
-    =
-    F(R_n)
-    \]
-
-    <p>
-      defines an ordinary iterated system.
-    </p>
-
-    <p>
-      Fixed points, stability, cycles, contraction theory,
-      Lyapunov analysis, or other dynamical tools may then be applied
-      when their assumptions are satisfied.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- PASSPORT -->
-  <!-- ========================================================= -->
-
-  <section id="passport">
-
-    <h2>21. Passport</h2>
-
-    <p>
-      A <strong>Passport</strong> specifies mathematical distinctions,
-      observations, invariants, law context, admissibility requirements,
-      interface requirements, or task-relevant information that must
-      remain available for later mathematical use.
-    </p>
-
-    <p>
-      Passports are active structures in both BM and GURF.
-    </p>
-
-    <p>
-      Calling information a Passport does not prove that it is
-      sufficient.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- ROOT PASSPORT TRANSFER -->
-  <!-- ========================================================= -->
-
-  <section id="root-passport-transfer">
-
-    <h2>22. Root Passport Transfer</h2>
-
-    <p>
-      Root Passport Transfer is an active candidate BM structure
-      describing typed persistence of required Passport information from
-      a source structure into a Root and onward into a compatible
-      receiver.
-    </p>
-
-    \[
-    P_{\mathrm{source}}
-    \longrightarrow
-    P_R
-    \longrightarrow
-    P_{\mathrm{receiver}}.
-    \]
-
-    <p>
-      These arrows are schematic.
-      Actual transfer requires defined maps and explicit preservation
-      conditions.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- SEED -->
-  <!-- ========================================================= -->
-
-  <section id="seed">
-
-    <h2>23. Seed</h2>
-
-    <p>
-      A <strong>Seed</strong> is a candidate BM primitive representing
-      information that does not directly export a Root but undergoes a
-      lawful generative or self-seeding process until a specified export
-      condition is reached.
-    </p>
-
-    \[
-    S_0
-    \longrightarrow
-    S_1
-    \longrightarrow
-    S_2
-    \longrightarrow
-    \cdots
-    \]
-
-    <p>
-      followed, when a declared export condition is satisfied, by
-    </p>
-
-    \[
-    S_n
-    \longrightarrow
-    R.
-    \]
-
-    <p>
-      A Seed is not merely initial data.
-    </p>
-
-    <p>
-      A Seed State is not automatically a Branch, Leaf, Response,
-      or Root. Each of those BM roles has separate requirements.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- OPERATION -->
-  <!-- ========================================================= -->
-
-  <section id="operation">
-
-    <h2>24. Operation</h2>
-
-    <p>
-      An <strong>Operation</strong> is a typed lawful mathematical
-      transformation.
-    </p>
-
-    <p>
-      A unary Operation may have the form
-    </p>
-
-    \[
-    O:
-    D_O
-    \subseteq
-    X
-    \longrightarrow
-    Y.
-    \]
-
-    <p>
-      An \(n\)-input Operation may have the form
-    </p>
-
-    \[
-    O:
-    D_O
-    \subseteq
-    X_1\times\cdots\times X_n
-    \longrightarrow
-    Y.
-    \]
-
-    <p>
-      Operations are broader than multi-Branch Interactions.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- OPERATION CONTRACT -->
-  <!-- ========================================================= -->
-
-  <section id="operation-contract">
-
-    <h2>25. Operation Contract</h2>
-
-    <p>
-      A BM Operation should identify at least:
-    </p>
-
-    <ul>
-      <li>input type,</li>
-      <li>output type,</li>
-      <li>admissible domain,</li>
-      <li>required laws,</li>
-      <li>required constraints,</li>
-      <li>Passport requirements when relevant,</li>
-      <li>preservation claims,</li>
-      <li>and failure conditions.</li>
-    </ul>
-
-    <p>
-      A written symbolic rule without these requirements may fail to
-      define a lawful BM Operation.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- ADMISSIBILITY -->
-  <!-- ========================================================= -->
-
-  <section id="admissibility">
-
-    <h2>26. Admissibility</h2>
-
-    <p>
-      Admissibility determines whether a proposed mathematical object,
-      input, transformation, attachment, interface, or continuation is
-      actually permitted by the participating mathematics.
-    </p>
-
-    <p>
-      For
-    </p>
-
-    \[
-    F:
-    D_F
-    \longrightarrow
-    Y,
-    \]
-
-    <p>
-      inputs outside \(D_F\) are not authorized merely because the
-      written formula can be evaluated formally.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- COMPOSITION -->
-  <!-- ========================================================= -->
-
-  <section id="composition">
-
-    <h2>27. Composition</h2>
-
-    <p>
-      Suppose
-    </p>
-
-    \[
-    F:
-    D_F
-    \subseteq
-    X
-    \longrightarrow
-    Y
-    \]
-
-    <p>
-      and
-    </p>
-
-    \[
-    G:
-    D_G
-    \subseteq
-    Y
-    \longrightarrow
-    Z.
-    \]
-
-    <p>
-      The actual domain of the composite is
-    </p>
-
-    <div class="schema">
-
-      \[
-      \boxed{
-      D_{G\circ F}
-      =
-      \left\{
-      x\in D_F:
-      F(x)\in D_G
-      \right\}.
-      }
-      \]
-
-    </div>
-
-    <p>
-      Hence
-    </p>
-
-    \[
-    G\circ F:
-    D_{G\circ F}
-    \longrightarrow
-    Z.
-    \]
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- TYPED COMPOSABILITY -->
-  <!-- ========================================================= -->
-
-  <section id="typed-composability">
-
-    <h2>28. Typed Composability</h2>
-
-    <p>
-      A basic requirement for direct composition is that the output of
-      \(F\) be accepted by the mathematical type required by \(G\).
-    </p>
-
-    <p>
-      This may occur through:
-    </p>
-
-    <ul>
-      <li>literal matching types,</li>
-      <li>a lawful inclusion,</li>
-      <li>a coercion whose mathematics is defined,</li>
-      <li>an interface map,</li>
-      <li>or another explicitly justified conversion.</li>
-    </ul>
-
-    <p>
-      Matching notation is not proof of type compatibility.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- INTERFACE -->
-  <!-- ========================================================= -->
-
-  <section id="interface">
-
-    <h2>29. Interface</h2>
-
-    <p>
-      An <strong>Interface</strong> is a typed compatibility structure
-      through which mathematical information passes between Branches,
-      representations, or other BM structures.
-    </p>
-
-    <p>
-      Consider
-    </p>
-
-    \[
-    F:
-    X_1
-    \longrightarrow
-    X_2,
-    \]
-
-    \[
-    P_1:
-    X_1
-    \longrightarrow
-    Q_1,
-    \]
-
-    \[
-    P_2:
-    X_2
-    \longrightarrow
-    Q_2.
-    \]
-
-    <p>
-      An induced represented transformation may be
-    </p>
-
-    \[
-    G:
-    Q_1
-    \longrightarrow
-    Q_2.
-    \]
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- EXACT INTERFACE -->
-  <!-- ========================================================= -->
-
-  <section id="exact-interface">
-
-    <h2>30. Exact Interface Compatibility</h2>
-
-    <p>
-      In a deterministic setting where literal equality is appropriate,
-      exact compatibility may require
-    </p>
-
-    <div class="schema">
-
-      \[
-      \boxed{
-      P_2\circ F
-      =
-      G\circ P_1.
-      }
-      \]
-
-    </div>
-
-    <p>
-      This says that transformation before representation and
-      transformation after representation agree.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- APPROX INTERFACE -->
-  <!-- ========================================================= -->
-
-  <section id="approx-interface">
-
-    <h2>31. Approximate Interface Compatibility</h2>
-
-    <p>
-      If the comparison space carries a justified metric or discrepancy
-    </p>
-
-    \[
-    d:
-    Q_2\times Q_2
-    \longrightarrow
-    [0,\infty),
-    \]
-
-    <p>
-      an approximate interface requirement may be
-    </p>
-
-    \[
-    d
-    \left(
-    P_2(F(x)),
-    G(P_1(x))
-    \right)
-    \le
-    \varepsilon.
-    \]
-
-    <p>
-      The metric, norm, divergence, tolerance, and domain over which the
-      comparison is required must be declared.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- INTERFACE DEFECT -->
-  <!-- ========================================================= -->
-
-  <section id="interface-defect">
-
-    <h2>32. Interface Defect</h2>
-
-    <p>
-      When a common comparison metric \(d\) exists, define
-    </p>
-
-    \[
-    \boxed{
-    \Delta(x)
-    =
-    d
-    \left(
-    P_2(F(x)),
-    G(P_1(x))
-    \right).
-    }
-    \]
-
-    <p>
-      Exact compatibility corresponds to
-    </p>
-
-    \[
-    \Delta(x)=0.
-    \]
-
-    <p>
-      A scalar interface defect is meaningful only after a justified
-      comparison structure has been chosen.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- CONFIGURATION -->
-  <!-- ========================================================= -->
-
-  <section id="configuration">
-
-    <h2>33. Configuration</h2>
-
-    <p>
-      A <strong>Configuration</strong> records the active mathematical
-      state of a BM construction.
-    </p>
-
-    <p>
-      A general organizational record may be written
-    </p>
-
-    \[
-    \mathcal X
-    =
-    \left(
-    \mathcal B,
-    \mathcal I,
-    \mathcal L,
-    \mathcal R,
-    \mathcal P,
-    \mathcal O,
-    \mathcal A
-    \right),
-    \]
-
-    <p>
-      where components may record:
-    </p>
-
-    <ul>
-      <li>active Branches,</li>
-      <li>Interactions,</li>
-      <li>Leaves,</li>
-      <li>Responses or Roots,</li>
-      <li>Passports,</li>
-      <li>Operations,</li>
-      <li>and admissibility data.</li>
-    </ul>
-
-    <p>
-      The exact Configuration structure is problem-dependent.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- CONFIGURATION STATE -->
-  <!-- ========================================================= -->
-
-  <section id="configuration-state">
-
-    <h2>34. Configuration State</h2>
-
-    <p>
-      A concrete state may contain
-    </p>
-
-    \[
-    x_{\mathcal X}
-    =
-    \left(
-    x_{B_1},
-    \ldots,
-    x_{B_n},
-    r_1,
-    \ldots,
-    p_1,
-    \ldots
-    \right).
-    \]
-
-    <p>
-      This notation is schematic.
-      A specific BM model must supply the actual product, fibre,
-      category, manifold, state space, or other structure used.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- CONFIGURATION UPDATE -->
-  <!-- ========================================================= -->
-
-  <section id="configuration-update">
-
-    <h2>35. Configuration Update</h2>
-
-    <p>
-      A BM update may be represented by
-    </p>
-
-    \[
-    U:
-    \mathcal X
-    \longrightarrow
-    \mathcal X'.
-    \]
-
-    <p>
-      An update may:
-    </p>
-
-    <p>
-      activate a Branch · produce a Leaf · generate a Response ·
-      establish a Root · modify a Passport · apply an Operation ·
-      rebind an Interface · update admissibility · change the active
-      law or regime
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- TRANSACTION -->
-  <!-- ========================================================= -->
-
-  <section id="transaction">
-
-    <h2>36. Transactional Operation</h2>
-
-    <p>
-      Some BM Operations may be modeled transactionally.
-    </p>
-
-    <p>
-      If \(O\) acts on Configuration \(\mathcal X\), then
-    </p>
-
-    \[
-    O(\mathcal X)
-    =
-    \mathcal X'
-    \]
-
-    <p>
-      only when all required checks succeed.
-    </p>
-
-    <p>
-      Otherwise the Operation should fail explicitly rather than silently
-      produce an invalid Configuration.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- NETWORK -->
-  <!-- ========================================================= -->
-
-  <section id="network">
-
-    <h2>37. Network</h2>
-
-    <p>
-      A <strong>BM Network</strong> is a typed collection of Branches,
-      Interactions, Interfaces, paths, Roots, Passports, Operations,
-      and dependencies whose lawful connectivity need not be represented
-      by one linear sequence.
-    </p>
-
-    <p>
-      Depending on the mathematics, a Network may be modeled by:
-    </p>
-
-    <ul>
-      <li>a graph,</li>
-      <li>a directed acyclic graph,</li>
-      <li>a hypergraph,</li>
-      <li>a category,</li>
-      <li>a dependency network,</li>
-      <li>an operator network,</li>
-      <li>or another structured object.</li>
-    </ul>
-
-    <p>
-      The term Network does not require one particular graph-theoretic
-      representation.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- HYPERINTERACTION -->
-  <!-- ========================================================= -->
-
-  <section id="hyperinteraction">
-
-    <h2>38. Hyperinteraction</h2>
-
-    <p>
-      When several Branches participate simultaneously, a graph-like
-      model may require a hyperedge
-    </p>
-
-    \[
-    e
-    =
-    \{B_1,\ldots,B_k\}.
-    \]
-
-    <p>
-      An associated Interaction may be
-    </p>
-
-    \[
-    I_e:
-    D_e
-    \subseteq
-    \prod_{j=1}^{k}
-    X_{B_j}
-    \longrightarrow
-    Z_e.
-    \]
-
-    <p>
-      Hypergraph notation is an available representation, not a universal
-      ontology for all BM Interactions.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- TYPED PATH -->
-  <!-- ========================================================= -->
-
-  <section id="typed-path">
-
-    <h2>39. Typed Path</h2>
-
-    <p>
-      A <strong>Typed Path</strong> is a sequence of mathematically
-      compatible transitions through a BM structure.
-    </p>
-
-    \[
-    X_0
-    \xrightarrow{F_1}
-    X_1
-    \xrightarrow{F_2}
-    \cdots
-    \xrightarrow{F_n}
-    X_n.
-    \]
-
-    <p>
-      The path is lawful only when every transition is typed and every
-      intermediate state satisfies the next Operation's admissibility
-      conditions.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- PATH COMPOSITE -->
-  <!-- ========================================================= -->
-
-  <section id="path-composite">
-
-    <h2>40. Path Composite</h2>
-
-    <p>
-      A lawful deterministic path may induce
-    </p>
-
-    \[
-    F_{\mathrm{path}}
-    =
-    F_n
-    \circ
-    \cdots
-    \circ
-    F_1.
-    \]
-
-    <p>
-      The actual domain of \(F_{\mathrm{path}}\) is determined by every
-      intermediate admissibility condition.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- PARALLEL PATHS -->
-  <!-- ========================================================= -->
-
-  <section id="parallel-paths">
-
-    <h2>41. Parallel Paths</h2>
-
-    <p>
-      Suppose two lawful paths connect corresponding source and target
-      structures:
-    </p>
-
-    \[
-    F:
-    X
-    \longrightarrow
-    Y,
-    \qquad
-    G:
-    X
-    \longrightarrow
-    Y.
-    \]
-
-    <p>
-      BM asks whether the paths agree under the comparison relation
-      appropriate to the mathematical sector.
-    </p>
-
-    <p>
-      Literal equality is only one possibility.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- PATH COHERENCE -->
-  <!-- ========================================================= -->
-
-  <section id="path-coherence">
-
-    <h2>42. Path Coherence</h2>
-
-    <p>
-      Relative to a declared equivalence or comparison relation
-      \(\approx\), relevant parallel paths may be required to satisfy
-    </p>
-
-    \[
-    \boxed{
-    F_{\mathrm{path\,1}}(x)
-    \approx
-    F_{\mathrm{path\,2}}(x).
-    }
-    \]
-
-    <p>
-      Depending on the sector, \(\approx\) may mean:
-    </p>
-
-    <ul>
-      <li>literal equality,</li>
-      <li>isomorphism,</li>
-      <li>natural isomorphism,</li>
-      <li>homotopy,</li>
-      <li>gauge equivalence,</li>
-      <li>equality almost surely,</li>
-      <li>equality in distribution,</li>
-      <li>or controlled approximation.</li>
-    </ul>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- COMMUTATIVITY -->
-  <!-- ========================================================= -->
-
-  <section id="commutativity">
-
-    <h2>43. Commutativity</h2>
-
-    <p>
-      Two Operations commute when
-    </p>
-
-    \[
-    \boxed{
-    F\circ G
-    =
-    G\circ F
-    }
-    \]
-
-    <p>
-      wherever both sides are defined.
-    </p>
-
-    <p>
-      BM does not assume commutativity.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- NONCOMMUTING -->
-  <!-- ========================================================= -->
-
-  <section id="noncommuting">
-
-    <h2>44. Noncommuting Operations</h2>
-
-    <p>
-      If
-    </p>
-
-    \[
-    F\circ G
-    \neq
-    G\circ F,
-    \]
-
-    <p>
-      then Operation order carries mathematical information.
-    </p>
-
-    <p>
-      This is especially relevant to:
-    </p>
-
-    <p>
-      differentiation · filtering · localization · projection ·
-      reconstruction · coarse-graining · intervention · evolution ·
-      quotienting
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- EQUALIZER -->
-  <!-- ========================================================= -->
-
-  <section id="equalizer">
-
-    <h2>45. Equalizer-Type Compatibility</h2>
-
-    <p>
-      For
-    </p>
-
-    \[
-    F,G:
-    X
-    \longrightarrow
-    Y,
-    \]
-
-    <p>
-      the equalizer set is
-    </p>
-
-    \[
-    \boxed{
-    E(F,G)
-    =
-    \left\{
-    x\in X:
-    F(x)=G(x)
-    \right\}.
-    }
-    \]
-
-    <p>
-      This identifies states on which the two maps agree exactly.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- PULLBACK -->
-  <!-- ========================================================= -->
-
-  <section id="pullback">
-
-    <h2>46. Pullback-Type Compatibility</h2>
-
-    <p>
-      Suppose
-    </p>
-
-    \[
-    f:
-    X
-    \longrightarrow
-    Z
-    \]
-
-    <p>
-      and
-    </p>
-
-    \[
-    g:
-    Y
-    \longrightarrow
-    Z.
-    \]
-
-    <p>
-      The Set-level pullback is
-    </p>
-
-    \[
-    \boxed{
-    X\times_ZY
-    =
-    \left\{
-    (x,y)\in X\times Y:
-    f(x)=g(y)
-    \right\}.
-    }
-    \]
-
-    <p>
-      In richer categories, the appropriate categorical pullback must be
-      used rather than assuming the Set-level formula is sufficient.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- COEQUALIZER -->
-  <!-- ========================================================= -->
-
-  <section id="coequalizer">
-
-    <h2>47. Coequalizer-Type Identification</h2>
-
-    <p>
-      Given
-    </p>
-
-    \[
-    f,g:
-    X
-    \longrightarrow
-    Y,
-    \]
-
-    <p>
-      a coequalizing map \(q\) satisfies
-    </p>
-
-    \[
-    q\circ f
-    =
-    q\circ g.
-    \]
-
-    <p>
-      Such constructions can encode lawful identification of outputs
-      when the native mathematical category admits the required
-      coequalizer.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- QUOTIENT -->
-  <!-- ========================================================= -->
-
-  <section id="quotient">
-
-    <h2>48. Quotient</h2>
-
-    <p>
-      An equivalence relation
-    </p>
-
-    \[
-    \sim
-    \]
-
-    <p>
-      on \(X\) produces a Set-level quotient
-    </p>
-
-    \[
-    X/{\sim}.
-    \]
-
-    <p>
-      Set-level quotienting alone does not prove that all original
-      mathematical structure descends to the quotient.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- STRUCTURED QUOTIENT -->
-  <!-- ========================================================= -->
-
-  <section id="structured-quotient">
-
-    <h2>49. Structured Quotient</h2>
-
-    <p>
-      For an \(n\)-ary algebraic Operation
-    </p>
-
-    \[
-    \sigma:
-    X^n
-    \longrightarrow
-    X,
-    \]
-
-    <p>
-      compatibility requires
-    </p>
-
-    <div class="schema">
-
-      \[
-      \boxed{
-      x_i\sim y_i
-      \quad
-      \forall i
-      \Longrightarrow
-      \sigma(x_1,\ldots,x_n)
-      \sim
-      \sigma(y_1,\ldots,y_n).
-      }
-      \]
-
-    </div>
-
-    <p>
-      This is the usual congruence requirement in the relevant algebraic
-      sector.
-    </p>
-
-    <p>
-      Other mathematical sectors require their own quotient-existence
-      conditions.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- REALIZATION -->
-  <!-- ========================================================= -->
-
-  <section id="realization">
-
-    <h2>50. Mathematical Realization</h2>
-
-    <p>
-      A formal BM specification may be described before a concrete
-      realization is known.
-    </p>
-
-    <p>
-      If \(S\) is an abstract specification, a realization may be
-      represented schematically by
-    </p>
-
-    \[
-    \rho:
-    S
-    \longrightarrow
-    X.
-    \]
-
-    <p>
-      The resulting object must actually satisfy the native requirements
-      of \(X\).
-    </p>
-
-    <div class="schema">
-
-      \[
-      \boxed{
-      \text{formal specification}
-      \not\Rightarrow
-      \text{mathematical existence}.
-      }
-      \]
-
-    </div>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- REALIZATION FAILURE -->
-  <!-- ========================================================= -->
-
-  <section id="realization-failure">
-
-    <h2>51. Realization Failure</h2>
-
-    <p>
-      Mathematical realization may fail because:
-    </p>
-
-    <ul>
-      <li>constraints conflict,</li>
-      <li>the admissible set is empty,</li>
-      <li>required limits do not exist,</li>
-      <li>regularity fails,</li>
-      <li>boundary conditions are incompatible,</li>
-      <li>positivity fails,</li>
-      <li>topology is incompatible,</li>
-      <li>algebraic conditions cannot be satisfied,</li>
-      <li>or nonexistence is proved.</li>
-    </ul>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- PHYSICAL REALIZATION -->
-  <!-- ========================================================= -->
-
-  <section id="physical-realization">
-
-    <h2>52. Physical Realization</h2>
-
-    <p>
-      Mathematical realization and physical realization are distinct.
-    </p>
-
-    <div class="schema">
-
-      \[
-      \boxed{
-      \text{mathematically realizable}
-      \not\Rightarrow
-      \text{physically realizable}.
-      }
-      \]
-
-    </div>
-
-    <p>
-      Physical realization additionally depends on validated physical
-      law, causal conditions, materials, parameter ranges, stability,
-      initial and boundary conditions, implementation limits, and
-      empirical evidence.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- EXPORT -->
-  <!-- ========================================================= -->
-
-  <section id="export">
-
-    <h2>53. Export</h2>
-
-    <p>
-      <strong>Export</strong> transfers mathematical information from
-      one compatible context into another representation.
-    </p>
-
-    \[
-    E:
-    X
-    \longrightarrow
-    Y.
-    \]
-
-    <p>
-      Export may preserve all information or only selected information.
-    </p>
-
-    <p>
-      The preservation claim must be declared.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- REENTRY -->
-  <!-- ========================================================= -->
-
-  <section id="reentry">
-
-    <h2>54. Re-entry</h2>
-
-    <p>
-      <strong>Re-entry</strong> inserts exported or transformed
-      information into a receiving mathematical structure.
-    </p>
-
-    \[
-    X
-    \xrightarrow{E}
-    Y
-    \xrightarrow{R}
-    Z.
-    \]
-
-    <p>
-      Successful export does not automatically establish lawful
-      re-entry.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- REENTRY COHERENCE -->
-  <!-- ========================================================= -->
-
-  <section id="reentry-coherence">
-
-    <h2>55. Re-entry Coherence</h2>
-
-    <p>
-      Suppose a direct transformation is
-    </p>
-
-    \[
-    F:
-    X
-    \longrightarrow
-    Z.
-    \]
-
-    <p>
-      A strong deterministic coherence condition is
-    </p>
-
-    \[
-    \boxed{
-    R\circ E
-    =
-    F.
-    }
-    \]
-
-    <p>
-      Other sectors may require a weaker but explicitly defined notion
-      of equivalence.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- REENTRY LOSS -->
-  <!-- ========================================================= -->
-
-  <section id="reentry-loss">
-
-    <h2>56. Re-entry Loss</h2>
-
-    <p>
-      If deterministic export identifies distinct source states,
-    </p>
-
-    \[
-    E(x)
-    =
-    E(x')
-    \qquad
-    \text{for some }
-    x\neq x',
-    \]
-
-    <p>
-      then deterministic re-entry cannot reconstruct that distinction
-      using \(E(x)\) alone.
-    </p>
-
-    <p>
-      Additional information may be required.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- LOCAL GLOBAL -->
-  <!-- ========================================================= -->
-
-  <section id="local-global">
-
-    <h2>57. Local Versus Global Structure</h2>
-
-    <p>
-      A BM structure may be lawful locally without extending globally.
-    </p>
-
-    <p>
-      Let
-    </p>
-
-    \[
-    U_i
-    \subseteq
-    X
-    \]
-
-    <p>
-      be local domains and let
-    </p>
-
-    \[
-    s_i
-    \in
-    \mathcal S(U_i)
-    \]
-
-    <p>
-      be local structures.
-    </p>
-
-    <p>
-      Global realization may require compatibility on overlaps
-    </p>
-
-    \[
-    U_i\cap U_j.
-    \]
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- GLUING -->
-  <!-- ========================================================= -->
-
-  <section id="gluing">
-
-    <h2>58. Gluing</h2>
-
-    <p>
-      Where restriction maps are available, a standard compatibility
-      requirement may be
-    </p>
-
-    \[
-    s_i
-    \big|_{U_i\cap U_j}
-    =
-    s_j
-    \big|_{U_i\cap U_j}.
-    \]
-
-    <p>
-      Under appropriate mathematical hypotheses, compatible local pieces
-      may admit a global object.
-    </p>
-
-    <p>
-      BM does not assume that pairwise agreement automatically guarantees
-      global gluing in every mathematical category.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- COHERENCE -->
-  <!-- ========================================================= -->
-
-  <section id="coherence">
-
-    <h2>59. Coherence</h2>
-
-    <p>
-      Coherence asks whether different lawful constructions intended to
-      represent the same mathematical process agree under the relevant
-      comparison relation.
-    </p>
-
-    <p>
-      For example,
-    </p>
-
-    \[
-    F_2\circ F_1
-    \approx
-    G_2\circ G_1.
-    \]
-
-    <p>
-      The meaning of \(\approx\) must come from the mathematical sector.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- HIGHER COHERENCE -->
-  <!-- ========================================================= -->
-
-  <section id="higher-coherence">
-
-    <h2>60. Higher Coherence</h2>
-
-    <p>
-      Large BM Networks may contain many overlapping paths,
-      transformations, interfaces, equivalences, and compositions.
-    </p>
-
-    <p>
-      Pairwise coherence may not guarantee global compatibility.
-    </p>
-
-    <p>
-      <strong>Higher coherence</strong> studies compatibility among the
-      compatibility relations themselves.
-    </p>
-
-    <div class="status-note">
-      Status: active formal development.
-    </div>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- LAW SPACE -->
-  <!-- ========================================================= -->
-
-  <section id="law-space">
-
-    <h2>61. Law Space</h2>
-
-    <p>
-      A <strong>Law Space</strong> is a mathematical space or indexed
-      family representing laws, operators, parameterized rule sets,
-      regimes, constraints, or other governing structures relevant to a
-      BM construction.
-    </p>
-
-    \[
-    \lambda
-    \in
-    \mathcal L.
-    \]
-
-    <p>
-      The mathematical structure of \(\mathcal L\) is native to the
-      problem.
-    </p>
-
-    <p>
-      It may be discrete, topological, geometric, algebraic, functional,
-      probabilistic, operator-valued, or otherwise structured.
-    </p>
-
-    <p>
-      Calling something a Law Space does not imply that a metric,
-      topology, probability law, interpolation rule, derivative, or
-      algebraic Operation automatically exists on it.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- CONSERVATION -->
-  <!-- ========================================================= -->
-
-  <section id="conservation">
-
-    <h2>62. Conservation</h2>
-
-    <p>
-      Suppose
-    </p>
-
-    \[
-    \Phi_t:
-    X
-    \longrightarrow
-    X
-    \]
-
-    <p>
-      is an evolution and
-    </p>
-
-    \[
-    C:
-    X
-    \longrightarrow
-    V.
-    \]
-
-    <p>
-      \(C\) is conserved when
-    </p>
-
-    \[
-    \boxed{
-    C(\Phi_t(x))
-    =
-    C(x)
-    }
-    \]
-
-    <p>
-      throughout the stated evolution domain.
-    </p>
-
-    <p>
-      BM may preserve, transport, or audit a conservation law established
-      by the native mathematics.
-    </p>
-
-    <p>
-      BM does not independently create energy, momentum, charge,
-      probability, or another conserved quantity.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- CONSERVATIVE PASSPORT -->
-  <!-- ========================================================= -->
-
-  <section id="conservative-passport">
-
-    <h2>63. Conservative Passport</h2>
-
-    <p>
-      A <strong>Conservative Passport</strong> is an active candidate
-      research structure for tracking a quantity that the native
-      mathematics independently requires to persist across a
-      transformation even when the active representation does not retain
-      that quantity explicitly.
-    </p>
-
-    <p>
-      A Conservative Passport records conservation requirements.
-      It does not prove or create the conservation law.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- DETERMINISTIC -->
-  <!-- ========================================================= -->
-
-  <section id="deterministic">
-
-    <h2>64. Deterministic Structural Semantics</h2>
-
-    <p>
-      A deterministic transformation may use a function
-    </p>
-
-    \[
-    F:
-    X
-    \longrightarrow
-    Y.
-    \]
-
-    <p>
-      Each admissible input has one specified output.
-    </p>
-
-    <p>
-      Deterministic fibre and factorization arguments should not be
-      silently transferred to other semantic sectors.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- STOCHASTIC -->
-  <!-- ========================================================= -->
-
-  <section id="stochastic">
-
-    <h2>65. Stochastic Structural Semantics</h2>
-
-    <p>
-      A stochastic Branch or Operation may instead use a Markov kernel
-    </p>
-
-    \[
-    M:
-    X
-    \longrightarrow
-    \mathcal P(Y).
-    \]
-
-    <p>
-      For a measurable test function \(\varphi\),
-    </p>
-
-    \[
-    M^\dagger\varphi(x)
-    =
-    \mathbb E
-    \left[
-    \varphi(Y)
-    \mid
-    X=x
-    \right].
-    \]
-
-    <p>
-      Stochastic composition, sufficiency, equivalence, and preservation
-      must respect stochastic semantics.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- NONDETERMINISTIC -->
-  <!-- ========================================================= -->
-
-  <section id="nondeterministic">
-
-    <h2>66. Nondeterministic Structural Semantics</h2>
-
-    <p>
-      A nondeterministic relation may be represented by
-    </p>
-
-    \[
-    R
-    \subseteq
-    X\times Y.
-    \]
-
-    <p>
-      Its reachable set is
-    </p>
-
-    \[
-    R(x)
-    =
-    \left\{
-    y\in Y:
-    xRy
-    \right\}.
-    \]
-
-    <p>
-      Existential and universal conditions must remain distinct:
-    </p>
-
-    \[
-    \Diamond_R(U)
-    =
-    \left\{
-    x:
-    \exists y\in U
-    \text{ with }
-    xRy
-    \right\},
-    \]
-
-    \[
-    \Box_R(U)
-    =
-    \left\{
-    x:
-    \forall y,\,
-    xRy
-    \Rightarrow
-    y\in U
-    \right\}.
-    \]
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- FINITE ARITY -->
-  <!-- ========================================================= -->
-
-  <section id="finite-arity">
-
-    <h2>67. Finite-Arity Structures</h2>
-
-    <p>
-      A finite family of participating Branches may admit
-    </p>
-
-    \[
-    I:
-    D_I
-    \subseteq
-    X_1\times\cdots\times X_n
-    \longrightarrow
-    Y.
-    \]
-
-    <p>
-      Finite arity does not remove the need to specify the actual
-      admissible domain.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- INFINITE -->
-  <!-- ========================================================= -->
-
-  <section id="infinite">
-
-    <h2>68. Indexed or Infinite Structures</h2>
-
-    <p>
-      For an indexed family
-    </p>
-
-    \[
-    \{X_i\}_{i\in I},
-    \]
-
-    <p>
-      one may formally encounter
-    </p>
-
-    \[
-    \prod_{i\in I}X_i.
-    \]
-
-    <p>
-      Infinite constructions require whatever mathematical conditions
-      the native sector demands:
-    </p>
-
-    <ul>
-      <li>existence of products or limits,</li>
-      <li>topology,</li>
-      <li>convergence,</li>
-      <li>completeness,</li>
-      <li>measurability,</li>
-      <li>compactness,</li>
-      <li>continuity,</li>
-      <li>or other required structure.</li>
-    </ul>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- STRUCTURE PRESERVATION -->
-  <!-- ========================================================= -->
-
-  <section id="structure-preservation">
-
-    <h2>69. Structure Preservation</h2>
-
-    <p>
-      A map
-    </p>
-
-    \[
-    F:
-    X
-    \longrightarrow
-    Y
-    \]
-
-    <p>
-      is structure-preserving only relative to a specified structure.
-    </p>
-
-    <p>
-      For a binary Operation \(\star\), one possible requirement is
-    </p>
-
-    \[
-    \boxed{
-    F(x\star y)
-    =
-    F(x)\star'F(y).
-    }
-    \]
-
-    <p>
-      Other structures require different preservation equations.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- INVARIANT PRESERVATION -->
-  <!-- ========================================================= -->
-
-  <section id="invariant-preservation">
-
-    <h2>70. Invariant Preservation</h2>
-
-    <p>
-      Let
-    </p>
-
-    \[
-    C_X:
-    X
-    \longrightarrow
-    V
-    \]
-
-    <p>
-      and
-    </p>
-
-    \[
-    C_Y:
-    Y
-    \longrightarrow
-    V.
-    \]
-
-    <p>
-      Transformation \(F:X\to Y\) preserves the declared invariant when
-    </p>
-
-    \[
-    \boxed{
-    C_Y(F(x))
-    =
-    C_X(x).
-    }
-    \]
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- STRUCTURAL FAILURE -->
-  <!-- ========================================================= -->
-
-  <section id="failure-modes">
-
-    <h2>71. Structural Failure Modes</h2>
-
-    <table>
-
-      <thead>
-        <tr>
-          <th>Failure</th>
-          <th>Meaning</th>
-        </tr>
-      </thead>
-
-      <tbody>
-
-        <tr>
-          <td>Type failure</td>
-          <td>
-            Output is not accepted by the receiving mathematical type.
-          </td>
-        </tr>
-
-        <tr>
-          <td>Domain failure</td>
-          <td>
-            Input lies outside an admissible Operation or Interaction
-            domain.
-          </td>
-        </tr>
-
-        <tr>
-          <td>Passport failure</td>
-          <td>
-            Required information, distinctions, laws, or conditions are
-            unavailable.
-          </td>
-        </tr>
-
-        <tr>
-          <td>Law failure</td>
-          <td>
-            Native equations, constraints, or structural laws are
-            violated.
-          </td>
-        </tr>
-
-        <tr>
-          <td>Path incoherence</td>
-          <td>
-            Paths disagree where declared coherence requires agreement.
-          </td>
-        </tr>
-
-        <tr>
-          <td>Quotient failure</td>
-          <td>
-            The proposed equivalence does not support required quotient
-            structure.
-          </td>
-        </tr>
-
-        <tr>
-          <td>Realization failure</td>
-          <td>
-            The formal specification has no admissible mathematical
-            realization.
-          </td>
-        </tr>
-
-        <tr>
-          <td>Export failure</td>
-          <td>
-            Required information or structure cannot be lawfully
-            exported.
-          </td>
-        </tr>
-
-        <tr>
-          <td>Re-entry failure</td>
-          <td>
-            The receiving structure cannot lawfully interpret the
-            exported object.
-          </td>
-        </tr>
-
-        <tr>
-          <td>Root failure</td>
-          <td>
-            A Response lacks the conditions needed for downstream
-            participation.
-          </td>
-        </tr>
-
-        <tr>
-          <td>Rooting failure</td>
-          <td>
-            A proposed attachment violates type, law, interface,
-            Passport, or attachment-site requirements.
-          </td>
-        </tr>
-
-        <tr>
-          <td>Gluing failure</td>
-          <td>
-            Local structures cannot be consistently assembled into the
-            proposed global structure.
-          </td>
-        </tr>
-
-      </tbody>
-
-    </table>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- EXAMPLE COMPOSITION -->
-  <!-- ========================================================= -->
-
-  <section id="example-composition">
-
-    <h2>72. Worked Example — Typed Composition</h2>
-
-    <p>
-      Let
-    </p>
-
-    \[
-    F:
-    \mathbb R
-    \longrightarrow
-    \mathbb R^2
-    \]
-
-    <p>
-      be
-    </p>
-
-    \[
-    F(x)
-    =
-    (x,x^2),
-    \]
-
-    <p>
-      and let
-    </p>
-
-    \[
-    G:
-    \mathbb R^2
-    \longrightarrow
-    \mathbb R
-    \]
-
-    <p>
-      be
-    </p>
-
-    \[
-    G(u,v)
-    =
-    u+v.
-    \]
-
-    <p>
-      Then
-    </p>
-
-    \[
-    (G\circ F)(x)
-    =
-    x+x^2.
-    \]
-
-    <p>
-      The composition is well typed because \(F(x)\in\mathbb R^2\),
-      which is accepted by \(G\).
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- DOMAIN EXAMPLE -->
-  <!-- ========================================================= -->
-
-  <section id="example-domain">
-
-    <h2>73. Worked Example — Domain Restriction</h2>
-
-    <p>
-      Let
-    </p>
-
-    \[
-    G(u,v)
-    =
-    \sqrt v
-    \]
-
-    <p>
-      over the real numbers.
-    </p>
-
-    <p>
-      Its admissible domain is
-    </p>
-
-    \[
-    D_G
-    =
-    \left\{
-    (u,v)\in\mathbb R^2:
-    v\ge0
-    \right\}.
-    \]
-
-    <p>
-      If
-    </p>
-
-    \[
-    F(x)
-    =
-    (x,x^2),
-    \]
-
-    <p>
-      then
-    </p>
-
-    \[
-    F(x)\in D_G
-    \qquad
-    \forall x\in\mathbb R.
-    \]
-
-    <p>
-      Hence \(G\circ F\) is defined for every real \(x\).
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- NONCOMMUTING EXAMPLE -->
-  <!-- ========================================================= -->
-
-  <section id="example-order">
-
-    <h2>74. Worked Example — Operation Order</h2>
-
-    <p>
-      Let
-    </p>
-
-    \[
-    F(x)
-    =
-    x+1
-    \]
-
-    <p>
-      and
-    </p>
-
-    \[
-    G(x)
-    =
-    2x.
-    \]
-
-    <p>
-      Then
-    </p>
-
-    \[
-    (F\circ G)(x)
-    =
-    2x+1,
-    \]
-
-    <p>
-      while
-    </p>
-
-    \[
-    (G\circ F)(x)
-    =
-    2x+2.
-    \]
-
-    <p>
-      Therefore
-    </p>
-
-    \[
-    \boxed{
-    F\circ G
-    \neq
-    G\circ F.
-    }
-    \]
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- DIAGNOSTICS -->
-  <!-- ========================================================= -->
-
-  <section id="diagnostics">
-
-    <h2>75. Quantitative Structural Diagnostics</h2>
-
-    <p>
-      When a justified metric or discrepancy exists, structural
-      compatibility may be quantified.
-    </p>
-
-    <p>
-      For parallel paths \(F\) and \(G\), define
-    </p>
-
-    \[
-    \Delta(x)
-    =
-    d(F(x),G(x)).
-    \]
-
-    <p>
-      Exact coherence gives
-    </p>
-
-    \[
-    \Delta(x)=0.
-    \]
-
-    <p>
-      Approximate coherence may require
-    </p>
-
-    \[
-    \Delta(x)
-    \le
-    \varepsilon.
-    \]
-
-    <p>
-      Such diagnostics support genuine quantitative figures over state
-      and parameter spaces.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- VISUALIZATION -->
-  <!-- ========================================================= -->
-
-  <section id="visualization">
-
-    <h2>76. Scientific Visualization</h2>
-
-    <p>
-      Structural mathematics may generate quantitative figures such as:
-    </p>
-
-    <p>
-      interface defect versus state · path error versus parameter ·
-      invariant drift · convergence of valid iterations · admissibility
-      regions · stability regions · network response magnitude ·
-      condition numbers · parameter sweeps
-    </p>
-
-    <p>
-      These are equation-driven scientific figures.
-    </p>
-
-    <p>
-      They are distinct from formal BM structural diagrams, which remain
-      unpublished until their canonical relationships are formally
-      reconstructed and approved.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- REGISTRIES -->
-  <!-- ========================================================= -->
-
-  <section id="registries">
-
-    <h2>77. Registry Architecture</h2>
-
-    <p>
-      The BM project maintains dedicated registries for major
-      mathematical object classes.
-    </p>
-
-    <table>
-
-      <thead>
-        <tr>
-          <th>Registry</th>
-          <th>Object Class</th>
-        </tr>
-      </thead>
-
-      <tbody>
-
-        <tr>
-          <td>BM-D00–D99</td>
-          <td>
-            Diagrams; D99 reserved for the master diagram registry.
-          </td>
-        </tr>
-
-        <tr>
-          <td>BM-PP00–PP99</td>
-          <td>
-            Passports; PP99 reserved for the master Passport registry.
-          </td>
-        </tr>
-
-        <tr>
-          <td>BM-R00–R99</td>
-          <td>
-            Roots; R99 reserved for the master Root registry.
-          </td>
-        </tr>
-
-        <tr>
-          <td>BM-B00–B99</td>
-          <td>
-            Branches; B99 reserved for the master Branch registry.
-          </td>
-        </tr>
-
-        <tr>
-          <td>BM-T00–T99</td>
-          <td>Trees.</td>
-        </tr>
-
-        <tr>
-          <td>BM-L00–L99</td>
-          <td>Leaves.</td>
-        </tr>
-
-        <tr>
-          <td>BM-O00–O99</td>
-          <td>Operations and transactional structures.</td>
-        </tr>
-
-        <tr>
-          <td>BM-X00–X99</td>
-          <td>Configurations and master BM state structures.</td>
-        </tr>
-
-        <tr>
-          <td>BM-LW00–LW99</td>
-          <td>Law Spaces and law-level organizational structures.</td>
-        </tr>
-
-        <tr>
-          <td>BM-C00–C99</td>
-          <td>Universal contracts and interface requirements.</td>
-        </tr>
-
-      </tbody>
-
-    </table>
-
-    <p>
-      Registry numbering organizes the corpus.
-      Registry membership does not itself prove a mathematical claim.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- STRUCTURAL STATUS -->
-  <!-- ========================================================= -->
-
-  <section id="status">
-
-    <h2>78. Structural Status</h2>
-
-    <h3>Canonical BM Structural Roles</h3>
-
-    <p>
-      The current canonical roles include:
-    </p>
-
-    <p>
-      Branch · Interaction · Leaf · Tree · Response · Root
-    </p>
-
-    <h3>Active Integrated BM Structures</h3>
-
-    <p>
-      The active integrated architecture also includes:
-    </p>
-
-    <p>
-      Passports · Operations · Interfaces · Configurations · Networks ·
-      typed paths · admissibility · composition · quotienting ·
-      realization · export · re-entry · Law Spaces · coherence
-    </p>
-
-    <h3>Active Candidate or Developing Structures</h3>
-
-    <p>
-      Candidate or developing mathematics includes:
-    </p>
-
-    <p>
-      extended Rooting · Rebranching · Root Passport Transfer ·
-      Conservative Passports · Seed machinery · higher coherence
-    </p>
-
-    <p>
-      Candidate status is preserved explicitly so developing structures
-      are not silently presented as universal laws.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- ROLE SEPARATION -->
-  <!-- ========================================================= -->
-
-  <section id="role-separation">
-
-    <h2>79. Structural Role Separation</h2>
-
-    <table>
-
-      <thead>
-        <tr>
-          <th>Structure</th>
-          <th>What It Does</th>
-          <th>What It Does Not Automatically Mean</th>
-        </tr>
-      </thead>
-
-      <tbody>
-
-        <tr>
-          <td>Branch</td>
-          <td>Carries typed mathematical information and structure.</td>
-          <td>Does not replace its native mathematics.</td>
-        </tr>
-
-        <tr>
-          <td>Interaction</td>
-          <td>Performs a lawful typed mathematical action.</td>
-          <td>Does not guarantee commutativity or invertibility.</td>
-        </tr>
-
-        <tr>
-          <td>Leaf</td>
-          <td>Extracts information from an Interaction result.</td>
-          <td>Does not imply sufficiency or Root status.</td>
-        </tr>
-
-        <tr>
-          <td>Tree</td>
-          <td>Organizes combined computation.</td>
-          <td>Is not the same object as its Response.</td>
-        </tr>
-
-        <tr>
-          <td>Response</td>
-          <td>Is a typed output of organized computation.</td>
-          <td>Need not be a law and need not be a Root.</td>
-        </tr>
-
-        <tr>
-          <td>Root</td>
-          <td>Supports verified downstream mathematical participation.</td>
-          <td>
-            Does not imply recursion, conservation, or universal
-            compatibility.
-          </td>
-        </tr>
-
-        <tr>
-          <td>Passport</td>
-          <td>Tracks required mathematical information.</td>
-          <td>Does not by itself prove sufficiency.</td>
-        </tr>
-
-        <tr>
-          <td>Seed</td>
-          <td>
-            Candidate generative structure preceding conditional Root
-            export.
-          </td>
-          <td>Is not merely initial data or automatically a Root.</td>
-        </tr>
-
-      </tbody>
-
-    </table>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- CENTRAL PRINCIPLE -->
-  <!-- ========================================================= -->
-
-  <section id="principle">
-
-    <h2>80. Central Structural Principle</h2>
-
-    <div class="schema">
-
-      \[
-      \boxed{
-      \begin{gathered}
-      \text{Every mathematical object keeps its type;}\\[4pt]
-      \text{every Operation keeps its law and domain;}\\[4pt]
-      \text{every Interface must justify passage between structures;}\\[4pt]
-      \text{and every downstream reuse must establish admissibility.}
-      \end{gathered}
-      }
-      \]
-
-    </div>
-
-    <p>
-      BM does not authorize mathematical participation by terminology
-      alone.
-    </p>
-
-    <p>
-      Calling something a Branch does not make invalid mathematics
-      lawful.
-      Calling something a Leaf does not prove provenance unless an
-      Interaction and extraction are specified.
-      Calling an output a Root does not establish downstream
-      compatibility.
-      Calling several Operations a Tree does not establish coherence.
-    </p>
-
-  </section>
-
-
-  <!-- ========================================================= -->
-  <!-- DIAGRAM STATUS -->
-  <!-- ========================================================= -->
-
-  <section id="diagram-status">
-
-    <h2>81. Structural Diagram Status</h2>
-
-    <p>
-      Formal BM structural diagrams have not yet been recreated and
-      approved for the public encyclopedia.
-    </p>
-
-    <p>
-      No substitute structural diagrams are invented merely for visual
-      presentation.
-    </p>
-
-    <p>
-      Canonical diagrams will be added only after the underlying diagram
-      registry, typing relationships, path structure, and mathematical
-      interfaces have been reconstructed and audited.
-    </p>
-
-  </section>
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>Cycles, nondeterminism, implicit equations, or multiple fixed points require additional mathematics.</li></ul></div>
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#finite-network-evaluation">Finite network evaluation theorem</a><br><span class="link-label">Examples:</span> <a href="examples.html#full-system-worked-run">Full control Network</a></div>
+  </div>
+</section>
+
+<section id="bm-gurf-structure">
+  <h2>84. BM / GURF Structural Split</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> architecture ownership</div></div>
+
+    <p>BM governs the broader structural mathematics of lawful
+representation, transformation, composition, realization, export, and
+re-entry. GURF is activated when response semantics—Tasks, observations,
+Interventions, constraints, ambiguity, recovery, or continuation—are
+essential.</p>
+
+    <div class="schema">\[
+\boxed{
+\mathrm{BM}
+=
+\text{broader meta-structural layer},
+}
+\]
+\[
+\boxed{
+\mathrm{GURF}
+=
+\text{response-specialized layer under BM governance}.
+}
+\]</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>BM need not be rewritten as response theory.</li><li>GURF need not be invoked in a problem with no genuine response semantics.</li></ul></div>
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#bm-gurf-distinction">BM/GURF distinction</a></div>
+  </div>
+</section>
+
+<section id="central-principle">
+  <h2>85. Central Structural Principle</h2>
+
+  <div class="structure-card">
+    <div class="meta"><div><strong>Role:</strong> governing BM rule</div></div>
+
+    <p>The structural architecture exists to preserve the mathematics that
+makes each participating object lawful while still allowing distinct
+mathematical structures to participate in one problem.</p>
+
+    <div class="schema">\[
+\boxed{
+\begin{gathered}
+\text{retain native type and law;}\\
+\text{interact only on admissible domains;}\\
+\text{track derived information through Leaves;}\\
+\text{organize dependencies through Trees and Networks;}\\
+\text{check Interfaces and coherence;}\\
+\text{call an output a Root only after the receiving gate passes.}
+\end{gathered}
+}
+\]</div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Examples:</span> <a href="examples.html#all-roles-thermal-calibration">Integrated teaching example</a> · <a href="examples.html#full-system-worked-run">Full system</a></div>
+  </div>
+</section>
+
+<section id="reading-paths">
+  <h2>86. Structural Reading Paths</h2>
+
+  <table>
+    <thead><tr><th>Goal</th><th>Suggested path</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Learn the core roles</td>
+        <td>
+          <a href="#branch">Branch</a> →
+          <a href="#interaction">Interaction</a> →
+          <a href="#leaf">Leaf</a> →
+          <a href="#tree">Tree</a> →
+          <a href="#response">Response</a> →
+          <a href="#root">Root</a>
+        </td>
+      </tr>
+      <tr>
+        <td>Learn information preservation</td>
+        <td>
+          <a href="#passport">Passport</a> →
+          <a href="#interface">Interface</a> →
+          <a href="#interface-defect">Defect</a> →
+          <a href="#defect-localization">Localization</a>
+        </td>
+      </tr>
+      <tr>
+        <td>Learn composition</td>
+        <td>
+          <a href="#typed-path">Typed Path</a> →
+          <a href="#path-composite">Composite</a> →
+          <a href="#parallel-paths">Parallel Paths</a> →
+          <a href="#path-coherence">Coherence</a>
+        </td>
+      </tr>
+      <tr>
+        <td>Learn continuation</td>
+        <td>
+          <a href="#root">Root</a> →
+          <a href="#export">Export</a> →
+          <a href="#reentry">Re-entry</a> →
+          <a href="#rooting">Rooting</a> /
+          <a href="#seed">Seed</a>
+        </td>
+      </tr>
+      <tr>
+        <td>Learn large systems</td>
+        <td>
+          <a href="#configuration">Configuration</a> →
+          <a href="#network">Network</a> →
+          <a href="#higher-coherence">Higher Coherence</a> →
+          <a href="#network-evaluation">Evaluation</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
 
 </main>
 
-
 <footer>
-  <p><strong>Branch Mathematics Research Encyclopedia</strong></p>
-  <p>Structural Registry · Current BM Architecture</p>
+  <p><strong>Branch Mathematics Structural Registry</strong></p>
+  <p>Branches · Interactions · Leaves · Trees · Responses · Roots · Seeds · Interfaces · Networks</p>
 </footer>
-
 </body>
-
 </html>
