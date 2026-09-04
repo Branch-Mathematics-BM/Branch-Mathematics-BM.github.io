@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +8,7 @@
 
   <meta
     name="description"
-    content="SOE, the Structured Operations Extension of GURF: typed operations, admissible domains, serial and parallel composition, operation order, interventions, handoffs, feedback, semantic sectors, dynamic closure, and response-preserving operation pipelines."
+    content="Deep reference for SOE, the Structured Operations Extension of GURF: typed Operations, admissible domains, serial and parallel composition, order defects, filtering, localization, reconstruction, interventions, policies, feedback, handoffs, REBIND, Passports, provenance, pipelines, mixed semantic sectors, error propagation, transactional response checks, and operation-level research."
   >
 
   <meta name="robots" content="index, follow">
@@ -20,50 +19,41 @@
         inlineMath: [['\\(', '\\)']],
         displayMath: [['\\[', '\\]']]
       },
-      svg: {
-        fontCache: 'global'
-      }
+      svg: { fontCache: 'global' }
     };
   </script>
 
-  <script
-    id="MathJax-script"
-    async
+  <script id="MathJax-script" async
     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
   </script>
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: Arial, Helvetica, sans-serif;
       margin: 0;
-      line-height: 1.68;
       color: #202124;
-      background: #ffffff;
+      background: #fff;
+      line-height: 1.72;
     }
 
     header {
       background: #111827;
       color: white;
-      padding: 55px 20px;
+      padding: 58px 20px;
       text-align: center;
     }
 
     header h1 {
-      margin: 0;
-      font-size: 2.6rem;
+      margin: 0 0 10px;
+      font-size: 2.65rem;
     }
 
     header p {
-      max-width: 950px;
-      margin: 18px auto 0;
+      max-width: 1040px;
+      margin: auto;
       color: #e5e7eb;
       font-size: 1.08rem;
     }
@@ -77,23 +67,21 @@
     nav a {
       color: white;
       text-decoration: none;
-      margin: 7px 11px;
+      margin: 7px 10px;
       display: inline-block;
     }
 
-    nav a:hover {
-      text-decoration: underline;
-    }
+    nav a:hover { text-decoration: underline; }
 
     main {
-      max-width: 1000px;
+      max-width: 1180px;
       margin: auto;
-      padding: 38px 20px;
+      padding: 40px 20px;
     }
 
     section {
-      margin-bottom: 54px;
-      scroll-margin-top: 20px;
+      margin-bottom: 58px;
+      scroll-margin-top: 18px;
     }
 
     h2 {
@@ -102,108 +90,143 @@
       margin-top: 0;
     }
 
-    h3 {
-      margin-top: 28px;
-    }
+    h3 { margin-top: 24px; }
+    p { margin: 10px 0; }
 
-    h4 {
-      margin-top: 22px;
-    }
-
-    .schema {
-      border-left: 4px solid #374151;
-      padding: 18px 22px;
-      margin: 24px 0;
-      background: #f9fafb;
-      overflow-x: auto;
-    }
-
-    .card {
-      border: 1px solid #d1d5db;
-      border-radius: 8px;
-      padding: 22px;
-      margin: 18px 0;
-      background: #ffffff;
-    }
-
-    .status-note {
-      border: 1px solid #d1d5db;
-      border-radius: 8px;
-      background: #f9fafb;
-      padding: 18px 22px;
-      margin: 20px 0;
-    }
-
-    .warning {
-      border-left: 4px solid #6b7280;
-      background: #f9fafb;
-      padding: 18px 22px;
-      margin: 22px 0;
-    }
+    ul { padding-left: 25px; }
+    li { margin: 6px 0; }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      margin: 20px 0;
+      margin: 22px 0;
     }
 
-    th,
-    td {
+    th, td {
       border: 1px solid #d1d5db;
       padding: 11px 12px;
       text-align: left;
       vertical-align: top;
     }
 
-    th {
-      background: #f3f4f6;
+    th { background: #f3f4f6; }
+
+    .soe-card {
+      border: 1px solid #d1d5db;
+      border-radius: 9px;
+      padding: 26px;
+      margin-top: 22px;
     }
 
-    ul {
-      padding-left: 24px;
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+      gap: 8px 18px;
+      background: #f8fafc;
+      border: 1px solid #e5e7eb;
+      border-radius: 7px;
+      padding: 14px 16px;
+      margin-bottom: 20px;
+      font-size: .94rem;
     }
+
+    .schema {
+      background: #f8fafc;
+      border-left: 4px solid #374151;
+      padding: 18px 22px;
+      margin: 22px 0;
+      overflow-x: auto;
+    }
+
+    .abilities,
+    .limits,
+    .failure,
+    .audit,
+    .teaching {
+      padding: 17px 19px;
+      margin: 20px 0;
+    }
+
+    .abilities {
+      background: #f8fafc;
+      border-left: 4px solid #4b5563;
+    }
+
+    .limits {
+      background: #fafafa;
+      border-left: 4px solid #9ca3af;
+    }
+
+    .failure {
+      border: 1px dashed #9ca3af;
+      border-radius: 7px;
+    }
+
+    .audit {
+      background: #fafafa;
+      border-left: 4px solid #6b7280;
+    }
+
+    .teaching {
+      background: #f8fafc;
+      border-left: 4px solid #111827;
+    }
+
+    .crosslinks {
+      border-top: 1px solid #d1d5db;
+      margin-top: 22px;
+      padding-top: 14px;
+      font-size: .94rem;
+    }
+
+    .crosslinks a {
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .crosslinks a:hover { text-decoration: underline; }
+    .link-label { color: #4b5563; }
+
+    .quick-index {
+      columns: 3 300px;
+      column-gap: 35px;
+    }
+
+    .quick-index li {
+      break-inside: avoid;
+      margin: 5px 0;
+    }
+
+    .quick-index a { text-decoration: none; }
+    .quick-index a:hover { text-decoration: underline; }
 
     footer {
       background: #111827;
       color: white;
       text-align: center;
       padding: 28px 20px;
-      margin-top: 40px;
+      margin-top: 55px;
     }
 
-    footer p {
-      margin: 5px 0;
-    }
-
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 2rem;
-      }
-
-      main {
-        padding: 28px 16px;
-      }
+    @media (max-width: 700px) {
+      header h1 { font-size: 2rem; }
+      main { padding: 28px 16px; }
+      .soe-card { padding: 19px; }
+      .quick-index { columns: 1; }
     }
   </style>
 </head>
 
-
 <body>
-
-
 <header>
-
   <h1>SOE</h1>
-
   <p>
-    The Structured Operations Extension of GURF: typed mathematical
-    Operations, admissible domains, ordering, composition, handoffs,
-    Interventions, feedback, response preservation, and the lawful
-    construction of operation pipelines.
+    The Structured Operations Extension of GURF: the response-level
+    mathematics of typed Operations, true domains, order, composition,
+    handoffs, provenance, Intervention, feedback, REBIND, approximation,
+    semantic sectors, and lawful multi-stage response pipelines.
   </p>
-
 </header>
-
 
 <nav>
   <a href="index.html">Home</a>
@@ -211,6 +234,7 @@
   <a href="gurf.html">GURF</a>
   <a href="encyclopedia.html">Encyclopedia</a>
   <a href="definitions.html">Definitions</a>
+  <a href="examples.html">Examples</a>
   <a href="theorems.html">Theorems</a>
   <a href="equations.html">Equations</a>
   <a href="structures.html">Structures</a>
@@ -220,3586 +244,3658 @@
   <a href="changelog.html">Changelog</a>
 </nav>
 
-
 <main>
 
-
-<!-- ========================================================= -->
-<!-- IDENTITY -->
-<!-- ========================================================= -->
+<section id="page-index">
+  <h2>0. SOE Deep Reference Index</h2>
+  <p>
+    The live SOE architecture is preserved below and expanded with operation
+    provenance, handoff/REBIND contracts, feedback state, transactional
+    response checks, pipeline error budgets, mixed semantics, and failure
+    localization.
+  </p>
+  <ol class="quick-index">
+<li><a href="#identity">Identity</a></li>
+<li><a href="#placement">Placement</a></li>
+<li><a href="#activation">Activation</a></li>
+<li><a href="#scope">Scope</a></li>
+<li><a href="#operation">Operation</a></li>
+<li><a href="#contract">Contract</a></li>
+<li><a href="#unary">Unary</a></li>
+<li><a href="#multi">Multi</a></li>
+<li><a href="#operation-interaction">Operation Interaction</a></li>
+<li><a href="#partiality">Partiality</a></li>
+<li><a href="#image">Image</a></li>
+<li><a href="#serial">Serial</a></li>
+<li><a href="#codomain">Codomain</a></li>
+<li><a href="#identity-operation">Identity Operation</a></li>
+<li><a href="#associativity">Associativity</a></li>
+<li><a href="#parallel">Parallel</a></li>
+<li><a href="#parallel-fibre">Parallel Fibre</a></li>
+<li><a href="#product-separable">Product Separable</a></li>
+<li><a href="#fan-out">Fan Out</a></li>
+<li><a href="#merge">Merge</a></li>
+<li><a href="#order">Order</a></li>
+<li><a href="#commutator">Commutator</a></li>
+<li><a href="#general-order-defect">General Order Defect</a></li>
+<li><a href="#filter-differentiate">Filter Differentiate</a></li>
+<li><a href="#localization">Localization</a></li>
+<li><a href="#projection">Projection</a></li>
+<li><a href="#reconstruction">Reconstruction</a></li>
+<li><a href="#intervention">Intervention</a></li>
+<li><a href="#policy">Policy</a></li>
+<li><a href="#adaptive">Adaptive</a></li>
+<li><a href="#feedback">Feedback</a></li>
+<li><a href="#handoff">Handoff</a></li>
+<li><a href="#rebind">Rebind</a></li>
+<li><a href="#coercion">Coercion</a></li>
+<li><a href="#passport">Passport</a></li>
+<li><a href="#passport-factorization">Passport Factorization</a></li>
+<li><a href="#preservation">Preservation</a></li>
+<li><a href="#serial-information-loss">Serial Information Loss</a></li>
+<li><a href="#quotient">Quotient</a></li>
+<li><a href="#dynamic-closure">Dynamic Closure</a></li>
+<li><a href="#pipeline">Pipeline</a></li>
+<li><a href="#pipeline-domain">Pipeline Domain</a></li>
+<li><a href="#paths">Paths</a></li>
+<li><a href="#approximate-path">Approximate Path</a></li>
+<li><a href="#ace-interface">Ace Interface</a></li>
+<li><a href="#ire-interface">Ire Interface</a></li>
+<li><a href="#uke-interface">Uke Interface</a></li>
+<li><a href="#hde-interface">Hde Interface</a></li>
+<li><a href="#ghse-interface">Ghse Interface</a></li>
+<li><a href="#stochastic">Stochastic</a></li>
+<li><a href="#stochastic-test">Stochastic Test</a></li>
+<li><a href="#nondeterministic">Nondeterministic</a></li>
+<li><a href="#nondeterministic-quantifier">Nondeterministic Quantifier</a></li>
+<li><a href="#quantum">Quantum</a></li>
+<li><a href="#semantic-firewall">Semantic Firewall</a></li>
+<li><a href="#conditional">Conditional</a></li>
+<li><a href="#regime-switching">Regime Switching</a></li>
+<li><a href="#event-triggered">Event Triggered</a></li>
+<li><a href="#commuting-paths">Commuting Paths</a></li>
+<li><a href="#approximate-commuting">Approximate Commuting</a></li>
+<li><a href="#failure-modes">Failure Modes</a></li>
+<li><a href="#diagnostics">Diagnostics</a></li>
+<li><a href="#commutator-norm">Commutator Norm</a></li>
+<li><a href="#error-propagation">Error Propagation</a></li>
+<li><a href="#linear-example">Linear Example</a></li>
+<li><a href="#information-example">Information Example</a></li>
+<li><a href="#control-example">Control Example</a></li>
+<li><a href="#theorem-kernels">Theorem Kernels</a></li>
+<li><a href="#limits">Limits</a></li>
+<li><a href="#not-native-calculus">Not Native Calculus</a></li>
+<li><a href="#research">Research</a></li>
+<li><a href="#applications">Applications</a></li>
+<li><a href="#figures">Figures</a></li>
+<li><a href="#registry">Registry</a></li>
+<li><a href="#principle">Principle</a></li>
+<li><a href="#order-principle">Order Principle</a></li>
+<li><a href="#related">Related</a></li>
+<li><a href="#operation-state">Operation State</a></li>
+<li><a href="#domain-transform">Domain Transform</a></li>
+<li><a href="#provenance">Provenance</a></li>
+<li><a href="#handoff-contract">Handoff Contract</a></li>
+<li><a href="#rebind-contract">Rebind Contract</a></li>
+<li><a href="#feedback-state">Feedback State</a></li>
+<li><a href="#feedback-delay">Feedback Delay</a></li>
+<li><a href="#transaction">Transaction</a></li>
+<li><a href="#rollback">Rollback</a></li>
+<li><a href="#pipeline-provenance">Pipeline Provenance</a></li>
+<li><a href="#pipeline-error">Pipeline Error</a></li>
+<li><a href="#pipeline-lipschitz">Pipeline Lipschitz</a></li>
+<li><a href="#failure-localization">Failure Localization</a></li>
+<li><a href="#branchwise-failure">Branchwise Failure</a></li>
+<li><a href="#approximation-budget">Approximation Budget</a></li>
+<li><a href="#mixed-pipeline">Mixed Pipeline</a></li>
+<li><a href="#stochastic-handoff">Stochastic Handoff</a></li>
+<li><a href="#relational-safety">Relational Safety</a></li>
+<li><a href="#quantum-measurement-order">Quantum Measurement Order</a></li>
+<li><a href="#operation-registry-record">Operation Registry Record</a></li>
+<li><a href="#normal-form">Normal Form</a></li>
+<li><a href="#central-audit">Central Audit</a></li>
+  </ol>
+</section>
 
 <section id="identity">
-
   <h2>1. SOE Identity</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Stable canonical extension</div>
+      <div><strong>Class:</strong> GURF extension</div>
+    </div>
 
-  <div class="status-note">
-    <strong>Full name:</strong> Structured Operations Extension<br>
-    <strong>Framework:</strong> GURF<br>
-    <strong>Status:</strong> stable canonical extension
+    <p>SOE is the GURF extension responsible for the mathematical structure of
+Operations acting on response systems. It becomes relevant whenever the
+response depends on which Operation acts, where it is defined, what it
+accepts, what it produces, the order in which Operations occur, or whether
+later Operations can lawfully accept earlier outputs.</p>
+
+    <div class="schema">\[
+\boxed{
+\mathrm{SOE}
+=
+\text{typed Operation structure for GURF response systems}.
+}
+\]</div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">GURF:</span> <a href="gurf.html#soe">SOE inside GURF</a></div>
   </div>
-
-  <p>
-    SOE is the GURF extension responsible for the mathematical structure
-    of Operations acting on response systems.
-  </p>
-
-  <p>
-    It becomes relevant when the answer to a response problem depends not
-    merely on what information is retained, but on:
-  </p>
-
-  <p>
-    which Operation is applied · where it is defined · what it accepts ·
-    what it produces · which Operation occurs first · whether Operations
-    compose · whether information is preserved through the pipeline ·
-    whether the next Operation can lawfully accept the preceding output
-  </p>
-
-  <div class="schema">
-
-    \[
-    \boxed{
-    \text{SOE}
-    =
-    \text{typed operation structure for GURF response systems}.
-    }
-    \]
-
-  </div>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- PLACEMENT -->
-<!-- ========================================================= -->
 
 <section id="placement">
-
   <h2>2. Placement Inside GURF</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Stable canonical</div>
+      <div><strong>Class:</strong> architecture placement</div>
+    </div>
 
-  <div class="schema">
+    <p>GURF Core asks what response information exists and what Tasks or
+continuations that information supports. SOE asks what happens when the
+response is processed through one or more structured Operations.</p>
 
-    \[
-    \boxed{
-    \mathrm{GURF}
-    =
-    \mathrm{Core}
-    +
-    \mathrm{SOE}
-    +
-    \mathrm{ACE}
-    +
-    \mathrm{IRE}
-    +
-    \mathrm{UKE}
-    +
-    \mathrm{GRDE}
-    +
-    \mathrm{HDE}
-    +
-    \mathrm{GHSE}.
-    }
-    \]
+    <div class="schema">\[
+\boxed{
+\mathrm{GURF}
+=
+\mathrm{Core}
++\mathrm{SOE}
++\mathrm{ACE}
++\mathrm{IRE}
++\mathrm{UKE}
++\mathrm{GRDE}_{\rm frozen}
++\mathrm{HDE}
++\mathrm{GHSE}.
+}
+\]</div>
 
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
   </div>
-
-  <p>
-    GURF Core asks which response information exists and what Tasks or
-    continuations that information can support.
-  </p>
-
-  <p>
-    SOE asks what happens when that information is processed through a
-    structured sequence or network of Operations.
-  </p>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- ACTIVATION -->
-<!-- ========================================================= -->
 
 <section id="activation">
-
   <h2>3. SOE Activation Rule</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Canonical</div>
+      <div><strong>Class:</strong> extension activation</div>
+    </div>
 
-  <p>
-    SOE should be activated when Operation structure materially changes
-    the mathematical response problem.
-  </p>
+    <p>Activate SOE when Operation structure materially changes the response
+problem.</p>
 
-  <div class="schema">
+    <div class="schema">\[
+\boxed{
+\text{Operation order, composition, handoff, feedback,
+or transformation semantics matter}
+\Longrightarrow
+\mathrm{SOE}.
+}
+\]</div>
 
-    \[
-    \boxed{
-    \text{operation order or composition matters}
-    \Longrightarrow
-    \text{SOE is relevant}.
-    }
-    \]
+    
 
+    
+
+    
+
+    
+
+    
+
+    
+
+    
   </div>
-
-  <p>
-    Typical activation conditions include:
-  </p>
-
-  <ul>
-    <li>filtering and differentiation are both present;</li>
-    <li>projection and reconstruction occur in sequence;</li>
-    <li>an Intervention changes later response;</li>
-    <li>data are passed across a mathematical Interface;</li>
-    <li>an adaptive policy selects later Operations;</li>
-    <li>a feedback loop closes;</li>
-    <li>one Operation changes the admissible domain of the next;</li>
-    <li>different Operation orders produce different results.</li>
-  </ul>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- SCOPE -->
-<!-- ========================================================= -->
 
 <section id="scope">
-
   <h2>4. What SOE Governs</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Canonical</div>
+      <div><strong>Class:</strong> scope map</div>
+    </div>
 
-  <table>
+    <table>
+<thead><tr><th>Object</th><th>SOE question</th></tr></thead>
+<tbody>
+<tr><td>Typing</td><td>Can the Operation legally accept this object?</td></tr>
+<tr><td>Domain</td><td>Where is it actually defined?</td></tr>
+<tr><td>Order</td><td>Does changing order change the result?</td></tr>
+<tr><td>Composition</td><td>Can one output enter the next Operation?</td></tr>
+<tr><td>Handoff</td><td>Can the receiving structure interpret the output?</td></tr>
+<tr><td>REBIND</td><td>Must the Interface contract be updated before reuse?</td></tr>
+<tr><td>Intervention</td><td>How does active modification change response?</td></tr>
+<tr><td>Feedback</td><td>Does response change future Operation selection?</td></tr>
+<tr><td>Provenance</td><td>Does later mathematics depend on how the output was produced?</td></tr>
+<tr><td>Information</td><td>Which distinctions survive or disappear?</td></tr>
+<tr><td>Approximation</td><td>How does error propagate through the pipeline?</td></tr>
+<tr><td>Sector</td><td>Which composition law is mathematically correct?</td></tr>
+</tbody>
+</table>
 
-    <thead>
-      <tr>
-        <th>SOE Object</th>
-        <th>Question</th>
-      </tr>
-    </thead>
+    
 
-    <tbody>
+    
 
-      <tr>
-        <td>Typing</td>
-        <td>Can the Operation legally accept these inputs?</td>
-      </tr>
+    
 
-      <tr>
-        <td>Domain</td>
-        <td>Where is the Operation actually defined?</td>
-      </tr>
+    
 
-      <tr>
-        <td>Ordering</td>
-        <td>Does changing Operation order change the result?</td>
-      </tr>
+    
 
-      <tr>
-        <td>Composition</td>
-        <td>Can the output of one Operation enter the next?</td>
-      </tr>
+    
 
-      <tr>
-        <td>Handoff</td>
-        <td>Does the receiving structure understand the exported result?</td>
-      </tr>
+    
 
-      <tr>
-        <td>Intervention</td>
-        <td>How does active modification alter response?</td>
-      </tr>
-
-      <tr>
-        <td>Feedback</td>
-        <td>Does response influence future Operation selection?</td>
-      </tr>
-
-      <tr>
-        <td>Information</td>
-        <td>Which distinctions survive the Operation pipeline?</td>
-      </tr>
-
-    </tbody>
-
-  </table>
-
+    
+  </div>
 </section>
-
-
-<!-- ========================================================= -->
-<!-- OPERATION -->
-<!-- ========================================================= -->
 
 <section id="operation">
-
   <h2>5. General SOE Operation</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Canonical</div>
+      <div><strong>Class:</strong> typed Operation</div>
+    </div>
 
-  <p>
-    A deterministic \(n\)-ary Operation may be represented by
-  </p>
+    <p>A deterministic \(n\)-ary Operation is a typed partial map whose
+domain is part of the mathematical object.</p>
 
-  <div class="schema">
+    <div class="schema">\[
+\boxed{
+O:
+D_O
+\subseteq
+A_1\times\cdots\times A_n
+\longrightarrow
+Y.
+}
+\]</div>
 
-    \[
-    \boxed{
-    O:
-    D_O
-    \subseteq
-    X_1\times\cdots\times X_n
-    \longrightarrow
-    Y.
-    }
-    \]
+    
 
+    
+
+    
+
+    
+
+    
+
+    <div class="teaching"><strong>Reading note</strong><p>The current page uses admissible input objects \(A_i\) when those are known; ambient carriers can still appear when admissibility is encoded separately.</p></div>
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#operation">Operation</a><br><span class="link-label">Structures:</span> <a href="structures.html#operation">Operation</a></div>
   </div>
-
-  <p>
-    The domain \(D_O\) is part of the Operation.
-  </p>
-
-  <p>
-    An Operation is therefore not specified completely by its symbolic
-    formula alone.
-  </p>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- CONTRACT -->
-<!-- ========================================================= -->
 
 <section id="contract">
-
   <h2>6. Operation Contract</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Canonical</div>
+      <div><strong>Class:</strong> formal Operation specification</div>
+    </div>
 
-  <p>
-    A mature SOE Operation should declare at least:
-  </p>
+    <p>A mature SOE Operation should expose enough data to determine whether
+it is lawful and what downstream mathematics may still trust.</p>
 
-  <table>
+    
 
-    <thead>
-      <tr>
-        <th>Contract Field</th>
-        <th>Meaning</th>
-      </tr>
-    </thead>
+    <h3>Mathematical objects</h3><ul><li>semantic sector;</li><li>input types;</li><li>admissible domain;</li><li>output type;</li><li>active Regime / law context;</li><li>required Passport information;</li><li>preserved information;</li><li>lost information;</li><li>approximation/error contract;</li><li>failure conditions;</li><li>provenance requirement;</li><li>allowed downstream Interfaces.</li></ul>
 
-    <tbody>
+    
 
-      <tr>
-        <td>Input spaces</td>
-        <td>The mathematical types accepted by the Operation.</td>
-      </tr>
+    
 
-      <tr>
-        <td>Admissible domain</td>
-        <td>The subset on which the Operation is defined.</td>
-      </tr>
+    
 
-      <tr>
-        <td>Output space</td>
-        <td>The mathematical type produced.</td>
-      </tr>
+    
 
-      <tr>
-        <td>Active Regime</td>
-        <td>Any law or Regime required for correct interpretation.</td>
-      </tr>
+    
 
-      <tr>
-        <td>Required Passport information</td>
-        <td>Distinctions needed by the Operation.</td>
-      </tr>
-
-      <tr>
-        <td>Preserved information</td>
-        <td>Distinctions retained after the Operation.</td>
-      </tr>
-
-      <tr>
-        <td>Lost information</td>
-        <td>Distinctions intentionally or unavoidably removed.</td>
-      </tr>
-
-      <tr>
-        <td>Failure condition</td>
-        <td>Conditions under which the Operation is undefined or invalid.</td>
-      </tr>
-
-      <tr>
-        <td>Semantic sector</td>
-        <td>
-          Deterministic, stochastic, nondeterministic, quantum, or another
-          declared mathematical sector.
-        </td>
-      </tr>
-
-    </tbody>
-
-  </table>
-
+    
+  </div>
 </section>
-
-
-<!-- ========================================================= -->
-<!-- UNARY -->
-<!-- ========================================================= -->
 
 <section id="unary">
-
   <h2>7. Unary Operations</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Canonical</div>
+      <div><strong>Class:</strong> arity specialization</div>
+    </div>
 
-  <p>
-    A unary Operation has form
-  </p>
+    <p>A unary Operation acts on one admitted input.</p>
 
-  \[
-  O:
-  D_O
-  \subseteq
-  X
-  \longrightarrow
-  Y.
-  \]
+    <div class="schema">\[
+O:D_O\subseteq A\to Y.
+\]</div>
 
-  <p>
-    Examples include:
-  </p>
+    <h3>Mathematical objects</h3><ul><li>filtering;</li><li>projection;</li><li>differentiation;</li><li>normalization;</li><li>reconstruction;</li><li>compression;</li><li>coordinate change;</li><li>state update.</li></ul>
 
-  <p>
-    filtering · projection · differentiation · normalization ·
-    reconstruction · compression · coordinate change · state update
-  </p>
+    
 
+    
+
+    
+
+    
+
+    
+
+    
+  </div>
 </section>
-
-
-<!-- ========================================================= -->
-<!-- MULTI -->
-<!-- ========================================================= -->
 
 <section id="multi">
-
   <h2>8. Multi-Input Operations</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Canonical</div>
+      <div><strong>Class:</strong> arity specialization</div>
+    </div>
 
-  <p>
-    A multi-input Operation may combine information from several sources:
-  </p>
+    <p>A multi-input Operation acts on a jointly admissible tuple.</p>
 
-  \[
-  O:
-  D_O
-  \subseteq
-  X_1\times X_2
-  \longrightarrow
-  Y.
-  \]
+    <div class="schema">\[
+\boxed{
+O:
+D_O
+\subseteq
+A_1\times\cdots\times A_n
+\to Y.
+}
+\]</div>
 
-  <p>
-    More generally,
-  </p>
+    
 
-  \[
-  O:
-  D_O
-  \subseteq
-  \prod_{j=1}^{n}X_j
-  \longrightarrow
-  Y.
-  \]
+    
 
-  <p>
-    The existence of a Cartesian product notation does not imply that
-    every tuple is admissible.
-  </p>
+    <div class="limits"><strong>Limits</strong><ul><li>Cartesian product notation does not imply every tuple is admissible.</li></ul></div>
 
+    
+
+    
+
+    
+
+    
+  </div>
 </section>
-
-
-<!-- ========================================================= -->
-<!-- OP VS INTERACTION -->
-<!-- ========================================================= -->
 
 <section id="operation-interaction">
-
   <h2>9. Operation Versus BM Interaction</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Canonical</div>
+      <div><strong>Class:</strong> BM/GURF role distinction</div>
+    </div>
 
-  <p>
-    Operation and Interaction are related but not identical.
-  </p>
+    <p>Operation is the broader typed transformation concept. A BM Interaction
+is a lawful Operation use involving one or more Branches, with multi-Branch
+participation being central.</p>
 
-  <p>
-    An Operation is the broader typed transformation concept.
-  </p>
+    <div class="schema">\[
+\boxed{
+\text{Interaction}
+\subseteq
+\text{lawful Operation use}
+}
+\]
+as an organizational relationship.</div>
 
-  <p>
-    A BM Interaction is a lawful action involving one or more Branches,
-    with multi-Branch interaction being the central case.
-  </p>
+    
 
-  <div class="schema">
+    
 
-    \[
-    \boxed{
-    \text{Interaction}
-    \subseteq
-    \text{lawful Operation use}
-    }
-    \]
+    
 
+    
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#interaction">Interaction</a></div>
   </div>
-
-  <p>
-    as an organizational relation, not necessarily as literal set
-    inclusion in every formal realization.
-  </p>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- PARTIALITY -->
-<!-- ========================================================= -->
 
 <section id="partiality">
-
   <h2>10. Partial Operations</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Canonical</div>
+      <div><strong>Class:</strong> domain discipline</div>
+    </div>
 
-  <p>
-    Many mathematically meaningful Operations are not defined on their
-    entire ambient input space.
-  </p>
+    <p>Partiality is normal. Many Operations are meaningful only on a proper
+subset of the ambient state space.</p>
 
-  <p>
-    SOE therefore treats
-  </p>
+    <div class="schema">\[
+O:D_O\subseteq X\to Y,
+\qquad
+\boxed{
+\text{formula exists}
+\not\Rightarrow
+\text{Operation is defined everywhere}.
+}
+\]</div>
 
-  \[
-  O:
-  D_O
-  \subseteq
-  X
-  \longrightarrow
-  Y
-  \]
+    
 
-  <p>
-    as fundamental rather than exceptional.
-  </p>
+    
 
-  <div class="schema">
+    
 
-    \[
-    \boxed{
-    \text{formula exists}
-    \not\Rightarrow
-    \text{Operation is defined everywhere}.
-    }
-    \]
+    
 
+    
+
+    
+
+    
   </div>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- IMAGE -->
-<!-- ========================================================= -->
 
 <section id="image">
-
   <h2>11. Realized Output Image</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Canonical</div>
+      <div><strong>Class:</strong> realized codomain</div>
+    </div>
 
-  <p>
-    The actual output values produced by Operation \(O\) form
-  </p>
+    <p>The produced output values occupy only the realized image.</p>
 
-  <div class="schema">
+    <div class="schema">\[
+\boxed{
+O(D_O)\subseteq Y.
+}
+\]</div>
 
-    \[
-    \boxed{
-    O(D_O)
-    \subseteq
-    Y.
-    }
-    \]
+    
 
+    <div class="abilities"><strong>What this allows</strong><ul><li>Use the realized image as the natural domain for downstream exact factorization.</li></ul></div>
+
+    
+
+    
+
+    
+
+    
+
+    
   </div>
-
-  <p>
-    Downstream factorization or composition often needs only the realized
-    image \(O(D_O)\), not the entire ambient output space \(Y\).
-  </p>
-
 </section>
 
+<section id="operation-state">
+  <h2>12. Operation State</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Active formalization</div>
+      <div><strong>Class:</strong> SOE state record</div>
+    </div>
 
-<!-- ========================================================= -->
-<!-- SERIAL -->
-<!-- ========================================================= -->
+    <p>For a multi-stage response system it is useful to track not only the
+current response value, but the Operation context under which it was
+produced.</p>
+
+    <div class="schema">\[
+\boxed{
+\omega_n
+=
+(x_n,O_n,\lambda_n,\mathcal I_n,\mathcal P_n).
+}
+\]</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>This is an organizational record, not a new primitive mathematical ontology.</li></ul></div>
+
+    
+
+    
+
+    
+
+    
+  </div>
+</section>
+
+<section id="domain-transform">
+  <h2>13. Operation-Induced Domain Transformation</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Active</div>
+      <div><strong>Class:</strong> SOE domain propagation</div>
+    </div>
+
+    <p>An Operation can change the admissible domain of later Operations even
+when it preserves type.</p>
+
+    <div class="schema">\[
+x\in D_F,
+\qquad
+F(x)\in Y,
+\qquad
+\boxed{
+F(x)\in D_G
+}
+\]
+is still a separate receiving condition.</div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </div>
+</section>
 
 <section id="serial">
+  <h2>14. Serial Composition</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Mathematically established</div>
+      <div><strong>Class:</strong> partial composition</div>
+    </div>
 
-  <h2>12. Serial Composition</h2>
+    <p>For partial maps, the serial composite exists only where every
+intermediate result enters the next domain.</p>
 
-  <p>
-    Let
-  </p>
+    <div class="schema">\[
+F:D_F\subseteq X\to Y,
+\qquad
+G:D_G\subseteq Y\to Z,
+\]
+\[
+\boxed{
+D_{G\circ F}
+=
+\{x\in D_F:F(x)\in D_G\}.
+}
+\]</div>
 
-  \[
-  F:
-  D_F
-  \subseteq
-  X
-  \longrightarrow
-  Y
-  \]
+    
 
-  <p>
-    and
-  </p>
+    
 
-  \[
-  G:
-  D_G
-  \subseteq
-  Y
-  \longrightarrow
-  Z.
-  \]
+    
 
-  <p>
-    The serial composite is defined only where the output of \(F\)
-    enters the admissible domain of \(G\).
-  </p>
+    
 
-  <div class="schema">
+    
 
-    \[
-    \boxed{
-    D_{G\circ F}
-    =
-    \{
-    x\in D_F:
-    F(x)\in D_G
-    \}.
-    }
-    \]
+    
 
+    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#typed-composite-domain">Typed composite-domain theorem</a></div>
   </div>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- CODOMAIN -->
-<!-- ========================================================= -->
 
 <section id="codomain">
+  <h2>15. Codomain Matching Is Not Enough</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Canonical firewall</div>
+      <div><strong>Class:</strong> composition firewall</div>
+    </div>
 
-  <h2>13. Codomain Matching Is Not Enough</h2>
+    <p>Written type compatibility can hide real domain restrictions.</p>
 
-  <p>
-    The notation
-  </p>
+    <div class="schema">\[
+\boxed{
+\text{output type compatibility}
+\not\Rightarrow
+\text{downstream admissibility}.
+}
+\]</div>
 
-  \[
-  F:X\to Y,
-  \qquad
-  G:Y\to Z
-  \]
+    
 
-  <p>
-    can hide meaningful admissibility restrictions.
-  </p>
+    
 
-  <div class="schema">
+    
 
-    \[
-    \boxed{
-    \text{output type compatibility}
-    \not\Rightarrow
-    \text{downstream admissibility}.
-    }
-    \]
+    
 
+    
+
+    
+
+    
   </div>
-
-  <p>
-    SOE requires the actual domains to remain explicit when they matter.
-  </p>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- IDENTITY -->
-<!-- ========================================================= -->
 
 <section id="identity-operation">
+  <h2>16. Identity Operation</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Classical infrastructure</div>
+      <div><strong>Class:</strong> identity law</div>
+    </div>
 
-  <h2>14. Identity Operation</h2>
+    <p>The identity map leaves a state unchanged.</p>
 
-  <p>
-    On a state space \(X\), the identity map is
-  </p>
+    <div class="schema">\[
+\operatorname{id}_X(x)=x,
+\qquad
+F\circ\operatorname{id}_X=F,
+\qquad
+\operatorname{id}_Y\circ F=F
+\]
+where the compositions are defined.</div>
 
-  \[
-  \operatorname{id}_X:
-  X
-  \longrightarrow
-  X,
-  \qquad
-  \operatorname{id}_X(x)=x.
-  \]
+    
 
-  <p>
-    Where composition is defined,
-  </p>
+    
 
-  \[
-  F\circ\operatorname{id}_X
-  =
-  F
-  \]
+    
 
-  <p>
-    and
-  </p>
+    
 
-  \[
-  \operatorname{id}_Y\circ F
-  =
-  F.
-  \]
+    
 
+    
+
+    
+  </div>
 </section>
-
-
-<!-- ========================================================= -->
-<!-- ASSOCIATIVITY -->
-<!-- ========================================================= -->
 
 <section id="associativity">
+  <h2>17. Associativity and Domain Discipline</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Classical infrastructure</div>
+      <div><strong>Class:</strong> composition law</div>
+    </div>
 
-  <h2>15. Associativity and Domain Discipline</h2>
+    <p>Associativity of function composition remains valid, but for partial
+maps the comparison is made only on the common domain where the composed
+expressions are defined.</p>
 
-  <p>
-    For total functions with compatible domains,
-  </p>
+    <div class="schema">\[
+H\circ(G\circ F)
+=
+(H\circ G)\circ F.
+\]</div>
 
-  \[
-  H\circ(G\circ F)
-  =
-  (H\circ G)\circ F.
-  \]
+    
 
-  <p>
-    With partial maps, the equality is meaningful only on the common
-    domain where both composite expressions are defined.
-  </p>
+    
 
-  <div class="warning">
+    
 
-    SOE should not invoke associativity notation while silently changing
-    the admissible domain of the pipeline.
+    
 
+    
+
+    
+
+    
   </div>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- PARALLEL -->
-<!-- ========================================================= -->
 
 <section id="parallel">
+  <h2>18. Parallel Composition</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Mathematically established</div>
+      <div><strong>Class:</strong> product observation</div>
+    </div>
 
-  <h2>16. Parallel Composition</h2>
+    <p>Parallel Operations retain both outputs.</p>
 
-  <p>
-    Let
-  </p>
+    <div class="schema">\[
+\boxed{
+F\parallel G
+=
+(F,G).
+}
+\]</div>
 
-  \[
-  F:
-  X
-  \longrightarrow
-  Y
-  \]
+    
 
-  <p>
-    and
-  </p>
+    
 
-  \[
-  G:
-  X
-  \longrightarrow
-  Z.
-  \]
+    
 
-  <p>
-    Their parallel Observation or Operation is
-  </p>
+    
 
-  <div class="schema">
+    
 
-    \[
-    \boxed{
-    F\parallel G
-    =
-    (F,G):
-    X
-    \longrightarrow
-    Y\times Z.
-    }
-    \]
+    
 
+    
   </div>
-
-  <p>
-    Parallel composition retains both outputs.
-  </p>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- PARALLEL FIBRE -->
-<!-- ========================================================= -->
 
 <section id="parallel-fibre">
+  <h2>19. Parallel Refinement</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Mathematically established</div>
+      <div><strong>Class:</strong> information refinement</div>
+    </div>
 
-  <h2>17. Parallel Refinement</h2>
+    <p>In the exact deterministic case, the joint fibre is the intersection
+of the component fibres.</p>
 
-  <p>
-    For exact deterministic maps,
-  </p>
+    <div class="schema">\[
+\boxed{
+(F,G)^{-1}(y,z)
+=
+F^{-1}(y)\cap G^{-1}(z).
+}
+\]</div>
 
-  <div class="schema">
+    
 
-    \[
-    \boxed{
-    (F,G)^{-1}(y,z)
-    =
-    F^{-1}(y)
-    \cap
-    G^{-1}(z).
-    }
-    \]
+    
 
+    
+
+    
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#parallel-refinement">Parallel refinement</a></div>
   </div>
-
-  <p>
-    Parallel Operations can therefore retain distinctions that either
-    Operation alone would erase.
-  </p>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- PRODUCT SEPARABLE -->
-<!-- ========================================================= -->
 
 <section id="product-separable">
+  <h2>20. Product-Separable Compatibility</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Mathematically established</div>
+      <div><strong>Class:</strong> parallel compatibility</div>
+    </div>
 
-  <h2>18. Product-Separable Compatibility</h2>
+    <p>If the target map itself separates across the two outputs, componentwise
+transformation commutes with the parallel product.</p>
 
-  <p>
-    Suppose
-  </p>
+    <div class="schema">\[
+\boxed{
+(T_Y\times T_Z)\circ(F\parallel G)
+=
+(T_Y\circ F)\parallel(T_Z\circ G).
+}
+\]</div>
 
-  \[
-  T_Y:
-  Y
-  \longrightarrow
-  Y'
-  \]
+    
 
-  <p>
-    and
-  </p>
+    
 
-  \[
-  T_Z:
-  Z
-  \longrightarrow
-  Z'.
-  \]
+    <div class="limits"><strong>Limits</strong><ul><li>This is not unrestricted distributivity of arbitrary Operations.</li></ul></div>
 
-  <p>
-    Then
-  </p>
+    
 
-  <div class="schema">
+    
 
-    \[
-    \boxed{
-    (T_Y\times T_Z)
-    \circ
-    (F\parallel G)
-    =
-    (T_Y\circ F)
-    \parallel
-    (T_Z\circ G).
-    }
-    \]
+    
 
+    
   </div>
-
-  <p>
-    This is a valid product-separable identity.
-  </p>
-
-  <p>
-    It does not imply unrestricted distributivity of arbitrary
-    Operations over parallel composition.
-  </p>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- FAN OUT -->
-<!-- ========================================================= -->
 
 <section id="fan-out">
+  <h2>21. Fan-Out</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Canonical</div>
+      <div><strong>Class:</strong> parallel branching</div>
+    </div>
 
-  <h2>19. Fan-Out</h2>
+    <p>One response may be sent to several downstream Operations.</p>
 
-  <p>
-    A response state may be sent to several downstream Operations:
-  </p>
+    <div class="schema">\[
+\boxed{
+F_{\rm fan}
+=
+(F_1,\ldots,F_n).
+}
+\]</div>
 
-  \[
-  x
-  \longmapsto
-  \left(
-  F_1(x),
-  F_2(x),
-  \ldots,
-  F_n(x)
-  \right).
-  \]
+    
 
-  <p>
-    The joint map is
-  </p>
+    
 
-  <div class="schema">
+    
 
-    \[
-    \boxed{
-    F_{\mathrm{fan}}
-    =
-    (F_1,\ldots,F_n).
-    }
-    \]
+    
 
+    <div class="audit"><strong>SOE audit</strong><ul><li>Are all branch Operations simultaneously defined?</li><li>Are shared inputs or witnesses required?</li></ul></div>
+
+    
+
+    
   </div>
-
-  <p>
-    SOE must track whether all branches of the fan-out are simultaneously
-    defined.
-  </p>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- MERGE -->
-<!-- ========================================================= -->
 
 <section id="merge">
+  <h2>22. Merge Operations</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Canonical</div>
+      <div><strong>Class:</strong> joint recombination</div>
+    </div>
 
-  <h2>20. Merge Operations</h2>
+    <p>Several outputs may later be combined by a jointly admissible merge.</p>
 
-  <p>
-    Several outputs may later be combined by
-  </p>
+    <div class="schema">\[
+M:
+D_M
+\subseteq
+Y_1\times\cdots\times Y_n
+\to Z.
+\]</div>
 
-  \[
-  M:
-  D_M
-  \subseteq
-  Y_1\times\cdots\times Y_n
-  \longrightarrow
-  Z.
-  \]
+    
 
-  <p>
-    A complete fan-out/merge pipeline is therefore
-  </p>
+    
 
-  <div class="schema">
+    
 
-    \[
-    \boxed{
-    x
-    \longmapsto
-    \left(
-    F_1(x),\ldots,F_n(x)
-    \right)
-    \longmapsto
-    M
-    \left(
-    F_1(x),\ldots,F_n(x)
-    \right).
-    }
-    \]
+    <div class="failure"><strong>Failure tests</strong><ul><li>Each branch output can be individually valid while their tuple lies outside \(D_M\).</li></ul></div>
 
+    
+
+    
+
+    
   </div>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- ORDER -->
-<!-- ========================================================= -->
 
 <section id="order">
+  <h2>23. Operation Order</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Canonical</div>
+      <div><strong>Class:</strong> order semantics</div>
+    </div>
 
-  <h2>21. Operation Order</h2>
+    <p>SOE does not assume Operations commute. Order sensitivity can be the
+important mathematical fact.</p>
 
-  <p>
-    SOE does not assume that Operations commute.
-  </p>
+    <div class="schema">\[
+\boxed{
+F\circ G
+\neq
+G\circ F.
+}
+\]</div>
 
-  <div class="schema">
+    
 
-    \[
-    \boxed{
-    F\circ G
-    \neq
-    G\circ F
-    }
-    \]
+    
 
+    
+
+    
+
+    
+
+    
+
+    
   </div>
-
-  <p>
-    may be the mathematically important fact rather than a failure.
-  </p>
-
-  <p>
-    Order sensitivity can carry physical, computational, analytic, or
-    inferential meaning.
-  </p>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- COMMUTATOR -->
-<!-- ========================================================= -->
 
 <section id="commutator">
+  <h2>24. Operation-Order Defect</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Classical operator mathematics used by SOE</div>
+      <div><strong>Class:</strong> linear order diagnostic</div>
+    </div>
 
-  <h2>22. Operation-Order Defect</h2>
+    <p>For linear Operations on a common appropriate domain, the commutator is</p>
 
-  <p>
-    For linear Operations on a common appropriate domain, define the
-    commutator
-  </p>
+    <div class="schema">\[
+\boxed{
+[F,G]
+=
+F\circ G-G\circ F.
+}
+\]</div>
 
-  <div class="schema">
+    
 
-    \[
-    \boxed{
-    [F,G]
-    =
-    F\circ G
-    -
-    G\circ F.
-    }
-    \]
+    
 
+    <div class="limits"><strong>Limits</strong><ul><li>The subtraction form requires compatible algebraic structure.</li></ul></div>
+
+    
+
+    
+
+    
+
+    
   </div>
-
-  <p>
-    Exact commutation occurs when
-  </p>
-
-  \[
-  [F,G]=0.
-  \]
-
-  <p>
-    This formula requires algebraic structure supporting subtraction.
-  </p>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- GENERAL ORDER DEFECT -->
-<!-- ========================================================= -->
 
 <section id="general-order-defect">
+  <h2>25. General Order Defect</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Active</div>
+      <div><strong>Class:</strong> metric/discrepancy order diagnostic</div>
+    </div>
 
-  <h2>23. General Order Defect</h2>
+    <p>If subtraction is unavailable but the common output sector carries a
+justified discrepancy, order sensitivity can still be measured.</p>
 
-  <p>
-    If subtraction is unavailable but the output carries a justified
-    discrepancy \(d\), define
-  </p>
+    <div class="schema">\[
+\boxed{
+\Delta_{F,G}(x)
+=
+d\!\left(
+F(G(x)),
+G(F(x))
+\right).
+}
+\]</div>
 
-  <div class="schema">
+    
 
-    \[
-    \boxed{
-    \Delta_{F,G}(x)
-    =
-    d
-    \left(
-    F(G(x)),
-    G(F(x))
-    \right)
-    }
-    \]
+    
 
+    <div class="limits"><strong>Limits</strong><ul><li>Both paths must be defined at the tested state.</li></ul></div>
+
+    
+
+    
+
+    
+
+    
   </div>
-
-  <p>
-    where both composites are defined.
-  </p>
-
-  <p>
-    Exact commutation gives
-  </p>
-
-  \[
-  \Delta_{F,G}(x)=0.
-  \]
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- FILTER DIFFERENTIATE -->
-<!-- ========================================================= -->
 
 <section id="filter-differentiate">
+  <h2>26. Filtering and Differentiation</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Active applied SOE</div>
+      <div><strong>Class:</strong> order-sensitive analysis</div>
+    </div>
 
-  <h2>24. Filtering and Differentiation</h2>
+    <p>Filtering and differentiation may or may not commute depending on the
+filter, regularity, domain, boundary conditions, and derivative notion.</p>
 
-  <p>
-    Let \(K\) denote a filtering Operation and \(D\) a differentiation
-    Operation.
-  </p>
+    <div class="schema">\[
+\boxed{
+[D,K]u
+=
+D(Ku)-K(Du).
+}
+\]</div>
 
-  <p>
-    The two pipelines are
-  </p>
+    
 
-  \[
-  D(Ku)
-  \]
+    
 
-  <p>
-    and
-  </p>
+    
 
-  \[
-  K(Du).
-  \]
+    
 
-  <p>
-    Their difference is
-  </p>
+    
 
-  <div class="schema">
+    
 
-    \[
-    \boxed{
-    [D,K]u
-    =
-    D(Ku)-K(Du).
-    }
-    \]
-
+    <div class="crosslinks"><span class="link-label">Research:</span> <a href="research.html#navier-stokes">Navier–Stokes order audits</a></div>
   </div>
-
-  <p>
-    Whether this vanishes depends on the filter, domain, boundary
-    conditions, regularity, and differentiation notion.
-  </p>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- LOCALIZATION -->
-<!-- ========================================================= -->
 
 <section id="localization">
+  <h2>27. Localization Operations</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Canonical</div>
+      <div><strong>Class:</strong> local response transformation</div>
+    </div>
 
-  <h2>25. Localization Operations</h2>
+    <p>A localization map retains a region, scale, subsystem, or local
+representation. SOE asks whether later Operations admit corresponding local
+representatives.</p>
 
-  <p>
-    Let
-  </p>
+    <div class="schema">\[
+L_{\Omega'}\circ F
+=
+F_\Omega\circ L_\Omega
+\]
+when exact localization compatibility holds.</div>
 
-  \[
-  L_\Omega:
-  X
-  \longrightarrow
-  X_\Omega
-  \]
+    
 
-  <p>
-    retain information associated with a region, scale, subsystem, or
-    local representation.
-  </p>
+    
 
-  <p>
-    SOE asks whether a later Operation \(F\) satisfies a compatibility
-    relation such as
-  </p>
+    
 
-  \[
-  L_{\Omega'}
-  \circ
-  F
-  =
-  F_\Omega
-  \circ
-  L_\Omega
-  \]
+    
 
-  <p>
-    for some local Operation \(F_\Omega\).
-  </p>
+    
 
+    
+
+    
+  </div>
 </section>
-
-
-<!-- ========================================================= -->
-<!-- PROJECTION -->
-<!-- ========================================================= -->
 
 <section id="projection">
+  <h2>28. Projection</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Canonical</div>
+      <div><strong>Class:</strong> reduction Operation</div>
+    </div>
 
-  <h2>26. Projection</h2>
+    <p>Projection reduces a response representation and may erase distinctions
+needed later.</p>
 
-  <p>
-    A projection may reduce a state:
-  </p>
+    <div class="schema">\[
+P:X\to Y.
+\]</div>
 
-  \[
-  P:
-  X
-  \longrightarrow
-  Y.
-  \]
+    
 
-  <p>
-    Projection may be:
-  </p>
+    
 
-  <p>
-    coordinate projection · spectral projection · quotient map ·
-    coarse-graining · feature extraction · reduced-state map
-  </p>
+    
 
-  <p>
-    SOE tracks what later Operations still remain well-defined after the
-    projection.
-  </p>
+    
 
+    <div class="audit"><strong>SOE audit</strong><ul><li>Which fibres does \(P\) create?</li><li>Which later Tasks vary inside those fibres?</li></ul></div>
+
+    
+
+    
+  </div>
 </section>
-
-
-<!-- ========================================================= -->
-<!-- RECONSTRUCTION -->
-<!-- ========================================================= -->
 
 <section id="reconstruction">
+  <h2>29. Reconstruction</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Canonical</div>
+      <div><strong>Class:</strong> inverse/repair Operation</div>
+    </div>
 
-  <h2>27. Reconstruction</h2>
+    <p>Reconstruction attempts to recover a state, Task, or admissible
+representative from reduced information.</p>
 
-  <p>
-    Let
-  </p>
+    
 
-  \[
-  P:
-  X
-  \longrightarrow
-  Y
-  \]
+    <h3>Mathematical objects</h3><ul><li>exact reconstruction;</li><li>Task-equivalent reconstruction;</li><li>approximate reconstruction;</li><li>regularized reconstruction;</li><li>physically admissible reconstruction.</li></ul>
 
-  <p>
-    be a reduced representation and
-  </p>
+    
 
-  \[
-  Q:
-  D_Q
-  \subseteq
-  Y
-  \longrightarrow
-  X'
-  \]
+    <div class="limits"><strong>Limits</strong><ul><li>Unique regularized output does not imply source identifiability.</li></ul></div>
 
-  <p>
-    a reconstruction Operation.
-  </p>
+    
 
-  <p>
-    SOE distinguishes:
-  </p>
+    
 
-  <ul>
-    <li>exact reconstruction;</li>
-    <li>Task-equivalent reconstruction;</li>
-    <li>approximate reconstruction;</li>
-    <li>regularized reconstruction;</li>
-    <li>physically admissible reconstruction.</li>
-  </ul>
+    
 
+    
+  </div>
 </section>
-
-
-<!-- ========================================================= -->
-<!-- INTERVENTION -->
-<!-- ========================================================= -->
 
 <section id="intervention">
+  <h2>30. Intervention as an Operation</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Canonical</div>
+      <div><strong>Class:</strong> controlled response Operation</div>
+    </div>
 
-  <h2>28. Intervention as an Operation</h2>
+    <p>An Intervention actively changes state or response.</p>
 
-  <p>
-    Let
-  </p>
+    <div class="schema">\[
+\boxed{
+O:X\times U\to Y.
+}
+\]</div>
 
-  \[
-  u\in U
-  \]
+    
 
-  <p>
-    denote an Intervention.
-  </p>
+    
 
-  <p>
-    A controlled Operation may be
-  </p>
+    
 
-  <div class="schema">
+    
 
-    \[
-    \boxed{
-    O:
-    D_O
-    \subseteq
-    X\times U
-    \longrightarrow
-    Y.
-    }
-    \]
+    
 
+    
+
+    
   </div>
-
-  <p>
-    Different Interventions may alter:
-  </p>
-
-  <p>
-    response · admissibility · future state · available information ·
-    future Operations · law or Regime
-  </p>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- POLICY -->
-<!-- ========================================================= -->
 
 <section id="policy">
+  <h2>31. Policy-Controlled Operations</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Active</div>
+      <div><strong>Class:</strong> closed policy Operation</div>
+    </div>
 
-  <h2>29. Policy-Controlled Operations</h2>
+    <p>For a fixed single-valued policy \(\pi:X\to U\), the policy-controlled
+Operation is</p>
 
-  <p>
-    A policy may select an Intervention from the current state:
-  </p>
+    <div class="schema">\[
+\boxed{
+O_\pi(x)=O(x,\pi(x)).
+}
+\]</div>
 
-  \[
-  \pi:
-  X
-  \longrightarrow
-  U.
-  \]
+    
 
-  <p>
-    The closed policy-controlled Operation becomes
-  </p>
+    
 
-  <div class="schema">
+    <div class="limits"><strong>Limits</strong><ul><li>The reduction requires the chosen semantic sector to support a single-valued closed Operation.</li></ul></div>
 
-    \[
-    \boxed{
-    O_\pi(x)
-    =
-    O(x,\pi(x)).
-    }
-    \]
+    
 
+    
+
+    
+
+    
   </div>
-
-  <p>
-    This reduction is valid only when the policy is fixed and the result
-    is single-valued in the chosen semantic sector.
-  </p>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- ADAPTIVE -->
-<!-- ========================================================= -->
 
 <section id="adaptive">
+  <h2>32. Adaptive Operation Selection</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Active</div>
+      <div><strong>Class:</strong> history/state dependent Operation choice</div>
+    </div>
 
-  <h2>30. Adaptive Operation Selection</h2>
+    <p>A later Operation may be selected using an earlier response.</p>
 
-  <p>
-    A later Operation may depend on an earlier result.
-  </p>
+    <div class="schema">\[
+\boxed{
+A(x)=
+\left(
+F(x),
+G_{F(x)}(x)
+\right).
+}
+\]</div>
 
-  <p>
-    If
-  </p>
+    
 
-  \[
-  F:
-  X
-  \longrightarrow
-  Y
-  \]
+    
 
-  <p>
-    and each \(y\in Y\) selects an Operation
-  </p>
+    
 
-  \[
-  G_y:
-  X
-  \longrightarrow
-  Z,
-  \]
+    
 
-  <p>
-    an adaptive response may be
-  </p>
+    
 
-  <div class="schema">
+    
 
-    \[
-    \boxed{
-    A(x)
-    =
-    \left(
-    F(x),
-    G_{F(x)}(x)
-    \right).
-    }
-    \]
-
+    
   </div>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- FEEDBACK -->
-<!-- ========================================================= -->
 
 <section id="feedback">
+  <h2>33. Feedback</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Active</div>
+      <div><strong>Class:</strong> closed-loop Operation system</div>
+    </div>
 
-  <h2>31. Feedback</h2>
+    <p>Feedback allows response information to determine future Operation
+selection.</p>
 
-  <p>
-    A feedback system uses response information to influence later
-    Operation selection or system evolution.
-  </p>
+    <div class="schema">\[
+y_n=H(x_n),
+\qquad
+u_n=\pi(y_{0:n}),
+\qquad
+x_{n+1}=\Phi(x_n,u_n).
+\]</div>
 
-  <p>
-    A deterministic closed-loop map may take form
-  </p>
+    
 
-  \[
-  \Phi_\pi:
-  X
-  \longrightarrow
-  X.
-  \]
+    
 
-  <p>
-    The closed-loop representation is valid only after the feedback
-    policy, response semantics, admissibility, and Operation order are
-    defined.
-  </p>
+    <div class="limits"><strong>Limits</strong><ul><li>Stability is a native control/dynamical question, often audited with ACE.</li></ul></div>
 
+    
+
+    
+
+    
+
+    
+  </div>
 </section>
 
+<section id="feedback-state">
+  <h2>34. Feedback Information State</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Active</div>
+      <div><strong>Class:</strong> feedback Passport state</div>
+    </div>
 
-<!-- ========================================================= -->
-<!-- HANDOFF -->
-<!-- ========================================================= -->
+    <p>When the controller uses history, the effective Operation state must
+include whatever history summary the policy requires.</p>
+
+    <div class="schema">\[
+\boxed{
+\eta_n
+=
+\Gamma(y_0,\ldots,y_n),
+\qquad
+u_n=\pi(\eta_n).
+}
+\]</div>
+
+    
+
+    
+
+    
+
+    <div class="failure"><strong>Failure tests</strong><ul><li>Using \(y_n\) alone when the policy actually depends on history.</li></ul></div>
+
+    
+
+    
+
+    
+  </div>
+</section>
+
+<section id="feedback-delay">
+  <h2>35. Feedback Delay</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Active</div>
+      <div><strong>Class:</strong> temporal Operation defect</div>
+    </div>
+
+    <p>Delay changes the closed-loop Operation even when the controller formula
+is unchanged.</p>
+
+    <div class="schema">\[
+\boxed{
+u_n=\pi(y_{n-d})
+}
+\]
+for delay \(d\ge0\).</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>Delay-induced stability and robustness remain native control questions.</li></ul></div>
+
+    
+
+    
+
+    
+
+    
+  </div>
+</section>
 
 <section id="handoff">
+  <h2>36. Handoff</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Canonical</div>
+      <div><strong>Class:</strong> Interface transfer</div>
+    </div>
 
-  <h2>32. Handoff</h2>
+    <p>A handoff transfers an Operation output into a receiving Operation or
+mathematical structure.</p>
 
-  <p>
-    A handoff occurs when the output of one Operation is transferred to
-    another mathematical structure.
-  </p>
+    <div class="schema">\[
+F:D_F\to Y,
+\qquad
+G:D_G\subseteq Y\to Z,
+\]
+\[
+\boxed{
+F(x)\in D_G.
+}
+\]</div>
 
-  <p>
-    Let
-  </p>
+    
 
-  \[
-  F:
-  X
-  \longrightarrow
-  Y
-  \]
+    
 
-  <p>
-    produce the outgoing state.
-  </p>
+    
 
-  <p>
-    Let the receiver accept only
-  </p>
+    
 
-  \[
-  D_G
-  \subseteq
-  Y.
-  \]
+    
 
-  <p>
-    Handoff success requires
-  </p>
+    
 
-  <div class="schema">
-
-    \[
-    \boxed{
-    F(x)\in D_G.
-    }
-    \]
-
+    
   </div>
-
 </section>
 
+<section id="handoff-contract">
+  <h2>37. Handoff Contract</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Active formalization</div>
+      <div><strong>Class:</strong> SOE Interface contract</div>
+    </div>
 
-<!-- ========================================================= -->
-<!-- REBIND -->
-<!-- ========================================================= -->
+    <p>A mathematically mature handoff should expose more than output type.</p>
+
+    
+
+    <h3>Mathematical objects</h3><ul><li>receiver domain;</li><li>units/coordinates;</li><li>active Regime;</li><li>required Passport information;</li><li>uncertainty/noise semantics;</li><li>timing/sampling assumptions;</li><li>boundary/initial context;</li><li>provenance;</li><li>failure/repair rule.</li></ul>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </div>
+</section>
 
 <section id="rebind">
+  <h2>38. Rebinding</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Active canonical function</div>
+      <div><strong>Class:</strong> SOE Interface update</div>
+    </div>
 
-  <h2>33. Rebinding</h2>
+    <p>REBIND updates the active receiving Interface when type, law, calibration,
+Passport, or other response context changes.</p>
 
-  <p>
-    A handoff may require the outgoing information to be interpreted in a
-    new receiving type or law context.
-  </p>
+    <div class="schema">\[
+\boxed{
+\mathcal I_{n+1}
+=
+\operatorname{REBIND}
+(
+\mathcal I_n,
+R_n,
+\lambda_n,
+\mathcal P_n
+).
+}
+\]</div>
 
-  <p>
-    A rebinding map may be represented by
-  </p>
+    
 
-  \[
-  B:
-  D_B
-  \subseteq
-  Y
-  \longrightarrow
-  Y'.
-  \]
+    
 
-  <p>
-    The full transfer then becomes
-  </p>
+    
 
-  \[
-  x
-  \xrightarrow{F}
-  y
-  \xrightarrow{B}
-  y'.
-  \]
+    
 
-  <p>
-    Rebinding must be an explicit mathematical transformation rather than
-    an unannounced change in interpretation.
-  </p>
+    
 
+    
+
+    
+  </div>
 </section>
 
+<section id="rebind-contract">
+  <h2>39. REBIND Contract</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Active</div>
+      <div><strong>Class:</strong> SOE re-interpretation contract</div>
+    </div>
 
-<!-- ========================================================= -->
-<!-- HIDDEN COERCION -->
-<!-- ========================================================= -->
+    <p>A lawful REBIND must say what changed and which facts remain valid.</p>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="audit"><strong>SOE audit</strong><ul><li>Which source fields are preserved?</li><li>Which target fields are recomputed?</li><li>Which units or coordinates change?</li><li>Does the law/Regime change?</li><li>Are old certificates still valid?</li><li>Which downstream Operations must be invalidated or recomputed?</li></ul></div>
+
+    
+
+    
+  </div>
+</section>
 
 <section id="coercion">
+  <h2>40. Hidden-Coercion Firewall</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Canonical firewall</div>
+      <div><strong>Class:</strong> type integrity</div>
+    </div>
 
-  <h2>34. Hidden-Coercion Firewall</h2>
+    <p>Similar notation does not imply mathematical identity.</p>
 
-  <div class="schema">
+    <div class="schema">\[
+\boxed{
+\text{similar notation}
+\not\Rightarrow
+\text{same mathematical type}.
+}
+\]</div>
 
-    \[
-    \boxed{
-    \text{similar notation}
-    \not\Rightarrow
-    \text{same mathematical type}.
-    }
-    \]
+    
 
+    
+
+    
+
+    <div class="failure"><strong>Failure tests</strong><ul><li>Silent coordinate conversion.</li><li>Silent unit conversion.</li><li>Silent deterministicization of a stochastic object.</li><li>Silent state-to-estimate substitution.</li></ul></div>
+
+    
+
+    
+
+    
   </div>
-
-  <p>
-    SOE does not allow one mathematical object to be silently treated as
-    another merely because the symbols look compatible.
-  </p>
-
-  <p>
-    Any coercion, embedding, projection, coordinate conversion, or
-    representation change should be explicit when mathematically
-    significant.
-  </p>
-
 </section>
 
+<section id="provenance">
+  <h2>41. Operation Provenance</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Active</div>
+      <div><strong>Class:</strong> SOE Passport/provenance structure</div>
+    </div>
 
-<!-- ========================================================= -->
-<!-- PASSPORT -->
-<!-- ========================================================= -->
+    <p>When later mathematics depends on how an output was produced, Operation
+history becomes required response information.</p>
+
+    <div class="schema">\[
+\boxed{
+\Pi_O
+=
+(O_1,\ldots,O_n;
+\lambda_1,\ldots,\lambda_n;
+\mathcal I_1,\ldots,\mathcal I_n).
+}
+\]</div>
+
+    
+
+    <div class="abilities"><strong>What this allows</strong><ul><li>Distinguish numerically equal outputs with different transformation histories.</li></ul></div>
+
+    
+
+    
+
+    
+
+    
+
+    
+  </div>
+</section>
 
 <section id="passport">
+  <h2>42. SOE and Passports</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Canonical</div>
+      <div><strong>Class:</strong> Operation information requirement</div>
+    </div>
 
-  <h2>35. SOE and Passports</h2>
+    <p>An Operation may require distinctions not visible in a compressed
+response state. Passport sufficiency should be checked before execution.</p>
 
-  <p>
-    An Operation may require Passport information.
-  </p>
+    
 
-  <p>
-    Let
-  </p>
+    
 
-  \[
-  P:
-  X
-  \longrightarrow
-  Q
-  \]
+    
 
-  <p>
-    represent retained information.
-  </p>
+    
 
-  <p>
-    Operation \(O\) is executable from Passport state \(P(x)\) only if
-    the information required by \(O\) remains recoverable from that
-    Passport.
-  </p>
+    
 
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Passports:</span> <a href="passports.html#semantic-families">Passport families</a></div>
+  </div>
 </section>
-
-
-<!-- ========================================================= -->
-<!-- PASSPORT FACTOR -->
-<!-- ========================================================= -->
 
 <section id="passport-factorization">
+  <h2>43. Passport-Sufficient Operation</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Mathematically established exact criterion</div>
+      <div><strong>Class:</strong> exact deterministic factorization</div>
+    </div>
 
-  <h2>36. Passport-Sufficient Operation</h2>
+    <p>Passport \(P\) is sufficient to compute Operation \(O\) when \(O\)
+factors through the realized Passport image.</p>
 
-  <p>
-    Let
-  </p>
+    <div class="schema">\[
+\boxed{
+O
+=
+\widetilde O\circ P,
+\qquad
+\widetilde O:P(X)\to Y.
+}
+\]</div>
 
-  \[
-  O:
-  X
-  \longrightarrow
-  Y.
-  \]
+    
 
-  <p>
-    Passport \(P\) is sufficient for computing \(O\) when there exists
-  </p>
+    
 
-  \[
-  \widetilde O:
-  P(X)
-  \longrightarrow
-  Y
-  \]
+    
 
-  <p>
-    satisfying
-  </p>
+    
 
-  <div class="schema">
+    
 
-    \[
-    \boxed{
-    O
-    =
-    \widetilde O\circ P.
-    }
-    \]
+    
 
+    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#recoverability">Exact Recoverability</a></div>
   </div>
-
-  <p>
-    Equivalently,
-  </p>
-
-  \[
-  P(x)=P(x')
-  \Longrightarrow
-  O(x)=O(x').
-  \]
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- PRESERVATION -->
-<!-- ========================================================= -->
 
 <section id="preservation">
+  <h2>44. Operation Preservation of Passport Information</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Canonical</div>
+      <div><strong>Class:</strong> Interface factorization</div>
+    </div>
 
-  <h2>37. Operation Preservation of Passport Information</h2>
+    <p>Exact deterministic transfer of represented information requires a
+commuting represented map.</p>
 
-  <p>
-    Suppose source Passport
-  </p>
+    <div class="schema">\[
+\boxed{
+P_Y\circ F
+=
+G\circ P_X.
+}
+\]</div>
 
-  \[
-  P_X:
-  X
-  \longrightarrow
-  Q_X
-  \]
+    
 
-  <p>
-    and target Passport
-  </p>
+    
 
-  \[
-  P_Y:
-  Y
-  \longrightarrow
-  Q_Y
-  \]
+    
 
-  <p>
-    are connected by Operation
-  </p>
+    
 
-  \[
-  F:
-  X
-  \longrightarrow
-  Y.
-  \]
+    
 
-  <p>
-    Exact transfer through represented map
-  </p>
+    
 
-  \[
-  G:
-  P_X(X)
-  \longrightarrow
-  Q_Y
-  \]
-
-  <p>
-    requires
-  </p>
-
-  <div class="schema">
-
-    \[
-    \boxed{
-    P_Y\circ F
-    =
-    G\circ P_X.
-    }
-    \]
-
+    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#interface-factorization">Interface factorization</a></div>
   </div>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- SERIAL INFO LOSS -->
-<!-- ========================================================= -->
 
 <section id="serial-information-loss">
+  <h2>45. Serial Information-Loss Law</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Mathematically established</div>
+      <div><strong>Class:</strong> deterministic information loss</div>
+    </div>
 
-  <h2>38. Serial Information-Loss Law</h2>
+    <p>Downstream deterministic processing cannot recreate a distinction
+already erased upstream unless new information enters through another route.</p>
 
-  <p>
-    Let
-  </p>
+    <div class="schema">\[
+F(x)=F(x')
+\Longrightarrow
+\boxed{
+(G\circ F)(x)
+=
+(G\circ F)(x').
+}
+\]</div>
 
-  \[
-  X
-  \xrightarrow{F}
-  Y
-  \xrightarrow{G}
-  Z.
-  \]
+    
 
-  <p>
-    If
-  </p>
+    
 
-  \[
-  F(x)=F(x'),
-  \]
+    
 
-  <p>
-    then
-  </p>
+    
 
-  <div class="schema">
+    
 
-    \[
-    \boxed{
-    (G\circ F)(x)
-    =
-    (G\circ F)(x').
-    }
-    \]
+    
 
+    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#serial-loss">Serial loss</a></div>
   </div>
-
-  <p>
-    Deterministic downstream processing cannot recover a distinction
-    already erased by \(F\) unless additional information enters by
-    another route.
-  </p>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- QUOTIENT -->
-<!-- ========================================================= -->
 
 <section id="quotient">
+  <h2>46. Operations on Quotient Representations</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Conditional by sector</div>
+      <div><strong>Class:</strong> structured quotient</div>
+    </div>
 
-  <h2>39. Operations on Quotient Representations</h2>
+    <p>An Operation descends to a quotient only when it respects the
+equivalence relation in the required sector.</p>
 
-  <p>
-    Suppose representation \(P\) induces equivalence
-  </p>
+    <div class="schema">\[
+x\sim_Px'
+\Longrightarrow
+\boxed{
+O(x)\sim_P O(x')
+}
+\]
+for the unary deterministic case.</div>
 
-  \[
-  x\sim_Px'.
-  \]
+    
 
-  <p>
-    Operation \(O\) descends to the quotient only when
-  </p>
+    
 
-  <div class="schema">
+    
 
-    \[
-    \boxed{
-    x\sim_Px'
-    \Longrightarrow
-    O(x)\sim_P O(x')
-    }
-    \]
+    
 
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#bm-sq-01">BM-SQ-01</a></div>
   </div>
-
-  <p>
-    in the unary case, with the appropriate multi-input generalization
-    for higher-arity Operations.
-  </p>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- DYNAMIC CLOSURE -->
-<!-- ========================================================= -->
 
 <section id="dynamic-closure">
+  <h2>47. SOE and Dynamic Closure</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Mathematically established exact criterion</div>
+      <div><strong>Class:</strong> reduced Operation closure</div>
+    </div>
 
-  <h2>40. SOE and Dynamic Closure</h2>
+    <p>A full-state update descends to reduced response state only when equal
+reduced states have equal reduced successors.</p>
 
-  <p>
-    Suppose
-  </p>
+    <div class="schema">\[
+\boxed{
+R\circ\Phi
+=
+\widetilde\Phi\circ R.
+}
+\]</div>
 
-  \[
-  R:
-  X
-  \longrightarrow
-  Z
-  \]
+    
 
-  <p>
-    is a reduced representation and
-  </p>
+    
 
-  \[
-  \Phi:
-  X
-  \longrightarrow
-  X
-  \]
+    
 
-  <p>
-    is one full-state update Operation.
-  </p>
+    
 
-  <p>
-    Exact reduced closure requires
-  </p>
+    
 
-  \[
-  \widetilde\Phi:
-  R(X)
-  \longrightarrow
-  R(X)
-  \]
+    
 
-  <p>
-    satisfying
-  </p>
-
-  <div class="schema">
-
-    \[
-    \boxed{
-    R\circ\Phi
-    =
-    \widetilde\Phi\circ R.
-    }
-    \]
-
+    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#dynamic-closure">Dynamic Closure</a></div>
   </div>
-
-  <p>
-    SOE identifies \(\Phi\) as the Operation whose action must descend
-    lawfully to the reduced representation.
-  </p>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- PIPELINE -->
-<!-- ========================================================= -->
 
 <section id="pipeline">
+  <h2>48. Operation Pipeline</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Canonical</div>
+      <div><strong>Class:</strong> finite serial pipeline</div>
+    </div>
 
-  <h2>41. Operation Pipeline</h2>
+    <p>A finite deterministic Operation pipeline is a composition of
+individually typed stages.</p>
 
-  <p>
-    A finite deterministic pipeline may be written
-  </p>
+    <div class="schema">\[
+X_0\xrightarrow{F_1}X_1
+\xrightarrow{F_2}\cdots
+\xrightarrow{F_n}X_n,
+\qquad
+\boxed{
+F_{\rm pipe}
+=
+F_n\circ\cdots\circ F_1.
+}
+\]</div>
 
-  \[
-  X_0
-  \xrightarrow{F_1}
-  X_1
-  \xrightarrow{F_2}
-  X_2
-  \xrightarrow{F_3}
-  \cdots
-  \xrightarrow{F_n}
-  X_n.
-  \]
+    
 
-  <p>
-    The resulting Operation is
-  </p>
+    
 
-  <div class="schema">
+    
 
-    \[
-    \boxed{
-    F_{\mathrm{pipe}}
-    =
-    F_n
-    \circ
-    \cdots
-    \circ
-    F_2
-    \circ
-    F_1
-    }
-    \]
+    
 
+    
+
+    
+
+    
   </div>
-
-  <p>
-    on the domain where every intermediate Operation is defined.
-  </p>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- PIPELINE DOMAIN -->
-<!-- ========================================================= -->
 
 <section id="pipeline-domain">
+  <h2>49. Pipeline Admissible Domain</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Canonical</div>
+      <div><strong>Class:</strong> recursive domain</div>
+    </div>
 
-  <h2>42. Pipeline Admissible Domain</h2>
+    <p>The pipeline domain is the set of source states whose intermediate
+outputs remain admissible at every stage.</p>
 
-  <p>
-    The pipeline domain is recursively constrained.
-  </p>
+    <div class="schema">\[
+\boxed{
+D_{\rm pipe}
+=
+\left\{
+x\in D_1:
+F_1(x)\in D_2,\ldots,
+F_{n-1}\circ\cdots\circ F_1(x)\in D_n
+\right\}.
+}
+\]</div>
 
-  <p>
-    For three Operations,
-  </p>
+    
 
-  \[
-  F_1:
-  D_1\subseteq X_0\to X_1,
-  \]
+    
 
-  \[
-  F_2:
-  D_2\subseteq X_1\to X_2,
-  \]
+    
 
-  \[
-  F_3:
-  D_3\subseteq X_2\to X_3,
-  \]
+    
 
-  <p>
-    the full domain is
-  </p>
+    
 
-  <div class="schema">
+    
 
-    \[
-    \boxed{
-    D_{\mathrm{pipe}}
-    =
-    \left\{
-    x\in D_1:
-    F_1(x)\in D_2,
-    \;
-    F_2(F_1(x))\in D_3
-    \right\}.
-    }
-    \]
-
+    
   </div>
-
 </section>
 
+<section id="pipeline-provenance">
+  <h2>50. Pipeline Provenance</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Active</div>
+      <div><strong>Class:</strong> serial history record</div>
+    </div>
 
-<!-- ========================================================= -->
-<!-- PATH -->
-<!-- ========================================================= -->
+    <p>The output value alone may be insufficient when later interpretation
+depends on the pipeline that produced it.</p>
+
+    <div class="schema">\[
+\boxed{
+\Pi_{\rm pipe}
+=
+(F_1,\ldots,F_n;
+D_1,\ldots,D_n;
+\lambda_1,\ldots,\lambda_n).
+}
+\]</div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </div>
+</section>
 
 <section id="paths">
+  <h2>51. Multiple Operation Paths</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Canonical</div>
+      <div><strong>Class:</strong> path coherence</div>
+    </div>
 
-  <h2>43. Multiple Operation Paths</h2>
+    <p>Two legal paths from one source to one destination may or may not agree.</p>
 
-  <p>
-    A response system may contain two paths from \(X\) to \(Z\):
-  </p>
+    <div class="schema">\[
+X\xrightarrow{F}Y\xrightarrow{G}Z,
+\qquad
+X\xrightarrow{H}Z,
+\]
+\[
+\boxed{
+G\circ F=H
+}
+\]
+for exact path coherence.</div>
 
-  \[
-  X
-  \xrightarrow{F}
-  Y
-  \xrightarrow{G}
-  Z
-  \]
+    
 
-  <p>
-    and
-  </p>
+    
 
-  \[
-  X
-  \xrightarrow{H}
-  Z.
-  \]
+    
 
-  <p>
-    SOE can ask whether
-  </p>
+    
 
-  <div class="schema">
+    
 
-    \[
-    \boxed{
-    G\circ F
-    =
-    H.
-    }
-    \]
+    
 
+    
   </div>
-
-  <p>
-    This is an exact path-coherence condition.
-  </p>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- APPROX PATH -->
-<!-- ========================================================= -->
 
 <section id="approximate-path">
+  <h2>52. Approximate Path Coherence</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Active</div>
+      <div><strong>Class:</strong> approximate coherence</div>
+    </div>
 
-  <h2>44. Approximate Path Coherence</h2>
+    <p>When exact equality is too strong, a declared destination discrepancy
+and tolerance may be used.</p>
 
-  <p>
-    If \(Z\) carries a justified discrepancy \(d_Z\), an approximate path
-    condition may be
-  </p>
+    <div class="schema">\[
+\boxed{
+d_Z(G(F(x)),H(x))
+\le\varepsilon.
+}
+\]</div>
 
-  <div class="schema">
+    
 
-    \[
-    \boxed{
-    d_Z
-    \left(
-    G(F(x)),
-    H(x)
-    \right)
-    \le
-    \varepsilon.
-    }
-    \]
+    
 
+    
+
+    
+
+    
+
+    
+
+    
   </div>
-
-  <p>
-    The domain and tolerance must be declared.
-  </p>
-
 </section>
 
+<section id="normal-form">
+  <h2>53. Pipeline Normal Form</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Active research formalization</div>
+      <div><strong>Class:</strong> pipeline normalization</div>
+    </div>
 
-<!-- ========================================================= -->
-<!-- ACE -->
-<!-- ========================================================= -->
+    <p>A normalization procedure should transform only mathematically
+equivalent pipelines, preserving the actual domain and response semantics.</p>
+
+    <div class="schema">\[
+\boxed{
+\mathcal N(\Pi_1)
+=
+\mathcal N(\Pi_2)
+}
+\]
+is meaningful only if the normalization theorem proves the intended
+equivalence.</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>Reordering noncommuting Operations is not normalization.</li></ul></div>
+
+    
+
+    
+
+    
+
+    
+  </div>
+</section>
 
 <section id="ace-interface">
+  <h2>54. SOE + ACE</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Canonical cross-extension interface</div>
+      <div><strong>Class:</strong> Operation/admissibility composition</div>
+    </div>
 
-  <h2>45. SOE + ACE</h2>
+    <p>SOE specifies the Operation; ACE determines whether its input, output,
+or trajectory is admissible.</p>
 
-  <p>
-    SOE determines how an Operation is typed and composed.
-  </p>
+    <div class="schema">\[
+\boxed{
+\mathrm{SOE\ Operation}
++
+\mathrm{ACE\ admissibility}
+\to
+\mathrm{lawful\ constrained\ Operation}.
+}
+\]</div>
 
-  <p>
-    ACE determines whether the Operation or resulting state is
-    admissible.
-  </p>
+    
 
-  <div class="schema">
+    
 
-    \[
-    \boxed{
-    \text{SOE operation}
-    +
-    \text{ACE admissibility}
-    \longrightarrow
-    \text{lawful constrained operation}.
-    }
-    \]
+    
 
+    
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">GURF:</span> <a href="gurf.html#ace">ACE</a></div>
   </div>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- IRE -->
-<!-- ========================================================= -->
 
 <section id="ire-interface">
+  <h2>55. SOE + IRE</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Canonical cross-extension interface</div>
+      <div><strong>Class:</strong> Operation/inference composition</div>
+    </div>
 
-  <h2>46. SOE + IRE</h2>
+    <p>IRE asks whether a transformed response still carries enough
+information to recover the requested target.</p>
 
-  <p>
-    An Operation may destroy information needed by an inverse problem.
-  </p>
+    <div class="schema">\[
+X\xrightarrow{F}Y\xrightarrow{O}Z,
+\qquad
+\boxed{
+(O\circ F)(x)
+=
+(O\circ F)(x')
+\Rightarrow
+T(x)=T(x').
+}
+\]</div>
 
-  <p>
-    If
-  </p>
+    
 
-  \[
-  X
-  \xrightarrow{F}
-  Y
-  \xrightarrow{O}
-  Z,
-  \]
+    
 
-  <p>
-    IRE asks whether a required target can still be recovered from the
-    transformed Observation
-  </p>
+    
 
-  \[
-  O\circ F.
-  \]
+    
 
+    
+
+    
+
+    
+  </div>
 </section>
-
-
-<!-- ========================================================= -->
-<!-- UKE -->
-<!-- ========================================================= -->
 
 <section id="uke-interface">
+  <h2>56. SOE + UKE</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Canonical cross-extension interface</div>
+      <div><strong>Class:</strong> Operation/kernel composition</div>
+    </div>
 
-  <h2>47. SOE + UKE</h2>
+    <p>SOE governs ordering and handoff of kernel-, Green-, spectral-,
+resolvent-, or memory-based Operations. UKE supplies the native kernel
+semantics.</p>
 
-  <p>
-    Kernel-based operators can be treated as typed Operations inside SOE
-    while UKE retains their specialized kernel mathematics.
-  </p>
+    
 
-  <p>
-    For example,
-  </p>
+    
 
-  \[
-  (Kf)(x)
-  =
-  \int
-  K(x,y)f(y)\,dy
-  \]
+    
 
-  <p>
-    is an Operation whose domain, codomain, boundedness, regularity,
-    causality, and composition properties depend on the chosen kernel
-    sector.
-  </p>
+    
 
+    
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">GURF:</span> <a href="gurf.html#uke">UKE</a></div>
+  </div>
 </section>
-
-
-<!-- ========================================================= -->
-<!-- HDE -->
-<!-- ========================================================= -->
 
 <section id="hde-interface">
+  <h2>57. SOE + HDE</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Canonical cross-extension interface</div>
+      <div><strong>Class:</strong> Operation/extended-state composition</div>
+    </div>
 
-  <h2>48. SOE + HDE</h2>
+    <p>An Operation acting only on local state may be insufficient if future
+response depends on an extended state.</p>
 
-  <p>
-    An Operation acting only on local state may fail to determine the
-    evolution of an extended response state.
-  </p>
+    <div class="schema">\[
+x_{\rm ext}=(x_D,x_H).
+\]</div>
 
-  <p>
-    If
-  </p>
+    
 
-  \[
-  x_{\mathrm{ext}}
-  =
-  (x_D,x_H),
-  \]
+    
 
-  <p>
-    SOE must track whether an Operation acts on:
-  </p>
+    
 
-  <p>
-    \(x_D\) only · \(x_H\) only · both components · a history-dependent
-    functional of both
-  </p>
+    
 
+    
+
+    
+
+    
+  </div>
 </section>
-
-
-<!-- ========================================================= -->
-<!-- GHSE -->
-<!-- ========================================================= -->
 
 <section id="ghse-interface">
+  <h2>58. SOE + GHSE</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Canonical cross-extension interface</div>
+      <div><strong>Class:</strong> Operation/hold-state composition</div>
+    </div>
 
-  <h2>49. SOE + GHSE</h2>
+    <p>SOE governs typing and order of join/release Operations; GHSE governs
+the response semantics of held, joined, released, or transitioning states.</p>
 
-  <p>
-    A glue or release event may itself be represented as an Operation:
-  </p>
+    
 
-  \[
-  J:
-  D_J
-  \subseteq
-  X_A\times X_B
-  \longrightarrow
-  X_{AB}.
-  \]
+    
 
-  <p>
-    SOE governs typing and order.
-  </p>
+    
 
-  <p>
-    GHSE governs the response semantics of joined, held, released, or
-    transitioning states.
-  </p>
+    
 
+    
+
+    
+
+    
+
+    
+  </div>
 </section>
-
-
-<!-- ========================================================= -->
-<!-- STOCHASTIC -->
-<!-- ========================================================= -->
 
 <section id="stochastic">
+  <h2>59. Stochastic SOE Operations</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Canonical</div>
+      <div><strong>Class:</strong> stochastic Operation sector</div>
+    </div>
 
-  <h2>50. Stochastic SOE Operations</h2>
+    <p>A stochastic Operation is a Markov kernel rather than a deterministic
+function.</p>
 
-  <p>
-    A stochastic Operation may be represented by a Markov kernel
-  </p>
+    <div class="schema">\[
+K:X\rightsquigarrow Y.
+\]</div>
 
-  \[
-  M:
-  X
-  \longrightarrow
-  \mathcal P(Y).
-  \]
+    
 
-  <p>
-    Serial stochastic composition is not ordinary function substitution.
-  </p>
+    
 
-  <p>
-    If
-  </p>
+    
 
-  \[
-  M:
-  X
-  \longrightarrow
-  \mathcal P(Y)
-  \]
+    
 
-  <p>
-    and
-  </p>
+    
 
-  \[
-  N:
-  Y
-  \longrightarrow
-  \mathcal P(Z),
-  \]
+    
 
-  <p>
-    then the composed kernel is
-  </p>
-
-  <div class="schema">
-
-    \[
-    \boxed{
-    (N\circ M)(x,A)
-    =
-    \int_Y
-    N(y,A)
-    \,
-    M(x,dy).
-    }
-    \]
-
+    
   </div>
-
-  <p>
-    under the appropriate measurable-space hypotheses.
-  </p>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- STOCHASTIC TEST -->
-<!-- ========================================================= -->
 
 <section id="stochastic-test">
+  <h2>60. Stochastic Test-Function Action</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Mathematically established</div>
+      <div><strong>Class:</strong> Markov pullback</div>
+    </div>
 
-  <h2>51. Stochastic Test-Function Action</h2>
+    <p>For measurable integrable test functions, the adjoint/pullback action is</p>
 
-  <p>
-    For an appropriate measurable and integrable test function
-    \(\varphi\),
-  </p>
+    <div class="schema">\[
+\boxed{
+K^\dagger\varphi(x)
+=
+\int_Y\varphi(y)K(x,dy).
+}
+\]</div>
 
-  <div class="schema">
+    
 
-    \[
-    \boxed{
-    M^\dagger\varphi(x)
-    =
-    \int_Y
-    \varphi(y)
-    M(x,dy).
-    }
-    \]
+    
 
+    
+
+    
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#markov-composition">Markov composition</a></div>
   </div>
-
-  <p>
-    Stochastic Operation composition must preserve measurable and
-    probabilistic structure.
-  </p>
-
 </section>
 
+<section id="stochastic-handoff">
+  <h2>61. Stochastic Handoff</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Active</div>
+      <div><strong>Class:</strong> probabilistic Interface transfer</div>
+    </div>
 
-<!-- ========================================================= -->
-<!-- NONDETERMINISTIC -->
-<!-- ========================================================= -->
+    <p>A stochastic handoff transfers a law, not merely a point value. The
+receiving Operation must accept the output distribution in the correct
+measurable/conditional sense.</p>
+
+    <div class="schema">\[
+K:X\rightsquigarrow Y,
+\qquad
+L:Y\rightsquigarrow Z,
+\]
+\[
+\boxed{
+(L\circ K)(x,A)
+=
+\int_YL(y,A)\,K(x,dy).
+}
+\]</div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </div>
+</section>
 
 <section id="nondeterministic">
+  <h2>62. Nondeterministic SOE Operations</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Canonical</div>
+      <div><strong>Class:</strong> relational sector</div>
+    </div>
 
-  <h2>52. Nondeterministic SOE Operations</h2>
+    <p>A nondeterministic Operation is represented by a relation or
+sector-correct set-valued object.</p>
 
-  <p>
-    A nondeterministic Operation may be represented by relation
-  </p>
+    <div class="schema">\[
+R\subseteq X\times Y.
+\]</div>
 
-  \[
-  R
-  \subseteq
-  X\times Y.
-  \]
+    
 
-  <p>
-    If
-  </p>
+    
 
-  \[
-  R
-  \subseteq
-  X\times Y
-  \]
+    
 
-  <p>
-    and
-  </p>
+    
 
-  \[
-  S
-  \subseteq
-  Y\times Z,
-  \]
+    
 
-  <p>
-    relational composition is
-  </p>
+    
 
-  <div class="schema">
-
-    \[
-    \boxed{
-    x(S\circ R)z
-    \Longleftrightarrow
-    \exists y
-    \;
-    (
-    xRy
-    \land
-    ySz
-    ).
-    }
-    \]
-
+    
   </div>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- QUANTIFIER -->
-<!-- ========================================================= -->
 
 <section id="nondeterministic-quantifier">
+  <h2>63. Nondeterministic Quantifier Scope</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Canonical firewall</div>
+      <div><strong>Class:</strong> logical sector discipline</div>
+    </div>
 
-  <h2>53. Nondeterministic Quantifier Scope</h2>
+    <p>Relational composition contains existential witnesses, while safety
+claims often require universal quantifiers.</p>
 
-  <p>
-    Relational composition contains an existential witness.
-  </p>
+    <div class="schema">\[
+\boxed{
+\exists y
+\neq
+\forall y.
+}
+\]</div>
 
-  <p>
-    Universal safety requires a different statement.
-  </p>
+    
 
-  <div class="schema">
+    
 
-    \[
-    \boxed{
-    \exists y
-    \neq
-    \forall y.
-    }
-    \]
+    
 
+    
+
+    
+
+    
+
+    
   </div>
-
-  <p>
-    SOE preserves quantifier scope rather than treating all set-valued
-    Operations as one undifferentiated composition law.
-  </p>
-
 </section>
 
+<section id="relational-safety">
+  <h2>64. Relational May/Must Safety</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Canonical</div>
+      <div><strong>Class:</strong> nondeterministic response semantics</div>
+    </div>
 
-<!-- ========================================================= -->
-<!-- QUANTUM -->
-<!-- ========================================================= -->
+    <p>Possibility and guarantee remain separate through Operation pipelines.</p>
+
+    <div class="schema">\[
+\Diamond_R(U)=\{x:\exists y\in U,\ xRy\},
+\]
+\[
+\Box_R(U)=\{x:\forall y,\ xRy\Rightarrow y\in U\}.
+\]</div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#relational-composition">Relational composition</a></div>
+  </div>
+</section>
 
 <section id="quantum">
+  <h2>65. Quantum SOE Operations</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Canonical sector firewall</div>
+      <div><strong>Class:</strong> quantum Operation sector</div>
+    </div>
 
-  <h2>54. Quantum SOE Operations</h2>
+    <p>Quantum processes retain their native quantum structure.</p>
 
-  <p>
-    Quantum processes require their native quantum structure.
-  </p>
+    <div class="schema">\[
+\mathcal E:
+\mathcal D(\mathcal H_A)
+\to
+\mathcal D(\mathcal H_B)
+\]
+for a quantum channel.</div>
 
-  <p>
-    A quantum channel may be represented by a completely positive
-    trace-preserving map
-  </p>
+    
 
-  \[
-  \mathcal E:
-  \mathcal D(\mathcal H_A)
-  \longrightarrow
-  \mathcal D(\mathcal H_B).
-  \]
+    
 
-  <p>
-    Serial composition is
-  </p>
+    <div class="limits"><strong>Limits</strong><ul><li>Classical deterministic Operation theorems do not automatically transport to quantum channels.</li></ul></div>
 
-  \[
-  \mathcal F
-  \circ
-  \mathcal E.
-  \]
+    
 
-  <div class="warning">
+    
 
-    Classical deterministic Operation theorems are not transported
-    automatically to quantum channels merely because composition notation
-    looks similar.
+    
 
+    
   </div>
-
 </section>
 
+<section id="quantum-measurement-order">
+  <h2>66. Quantum Measurement Order</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Active applied SOE</div>
+      <div><strong>Class:</strong> quantum order sensitivity</div>
+    </div>
 
-<!-- ========================================================= -->
-<!-- SEMANTIC FIREWALL -->
-<!-- ========================================================= -->
+    <p>Channel, unitary, measurement, and classical post-processing order can
+change the available response information.</p>
+
+    <div class="schema">\[
+\rho
+\xrightarrow{\mathcal E}
+\rho'
+\xrightarrow{\{M_y\}}
+p(y)
+\]
+need not be Task-equivalent to measuring before \(\mathcal E\).</div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </div>
+</section>
 
 <section id="semantic-firewall">
+  <h2>67. Semantic-Sector Firewall</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Canonical</div>
+      <div><strong>Class:</strong> composition firewall</div>
+    </div>
 
-  <h2>55. Semantic-Sector Firewall</h2>
+    <table>
+<thead><tr><th>Sector</th><th>Typical Operation</th><th>Composition</th></tr></thead>
+<tbody>
+<tr><td>Deterministic</td><td>Function</td><td>Function composition</td></tr>
+<tr><td>Stochastic</td><td>Markov kernel</td><td>Kernel integration</td></tr>
+<tr><td>Nondeterministic</td><td>Relation</td><td>Relational composition</td></tr>
+<tr><td>Quantum</td><td>Channel / instrument / operator</td><td>Native quantum composition</td></tr>
+<tr><td>Approximate</td><td>Approximate map</td><td>Error-controlled composition</td></tr>
+</tbody>
+</table>
 
-  <table>
+    <div class="schema">\[
+\boxed{
+\text{same composition symbol}
+\not\Rightarrow
+\text{same semantics}.
+}
+\]</div>
 
-    <thead>
-      <tr>
-        <th>Sector</th>
-        <th>Typical Operation</th>
-        <th>Composition</th>
-      </tr>
-    </thead>
+    
 
-    <tbody>
+    
 
-      <tr>
-        <td>Deterministic</td>
-        <td>Function</td>
-        <td>Function composition</td>
-      </tr>
+    
 
-      <tr>
-        <td>Stochastic</td>
-        <td>Markov kernel</td>
-        <td>Kernel integration</td>
-      </tr>
+    
 
-      <tr>
-        <td>Nondeterministic</td>
-        <td>Relation</td>
-        <td>Relational composition</td>
-      </tr>
+    
 
-      <tr>
-        <td>Quantum</td>
-        <td>Channel / instrument / operator</td>
-        <td>Quantum composition law</td>
-      </tr>
+    
 
-      <tr>
-        <td>Approximate</td>
-        <td>Declared approximate map</td>
-        <td>Error-controlled composition</td>
-      </tr>
-
-    </tbody>
-
-  </table>
-
+    
+  </div>
 </section>
 
+<section id="mixed-pipeline">
+  <h2>68. Mixed-Semantic Pipeline</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Active</div>
+      <div><strong>Class:</strong> cross-sector Operation chain</div>
+    </div>
 
-<!-- ========================================================= -->
-<!-- CONDITIONAL -->
-<!-- ========================================================= -->
+    <p>A real response pipeline can move between semantic sectors, but each
+conversion must be explicit.</p>
+
+    <div class="schema">\[
+\boxed{
+x
+\xrightarrow{F}
+y
+\xrightarrow{K}
+\mu
+\xrightarrow{\mathcal D}
+d
+}
+\]
+where \(F\) is deterministic, \(K\) stochastic, and \(\mathcal D\) may be a
+decision relation or deterministic decoder.</div>
+
+    
+
+    
+
+    
+
+    <div class="failure"><strong>Failure tests</strong><ul><li>Silently treating \(\mu\) as one representative point.</li><li>Dropping quantifier/coupling information at a sector transition.</li></ul></div>
+
+    
+
+    
+
+    
+  </div>
+</section>
 
 <section id="conditional">
+  <h2>69. Conditional Operations</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Canonical</div>
+      <div><strong>Class:</strong> branching Operation</div>
+    </div>
 
-  <h2>56. Conditional Operations</h2>
+    <p>An Operation can switch between branches according to an explicit
+predicate.</p>
 
-  <p>
-    An Operation may depend on a predicate
-  </p>
+    <div class="schema">\[
+O(x)
+=
+\begin{cases}
+F(x),&C(x)=1,\\
+G(x),&C(x)=0.
+\end{cases}
+\]</div>
 
-  \[
-  C:
-  X
-  \longrightarrow
-  \{0,1\}.
-  \]
+    
 
-  <p>
-    For example,
-  </p>
+    
 
-  <div class="schema">
+    
 
-    \[
-    O(x)
-    =
-    \begin{cases}
-    F(x), & C(x)=1,\\[4pt]
-    G(x), & C(x)=0.
-    \end{cases}
-    \]
+    
 
+    
+
+    
+
+    
   </div>
-
-  <p>
-    Both branches must be typed, and the switching rule is part of the
-    Operation.
-  </p>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- REGIME SWITCHING -->
-<!-- ========================================================= -->
 
 <section id="regime-switching">
+  <h2>70. Regime-Dependent Operations</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Canonical</div>
+      <div><strong>Class:</strong> law-indexed Operations</div>
+    </div>
 
-  <h2>57. Regime-Dependent Operations</h2>
+    <p>The active law/Regime can change both the Operation and its domain.</p>
 
-  <p>
-    Let
-  </p>
+    <div class="schema">\[
+\boxed{
+O_\lambda:
+D_\lambda\subseteq X\to Y,
+\qquad
+\lambda\in\Lambda.
+}
+\]</div>
 
-  \[
-  \lambda\in\Lambda
-  \]
+    
 
-  <p>
-    denote the active Regime.
-  </p>
+    
 
-  <p>
-    A Regime-dependent Operation may be
-  </p>
+    
 
-  \[
-  O_\lambda:
-  D_\lambda
-  \subseteq
-  X
-  \longrightarrow
-  Y.
-  \]
+    
 
-  <p>
-    If \(\lambda\) changes, both the Operation and its domain may change.
-  </p>
+    
 
+    
+
+    
+  </div>
 </section>
-
-
-<!-- ========================================================= -->
-<!-- EVENT -->
-<!-- ========================================================= -->
 
 <section id="event-triggered">
+  <h2>71. Event-Triggered Operations</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Active</div>
+      <div><strong>Class:</strong> triggered Operation</div>
+    </div>
 
-  <h2>58. Event-Triggered Operations</h2>
+    <p>Trigger semantics are part of the Operation specification.</p>
 
-  <p>
-    An Operation may activate only when a trigger condition is met.
-  </p>
+    <div class="schema">\[
+\tau:X\to\{0,1\},
+\qquad
+O_{\tau(x)}.
+\]</div>
 
-  <p>
-    Let
-  </p>
+    
 
-  \[
-  \tau:
-  X
-  \longrightarrow
-  \{0,1\}.
-  \]
+    
 
-  <p>
-    Then the active Operation may be represented schematically by
-  </p>
+    
 
-  \[
-  O_{\tau(x)}.
-  \]
+    
 
-  <p>
-    Trigger semantics belong to the Operation specification rather than
-    being treated as external narrative.
-  </p>
+    
 
+    
+
+    
+  </div>
 </section>
-
-
-<!-- ========================================================= -->
-<!-- COMMUTING -->
-<!-- ========================================================= -->
 
 <section id="commuting-paths">
+  <h2>72. Commuting Operation Paths</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Canonical</div>
+      <div><strong>Class:</strong> represented/full path coherence</div>
+    </div>
 
-  <h2>59. Commuting Operation Paths</h2>
+    <p>Exact representation compatibility is the commuting relation</p>
 
-  <p>
-    Suppose
-  </p>
+    <div class="schema">\[
+\boxed{
+P_Y\circ F
+=
+G\circ P_X.
+}
+\]</div>
 
-  \[
-  X
-  \xrightarrow{F}
-  Y,
-  \qquad
-  X
-  \xrightarrow{P_X}
-  Q_X,
-  \]
+    
 
-  \[
-  Y
-  \xrightarrow{P_Y}
-  Q_Y,
-  \qquad
-  Q_X
-  \xrightarrow{G}
-  Q_Y.
-  \]
+    
 
-  <p>
-    Exact compatibility is
-  </p>
+    
 
-  <div class="schema">
+    
 
-    \[
-    \boxed{
-    P_Y\circ F
-    =
-    G\circ P_X.
-    }
-    \]
+    
 
+    
+
+    
   </div>
-
-  <p>
-    SOE interprets this as lawful agreement between a full Operation path
-    and a represented Operation path.
-  </p>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- APPROX COMMUTING -->
-<!-- ========================================================= -->
 
 <section id="approximate-commuting">
+  <h2>73. Approximate Operation Coherence</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Active</div>
+      <div><strong>Class:</strong> coherence defect</div>
+    </div>
 
-  <h2>60. Approximate Operation Coherence</h2>
+    <p>With a justified target discrepancy, the represented and full paths can
+be compared quantitatively.</p>
 
-  <p>
-    If \(Q_Y\) carries justified discrepancy \(d\), define
-  </p>
+    <div class="schema">\[
+\boxed{
+\Delta_F(x)
+=
+d\!\left(
+P_Y(F(x)),
+G(P_X(x))
+\right).
+}
+\]</div>
 
-  <div class="schema">
+    
 
-    \[
-    \boxed{
-    \Delta_F(x)
-    =
-    d
-    \left(
-    P_Y(F(x)),
-    G(P_X(x))
-    \right).
-    }
-    \]
+    
 
+    
+
+    
+
+    
+
+    
+
+    
   </div>
-
-  <p>
-    Exact coherence gives
-  </p>
-
-  \[
-  \Delta_F(x)=0.
-  \]
-
-  <p>
-    Approximate coherence requires a declared tolerance.
-  </p>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- FAILURE MODES -->
-<!-- ========================================================= -->
 
 <section id="failure-modes">
+  <h2>74. SOE Failure Modes</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Canonical</div>
+      <div><strong>Class:</strong> failure taxonomy</div>
+    </div>
 
-  <h2>61. SOE Failure Modes</h2>
+    <table>
+<thead><tr><th>Failure</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>Type</td><td>Input has the wrong mathematical type.</td></tr>
+<tr><td>Domain</td><td>Input lies outside the actual domain.</td></tr>
+<tr><td>Handoff</td><td>Receiver rejects the preceding output.</td></tr>
+<tr><td>Order</td><td>An assumed commutation/equivalence is false.</td></tr>
+<tr><td>Information</td><td>An upstream Operation erases a required distinction.</td></tr>
+<tr><td>Closure</td><td>Reduced state fails to determine its successor.</td></tr>
+<tr><td>Regime</td><td>An Operation is used under the wrong law context.</td></tr>
+<tr><td>Quantifier</td><td>Existential and universal semantics are exchanged.</td></tr>
+<tr><td>Sector</td><td>Different Operation semantics are conflated.</td></tr>
+<tr><td>Approximation</td><td>Error is introduced without a declared propagation law.</td></tr>
+<tr><td>Provenance</td><td>Required Operation history is lost.</td></tr>
+<tr><td>Transaction</td><td>An invalid intermediate state is committed downstream.</td></tr>
+</tbody>
+</table>
 
-  <table>
+    
 
-    <thead>
-      <tr>
-        <th>Failure</th>
-        <th>Meaning</th>
-      </tr>
-    </thead>
+    
 
-    <tbody>
+    
 
-      <tr>
-        <td>Type failure</td>
-        <td>The Operation receives an object of the wrong mathematical type.</td>
-      </tr>
+    
 
-      <tr>
-        <td>Domain failure</td>
-        <td>The input lies outside the Operation's actual domain.</td>
-      </tr>
+    
 
-      <tr>
-        <td>Handoff failure</td>
-        <td>The next Operation cannot accept the preceding output.</td>
-      </tr>
+    
 
-      <tr>
-        <td>Order failure</td>
-        <td>An assumed commutation relation is false.</td>
-      </tr>
+    
 
-      <tr>
-        <td>Information failure</td>
-        <td>An upstream Operation erases a distinction required later.</td>
-      </tr>
-
-      <tr>
-        <td>Closure failure</td>
-        <td>A reduced Operation does not determine the next reduced state.</td>
-      </tr>
-
-      <tr>
-        <td>Regime failure</td>
-        <td>An Operation is used under a law or Regime for which it was not defined.</td>
-      </tr>
-
-      <tr>
-        <td>Quantifier failure</td>
-        <td>Existential and universal semantics are exchanged.</td>
-      </tr>
-
-      <tr>
-        <td>Sector failure</td>
-        <td>Deterministic, stochastic, relational, or quantum Operations are conflated.</td>
-      </tr>
-
-      <tr>
-        <td>Approximation failure</td>
-        <td>Error is introduced without a declared tolerance or propagation law.</td>
-      </tr>
-
-    </tbody>
-
-  </table>
-
+    
+  </div>
 </section>
-
-
-<!-- ========================================================= -->
-<!-- DIAGNOSTICS -->
-<!-- ========================================================= -->
 
 <section id="diagnostics">
+  <h2>75. Quantitative SOE Diagnostics</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Active</div>
+      <div><strong>Class:</strong> diagnostic family</div>
+    </div>
 
-  <h2>62. Quantitative SOE Diagnostics</h2>
+    <p>SOE can expose quantitative diagnostics where the target sector
+provides a legitimate norm, metric, probability, dimension, or condition
+number.</p>
 
-  <p>
-    SOE can produce quantitative diagnostics such as:
-  </p>
+    
 
-  <ul>
-    <li>commutator norm;</li>
-    <li>path defect;</li>
-    <li>composition failure rate;</li>
-    <li>Operation sensitivity;</li>
-    <li>handoff defect;</li>
-    <li>closure defect;</li>
-    <li>information-loss dimension;</li>
-    <li>reconstruction error;</li>
-    <li>pipeline condition number;</li>
-    <li>operation-order error;</li>
-    <li>cumulative approximation error.</li>
-  </ul>
+    <h3>Mathematical objects</h3><ul><li>commutator norm;</li><li>path defect;</li><li>handoff defect;</li><li>closure defect;</li><li>composition failure rate;</li><li>information-loss dimension;</li><li>reconstruction error;</li><li>pipeline condition number;</li><li>cumulative approximation error;</li><li>constraint-triggered rollback rate.</li></ul>
 
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </div>
 </section>
-
-
-<!-- ========================================================= -->
-<!-- OPERATOR NORM -->
-<!-- ========================================================= -->
 
 <section id="commutator-norm">
+  <h2>76. Commutator Norm Diagnostic</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Classical operator mathematics used by SOE</div>
+      <div><strong>Class:</strong> operator diagnostic</div>
+    </div>
 
-  <h2>63. Commutator Norm Diagnostic</h2>
+    <p>In a normed operator setting,</p>
 
-  <p>
-    In a normed operator setting where the commutator is defined,
-  </p>
+    <div class="schema">\[
+\boxed{
+\eta_{F,G}
+=
+\|[F,G]\|.
+}
+\]</div>
 
-  <div class="schema">
+    
 
-    \[
-    \boxed{
-    \eta_{F,G}
-    =
-    \|[F,G]\|.
-    }
-    \]
+    
 
+    
+
+    
+
+    
+
+    
+
+    
   </div>
-
-  <p>
-    Then
-  </p>
-
-  \[
-  \eta_{F,G}=0
-  \]
-
-  <p>
-    implies exact commutation in that normed operator sector.
-  </p>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- ERROR PROP -->
-<!-- ========================================================= -->
 
 <section id="error-propagation">
+  <h2>77. Approximation Error Through a Pipeline</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Classical Lipschitz bound used by SOE</div>
+      <div><strong>Class:</strong> error propagation</div>
+    </div>
 
-  <h2>64. Approximation Error Through a Pipeline</h2>
+    <p>If \(F\) is Lipschitz with constant \(L_F\), then input error is
+propagated by</p>
 
-  <p>
-    Suppose an approximate state \(\widehat x\) satisfies
-  </p>
+    <div class="schema">\[
+d_X(x,\widehat x)\le\varepsilon
+\Longrightarrow
+\boxed{
+d_Y(F(x),F(\widehat x))
+\le
+L_F\varepsilon.
+}
+\]</div>
 
-  \[
-  d_X(x,\widehat x)
-  \le
-  \varepsilon.
-  \]
+    
 
-  <p>
-    If Operation \(F\) is Lipschitz with constant \(L_F\),
-  </p>
+    
 
-  \[
-  d_Y(F(x),F(\widehat x))
-  \le
-  L_F
-  d_X(x,\widehat x).
-  \]
+    
 
-  <p>
-    Hence
-  </p>
+    
 
-  <div class="schema">
+    
 
-    \[
-    \boxed{
-    d_Y(F(x),F(\widehat x))
-    \le
-    L_F\varepsilon.
-    }
-    \]
+    
 
+    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#lipschitz-serial-bound">Lipschitz serial bound</a></div>
   </div>
-
-  <p>
-    A serial pipeline may amplify or contract error according to the
-    properties of its Operations.
-  </p>
-
 </section>
 
+<section id="pipeline-lipschitz">
+  <h2>78. Serial Lipschitz Pipeline Bound</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Classical bound used by SOE</div>
+      <div><strong>Class:</strong> multi-stage approximation</div>
+    </div>
 
-<!-- ========================================================= -->
-<!-- LINEAR EXAMPLE -->
-<!-- ========================================================= -->
+    <p>For a serial pipeline of Lipschitz Operations, the endpoint sensitivity
+is bounded by the product of stage constants.</p>
+
+    <div class="schema">\[
+\boxed{
+d(F_n\circ\cdots\circ F_1(x),
+F_n\circ\cdots\circ F_1(\widehat x))
+\le
+\left(
+\prod_{k=1}^nL_k
+\right)
+d(x,\widehat x).
+}
+\]</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>The product can be highly pessimistic and does not capture cancellations.</li></ul></div>
+
+    
+
+    
+
+    
+
+    
+  </div>
+</section>
+
+<section id="pipeline-error">
+  <h2>79. Pipeline Error with Stagewise Perturbations</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Active</div>
+      <div><strong>Class:</strong> cumulative approximation model</div>
+    </div>
+
+    <p>If each stage introduces additional error \(\delta_k\), a recursive
+error budget can be propagated.</p>
+
+    <div class="schema">\[
+e_{k+1}
+\le
+L_{k+1}e_k+\delta_{k+1},
+\]
+hence
+\[
+\boxed{
+e_n
+\le
+\left(\prod_{j=1}^nL_j\right)e_0
++
+\sum_{k=1}^n
+\delta_k
+\prod_{j=k+1}^nL_j.
+}
+\]</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>Requires compatible metric/Lipschitz assumptions.</li></ul></div>
+
+    
+
+    
+
+    
+
+    
+  </div>
+</section>
+
+<section id="approximation-budget">
+  <h2>80. Approximation Budget</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Active</div>
+      <div><strong>Class:</strong> pipeline tolerance allocation</div>
+    </div>
+
+    <p>SOE can treat a global tolerance as a budget distributed across
+Operation stages.</p>
+
+    <div class="schema">\[
+\boxed{
+e_n\le\varepsilon_{\rm total}.
+}
+\]</div>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="audit"><strong>SOE audit</strong><ul><li>Which stage dominates the error?</li><li>Which stage can be tightened most cheaply?</li><li>Does a later stage amplify an earlier approximation?</li></ul></div>
+
+    
+
+    
+  </div>
+</section>
+
+<section id="failure-localization">
+  <h2>81. Serial Failure Localization</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Mathematically established for predicate Passports</div>
+      <div><strong>Class:</strong> pipeline defect localization</div>
+    </div>
+
+    <p>For serial checks, a final defect comes from an upstream defect or from
+a downstream defect pulled back through the upstream Operation.</p>
+
+    <div class="schema">\[
+\boxed{
+D_{g\circ f}
+\subseteq
+D_f
+\cup
+f^{-1}(D_g).
+}
+\]</div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#passport-defect-localization">Passport-defect localization</a></div>
+  </div>
+</section>
+
+<section id="branchwise-failure">
+  <h2>82. Fan-Out Branchwise Failure</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Active</div>
+      <div><strong>Class:</strong> parallel failure localization</div>
+    </div>
+
+    <p>In fan-out, some branches may fail while others remain valid. SOE should
+preserve branchwise status rather than collapsing the entire fan-out into one
+undifferentiated pass/fail flag.</p>
+
+    <div class="schema">\[
+\boxed{
+\mathcal V(x)
+=
+\{i:x\in D_{F_i}\},
+\qquad
+\mathcal F(x)
+=
+\{i:x\notin D_{F_i}\}.
+}
+\]</div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </div>
+</section>
+
+<section id="transaction">
+  <h2>83. Transactional Operation Commit</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Active</div>
+      <div><strong>Class:</strong> failure-containment protocol</div>
+    </div>
+
+    <p>A complex response update should be committed only after all required
+Operation, Interface, Passport, Regime, and ACE checks pass.</p>
+
+    <div class="schema">\[
+\boxed{
+\operatorname{Commit}(\xi\to\xi')
+\iff
+\bigwedge_{c\in\mathcal C}
+c(\xi,\xi')=\mathrm{pass}.
+}
+\]</div>
+
+    
+
+    <div class="abilities"><strong>What this allows</strong><ul><li>Prevent invalid intermediate outputs from becoming trusted downstream state.</li></ul></div>
+
+    
+
+    
+
+    
+
+    
+
+    
+  </div>
+</section>
+
+<section id="rollback">
+  <h2>84. Rollback / Recompute</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Active</div>
+      <div><strong>Class:</strong> transaction repair behavior</div>
+    </div>
+
+    <p>If a transaction fails, SOE can return to the last certified response
+state and repair or recompute from the earliest failed dependency.</p>
+
+    <div class="schema">\[
+\boxed{
+\xi_{k-1}
+\xrightarrow{\text{repair}}
+\widehat\xi_k
+\xrightarrow{\text{recompute}}
+\widehat\xi_{k+1:n}.
+}
+\]</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>Rollback is an organizational response pattern; implementation details belong to the actual computational or control system.</li></ul></div>
+
+    
+
+    
+
+    
+
+    
+  </div>
+</section>
 
 <section id="linear-example">
+  <h2>85. Worked Example — Linear Operation Order</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Worked example</div>
+      <div><strong>Class:</strong> linear algebra</div>
+    </div>
 
-  <h2>65. Worked Example — Linear Operation Order</h2>
+    <p>Let</p>
 
-  <p>
-    Let
-  </p>
+    <div class="schema">\[
+A=
+\begin{pmatrix}
+1&1\\
+0&1
+\end{pmatrix},
+\qquad
+P=
+\begin{pmatrix}
+1&0\\
+0&0
+\end{pmatrix}.
+\]
+Then
+\[
+AP=
+\begin{pmatrix}
+1&0\\
+0&0
+\end{pmatrix},
+\qquad
+PA=
+\begin{pmatrix}
+1&1\\
+0&0
+\end{pmatrix},
+\]
+so
+\[
+\boxed{
+AP\neq PA.
+}
+\]</div>
 
-  \[
-  A
-  =
-  \begin{pmatrix}
-  1 & 1\\
-  0 & 1
-  \end{pmatrix},
-  \qquad
-  P
-  =
-  \begin{pmatrix}
-  1 & 0\\
-  0 & 0
-  \end{pmatrix}.
-  \]
+    
 
-  <p>
-    Then
-  </p>
+    
 
-  \[
-  AP
-  =
-  \begin{pmatrix}
-  1 & 0\\
-  0 & 0
-  \end{pmatrix},
-  \]
+    
 
-  <p>
-    while
-  </p>
+    
 
-  \[
-  PA
-  =
-  \begin{pmatrix}
-  1 & 1\\
-  0 & 0
-  \end{pmatrix}.
-  \]
+    
 
-  <p>
-    Therefore
-  </p>
+    <div class="teaching"><strong>Reading note</strong><p>Projection before dynamics is not equivalent to dynamics before projection.</p></div>
 
-  <div class="schema">
-
-    \[
-    \boxed{
-    AP
-    \neq
-    PA.
-    }
-    \]
-
+    
   </div>
-
-  <p>
-    Projecting before applying \(A\) is not equivalent to applying \(A\)
-    before projection.
-  </p>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- INFORMATION EXAMPLE -->
-<!-- ========================================================= -->
 
 <section id="information-example">
+  <h2>86. Worked Example — Irrecoverable Serial Loss</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Worked example</div>
+      <div><strong>Class:</strong> information loss</div>
+    </div>
 
-  <h2>66. Worked Example — Irrecoverable Serial Loss</h2>
+    <p>Let \(F(x_1,x_2)=x_1\) and \(G(y)=y^2\). States \((1,2)\) and \((1,9)\)
+are merged by \(F\), so every deterministic downstream map of \(F(x)\) sees
+the same value for both states.</p>
 
-  <p>
-    Let
-  </p>
+    <div class="schema">\[
+G(F(1,2))
+=
+G(F(1,9))
+=
+1.
+\]</div>
 
-  \[
-  F:
-  \mathbb R^2
-  \longrightarrow
-  \mathbb R,
-  \qquad
-  F(x_1,x_2)=x_1.
-  \]
+    
 
-  <p>
-    Let
-  </p>
+    
 
-  \[
-  G:
-  \mathbb R
-  \longrightarrow
-  \mathbb R,
-  \qquad
-  G(y)=y^2.
-  \]
+    
 
-  <p>
-    States
-  </p>
+    
 
-  \[
-  (1,2)
-  \qquad\text{and}\qquad
-  (1,9)
-  \]
+    
 
-  <p>
-    are merged by \(F\).
-  </p>
+    
 
-  <p>
-    Therefore
-  </p>
-
-  \[
-  G(F(1,2))
-  =
-  G(F(1,9))
-  =
-  1.
-  \]
-
-  <p>
-    No deterministic choice of \(G\) can reconstruct the erased second
-    coordinate from \(F(x)\) alone.
-  </p>
-
+    
+  </div>
 </section>
-
-
-<!-- ========================================================= -->
-<!-- CONTROL EXAMPLE -->
-<!-- ========================================================= -->
 
 <section id="control-example">
+  <h2>87. Worked Example — Controlled State Update</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Worked example</div>
+      <div><strong>Class:</strong> control</div>
+    </div>
 
-  <h2>67. Worked Example — Controlled State Update</h2>
+    <p>For</p>
 
-  <p>
-    Let
-  </p>
+    <div class="schema">\[
+x_{n+1}=Ax_n+Bu_n,
+\qquad
+u_n=Kx_n,
+\]
+the closed-loop Operation is
+\[
+\boxed{
+x_{n+1}
+=
+(A+BK)x_n.
+}
+\]</div>
 
-  \[
-  x_{n+1}
-  =
-  Ax_n+Bu_n.
-  \]
+    
 
-  <p>
-    With policy
-  </p>
+    
 
-  \[
-  u_n
-  =
-  Kx_n,
-  \]
+    
 
-  <p>
-    the closed-loop Operation becomes
-  </p>
+    
 
-  <div class="schema">
+    
 
-    \[
-    \boxed{
-    x_{n+1}
-    =
-    (A+BK)x_n.
-    }
-    \]
+    <div class="teaching"><strong>Reading note</strong><p>SOE identifies the Operation substitution. Stability belongs to native control mathematics and may activate ACE.</p></div>
 
+    
   </div>
-
-  <p>
-    SOE identifies:
-  </p>
-
-  <p>
-    state update · Intervention map · policy substitution · closed-loop
-    Operation
-  </p>
-
-  <p>
-    while stability itself remains a native control/dynamical-systems
-    question and may activate ACE.
-  </p>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- THEOREM KERNELS -->
-<!-- ========================================================= -->
 
 <section id="theorem-kernels">
+  <h2>88. Current SOE Theorem Kernels</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Current</div>
+      <div><strong>Class:</strong> proof/provenance map</div>
+    </div>
 
-  <h2>68. Current SOE Theorem Kernels</h2>
+    <table>
+<thead><tr><th>Result</th><th>SOE meaning</th></tr></thead>
+<tbody>
+<tr><td>Typed composite-domain theorem</td><td>Exact domain of partial serial composition.</td></tr>
+<tr><td>Deterministic serial information loss</td><td>Erased distinctions do not reappear downstream without new information.</td></tr>
+<tr><td>Parallel refinement</td><td>Parallel exact observations refine fibres by intersection.</td></tr>
+<tr><td>Interface factorization</td><td>A represented Operation exists exactly when the full target is constant on representation fibres.</td></tr>
+<tr><td>Dynamic Closure</td><td>A full update descends to reduced state exactly when reduced successors are fibre-constant.</td></tr>
+<tr><td>Passport-defect localization</td><td>Serial failure can be localized to upstream or pulled-back downstream defects.</td></tr>
+<tr><td>Markov composition</td><td>Stochastic Operations compose by kernel integration/test pullback.</td></tr>
+<tr><td>Relational composition</td><td>May/must response operators preserve their quantifier semantics.</td></tr>
+<tr><td>BM-SQ-01</td><td>Algebraic Operations descend to quotients only under congruence compatibility.</td></tr>
+</tbody>
+</table>
 
-  <p>
-    Several exact mathematical results used by SOE are already recorded
-    in the main theorem registry.
-  </p>
+    
 
-  <table>
+    
 
-    <thead>
-      <tr>
-        <th>Result</th>
-        <th>SOE Meaning</th>
-      </tr>
-    </thead>
+    
 
-    <tbody>
+    
 
-      <tr>
-        <td>Deterministic Serial Information-Loss Theorem</td>
-        <td>Downstream deterministic Operations cannot recover distinctions already erased upstream.</td>
-      </tr>
+    
 
-      <tr>
-        <td>Parallel Observation Refinement Theorem</td>
-        <td>Parallel Operations refine exact fibres through intersection.</td>
-      </tr>
+    
 
-      <tr>
-        <td>Interface Factorization Theorem</td>
-        <td>A represented downstream Operation exists exactly when the full output is constant on representation fibres.</td>
-      </tr>
+    
 
-      <tr>
-        <td>Dynamic Closure Theorem</td>
-        <td>A full-state update descends to reduced state exactly when equal reduced states have equal reduced successors.</td>
-      </tr>
-
-      <tr>
-        <td>BM-SQ-01</td>
-        <td>Operations descend to a finitary algebraic quotient only under congruence compatibility.</td>
-      </tr>
-
-    </tbody>
-
-  </table>
-
+    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#standard">Theorem registry</a></div>
+  </div>
 </section>
-
-
-<!-- ========================================================= -->
-<!-- LIMITS -->
-<!-- ========================================================= -->
 
 <section id="limits">
+  <h2>89. Limits of SOE</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Canonical</div>
+      <div><strong>Class:</strong> scope limits</div>
+    </div>
 
-  <h2>69. Limits of SOE</h2>
+    <p>SOE organizes Operation structure; it does not supply every theorem
+about the Operations themselves.</p>
 
-  <p>
-    SOE does not prove:
-  </p>
+    
 
-  <ul>
-    <li>that every Operation is physically realizable;</li>
-    <li>that every symbolic composition is admissible;</li>
-    <li>that all Operations commute;</li>
-    <li>that every reduced representation is dynamically closed;</li>
-    <li>that every reconstruction is unique;</li>
-    <li>that every feedback law is stable;</li>
-    <li>that stochastic Operations can be treated as deterministic maps;</li>
-    <li>that a mathematical pipeline is numerically well-conditioned;</li>
-    <li>that an Operation preserves all information;</li>
-    <li>that mathematically valid Operations obey a specific physical mechanism.</li>
-  </ul>
+    
 
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>SOE does not prove every Operation physically realizable.</li><li>SOE does not make every symbolic composition admissible.</li><li>SOE does not imply Operations commute.</li><li>SOE does not make every reduced representation dynamically closed.</li><li>SOE does not prove every reconstruction unique.</li><li>SOE does not prove feedback stable.</li><li>SOE does not deterministicize stochastic or relational Operations.</li><li>SOE does not guarantee numerical conditioning.</li><li>SOE does not guarantee preservation of all information.</li></ul></div>
+
+    
+
+    
+
+    
+
+    
+  </div>
 </section>
-
-
-<!-- ========================================================= -->
-<!-- NOT A CALCULUS -->
-<!-- ========================================================= -->
 
 <section id="not-native-calculus">
+  <h2>90. SOE Does Not Replace Native Operator Theory</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Canonical</div>
+      <div><strong>Class:</strong> native-mathematics firewall</div>
+    </div>
 
-  <h2>70. SOE Does Not Replace Native Operator Theory</h2>
+    <p>Functional analysis, operator algebras, semigroup theory, category
+theory, control, numerical analysis, probability kernels, quantum channels,
+and PDE operator theory determine the native mathematics of their Operations.</p>
 
-  <p>
-    SOE does not replace:
-  </p>
+    <div class="schema">\[
+\boxed{
+\text{SOE response organization}
+\neq
+\text{native Operation proof}.
+}
+\]</div>
 
-  <p>
-    functional analysis · operator algebras · semigroup theory ·
-    category theory · control theory · numerical analysis ·
-    probability-kernel theory · quantum channels · PDE operators
-  </p>
+    
 
-  <p>
-    Those disciplines determine the native mathematics of their
-    Operations.
-  </p>
+    
 
-  <p>
-    SOE organizes their lawful role inside response systems.
-  </p>
+    
 
+    
+
+    
+
+    
+
+    
+  </div>
 </section>
-
-
-<!-- ========================================================= -->
-<!-- RESEARCH -->
-<!-- ========================================================= -->
 
 <section id="research">
+  <h2>91. Active SOE Research Directions</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Active</div>
+      <div><strong>Class:</strong> research program</div>
+    </div>
 
-  <h2>71. Active SOE Research Directions</h2>
+    <p>Current mathematically meaningful SOE research includes stronger
+pipeline-normalization criteria, order-sensitive PDE preprocessing, adaptive
+systems, feedback response, multi-sector handoffs, quantitative defect
+propagation, and certified operation registries.</p>
 
-  <p>
-    Current research directions include:
-  </p>
+    
 
-  <ul>
-    <li>formal Operation registries;</li>
-    <li>typed pipeline normalization;</li>
-    <li>order-sensitive PDE preprocessing;</li>
-    <li>localization/filter/differentiation commutators;</li>
-    <li>adaptive Operation systems;</li>
-    <li>feedback and closed-loop response;</li>
-    <li>multi-sector composition;</li>
-    <li>stochastic handoffs;</li>
-    <li>partial-map composition;</li>
-    <li>operation-induced information loss;</li>
-    <li>dynamic closure under reduced representations;</li>
-    <li>Interface defect diagnostics;</li>
-    <li>operation-order sensitivity measures;</li>
-    <li>error propagation through pipelines.</li>
-  </ul>
+    
 
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="crosslinks"><span class="link-label">Research:</span> <a href="research.html#gurf-foundations">GURF research program</a></div>
+  </div>
 </section>
-
-
-<!-- ========================================================= -->
-<!-- DOMAIN APPLICATIONS -->
-<!-- ========================================================= -->
 
 <section id="applications">
+  <h2>92. Application Domains</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Active</div>
+      <div><strong>Class:</strong> cross-domain application map</div>
+    </div>
 
-  <h2>72. Application Domains</h2>
+    <table>
+<thead><tr><th>Domain</th><th>SOE question</th></tr></thead>
+<tbody>
+<tr><td>Navier–Stokes</td><td>Do filtering, localization, differentiation, and reconstruction commute under the stated assumptions?</td></tr>
+<tr><td>Yang–Mills</td><td>Which projections/truncations preserve gauge-sector information?</td></tr>
+<tr><td>Quantum</td><td>How do channels, measurements, and classical handoffs compose?</td></tr>
+<tr><td>Control</td><td>How does feedback alter the effective state update?</td></tr>
+<tr><td>Secure compilation</td><td>Which source distinctions survive target-level transformations?</td></tr>
+<tr><td>Signal processing</td><td>How does filter order change feature extraction?</td></tr>
+<tr><td>Numerical analysis</td><td>How do projection, discretization, solver, and reconstruction order affect error?</td></tr>
+</tbody>
+</table>
 
-  <p>
-    SOE can be activated in many mathematical domains.
-  </p>
+    
 
-  <table>
+    
 
-    <thead>
-      <tr>
-        <th>Domain</th>
-        <th>Example SOE Question</th>
-      </tr>
-    </thead>
+    
 
-    <tbody>
+    
 
-      <tr>
-        <td>Navier–Stokes</td>
-        <td>Does filtering commute with differentiation or localization?</td>
-      </tr>
+    
 
-      <tr>
-        <td>Yang–Mills</td>
-        <td>Which spectral or projection Operations preserve required gauge-sector information?</td>
-      </tr>
+    
 
-      <tr>
-        <td>Quantum theory</td>
-        <td>How do channels and measurements compose?</td>
-      </tr>
+    
 
-      <tr>
-        <td>Control</td>
-        <td>How does policy feedback alter the system update Operation?</td>
-      </tr>
-
-      <tr>
-        <td>Secure compilation</td>
-        <td>Which transformations preserve source-level security properties?</td>
-      </tr>
-
-      <tr>
-        <td>Signal processing</td>
-        <td>How does filtering order affect later feature extraction?</td>
-      </tr>
-
-      <tr>
-        <td>Numerical analysis</td>
-        <td>How do projection, discretization, and reconstruction order affect error?</td>
-      </tr>
-
-    </tbody>
-
-  </table>
-
+    
+  </div>
 </section>
-
-
-<!-- ========================================================= -->
-<!-- FIGURES -->
-<!-- ========================================================= -->
 
 <section id="figures">
+  <h2>93. Scientific Figure Program</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Current</div>
+      <div><strong>Class:</strong> quantitative visualization</div>
+    </div>
 
-  <h2>73. Scientific Figure Program</h2>
+    <p>SOE figures should be generated from actual Operation mathematics.</p>
 
-  <p>
-    SOE supports quantitative scientific figures when actual Operations
-    produce measurable order or composition effects.
-  </p>
+    
 
-  <p>
-    Useful figures include:
-  </p>
+    <h3>Mathematical objects</h3><ul><li>commutator magnitude versus scale;</li><li>pipeline error versus order;</li><li>closure defect versus reduced dimension;</li><li>reconstruction error versus compression;</li><li>stability region versus feedback gain;</li><li>handoff failure probability;</li><li>condition number through a pipeline;</li><li>information loss versus projection rank.</li></ul>
 
-  <ul>
-    <li>commutator magnitude versus scale;</li>
-    <li>pipeline error versus operation order;</li>
-    <li>closure defect versus reduced dimension;</li>
-    <li>reconstruction error versus compression level;</li>
-    <li>stability region versus feedback gain;</li>
-    <li>handoff failure probability;</li>
-    <li>condition number through a pipeline;</li>
-    <li>information loss versus projection rank.</li>
-  </ul>
+    
 
-  <p>
-    Formal structural diagrams remain separate until reconstructed and
-    approved.
-  </p>
+    
 
+    
+
+    
+
+    
+
+    
+  </div>
 </section>
-
-
-<!-- ========================================================= -->
-<!-- REGISTRY -->
-<!-- ========================================================= -->
 
 <section id="registry">
+  <h2>94. SOE Operation Registry Specification</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Active specification</div>
+      <div><strong>Class:</strong> public registry contract</div>
+    </div>
 
-  <h2>74. Future SOE Registry</h2>
+    <p>SOE does not invent a new identifier family here. It does specify what a
+mature Operation entry should contain if/when stable identifiers are assigned.</p>
 
-  <p>
-    SOE Operations may eventually receive stable project identifiers.
-  </p>
+    
 
-  <p>
-    No new identifier family is declared canonical on this page without
-    project approval.
-  </p>
+    <h3>Mathematical objects</h3><ul><li>identifier if approved;</li><li>Operation name;</li><li>semantic sector;</li><li>domain/codomain;</li><li>admissible domain;</li><li>Regime;</li><li>required and output Passports;</li><li>composition rules;</li><li>order dependencies;</li><li>approximation bounds;</li><li>provenance;</li><li>failure conditions;</li><li>theorem dependencies;</li><li>applications;</li><li>revision history.</li></ul>
 
-  <p>
-    A mature registry entry should include:
-  </p>
+    
 
-  <p>
-    identifier · Operation name · semantic sector · domain · codomain ·
-    admissible domain · Regime · required Passport · output Passport ·
-    composition rules · order dependencies · approximation bounds ·
-    failure conditions · theorem dependencies · application references ·
-    revision history
-  </p>
+    
 
+    
+
+    
+
+    
+
+    
+  </div>
 </section>
 
+<section id="operation-registry-record">
+  <h2>95. Formal Operation Record</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Active</div>
+      <div><strong>Class:</strong> SOE organizational record</div>
+    </div>
 
-<!-- ========================================================= -->
-<!-- CENTRAL PRINCIPLE -->
-<!-- ========================================================= -->
+    <p>A useful present-tense registry record can be written schematically as</p>
+
+    <div class="schema">\[
+\boxed{
+\mathfrak O
+=
+(
+\tau_{\rm in},
+D_O,
+\tau_{\rm out},
+\lambda,
+\mathcal P_{\rm in},
+\mathcal P_{\rm out},
+\Pi_O,
+\mathcal F_O
+).
+}
+\]</div>
+
+    
+
+    
+
+    <div class="limits"><strong>Limits</strong><ul><li>This record is organizational, not a universal intrinsic mathematical tuple.</li></ul></div>
+
+    
+
+    
+
+    
+
+    
+  </div>
+</section>
 
 <section id="principle">
+  <h2>96. Central SOE Principle</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Canonical</div>
+      <div><strong>Class:</strong> governing principle</div>
+    </div>
 
-  <h2>75. Central SOE Principle</h2>
+    <p>An Operation is not merely a formula.</p>
 
-  <div class="schema">
+    <div class="schema">\[
+\boxed{
+\begin{gathered}
+\text{An Operation is a typed mathematical action with}\\
+\text{a true domain, output type, admissibility structure,}\\
+\text{semantic sector, information effect, provenance,}\\
+\text{and position in a lawful response pipeline.}
+\end{gathered}
+}
+\]</div>
 
-    \[
-    \boxed{
-    \begin{gathered}
-    \text{An Operation is not merely a formula;}\\[4pt]
-    \text{it is a typed mathematical action with a domain,}\\[4pt]
-    \text{a codomain, an admissibility structure,}\\[4pt]
-    \text{an information effect, and a position in a lawful pipeline.}
-    \end{gathered}
-    }
-    \]
+    
 
+    
+
+    
+
+    
+
+    
+
+    
+
+    
   </div>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- SECOND PRINCIPLE -->
-<!-- ========================================================= -->
 
 <section id="order-principle">
+  <h2>97. Operation-Order Principle</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Canonical</div>
+      <div><strong>Class:</strong> governing principle</div>
+    </div>
 
-  <h2>76. Operation-Order Principle</h2>
+    <p>When changing Operation order changes the mathematics, order itself is
+response information.</p>
 
-  <div class="schema">
+    <div class="schema">\[
+\boxed{
+\text{order-sensitive mathematics}
+\Longrightarrow
+\text{Operation order belongs in the response contract}.
+}
+\]</div>
 
-    \[
-    \boxed{
-    \text{When operation order changes the mathematics,
-    operation order is mathematical information.}
-    }
-    \]
+    
 
+    
+
+    
+
+    
+
+    
+
+    
+
+    
   </div>
-
-  <p>
-    SOE exists to keep that information explicit.
-  </p>
-
 </section>
 
+<section id="central-audit">
+  <h2>98. Central SOE Audit</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Canonical</div>
+      <div><strong>Class:</strong> reader checklist</div>
+    </div>
 
-<!-- ========================================================= -->
-<!-- RELATED -->
-<!-- ========================================================= -->
+    <p>For each Operation pipeline, ask:</p>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="audit"><strong>SOE audit</strong><ul><li>What is every Operation's semantic sector?</li><li>What is its actual domain?</li><li>What law/Regime is active?</li><li>What Passport information is required?</li><li>What information is lost?</li><li>Does order matter?</li><li>Does the next handoff pass?</li><li>Does REBIND change the receiving contract?</li><li>Does provenance matter downstream?</li><li>Does feedback require memory or delay state?</li><li>What approximation error is introduced?</li><li>Which stage first fails if the pipeline is invalid?</li><li>Does the result remain admissible under ACE?</li><li>Does the transformed observation remain sufficient under IRE?</li><li>Does the reduced state remain dynamically closed?</li></ul></div>
+
+    
+
+    
+  </div>
+</section>
 
 <section id="related">
+  <h2>99. Related Pages</h2>
+  <div class="soe-card">
+    <div class="meta">
+      <div><strong>Status:</strong> Current</div>
+      <div><strong>Class:</strong> corpus navigation</div>
+    </div>
 
-  <h2>77. Related Pages</h2>
+    <table>
+<thead><tr><th>Question</th><th>Page</th></tr></thead>
+<tbody>
+<tr><td>How does SOE sit inside the full response framework?</td><td><a href="gurf.html#soe">GURF</a></td></tr>
+<tr><td>What is an Operation, Interface, Interaction, or Network?</td><td><a href="structures.html#operation">Structures</a></td></tr>
+<tr><td>Which information must survive Operations?</td><td><a href="passports.html#passport">Passports</a></td></tr>
+<tr><td>Which exact composition results are proved?</td><td><a href="theorems.html">Theorems</a></td></tr>
+<tr><td>Where are worked pipelines?</td><td><a href="examples.html">Examples</a></td></tr>
+<tr><td>Where are SOE applications under active study?</td><td><a href="research.html">Research</a></td></tr>
+</tbody>
+</table>
 
-  <p>
-    Return to
-    <a href="gurf.html">GURF</a>
-    for the integrated extension architecture.
-  </p>
+    
 
-  <p>
-    See
-    <a href="structures.html">Structures</a>
-    for BM Operations, Interactions, Interfaces, and Networks.
-  </p>
+    
 
-  <p>
-    See
-    <a href="passports.html">Passports</a>
-    for information requirements and preservation.
-  </p>
+    
 
-  <p>
-    See
-    <a href="theorems.html">Theorems</a>
-    for factorization, information-loss, quotient, and closure results.
-  </p>
+    
 
-  <p>
-    See
-    <a href="research.html">Research</a>
-    for active SOE applications.
-  </p>
+    
 
+    
+
+    
+
+    
+  </div>
 </section>
-
 
 </main>
 
-
 <footer>
-
-  <p>
-    <strong>Branch Mathematics Research Encyclopedia</strong>
-  </p>
-
-  <p>
-    GURF · Structured Operations Extension · SOE
-  </p>
-
+  <p><strong>GURF Structured Operations Extension</strong></p>
+  <p>Operations · domains · order · handoff · REBIND · feedback · provenance · pipelines</p>
 </footer>
-
-
 </body>
-
 </html>
