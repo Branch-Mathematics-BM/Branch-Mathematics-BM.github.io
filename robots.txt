@@ -1,29 +1,8 @@
-User-agent: OAI-SearchBot
-Allow: /
-
-User-agent: GPTBot
-Allow: /
+# Branch Mathematics Research Encyclopedia
+# Public mathematical research corpus: BM, GURF, worked examples,
+# definitions, theorems, equations, structures, Passports, Roots, and research.
 
 User-agent: *
-Allow: /
-Sitemap: https://branch-mathematics-bm.github.io/sitemap.xml
-
-User-agent: *
-Allow: /
-
-User-agent: OAI-SearchBot
 Allow: /
 
 Sitemap: https://branch-mathematics-bm.github.io/sitemap.xml
-
-# Allow all crawlers
-User-agent: *
-Allow: /
-
-# Explicit allow for Microsoft Copilot crawler
-User-agent: Copilot
-Allow: /
-
-# Prevent accidental blocking by wildcard rules
-User-agent: *
-Disallow:
