@@ -1,38 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+  <title>Theorem Registry | Branch Mathematics and GURF</title>
 
-  <title>
-    Theorems | Branch Mathematics and GURF
-  </title>
-
-  <meta name="description"
-        content="Formal theorem registry for Branch Mathematics and GURF, including structured quotients, Passport equivalence, exact recoverability, completion fibres, interface factorization, information loss, continuation, repair, and supporting Root mathematics.">
+  <meta
+    name="description"
+    content="Formal theorems, propositions, lemmas, corollaries, exact identities, counterexamples, and conditional results supporting Branch Mathematics and GURF."
+  >
 
   <meta name="robots" content="index, follow">
 
   <script>
-    MathJax = {
+    window.MathJax = {
       tex: {
         inlineMath: [['\\(', '\\)']],
         displayMath: [['\\[', '\\]']]
+      },
+      svg: {
+        fontCache: 'global'
       }
     };
   </script>
 
-  <script async
-    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  <script
+    id="MathJax-script"
+    async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
   </script>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: Arial, Helvetica, sans-serif;
       margin: 0;
-      line-height: 1.75;
+      line-height: 1.68;
       color: #202124;
       background: #ffffff;
     }
@@ -45,20 +53,21 @@
     }
 
     header h1 {
-      margin-bottom: 10px;
+      margin: 0;
       font-size: 2.6rem;
     }
 
     header p {
-      max-width: 880px;
-      margin: auto;
-      font-size: 1.15rem;
+      max-width: 940px;
+      margin: 18px auto 0;
+      color: #e5e7eb;
+      font-size: 1.08rem;
     }
 
     nav {
       background: #1f2937;
       text-align: center;
-      padding: 12px;
+      padding: 12px 10px;
     }
 
     nav a {
@@ -68,88 +77,63 @@
       display: inline-block;
     }
 
+    nav a:hover {
+      text-decoration: underline;
+    }
+
     main {
-      max-width: 1050px;
+      max-width: 1000px;
       margin: auto;
-      padding: 35px 20px;
+      padding: 38px 20px;
+    }
+
+    section {
+      margin-bottom: 54px;
     }
 
     h2 {
       border-bottom: 2px solid #e5e7eb;
       padding-bottom: 8px;
-      margin-top: 55px;
+      margin-top: 0;
     }
 
     h3 {
       margin-top: 28px;
     }
 
-    .lead {
-      font-size: 1.08rem;
-    }
-
-    .theorem {
-      border: 1px solid #9ca3af;
-      border-radius: 8px;
-      padding: 24px;
-      margin: 25px 0;
-    }
-
-    .proof {
-      background: #fafafa;
-      border-left: 4px solid #4b5563;
-      padding: 20px;
-      margin: 22px 0;
-    }
-
-    .mathbox {
-      background: #f8fafc;
+    .schema {
       border-left: 4px solid #374151;
-      padding: 18px;
-      margin: 22px 0;
+      padding: 18px 22px;
+      margin: 24px 0;
+      background: #f9fafb;
       overflow-x: auto;
     }
 
-    .statusbox {
-      background: #f3f4f6;
+    .status-note {
+      background: #f9fafb;
+      border: 1px solid #d1d5db;
       border-radius: 8px;
-      padding: 20px;
+      padding: 18px 22px;
       margin: 20px 0;
     }
 
     .warning {
       border-left: 4px solid #6b7280;
-      background: #fafafa;
-      padding: 18px;
+      background: #f9fafb;
+      padding: 18px 22px;
       margin: 22px 0;
-    }
-
-    .corollary {
-      border: 1px solid #d1d5db;
-      border-radius: 8px;
-      padding: 20px;
-      margin: 20px 0;
-      background: #ffffff;
-    }
-
-    .counterexample {
-      border: 1px solid #d1d5db;
-      border-radius: 8px;
-      padding: 20px;
-      margin: 20px 0;
-      background: #fafafa;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      margin: 25px 0;
+      margin: 20px 0;
     }
 
     th,
     td {
       border: 1px solid #d1d5db;
-      padding: 12px;
+      padding: 11px 12px;
       text-align: left;
       vertical-align: top;
     }
@@ -158,12 +142,30 @@
       background: #f3f4f6;
     }
 
+    ul {
+      padding-left: 24px;
+    }
+
     footer {
       background: #111827;
       color: white;
       text-align: center;
-      padding: 28px;
-      margin-top: 60px;
+      padding: 28px 20px;
+      margin-top: 40px;
+    }
+
+    footer p {
+      margin: 5px 0;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      main {
+        padding: 28px 16px;
+      }
     }
   </style>
 </head>
@@ -176,16 +178,15 @@
   <h1>Theorem Registry</h1>
 
   <p>
-    Formal theorems, propositions, lemmas, corollaries, exact identities,
-    conditional results, and supporting mathematics used in Branch
-    Mathematics and GURF.
+    Formal theorems, propositions, lemmas, corollaries,
+    counterexamples, exact identities, and conditional results used in
+    Branch Mathematics and GURF.
   </p>
 
 </header>
 
 
 <nav>
-
   <a href="index.html">Home</a>
   <a href="branch-mathematics.html">Branch Mathematics</a>
   <a href="gurf.html">GURF</a>
@@ -197,2805 +198,2853 @@
   <a href="roots.html">Roots</a>
   <a href="research.html">Research</a>
   <a href="changelog.html">Changelog</a>
-
 </nav>
 
 
 <main>
 
 
-<section>
+<!-- ========================================================= -->
+<!-- STANDARD -->
+<!-- ========================================================= -->
+
+<section id="standard">
 
   <h2>1. Theorem Standard</h2>
 
-  <p class="lead">
+  <p>
     A result is labeled a theorem only when its conclusion follows
     mathematically from explicitly stated assumptions.
   </p>
 
-  <p>
-    The registry distinguishes:
-  </p>
-
   <table>
+    <thead>
+      <tr>
+        <th>Classification</th>
+        <th>Meaning</th>
+      </tr>
+    </thead>
 
-    <tr>
-      <th>Classification</th>
-      <th>Meaning</th>
-    </tr>
+    <tbody>
+      <tr>
+        <td>Theorem</td>
+        <td>Proved result under stated assumptions.</td>
+      </tr>
 
-    <tr>
-      <td>Theorem</td>
-      <td>
-        proved result under stated assumptions
-      </td>
-    </tr>
+      <tr>
+        <td>Proposition</td>
+        <td>Proved mathematical statement used within the framework.</td>
+      </tr>
 
-    <tr>
-      <td>Proposition</td>
-      <td>
-        proved mathematical statement used within the framework
-      </td>
-    </tr>
+      <tr>
+        <td>Lemma</td>
+        <td>Proved supporting result.</td>
+      </tr>
 
-    <tr>
-      <td>Lemma</td>
-      <td>
-        proved supporting result
-      </td>
-    </tr>
+      <tr>
+        <td>Corollary</td>
+        <td>Result following directly from an earlier proved statement.</td>
+      </tr>
 
-    <tr>
-      <td>Corollary</td>
-      <td>
-        result following directly from an earlier proved statement
-      </td>
-    </tr>
+      <tr>
+        <td>Conditional theorem</td>
+        <td>
+          Theorem whose assumptions include additional structural,
+          analytic, geometric, probabilistic, or physical hypotheses.
+        </td>
+      </tr>
 
-    <tr>
-      <td>Conditional theorem</td>
-      <td>
-        theorem whose assumptions include additional structural hypotheses
-      </td>
-    </tr>
-
-    <tr>
-      <td>Counterexample</td>
-      <td>
-        explicit construction showing that a stronger claim is false
-      </td>
-    </tr>
-
+      <tr>
+        <td>Counterexample</td>
+        <td>
+          Explicit construction showing that a stronger statement is false.
+        </td>
+      </tr>
+    </tbody>
   </table>
 
 </section>
 
 
+<!-- ========================================================= -->
+<!-- NOVELTY -->
+<!-- ========================================================= -->
 
-<section>
+<section id="novelty">
 
   <h2>2. Novelty and Proof Are Separate</h2>
 
-  <div class="warning">
+  <p>
+    A valid proof establishes mathematical truth under its assumptions.
+  </p>
 
-    <p>
-      A valid proof establishes mathematical truth under its assumptions.
-    </p>
+  <p>
+    It does not by itself establish:
+  </p>
 
-    <p>
-      It does not by itself establish historical novelty, priority,
-      independent validation, or physical realization.
-    </p>
+  <p>
+    historical novelty · priority · independent validation ·
+    physical realization · engineering usefulness
+  </p>
+
+  <div class="schema">
+
+    \[
+    \boxed{
+    \text{proved}
+    \neq
+    \text{novel}
+    \neq
+    \text{physically realized}.
+    }
+    \]
 
   </div>
 
   <p>
-    Many supporting results used by BM and GURF are instances of established
-    mathematics.
-  </p>
-
-  <p>
-    Their role in this registry is to make the logical architecture explicit.
+    Many supporting results used by BM and GURF are instances of
+    established mathematics.
   </p>
 
 </section>
 
 
+<!-- ========================================================= -->
+<!-- PASSPORT EQUIVALENCE -->
+<!-- ========================================================= -->
 
-<section>
+<section id="passport-equivalence">
 
   <h2>3. Passport Equivalence Theorem</h2>
 
-  <div class="theorem">
-
-    <p><strong>Project identifier:</strong> not yet assigned</p>
-
-    <p><strong>Status:</strong> proved</p>
-
-    <p>
-      Let \(X\) be a set and let
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      b_c:
-      X
-      \longrightarrow
-      Y_c,
-      \qquad
-      c\in\mathcal C
-      \]
-
-    </div>
-
-    <p>
-      be a family of functions.
-    </p>
-
-    <p>
-      Define
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      x\sim_P x'
-      \quad\Longleftrightarrow\quad
-      b_c(x)=b_c(x')
-      \quad
-      \forall c\in\mathcal C.
-      \]
-
-    </div>
-
-    <p>
-      Then \(\sim_P\) is an equivalence relation on \(X\).
-    </p>
-
+  <div class="status-note">
+    <strong>Project identifier:</strong> not yet assigned<br>
+    <strong>Status:</strong> proved<br>
+    <strong>Sector:</strong> deterministic Set semantics
   </div>
 
-  <div class="proof">
-
-    <h3>Proof</h3>
-
-    <p>
-      Reflexivity follows because
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      b_c(x)=b_c(x)
-      \]
-
-    </div>
-
-    <p>
-      for every \(c\).
-    </p>
-
-    <p>
-      Symmetry follows because
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      b_c(x)=b_c(x')
-      \Longrightarrow
-      b_c(x')=b_c(x).
-      \]
-
-    </div>
-
-    <p>
-      For transitivity, if
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      x\sim_P x'
-      \quad\text{and}\quad
-      x'\sim_P x'',
-      \]
-
-    </div>
-
-    <p>
-      then for every \(c\),
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      b_c(x)
-      =
-      b_c(x')
-      =
-      b_c(x''),
-      \]
-
-    </div>
-
-    <p>
-      so
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      x\sim_P x''.
-      \]
-
-    </div>
-
-    <p>
-      Therefore \(\sim_P\) is reflexive, symmetric, and transitive.
-      \(\square\)
-    </p>
-
-  </div>
-
-</section>
-
-
-
-<section>
-
-  <h2>4. Exact Recoverability Theorem</h2>
-
-  <div class="theorem">
-
-    <p><strong>Project identifier:</strong> not yet assigned</p>
-
-    <p><strong>Status:</strong> proved</p>
-
-    <p>
-      Let
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      r:
-      X
-      \longrightarrow
-      Y
-      \]
-
-    </div>
-
-    <p>
-      be an observation and
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      T:
-      X
-      \longrightarrow
-      W
-      \]
-
-    </div>
-
-    <p>
-      a task.
-    </p>
-
-    <p>
-      The following are equivalent:
-    </p>
-
-    <p>
-      <strong>(i)</strong> There exists
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      \widetilde T:
-      r(X)
-      \longrightarrow
-      W
-      \]
-
-    </div>
-
-    <p>
-      such that
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      \boxed{
-      T
-      =
-      \widetilde T
-      \circ r.
-      }
-      \]
-
-    </div>
-
-    <p>
-      <strong>(ii)</strong>
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      \boxed{
-      r(x)=r(x')
-      \Longrightarrow
-      T(x)=T(x')
-      }
-      \]
-
-    </div>
-
-    <p>
-      for all \(x,x'\in X\).
-    </p>
-
-  </div>
-
-  <div class="proof">
-
-    <h3>Proof</h3>
-
-    <p>
-      Assume (i). If
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      r(x)=r(x'),
-      \]
-
-    </div>
-
-    <p>
-      then
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      T(x)
-      =
-      \widetilde T(r(x))
-      =
-      \widetilde T(r(x'))
-      =
-      T(x').
-      \]
-
-    </div>
-
-    <p>
-      Hence (ii).
-    </p>
-
-    <p>
-      Conversely, assume (ii).
-    </p>
-
-    <p>
-      For \(y\in r(X)\), choose any \(x\in X\) satisfying
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      r(x)=y.
-      \]
-
-    </div>
-
-    <p>
-      Define
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      \widetilde T(y)
-      =
-      T(x).
-      \]
-
-    </div>
-
-    <p>
-      Condition (ii) guarantees that this does not depend on the chosen
-      representative \(x\).
-    </p>
-
-    <p>
-      Thus \(\widetilde T\) is well-defined and
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      T(x)
-      =
-      \widetilde T(r(x)).
-      \]
-
-    </div>
-
-    <p>
-      Hence (i). \(\square\)
-    </p>
-
-  </div>
-
-</section>
-
-
-
-<section>
-
-  <h2>5. Passport Sufficiency Corollary</h2>
-
-  <div class="corollary">
-
-    <p><strong>Status:</strong> proved corollary</p>
-
-    <p>
-      Let \(B_P\) be the combined Passport observation map.
-    </p>
-
-    <p>
-      Passport \(P\) is sufficient for task \(T\) if and only if
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      \boxed{
-      x\sim_P x'
-      \Longrightarrow
-      T(x)=T(x').
-      }
-      \]
-
-    </div>
-
-    <p>
-      Equivalently,
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      \boxed{
-      \sim_P
-      \subseteq
-      \sim_T.
-      }
-      \]
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<section>
-
-  <h2>6. Completion-Fibre Sufficiency Theorem</h2>
-
-  <div class="theorem">
-
-    <p><strong>Project identifier:</strong> not yet assigned</p>
-
-    <p><strong>Status:</strong> proved</p>
-
-    <p>
-      Let
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      r_\alpha:
-      X
-      \longrightarrow
-      Y_\alpha,
-      \qquad
-      \alpha\in A,
-      \]
-
-    </div>
-
-    <p>
-      and let
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      \mathfrak C_A(\ell)
-      =
-      \bigcap_{\alpha\in A}
-      r_\alpha^{-1}(\ell_\alpha).
-      \]
-
-    </div>
-
-    <p>
-      A task
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      T:
-      X
-      \longrightarrow
-      W
-      \]
-
-    </div>
-
-    <p>
-      factors through the combined observation exactly when \(T\) is constant
-      on every nonempty completion fibre.
-    </p>
-
-    <p>
-      Equivalently,
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      \boxed{
-      \left|
-      T
-      \left(
-      \mathfrak C_A(\ell)
-      \right)
-      \right|
-      \le
-      1
-      }
+  <p>
+    Let \(X\) be a set and let
+  </p>
+
+  \[
+  b_c:
+  X
+  \longrightarrow
+  Y_c,
+  \qquad
+  c\in\mathcal C
+  \]
+
+  <p>
+    be a family of functions.
+  </p>
+
+  <p>
+    Define
+  </p>
+
+  <div class="schema">
+
+    \[
+    \boxed{
+    x\sim_Px'
+    \Longleftrightarrow
+    b_c(x)=b_c(x')
+    \quad
+    \forall c\in\mathcal C.
+    }
     \]
-
-    </div>
-
-    <p>
-      for every observation value \(\ell\).
-    </p>
-
-  </div>
-
-  <div class="proof">
-
-    <h3>Proof</h3>
-
-    <p>
-      Define the combined observation
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      r_A(x)
-      =
-      (r_\alpha(x))_{\alpha\in A}.
-      \]
-
-    </div>
-
-    <p>
-      The fibre of \(r_A\) over \(\ell\) is exactly
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      r_A^{-1}(\ell)
-      =
-      \mathfrak C_A(\ell).
-      \]
-
-    </div>
-
-    <p>
-      The result therefore follows immediately from the Exact Recoverability
-      Theorem. \(\square\)
-    </p>
-
-  </div>
-
-</section>
-
-
-
-<section>
-
-  <h2>7. Parallel Observation Refinement Theorem</h2>
-
-  <div class="theorem">
-
-    <p><strong>Project identifier:</strong> not yet assigned</p>
-
-    <p><strong>Status:</strong> proved</p>
-
-    <p>
-      Let
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      F:
-      X\longrightarrow Y
-      \]
-
-    </div>
-
-    <p>
-      and
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      G:
-      X\longrightarrow Z.
-      \]
-
-    </div>
-
-    <p>
-      Define the joint observation
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      H=(F,G):
-      X\longrightarrow Y\times Z.
-      \]
-
-    </div>
-
-    <p>
-      Then
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      \boxed{
-      \sim_H
-      =
-      \sim_F
-      \cap
-      \sim_G.
-      }
-      \]
-
-    </div>
-
-    <p>
-      Moreover,
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      \boxed{
-      H^{-1}(y,z)
-      =
-      F^{-1}(y)
-      \cap
-      G^{-1}(z).
-      }
-      \]
-
-    </div>
-
-  </div>
-
-  <div class="proof">
-
-    <h3>Proof</h3>
-
-    <p>
-      By definition,
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      H(x)=H(x')
-      \]
-
-    </div>
-
-    <p>
-      if and only if
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      F(x)=F(x')
-      \quad\text{and}\quad
-      G(x)=G(x').
-      \]
-
-    </div>
-
-    <p>
-      This is exactly
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      x\sim_F x'
-      \quad\text{and}\quad
-      x\sim_G x'.
-      \]
-
-    </div>
-
-    <p>
-      The fibre identity follows from the same coordinatewise condition.
-      \(\square\)
-    </p>
-
-  </div>
-
-</section>
-
-
-
-<section>
-
-  <h2>8. Deterministic Serial Information-Loss Theorem</h2>
-
-  <div class="theorem">
-
-    <p><strong>Project identifier:</strong> not yet assigned</p>
-
-    <p><strong>Status:</strong> proved</p>
-
-    <p>
-      Let
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      F:
-      X\longrightarrow Y
-      \]
-
-    </div>
-
-    <p>
-      and
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      G:
-      Y\longrightarrow Z.
-      \]
-
-    </div>
-
-    <p>
-      Then
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      \boxed{
-      F(x)=F(x')
-      \Longrightarrow
-      (G\circ F)(x)
-      =
-      (G\circ F)(x').
-      }
-      \]
-
-    </div>
-
-    <p>
-      Equivalently,
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      \boxed{
-      \sim_F
-      \subseteq
-      \sim_{G\circ F}.
-      }
-      \]
-
-    </div>
-
-  </div>
-
-  <div class="proof">
-
-    <h3>Proof</h3>
-
-    <p>
-      If
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      F(x)=F(x'),
-      \]
-
-    </div>
-
-    <p>
-      applying \(G\) to both sides gives
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      G(F(x))
-      =
-      G(F(x')).
-      \]
-
-    </div>
-
-    <p>
-      Therefore the composite cannot distinguish the two states.
-      \(\square\)
-    </p>
-
-  </div>
-
-  <div class="corollary">
-
-    <h3>Consequence</h3>
-
-    <p>
-      A deterministic downstream operation cannot reconstruct a distinction
-      already erased by an upstream deterministic map unless additional
-      information enters through another channel.
-    </p>
-
-  </div>
-
-</section>
-
-
-
-<section>
-
-  <h2>9. BM-SQ-01 — Structured Quotient Theorem</h2>
-
-  <div class="theorem">
-
-    <p>
-      <strong>Project identifier:</strong>
-      BM-SQ-01
-    </p>
-
-    <p>
-      <strong>Sector:</strong>
-      finitary algebraic
-    </p>
-
-    <p>
-      <strong>Status:</strong>
-      proved / canonical BM structured-quotient result
-    </p>
-
-    <p>
-      Let
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      A=(X,\Sigma)
-      \]
-
-    </div>
-
-    <p>
-      be a finitary algebra.
-    </p>
-
-    <p>
-      Let \(\sim_P\) be the raw equivalence relation induced by a Passport.
-    </p>
-
-    <p>
-      For every \(n\)-ary operation
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      \sigma:
-      X^n
-      \longrightarrow
-      X,
-      \]
-
-    </div>
-
-    <p>
-      define the candidate quotient operation by
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      \overline{\sigma}
-      \left(
-      [x_1]_P,\ldots,[x_n]_P
-      \right)
-      =
-      \left[
-      \sigma(x_1,\ldots,x_n)
-      \right]_P.
-      \]
-
-    </div>
-
-    <p>
-      Then the induced \(\Sigma\)-operations are well-defined on
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      X/{\sim_P}
-      \]
-
-    </div>
-
-    <p>
-      if and only if \(\sim_P\) is a \(\Sigma\)-congruence:
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      \boxed{
-      x_i\sim_P y_i
-      \quad
-      \forall i
-      \Longrightarrow
-      \sigma(x_1,\ldots,x_n)
-      \sim_P
-      \sigma(y_1,\ldots,y_n)
-      }
-      \]
-
-    </div>
-
-    <p>
-      for every \(\sigma\in\Sigma\).
-    </p>
-
-  </div>
-
-  <div class="proof">
-
-    <h3>Proof</h3>
-
-    <p>
-      First assume \(\sim_P\) is a \(\Sigma\)-congruence.
-    </p>
-
-    <p>
-      Suppose
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      [x_i]_P
-      =
-      [y_i]_P
-      \qquad
-      \forall i.
-      \]
-
-    </div>
-
-    <p>
-      Then
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      x_i\sim_P y_i
-      \qquad
-      \forall i.
-      \]
-
-    </div>
-
-    <p>
-      Congruence gives
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      \sigma(x_1,\ldots,x_n)
-      \sim_P
-      \sigma(y_1,\ldots,y_n).
-      \]
-
-    </div>
-
-    <p>
-      Hence
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      \left[
-      \sigma(x_1,\ldots,x_n)
-      \right]_P
-      =
-      \left[
-      \sigma(y_1,\ldots,y_n)
-      \right]_P.
-      \]
-
-    </div>
-
-    <p>
-      Therefore the quotient operation is independent of representatives and
-      is well-defined.
-    </p>
-
-    <p>
-      Conversely, assume every candidate quotient operation is well-defined.
-    </p>
-
-    <p>
-      Let
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      x_i\sim_P y_i
-      \qquad
-      \forall i.
-      \]
-
-    </div>
-
-    <p>
-      Then
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      [x_i]_P
-      =
-      [y_i]_P.
-      \]
-
-    </div>
-
-    <p>
-      Since \(\overline{\sigma}\) is well-defined,
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      \overline{\sigma}
-      ([x_1]_P,\ldots,[x_n]_P)
-      =
-      \overline{\sigma}
-      ([y_1]_P,\ldots,[y_n]_P).
-      \]
-
-    </div>
-
-    <p>
-      Therefore
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      \left[
-      \sigma(x_1,\ldots,x_n)
-      \right]_P
-      =
-      \left[
-      \sigma(y_1,\ldots,y_n)
-      \right]_P,
-      \]
-
-    </div>
-
-    <p>
-      so
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      \sigma(x_1,\ldots,x_n)
-      \sim_P
-      \sigma(y_1,\ldots,y_n).
-      \]
-
-    </div>
-
-    <p>
-      Thus \(\sim_P\) is a congruence. \(\square\)
-    </p>
-
-  </div>
-
-</section>
-
-
-
-<section>
-
-  <h2>10. Raw Observation Is Not Enough — Counterexample</h2>
-
-  <div class="counterexample">
-
-    <p>
-      Let
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      X=\mathbb R^2
-      \]
-
-    </div>
-
-    <p>
-      and define
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      (x_1,x_2)
-      \sim_P
-      (y_1,y_2)
-      \quad\Longleftrightarrow\quad
-      x_1=y_1.
-      \]
-
-    </div>
-
-    <p>
-      Consider the swap operation
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      \sigma(x_1,x_2)
-      =
-      (x_2,x_1).
-      \]
-
-    </div>
-
-    <p>
-      Take
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      x=(1,2),
-      \qquad
-      y=(1,9).
-      \]
-
-    </div>
-
-    <p>
-      Then
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      x\sim_P y.
-      \]
-
-    </div>
-
-    <p>
-      But
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      \sigma(x)
-      =
-      (2,1),
-      \qquad
-      \sigma(y)
-      =
-      (9,1),
-      \]
-
-    </div>
-
-    <p>
-      and therefore
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      \sigma(x)
-      \not\sim_P
-      \sigma(y).
-      \]
-
-    </div>
-
-    <p>
-      Thus observational equivalence alone does not guarantee an
-      operation-compatible quotient.
-    </p>
-
-  </div>
-
-</section>
-
-
-
-<section>
-
-  <h2>11. Interface Factorization Theorem</h2>
-
-  <div class="theorem">
-
-    <p><strong>Project identifier:</strong> not yet assigned</p>
-
-    <p><strong>Status:</strong> proved</p>
-
-    <p>
-      Let
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      P_1:
-      X
-      \longrightarrow
-      Q_1
-      \]
-
-    </div>
-
-    <p>
-      and let
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      H:
-      X
-      \longrightarrow
-      Q_2.
-      \]
-
-    </div>
-
-    <p>
-      There exists
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      G:
-      P_1(X)
-      \longrightarrow
-      Q_2
-      \]
-
-    </div>
-
-    <p>
-      satisfying
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      \boxed{
-      H
-      =
-      G\circ P_1
-      }
-      \]
-
-    </div>
-
-    <p>
-      if and only if
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      \boxed{
-      P_1(x)=P_1(x')
-      \Longrightarrow
-      H(x)=H(x').
-      }
-      \]
-
-    </div>
-
-  </div>
-
-  <div class="proof">
-
-    <h3>Proof</h3>
-
-    <p>
-      This is the Exact Recoverability Theorem applied with task \(H\).
-      \(\square\)
-    </p>
-
-  </div>
-
-  <div class="corollary">
-
-    <h3>BM Interface Corollary</h3>
-
-    <p>
-      If
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      H=P_2\circ F,
-      \]
-
-    </div>
-
-    <p>
-      then a compatible represented map \(G\) satisfying
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      P_2\circ F
-      =
-      G\circ P_1
-      \]
-
-    </div>
-
-    <p>
-      exists exactly when \(P_2\circ F\) is constant on the fibres of \(P_1\).
-    </p>
-
-  </div>
-
-</section>
-
-
-
-<section>
-
-  <h2>12. Dynamic Continuation Theorem</h2>
-
-  <div class="theorem">
-
-    <p><strong>Project identifier:</strong> not yet assigned</p>
-
-    <p><strong>Status:</strong> proved</p>
-
-    <p>
-      Let
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      r:
-      X\longrightarrow Y
-      \]
-
-    </div>
-
-    <p>
-      be an observation,
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      \Phi_t:
-      X\longrightarrow X
-      \]
-
-    </div>
-
-    <p>
-      an evolution, and
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      T:
-      X\longrightarrow W
-      \]
-
-    </div>
-
-    <p>
-      a future task.
-    </p>
-
-    <p>
-      Then the future task is exactly recoverable from the present
-      observation if and only if
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      \boxed{
-      r(x)=r(x')
-      \Longrightarrow
-      T(\Phi_t(x))
-      =
-      T(\Phi_t(x')).
-      }
-      \]
-
-    </div>
-
-    <p>
-      Equivalently, there exists
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      \widetilde T_t:
-      r(X)
-      \longrightarrow
-      W
-      \]
-
-    </div>
-
-    <p>
-      with
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      \boxed{
-      T\circ\Phi_t
-      =
-      \widetilde T_t
-      \circ r.
-      }
-      \]
-
-    </div>
-
-  </div>
-
-  <div class="proof">
-
-    <h3>Proof</h3>
-
-    <p>
-      Apply the Exact Recoverability Theorem to the task
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      T_t
-      =
-      T\circ\Phi_t.
-      \]
-
-    </div>
-
-    <p>
-      \(\square\)
-    </p>
-
-  </div>
-
-</section>
-
-
-
-<section>
-
-  <h2>13. Repair Refinement Proposition</h2>
-
-  <div class="theorem">
-
-    <p><strong>Project identifier:</strong> not yet assigned</p>
-
-    <p><strong>Status:</strong> proved proposition</p>
-
-    <p>
-      Let
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      r:
-      X\longrightarrow Y
-      \]
-
-    </div>
-
-    <p>
-      be an existing observation and
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      q:
-      X\longrightarrow Z
-      \]
-
-    </div>
-
-    <p>
-      an added repair observation.
-    </p>
-
-    <p>
-      Then
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      \boxed{
-      \sim_{(r,q)}
-      \subseteq
-      \sim_r.
-      }
-      \]
-
-    </div>
-
-    <p>
-      Thus adding an observation can refine equivalence classes but cannot
-      make them coarser.
-    </p>
-
-  </div>
-
-  <div class="proof">
-
-    <h3>Proof</h3>
-
-    <p>
-      If
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      (r,q)(x)
-      =
-      (r,q)(x'),
-      \]
-
-    </div>
-
-    <p>
-      then in particular
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      r(x)=r(x').
-      \]
-
-    </div>
-
-    <p>
-      Therefore
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      x\sim_r x'.
-      \]
-
-    </div>
-
-    <p>
-      \(\square\)
-    </p>
-
-  </div>
-
-</section>
-
-
-
-<section>
-
-  <h2>14. Sufficiency Is Preserved Under Refinement</h2>
-
-  <div class="corollary">
-
-    <p><strong>Status:</strong> proved corollary</p>
-
-    <p>
-      Suppose observation \(r\) is sufficient for task \(T\).
-    </p>
-
-    <p>
-      If another observation \(s\) is at least as informative in the sense
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      \sim_s
-      \subseteq
-      \sim_r,
-      \]
-
-    </div>
-
-    <p>
-      then \(s\) is also sufficient for \(T\).
-    </p>
-
-  </div>
-
-  <div class="proof">
-
-    <h3>Proof</h3>
-
-    <p>
-      Sufficiency of \(r\) gives
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      \sim_r
-      \subseteq
-      \sim_T.
-      \]
-
-    </div>
-
-    <p>
-      Therefore
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      \sim_s
-      \subseteq
-      \sim_r
-      \subseteq
-      \sim_T.
-      \]
-
-    </div>
-
-    <p>
-      Hence \(s\) is sufficient for \(T\). \(\square\)
-    </p>
-
-  </div>
-
-</section>
-
-
-
-<section>
-
-  <h2>15. Separate Feasibility Does Not Imply Joint Feasibility</h2>
-
-  <div class="theorem">
-
-    <p><strong>Status:</strong> proved by counterexample</p>
-
-    <p>
-      From
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      P_c\neq\varnothing
-      \qquad
-      \forall c
-      \]
-
-    </div>
-
-    <p>
-      it does not follow that
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      \bigcap_c P_c
-      \neq
-      \varnothing.
-      \]
-
-    </div>
-
-  </div>
-
-  <div class="counterexample">
-
-    <h3>Counterexample</h3>
-
-    <p>
-      Let
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      X=\{0,1\},
-      \]
-
-    </div>
-
-    <p>
-      and choose
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      P_1=\{0\},
-      \qquad
-      P_2=\{1\}.
-      \]
-
-    </div>
-
-    <p>
-      Both sets are nonempty, but
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      \boxed{
-      P_1\cap P_2
-      =
-      \varnothing.
-      }
-      \]
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<section>
-
-  <h2>16. Quantifier-Scope Non-Equivalence</h2>
-
-  <div class="theorem">
-
-    <p><strong>Status:</strong> exact logical distinction</p>
-
-    <p>
-      In general,
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      \boxed{
-      \forall c\,
-      \exists x_c
-      \;
-      P(c,x_c)
-      }
-      \]
-
-    </div>
-
-    <p>
-      does not imply
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      \boxed{
-      \exists x\,
-      \forall c
-      \;
-      P(c,x).
-      }
-      \]
-
-    </div>
-
-  </div>
-
-  <div class="counterexample">
-
-    <p>
-      Take \(c\in\{0,1\}\) and define
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      P(c,x)
-      \quad\Longleftrightarrow\quad
-      x=c.
-      \]
-
-    </div>
-
-    <p>
-      For every \(c\), there exists \(x_c=c\).
-    </p>
-
-    <p>
-      But no single \(x\) equals both \(0\) and \(1\).
-    </p>
-
-  </div>
-
-</section>
-
-
-
-<section>
-
-  <h2>17. Stochastic Response-Law Factorization</h2>
-
-  <div class="theorem">
-
-    <p>
-      <strong>Status:</strong>
-      proved at the response-law set level; measurable realization requires
-      the appropriate measurable factorization conditions
-    </p>
-
-    <p>
-      Let
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      r:
-      X
-      \longrightarrow
-      Y
-      \]
-
-    </div>
-
-    <p>
-      and let
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      M:
-      X
-      \longrightarrow
-      \mathcal P(Z)
-      \]
-
-    </div>
-
-    <p>
-      assign a probability law to each state.
-    </p>
-
-    <p>
-      There exists a map
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      \widetilde M:
-      r(X)
-      \longrightarrow
-      \mathcal P(Z)
-      \]
-
-    </div>
-
-    <p>
-      satisfying
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      M
-      =
-      \widetilde M
-      \circ r
-    \]
-
-    </div>
-
-    <p>
-      if and only if
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      \boxed{
-      r(x)=r(x')
-      \Longrightarrow
-      M(x,\cdot)=M(x',\cdot).
-      }
-      \]
-
-    </div>
-
-  </div>
-
-  <div class="proof">
-
-    <h3>Proof</h3>
-
-    <p>
-      Treat \(M\) as an ordinary map whose codomain is the set of probability
-      laws on \(Z\).
-    </p>
-
-    <p>
-      The statement is then exactly the Exact Recoverability Theorem.
-      \(\square\)
-    </p>
-
-  </div>
-
-  <div class="warning">
-
-    <p>
-      If \(\widetilde M\) is required to be a measurable Markov kernel on a
-      specified measurable space, additional measurable-structure hypotheses
-      must be checked.
-    </p>
-
-  </div>
-
-</section>
-
-
-
-<section>
-
-  <h2>18. Existential and Universal Nondeterministic Responses Differ</h2>
-
-  <div class="theorem">
-
-    <p><strong>Status:</strong> exact distinction</p>
-
-    <p>
-      For relation
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      R\subseteq X\times Y
-      \]
-
-    </div>
-
-    <p>
-      and target set \(U\subseteq Y\), define
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      \Diamond_R(U)
-      =
-      \{x:\exists y\in U,\ xRy\},
-      \]
-
-    </div>
-
-    <p>
-      and
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      \Box_R(U)
-      =
-      \{x:\forall y,\ xRy\Rightarrow y\in U\}.
-      \]
-
-    </div>
-
-    <p>
-      In general,
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      \boxed{
-      \Diamond_R(U)
-      \neq
-      \Box_R(U).
-      }
-      \]
-
-    </div>
-
-  </div>
-
-  <div class="counterexample">
-
-    <p>
-      Let one state \(x\) have two possible outputs:
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      xR0,
-      \qquad
-      xR1.
-      \]
-
-    </div>
-
-    <p>
-      Let
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      U=\{1\}.
-      \]
-
-    </div>
-
-    <p>
-      Then
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      x\in\Diamond_R(U)
-      \]
-
-    </div>
-
-    <p>
-      because output \(1\) is possible.
-    </p>
-
-    <p>
-      But
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      x\notin\Box_R(U)
-      \]
-
-    </div>
-
-    <p>
-      because output \(0\notin U\) is also possible.
-    </p>
-
-  </div>
-
-</section>
-
-
-
-<section>
-
-  <h2>19. Affine Repeated-Root Theorem</h2>
-
-  <div class="theorem">
-
-    <p>
-      <strong>Classification:</strong>
-      supporting standard dynamical-systems theorem
-    </p>
-
-    <p>
-      <strong>Not a universal BM law.</strong>
-    </p>
-
-    <p>
-      Consider
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      R_{n+1}
-      =
-      \alpha R_n+\beta,
-      \qquad
-      \alpha\neq1.
-      \]
-
-    </div>
-
-    <p>
-      Define
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      R_*
-      =
-      \frac{\beta}{1-\alpha}.
-      \]
-
-    </div>
-
-    <p>
-      Then
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      \boxed{
-      R_n-R_*
-      =
-      \alpha^n
-      (R_0-R_*).
-      }
-      \]
-
-    </div>
-
-    <p>
-      Equivalently,
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      \boxed{
-      R_n
-      =
-      R_*
-      +
-      \alpha^n
-      (R_0-R_*).
-      }
-      \]
-
-    </div>
-
-  </div>
-
-  <div class="proof">
-
-    <h3>Proof</h3>
-
-    <p>
-      Since
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      R_*
-      =
-      \alpha R_*+\beta,
-      \]
-
-    </div>
-
-    <p>
-      subtracting \(R_*\) from the recurrence gives
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      R_{n+1}-R_*
-      =
-      \alpha(R_n-R_*).
-      \]
-
-    </div>
-
-    <p>
-      Iterating,
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      R_n-R_*
-      =
-      \alpha^n(R_0-R_*).
-      \]
-
-    </div>
-
-    <p>
-      \(\square\)
-    </p>
-
-  </div>
-
-</section>
-
-
-
-<section>
-
-  <h2>20. Affine Root Convergence Corollary</h2>
-
-  <div class="corollary">
-
-    <p><strong>Status:</strong> proved</p>
-
-    <p>
-      If
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      |\alpha|<1,
-      \]
-
-    </div>
-
-    <p>
-      then
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      \boxed{
-      \lim_{n\to\infty}
-      R_n
-      =
-      R_*.
-      }
-      \]
-
-    </div>
-
-  </div>
-
-  <div class="proof">
-
-    <h3>Proof</h3>
-
-    <p>
-      Since
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      |\alpha|<1,
-      \]
-
-    </div>
-
-    <p>
-      one has
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      \alpha^n\to0.
-      \]
-
-    </div>
-
-    <p>
-      Therefore
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      R_n-R_*
-      =
-      \alpha^n(R_0-R_*)
-      \to0.
-      \]
-
-    </div>
-
-    <p>
-      \(\square\)
-    </p>
-
-  </div>
-
-</section>
-
-
-
-<section>
-
-  <h2>21. Worked Root Example Corollary</h2>
-
-  <div class="corollary">
-
-    <p>
-      For
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      R_{n+1}
-      =
-      \frac12R_n+1,
-      \qquad
-      R_0=0,
-      \]
-
-    </div>
-
-    <p>
-      the fixed point is
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      R_*=2,
-      \]
-
-    </div>
-
-    <p>
-      and
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      \boxed{
-      R_n
-      =
-      2
-      \left(
-      1-2^{-n}
-      \right).
-      }
-      \]
-
-    </div>
-
-    <p>
-      The error is
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      \boxed{
-      |R_*-R_n|
-      =
-      2^{1-n}.
-      }
-      \]
-
-    </div>
 
   </div>
 
   <p>
-    The corresponding numerical convergence figure appears in the
-    <a href="equations.html">Equation Registry</a>.
+    Then \(\sim_P\) is an equivalence relation on \(X\).
+  </p>
+
+  <h3>Proof</h3>
+
+  <p>
+    Reflexivity follows because
+  </p>
+
+  \[
+  b_c(x)=b_c(x)
+  \]
+
+  <p>
+    for every \(c\).
+  </p>
+
+  <p>
+    Symmetry follows because
+  </p>
+
+  \[
+  b_c(x)=b_c(x')
+  \Longrightarrow
+  b_c(x')=b_c(x).
+  \]
+
+  <p>
+    For transitivity, suppose
+  </p>
+
+  \[
+  x\sim_Px'
+  \qquad\text{and}\qquad
+  x'\sim_Px''.
+  \]
+
+  <p>
+    Then for every \(c\),
+  </p>
+
+  \[
+  b_c(x)
+  =
+  b_c(x')
+  =
+  b_c(x''),
+  \]
+
+  <p>
+    so
+  </p>
+
+  \[
+  x\sim_Px''.
+  \]
+
+  <p>
+    Therefore \(\sim_P\) is reflexive, symmetric, and transitive.
+    \(\square\)
   </p>
 
 </section>
 
 
+<!-- ========================================================= -->
+<!-- EXACT RECOVERY -->
+<!-- ========================================================= -->
 
-<section>
+<section id="recoverability">
 
-  <h2>22. Invariant-Transfer Criterion</h2>
+  <h2>4. Exact Recoverability Theorem</h2>
 
-  <div class="theorem">
+  <div class="status-note">
+    <strong>Project identifier:</strong> not yet assigned<br>
+    <strong>Status:</strong> proved<br>
+    <strong>Sector:</strong> deterministic Set semantics
+  </div>
 
-    <p>
-      <strong>Classification:</strong>
-      exact condition for a represented invariant
-    </p>
+  <p>
+    Let
+  </p>
 
-    <p>
-      Let
-    </p>
+  \[
+  r:
+  X
+  \longrightarrow
+  Y
+  \]
 
-    <div class="mathbox">
+  <p>
+    and
+  </p>
 
-      \[
-      F:
-      X
-      \longrightarrow
-      Y,
-      \]
+  \[
+  T:
+  X
+  \longrightarrow
+  W.
+  \]
 
-    </div>
+  <p>
+    The following are equivalent.
+  </p>
 
-    <p>
-      and let
-    </p>
+  <h3>(i) Factorization</h3>
 
-    <div class="mathbox">
+  <p>
+    There exists
+  </p>
 
-      \[
-      C_X:
-      X
-      \longrightarrow
-      V,
-      \qquad
-      C_Y:
-      Y
-      \longrightarrow
-      V.
-      \]
+  \[
+  \widetilde T:
+  r(X)
+  \longrightarrow
+  W
+  \]
 
-    </div>
+  <p>
+    such that
+  </p>
 
-    <p>
-      The invariant represented by \(C_X\) is exactly preserved under \(F\)
-      through \(C_Y\) if
-    </p>
+  <div class="schema">
 
-    <div class="mathbox">
-
-      \[
-      \boxed{
-      C_Y\circ F
-      =
-      C_X.
-      }
-      \]
-
-    </div>
+    \[
+    \boxed{
+    T
+    =
+    \widetilde T\circ r.
+    }
+    \]
 
   </div>
+
+  <h3>(ii) Fibre Constancy</h3>
+
+  <div class="schema">
+
+    \[
+    \boxed{
+    r(x)=r(x')
+    \Longrightarrow
+    T(x)=T(x')
+    }
+    \]
+
+  </div>
+
+  <p>
+    for all \(x,x'\in X\).
+  </p>
+
+  <h3>Proof</h3>
+
+  <p>
+    Assume (i). If
+  </p>
+
+  \[
+  r(x)=r(x'),
+  \]
+
+  <p>
+    then
+  </p>
+
+  \[
+  T(x)
+  =
+  \widetilde T(r(x))
+  =
+  \widetilde T(r(x'))
+  =
+  T(x').
+  \]
+
+  <p>
+    Hence (ii).
+  </p>
+
+  <p>
+    Conversely assume (ii).
+    For \(y\in r(X)\), choose any \(x\in X\) with
+  </p>
+
+  \[
+  r(x)=y.
+  \]
+
+  <p>
+    Define
+  </p>
+
+  \[
+  \widetilde T(y)
+  =
+  T(x).
+  \]
+
+  <p>
+    Condition (ii) guarantees that the definition is independent of the
+    chosen representative.
+  </p>
+
+  <p>
+    Hence
+  </p>
+
+  \[
+  T
+  =
+  \widetilde T\circ r.
+  \]
+
+  <p>
+    \(\square\)
+  </p>
 
   <div class="warning">
 
-    <p>
-      This equation does not create a conservation law.
-    </p>
-
-    <p>
-      It states what exact preservation means once the relevant invariant has
-      already been mathematically established.
-    </p>
+    The theorem requires the factor map only on the realized image
+    \(r(X)\). Extension to all of \(Y\) is an additional problem.
 
   </div>
 
 </section>
 
 
+<!-- ========================================================= -->
+<!-- PASSPORT SUFF -->
+<!-- ========================================================= -->
 
-<section>
+<section id="passport-sufficiency">
 
-  <h2>23. Dynamic Closure Theorem</h2>
+  <h2>5. Passport Sufficiency Corollary</h2>
 
-  <div class="theorem">
+  <div class="status-note">
+    <strong>Status:</strong> proved corollary
+  </div>
 
-    <p>
-      <strong>Status:</strong>
-      exact factorization statement
-    </p>
+  <p>
+    Let
+  </p>
 
-    <p>
-      Let
-    </p>
+  \[
+  B_P:
+  X
+  \longrightarrow
+  Q_P
+  \]
 
-    <div class="mathbox">
+  <p>
+    be the combined Passport map.
+  </p>
 
-      \[
-      R:
-      X
-      \longrightarrow
-      Z
-      \]
+  <p>
+    Passport \(P\) is sufficient for deterministic Task \(T\) if and
+    only if
+  </p>
 
-    </div>
+  <div class="schema">
 
-    <p>
-      be a reduced representation and
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      \Phi:
-      X
-      \longrightarrow
-      X
-      \]
-
-    </div>
-
-    <p>
-      a one-step evolution.
-    </p>
-
-    <p>
-      There exists a reduced evolution
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      \widetilde\Phi:
-      R(X)
-      \longrightarrow
-      R(X)
-      \]
-
-    </div>
-
-    <p>
-      satisfying
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      \boxed{
-      R\circ\Phi
-      =
-      \widetilde\Phi
-      \circ R
-      }
-      \]
-
-    </div>
-
-    <p>
-      if and only if
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      \boxed{
-      R(x)=R(x')
-      \Longrightarrow
-      R(\Phi(x))
-      =
-      R(\Phi(x')).
-      }
-      \]
-
-    </div>
+    \[
+    \boxed{
+    x\sim_Px'
+    \Longrightarrow
+    T(x)=T(x').
+    }
+    \]
 
   </div>
 
-  <div class="proof">
+  <p>
+    Equivalently,
+  </p>
 
-    <h3>Proof</h3>
+  <div class="schema">
 
-    <p>
-      Apply the Exact Recoverability Theorem to the task
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      T
-      =
-      R\circ\Phi.
-      \]
-
-    </div>
-
-    <p>
-      \(\square\)
-    </p>
+    \[
+    \boxed{
+    \sim_P
+    \subseteq
+    \sim_T.
+    }
+    \]
 
   </div>
 
 </section>
 
 
+<!-- ========================================================= -->
+<!-- COMPLETION -->
+<!-- ========================================================= -->
 
-<section>
+<section id="completion-fibre">
 
-  <h2>24. Exact Versus Approximate Results</h2>
+  <h2>6. Completion-Fibre Sufficiency Theorem</h2>
+
+  <div class="status-note">
+    <strong>Project identifier:</strong> not yet assigned<br>
+    <strong>Status:</strong> proved<br>
+    <strong>Sector:</strong> deterministic Set semantics
+  </div>
+
+  <p>
+    Let
+  </p>
+
+  \[
+  r_\alpha:
+  X
+  \longrightarrow
+  Y_\alpha,
+  \qquad
+  \alpha\in A.
+  \]
+
+  <p>
+    Define the combined Set-level Observation
+  </p>
+
+  \[
+  r_A:
+  X
+  \longrightarrow
+  \prod_{\alpha\in A}Y_\alpha
+  \]
+
+  <p>
+    by
+  </p>
+
+  \[
+  r_A(x)
+  =
+  (r_\alpha(x))_{\alpha\in A}.
+  \]
+
+  <p>
+    For
+  </p>
+
+  \[
+  \ell
+  =
+  (\ell_\alpha)_{\alpha\in A},
+  \]
+
+  <p>
+    define
+  </p>
+
+  <div class="schema">
+
+    \[
+    \boxed{
+    \mathfrak C_A(\ell)
+    =
+    \bigcap_{\alpha\in A}
+    r_\alpha^{-1}(\ell_\alpha).
+    }
+    \]
+
+  </div>
+
+  <p>
+    A Task
+  </p>
+
+  \[
+  T:
+  X
+  \longrightarrow
+  W
+  \]
+
+  <p>
+    factors through \(r_A\) exactly when \(T\) is constant on every
+    nonempty Completion Fibre.
+  </p>
+
+  <p>
+    Equivalently,
+  </p>
+
+  <div class="schema">
+
+    \[
+    \boxed{
+    \left|
+    T
+    \left(
+    \mathfrak C_A(\ell)
+    \right)
+    \right|
+    \le
+    1
+    }
+    \]
+
+  </div>
+
+  <p>
+    for every \(\ell\).
+  </p>
+
+  <h3>Proof</h3>
+
+  <p>
+    By construction,
+  </p>
+
+  \[
+  r_A^{-1}(\ell)
+  =
+  \mathfrak C_A(\ell).
+  \]
+
+  <p>
+    Apply the Exact Recoverability Theorem to \(r_A\).
+    \(\square\)
+  </p>
 
   <div class="warning">
 
-    <p>
-      The theorems above involving equality are exact.
-    </p>
-
-    <p>
-      Replacing equality by
-    </p>
-
-    <div class="mathbox">
-
-      \[
-      d(a,b)\le\varepsilon
-      \]
-
-    </div>
-
-    <p>
-      creates a different mathematical statement.
-    </p>
-
-    <p>
-      Approximate versions require their own assumptions, metrics,
-      stability bounds, and proofs.
-    </p>
+    This statement uses the Set-level product.
+    Additional measurable, topological, analytic, or categorical
+    structure requires the corresponding structured product.
 
   </div>
 
 </section>
 
 
+<!-- ========================================================= -->
+<!-- PARALLEL -->
+<!-- ========================================================= -->
 
-<section>
+<section id="parallel-refinement">
 
-  <h2>25. Theorem Dependency Structure</h2>
+  <h2>7. Parallel Observation Refinement Theorem</h2>
+
+  <div class="status-note">
+    <strong>Project identifier:</strong> not yet assigned<br>
+    <strong>Status:</strong> proved
+  </div>
+
+  <p>
+    Let
+  </p>
+
+  \[
+  F:
+  X\longrightarrow Y
+  \]
+
+  <p>
+    and
+  </p>
+
+  \[
+  G:
+  X\longrightarrow Z.
+  \]
+
+  <p>
+    Define
+  </p>
+
+  \[
+  H
+  =
+  (F,G):
+  X
+  \longrightarrow
+  Y\times Z.
+  \]
+
+  <p>
+    Then
+  </p>
+
+  <div class="schema">
+
+    \[
+    \boxed{
+    \sim_H
+    =
+    \sim_F
+    \cap
+    \sim_G.
+    }
+    \]
+
+  </div>
+
+  <p>
+    Moreover,
+  </p>
+
+  <div class="schema">
+
+    \[
+    \boxed{
+    H^{-1}(y,z)
+    =
+    F^{-1}(y)
+    \cap
+    G^{-1}(z).
+    }
+    \]
+
+  </div>
+
+  <h3>Proof</h3>
+
+  <p>
+    By definition,
+  </p>
+
+  \[
+  H(x)=H(x')
+  \]
+
+  <p>
+    if and only if
+  </p>
+
+  \[
+  F(x)=F(x')
+  \qquad\text{and}\qquad
+  G(x)=G(x').
+  \]
+
+  <p>
+    The fibre identity follows from the same coordinatewise condition.
+    \(\square\)
+  </p>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- SERIAL LOSS -->
+<!-- ========================================================= -->
+
+<section id="serial-loss">
+
+  <h2>8. Deterministic Serial Information-Loss Theorem</h2>
+
+  <div class="status-note">
+    <strong>Project identifier:</strong> not yet assigned<br>
+    <strong>Status:</strong> proved
+  </div>
+
+  <p>
+    Let
+  </p>
+
+  \[
+  F:
+  X
+  \longrightarrow
+  Y
+  \]
+
+  <p>
+    and
+  </p>
+
+  \[
+  G:
+  Y
+  \longrightarrow
+  Z.
+  \]
+
+  <p>
+    Then
+  </p>
+
+  <div class="schema">
+
+    \[
+    \boxed{
+    F(x)=F(x')
+    \Longrightarrow
+    (G\circ F)(x)
+    =
+    (G\circ F)(x').
+    }
+    \]
+
+  </div>
+
+  <p>
+    Equivalently,
+  </p>
+
+  \[
+  \boxed{
+  \sim_F
+  \subseteq
+  \sim_{G\circ F}.
+  }
+  \]
+
+  <h3>Proof</h3>
+
+  <p>
+    Apply \(G\) to
+  </p>
+
+  \[
+  F(x)=F(x').
+  \]
+
+  <p>
+    Then
+  </p>
+
+  \[
+  G(F(x))
+  =
+  G(F(x')).
+  \]
+
+  <p>
+    \(\square\)
+  </p>
+
+  <h3>Consequence</h3>
+
+  <p>
+    A deterministic downstream Transformation cannot reconstruct a
+    distinction already erased by an upstream deterministic map unless
+    additional information enters through another channel.
+  </p>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- STRUCTURED QUOTIENT -->
+<!-- ========================================================= -->
+
+<section id="bm-sq-01">
+
+  <h2>9. BM-SQ-01 — Structured Quotient Theorem</h2>
+
+  <div class="status-note">
+    <strong>Project identifier:</strong> BM-SQ-01<br>
+    <strong>Status:</strong> proved / canonical BM result<br>
+    <strong>Sector:</strong> finitary algebraic
+  </div>
+
+  <p>
+    Let
+  </p>
+
+  \[
+  A
+  =
+  (X,\Sigma)
+  \]
+
+  <p>
+    be a finitary algebra.
+  </p>
+
+  <p>
+    Let \(\sim_P\) be an equivalence relation induced by a Passport.
+  </p>
+
+  <p>
+    For every \(n\)-ary Operation
+  </p>
+
+  \[
+  \sigma:
+  X^n
+  \longrightarrow
+  X,
+  \]
+
+  <p>
+    define the candidate quotient Operation
+  </p>
+
+  \[
+  \overline{\sigma}
+  \left(
+  [x_1]_P,\ldots,[x_n]_P
+  \right)
+  =
+  \left[
+  \sigma(x_1,\ldots,x_n)
+  \right]_P.
+  \]
+
+  <p>
+    The induced \(\Sigma\)-Operations are well-defined on
+  </p>
+
+  \[
+  X/{\sim_P}
+  \]
+
+  <p>
+    if and only if \(\sim_P\) is a \(\Sigma\)-congruence:
+  </p>
+
+  <div class="schema">
+
+    \[
+    \boxed{
+    x_i\sim_Py_i
+    \quad
+    \forall i
+    \Longrightarrow
+    \sigma(x_1,\ldots,x_n)
+    \sim_P
+    \sigma(y_1,\ldots,y_n)
+    }
+    \]
+
+  </div>
+
+  <p>
+    for every \(\sigma\in\Sigma\).
+  </p>
+
+  <h3>Proof</h3>
+
+  <p>
+    First assume \(\sim_P\) is a \(\Sigma\)-congruence.
+  </p>
+
+  <p>
+    Suppose
+  </p>
+
+  \[
+  [x_i]_P
+  =
+  [y_i]_P
+  \qquad
+  \forall i.
+  \]
+
+  <p>
+    Then
+  </p>
+
+  \[
+  x_i\sim_Py_i
+  \qquad
+  \forall i.
+  \]
+
+  <p>
+    Congruence gives
+  </p>
+
+  \[
+  \sigma(x_1,\ldots,x_n)
+  \sim_P
+  \sigma(y_1,\ldots,y_n),
+  \]
+
+  <p>
+    hence
+  </p>
+
+  \[
+  \left[
+  \sigma(x_1,\ldots,x_n)
+  \right]_P
+  =
+  \left[
+  \sigma(y_1,\ldots,y_n)
+  \right]_P.
+  \]
+
+  <p>
+    Therefore the quotient Operation is independent of representatives.
+  </p>
+
+  <p>
+    Conversely, assume every candidate quotient Operation is
+    well-defined.
+  </p>
+
+  <p>
+    If
+  </p>
+
+  \[
+  x_i\sim_Py_i
+  \qquad
+  \forall i,
+  \]
+
+  <p>
+    then
+  </p>
+
+  \[
+  [x_i]_P=[y_i]_P.
+  \]
+
+  <p>
+    Well-definedness implies
+  </p>
+
+  \[
+  \left[
+  \sigma(x_1,\ldots,x_n)
+  \right]_P
+  =
+  \left[
+  \sigma(y_1,\ldots,y_n)
+  \right]_P,
+  \]
+
+  <p>
+    so
+  </p>
+
+  \[
+  \sigma(x_1,\ldots,x_n)
+  \sim_P
+  \sigma(y_1,\ldots,y_n).
+  \]
+
+  <p>
+    Thus \(\sim_P\) is a congruence.
+    \(\square\)
+  </p>
+
+  <div class="warning">
+
+    BM-SQ-01 is a finitary algebraic theorem.
+    It is not a universal quotient theorem for topology, probability,
+    geometry, operator theory, or quantum structures.
+
+  </div>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- QUOTIENT COUNTEREXAMPLE -->
+<!-- ========================================================= -->
+
+<section id="quotient-counterexample">
+
+  <h2>10. Raw Observation Is Not Enough — Counterexample</h2>
+
+  <p>
+    Let
+  </p>
+
+  \[
+  X
+  =
+  \mathbb R^2
+  \]
+
+  <p>
+    and define
+  </p>
+
+  \[
+  (x_1,x_2)
+  \sim_P
+  (y_1,y_2)
+  \Longleftrightarrow
+  x_1=y_1.
+  \]
+
+  <p>
+    Let
+  </p>
+
+  \[
+  \sigma(x_1,x_2)
+  =
+  (x_2,x_1).
+  \]
+
+  <p>
+    Choose
+  </p>
+
+  \[
+  x=(1,2),
+  \qquad
+  y=(1,9).
+  \]
+
+  <p>
+    Then
+  </p>
+
+  \[
+  x\sim_Py.
+  \]
+
+  <p>
+    But
+  </p>
+
+  \[
+  \sigma(x)
+  =
+  (2,1),
+  \qquad
+  \sigma(y)
+  =
+  (9,1),
+  \]
+
+  <p>
+    and therefore
+  </p>
+
+  <div class="schema">
+
+    \[
+    \boxed{
+    \sigma(x)
+    \not\sim_P
+    \sigma(y).
+    }
+    \]
+
+  </div>
+
+  <p>
+    Thus observational equivalence alone does not guarantee an
+    Operation-compatible quotient.
+  </p>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- INTERFACE FACTORIZATION -->
+<!-- ========================================================= -->
+
+<section id="interface-factorization">
+
+  <h2>11. Interface Factorization Theorem</h2>
+
+  <div class="status-note">
+    <strong>Project identifier:</strong> not yet assigned<br>
+    <strong>Status:</strong> proved
+  </div>
+
+  <p>
+    Let
+  </p>
+
+  \[
+  P_1:
+  X
+  \longrightarrow
+  Q_1
+  \]
+
+  <p>
+    and
+  </p>
+
+  \[
+  H:
+  X
+  \longrightarrow
+  Q_2.
+  \]
+
+  <p>
+    There exists
+  </p>
+
+  \[
+  G:
+  P_1(X)
+  \longrightarrow
+  Q_2
+  \]
+
+  <p>
+    satisfying
+  </p>
+
+  <div class="schema">
+
+    \[
+    \boxed{
+    H
+    =
+    G\circ P_1
+    }
+    \]
+
+  </div>
+
+  <p>
+    if and only if
+  </p>
+
+  <div class="schema">
+
+    \[
+    \boxed{
+    P_1(x)=P_1(x')
+    \Longrightarrow
+    H(x)=H(x').
+    }
+    \]
+
+  </div>
+
+  <h3>Proof</h3>
+
+  <p>
+    Apply the Exact Recoverability Theorem with Task \(H\).
+    \(\square\)
+  </p>
+
+  <h3>BM Interface Corollary</h3>
+
+  <p>
+    If
+  </p>
+
+  \[
+  H
+  =
+  P_2\circ F,
+  \]
+
+  <p>
+    then a represented map
+  </p>
+
+  \[
+  G:
+  P_1(X)
+  \longrightarrow
+  Q_2
+  \]
+
+  <p>
+    satisfying
+  </p>
+
+  \[
+  P_2\circ F
+  =
+  G\circ P_1
+  \]
+
+  <p>
+    exists exactly when \(P_2\circ F\) is constant on the fibres of
+    \(P_1\).
+  </p>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- CONTINUATION -->
+<!-- ========================================================= -->
+
+<section id="dynamic-continuation">
+
+  <h2>12. Dynamic Continuation Theorem</h2>
+
+  <div class="status-note">
+    <strong>Project identifier:</strong> not yet assigned<br>
+    <strong>Status:</strong> proved
+  </div>
+
+  <p>
+    Let
+  </p>
+
+  \[
+  r:
+  X
+  \longrightarrow
+  Y
+  \]
+
+  <p>
+    be an Observation,
+  </p>
+
+  \[
+  \Phi_t:
+  X
+  \longrightarrow
+  X
+  \]
+
+  <p>
+    an evolution, and
+  </p>
+
+  \[
+  T:
+  X
+  \longrightarrow
+  W
+  \]
+
+  <p>
+    a future Task.
+  </p>
+
+  <p>
+    The future Task is exactly recoverable from the present Observation
+    if and only if
+  </p>
+
+  <div class="schema">
+
+    \[
+    \boxed{
+    r(x)=r(x')
+    \Longrightarrow
+    T(\Phi_t(x))
+    =
+    T(\Phi_t(x')).
+    }
+    \]
+
+  </div>
+
+  <p>
+    Equivalently, there exists
+  </p>
+
+  \[
+  \widetilde T_t:
+  r(X)
+  \longrightarrow
+  W
+  \]
+
+  <p>
+    satisfying
+  </p>
+
+  <div class="schema">
+
+    \[
+    \boxed{
+    T\circ\Phi_t
+    =
+    \widetilde T_t\circ r.
+    }
+    \]
+
+  </div>
+
+  <h3>Proof</h3>
+
+  <p>
+    Apply the Exact Recoverability Theorem to
+  </p>
+
+  \[
+  T_t
+  =
+  T\circ\Phi_t.
+  \]
+
+  <p>
+    \(\square\)
+  </p>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- REPAIR REFINEMENT -->
+<!-- ========================================================= -->
+
+<section id="repair-refinement">
+
+  <h2>13. Repair Refinement Proposition</h2>
+
+  <div class="status-note">
+    <strong>Project identifier:</strong> not yet assigned<br>
+    <strong>Status:</strong> proved proposition
+  </div>
+
+  <p>
+    Let
+  </p>
+
+  \[
+  r:
+  X
+  \longrightarrow
+  Y
+  \]
+
+  <p>
+    and let
+  </p>
+
+  \[
+  q:
+  X
+  \longrightarrow
+  Z
+  \]
+
+  <p>
+    be an added repair Observation.
+  </p>
+
+  <p>
+    Then
+  </p>
+
+  <div class="schema">
+
+    \[
+    \boxed{
+    \sim_{(r,q)}
+    \subseteq
+    \sim_r.
+    }
+    \]
+
+  </div>
+
+  <h3>Proof</h3>
+
+  <p>
+    If
+  </p>
+
+  \[
+  (r,q)(x)
+  =
+  (r,q)(x'),
+  \]
+
+  <p>
+    then in particular
+  </p>
+
+  \[
+  r(x)=r(x').
+  \]
+
+  <p>
+    Hence
+  </p>
+
+  \[
+  x\sim_rx'.
+  \]
+
+  <p>
+    \(\square\)
+  </p>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- SUFF UNDER REFINEMENT -->
+<!-- ========================================================= -->
+
+<section id="sufficiency-refinement">
+
+  <h2>14. Sufficiency Is Preserved Under Refinement</h2>
+
+  <div class="status-note">
+    <strong>Status:</strong> proved corollary
+  </div>
+
+  <p>
+    Suppose Observation \(r\) is sufficient for Task \(T\).
+  </p>
+
+  <p>
+    If another Observation \(s\) is at least as informative in the
+    exact deterministic sense
+  </p>
+
+  \[
+  \sim_s
+  \subseteq
+  \sim_r,
+  \]
+
+  <p>
+    then \(s\) is also sufficient for \(T\).
+  </p>
+
+  <h3>Proof</h3>
+
+  <p>
+    Sufficiency of \(r\) gives
+  </p>
+
+  \[
+  \sim_r
+  \subseteq
+  \sim_T.
+  \]
+
+  <p>
+    Therefore
+  </p>
+
+  \[
+  \sim_s
+  \subseteq
+  \sim_r
+  \subseteq
+  \sim_T.
+  \]
+
+  <p>
+    \(\square\)
+  </p>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- FEASIBILITY -->
+<!-- ========================================================= -->
+
+<section id="joint-feasibility">
+
+  <h2>15. Separate Feasibility Does Not Imply Joint Feasibility</h2>
+
+  <div class="status-note">
+    <strong>Status:</strong> proved by counterexample
+  </div>
+
+  <p>
+    From
+  </p>
+
+  \[
+  P_c\neq\varnothing
+  \qquad
+  \forall c
+  \]
+
+  <p>
+    it does not follow that
+  </p>
+
+  <div class="schema">
+
+    \[
+    \boxed{
+    \bigcap_cP_c
+    \neq
+    \varnothing.
+    }
+    \]
+
+  </div>
+
+  <h3>Counterexample</h3>
+
+  <p>
+    Let
+  </p>
+
+  \[
+  X=\{0,1\},
+  \]
+
+  <p>
+    with
+  </p>
+
+  \[
+  P_1=\{0\},
+  \qquad
+  P_2=\{1\}.
+  \]
+
+  <p>
+    Both are nonempty, but
+  </p>
+
+  <div class="schema">
+
+    \[
+    \boxed{
+    P_1\cap P_2
+    =
+    \varnothing.
+    }
+    \]
+
+  </div>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- QUANTIFIERS -->
+<!-- ========================================================= -->
+
+<section id="quantifier-scope">
+
+  <h2>16. Quantifier-Scope Non-Equivalence</h2>
+
+  <div class="status-note">
+    <strong>Status:</strong> exact logical distinction
+  </div>
+
+  <p>
+    In general,
+  </p>
+
+  <div class="schema">
+
+    \[
+    \boxed{
+    \forall c\,
+    \exists x_c
+    \;
+    P(c,x_c)
+    }
+    \]
+
+  </div>
+
+  <p>
+    does not imply
+  </p>
+
+  <div class="schema">
+
+    \[
+    \boxed{
+    \exists x\,
+    \forall c
+    \;
+    P(c,x).
+    }
+    \]
+
+  </div>
+
+  <p>
+    Let \(c\in\{0,1\}\) and define
+  </p>
+
+  \[
+  P(c,x)
+  \Longleftrightarrow
+  x=c.
+  \]
+
+  <p>
+    For every \(c\), one may choose \(x_c=c\), but no single \(x\)
+    equals both \(0\) and \(1\).
+  </p>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- STOCHASTIC -->
+<!-- ========================================================= -->
+
+<section id="stochastic-factorization">
+
+  <h2>17. Stochastic Response-Law Factorization</h2>
+
+  <div class="status-note">
+    <strong>Status:</strong>
+    proved at the response-law Set level; measurable realization
+    requires additional measurable-factorization conditions
+  </div>
+
+  <p>
+    Let
+  </p>
+
+  \[
+  r:
+  X
+  \longrightarrow
+  Y
+  \]
+
+  <p>
+    and let
+  </p>
+
+  \[
+  M:
+  X
+  \longrightarrow
+  \mathcal P(Z)
+  \]
+
+  <p>
+    assign a probability law to each state.
+  </p>
+
+  <p>
+    There exists
+  </p>
+
+  \[
+  \widetilde M:
+  r(X)
+  \longrightarrow
+  \mathcal P(Z)
+  \]
+
+  <p>
+    satisfying
+  </p>
+
+  \[
+  M
+  =
+  \widetilde M\circ r
+  \]
+
+  <p>
+    if and only if
+  </p>
+
+  <div class="schema">
+
+    \[
+    \boxed{
+    r(x)=r(x')
+    \Longrightarrow
+    M(x,\cdot)
+    =
+    M(x',\cdot).
+    }
+    \]
+
+  </div>
+
+  <h3>Proof</h3>
+
+  <p>
+    At the Set level, regard \(M\) as a map into the set of probability
+    laws on \(Z\). The statement is then the Exact Recoverability
+    Theorem.
+    \(\square\)
+  </p>
+
+  <div class="warning">
+
+    If \(\widetilde M\) must itself be a measurable Markov kernel,
+    measurability does not follow from Set-level factorization alone.
+    The required measurable structure must be checked separately.
+
+  </div>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- NONDET -->
+<!-- ========================================================= -->
+
+<section id="nondeterministic">
+
+  <h2>18. Existential and Universal Nondeterministic Responses Differ</h2>
+
+  <div class="status-note">
+    <strong>Status:</strong> exact distinction
+  </div>
+
+  <p>
+    Let
+  </p>
+
+  \[
+  R
+  \subseteq
+  X\times Y
+  \]
+
+  <p>
+    and \(U\subseteq Y\).
+  </p>
+
+  <p>
+    Define
+  </p>
+
+  \[
+  \Diamond_R(U)
+  =
+  \{x:\exists y\in U,\ xRy\}
+  \]
+
+  <p>
+    and
+  </p>
+
+  \[
+  \Box_R(U)
+  =
+  \{x:\forall y,\ xRy\Rightarrow y\in U\}.
+  \]
+
+  <p>
+    In general,
+  </p>
+
+  <div class="schema">
+
+    \[
+    \boxed{
+    \Diamond_R(U)
+    \neq
+    \Box_R(U).
+    }
+    \]
+
+  </div>
+
+  <h3>Counterexample</h3>
+
+  <p>
+    Let one state \(x\) have two possible outputs:
+  </p>
+
+  \[
+  xR0,
+  \qquad
+  xR1.
+  \]
+
+  <p>
+    Let
+  </p>
+
+  \[
+  U=\{1\}.
+  \]
+
+  <p>
+    Then
+  </p>
+
+  \[
+  x\in\Diamond_R(U)
+  \]
+
+  <p>
+    because output \(1\) is possible, while
+  </p>
+
+  \[
+  x\notin\Box_R(U)
+  \]
+
+  <p>
+    because output \(0\notin U\) is also possible.
+  </p>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- ROOT ITERATION FIREWALL -->
+<!-- ========================================================= -->
+
+<section id="root-iteration-firewall">
+
+  <h2>19. Root Iteration Admissibility Firewall</h2>
+
+  <p>
+    The Root role does not itself create an iterative dynamical system.
+  </p>
+
+  <p>
+    A general Root chain may instead have
+  </p>
+
+  \[
+  R_n\in X_n,
+  \qquad
+  F_n:
+  D_n
+  \subseteq
+  X_n
+  \longrightarrow
+  X_{n+1},
+  \]
+
+  <p>
+    with
+  </p>
+
+  \[
+  R_{n+1}
+  =
+  F_n(R_n).
+  \]
+
+  <p>
+    Ordinary iteration by one map requires a common state space or an
+    invariant admissible domain.
+  </p>
+
+  <div class="schema">
+
+    \[
+    \boxed{
+    F:
+    X_R
+    \longrightarrow
+    X_R
+    }
+    \]
+
+  </div>
+
+  <p>
+    or
+  </p>
+
+  \[
+  A_R\subseteq X_R,
+  \qquad
+  \boxed{
+  F(A_R)\subseteq A_R.
+  }
+  \]
+
+  <p>
+    The affine theorem below satisfies this condition explicitly by
+    taking
+  </p>
+
+  \[
+  X_R=\mathbb R.
+  \]
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- AFFINE -->
+<!-- ========================================================= -->
+
+<section id="affine-root">
+
+  <h2>20. Affine Repeated-Root Theorem</h2>
+
+  <div class="status-note">
+    <strong>Classification:</strong>
+    supporting standard dynamical-systems theorem<br>
+    <strong>Status:</strong> proved<br>
+    <strong>Sector:</strong> scalar real iteration<br>
+    <strong>BM status:</strong> not a universal BM law
+  </div>
+
+  <p>
+    Let
+  </p>
+
+  \[
+  \alpha,\beta,R_0
+  \in
+  \mathbb R
+  \]
+
+  <p>
+    and define the closed map
+  </p>
+
+  <div class="schema">
+
+    \[
+    \boxed{
+    F:
+    \mathbb R
+    \longrightarrow
+    \mathbb R,
+    \qquad
+    F(R)
+    =
+    \alpha R+\beta.
+    }
+    \]
+
+  </div>
+
+  <p>
+    Define the iterates by
+  </p>
+
+  \[
+  R_{n+1}
+  =
+  F(R_n)
+  =
+  \alpha R_n+\beta.
+  \]
+
+  <p>
+    Assume
+  </p>
+
+  \[
+  \alpha\neq1.
+  \]
+
+  <p>
+    Then the unique fixed point is
+  </p>
+
+  <div class="schema">
+
+    \[
+    \boxed{
+    R_*
+    =
+    \frac{\beta}{1-\alpha}.
+    }
+    \]
+
+  </div>
+
+  <p>
+    Moreover,
+  </p>
+
+  <div class="schema">
+
+    \[
+    \boxed{
+    R_n-R_*
+    =
+    \alpha^n
+    (R_0-R_*).
+    }
+    \]
+
+  </div>
+
+  <p>
+    Equivalently,
+  </p>
+
+  <div class="schema">
+
+    \[
+    \boxed{
+    R_n
+    =
+    R_*
+    +
+    \alpha^n
+    (R_0-R_*).
+    }
+    \]
+
+  </div>
+
+  <h3>Proof</h3>
+
+  <p>
+    Since
+  </p>
+
+  \[
+  R_*
+  =
+  \alpha R_*+\beta,
+  \]
+
+  <p>
+    subtracting \(R_*\) from the recurrence gives
+  </p>
+
+  \[
+  R_{n+1}-R_*
+  =
+  \alpha(R_n-R_*).
+  \]
+
+  <p>
+    Induction gives
+  </p>
+
+  \[
+  R_n-R_*
+  =
+  \alpha^n(R_0-R_*).
+  \]
+
+  <p>
+    \(\square\)
+  </p>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- AFFINE CONVERGENCE -->
+<!-- ========================================================= -->
+
+<section id="affine-convergence">
+
+  <h2>21. Affine Root Global-Convergence Corollary</h2>
+
+  <div class="status-note">
+    <strong>Status:</strong> proved
+  </div>
+
+  <p>
+    Under the hypotheses of the Affine Repeated-Root Theorem, if
+  </p>
+
+  \[
+  |\alpha|<1,
+  \]
+
+  <p>
+    then
+  </p>
+
+  <div class="schema">
+
+    \[
+    \boxed{
+    \lim_{n\to\infty}
+    R_n
+    =
+    R_*.
+    }
+    \]
+
+  </div>
+
+  <p>
+    This convergence holds for every finite initial value
+  </p>
+
+  \[
+  R_0\in\mathbb R.
+  \]
+
+  <p>
+    Thus the fixed point is globally attracting on
+    \(\mathbb R\) for this affine system.
+  </p>
+
+  <h3>Proof</h3>
+
+  <p>
+    Since
+  </p>
+
+  \[
+  |\alpha|<1,
+  \]
+
+  <p>
+    one has
+  </p>
+
+  \[
+  \alpha^n
+  \longrightarrow
+  0.
+  \]
+
+  <p>
+    Hence
+  </p>
+
+  \[
+  R_n-R_*
+  =
+  \alpha^n(R_0-R_*)
+  \longrightarrow
+  0.
+  \]
+
+  <p>
+    \(\square\)
+  </p>
+
+  <div class="warning">
+
+    This global conclusion belongs to this scalar affine map.
+    It must not be confused with local Jacobian stability results for
+    general nonlinear maps.
+
+  </div>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- WORKED ROOT -->
+<!-- ========================================================= -->
+
+<section id="worked-root">
+
+  <h2>22. Worked Root Example Corollary</h2>
+
+  <p>
+    Let
+  </p>
+
+  \[
+  R_{n+1}
+  =
+  \frac12R_n+1,
+  \qquad
+  R_0=0.
+  \]
+
+  <p>
+    Then
+  </p>
+
+  \[
+  R_*=2
+  \]
+
+  <p>
+    and
+  </p>
+
+  <div class="schema">
+
+    \[
+    \boxed{
+    R_n
+    =
+    2
+    \left(
+    1-2^{-n}
+    \right).
+    }
+    \]
+
+  </div>
+
+  <p>
+    Therefore
+  </p>
+
+  <div class="schema">
+
+    \[
+    \boxed{
+    |R_*-R_n|
+    =
+    2^{1-n}.
+    }
+    \]
+
+  </div>
+
+  <p>
+    The quantitative behavior is suitable for a convergence figure in
+    the Equation Registry.
+  </p>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- INVARIANT -->
+<!-- ========================================================= -->
+
+<section id="invariant-transfer">
+
+  <h2>23. Invariant-Transfer Criterion</h2>
+
+  <div class="status-note">
+    <strong>Classification:</strong>
+    exact condition for a represented invariant
+  </div>
+
+  <p>
+    Let
+  </p>
+
+  \[
+  F:
+  X
+  \longrightarrow
+  Y,
+  \]
+
+  <p>
+    and suppose the source and target structures possess maps
+  </p>
+
+  \[
+  C_X:
+  X
+  \longrightarrow
+  V,
+  \qquad
+  C_Y:
+  Y
+  \longrightarrow
+  V.
+  \]
+
+  <p>
+    Exact preservation through \(F\) is
+  </p>
+
+  <div class="schema">
+
+    \[
+    \boxed{
+    C_Y\circ F
+    =
+    C_X.
+    }
+    \]
+
+  </div>
+
+  <p>
+    Equivalently,
+  </p>
+
+  \[
+  C_Y(F(x))
+  =
+  C_X(x)
+  \qquad
+  \forall x\in X.
+  \]
+
+  <div class="warning">
+
+    This equation does not create a conservation law.
+    It states preservation only after the relevant invariant has already
+    been established by the native mathematics.
+
+  </div>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- DYNAMIC CLOSURE -->
+<!-- ========================================================= -->
+
+<section id="dynamic-closure">
+
+  <h2>24. Dynamic Closure Theorem</h2>
+
+  <div class="status-note">
+    <strong>Status:</strong> proved exact factorization theorem<br>
+    <strong>Sector:</strong> deterministic Set semantics
+  </div>
+
+  <p>
+    Let
+  </p>
+
+  \[
+  R:
+  X
+  \longrightarrow
+  Z
+  \]
+
+  <p>
+    be a reduced representation and
+  </p>
+
+  \[
+  \Phi:
+  X
+  \longrightarrow
+  X
+  \]
+
+  <p>
+    a one-step evolution.
+  </p>
+
+  <p>
+    There exists a reduced evolution
+  </p>
+
+  \[
+  \widetilde\Phi:
+  R(X)
+  \longrightarrow
+  R(X)
+  \]
+
+  <p>
+    satisfying
+  </p>
+
+  <div class="schema">
+
+    \[
+    \boxed{
+    R\circ\Phi
+    =
+    \widetilde\Phi\circ R
+    }
+    \]
+
+  </div>
+
+  <p>
+    if and only if
+  </p>
+
+  <div class="schema">
+
+    \[
+    \boxed{
+    R(x)=R(x')
+    \Longrightarrow
+    R(\Phi(x))
+    =
+    R(\Phi(x')).
+    }
+    \]
+
+  </div>
+
+  <h3>Proof</h3>
+
+  <p>
+    Apply the Exact Recoverability Theorem to the Task
+  </p>
+
+  \[
+  T
+  =
+  R\circ\Phi.
+  \]
+
+  <p>
+    \(\square\)
+  </p>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- TASK VS CLOSURE -->
+<!-- ========================================================= -->
+
+<section id="task-vs-closure">
+
+  <h2>25. Task Sufficiency Does Not Imply Dynamic Closure</h2>
+
+  <div class="status-note">
+    <strong>Status:</strong> exact distinction; counterexample provided
+  </div>
+
+  <p>
+    Static sufficiency for one Task can hold even when reduced dynamics
+    do not close.
+  </p>
+
+  <h3>Counterexample</h3>
+
+  <p>
+    Let
+  </p>
+
+  \[
+  X
+  =
+  \mathbb R^2,
+  \qquad
+  R(x_1,x_2)=x_1.
+  \]
+
+  <p>
+    Let the current Task be
+  </p>
+
+  \[
+  T(x_1,x_2)=x_1.
+  \]
+
+  <p>
+    Then
+  </p>
+
+  \[
+  T=R,
+  \]
+
+  <p>
+    so \(R\) is exactly sufficient for \(T\).
+  </p>
+
+  <p>
+    Now define evolution
+  </p>
+
+  \[
+  \Phi(x_1,x_2)
+  =
+  (x_2,x_2).
+  \]
+
+  <p>
+    Consider
+  </p>
+
+  \[
+  x=(0,1),
+  \qquad
+  x'=(0,2).
+  \]
+
+  <p>
+    Then
+  </p>
+
+  \[
+  R(x)
+  =
+  R(x')
+  =
+  0,
+  \]
+
+  <p>
+    but
+  </p>
+
+  \[
+  R(\Phi(x))
+  =
+  1,
+  \qquad
+  R(\Phi(x'))
+  =
+  2.
+  \]
+
+  <p>
+    Therefore no reduced map
+  </p>
+
+  \[
+  \widetilde\Phi:
+  R(X)
+  \longrightarrow
+  R(X)
+  \]
+
+  <p>
+    can satisfy
+  </p>
+
+  \[
+  R\circ\Phi
+  =
+  \widetilde\Phi\circ R.
+  \]
+
+  <div class="schema">
+
+    \[
+    \boxed{
+    \text{Task sufficiency}
+    \not\Rightarrow
+    \text{dynamic closure}.
+    }
+    \]
+
+  </div>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- EXACT VS APPROX -->
+<!-- ========================================================= -->
+
+<section id="exact-approximate">
+
+  <h2>26. Exact Versus Approximate Results</h2>
+
+  <p>
+    The equality-based theorems above are exact.
+  </p>
+
+  <p>
+    Replacing equality by
+  </p>
+
+  \[
+  d(a,b)
+  \le
+  \varepsilon
+  \]
+
+  <p>
+    creates a different mathematical claim.
+  </p>
+
+  <p>
+    Approximate versions require their own:
+  </p>
+
+  <p>
+    metric or divergence · assumptions · stability bounds · error
+    propagation · probability statement where applicable · proof
+  </p>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- PRIVACY FIREWALL -->
+<!-- ========================================================= -->
+
+<section id="privacy-firewall">
+
+  <h2>27. Privacy Is Not an Exact-Equivalence Corollary</h2>
+
+  <p>
+    Differential privacy is not obtained by replacing Passport equality
+    with another ordinary equivalence relation.
+  </p>
+
+  <p>
+    For a randomized mechanism \(M\), neighboring inputs
+  </p>
+
+  \[
+  x\sim_{\mathrm{adj}}x'
+  \]
+
+  <p>
+    may instead be required to satisfy probabilistic inequalities such
+    as
+  </p>
+
+  <div class="schema">
+
+    \[
+    \boxed{
+    \Pr[M(x)\in S]
+    \le
+    e^\varepsilon
+    \Pr[M(x')\in S]
+    +
+    \delta.
+    }
+    \]
+
+  </div>
+
+  <p>
+    Therefore no theorem in the exact Passport-equivalence section
+    should be transported to differential privacy without rebuilding the
+    required probabilistic semantics.
+  </p>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- SECTOR FIREWALL -->
+<!-- ========================================================= -->
+
+<section id="sector-firewall">
+
+  <h2>28. Theorem Sector Firewall</h2>
+
+  <p>
+    A theorem proved in one semantic sector may be transported to
+    another only after the required structures and hypotheses have been
+    re-established.
+  </p>
 
   <table>
 
-    <tr>
-      <th>Result</th>
-      <th>Depends on</th>
-    </tr>
+    <thead>
+      <tr>
+        <th>Sector</th>
+        <th>Typical Mathematical Object</th>
+      </tr>
+    </thead>
 
-    <tr>
-      <td>Passport Sufficiency</td>
-      <td>Exact Recoverability</td>
-    </tr>
+    <tbody>
 
-    <tr>
-      <td>Completion-Fibre Sufficiency</td>
-      <td>Exact Recoverability + combined observation</td>
-    </tr>
+      <tr>
+        <td>Deterministic</td>
+        <td>Function</td>
+      </tr>
 
-    <tr>
-      <td>Dynamic Continuation</td>
-      <td>Exact Recoverability applied to \(T\circ\Phi_t\)</td>
-    </tr>
+      <tr>
+        <td>Stochastic</td>
+        <td>Markov kernel / probability law</td>
+      </tr>
 
-    <tr>
-      <td>Interface Factorization</td>
-      <td>Exact Recoverability applied to represented output</td>
-    </tr>
+      <tr>
+        <td>Nondeterministic</td>
+        <td>Relation</td>
+      </tr>
 
-    <tr>
-      <td>Dynamic Closure</td>
-      <td>Exact Recoverability applied to \(R\circ\Phi\)</td>
-    </tr>
+      <tr>
+        <td>Algebraic</td>
+        <td>Homomorphism / congruence-compatible Operation</td>
+      </tr>
 
-    <tr>
-      <td>BM-SQ-01</td>
-      <td>equivalence + operation compatibility</td>
-    </tr>
+      <tr>
+        <td>Topological</td>
+        <td>Continuous maps and topological quotients</td>
+      </tr>
 
-    <tr>
-      <td>Affine Root Convergence</td>
-      <td>Affine Repeated-Root Theorem</td>
-    </tr>
+      <tr>
+        <td>Geometric</td>
+        <td>Smooth or geometry-preserving maps</td>
+      </tr>
+
+      <tr>
+        <td>Quantum</td>
+        <td>Channels, instruments, operators, states</td>
+      </tr>
+
+    </tbody>
+
+  </table>
+
+  <div class="schema">
+
+    \[
+    \boxed{
+    \text{similar notation}
+    \not\Rightarrow
+    \text{same theorem}.
+    }
+    \]
+
+  </div>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- DEPENDENCIES -->
+<!-- ========================================================= -->
+
+<section id="dependencies">
+
+  <h2>29. Theorem Dependency Structure</h2>
+
+  <table>
+
+    <thead>
+      <tr>
+        <th>Result</th>
+        <th>Primary Dependency</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <tr>
+        <td>Passport Sufficiency</td>
+        <td>Exact Recoverability</td>
+      </tr>
+
+      <tr>
+        <td>Completion-Fibre Sufficiency</td>
+        <td>Exact Recoverability + combined Observation</td>
+      </tr>
+
+      <tr>
+        <td>Parallel Observation Refinement</td>
+        <td>Product Observation definition</td>
+      </tr>
+
+      <tr>
+        <td>Deterministic Serial Information Loss</td>
+        <td>Function composition</td>
+      </tr>
+
+      <tr>
+        <td>BM-SQ-01</td>
+        <td>Equivalence + Operation compatibility</td>
+      </tr>
+
+      <tr>
+        <td>Interface Factorization</td>
+        <td>Exact Recoverability applied to represented output</td>
+      </tr>
+
+      <tr>
+        <td>Dynamic Continuation</td>
+        <td>Exact Recoverability applied to \(T\circ\Phi_t\)</td>
+      </tr>
+
+      <tr>
+        <td>Repair Refinement</td>
+        <td>Joint Observation definition</td>
+      </tr>
+
+      <tr>
+        <td>Sufficiency Under Refinement</td>
+        <td>Equivalence inclusion</td>
+      </tr>
+
+      <tr>
+        <td>Stochastic Response-Law Factorization</td>
+        <td>Set-level Exact Recoverability</td>
+      </tr>
+
+      <tr>
+        <td>Affine Root Formula</td>
+        <td>Closed affine map \(F:\mathbb R\to\mathbb R\)</td>
+      </tr>
+
+      <tr>
+        <td>Affine Global Convergence</td>
+        <td>Affine Root Formula + \(|\alpha|<1\)</td>
+      </tr>
+
+      <tr>
+        <td>Dynamic Closure</td>
+        <td>Exact Recoverability applied to \(R\circ\Phi\)</td>
+      </tr>
+
+    </tbody>
 
   </table>
 
 </section>
 
 
+<!-- ========================================================= -->
+<!-- REGISTRY POLICY -->
+<!-- ========================================================= -->
 
-<section>
+<section id="registry-policy">
 
-  <h2>26. Theorem Registry Policy</h2>
+  <h2>30. Theorem Registry Policy</h2>
 
   <p>
-    Each formal theorem entry should eventually include:
+    Each mature formal theorem entry should eventually include:
   </p>
 
-  <div class="statusbox">
-
-    identifier · statement · assumptions · mathematical domain · definitions ·
-    proof · corollaries · counterexamples · dependencies · limitations ·
-    application status · revision history · external prior-art references
-
-  </div>
+  <p>
+    identifier · statement · assumptions · mathematical domain ·
+    semantic sector · definitions · proof · corollaries ·
+    counterexamples · dependencies · limitations · application status ·
+    revision history · external prior-art references
+  </p>
 
   <p>
-    A theorem identifier will not be invented merely to make the website look
-    complete.
+    A theorem identifier will not be invented merely to make the website
+    look complete.
   </p>
 
   <p>
@@ -3005,101 +3054,134 @@
 </section>
 
 
+<!-- ========================================================= -->
+<!-- CURRENT STATUS -->
+<!-- ========================================================= -->
 
-<section>
+<section id="current-status">
 
-  <h2>27. Current Registry Status</h2>
+  <h2>31. Current Registry Status</h2>
 
-  <div class="statusbox">
-
-    <h3>BM-SQ-01</h3>
-
-    <p>
-      Canonical structured-quotient theorem in the finitary algebraic sector.
-    </p>
-
-  </div>
-
-  <div class="statusbox">
-
-    <h3>Supporting factorization results</h3>
-
-    <p>
-      Proved and used to formalize Passport sufficiency, continuation,
-      interface compatibility, and dynamic closure.
-    </p>
-
-  </div>
-
-  <div class="statusbox">
-
-    <h3>Applied research theorems</h3>
-
-    <p>
-      Domain-specific results from Navier–Stokes, Yang–Mills, gravity,
-      quantum theory, and other research areas will be added separately with
-      their assumptions and status preserved.
-    </p>
-
-  </div>
-
-</section>
-
-
-
-<section>
-
-  <h2>28. What Is Not Yet Being Claimed</h2>
-
-  <div class="warning">
-
-    <p>
-      This registry does not claim that every theorem displayed here is novel.
-    </p>
-
-    <p>
-      It does not claim that the current theorem set proves every proposed BM
-      extension.
-    </p>
-
-    <p>
-      It does not establish physical realizability of mathematical models.
-    </p>
-
-    <p>
-      It does not convert candidate structures into proved structures merely
-      by placing them in the encyclopedia.
-    </p>
-
-  </div>
-
-</section>
-
-
-
-<section>
-
-  <h2>29. Structural Diagram Status</h2>
+  <h3>BM-SQ-01</h3>
 
   <p>
-    No unrecreated BM or GURF structural diagrams are being substituted into
+    Canonical structured-quotient theorem in the finitary algebraic
+    sector.
+  </p>
+
+  <h3>Supporting Factorization Results</h3>
+
+  <p>
+    Proved and used to formalize:
+  </p>
+
+  <p>
+    Passport sufficiency · continuation · Interface compatibility ·
+    dynamic closure · response-law factorization
+  </p>
+
+  <h3>Root Supporting Mathematics</h3>
+
+  <p>
+    Standard affine iteration results are included only after their
+    closed state space and hypotheses are explicit.
+  </p>
+
+  <h3>Applied Research Theorems</h3>
+
+  <p>
+    Domain-specific results from Navier–Stokes, Yang–Mills, gravity,
+    quantum theory, computation, and other research programs should be
+    added separately with their assumptions and status preserved.
+  </p>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- NOT CLAIMED -->
+<!-- ========================================================= -->
+
+<section id="not-claimed">
+
+  <h2>32. What Is Not Yet Being Claimed</h2>
+
+  <ul>
+
+    <li>
+      The registry does not claim every displayed theorem is historically
+      novel.
+    </li>
+
+    <li>
+      It does not claim the theorem set proves every proposed BM
+      candidate structure.
+    </li>
+
+    <li>
+      It does not convert candidate Rooting or Seed mathematics into
+      proved universal structures.
+    </li>
+
+    <li>
+      It does not establish physical realizability of mathematical models.
+    </li>
+
+    <li>
+      It does not establish the Navier–Stokes Clay result.
+    </li>
+
+    <li>
+      It does not establish the four-dimensional Yang–Mills existence
+      and mass-gap result.
+    </li>
+
+    <li>
+      It does not transport deterministic theorems automatically into
+      stochastic, nondeterministic, privacy, or quantum semantics.
+    </li>
+
+  </ul>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- DIAGRAMS -->
+<!-- ========================================================= -->
+
+<section id="diagrams">
+
+  <h2>33. Structural Diagram Status</h2>
+
+  <p>
+    No unrecreated BM or GURF structural diagrams are substituted into
     the theorem registry.
   </p>
 
   <p>
-    Once the canonical diagrams are reconstructed and reviewed, individual
-    theorems may link to the corresponding formal diagrams.
+    Once canonical diagrams are formally reconstructed and reviewed,
+    individual theorem entries may link to them.
+  </p>
+
+  <p>
+    Equation-driven quantitative figures remain separate and may be used
+    when they illustrate actual theorem consequences or numerical
+    behavior.
   </p>
 
 </section>
 
 
+<!-- ========================================================= -->
+<!-- PRINCIPLE -->
+<!-- ========================================================= -->
 
-<section>
+<section id="principle">
 
-  <h2>30. Central Proof Principle</h2>
+  <h2>34. Central Proof Principle</h2>
 
-  <div class="mathbox">
+  <div class="schema">
 
     \[
     \boxed{
@@ -3109,7 +3191,7 @@
     +
     \text{valid derivation}
     \Longrightarrow
-    \text{mathematical result}
+    \text{mathematical result}.
     }
     \]
 
@@ -3120,9 +3202,9 @@
   </p>
 
   <p>
-    The purpose of the theorem registry is to make the logical boundary
-    between proved mathematics, conditional mathematics, examples, and active
-    research visible to the reader.
+    The theorem registry exists to make the boundary between proved
+    mathematics, conditional mathematics, examples, counterexamples,
+    and active research explicit.
   </p>
 
 </section>
@@ -3134,11 +3216,15 @@
 <footer>
 
   <p>
-    Branch Mathematics Research Encyclopedia
+    <strong>Branch Mathematics Research Encyclopedia</strong>
+  </p>
+
+  <p>
+    Theorem Registry · BM · GURF · Formal Results
   </p>
 
 </footer>
 
-
 </body>
+
 </html>
