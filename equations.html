@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +8,7 @@
 
   <meta
     name="description"
-    content="Mathematical equations, identities, factorization conditions, diagnostics, Root models, dynamic closure relations, and quantitative structures used in Branch Mathematics and GURF."
+    content="Equation registry for Branch Mathematics and GURF: typed Branch and Interaction equations, Leaves, Trees, Responses, Roots, Seeds, Passports, composition, coherence, stochastic and relational semantics, quantitative bounds, and research-scale mathematical identities."
   >
 
   <meta name="robots" content="index, follow">
@@ -20,46 +19,41 @@
         inlineMath: [['\\(', '\\)']],
         displayMath: [['\\[', '\\]']]
       },
-      svg: {
-        fontCache: 'global'
-      }
+      svg: { fontCache: 'global' }
     };
   </script>
 
-  <script
-    id="MathJax-script"
-    async
+  <script id="MathJax-script" async
     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
   </script>
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: Arial, Helvetica, sans-serif;
       margin: 0;
-      line-height: 1.68;
+      line-height: 1.72;
       color: #202124;
-      background: #ffffff;
+      background: #fff;
     }
 
     header {
       background: #111827;
       color: white;
-      padding: 55px 20px;
+      padding: 58px 20px;
       text-align: center;
     }
 
     header h1 {
-      margin: 0;
-      font-size: 2.6rem;
+      margin: 0 0 10px;
+      font-size: 2.55rem;
     }
 
     header p {
-      max-width: 900px;
-      margin: 18px auto 0;
+      max-width: 980px;
+      margin: auto;
       color: #e5e7eb;
       font-size: 1.08rem;
     }
@@ -73,22 +67,21 @@
     nav a {
       color: white;
       text-decoration: none;
-      margin: 7px 11px;
+      margin: 7px 10px;
       display: inline-block;
     }
 
-    nav a:hover {
-      text-decoration: underline;
-    }
+    nav a:hover { text-decoration: underline; }
 
     main {
-      max-width: 1000px;
+      max-width: 1140px;
       margin: auto;
-      padding: 38px 20px;
+      padding: 40px 20px;
     }
 
     section {
-      margin-bottom: 52px;
+      margin-bottom: 58px;
+      scroll-margin-top: 18px;
     }
 
     h2 {
@@ -97,61 +90,120 @@
       margin-top: 0;
     }
 
-    h3 {
-      margin-top: 28px;
-    }
+    h3 { margin-top: 24px; }
+    h4 { margin-top: 18px; }
 
-    .card {
-      border: 1px solid #d1d5db;
-      padding: 22px;
-      margin: 18px 0;
-      border-radius: 8px;
-      background: #ffffff;
-    }
-
-    .schema {
-      border-left: 4px solid #374151;
-      padding: 18px 22px;
-      margin: 24px 0;
-      background: #f9fafb;
-      overflow-x: auto;
-    }
-
-    .status-note {
-      background: #f9fafb;
-      border: 1px solid #d1d5db;
-      border-radius: 8px;
-      padding: 18px 22px;
-      margin: 20px 0;
-    }
-
-    .warning {
-      border-left: 4px solid #6b7280;
-      background: #f9fafb;
-      padding: 18px 22px;
-      margin: 22px 0;
-    }
+    p { margin: 10px 0; }
+    ul { padding-left: 25px; }
+    li { margin: 6px 0; }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      margin: 20px 0;
+      margin: 22px 0;
     }
 
-    th,
-    td {
+    th, td {
       border: 1px solid #d1d5db;
       padding: 11px 12px;
       text-align: left;
       vertical-align: top;
     }
 
-    th {
-      background: #f3f4f6;
+    th { background: #f3f4f6; }
+
+    .lead { font-size: 1.08rem; }
+
+    .equation-card {
+      border: 1px solid #d1d5db;
+      border-radius: 9px;
+      padding: 25px;
+      margin-top: 22px;
     }
 
-    ul {
-      padding-left: 24px;
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(230px,1fr));
+      gap: 8px 18px;
+      background: #f8fafc;
+      border: 1px solid #e5e7eb;
+      border-radius: 7px;
+      padding: 14px 16px;
+      margin-bottom: 20px;
+      font-size: 0.94rem;
+    }
+
+    .schema {
+      border-left: 4px solid #374151;
+      padding: 18px 22px;
+      margin: 22px 0;
+      background: #f8fafc;
+      overflow-x: auto;
+    }
+
+    .limits {
+      background: #fafafa;
+      border-left: 4px solid #9ca3af;
+      padding: 17px 19px;
+      margin: 20px 0;
+    }
+
+    .teaching {
+      background: #f8fafc;
+      border-left: 4px solid #111827;
+      padding: 17px 19px;
+      margin: 20px 0;
+    }
+
+    .crosslinks {
+      border-top: 1px solid #d1d5db;
+      margin-top: 22px;
+      padding-top: 14px;
+      font-size: 0.94rem;
+    }
+
+    .crosslinks a {
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .crosslinks a:hover { text-decoration: underline; }
+
+    .link-label { color: #4b5563; }
+
+    .quick-index {
+      columns: 3 290px;
+      column-gap: 35px;
+    }
+
+    .quick-index li {
+      break-inside: avoid;
+      margin: 5px 0;
+    }
+
+    .quick-index a { text-decoration: none; }
+    .quick-index a:hover { text-decoration: underline; }
+
+    .family {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .family div {
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 15px;
+    }
+
+    .family strong { display: block; margin-bottom: 5px; }
+
+    .warning {
+      border-left: 4px solid #6b7280;
+      background: #f9fafb;
+      padding: 17px 19px;
+      margin: 20px 0;
     }
 
     footer {
@@ -159,40 +211,27 @@
       color: white;
       text-align: center;
       padding: 28px 20px;
-      margin-top: 40px;
+      margin-top: 55px;
     }
 
-    footer p {
-      margin: 5px 0;
-    }
-
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 2rem;
-      }
-
-      main {
-        padding: 28px 16px;
-      }
+    @media (max-width: 700px) {
+      header h1 { font-size: 2rem; }
+      main { padding: 28px 16px; }
+      .equation-card { padding: 19px; }
+      .quick-index { columns: 1; }
     }
   </style>
 </head>
 
-
 <body>
-
 <header>
-
   <h1>Equation Registry</h1>
-
   <p>
-    Mathematical relations used in Branch Mathematics, GURF, and
-    associated research, with assumptions, meaning, status,
-    limitations, and quantitative interpretation where appropriate.
+    Mathematical relations used in Branch Mathematics and GURF, written with
+    their objects, domains, assumptions, semantic sector, limits, and links to
+    the definitions, proofs, and worked examples that give them meaning.
   </p>
-
 </header>
-
 
 <nav>
   <a href="index.html">Home</a>
@@ -200,7 +239,9 @@
   <a href="gurf.html">GURF</a>
   <a href="encyclopedia.html">Encyclopedia</a>
   <a href="definitions.html">Definitions</a>
+  <a href="examples.html">Examples</a>
   <a href="theorems.html">Theorems</a>
+  <a href="equations.html">Equations</a>
   <a href="structures.html">Structures</a>
   <a href="passports.html">Passports</a>
   <a href="roots.html">Roots</a>
@@ -208,2745 +249,2650 @@
   <a href="changelog.html">Changelog</a>
 </nav>
 
-
 <main>
 
-
-<!-- ========================================================= -->
-<!-- PURPOSE -->
-<!-- ========================================================= -->
-
 <section id="purpose">
+  <h2>1. How to Read an Equation in BM</h2>
 
-  <h2>1. Purpose of the Equation Registry</h2>
-
-  <p>
-    Equations in this encyclopedia are not included merely to make the
-    framework appear mathematical.
+  <p class="lead">
+    An equation is useful only when its mathematical objects and the conditions
+    under which it is valid are visible. The registry therefore separates an
+    equation's symbolic form from its role in a larger BM or GURF structure.
   </p>
 
-  <p>
-    Each important relation should identify:
-  </p>
+  <div class="family">
+    <div><strong>Definition</strong>Introduces a mathematical object or quantity.</div>
+    <div><strong>Exact identity</strong>Follows exactly from the stated mathematics.</div>
+    <div><strong>Factorization / compatibility condition</strong>States when one structure lawfully descends, composes, or closes.</div>
+    <div><strong>Quantitative diagnostic</strong>Measures a defect, spread, sensitivity, error, or ambiguity.</div>
+    <div><strong>Structural schema</strong>Shows mathematical organization rather than a numerical law.</div>
+    <div><strong>Applied identity</strong>Native mathematics used inside BM/GURF without being relabeled as newly discovered domain mathematics.</div>
+  </div>
 
-  <p>
-    mathematical objects · domain and codomain · assumptions ·
-    interpretation · derivation or proof status · limitations ·
-    related definitions · related theorems · numerical behavior when
-    applicable
-  </p>
-
-  <p>
-    Some expressions below are exact mathematical equations.
-    Others are explicitly identified as structural schemas,
-    definitions, conditions, diagnostics, or worked examples.
-  </p>
-
+  <div class="teaching">
+    <strong>Student rule</strong>
+    <p>
+      Never read a displayed equation by symbols alone. Ask: what are the
+      objects, what is the domain, what is the semantic sector, what
+      assumptions are active, and what does the equation actually allow you
+      to conclude?
+    </p>
+  </div>
 </section>
 
-
-<!-- ========================================================= -->
-<!-- BM SCHEMA -->
-<!-- ========================================================= -->
+<section id="equation-index">
+  <h2>2. Equation Index</h2>
+  <ol class="quick-index">
+    <li><a href="#bm-schema">Structural BM Schema</a></li>
+    <li><a href="#branch-record">Current Branch Specification</a></li>
+    <li><a href="#interaction">Interaction Equation</a></li>
+    <li><a href="#leaf">Leaf Extraction Equation</a></li>
+    <li><a href="#leaf-propagation">Leaf-to-Leaf Propagation</a></li>
+    <li><a href="#response">Tree Response Map</a></li>
+    <li><a href="#root-gate">Root Admissibility Gate</a></li>
+    <li><a href="#seed-generation">Seed Generation</a></li>
+    <li><a href="#seed-export">Seed Export Condition</a></li>
+    <li><a href="#passport-observation">Passport Observation Family</a></li>
+    <li><a href="#combined-passport">Combined Passport Map</a></li>
+    <li><a href="#passport-equivalence">Passport Equivalence</a></li>
+    <li><a href="#passport-fibre">Passport Completion Fibre</a></li>
+    <li><a href="#exact-sufficiency">Exact Task Sufficiency</a></li>
+    <li><a href="#fibre-criterion">Fibre Criterion</a></li>
+    <li><a href="#equivalence-inclusion">Equivalence Inclusion</a></li>
+    <li><a href="#task-quotient">Task Quotient</a></li>
+    <li><a href="#finite-carrier-bound">Finite Exact Carrier Bound</a></li>
+    <li><a href="#structured-quotient">Structured Quotient Compatibility</a></li>
+    <li><a href="#quotient-operation">Quotient Operation</a></li>
+    <li><a href="#interface">Exact Interface Compatibility</a></li>
+    <li><a href="#interface-defect">Approximate Interface Defect</a></li>
+    <li><a href="#composite-domain">Composite Domain</a></li>
+    <li><a href="#path-coherence">Path Coherence</a></li>
+    <li><a href="#cycle-coherence">Cycle / Higher Coherence</a></li>
+    <li><a href="#gurf-observation">GURF Observation Map</a></li>
+    <li><a href="#gurf-completion">GURF Completion Fibre</a></li>
+    <li><a href="#continuation">Future Continuation</a></li>
+    <li><a href="#continuation-failure">Continuation Failure</a></li>
+    <li><a href="#task-diameter">Task Diameter</a></li>
+    <li><a href="#approximate-fibre">Approximate Fibre Reconstruction</a></li>
+    <li><a href="#repair">GURF Repair</a></li>
+    <li><a href="#minimal-repair">Minimal Repair Optimization</a></li>
+    <li><a href="#joint-feasibility">Joint Feasibility</a></li>
+    <li><a href="#coupling">Probability Coupling</a></li>
+    <li><a href="#deterministic">Deterministic Semantics</a></li>
+    <li><a href="#stochastic">Stochastic Response Kernel</a></li>
+    <li><a href="#markov-composition">Markov Kernel Composition</a></li>
+    <li><a href="#stochastic-pullback">Stochastic Test Pullback</a></li>
+    <li><a href="#existential">Nondeterministic Existential Response</a></li>
+    <li><a href="#universal">Nondeterministic Universal Response</a></li>
+    <li><a href="#relational-composition">Relational Composition</a></li>
+    <li><a href="#root-chain">General Root Chain</a></li>
+    <li><a href="#root-iteration">Repeated Root Iteration</a></li>
+    <li><a href="#fixed-root">Fixed Root</a></li>
+    <li><a href="#affine">Affine Root Iteration</a></li>
+    <li><a href="#seed-newton">Newton Seed Update</a></li>
+    <li><a href="#root-rate">Discrete Root Event Rate</a></li>
+    <li><a href="#continuous-rate">Continuous Root-State Rate</a></li>
+    <li><a href="#accumulation">Root Event Accumulation</a></li>
+    <li><a href="#invariant">Invariant Preservation</a></li>
+    <li><a href="#dynamic-closure">Dynamic Closure</a></li>
+    <li><a href="#sensitivity">Sensitivity / Jacobian</a></li>
+    <li><a href="#lipschitz-bound">Lipschitz Error Propagation</a></li>
+    <li><a href="#fisher-carrier">Gaussian Fisher Carrier</a></li>
+    <li><a href="#mahalanobis-carrier">Mahalanobis Carrier</a></li>
+    <li><a href="#ns-energy">Navier–Stokes Energy Identity</a></li>
+    <li><a href="#ns-enstrophy">Navier–Stokes Enstrophy Identity</a></li>
+    <li><a href="#wilson-loop">Wilson-Loop Gauge Invariance</a></li>
+    <li><a href="#dephasing">Quantum Dephasing</a></li>
+    <li><a href="#hde-equations">HDE Extended-State Schema</a></li>
+    <li><a href="#ghse-equations">GHSE Joined-State Schema</a></li>
+    <li><a href="#uke-equations">UKE Kernel-Type Equations</a></li>
+    <li><a href="#status">Equation Status Classes</a></li>
+    <li><a href="#central-rule">Central Equation Rule</a></li>
+  </ol>
+</section>
 
 <section id="bm-schema">
+  <h2>3. Structural BM Schema</h2>
 
-  <h2>2. Structural BM Schema</h2>
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> structural schema</div>
+      
+    </div>
 
-  <p>
-    <strong>Classification:</strong>
-    structural schema
-  </p>
+    
 
-  <div class="schema">
+    <div class="schema">
+      \[
+\boxed{
+\text{lawful Branches}
+\longrightarrow
+\text{lawful Interactions}
+\longrightarrow
+\text{combined computation}
+\longrightarrow
+\text{Response}
+\longrightarrow
+\begin{cases}
+\text{terminal result},\\[3pt]
+\text{Root if downstream admissible}.
+\end{cases}
+}
+\]
+    </div>
 
-    \[
-    \boxed{
-    \text{lawful Branches}
-    \longrightarrow
-    \text{lawful Interactions}
-    \longrightarrow
-    \text{combined computation}
-    \longrightarrow
-    \text{Response}
-    \longrightarrow
-    \begin{cases}
-    \text{terminal mathematical result},\\[4pt]
-    \text{Root if downstream admissible}.
-    \end{cases}
-    }
-    \]
+    <h3>Meaning</h3>
+    <p>This is the broad structural direction of BM. It is not a numerical law and does not require every Tree to be a linear sequence.</p>
 
+    
+    <div class="limits"><strong>Limits</strong><ul><li>A Branch may participate in several Interactions.</li><li>A Tree may be parallel, branching, coupled, recursive, or otherwise organized.</li></ul></div>
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#bm">BM</a> · <a href="definitions.html#tree-response-root">Tree/Response/Root distinction</a><br><span class="link-label">Examples:</span> <a href="examples.html#all-roles-thermal-calibration">Integrated example</a></div>
   </div>
-
-  <p>
-    This summarizes the broad structural direction of Branch
-    Mathematics.
-  </p>
-
-  <p>
-    It is not a numerical equation and does not imply that every BM
-    construction is a linear sequence.
-  </p>
-
 </section>
 
+<section id="branch-record">
+  <h2>4. Current Branch Specification</h2>
 
-<!-- ========================================================= -->
-<!-- INTERACTION -->
-<!-- ========================================================= -->
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> formal BM organizational definition</div>
+      
+    </div>
+
+    <h3>Objects</h3><ul><li>\(\mathsf S_B\): mathematical sector.</li><li>\(\tau_B\): type.</li><li>\(X_B\): carrier or state object.</li><li>\(A_B\): admissible domain or sector-correct analogue.</li><li>\(\mathcal L_B\): laws, constraints, identities, invariants.</li><li>\(\mathcal O_B\): admissible native Operations.</li><li>\(\mathcal P_B\): Passport and Interface obligations.</li></ul>
+
+    <div class="schema">
+      \[
+\boxed{
+B=
+\left(
+\mathsf S_B,
+\tau_B,
+X_B,
+A_B,
+\mathcal L_B,
+\mathcal O_B,
+\mathcal P_B
+\right)
+}
+\]
+    </div>
+
+    <h3>Meaning</h3>
+    <p>The current Branch record explicitly separates mathematical sector,
+type, carrier, admissible domain, native laws, native Operations, and
+Passport/Interface obligations.</p>
+
+    
+    <div class="limits"><strong>Limits</strong><ul><li>The tuple is an organizational record; a native mathematical sector may require richer internal structure.</li></ul></div>
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#branch">Branch</a><br><span class="link-label">Examples:</span> <a href="examples.html#branch-vector">Vector Branch</a> · <a href="examples.html#branch-function-space">Function-space Branch</a></div>
+  </div>
+</section>
 
 <section id="interaction">
+  <h2>5. Interaction Equation</h2>
 
-  <h2>3. Interaction Equation</h2>
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> canonical BM typed structure</div>
+      
+    </div>
 
-  <p>
-    <strong>Classification:</strong>
-    formal typed structure
-  </p>
+    
 
-  <p>
-    For participating Branches \(B_1,\ldots,B_n\),
-  </p>
+    <div class="schema">
+      \[
+\boxed{
+I:
+D_I
+\subseteq
+A_{B_1}\times\cdots\times A_{B_n}
+\longrightarrow
+Z_I.
+}
+\]
+    </div>
 
-  <div class="schema">
+    <h3>Meaning</h3>
+    <p>The governing domain is built from the participating Branches'
+admissible domains, not merely their ambient carriers. A point in the ambient
+product is not automatically an admissible Interaction input.</p>
 
-    \[
-    \boxed{
-    I:
-    D_I
-    \subseteq
-    X_{B_1}\times\cdots\times X_{B_n}
-    \longrightarrow
-    Z_I.
-    }
-    \]
+    <h3>Assumptions</h3><ul><li>The deterministic function form is being used. Other sectors use their native Interaction object.</li></ul>
+    <div class="limits"><strong>Limits</strong><ul><li>Interaction lawfulness may also require unit, regularity, positivity, conservation, coupling, boundary, or Passport conditions.</li></ul></div>
+    
 
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#interaction">Interaction</a> · <a href="definitions.html#admissibility">Admissibility</a><br><span class="link-label">Examples:</span> <a href="examples.html#interaction-basic">Power Interaction</a> · <a href="examples.html#interaction-matrix">Matrix Interaction</a></div>
   </div>
-
-  <p>
-    \(D_I\) is the actual admissible Interaction domain.
-  </p>
-
-  <p>
-    Formal membership in the ambient product does not by itself imply
-    membership in \(D_I\).
-  </p>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- LEAF -->
-<!-- ========================================================= -->
 
 <section id="leaf">
+  <h2>6. Leaf Extraction Equation</h2>
 
-  <h2>4. Leaf Extraction Equation</h2>
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> canonical BM structural equation</div>
+      
+    </div>
 
-  <p>
-    <strong>Classification:</strong>
-    canonical BM structural equation
-  </p>
+    
 
-  <p>
-    If
-  </p>
+    <div class="schema">
+      \[
+z=I(x_1,\ldots,x_n),
+\qquad
+\boxed{
+L_j
+=
+\ell_j(z)
+=
+\ell_j(I(x_1,\ldots,x_n)).
+}
+\]
+    </div>
 
-  \[
-  z
-  =
-  I(x_1,\ldots,x_n)
-  \in Z_I
-  \]
+    <h3>Meaning</h3>
+    <p>The Interaction produces \(z\). A Leaf-extraction map \(\ell_j\)
+selects typed information \(L_j\) from that result. One Interaction can expose
+several different Leaves.</p>
 
-  <p>
-    and
-  </p>
+    
+    <div class="limits"><strong>Limits</strong><ul><li>Not every intermediate symbol is a Leaf.</li><li>A Leaf is not automatically a Root or an independent Branch.</li></ul></div>
+    
 
-  \[
-  \ell_j:
-  Z_I
-  \longrightarrow
-  \mathcal L_j,
-  \]
-
-  <p>
-    then the individual Leaf value is
-  </p>
-
-  <div class="schema">
-
-    \[
-    \boxed{
-    \lambda_j
-    =
-    \ell_j(z)
-    =
-    \ell_j
-    \left(
-    I(x_1,\ldots,x_n)
-    \right)
-    \in
-    \mathcal L_j.
-    }
-    \]
-
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#leaf">Leaf</a><br><span class="link-label">Theorems:</span> <a href="theorems.html#leaf-propagation">Leaf propagation theorem</a><br><span class="link-label">Examples:</span> <a href="examples.html#leaf-vector-geometry">Multiple vector Leaves</a> · <a href="examples.html#leaf-spectral-energy">Spectral Leaves</a></div>
   </div>
-
-  <p>
-    The notation deliberately distinguishes:
-  </p>
-
-  <ul>
-    <li>\(\mathcal L_j\): Leaf codomain;</li>
-    <li>\(\ell_j\): Leaf-extraction map;</li>
-    <li>\(\lambda_j\): extracted Leaf value.</li>
-  </ul>
-
 </section>
 
+<section id="leaf-propagation">
+  <h2>7. Leaf-to-Leaf Propagation</h2>
 
-<!-- ========================================================= -->
-<!-- RESPONSE -->
-<!-- ========================================================= -->
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> typed composite equation</div>
+      
+    </div>
+
+    
+
+    <div class="schema">
+      \[
+I:D_I\to Z,
+\qquad
+L=\ell(I(x)),
+\]
+\[
+J:D_J\subseteq X_L\times X_C\to W,
+\]
+\[
+\boxed{
+L'
+=
+\ell'\!\left(J(L,c)\right),
+\qquad
+(L,c)\in D_J.
+}
+\]
+    </div>
+
+    <h3>Meaning</h3>
+    <p>A Leaf can feed later mathematics only when the receiving Interaction
+admits it. The structural chain is</p>
+\[
+x\xrightarrow{I}z\xrightarrow{\ell}L
+\xrightarrow{J(\,\cdot\,,c)}w
+\xrightarrow{\ell'}L'.
+\]
+
+    
+    <div class="limits"><strong>Limits</strong><ul><li>Leaf provenance does not waive the next domain, type, unit, law, or Passport checks.</li></ul></div>
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#leaf">Leaf</a> · <a href="definitions.html#interaction">Interaction</a><br><span class="link-label">Theorems:</span> <a href="theorems.html#leaf-propagation">Leaf propagation</a><br><span class="link-label">Examples:</span> <a href="examples.html#leaf-power-energy-temperature">Power → energy → temperature</a> · <a href="examples.html#leaf-residual-correction">Residual correction</a></div>
+  </div>
+</section>
 
 <section id="response">
+  <h2>8. Tree Response Map</h2>
 
-  <h2>5. Tree Response Map</h2>
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> formal BM structural equation</div>
+      
+    </div>
 
-  <p>
-    <strong>Classification:</strong>
-    formal BM structural equation
-  </p>
+    
 
-  <div class="schema">
+    <div class="schema">
+      \[
+\boxed{
+\mathcal R_{\mathcal T}:
+D_{\mathcal T}\longrightarrow Y_{\mathcal T},
+\qquad
+R=\mathcal R_{\mathcal T}(x).
+}
+\]
+    </div>
 
-    \[
-    \boxed{
-    \mathcal R_T:
-    D_T
-    \longrightarrow
-    Y_T.
-    }
-    \]
+    <h3>Meaning</h3>
+    <p>The Response is the typed output of the organized Tree computation.
+It may be a scalar, vector, matrix, function, law, relation, operator,
+classification, or structured object.</p>
 
+    
+    <div class="limits"><strong>Limits</strong><ul><li>A Response is not automatically admissible for another Branch.</li></ul></div>
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#tree">Tree</a> · <a href="definitions.html#response">Response</a><br><span class="link-label">Examples:</span> <a href="examples.html#response-example">Controller Response</a></div>
   </div>
-
-  <p>
-    For admissible Tree input \(x\in D_T\),
-  </p>
-
-  \[
-  r
-  =
-  \mathcal R_T(x)
-  \in Y_T.
-  \]
-
-  <p>
-    The Response may be a value, state, function, law, relation,
-    operator, classification, structured object, or another typed
-    mathematical output.
-  </p>
-
 </section>
 
+<section id="root-gate">
+  <h2>9. Root Admissibility Gate</h2>
 
-<!-- ========================================================= -->
-<!-- PASSPORT OBSERVATION -->
-<!-- ========================================================= -->
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> canonical BM condition</div>
+      
+    </div>
+
+    
+
+    <div class="schema">
+      \[
+\boxed{
+R\text{ is a Root for receiver }B'
+\iff
+R\in A_{B'}
+\ \text{and all required receiving Passports/Interfaces hold}.
+}
+\]
+    </div>
+
+    <h3>Meaning</h3>
+    <p>Root status is a downstream role. The same Response may pass one
+receiver and fail another.</p>
+
+    
+    <div class="limits"><strong>Limits</strong><ul><li>Root does not imply recurrence, conservation, invertibility, or physical realizability.</li></ul></div>
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#root">Root</a><br><span class="link-label">Theorems:</span> <a href="theorems.html#root-relativity">Receiver-relativity</a><br><span class="link-label">Examples:</span> <a href="examples.html#root-relative-instance">Two receivers</a> · <a href="examples.html#root-matrix-instance">Matrix Root</a></div>
+  </div>
+</section>
+
+<section id="seed-generation">
+  <h2>10. Seed Generation</h2>
+
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> candidate BM generative schema</div>
+      
+    </div>
+
+    
+
+    <div class="schema">
+      \[
+\boxed{
+S_{n+1}=G(S_n),
+\qquad
+S_0\in D_G.
+}
+\]
+    </div>
+
+    <h3>Meaning</h3>
+    <p>This equation is used only when an object has a declared generative
+role. The values \(S_n\) are Seed states until an export condition is met.</p>
+
+    
+    <div class="limits"><strong>Limits</strong><ul><li>Initial data is not automatically a Seed.</li><li>A Seed state is not automatically a Response or Root.</li></ul></div>
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#seed">Seed</a> · <a href="definitions.html#seed-state">Seed state</a><br><span class="link-label">Examples:</span> <a href="examples.html#seed-fixed-point">Fixed-point Seed</a> · <a href="examples.html#seed-gradient">Gradient Seed</a></div>
+  </div>
+</section>
+
+<section id="seed-export">
+  <h2>11. Seed Export Condition</h2>
+
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> candidate BM export gate</div>
+      
+    </div>
+
+    
+
+    <div class="schema">
+      \[
+\boxed{
+E(S_n)=\mathrm{true}
+}
+\]
+or, quantitatively,
+\[
+\boxed{
+\|F(S_n)\|\le\varepsilon.
+}
+\]
+    </div>
+
+    <h3>Meaning</h3>
+    <p>The Seed process is allowed to export a Response only after the
+declared criterion is satisfied.</p>
+
+    
+    <div class="limits"><strong>Limits</strong><ul><li>The export condition must be specified by the actual mathematics; there is no universal BM tolerance.</li></ul></div>
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#seed-export">Seed export condition</a><br><span class="link-label">Examples:</span> <a href="examples.html#seed-newton">Newton residual gate</a> · <a href="examples.html#seed-fixed-point">Fixed-point tolerance</a></div>
+  </div>
+</section>
 
 <section id="passport-observation">
+  <h2>12. Passport Observation Family</h2>
 
-  <h2>6. Passport Observation Family</h2>
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> formal BM/GURF definition</div>
+      
+    </div>
 
-  <p>
-    <strong>Classification:</strong>
-    formal definition
-  </p>
+    
 
-  <div class="schema">
+    <div class="schema">
+      \[
+\boxed{
+b_c:X\longrightarrow Y_c,
+\qquad
+c\in\mathcal C.
+}
+\]
+    </div>
 
-    \[
-    b_c:
-    X
-    \longrightarrow
-    Y_c,
-    \qquad
-    c\in\mathcal C.
-    \]
+    <h3>Meaning</h3>
+    <p>Each \(b_c\) records one observable, invariant, Task-relevant
+distinction, law component, or Interface requirement.</p>
 
+    
+    
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#passport-observation">Passport observation</a></div>
   </div>
-
-  <p>
-    Each \(b_c\) records one observation, invariant, test,
-    distinction, law component, or Passport requirement.
-  </p>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- COMBINED PASSPORT -->
-<!-- ========================================================= -->
 
 <section id="combined-passport">
+  <h2>13. Combined Passport Map</h2>
 
-  <h2>7. Combined Passport Map</h2>
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> formal construction</div>
+      
+    </div>
 
-  <p>
-    <strong>Classification:</strong>
-    formal construction
-  </p>
+    
 
-  <div class="schema">
+    <div class="schema">
+      \[
+B_P:X\longrightarrow\prod_{c\in\mathcal C}Y_c,
+\]
+\[
+\boxed{
+B_P(x)=\bigl(b_c(x)\bigr)_{c\in\mathcal C}.
+}
+\]
+    </div>
 
-    \[
-    B_P:
-    X
-    \longrightarrow
-    \prod_{c\in\mathcal C}Y_c
-    \]
+    <h3>Meaning</h3>
+    <p>The map collects the active exact Passport observations when the
+required joint product is meaningful in the native sector.</p>
 
-    \[
-    \boxed{
-    B_P(x)
-    =
-    \left(
-    b_c(x)
-    \right)_{c\in\mathcal C}.
-    }
-    \]
+    
+    <div class="limits"><strong>Limits</strong><ul><li>Marginal stochastic observations do not determine a joint coupling without extra structure.</li></ul></div>
+    
 
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#combined-passport">Combined Passport</a><br><span class="link-label">Examples:</span> <a href="examples.html#passport-joint-task">Joint Task</a></div>
   </div>
-
-  <p>
-    The product map collects the active Passport observations when the
-    required product exists in the relevant mathematical sector.
-  </p>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- PASSPORT EQUIVALENCE -->
-<!-- ========================================================= -->
 
 <section id="passport-equivalence">
+  <h2>14. Passport Equivalence</h2>
 
-  <h2>8. Passport Equivalence</h2>
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> exact deterministic equivalence</div>
+      
+    </div>
 
-  <p>
-    <strong>Classification:</strong>
-    exact equivalence relation in deterministic equality-based semantics
-  </p>
+    
 
-  <div class="schema">
+    <div class="schema">
+      \[
+\boxed{
+x\sim_Px'
+\iff
+B_P(x)=B_P(x')
+\iff
+b_c(x)=b_c(x')
+\quad\forall c.
+}
+\]
+    </div>
 
-    \[
-    \boxed{
-    x\sim_Px'
-    \Longleftrightarrow
-    b_c(x)=b_c(x')
-    \quad
-    \forall c\in\mathcal C.
-    }
-    \]
+    <h3>Meaning</h3>
+    <p>States are equivalent only relative to the declared Passport
+representation.</p>
 
+    
+    <div class="limits"><strong>Limits</strong><ul><li>This exact equality relation is not a universal model for stochastic, privacy, quantum, or metric indistinguishability.</li></ul></div>
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#passport-equivalence">Passport equivalence</a><br><span class="link-label">Theorems:</span> <a href="theorems.html#passport-equivalence">Passport equivalence theorem</a></div>
   </div>
-
-  <p>
-    Equivalently,
-  </p>
-
-  \[
-  x\sim_Px'
-  \Longleftrightarrow
-  B_P(x)=B_P(x').
-  \]
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- COMPLETION FIBRE -->
-<!-- ========================================================= -->
 
 <section id="passport-fibre">
+  <h2>15. Passport Completion Fibre</h2>
 
-  <h2>9. Passport Completion Fibre</h2>
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> exact Set construction</div>
+      
+    </div>
 
-  <p>
-    <strong>Classification:</strong>
-    exact set construction
-  </p>
+    
 
-  <div class="schema">
+    <div class="schema">
+      \[
+\boxed{
+\mathfrak C_P(\ell)
+=
+\bigcap_{c\in\mathcal C}
+b_c^{-1}(\ell_c).
+}
+\]
+    </div>
 
-    \[
-    \boxed{
-    \mathfrak C_P(\ell)
-    =
-    \bigcap_{c\in\mathcal C}
-    b_c^{-1}(\ell_c).
-    }
-    \]
+    <h3>Meaning</h3>
+    <p>The Completion Fibre contains every source state compatible with all
+active exact Passport observations.</p>
 
+    
+    
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#completion-fibre">Completion fibre</a><br><span class="link-label">Theorems:</span> <a href="theorems.html#completion-fibre">Completion-fibre sufficiency</a><br><span class="link-label">Examples:</span> <a href="examples.html#passport-finite-fibres">Finite fibre audit</a></div>
   </div>
-
-  <p>
-    The completion fibre contains every underlying state compatible
-    with all active Passport observations.
-  </p>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- EXACT TASK SUFFICIENCY -->
-<!-- ========================================================= -->
 
 <section id="exact-sufficiency">
+  <h2>16. Exact Task Sufficiency</h2>
 
-  <h2>10. Exact Task Sufficiency</h2>
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> exact deterministic factorization</div>
+      
+    </div>
 
-  <p>
-    <strong>Classification:</strong>
-    exact deterministic factorization criterion
-  </p>
+    
 
-  <p>
-    Let
-  </p>
+    <div class="schema">
+      \[
+T:X\to W,
+\qquad
+\boxed{
+T=\widetilde T\circ B_P
+}
+\]
+for some
+\[
+\widetilde T:B_P(X)\to W.
+\]
+    </div>
 
-  \[
-  T:
-  X
-  \longrightarrow
-  W.
-  \]
+    <h3>Meaning</h3>
+    <p>The factor map needs to exist on the realized Passport image. Exact
+sufficiency means the Task can be computed without reconstructing distinctions
+discarded by the Passport.</p>
 
-  <p>
-    Passport \(P\) is sufficient for \(T\) when there exists
-  </p>
+    
+    <div class="limits"><strong>Limits</strong><ul><li>Exact sufficiency is Task-relative and does not imply Dynamic Closure.</li></ul></div>
+    
 
-  \[
-  \widetilde T:
-  B_P(X)
-  \longrightarrow
-  W
-  \]
-
-  <p>
-    such that
-  </p>
-
-  <div class="schema">
-
-    \[
-    \boxed{
-    T
-    =
-    \widetilde T\circ B_P.
-    }
-    \]
-
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#exact-sufficiency">Exact sufficiency</a><br><span class="link-label">Theorems:</span> <a href="theorems.html#recoverability">Exact Recoverability</a><br><span class="link-label">Examples:</span> <a href="examples.html#exact-sufficiency-example">Exact sufficiency</a></div>
   </div>
-
-  <p>
-    The factor map is required on the realized image \(B_P(X)\).
-  </p>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- FIBRE CRITERION -->
-<!-- ========================================================= -->
 
 <section id="fibre-criterion">
+  <h2>17. Fibre Criterion for Sufficiency</h2>
 
-  <h2>11. Fibre Criterion for Sufficiency</h2>
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> equivalent exact deterministic condition</div>
+      
+    </div>
 
-  <p>
-    <strong>Classification:</strong>
-    equivalent exact deterministic criterion
-  </p>
+    
 
-  <div class="schema">
+    <div class="schema">
+      \[
+\boxed{
+B_P(x)=B_P(x')
+\Longrightarrow
+T(x)=T(x').
+}
+\]
+    </div>
 
-    \[
-    \boxed{
-    B_P(x)=B_P(x')
-    \Longrightarrow
-    T(x)=T(x').
-    }
-    \]
+    <h3>Meaning</h3>
+    <p>The Task must be constant on every Passport fibre.</p>
 
+    
+    
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#fibre">Fibre</a><br><span class="link-label">Theorems:</span> <a href="theorems.html#recoverability">Exact Recoverability</a><br><span class="link-label">Examples:</span> <a href="examples.html#passport-finite-fibres">Finite audit</a></div>
   </div>
-
-  <p>
-    Equivalently,
-  </p>
-
-  \[
-  \boxed{
-  x\sim_Px'
-  \Longrightarrow
-  T(x)=T(x').
-  }
-  \]
-
-  <p>
-    A distinction may be discarded only when the declared Task does not
-    require it.
-  </p>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- EQUIVALENCE INCLUSION -->
-<!-- ========================================================= -->
 
 <section id="equivalence-inclusion">
+  <h2>18. Equivalence Inclusion Criterion</h2>
 
-  <h2>12. Equivalence Inclusion Criterion</h2>
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> exact deterministic relational criterion</div>
+      
+    </div>
 
-  <p>
-    <strong>Classification:</strong>
-    exact deterministic relational criterion
-  </p>
+    
 
-  <p>
-    Define Task equivalence by
-  </p>
+    <div class="schema">
+      \[
+x\sim_Tx'
+\iff
+T(x)=T(x'),
+\]
+\[
+\boxed{
+\sim_P\subseteq\sim_T.
+}
+\]
+    </div>
 
-  \[
-  x\sim_Tx'
-  \Longleftrightarrow
-  T(x)=T(x').
-  \]
+    <h3>Meaning</h3>
+    <p>The Passport may identify two states only when the Task is also
+indifferent to that distinction.</p>
 
-  <p>
-    Then exact sufficiency is
-  </p>
+    
+    
+    
 
-  <div class="schema">
-
-    \[
-    \boxed{
-    \sim_P
-    \subseteq
-    \sim_T.
-    }
-    \]
-
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#task-equivalence">Task equivalence</a> · <a href="definitions.html#sufficiency-relation">Sufficiency relation</a><br><span class="link-label">Theorems:</span> <a href="theorems.html#passport-sufficiency">Passport sufficiency</a></div>
   </div>
-
 </section>
 
+<section id="task-quotient">
+  <h2>19. Task Quotient</h2>
 
-<!-- ========================================================= -->
-<!-- STRUCTURED QUOTIENT -->
-<!-- ========================================================= -->
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> exact deterministic quotient</div>
+      
+    </div>
+
+    
+
+    <div class="schema">
+      \[
+\boxed{
+X/{\sim_T},
+\qquad
+x\sim_Tx'
+\iff T(x)=T(x').
+}
+\]
+    </div>
+
+    <h3>Meaning</h3>
+    <p>This quotient is the coarsest Set-level exact identification generated
+by the Task itself: every pair with the same Task value is merged.</p>
+
+    
+    <div class="limits"><strong>Limits</strong><ul><li>Additional native structure can forbid this quotient as a lawful structured quotient.</li></ul></div>
+    
+
+    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#task-minimal-quotient">Minimal Task quotient</a></div>
+  </div>
+</section>
+
+<section id="finite-carrier-bound">
+  <h2>20. Finite Exact Carrier Bound</h2>
+
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> finite exact information bound</div>
+      
+    </div>
+
+    
+
+    <div class="schema">
+      \[
+\boxed{
+|r(X)|\ge|T(X)|.
+}
+\]
+    </div>
+
+    <h3>Meaning</h3>
+    <p>For finite \(X\), any exact Task-sufficient representation must have
+at least as many realized representation states as there are distinct Task
+values.</p>
+
+    
+    <div class="limits"><strong>Limits</strong><ul><li>This is a cardinality bound, not a coding-rate or computational-complexity theorem.</li></ul></div>
+    
+
+    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#finite-carrier-bound">Finite carrier theorem</a></div>
+  </div>
+</section>
 
 <section id="structured-quotient">
+  <h2>21. Structured Quotient Compatibility</h2>
 
-  <h2>13. Structured Quotient Compatibility</h2>
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> finitary algebraic congruence condition</div>
+      
+    </div>
 
-  <p>
-    <strong>Classification:</strong>
-    operation-compatibility condition
-  </p>
+    
 
-  <p>
-    For an \(n\)-ary algebraic Operation
-  </p>
+    <div class="schema">
+      \[
+\boxed{
+x_i\sim_Py_i\ \forall i
+\Longrightarrow
+\sigma(x_1,\ldots,x_n)
+\sim_P
+\sigma(y_1,\ldots,y_n).
+}
+\]
+    </div>
 
-  \[
-  \sigma:
-  X^n
-  \longrightarrow
-  X,
-  \]
+    <h3>Meaning</h3>
+    <p>An observational quotient preserves an algebraic Operation
+\(\sigma\) only when the equivalence is compatible with that Operation.</p>
 
-  <p>
-    a Passport quotient preserves \(\sigma\) only when
-  </p>
+    
+    <div class="limits"><strong>Limits</strong><ul><li>The condition shown is algebraic; topology, geometry, probability, operators, and quantum structure use their native quotient laws.</li></ul></div>
+    
 
-  <div class="schema">
-
-    \[
-    \boxed{
-    x_i\sim_Py_i
-    \quad
-    \forall i
-    \Longrightarrow
-    \sigma(x_1,\ldots,x_n)
-    \sim_P
-    \sigma(y_1,\ldots,y_n).
-    }
-    \]
-
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#structured-quotient">Structured quotient</a> · <a href="definitions.html#congruence">Congruence</a><br><span class="link-label">Theorems:</span> <a href="theorems.html#bm-sq-01">BM-SQ-01</a><br><span class="link-label">Examples:</span> <a href="examples.html#structured-quotient-example">Lawful quotient</a> · <a href="examples.html#failure-false-quotient">Failure</a></div>
   </div>
-
-  <p>
-    In the finitary algebraic setting, this is the congruence
-    requirement.
-  </p>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- QUOTIENT OPERATION -->
-<!-- ========================================================= -->
 
 <section id="quotient-operation">
+  <h2>22. Quotient Operation</h2>
 
-  <h2>14. Quotient Operation</h2>
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> induced Operation conditional on compatibility</div>
+      
+    </div>
 
-  <p>
-    <strong>Classification:</strong>
-    induced Operation conditional on congruence
-  </p>
+    
 
-  <div class="schema">
+    <div class="schema">
+      \[
+\boxed{
+\overline\sigma
+\left(
+[x_1]_P,\ldots,[x_n]_P
+\right)
+=
+[\sigma(x_1,\ldots,x_n)]_P.
+}
+\]
+    </div>
 
-    \[
-    \boxed{
-    \overline{\sigma}
-    \left(
-    [x_1]_P,\ldots,[x_n]_P
-    \right)
-    =
-    \left[
-    \sigma(x_1,\ldots,x_n)
-    \right]_P.
-    }
-    \]
+    <h3>Meaning</h3>
+    <p>The expression is meaningful only when the output class is independent
+of the representatives chosen for the input classes.</p>
 
+    
+    
+    
+
+    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#bm-sq-01">BM-SQ-01</a></div>
   </div>
-
-  <p>
-    This expression is well-defined only when its equivalence class does
-    not depend on the chosen representatives.
-  </p>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- INTERFACE -->
-<!-- ========================================================= -->
 
 <section id="interface">
+  <h2>23. Exact Interface Compatibility</h2>
 
-  <h2>15. Exact Interface Compatibility</h2>
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> exact factorization/coherence condition</div>
+      
+    </div>
 
-  <p>
-    <strong>Classification:</strong>
-    exact coherence equation
-  </p>
+    
 
-  <p>
-    For
-  </p>
+    <div class="schema">
+      \[
+F:X_1\to X_2,
+\qquad
+P_1:X_1\to Q_1,
+\qquad
+P_2:X_2\to Q_2,
+\]
+\[
+\boxed{
+P_2\circ F
+=
+G\circ P_1.
+}
+\]
+    </div>
 
-  \[
-  F:
-  X_1\to X_2,
-  \qquad
-  P_1:
-  X_1\to Q_1,
-  \]
+    <h3>Meaning</h3>
+    <p>The receiving Passport can be computed from the sending Passport
+without reconstructing the entire source state.</p>
 
-  \[
-  P_2:
-  X_2\to Q_2,
-  \qquad
-  G:
-  Q_1\to Q_2,
-  \]
+    
+    
+    
 
-  <p>
-    exact Interface compatibility is
-  </p>
-
-  <div class="schema">
-
-    \[
-    \boxed{
-    P_2\circ F
-    =
-    G\circ P_1.
-    }
-    \]
-
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#interface">Interface</a><br><span class="link-label">Theorems:</span> <a href="theorems.html#interface-factorization">Interface factorization</a><br><span class="link-label">Examples:</span> <a href="examples.html#interface-basic">Interface example</a></div>
   </div>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- INTERFACE DEFECT -->
-<!-- ========================================================= -->
 
 <section id="interface-defect">
+  <h2>24. Approximate Interface Defect</h2>
 
-  <h2>16. Approximate Interface Defect</h2>
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> quantitative diagnostic</div>
+      
+    </div>
 
-  <p>
-    <strong>Classification:</strong>
-    quantitative diagnostic
-  </p>
+    
 
-  <p>
-    Given a mathematically justified metric or discrepancy \(d\),
-    define
-  </p>
+    <div class="schema">
+      \[
+\boxed{
+\Delta_F(x)
+=
+d\!\left(
+P_2(F(x)),
+G(P_1(x))
+\right).
+}
+\]
+Exact compatibility:
+\[
+\Delta_F(x)=0.
+\]
+Approximate compatibility:
+\[
+\Delta_F(x)\le\varepsilon.
+\]
+    </div>
 
-  <div class="schema">
+    <h3>Meaning</h3>
+    <p>The defect measures mismatch only after a mathematically justified
+comparison \(d\) has been supplied.</p>
 
-    \[
-    \boxed{
-    \Delta_F(x)
-    =
-    d
-    \left(
-    P_2(F(x)),
-    G(P_1(x))
-    \right).
-    }
-    \]
+    
+    <div class="limits"><strong>Limits</strong><ul><li>A metric used for one type of object cannot automatically compare another semantic object.</li></ul></div>
+    
 
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#interface-defect">Interface defect</a><br><span class="link-label">Examples:</span> <a href="examples.html#coherence-calibration">Calibration defect</a></div>
   </div>
-
-  <p>
-    Exact coherence corresponds to
-  </p>
-
-  \[
-  \Delta_F(x)=0.
-  \]
-
-  <p>
-    Approximate compatibility may require
-  </p>
-
-  \[
-  \Delta_F(x)
-  \le
-  \varepsilon.
-  \]
-
-  <p>
-    Such a defect is meaningful only after a valid comparison structure
-    has been supplied.
-  </p>
-
 </section>
 
+<section id="composite-domain">
+  <h2>25. Composite Domain</h2>
 
-<!-- ========================================================= -->
-<!-- GURF OBSERVATION -->
-<!-- ========================================================= -->
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> exact partial-map domain</div>
+      
+    </div>
+
+    
+
+    <div class="schema">
+      \[
+F:D_F\subseteq X\to Y,
+\qquad
+G:D_G\subseteq Y\to Z,
+\]
+\[
+\boxed{
+D_{G\circ F}
+=
+\{x\in D_F:F(x)\in D_G\}.
+}
+\]
+    </div>
+
+    <h3>Meaning</h3>
+    <p>The downstream domain must be pulled back through the upstream map.
+Matching ambient codomain labels are not enough.</p>
+
+    
+    
+    
+
+    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#typed-composite-domain">Typed composite domain</a><br><span class="link-label">Examples:</span> <a href="examples.html#composition-domain-shrink">Square-root/log domain</a> · <a href="examples.html#composition-reciprocal">Reciprocal singularity</a></div>
+  </div>
+</section>
+
+<section id="path-coherence">
+  <h2>26. Path Coherence</h2>
+
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> exact or sector-correct path comparison</div>
+      
+    </div>
+
+    
+
+    <div class="schema">
+      \[
+F_p,F_q:D\to Y,
+\]
+\[
+\boxed{
+F_p(x)\simeq_YF_q(x)
+\quad
+\text{for every }x\text{ in the shared domain}.
+}
+\]
+A defect set is
+\[
+\boxed{
+\Delta_{p,q}
+=
+\{x:F_p(x)\not\simeq_YF_q(x)\}.
+}
+\]
+    </div>
+
+    <h3>Meaning</h3>
+    <p>The destination decides what counts as agreement: equality, numerical
+tolerance, gauge equivalence, isomorphism, equality in distribution, or
+another sector-correct relation.</p>
+
+    
+    
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#path-coherence">Path coherence</a><br><span class="link-label">Theorems:</span> <a href="theorems.html#path-coherence">Coherence transitivity</a><br><span class="link-label">Examples:</span> <a href="examples.html#path-coherence-example">Temperature paths</a> · <a href="examples.html#coherence-domain-overlap">Shared-domain coherence</a></div>
+  </div>
+</section>
+
+<section id="cycle-coherence">
+  <h2>27. Cycle / Higher Coherence</h2>
+
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> structural compatibility condition</div>
+      
+    </div>
+
+    
+
+    <div class="schema">
+      \[
+X_1\xrightarrow{F_{12}}X_2
+\xrightarrow{F_{23}}X_3
+\xrightarrow{F_{31}}X_1,
+\]
+\[
+\boxed{
+F_{31}\circ F_{23}\circ F_{12}
+\simeq
+\operatorname{id}_{X_1}
+}
+\]
+on the common admissible cycle domain.
+    </div>
+
+    <h3>Meaning</h3>
+    <p>This is one simple higher-coherence pattern. More general coherence
+can involve associators, several path families, naturality, gluing, or
+higher categorical data.</p>
+
+    
+    
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#higher-coherence">Higher coherence</a><br><span class="link-label">Examples:</span> <a href="examples.html#higher-coherence-example">Cycle example</a></div>
+  </div>
+</section>
 
 <section id="gurf-observation">
+  <h2>28. GURF Observation Map</h2>
 
-  <h2>17. GURF Observation Map</h2>
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> response-system representation</div>
+      
+    </div>
 
-  <p>
-    <strong>Classification:</strong>
-    formal response-system observation
-  </p>
+    
 
-  <div class="schema">
+    <div class="schema">
+      \[
+\boxed{
+r:X\longrightarrow Y,
+\qquad
+y=r(x).
+}
+\]
+    </div>
 
-    \[
-    r:
-    X
-    \longrightarrow
-    Y,
-    \qquad
-    y=r(x).
-    \]
+    <h3>Meaning</h3>
+    <p>The map may represent measurement, filtering, coarse-graining,
+compression, projection, feature extraction, or another retained response
+representation.</p>
 
+    
+    
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#observation">Observation</a><br><span class="link-label">Examples:</span> <a href="examples.html#passport-basic">Lossy sensor</a></div>
   </div>
-
-  <p>
-    The map may represent measurement, coarse-graining, compression,
-    projection, filtering, feature extraction, or another retained
-    representation.
-  </p>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- GURF COMPLETION FIBRE -->
-<!-- ========================================================= -->
 
 <section id="gurf-completion">
+  <h2>29. GURF Completion Fibre</h2>
 
-  <h2>18. GURF Completion Fibre</h2>
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> exact compatible-state set</div>
+      
+    </div>
 
-  <p>
-    <strong>Classification:</strong>
-    exact compatible-state construction
-  </p>
+    
 
-  <div class="schema">
+    <div class="schema">
+      \[
+\boxed{
+\mathfrak C_A(\ell)
+=
+\bigcap_{\alpha\in A}
+r_\alpha^{-1}(\ell_\alpha).
+}
+\]
+    </div>
 
-    \[
-    \boxed{
-    \mathfrak C_A(\ell)
-    =
-    \bigcap_{\alpha\in A}
-    r_\alpha^{-1}(\ell_\alpha).
-    }
-    \]
+    <h3>Meaning</h3>
+    <p>The set contains the underlying states compatible with the full active
+observation family.</p>
 
+    
+    
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#completion-fibre">Completion fibre</a></div>
   </div>
-
-  <p>
-    This is the set of underlying states compatible with the complete
-    active observation family.
-  </p>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- FUTURE CONTINUATION -->
-<!-- ========================================================= -->
 
 <section id="continuation">
+  <h2>30. GURF Future Continuation Criterion</h2>
 
-  <h2>19. GURF Future Continuation Criterion</h2>
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> exact deterministic future-Task factorization</div>
+      
+    </div>
 
-  <p>
-    <strong>Classification:</strong>
-    exact deterministic dynamic sufficiency condition
-  </p>
+    
 
-  <p>
-    Let
-  </p>
+    <div class="schema">
+      \[
+\Phi_t:X\to X,
+\qquad
+T:X\to W,
+\]
+\[
+\boxed{
+T\circ\Phi_t
+=
+\widetilde T_t\circ r.
+}
+\]
+    </div>
 
-  \[
-  \Phi_t:
-  X
-  \longrightarrow
-  X
-  \]
+    <h3>Meaning</h3>
+    <p>The present observation remains sufficient for the future Task at time
+\(t\) when that future Task factors through the present representation.</p>
 
-  <p>
-    be the relevant evolution.
-  </p>
+    
+    <div class="limits"><strong>Limits</strong><ul><li>One time \(t\) does not imply all-time closure.</li></ul></div>
+    
 
-  <p>
-    Observation \(r\) remains sufficient for future Task \(T\) when
-    there exists
-  </p>
-
-  \[
-  \widetilde T_t:
-  r(X)
-  \longrightarrow
-  W
-  \]
-
-  <p>
-    satisfying
-  </p>
-
-  <div class="schema">
-
-    \[
-    \boxed{
-    T\circ\Phi_t
-    =
-    \widetilde T_t\circ r.
-    }
-    \]
-
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#continuation">Continuation</a><br><span class="link-label">Theorems:</span> <a href="theorems.html#dynamic-continuation">Dynamic continuation</a></div>
   </div>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- CONTINUATION FAILURE -->
-<!-- ========================================================= -->
 
 <section id="continuation-failure">
+  <h2>31. Continuation Failure</h2>
 
-  <h2>20. Continuation Failure</h2>
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> deterministic obstruction condition</div>
+      
+    </div>
 
-  <p>
-    <strong>Classification:</strong>
-    deterministic obstruction condition
-  </p>
+    
 
-  <p>
-    Continuation fails when there exist \(x,x'\in X\) such that
-  </p>
+    <div class="schema">
+      \[
+\boxed{
+r(x)=r(x')
+\quad\text{but}\quad
+T(\Phi_t(x))
+\neq
+T(\Phi_t(x')).
+}
+\]
+    </div>
 
-  \[
-  r(x)=r(x')
-  \]
+    <h3>Meaning</h3>
+    <p>Two currently indistinguishable states have different future Task
+values. Therefore the present representation cannot determine that future
+Task exactly.</p>
 
-  <p>
-    but
-  </p>
+    
+    
+    
 
-  <div class="schema">
-
-    \[
-    \boxed{
-    T(\Phi_t(x))
-    \neq
-    T(\Phi_t(x')).
-    }
-    \]
-
+    <div class="crosslinks"><span class="link-label">Examples:</span> <a href="examples.html#dynamic-closure-example">Dynamic closure failure</a></div>
   </div>
-
-  <p>
-    The present representation has merged states whose future
-    Task-relevant behavior differs.
-  </p>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- TASK DIAMETER -->
-<!-- ========================================================= -->
 
 <section id="task-diameter">
+  <h2>32. Task Diameter of a Fibre</h2>
 
-  <h2>21. Task Diameter of a Fibre</h2>
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> quantitative GURF diagnostic</div>
+      
+    </div>
 
-  <p>
-    <strong>Classification:</strong>
-    quantitative GURF diagnostic
-  </p>
+    
 
-  <p>
-    Let \(y\in r(X)\), and suppose the Task space \(W\) has metric
-    \(d_W\).
-  </p>
+    <div class="schema">
+      \[
+C_y=r^{-1}(y),
+\]
+\[
+\boxed{
+\operatorname{diam}_T(C_y)
+=
+\sup_{x,x'\in C_y}
+d_W(T(x),T(x')).
+}
+\]
+    </div>
 
-  <div class="schema">
+    <h3>Meaning</h3>
+    <p>Zero Task diameter means the Task is constant on the fibre. Positive
+diameter measures the Task ambiguity left by that observation.</p>
 
-    \[
-    \boxed{
-    D_{r,T}(y)
-    =
-    \sup_{
-      x,x'\in r^{-1}(y)
-    }
-    d_W
-    \left(
-    T(x),
-    T(x')
-    \right).
-    }
-    \]
+    
+    
+    
 
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#task-diameter">Task diameter</a><br><span class="link-label">Theorems:</span> <a href="theorems.html#task-diameter">Exact task-diameter criterion</a></div>
   </div>
-
-  <p>
-    Exact sufficiency requires
-  </p>
-
-  \[
-  D_{r,T}(y)=0
-  \]
-
-  <p>
-    for every realized observation value.
-  </p>
-
-  <p>
-    Approximate sufficiency may require
-  </p>
-
-  \[
-  D_{r,T}(y)
-  \le
-  \varepsilon.
-  \]
-
 </section>
 
+<section id="approximate-fibre">
+  <h2>33. Approximate Fibre Reconstruction</h2>
 
-<!-- ========================================================= -->
-<!-- GURF REPAIR -->
-<!-- ========================================================= -->
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> quantitative bound</div>
+      
+    </div>
+
+    
+
+    <div class="schema">
+      \[
+\sup_{x,x'\in r^{-1}(y)}
+d_W(T(x),T(x'))
+\le\varepsilon
+\quad\forall y,
+\]
+then, for a chosen section \(s\),
+\[
+\boxed{
+\widehat T(y)=T(s(y)),
+\qquad
+d_W(T(x),\widehat T(r(x)))\le\varepsilon.
+}
+\]
+    </div>
+
+    <h3>Meaning</h3>
+    <p>Small Task diameter gives an explicit approximate reconstruction
+guarantee once a representative section is chosen.</p>
+
+    
+    
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#approximate-sufficiency">Approximate sufficiency</a><br><span class="link-label">Theorems:</span> <a href="theorems.html#approximate-task-diameter">Approximate fibre-diameter result</a></div>
+  </div>
+</section>
 
 <section id="repair">
+  <h2>34. GURF Repair by Exact Refinement</h2>
 
-  <h2>22. GURF Repair</h2>
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> exact refinement construction</div>
+      
+    </div>
 
-  <p>
-    <strong>Classification:</strong>
-    refinement condition
-  </p>
+    
 
-  <p>
-    Add an observation
-  </p>
+    <div class="schema">
+      \[
+q:X\to Z,
+\qquad
+(r,q):X\to Y\times Z,
+\]
+\[
+\boxed{
+(r,q)(x)=(r,q)(x')
+\Longrightarrow
+T(x)=T(x').
+}
+\]
+    </div>
 
-  \[
-  q:
-  X
-  \longrightarrow
-  Z.
-  \]
+    <h3>Meaning</h3>
+    <p>An added observation repairs exact Task insufficiency when the refined
+representation makes the Task constant on every refined fibre.</p>
 
-  <p>
-    The refined representation is
-  </p>
+    
+    
+    
 
-  \[
-  (r,q):
-  X
-  \longrightarrow
-  Y\times Z.
-  \]
-
-  <p>
-    Repair succeeds for deterministic Task \(T\) when
-  </p>
-
-  <div class="schema">
-
-    \[
-    \boxed{
-    (r,q)(x)
-    =
-    (r,q)(x')
-    \Longrightarrow
-    T(x)=T(x').
-    }
-    \]
-
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#repair">Repair</a><br><span class="link-label">Theorems:</span> <a href="theorems.html#repair-refinement">Repair refinement</a><br><span class="link-label">Examples:</span> <a href="examples.html#repair-example">Simple repair</a></div>
   </div>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- MINIMAL REPAIR -->
-<!-- ========================================================= -->
 
 <section id="minimal-repair">
+  <h2>35. Minimal Repair Optimization</h2>
 
-  <h2>23. Minimal Repair Optimization</h2>
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> optimization schema</div>
+      
+    </div>
 
-  <p>
-    <strong>Classification:</strong>
-    optimization template
-  </p>
+    
 
-  <div class="schema">
+    <div class="schema">
+      \[
+\boxed{
+q^\star
+\in
+\operatorname*{arg\,min}_{q\in\mathcal Q_{\rm repair}}
+C(q)
+}
+\]
+or, when no minimizer is known to exist,
+\[
+\boxed{
+\inf_{q\in\mathcal Q_{\rm repair}}C(q).
+}
+\]
+    </div>
 
-    \[
-    \boxed{
-    \inf_{q\in\mathcal Q_{\mathrm{adm}}}
-    \operatorname{Cost}(q)
-    }
-    \]
+    <h3>Meaning</h3>
+    <p>Minimality is meaningful only after the repair class and the cost or
+ordering have been declared.</p>
 
-    <p>
-      subject to
-    </p>
+    
+    
+    
 
-    \[
-    T
-    =
-    \widetilde T
-    \circ
-    (r,q).
-    \]
-
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#minimal-repair">Minimal repair</a><br><span class="link-label">Examples:</span> <a href="examples.html#minimal-repair-example">Minimal repair</a></div>
   </div>
-
-  <p>
-    The admissible repair class \(\mathcal Q_{\mathrm{adm}}\) and the
-    meaning of cost are application-dependent.
-  </p>
-
-  <p>
-    An infimum is used because a minimizing repair need not exist.
-  </p>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- JOINT FEASIBILITY -->
-<!-- ========================================================= -->
 
 <section id="joint-feasibility">
+  <h2>36. Joint Feasibility</h2>
 
-  <h2>24. Joint Feasibility</h2>
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> exact feasibility condition</div>
+      
+    </div>
 
-  <p>
-    <strong>Classification:</strong>
-    exact feasibility condition
-  </p>
+    
 
-  <p>
-    If condition \(c\) has feasible set
-  </p>
+    <div class="schema">
+      \[
+P_c\subseteq X,
+\qquad
+\boxed{
+\bigcap_{c\in\mathcal C}P_c\neq\varnothing.
+}
+\]
+    </div>
 
-  \[
-  P_c
-  \subseteq
-  X,
-  \]
+    <h3>Meaning</h3>
+    <p>Separate feasible witnesses do not establish one common witness.</p>
 
-  <p>
-    then one common witness requires
-  </p>
+    
+    
+    
 
-  <div class="schema">
-
-    \[
-    \boxed{
-    \bigcap_{c\in\mathcal C}
-    P_c
-    \neq
-    \varnothing.
-    }
-    \]
-
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#joint-feasibility">Joint feasibility</a><br><span class="link-label">Theorems:</span> <a href="theorems.html#joint-feasibility">Separate vs joint feasibility</a><br><span class="link-label">Examples:</span> <a href="examples.html#failure-witness-reuse">Witness failure</a></div>
   </div>
-
-  <p>
-    Separate nonempty feasible sets do not guarantee one common
-    solution.
-  </p>
-
 </section>
 
+<section id="coupling">
+  <h2>37. Probability Coupling</h2>
 
-<!-- ========================================================= -->
-<!-- STOCHASTIC -->
-<!-- ========================================================= -->
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> standard probability construction used by BM/GURF</div>
+      
+    </div>
+
+    
+
+    <div class="schema">
+      \[
+\boxed{
+\pi\in\Pi(\mu,\nu),
+}
+\]
+meaning
+\[
+\pi(A\times Y)=\mu(A),
+\qquad
+\pi(X\times B)=\nu(B).
+\]
+    </div>
+
+    <h3>Meaning</h3>
+    <p>A coupling carries dependence information that is absent from the
+marginals alone.</p>
+
+    
+    
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#coupling">Coupling</a><br><span class="link-label">Examples:</span> <a href="examples.html#coupling-example">Coupling example</a></div>
+  </div>
+</section>
+
+<section id="deterministic">
+  <h2>38. Deterministic Semantics</h2>
+
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> single-valued semantic sector</div>
+      
+    </div>
+
+    
+
+    <div class="schema">
+      \[
+\boxed{
+f:X\to Y.
+}
+\]
+    </div>
+
+    <h3>Meaning</h3>
+    <p>Each admissible input has one output under the declared map.</p>
+
+    
+    <div class="limits"><strong>Limits</strong><ul><li>This form must not silently replace stochastic, relational, or quantum semantics.</li></ul></div>
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#deterministic">Deterministic semantics</a><br><span class="link-label">Examples:</span> <a href="examples.html#deterministic-example">Deterministic example</a></div>
+  </div>
+</section>
 
 <section id="stochastic">
+  <h2>39. Stochastic Response Kernel</h2>
 
-  <h2>25. Stochastic Response Kernel</h2>
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> Markov-kernel semantic sector</div>
+      
+    </div>
 
-  <p>
-    <strong>Classification:</strong>
-    stochastic response structure
-  </p>
+    
 
-  <div class="schema">
+    <div class="schema">
+      \[
+\boxed{
+K:X\rightsquigarrow Y,
+\qquad
+x\longmapsto K(x,\cdot).
+}
+\]
+    </div>
 
-    \[
-    M:
-    X
-    \longrightarrow
-    \mathcal P(Y).
-    \]
+    <h3>Meaning</h3>
+    <p>The output at \(x\) is a probability law rather than one deterministic
+point.</p>
 
+    
+    <div class="limits"><strong>Limits</strong><ul><li>Kernel equality, sufficiency, composition, and recovery use measurable/probabilistic semantics.</li></ul></div>
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#stochastic">Stochastic semantics</a><br><span class="link-label">Examples:</span> <a href="examples.html#stochastic-example">Noisy sensor</a></div>
   </div>
-
-  <p>
-    For an appropriate measurable and integrable test function
-    \(\varphi:Y\to\mathbb R\),
-  </p>
-
-  <div class="schema">
-
-    \[
-    \boxed{
-    M^\dagger\varphi(x)
-    =
-    \mathbb E
-    \left[
-    \varphi(Y)
-    \mid
-    X=x
-    \right].
-    }
-    \]
-
-  </div>
-
-  <p>
-    Stochastic equality, sufficiency, coupling, and factorization
-    require stochastic semantics rather than automatic reuse of
-    deterministic fibre arguments.
-  </p>
-
 </section>
 
+<section id="markov-composition">
+  <h2>40. Markov Kernel Composition</h2>
 
-<!-- ========================================================= -->
-<!-- NONDETERMINISTIC -->
-<!-- ========================================================= -->
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> exact stochastic composition</div>
+      
+    </div>
+
+    
+
+    <div class="schema">
+      \[
+K:X\rightsquigarrow Y,
+\qquad
+L:Y\rightsquigarrow Z,
+\]
+\[
+\boxed{
+(L\circ K)(x,A)
+=
+\int_YL(y,A)\,K(x,dy).
+}
+\]
+    </div>
+
+    <h3>Meaning</h3>
+    <p>Composition integrates over the intermediate probability law.</p>
+
+    
+    
+    
+
+    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#markov-composition">Markov composition theorem</a><br><span class="link-label">Examples:</span> <a href="examples.html#stochastic-matrix-example">Finite Markov matrices</a></div>
+  </div>
+</section>
+
+<section id="stochastic-pullback">
+  <h2>41. Stochastic Test Pullback</h2>
+
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> exact expectation identity</div>
+      
+    </div>
+
+    
+
+    <div class="schema">
+      \[
+K^\dagger\phi(x)
+=
+\int_Y\phi(y)K(x,dy),
+\]
+\[
+\boxed{
+(L\circ K)^\dagger\phi
+=
+K^\dagger(L^\dagger\phi).
+}
+\]
+    </div>
+
+    <h3>Meaning</h3>
+    <p>Observables propagate backward through a stochastic chain by nested
+expectation.</p>
+
+    
+    
+    
+
+    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#markov-composition">Markov test-pullback theorem</a></div>
+  </div>
+</section>
 
 <section id="existential">
+  <h2>42. Nondeterministic Existential Response</h2>
 
-  <h2>26. Nondeterministic Existential Response</h2>
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> relational may-semantics</div>
+      
+    </div>
 
-  <p>
-    <strong>Classification:</strong>
-    nondeterministic reachability
-  </p>
+    
 
-  <div class="schema">
+    <div class="schema">
+      \[
+\boxed{
+\Diamond_R(U)
+=
+\{x:\exists y\in U\text{ with }xRy\}.
+}
+\]
+    </div>
 
-    \[
-    \boxed{
-    \Diamond_R(U)
-    =
-    \left\{
-    x:
-    \exists y\in U
-    \text{ with }
-    xRy
-    \right\}.
-    }
-    \]
+    <h3>Meaning</h3>
+    <p>The state qualifies when at least one allowed continuation reaches the
+target set.</p>
 
+    
+    
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#existential">Existential reachability</a><br><span class="link-label">Examples:</span> <a href="examples.html#nondeterministic-finite-example">May reach</a></div>
   </div>
-
 </section>
-
 
 <section id="universal">
+  <h2>43. Nondeterministic Universal Response</h2>
 
-  <h2>27. Nondeterministic Universal Response</h2>
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> relational must-semantics</div>
+      
+    </div>
 
-  <p>
-    <strong>Classification:</strong>
-    nondeterministic safety
-  </p>
+    
 
-  <div class="schema">
+    <div class="schema">
+      \[
+\boxed{
+\Box_R(U)
+=
+\{x:\forall y,\ xRy\Rightarrow y\in U\}.
+}
+\]
+    </div>
 
-    \[
-    \boxed{
-    \Box_R(U)
-    =
-    \left\{
-    x:
-    \forall y,\;
-    xRy
-    \Rightarrow
-    y\in U
-    \right\}.
-    }
-    \]
+    <h3>Meaning</h3>
+    <p>The state qualifies only when every allowed continuation stays inside
+the target set.</p>
 
+    
+    
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#universal">Universal safety</a><br><span class="link-label">Examples:</span> <a href="examples.html#nondeterministic-finite-example">Must remain</a></div>
   </div>
-
-  <p>
-    Existential and universal quantifiers must not be interchanged.
-  </p>
-
 </section>
 
+<section id="relational-composition">
+  <h2>44. Relational Composition</h2>
 
-<!-- ========================================================= -->
-<!-- ROOT CHAIN -->
-<!-- ========================================================= -->
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> exact may/must composition</div>
+      
+    </div>
+
+    
+
+    <div class="schema">
+      \[
+\boxed{
+\Diamond_{S\circ R}(U)
+=
+\Diamond_R(\Diamond_S(U))
+}
+\]
+and
+\[
+\boxed{
+\Box_{S\circ R}(U)
+=
+\Box_R(\Box_S(U)).
+}
+\]
+    </div>
+
+    <h3>Meaning</h3>
+    <p>Relational composition preserves the quantifier structure: may
+composes with may, and must composes with must.</p>
+
+    
+    
+    
+
+    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#relational-composition">Relational composition theorem</a></div>
+  </div>
+</section>
 
 <section id="root-chain">
+  <h2>45. General Root Chain</h2>
 
-  <h2>28. General Root Chain</h2>
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> typed sequential Root schema</div>
+      
+    </div>
 
-  <p>
-    <strong>Classification:</strong>
-    general Root-sequence structure
-  </p>
+    
 
-  <p>
-    A Root chain may use changing state spaces and changing maps:
-  </p>
+    <div class="schema">
+      \[
+R_n\in X_n,
+\qquad
+F_n:D_n\subseteq X_n\to X_{n+1},
+\]
+\[
+\boxed{
+R_{n+1}=F_n(R_n),
+\qquad
+R_n\in D_n.
+}
+\]
+    </div>
 
-  <div class="schema">
+    <h3>Meaning</h3>
+    <p>A Root chain may change state space, Operation, and Interface from
+one stage to the next.</p>
 
-    \[
-    R_n\in X_n,
-    \]
+    
+    <div class="limits"><strong>Limits</strong><ul><li>This is more general than iteration by one self-map.</li></ul></div>
+    
 
-    \[
-    F_n:
-    D_n
-    \subseteq
-    X_n
-    \longrightarrow
-    X_{n+1},
-    \]
-
-    \[
-    \boxed{
-    R_{n+1}
-    =
-    F_n(R_n),
-    \qquad
-    R_n\in D_n.
-    }
-    \]
-
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#root">Root</a> · <a href="definitions.html#reentry">Re-entry</a></div>
   </div>
-
-  <p>
-    This is more general than ordinary iteration by a single map.
-  </p>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- ROOT ITERATION -->
-<!-- ========================================================= -->
 
 <section id="root-iteration">
+  <h2>46. Repeated Root Iteration</h2>
 
-  <h2>29. Repeated Root Iteration</h2>
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> conditional dynamical model</div>
+      
+    </div>
 
-  <p>
-    <strong>Classification:</strong>
-    conditional repeated-Root dynamical model
-  </p>
+    
 
-  <p>
-    To apply ordinary discrete iteration directly, one requires a Root
-    state space \(X_R\) and a map
-  </p>
+    <div class="schema">
+      \[
+F:A_R\to A_R,
+\qquad
+R_0\in A_R,
+\]
+\[
+\boxed{
+R_{n+1}=F(R_n).
+}
+\]
+    </div>
 
-  <div class="schema">
+    <h3>Meaning</h3>
+    <p>Ordinary iteration applies only when the receiving admissible Root
+domain is invariant under the update.</p>
 
-    \[
-    \boxed{
-    F:
-    X_R
-    \longrightarrow
-    X_R.
-    }
-    \]
+    
+    <div class="limits"><strong>Limits</strong><ul><li>Repeated Rooting is not automatically a dynamical system.</li></ul></div>
+    
 
+    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#root-iteration-firewall">Root iteration firewall</a><br><span class="link-label">Examples:</span> <a href="examples.html#root-recursive">Repeated Root</a></div>
   </div>
-
-  <p>
-    More generally, if \(A_R\subseteq X_R\) is the actual admissible
-    iteration domain, one requires
-  </p>
-
-  <div class="schema">
-
-    \[
-    \boxed{
-    F(A_R)
-    \subseteq
-    A_R.
-    }
-    \]
-
-  </div>
-
-  <p>
-    For
-  </p>
-
-  \[
-  R_0\in A_R,
-  \]
-
-  <p>
-    the recurrence
-  </p>
-
-  <div class="schema">
-
-    \[
-    \boxed{
-    R_{n+1}
-    =
-    F(R_n)
-    }
-    \]
-
-  </div>
-
-  <p>
-    defines an ordinary iterated system only while the required
-    iterates remain admissible.
-  </p>
-
-  <p>
-    Thus repeated Rooting is <strong>not automatically</strong> a
-    dynamical system.
-  </p>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- FIXED ROOT -->
-<!-- ========================================================= -->
 
 <section id="fixed-root">
+  <h2>47. Fixed Root</h2>
 
-  <h2>30. Fixed Root</h2>
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> fixed-point condition</div>
+      
+    </div>
 
-  <p>
-    <strong>Classification:</strong>
-    fixed-point condition
-  </p>
+    
 
-  <div class="schema">
+    <div class="schema">
+      \[
+\boxed{
+R_*=F(R_*).
+}
+\]
+    </div>
 
-    \[
-    \boxed{
-    R_*
-    =
-    F(R_*).
-    }
-    \]
+    <h3>Meaning</h3>
+    <p>A fixed Root is unchanged by the specified update.</p>
 
+    
+    <div class="limits"><strong>Limits</strong><ul><li>Existence and uniqueness require the native fixed-point mathematics of \(F\).</li></ul></div>
+    
+
+    
   </div>
-
-  <p>
-    A fixed Root is invariant under the specified Root map.
-  </p>
-
-  <p>
-    Fixed-point existence must be established from the mathematics of
-    \(F\) and its domain.
-  </p>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- LOCAL STABILITY -->
-<!-- ========================================================= -->
-
-<section id="local-stability">
-
-  <h2>31. Local Root Stability</h2>
-
-  <p>
-    <strong>Classification:</strong>
-    standard discrete dynamical-systems criterion
-  </p>
-
-  <p>
-    Let
-  </p>
-
-  \[
-  F:
-  U
-  \subseteq
-  \mathbb R^n
-  \longrightarrow
-  \mathbb R^n
-  \]
-
-  <p>
-    be continuously differentiable near fixed point \(R_*\), with the
-    required local iteration domain preserved.
-  </p>
-
-  <p>
-    A standard sufficient condition for local asymptotic attraction is
-  </p>
-
-  <div class="schema">
-
-    \[
-    \boxed{
-    \rho
-    \left(
-    J_F(R_*)
-    \right)
-    <
-    1.
-    }
-    \]
-
-  </div>
-
-  <p>
-    Here \(\rho\) denotes spectral radius.
-  </p>
-
-  <p>
-    If the Jacobian has an eigenvalue with modulus greater than one,
-    the fixed point is locally unstable under the standard hypotheses.
-  </p>
-
-  <p>
-    The borderline case
-  </p>
-
-  \[
-  \rho(J_F(R_*))=1
-  \]
-
-  <p>
-    is generally inconclusive from linearization alone.
-  </p>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- WORKED ROOT -->
-<!-- ========================================================= -->
-
-<section id="worked-root">
-
-  <h2>32. Worked Quantitative Root Equation</h2>
-
-  <p>
-    <strong>Classification:</strong>
-    worked example — not a universal BM law
-  </p>
-
-  <div class="schema">
-
-    \[
-    \boxed{
-    R_{n+1}
-    =
-    \frac12R_n+1.
-    }
-    \]
-
-  </div>
-
-  <p>
-    Here
-  </p>
-
-  \[
-  F:
-  \mathbb R
-  \longrightarrow
-  \mathbb R,
-  \qquad
-  F(R)
-  =
-  \frac12R+1,
-  \]
-
-  <p>
-    so closure on the scalar Root state space is explicit.
-  </p>
-
-  <p>
-    The fixed Root satisfies
-  </p>
-
-  \[
-  R_*
-  =
-  \frac12R_*+1.
-  \]
-
-  <p>
-    Therefore
-  </p>
-
-  <div class="schema">
-
-    \[
-    \boxed{
-    R_*=2.
-    }
-    \]
-
-  </div>
-
-  <p>
-    Starting from
-  </p>
-
-  \[
-  R_0=0,
-  \]
-
-  <p>
-    the first values are:
-  </p>
-
-  <table>
-
-    <thead>
-      <tr>
-        <th>\(n\)</th>
-        <th>\(R_n\)</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <tr><td>0</td><td>0</td></tr>
-      <tr><td>1</td><td>1</td></tr>
-      <tr><td>2</td><td>1.5</td></tr>
-      <tr><td>3</td><td>1.75</td></tr>
-      <tr><td>4</td><td>1.875</td></tr>
-      <tr><td>5</td><td>1.9375</td></tr>
-      <tr><td>6</td><td>1.96875</td></tr>
-      <tr><td>7</td><td>1.984375</td></tr>
-      <tr><td>8</td><td>1.9921875</td></tr>
-    </tbody>
-
-  </table>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- FIGURE DESCRIPTION -->
-<!-- ========================================================= -->
-
-<section id="root-figure">
-
-  <h2>33. Scientific Figure — Root Convergence</h2>
-
-  <div class="card">
-
-    <strong>
-      Figure 1 — Convergence of
-      \(R_{n+1}=\frac12R_n+1\)
-    </strong>
-
-    <p>
-      Starting from \(R_0=0\), the iterated Root value approaches the
-      fixed value \(R_*=2\).
-    </p>
-
-    <p>
-      A quantitative plot should show \(R_n\) against iteration \(n\),
-      together with a horizontal reference line at \(R=2\).
-    </p>
-
-    <p>
-      This is a worked dynamical-systems example used to illustrate one
-      repeated-Root model. It is not a universal law of Branch
-      Mathematics.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- CLOSED FORM -->
-<!-- ========================================================= -->
-
-<section id="closed-form">
-
-  <h2>34. Closed Form of the Worked Example</h2>
-
-  <p>
-    For
-  </p>
-
-  \[
-  R_{n+1}
-  =
-  \frac12R_n+1
-  \]
-
-  <p>
-    with \(R_0=0\),
-  </p>
-
-  <div class="schema">
-
-    \[
-    \boxed{
-    R_n
-    =
-    2
-    \left(
-    1-2^{-n}
-    \right).
-    }
-    \]
-
-  </div>
-
-  <p>
-    Hence
-  </p>
-
-  \[
-  \boxed{
-  \lim_{n\to\infty}R_n
-  =
-  2.
-  }
-  \]
-
-  <p>
-    The absolute error is
-  </p>
-
-  \[
-  \boxed{
-  |R_*-R_n|
-  =
-  2^{1-n}.
-  }
-  \]
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- GENERAL AFFINE -->
-<!-- ========================================================= -->
 
 <section id="affine">
+  <h2>48. Affine Root Iteration</h2>
 
-  <h2>35. General Affine Root Iteration</h2>
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> exact scalar dynamical model</div>
+      
+    </div>
 
-  <p>
-    <strong>Classification:</strong>
-    exact solution of a general worked dynamical model
-  </p>
+    
 
-  <div class="schema">
+    <div class="schema">
+      \[
+R_{n+1}=\alpha R_n+\beta,
+\qquad
+\alpha\neq1,
+\]
+\[
+\boxed{
+R_*=\frac{\beta}{1-\alpha}
+}
+\]
+and
+\[
+\boxed{
+R_n
+=
+R_*+\alpha^n(R_0-R_*).
+}
+\]
+    </div>
 
-    \[
-    \boxed{
-    R_{n+1}
-    =
-    \alpha R_n+\beta.
-    }
-    \]
+    <h3>Meaning</h3>
+    <p>If \(|\alpha|<1\), then \(R_n\to R_*\) for every finite scalar
+initial value.</p>
 
+    
+    
+    
+
+    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#affine-repeated-root">Affine formula</a> · <a href="theorems.html#affine-convergence">Global convergence</a><br><span class="link-label">Examples:</span> <a href="examples.html#root-recursive">Worked recurrence</a></div>
   </div>
-
-  <p>
-    Assume
-  </p>
-
-  \[
-  R_n\in\mathbb R
-  \]
-
-  <p>
-    and \(\alpha,\beta\in\mathbb R\).
-  </p>
-
-  <p>
-    If
-  </p>
-
-  \[
-  \alpha\neq1,
-  \]
-
-  <p>
-    the unique fixed point is
-  </p>
-
-  <div class="schema">
-
-    \[
-    \boxed{
-    R_*
-    =
-    \frac{\beta}{1-\alpha}.
-    }
-    \]
-
-  </div>
-
-  <p>
-    Subtracting the fixed point gives
-  </p>
-
-  \[
-  R_{n+1}-R_*
-  =
-  \alpha(R_n-R_*),
-  \]
-
-  <p>
-    and therefore
-  </p>
-
-  <div class="schema">
-
-    \[
-    \boxed{
-    R_n-R_*
-    =
-    \alpha^n(R_0-R_*).
-    }
-    \]
-
-  </div>
-
-  <p>
-    Equivalently,
-  </p>
-
-  \[
-  \boxed{
-  R_n
-  =
-  R_*
-  +
-  \alpha^n(R_0-R_*).
-  }
-  \]
-
-  <h3>Global Convergence</h3>
-
-  <p>
-    Because this affine scalar relation is exact on all of
-    \(\mathbb R\),
-  </p>
-
-  <div class="schema">
-
-    \[
-    \boxed{
-    |\alpha|<1
-    \Longrightarrow
-    R_n\longrightarrow R_*
-    \quad
-    \text{for every finite }
-    R_0\in\mathbb R.
-    }
-    \]
-
-  </div>
-
-  <p>
-    This is <strong>global convergence</strong> for the stated affine
-    model, not merely local convergence.
-  </p>
-
 </section>
 
+<section id="seed-newton">
+  <h2>49. Newton Seed Update</h2>
 
-<!-- ========================================================= -->
-<!-- AFFINE PARAMETER -->
-<!-- ========================================================= -->
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> classical numerical update used as a Seed example</div>
+      
+    </div>
 
-<section id="affine-parameters">
+    
 
-  <h2>36. Affine Parameter Interpretation</h2>
+    <div class="schema">
+      \[
+f(x)=x^2-2,
+\qquad
+\boxed{
+S_{n+1}
+=
+S_n-\frac{f(S_n)}{f'(S_n)}
+=
+\frac12\left(S_n+\frac2{S_n}\right).
+}
+\]
+    </div>
 
-  <table>
+    <h3>Meaning</h3>
+    <p>When the initial value is assigned a generative Seed role, the Newton
+iterates remain Seed states until the declared residual export condition is
+met.</p>
 
-    <thead>
-      <tr>
-        <th>Condition</th>
-        <th>Behavior</th>
-      </tr>
-    </thead>
+    
+    <div class="limits"><strong>Limits</strong><ul><li>Newton's method is classical numerical analysis; BM supplies the Seed/export role, not the numerical formula.</li></ul></div>
+    
 
-    <tbody>
-
-      <tr>
-        <td>\(0<\alpha<1\)</td>
-        <td>
-          Global non-oscillatory convergence toward \(R_*\), with the
-          side of approach determined by \(R_0-R_*\).
-        </td>
-      </tr>
-
-      <tr>
-        <td>\(-1<\alpha<0\)</td>
-        <td>
-          Global alternating convergence toward \(R_*\).
-        </td>
-      </tr>
-
-      <tr>
-        <td>\(\alpha=0\)</td>
-        <td>
-          \(R_1=\beta\), after which the sequence remains at the fixed
-          point \(R_*=\beta\).
-        </td>
-      </tr>
-
-      <tr>
-        <td>\(\alpha=-1\)</td>
-        <td>
-          The fixed point is \(R_*=\beta/2\). Unless \(R_0=R_*\),
-          the sequence alternates with period two.
-        </td>
-      </tr>
-
-      <tr>
-        <td>\(|\alpha|>1\)</td>
-        <td>
-          Deviations from \(R_*\) grow geometrically unless
-          \(R_0=R_*\).
-        </td>
-      </tr>
-
-      <tr>
-        <td>\(\alpha=1,\ \beta\neq0\)</td>
-        <td>
-          No finite fixed point; \(R_n=R_0+n\beta\).
-        </td>
-      </tr>
-
-      <tr>
-        <td>\(\alpha=1,\ \beta=0\)</td>
-        <td>
-          Every \(R_0\in\mathbb R\) is fixed.
-        </td>
-      </tr>
-
-    </tbody>
-
-  </table>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- ROOT PRODUCTION RATE -->
-<!-- ========================================================= -->
-
-<section id="production-rate">
-
-  <h2>37. Root Production Rate</h2>
-
-  <p>
-    <strong>Classification:</strong>
-    model-dependent event-rate definition
-  </p>
-
-  <p>
-    If distinct Root events occur at times \(t_n\), define
-  </p>
-
-  \[
-  \Delta t_n
-  =
-  t_{n+1}-t_n.
-  \]
-
-  <p>
-    When
-  </p>
-
-  \[
-  \Delta t_n>0,
-  \]
-
-  <p>
-    define
-  </p>
-
-  <div class="schema">
-
-    \[
-    \boxed{
-    \nu_n
-    =
-    \frac{1}{\Delta t_n}.
-    }
-    \]
-
+    <div class="crosslinks"><span class="link-label">Examples:</span> <a href="examples.html#seed-newton">Newton Seed</a></div>
   </div>
-
-  <p>
-    This quantity is meaningful only when the model genuinely contains
-    identifiable discrete Root events and an applicable time variable.
-  </p>
-
-  <p>
-    BM has no universal Root-production rate.
-  </p>
-
 </section>
 
+<section id="root-rate">
+  <h2>50. Discrete Root Event Rate</h2>
 
-<!-- ========================================================= -->
-<!-- CONTINUOUS RATE -->
-<!-- ========================================================= -->
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> model-dependent event-rate definition</div>
+      
+    </div>
+
+    
+
+    <div class="schema">
+      \[
+\Delta t_n=t_{n+1}-t_n,
+\qquad
+\boxed{
+\nu_n=\frac1{\Delta t_n}.
+}
+\]
+    </div>
+
+    <h3>Meaning</h3>
+    <p>The quantity is meaningful only when the model contains identifiable
+discrete Root events and an applicable time variable.</p>
+
+    
+    <div class="limits"><strong>Limits</strong><ul><li>BM has no universal Root-production rate.</li></ul></div>
+    
+
+    
+  </div>
+</section>
 
 <section id="continuous-rate">
+  <h2>51. Continuous Root-State Rate</h2>
 
-  <h2>38. Continuous Root-State Rate</h2>
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> model-dependent differential quantity</div>
+      
+    </div>
 
-  <p>
-    <strong>Classification:</strong>
-    model-dependent continuous-state rate
-  </p>
+    
 
-  <p>
-    For a differentiable Root trajectory in a normed vector space,
-  </p>
+    <div class="schema">
+      \[
+\boxed{
+\dot R(t)=\frac{dR}{dt}.
+}
+\]
+In a normed vector space,
+\[
+\|\dot R(t)\|
+\]
+measures instantaneous state-change magnitude.
+    </div>
 
-  <div class="schema">
+    <h3>Meaning</h3>
+    <p>On a differentiable manifold, \(\dot R(t)\in T_{R(t)}X_R\) is a tangent
+vector rather than an ambient-vector derivative.</p>
 
-    \[
-    \boxed{
-    \dot R(t)
-    =
-    \frac{dR}{dt}.
-    }
-    \]
+    
+    <div class="limits"><strong>Limits</strong><ul><li>The derivative exists only under the regularity required by the native state space.</li></ul></div>
+    
 
+    
   </div>
-
-  <p>
-    If an appropriate norm exists,
-  </p>
-
-  \[
-  \|\dot R(t)\|
-  \]
-
-  <p>
-    measures the magnitude of Root-state change.
-  </p>
-
-  <p>
-    On a differentiable manifold, the corresponding derivative is a
-    tangent vector
-  </p>
-
-  \[
-  \dot R(t)
-  \in
-  T_{R(t)}X_R.
-  \]
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- ACCUMULATION -->
-<!-- ========================================================= -->
 
 <section id="accumulation">
+  <h2>52. Root Event Accumulation Criterion</h2>
 
-  <h2>39. Root Event Accumulation Criterion</h2>
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> finite-time event-accumulation condition</div>
+      
+    </div>
 
-  <p>
-    <strong>Classification:</strong>
-    finite-time event-accumulation condition
-  </p>
+    
 
-  <div class="schema">
+    <div class="schema">
+      \[
+\boxed{
+\sum_{n=0}^{\infty}\Delta t_n<\infty.
+}
+\]
+    </div>
 
-    \[
-    \boxed{
-    \sum_{n=0}^{\infty}
-    \Delta t_n
-    <
-    \infty.
-    }
-    \]
+    <h3>Meaning</h3>
+    <p>If this holds, infinitely many modeled events accumulate before a
+finite limiting time.</p>
 
+    
+    <div class="limits"><strong>Limits</strong><ul><li>Whether Zeno-like accumulation is admissible or physically meaningful is entirely model-dependent.</li></ul></div>
+    
+
+    
   </div>
-
-  <p>
-    If this holds, infinitely many modeled events accumulate before a
-    finite limiting time.
-  </p>
-
-  <p>
-    Whether such Zeno-like behavior is admissible or physically
-    meaningful depends entirely on the underlying mathematical or
-    physical model.
-  </p>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- INVARIANT -->
-<!-- ========================================================= -->
 
 <section id="invariant">
+  <h2>53. Invariant Preservation</h2>
 
-  <h2>40. Invariant Preservation</h2>
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> exact preservation equation</div>
+      
+    </div>
 
-  <p>
-    <strong>Classification:</strong>
-    exact preservation equation
-  </p>
+    
 
-  <p>
-    For
-  </p>
+    <div class="schema">
+      \[
+F:X\to Y,
+\qquad
+C_X:X\to V,
+\qquad
+C_Y:Y\to V,
+\]
+\[
+\boxed{
+C_Y(F(x))=C_X(x).
+}
+\]
+    </div>
 
-  \[
-  F:
-  X
-  \longrightarrow
-  Y
-  \]
+    <h3>Meaning</h3>
+    <p>The target representation preserves an already established invariant
+of the source.</p>
 
-  <p>
-    with invariant representations
-  </p>
+    
+    <div class="limits"><strong>Limits</strong><ul><li>BM may audit an invariant; it does not create the conservation law.</li></ul></div>
+    
 
-  \[
-  C_X:
-  X\to V,
-  \qquad
-  C_Y:
-  Y\to V,
-  \]
-
-  <p>
-    preservation means
-  </p>
-
-  <div class="schema">
-
-    \[
-    \boxed{
-    C_Y(F(x))
-    =
-    C_X(x).
-    }
-    \]
-
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#conservation">Conserved quantity</a><br><span class="link-label">Theorems:</span> <a href="theorems.html#invariant-transfer">Invariant-transfer criterion</a></div>
   </div>
-
-  <p>
-    BM may track or audit such preserved information but does not create
-    the invariant itself.
-  </p>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- DYNAMIC CLOSURE -->
-<!-- ========================================================= -->
 
 <section id="dynamic-closure">
+  <h2>54. Dynamic Closure</h2>
 
-  <h2>41. Dynamic Closure</h2>
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> exact reduced-dynamics compatibility</div>
+      
+    </div>
 
-  <p>
-    <strong>Classification:</strong>
-    exact deterministic reduced-dynamics compatibility
-  </p>
+    
 
-  <p>
-    Let
-  </p>
+    <div class="schema">
+      \[
+R:X\to Z,
+\qquad
+\Phi_t:X\to X,
+\qquad
+\widetilde\Phi_t:R(X)\to R(X),
+\]
+\[
+\boxed{
+R\circ\Phi_t
+=
+\widetilde\Phi_t\circ R.
+}
+\]
+    </div>
 
-  \[
-  R:
-  X
-  \longrightarrow
-  Z
-  \]
+    <h3>Meaning</h3>
+    <p>The present reduced state determines its own exact reduced future
+without needing hidden distinctions from the full state.</p>
 
-  <p>
-    be a reduced representation and
-  </p>
+    
+    <div class="limits"><strong>Limits</strong><ul><li>Static Task sufficiency does not imply Dynamic Closure.</li></ul></div>
+    
 
-  \[
-  \Phi_t:
-  X
-  \longrightarrow
-  X
-  \]
-
-  <p>
-    the full evolution.
-  </p>
-
-  <p>
-    Exact reduced closure requires a reduced evolution
-  </p>
-
-  \[
-  \widetilde\Phi_t:
-  R(X)
-  \longrightarrow
-  R(X)
-  \]
-
-  <p>
-    satisfying
-  </p>
-
-  <div class="schema">
-
-    \[
-    \boxed{
-    R\circ\Phi_t
-    =
-    \widetilde\Phi_t\circ R.
-    }
-    \]
-
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#dynamic-closure">Dynamic closure</a><br><span class="link-label">Theorems:</span> <a href="theorems.html#dynamic-closure">Dynamic closure theorem</a> · <a href="theorems.html#task-vs-closure">Counterexample</a><br><span class="link-label">Examples:</span> <a href="examples.html#dynamic-closure-example">Harmonic oscillator example</a></div>
   </div>
-
-  <p>
-    Equivalently,
-  </p>
-
-  \[
-  R(x)=R(x')
-  \Longrightarrow
-  R(\Phi_t(x))
-  =
-  R(\Phi_t(x')).
-  \]
-
-  <p>
-    The reduced state can then determine its own reduced future without
-    requiring hidden information from the original full state.
-  </p>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- SENSITIVITY -->
-<!-- ========================================================= -->
 
 <section id="sensitivity">
+  <h2>55. Sensitivity / Jacobian</h2>
 
-  <h2>42. Sensitivity</h2>
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> standard differential diagnostic</div>
+      
+    </div>
 
-  <p>
-    <strong>Classification:</strong>
-    standard differential diagnostic
-  </p>
+    
 
-  <p>
-    For
-  </p>
+    <div class="schema">
+      \[
+F:\mathbb R^n\to\mathbb R^m,
+\qquad
+\boxed{
+J_F(x)=\frac{\partial F}{\partial x}.
+}
+\]
+    </div>
 
-  \[
-  F:
-  \mathbb R^n
-  \longrightarrow
-  \mathbb R^m,
-  \]
+    <h3>Meaning</h3>
+    <p>The Jacobian records first-order local response of the output to input
+perturbations.</p>
 
-  <p>
-    the Jacobian is
-  </p>
+    
+    <div class="limits"><strong>Limits</strong><ul><li>Large sensitivity is not the same as dynamical instability unless a theorem connects them.</li></ul></div>
+    
 
-  <div class="schema">
-
-    \[
-    \boxed{
-    J_F(x)
-    =
-    \frac{\partial F}{\partial x}.
-    }
-    \]
-
+    
   </div>
-
-  <p>
-    Large derivative directions indicate strong local sensitivity of
-    the output to perturbations in the corresponding input directions.
-  </p>
-
-  <p>
-    Sensitivity is not the same thing as instability unless a theorem
-    connects the two in the model being studied.
-  </p>
-
 </section>
 
+<section id="lipschitz-bound">
+  <h2>56. Lipschitz Error Propagation</h2>
 
-<!-- ========================================================= -->
-<!-- HDE -->
-<!-- ========================================================= -->
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> quantitative stability bound</div>
+      
+    </div>
+
+    
+
+    <div class="schema">
+      \[
+d_Z(G(y),G(y'))
+\le
+L\,d_Y(y,y'),
+\]
+so if
+\[
+d_Y(F(x),F(x'))\le\varepsilon,
+\]
+then
+\[
+\boxed{
+d_Z(G(F(x)),G(F(x')))
+\le
+L\varepsilon.
+}
+\]
+    </div>
+
+    <h3>Meaning</h3>
+    <p>The downstream Lipschitz constant converts upstream approximation
+error into a guaranteed downstream bound.</p>
+
+    
+    
+    
+
+    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#lipschitz-serial-bound">Lipschitz serial bound</a><br><span class="link-label">Examples:</span> <a href="examples.html#passport-quantization">Quantization error</a></div>
+  </div>
+</section>
+
+<section id="fisher-carrier">
+  <h2>57. Gaussian Fisher Carrier</h2>
+
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> classical local Gaussian information equation</div>
+      
+    </div>
+
+    
+
+    <div class="schema">
+      \[
+g
+=
+V^{-1/2}\frac{d\mu}{d\theta},
+\qquad
+I_{\rm full}
+=
+\|g\|^2,
+\]
+\[
+\boxed{
+I(P)=\|Pg\|^2\le\|g\|^2.
+}
+\]
+    </div>
+
+    <h3>Meaning</h3>
+    <p>For a scalar parameter with locally fixed covariance, a whitened
+orthogonal projection preserves all local Fisher information exactly when the
+Task direction \(g\) lies in the projection range.</p>
+
+    <h3>Assumptions</h3><ul><li>Gaussian observation model.</li><li>Parameter-independent covariance locally.</li><li>Orthogonal projection in whitened coordinates.</li></ul>
+    <div class="limits"><strong>Limits</strong><ul><li>This is local and linear/Gaussian; it is not a universal compression law.</li></ul></div>
+    
+
+    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#gaussian-fisher-carrier">Gaussian Fisher theorem</a></div>
+  </div>
+</section>
+
+<section id="mahalanobis-carrier">
+  <h2>58. Finite-Hypothesis Mahalanobis Carrier</h2>
+
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> classical whitened-geometry equation</div>
+      
+    </div>
+
+    
+
+    <div class="schema">
+      \[
+D=
+[\,z_2-z_1,\ldots,z_M-z_1\,],
+\]
+\[
+\boxed{
+\dim(\text{smallest exact linear carrier})
+=
+\operatorname{rank}(D).
+}
+\]
+    </div>
+
+    <h3>Meaning</h3>
+    <p>The span of the pairwise model differences is the smallest linear
+subspace that can preserve every whitened pairwise distance exactly.</p>
+
+    
+    <div class="limits"><strong>Limits</strong><ul><li>The result is finite-hypothesis and linear in whitened Euclidean geometry.</li></ul></div>
+    
+
+    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#mahalanobis-carrier">Mahalanobis carrier theorem</a></div>
+  </div>
+</section>
+
+<section id="ns-energy">
+  <h2>59. Periodic Incompressible Navier–Stokes Energy Identity</h2>
+
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> classical applied PDE identity</div>
+      
+    </div>
+
+    
+
+    <div class="schema">
+      \[
+\partial_tu+(u\cdot\nabla)u
+=
+-\nabla p+\nu\Delta u+f,
+\qquad
+\nabla\cdot u=0,
+\]
+\[
+E(t)=\frac12\int_\Omega|u|^2dx,
+\qquad
+D(t)=\nu\int_\Omega|\nabla u|^2dx,
+\qquad
+F(t)=\int_\Omega f\cdot u\,dx,
+\]
+\[
+\boxed{
+\frac{dE}{dt}
+=
+-D+F.
+}
+\]
+    </div>
+
+    <h3>Meaning</h3>
+    <p>On a smooth periodic incompressible flow, convection and pressure make
+no net contribution to the total energy balance; viscosity dissipates energy
+and forcing injects it.</p>
+
+    
+    <div class="limits"><strong>Limits</strong><ul><li>This identity does not solve the three-dimensional regularity problem.</li></ul></div>
+    
+
+    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#ns-energy">Energy identity proof</a><br><span class="link-label">Examples:</span> <a href="examples.html#navier-stokes-energy-derivation">Full derivation</a></div>
+  </div>
+</section>
+
+<section id="ns-enstrophy">
+  <h2>60. Three-Dimensional Vorticity / Enstrophy Identity</h2>
+
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> classical applied PDE identity</div>
+      
+    </div>
+
+    
+
+    <div class="schema">
+      \[
+\omega=\nabla\times u,
+\]
+\[
+\partial_t\omega+(u\cdot\nabla)\omega
+=
+(\omega\cdot\nabla)u
++\nu\Delta\omega
++\nabla\times f,
+\]
+\[
+\boxed{
+\frac12\frac{d}{dt}\int_\Omega|\omega|^2dx
+=
+\int_\Omega
+\omega\cdot(\omega\cdot\nabla)u\,dx
+-
+\nu\int_\Omega|\nabla\omega|^2dx
++
+\int_\Omega
+\omega\cdot(\nabla\times f)\,dx.
+}
+\]
+    </div>
+
+    <h3>Meaning</h3>
+    <p>The stretching term is a distinct vorticity Leaf family that is not
+determined merely by total kinetic energy.</p>
+
+    
+    <div class="limits"><strong>Limits</strong><ul><li>The identity is not a global-regularity theorem.</li></ul></div>
+    
+
+    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#ns-enstrophy">Enstrophy identity</a><br><span class="link-label">Examples:</span> <a href="examples.html#navier-stokes-vorticity-derivation">Vorticity derivation</a></div>
+  </div>
+</section>
+
+<section id="wilson-loop">
+  <h2>61. Wilson-Loop Gauge Invariance</h2>
+
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> classical lattice-gauge identity</div>
+      
+    </div>
+
+    
+
+    <div class="schema">
+      \[
+U_{xy}\mapsto
+\Omega_xU_{xy}\Omega_y^{-1},
+\]
+\[
+U(C)=
+U_{x_0x_1}\cdots U_{x_{m-1}x_0},
+\]
+\[
+\boxed{
+W(C)=\operatorname{tr}U(C)
+}
+\]
+with
+\[
+\boxed{
+W(C)\mapsto W(C).
+}
+\]
+    </div>
+
+    <h3>Meaning</h3>
+    <p>Adjacent gauge transformations cancel around a closed loop; the
+remaining conjugation disappears under the trace.</p>
+
+    
+    <div class="limits"><strong>Limits</strong><ul><li>This finite identity does not establish 4D Yang–Mills existence or a mass gap.</li></ul></div>
+    
+
+    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#wilson-loop">Wilson-loop identity</a><br><span class="link-label">Examples:</span> <a href="examples.html#lattice-gauge-example">Gauge example</a></div>
+  </div>
+</section>
+
+<section id="dephasing">
+  <h2>62. Quantum Dephasing</h2>
+
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> classical quantum-channel identity</div>
+      
+    </div>
+
+    
+
+    <div class="schema">
+      \[
+\rho=
+\begin{pmatrix}
+a&c\\
+c^*&1-a
+\end{pmatrix},
+\qquad
+\boxed{
+\mathcal D_\lambda(\rho)
+=
+\begin{pmatrix}
+a&\lambda c\\
+\lambda c^*&1-a
+\end{pmatrix},
+\quad
+0\le\lambda\le1.
+}
+\]
+    </div>
+
+    <h3>Meaning</h3>
+    <p>Computational-basis populations remain unchanged while off-diagonal
+coherence is attenuated by \(\lambda\).</p>
+
+    
+    <div class="limits"><strong>Limits</strong><ul><li>A Task using only populations may survive even when phase-sensitive information does not.</li></ul></div>
+    
+
+    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#dephasing">Dephasing identity</a><br><span class="link-label">Examples:</span> <a href="examples.html#quantum-channel-example">Quantum dephasing</a></div>
+  </div>
+</section>
 
 <section id="hde-equations">
+  <h2>63. HDE Extended-State Schema</h2>
 
-  <h2>43. HDE Extended-State Schema</h2>
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> GURF-HDE structural schema</div>
+      
+    </div>
 
-  <p>
-    <strong>Classification:</strong>
-    working GURF-HDE structural model
-  </p>
+    
 
-  <p>
-    When an extended response domain is required,
-  </p>
+    <div class="schema">
+      \[
+D\subseteq D_{\rm ext},
+\qquad
+H=D_{\rm ext}\setminus D,
+\]
+\[
+\boxed{
+x_{\rm ext}=(x_D,x_H).
+}
+\]
+A local representation may fail when
+\[
+x_D=x_D'
+\quad\text{but}\quad
+\boxed{
+T(x_D,x_H)\neq T(x_D',x_H').
+}
+\]
+    </div>
 
-  \[
-  D
-  \subseteq
-  D_{\mathrm{ext}},
-  \]
+    <h3>Meaning</h3>
+    <p>The schema separates a primary region from response information
+carried in an extended domain.</p>
 
-  <p>
-    one may write
-  </p>
+    
+    <div class="limits"><strong>Limits</strong><ul><li>This Set decomposition is one realization, not a universal HDE equation.</li></ul></div>
+    
 
-  \[
-  H
-  =
-  D_{\mathrm{ext}}\setminus D
-  \]
-
-  <p>
-    in a Set-like decomposition.
-  </p>
-
-  <p>
-    An extended response state may then be represented by
-  </p>
-
-  <div class="schema">
-
-    \[
-    \boxed{
-    x_{\mathrm{ext}}
-    =
-    (x_D,x_H).
-    }
-    \]
-
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#hde">HDE</a></div>
   </div>
-
-  <p>
-    A local observation can be insufficient whenever
-  </p>
-
-  \[
-  x_D=x_D'
-  \]
-
-  <p>
-    but
-  </p>
-
-  \[
-  \boxed{
-  T(x_D,x_H)
-  \neq
-  T(x_D',x_H').
-  }
-  \]
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- GHSE -->
-<!-- ========================================================= -->
 
 <section id="ghse-equations">
+  <h2>64. GHSE Joined-State Schema</h2>
 
-  <h2>44. GHSE Joined-State Schema</h2>
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> GURF-GHSE structural schema</div>
+      
+    </div>
 
-  <p>
-    <strong>Classification:</strong>
-    working GURF-GHSE structural model
-  </p>
+    
 
-  <p>
-    For components with state spaces
-  </p>
+    <div class="schema">
+      \[
+\boxed{
+\mathcal H\subseteq X_A\times X_B,
+}
+\]
+\[
+J:D_J\subseteq X_A\times X_B\to X_{AB},
+\]
+\[
+h:X_A\times X_B\to\{0,1\}
+\]
+for a Boolean hold realization.
+    </div>
 
-  \[
-  X_A,
-  \qquad
-  X_B,
-  \]
+    <h3>Meaning</h3>
+    <p>The joined-state region, joining Operation, and hold criterion are
+separate mathematical objects.</p>
 
-  <p>
-    an admissible joined-state region may be
-  </p>
+    
+    <div class="limits"><strong>Limits</strong><ul><li>The Boolean hold form is only one realization; geometric, probabilistic, dynamical, or relational criteria may be required.</li></ul></div>
+    
 
-  <div class="schema">
-
-    \[
-    \boxed{
-    \mathcal H
-    \subseteq
-    X_A\times X_B.
-    }
-    \]
-
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#ghse">GHSE</a></div>
   </div>
-
-  <p>
-    A glue Operation may be represented by
-  </p>
-
-  \[
-  J:
-  D_J
-  \subseteq
-  X_A\times X_B
-  \longrightarrow
-  X_{AB}.
-  \]
-
-  <p>
-    A binary hold predicate may be represented by
-  </p>
-
-  \[
-  h:
-  X_A\times X_B
-  \longrightarrow
-  \{0,1\}.
-  \]
-
-  <p>
-    These are working forms rather than universal GHSE equations.
-  </p>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- UKE -->
-<!-- ========================================================= -->
 
 <section id="uke-equations">
+  <h2>65. UKE Kernel-Type Equations</h2>
 
-  <h2>45. UKE Kernel-Type Equations</h2>
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> standard mathematical kernel forms organized by UKE</div>
+      
+    </div>
 
-  <p>
-    <strong>Classification:</strong>
-    standard mathematical forms organized within UKE
-  </p>
+    
 
-  <h3>Nullspace Kernel</h3>
+    <div class="schema">
+      \[
+\boxed{
+\ker F=\{x:F(x)=0\}
+}
+\]
+\[
+\boxed{
+(Tf)(x)=\int K(x,y)f(y)\,dy
+}
+\]
+\[
+\boxed{
+L_xG(x,x')=\delta(x-x')
+}
+\]
+\[
+\boxed{
+R(z)=(L-zI)^{-1}
+}
+\]
+where the inverse exists, and
+\[
+\boxed{
+y(t)
+=
+\int_{-\infty}^{t}
+K(t,s)x(s)\,ds.
+}
+\]
+    </div>
 
-  \[
-  \boxed{
-  \ker F
-  =
-  \{x:F(x)=0\}.
-  }
-  \]
+    <h3>Meaning</h3>
+    <p>These equations represent different mathematical meanings of the word
+<em>kernel</em>: nullspace, integral kernel, Green kernel, resolvent, and
+memory-response kernel.</p>
 
-  <h3>Integral Kernel</h3>
+    
+    <div class="limits"><strong>Limits</strong><ul><li>Sharing a word does not make the objects interchangeable.</li></ul></div>
+    
 
-  \[
-  \boxed{
-  (Tf)(x)
-  =
-  \int
-  K(x,y)f(y)\,dy.
-  }
-  \]
-
-  <h3>Green Kernel</h3>
-
-  \[
-  \boxed{
-  L_xG(x,x')
-  =
-  \delta(x-x').
-  }
-  \]
-
-  <h3>Resolvent</h3>
-
-  \[
-  \boxed{
-  R(z)
-  =
-  (L-zI)^{-1}
-  }
-  \]
-
-  <p>
-    where the inverse exists.
-  </p>
-
-  <h3>Memory Response</h3>
-
-  \[
-  \boxed{
-  y(t)
-  =
-  \int_{-\infty}^{t}
-  K(t,s)x(s)\,ds.
-  }
-  \]
-
-  <div class="warning">
-
-    These equations represent mathematically different meanings of the
-    word <em>kernel</em>. They must not be treated as interchangeable
-    merely because the same word is used.
-
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#uke">UKE</a></div>
   </div>
-
 </section>
-
-
-<!-- ========================================================= -->
-<!-- EQUATION STATUS -->
-<!-- ========================================================= -->
 
 <section id="status">
+  <h2>66. Equation Status Classes</h2>
 
-  <h2>46. Equation Status Classes</h2>
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> reference classification</div>
+      
+    </div>
 
-  <table>
+    
 
-    <thead>
-      <tr>
-        <th>Class</th>
-        <th>Meaning</th>
-      </tr>
-    </thead>
+    <div class="schema">
+      
+<table>
+  <thead><tr><th>Class</th><th>Meaning</th></tr></thead>
+  <tbody>
+    <tr><td>Definition</td><td>Introduces an object or quantity.</td></tr>
+    <tr><td>Exact identity</td><td>Equality follows exactly from stated mathematics.</td></tr>
+    <tr><td>Derived relation</td><td>Follows from previous equations and hypotheses.</td></tr>
+    <tr><td>Conditional relation</td><td>Valid only under stated hypotheses.</td></tr>
+    <tr><td>Approximation / bound</td><td>Includes an explicit error, metric, probability, asymptotic regime, or tolerance.</td></tr>
+    <tr><td>Structural schema</td><td>Expresses mathematical architecture rather than a numerical law.</td></tr>
+    <tr><td>Applied identity</td><td>Established domain mathematics used in a BM/GURF configuration.</td></tr>
+  </tbody>
+</table>
 
-    <tbody>
+    </div>
 
-      <tr>
-        <td>Definition</td>
-        <td>Introduces a mathematical object or quantity.</td>
-      </tr>
+    <h3>Meaning</h3>
+    <p>The class tells the reader what kind of mathematical claim the display is making.</p>
 
-      <tr>
-        <td>Exact identity</td>
-        <td>Equality following exactly from stated mathematics.</td>
-      </tr>
+    
+    
+    <div class="teaching"><strong>Teaching note</strong><p>The equation registry does not use formatting alone to imply theorem status.</p></div>
 
-      <tr>
-        <td>Derived relation</td>
-        <td>
-          Relation derived from stated assumptions or previous equations.
-        </td>
-      </tr>
-
-      <tr>
-        <td>Conditional relation</td>
-        <td>
-          Valid only when specified hypotheses hold.
-        </td>
-      </tr>
-
-      <tr>
-        <td>Approximation</td>
-        <td>
-          Includes an explicitly defined error, asymptotic regime,
-          probability statement, or tolerance.
-        </td>
-      </tr>
-
-      <tr>
-        <td>Structural schema</td>
-        <td>
-          Expresses mathematical architecture rather than a numerical law.
-        </td>
-      </tr>
-
-      <tr>
-        <td>Worked example</td>
-        <td>
-          Demonstrates mathematical behavior without asserting a
-          universal BM/GURF law.
-        </td>
-      </tr>
-
-      <tr>
-        <td>Candidate model</td>
-        <td>
-          Proposed mathematical model still under active investigation.
-        </td>
-      </tr>
-
-    </tbody>
-
-  </table>
-
+    
+  </div>
 </section>
-
-
-<!-- ========================================================= -->
-<!-- PUBLICATION STANDARD -->
-<!-- ========================================================= -->
-
-<section id="publication">
-
-  <h2>47. Equation Publication Standard</h2>
-
-  <p>
-    An equation is not accepted as a law merely because it can be
-    written, numerically plotted, or fit to data.
-  </p>
-
-  <p>
-    A mature equation entry should identify:
-  </p>
-
-  <ul>
-    <li>all mathematical objects;</li>
-    <li>domains and codomains;</li>
-    <li>required hypotheses;</li>
-    <li>units or dimensions where applicable;</li>
-    <li>derivation or proof status;</li>
-    <li>sector semantics;</li>
-    <li>failure conditions;</li>
-    <li>limiting cases;</li>
-    <li>numerical behavior where relevant;</li>
-    <li>related definitions and theorems;</li>
-    <li>and whether the equation is exact, approximate, or model-specific.</li>
-  </ul>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- VISUALIZATION -->
-<!-- ========================================================= -->
-
-<section id="visualization">
-
-  <h2>48. Scientific Visualization Standard</h2>
-
-  <p>
-    Quantitative figures are included only when they expose real
-    mathematical behavior.
-  </p>
-
-  <p>
-    Preferred figure types include:
-  </p>
-
-  <p>
-    convergence plots · parameter sweeps · phase portraits · spectra ·
-    surfaces · vector fields · heatmaps · stability regions ·
-    bifurcation plots · error curves · response curves · uncertainty
-    bands · residual plots · PDE fields · operator spectra
-  </p>
-
-  <p>
-    Every scientific figure should identify the equation, parameter
-    range, initial or boundary conditions, numerical method where
-    applicable, units where relevant, and interpretation of the axes.
-  </p>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- STRUCTURAL DIAGRAM POLICY -->
-<!-- ========================================================= -->
-
-<section id="diagram-policy">
-
-  <h2>49. Structural Diagram Policy</h2>
-
-  <p>
-    Equation-driven scientific plots and formal structural diagrams are
-    different artifacts.
-  </p>
-
-  <p>
-    BM and GURF structural diagrams remain separate and will not be
-    invented or reconstructed for presentation until their canonical
-    mathematical versions are formally recovered and approved.
-  </p>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- REGISTRY DEVELOPMENT -->
-<!-- ========================================================= -->
-
-<section id="registry-development">
-
-  <h2>50. Registry Development</h2>
-
-  <p>
-    As the formal research corpus expands, important equations can
-    receive stable anchors and approved internal identifiers.
-  </p>
-
-  <p>
-    Mature equation entries should link to:
-  </p>
-
-  <p>
-    definitions · assumptions · derivations · proofs · numerical tests ·
-    scientific figures · applications · revisions · external references
-  </p>
-
-  <p>
-    Canonical internal equation identifiers will not be invented solely
-    for the website when an approved project identifier has not yet been
-    assigned.
-  </p>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- CENTRAL RULE -->
-<!-- ========================================================= -->
 
 <section id="central-rule">
+  <h2>67. Central Equation Rule</h2>
 
-  <h2>51. Central Equation Rule</h2>
+  <div class="equation-card">
+    <div class="meta">
+      <div><strong>Classification:</strong> governing rigor rule</div>
+      
+    </div>
 
-  <div class="schema">
+    
 
-    \[
-    \boxed{
-    \text{An equation inherits its validity from its mathematical
-    objects, domain, assumptions, derivation, and sector semantics.}
-    }
-    \]
+    <div class="schema">
+      \[
+\boxed{
+\begin{gathered}
+\text{An equation inherits validity from its}\\
+\text{objects, domain, assumptions, derivation, and sector semantics.}
+\end{gathered}
+}
+\]
+    </div>
 
+    <h3>Meaning</h3>
+    <p>BM and GURF can organize an equation inside a larger mathematical
+structure. They do not remove the conditions under which the native equation
+is true.</p>
+
+    
+    
+    
+
+    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#governing-rule">Governing definition rule</a></div>
   </div>
-
-  <p>
-    BM and GURF may organize that equation and its role in a larger
-    mathematical structure.
-  </p>
-
-  <p>
-    They do not remove the conditions under which the equation is true.
-  </p>
-
 </section>
 
+<section id="reading-paths">
+  <h2>68. Reading Paths</h2>
+
+  <table>
+    <thead><tr><th>If you are studying...</th><th>Start with...</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Core BM structure</td>
+        <td>
+          <a href="#branch-record">Branch</a> →
+          <a href="#interaction">Interaction</a> →
+          <a href="#leaf">Leaf</a> →
+          <a href="#response">Response</a> →
+          <a href="#root-gate">Root</a>
+        </td>
+      </tr>
+      <tr>
+        <td>Information / sufficiency</td>
+        <td>
+          <a href="#combined-passport">Passport</a> →
+          <a href="#passport-fibre">Fibre</a> →
+          <a href="#exact-sufficiency">Sufficiency</a> →
+          <a href="#task-diameter">Task diameter</a>
+        </td>
+      </tr>
+      <tr>
+        <td>Composition / coherence</td>
+        <td>
+          <a href="#composite-domain">Composite domain</a> →
+          <a href="#interface">Interface</a> →
+          <a href="#path-coherence">Path coherence</a>
+        </td>
+      </tr>
+      <tr>
+        <td>Mixed semantics</td>
+        <td>
+          <a href="#deterministic">Deterministic</a> →
+          <a href="#stochastic">Stochastic</a> →
+          <a href="#existential">Nondeterministic</a>
+        </td>
+      </tr>
+      <tr>
+        <td>Dynamics</td>
+        <td>
+          <a href="#root-iteration">Root iteration</a> →
+          <a href="#dynamic-closure">Dynamic closure</a> →
+          <a href="#sensitivity">Sensitivity</a>
+        </td>
+      </tr>
+      <tr>
+        <td>Research-scale mathematics</td>
+        <td>
+          <a href="#fisher-carrier">Fisher carrier</a> →
+          <a href="#ns-energy">Navier–Stokes</a> →
+          <a href="#wilson-loop">Gauge</a> →
+          <a href="#dephasing">Quantum</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="scientific-visualization">
+  <h2>69. Scientific Visualization Standard</h2>
+
+  <p>
+    Quantitative figures belong next to equations when they reveal actual
+    mathematical behavior: convergence, spectra, parameter dependence,
+    residuals, uncertainty, stability regions, phase portraits, vector
+    fields, PDE fields, bifurcation structure, or error propagation.
+  </p>
+
+  <p>
+    A scientific figure should identify the equation, parameters, initial or
+    boundary conditions, numerical method where applicable, units where
+    relevant, and the meaning of every axis.
+  </p>
+</section>
 
 </main>
 
-
 <footer>
-
-  <p>
-    <strong>Branch Mathematics Research Encyclopedia</strong>
-  </p>
-
-  <p>
-    Equation Registry · BM · GURF · Quantitative Mathematics
-  </p>
-
+  <p><strong>Branch Mathematics and GURF Equation Registry</strong></p>
+  <p>Objects · domains · assumptions · equations · limits · proofs · examples</p>
 </footer>
-
 </body>
-
 </html>
