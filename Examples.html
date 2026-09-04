@@ -1,0 +1,7844 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Branch Mathematics Worked Examples | From First Principles to Research-Scale Systems</title>
+
+  <meta
+    name="description"
+    content="A progressive teaching collection for Branch Mathematics and GURF. Worked examples develop Branches, Interactions, Leaves, Trees, Passports, Seeds, Responses, Roots, composition, coherence, mixed semantics, failures, repairs, and research-scale mathematical configurations."
+  >
+
+  <meta name="robots" content="index, follow">
+
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+
+  <script
+    id="MathJax-script"
+    async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+  </script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      line-height: 1.72;
+      color: #202124;
+      background: #ffffff;
+    }
+
+    header {
+      background: #111827;
+      color: white;
+      padding: 58px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0 0 10px;
+      font-size: 2.6rem;
+    }
+
+    header p {
+      max-width: 980px;
+      margin: auto;
+      font-size: 1.1rem;
+      color: #e5e7eb;
+    }
+
+    nav {
+      background: #1f2937;
+      text-align: center;
+      padding: 12px 10px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 7px 11px;
+      display: inline-block;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      max-width: 1160px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    section {
+      margin-bottom: 68px;
+      scroll-margin-top: 20px;
+    }
+
+    h2 {
+      border-bottom: 2px solid #e5e7eb;
+      padding-bottom: 8px;
+      margin-top: 0;
+    }
+
+    h3 {
+      margin-top: 30px;
+    }
+
+    h4 {
+      margin-top: 23px;
+      margin-bottom: 8px;
+    }
+
+    p {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    ul,
+    ol {
+      padding-left: 25px;
+    }
+
+    li {
+      margin: 7px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 22px 0;
+    }
+
+    th,
+    td {
+      border: 1px solid #d1d5db;
+      padding: 11px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f3f4f6;
+    }
+
+    code {
+      background: #f3f4f6;
+      padding: 2px 5px;
+      border-radius: 4px;
+    }
+
+    .lead {
+      font-size: 1.08rem;
+    }
+
+    .card {
+      border: 1px solid #d1d5db;
+      border-radius: 9px;
+      padding: 24px;
+      margin: 22px 0;
+      background: #ffffff;
+    }
+
+    .example {
+      border: 1px solid #d1d5db;
+      border-radius: 9px;
+      padding: 26px;
+      margin: 28px 0;
+      background: #ffffff;
+      scroll-margin-top: 20px;
+    }
+
+    .example-title {
+      font-size: 1.35rem;
+      font-weight: bold;
+      margin-bottom: 4px;
+    }
+
+    .level {
+      font-size: 0.93rem;
+      font-weight: bold;
+      color: #374151;
+      margin-bottom: 16px;
+    }
+
+    .mathbox {
+      background: #f8fafc;
+      border-left: 4px solid #374151;
+      padding: 18px 20px;
+      margin: 21px 0;
+      overflow-x: auto;
+    }
+
+    .note {
+      background: #f3f4f6;
+      border-radius: 8px;
+      padding: 18px 20px;
+      margin: 20px 0;
+    }
+
+    .warning {
+      border-left: 4px solid #6b7280;
+      background: #fafafa;
+      padding: 18px 20px;
+      margin: 22px 0;
+    }
+
+    .success {
+      border-left: 4px solid #374151;
+      background: #f8fafc;
+      padding: 18px 20px;
+      margin: 22px 0;
+    }
+
+    .audit {
+      border: 1px solid #9ca3af;
+      border-radius: 8px;
+      padding: 18px 20px;
+      margin: 22px 0;
+      background: #f9fafb;
+    }
+
+    .audit strong {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .workstep {
+      border-left: 3px solid #9ca3af;
+      padding: 12px 16px;
+      margin: 15px 0;
+      background: #fcfcfd;
+    }
+
+    .workstep strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .calculation {
+      border: 1px dashed #9ca3af;
+      border-radius: 7px;
+      padding: 16px 18px;
+      margin: 18px 0;
+      background: #ffffff;
+    }
+
+    .result-line {
+      font-weight: bold;
+      margin-top: 12px;
+    }
+
+    .teaching {
+      border-left: 4px solid #111827;
+      background: #f8fafc;
+      padding: 18px 20px;
+      margin: 22px 0;
+    }
+
+    .teaching strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .role-table td:first-child {
+      width: 155px;
+      font-weight: bold;
+    }
+
+    .plain-language {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 17px 19px;
+      margin: 18px 0;
+    }
+
+    .chain {
+      background: #f9fafb;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 22px 0;
+      overflow-x: auto;
+    }
+
+    .student-check {
+      border-top: 1px solid #d1d5db;
+      margin-top: 22px;
+      padding-top: 16px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 15px;
+      margin-top: 18px;
+    }
+
+    .mini-card {
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 17px;
+      background: #ffffff;
+    }
+
+    .mini-card h3,
+    .mini-card h4 {
+      margin-top: 0;
+    }
+
+    .quick-index {
+      columns: 3 250px;
+      column-gap: 35px;
+      padding-left: 22px;
+    }
+
+    .quick-index li {
+      break-inside: avoid;
+      margin-bottom: 6px;
+    }
+
+    .quick-index a {
+      text-decoration: none;
+    }
+
+    .quick-index a:hover {
+      text-decoration: underline;
+    }
+
+    .concept-links a {
+      display: inline-block;
+      margin: 4px 10px 4px 0;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .concept-links a:hover {
+      text-decoration: underline;
+    }
+
+    .tag {
+      display: inline-block;
+      border: 1px solid #9ca3af;
+      border-radius: 5px;
+      padding: 3px 8px;
+      margin: 2px 4px 2px 0;
+      font-size: 0.82rem;
+      font-weight: bold;
+      background: #f3f4f6;
+    }
+
+    .small {
+      font-size: 0.94rem;
+      color: #4b5563;
+    }
+
+    .back {
+      display: inline-block;
+      margin-top: 8px;
+      text-decoration: none;
+      font-size: 0.93rem;
+    }
+
+    .back:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      background: #111827;
+      color: white;
+      text-align: center;
+      padding: 28px 20px;
+      margin-top: 60px;
+    }
+
+    footer p {
+      margin: 5px 0;
+    }
+
+    @media (max-width: 700px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      main {
+        padding: 28px 16px;
+      }
+
+      .example,
+      .card {
+        padding: 20px;
+      }
+
+      .quick-index {
+        columns: 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Branch Mathematics Worked Examples</h1>
+  <p>
+    A progressive teaching collection: begin with one Branch, then follow
+    Interactions, Leaves, Trees, Passports, Seeds, Responses, Roots,
+    interfaces, mixed semantics, failures, repairs, and research-scale
+    configurations in full mathematical context.
+  </p>
+</header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="branch-mathematics.html">Branch Mathematics</a>
+  <a href="gurf.html">GURF</a>
+  <a href="encyclopedia.html">Encyclopedia</a>
+  <a href="definitions.html">Definitions</a>
+  <a href="examples.html">Examples</a>
+  <a href="theorems.html">Theorems</a>
+  <a href="equations.html">Equations</a>
+  <a href="structures.html">Structures</a>
+  <a href="passports.html">Passports</a>
+  <a href="roots.html">Roots</a>
+  <a href="research.html">Research</a>
+  <a href="changelog.html">Changelog</a>
+</nav>
+
+<main>
+
+  <section id="purpose">
+    <h2>1. How to Learn BM from These Examples</h2>
+
+    <p class="lead">
+      Branch Mathematics is easiest to learn when the native mathematics is
+      visible first. Each example therefore begins with a familiar
+      mathematical problem, carries out the calculation, and only then
+      identifies the BM roles that organize it.
+    </p>
+
+    <p>
+      The early examples are deliberately small. Their job is to isolate one
+      structural idea at a time. Later sections reuse the same ideas in
+      linear algebra, probability, dynamical systems, control, operator
+      mathematics, PDEs, quantum theory, gauge structure, and multi-physics
+      systems. The vocabulary stays the same while the mathematical load
+      grows.
+    </p>
+
+    <div class="mathbox">
+      \[
+      \boxed{
+      \text{Branch}
+      \to
+      \text{Transformation}
+      \to
+      \text{Interaction}
+      \to
+      \text{Passport}
+      \to
+      \text{Composition}
+      \to
+      \text{Coherence}
+      \to
+      \text{Root}
+      \to
+      \text{Mixed Semantics}
+      \to
+      \text{Network}
+      \to
+      \text{Research Scale}
+      }
+      \]
+    </div>
+
+    <p>
+      A reader can therefore enter at the simplest level and watch the need
+      for additional structure emerge rather than being asked to accept a
+      large vocabulary all at once.
+    </p>
+
+    <p>
+      Each level now contains multiple worked cases. The intention is to show
+      not only a successful formula, but the intermediate arithmetic,
+      admissibility tests, domain pullbacks, competing Tasks, failed
+      candidates, and repairs that justify the BM structure being activated.
+    </p>
+
+    <div class="warning">
+      <strong>Interpretation rule.</strong>
+      BM does not make a simple problem complicated merely to use BM.
+      When ordinary mathematics already solves the problem cleanly, the BM
+      description should remain correspondingly simple. Complexity enters
+      only when multiple structures, interfaces, information requirements,
+      partial domains, competing paths, or semantic sectors make it necessary.
+    </div>
+  </section>
+
+
+  <section id="reading-map">
+    <h2>2. Complexity Ladder</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Level</th>
+          <th>Main New Structure</th>
+          <th>Question Being Answered</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>0</td>
+          <td>Branch</td>
+          <td>What mathematical object is participating?</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Transformation / Operation</td>
+          <td>Can one typed object lawfully transform into another?</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Interaction / Leaf</td>
+          <td>How do multiple Branches jointly produce useful information?</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Passport / Task sufficiency</td>
+          <td>Which distinctions may safely be discarded?</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Composition / Interface</td>
+          <td>Do locally lawful Operations remain lawful when chained?</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Parallel paths / Coherence</td>
+          <td>Do different lawful routes agree where they must?</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Response / Root / Re-entry</td>
+          <td>Can a result lawfully participate in additional mathematics?</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>Mixed semantics</td>
+          <td>What changes when functions, kernels, relations, and operators coexist?</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>Full Configuration / Network</td>
+          <td>Can many local structures satisfy one global mathematical contract?</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>Research-scale native mathematics</td>
+          <td>How does BM organize a genuine advanced mathematical problem without replacing its native mathematics?</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>Failure laboratory</td>
+          <td>Where exactly does a proposed construction break?</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+
+  <section id="concept-index">
+    <h2>3. Quick Concept Index</h2>
+
+    <p>
+      Use this index when you already know the concept you want to see in
+      action. The same concept often appears at several levels because its
+      role becomes clearer when the surrounding mathematics changes.
+    </p>
+
+    <ol class="quick-index">
+      <li><a href="#branch-basic">Branch — basic</a></li>
+      <li><a href="#branch-interaction">Branch — interaction use</a></li>
+      <li><a href="#branch-network">Branch — network use</a></li>
+      <li><a href="#branch-failure">Branch — failure case</a></li>
+      <li><a href="#branch-full-system">Branch — full-system use</a></li>
+
+      <li><a href="#transformation-basic">Transformation</a></li>
+      <li><a href="#operation-basic">Operation</a></li>
+      <li><a href="#admissibility-basic">Admissibility</a></li>
+
+      <li><a href="#interaction-basic">Interaction</a></li>
+      <li><a href="#leaf-basic">Leaf</a></li>
+
+      <li><a href="#passport-basic">Passport — basic</a></li>
+      <li><a href="#passport-task">Passport — task use</a></li>
+      <li><a href="#passport-failure">Passport — failure case</a></li>
+
+      <li><a href="#fibre-basic">Fibre</a></li>
+      <li><a href="#task-basic">Task</a></li>
+      <li><a href="#exact-sufficiency-example">Exact Sufficiency</a></li>
+      <li><a href="#approximate-sufficiency-example">Approximate Sufficiency</a></li>
+
+      <li><a href="#interface-basic">Interface</a></li>
+      <li><a href="#composition-basic">Composition</a></li>
+      <li><a href="#composition-failure">Composition failure</a></li>
+
+      <li><a href="#typed-path-example">Typed Path</a></li>
+      <li><a href="#path-coherence-example">Path Coherence</a></li>
+      <li><a href="#higher-coherence-example">Higher Coherence</a></li>
+
+      <li><a href="#leaf-derivation-lab">Leaves — deriving further mathematics</a></li>
+      <li><a href="#tree-shapes">Trees — several structural forms</a></li>
+      <li><a href="#seed-principle">Seed — generative role</a></li>
+      <li><a href="#seed-fixed-point">Seed — fixed-point example</a></li>
+      <li><a href="#seed-newton">Seed — Newton example</a></li>
+      <li><a href="#seed-krylov">Seed — Krylov example</a></li>
+      <li><a href="#seed-gradient">Seed — optimization example</a></li>
+
+      <li><a href="#response-example">Response</a></li>
+      <li><a href="#root-example">Root</a></li>
+      <li><a href="#roots-many-instances">Roots — several mathematical types</a></li>
+      <li><a href="#reentry-example">Re-entry</a></li>
+      <li><a href="#rooting-example">Rooting</a></li>
+
+      <li><a href="#deterministic-example">Deterministic semantics</a></li>
+      <li><a href="#stochastic-example">Stochastic semantics</a></li>
+      <li><a href="#nondeterministic-example">Nondeterministic semantics</a></li>
+      <li><a href="#joint-feasibility-example">Joint Feasibility</a></li>
+      <li><a href="#coupling-example">Coupling</a></li>
+
+      <li><a href="#configuration-example">Configuration</a></li>
+      <li><a href="#network-example">Network</a></li>
+      <li><a href="#obstruction-example">Obstruction</a></li>
+      <li><a href="#repair-example">Repair</a></li>
+      <li><a href="#minimal-repair-example">Minimal Repair</a></li>
+
+      <li><a href="#structured-quotient-example">Structured Quotient</a></li>
+      <li><a href="#dynamic-closure-example">Dynamic Closure</a></li>
+      <li><a href="#law-passport-example">Law Passport</a></li>
+      <li><a href="#conservative-passport-example">Conservative Passport</a></li>
+
+      <li><a href="#full-system">Full BM system</a></li>
+      <li><a href="#full-system-worked-run">Full stochastic electro-thermal run</a></li>
+      <li><a href="#navier-stokes-example">Navier–Stokes research configuration</a></li>
+      <li><a href="#navier-stokes-energy-derivation">Navier–Stokes energy derivation</a></li>
+      <li><a href="#navier-stokes-vorticity-derivation">Navier–Stokes vorticity derivation</a></li>
+      <li><a href="#navier-stokes-passport-loss">Navier–Stokes spectral Passport loss</a></li>
+      <li><a href="#failure-lab">Failure laboratory</a></li>
+    </ol>
+  </section>
+
+
+  <section id="audit-format">
+    <h2>4. Standard Worked-Example Audit</h2>
+
+    <p>
+      When a problem becomes large, the following order keeps the work
+      readable. Not every example needs every line, but the sequence makes it
+      clear where each obligation enters.
+    </p>
+
+    <div class="mathbox">
+      \[
+      \boxed{
+      \begin{array}{ll}
+      1.&\text{Problem}\\
+      2.&\text{Native mathematics}\\
+      3.&\text{Branch declarations}\\
+      4.&\text{Admissible domains}\\
+      5.&\text{Interactions}\\
+      6.&\text{Leaves}\\
+      7.&\text{Passports}\\
+      8.&\text{Operations and Interfaces}\\
+      9.&\text{Composition}\\
+      10.&\text{Coherence}\\
+      11.&\text{Defects or obstructions}\\
+      12.&\text{Repair}\\
+      13.&\text{Response}\\
+      14.&\text{Root decision}\\
+      15.&\text{Export or re-entry}\\
+      16.&\text{Final result}
+      \end{array}
+      }
+      \]
+    </div>
+  </section>
+
+
+
+  <section id="current-role-map">
+    <h2>5. The Core BM Roles Before the Examples Begin</h2>
+
+    <p class="lead">
+      The easiest way to learn BM is to separate the mathematical
+      <em>thing</em> from the mathematical <em>role</em> it is playing.
+      A real number is not automatically a Branch, Leaf, Response, Root,
+      or Seed. Its role depends on where it came from, what structure it
+      carries, and what the next mathematics requires.
+    </p>
+
+    <table class="role-table">
+      <thead>
+        <tr>
+          <th>BM role</th>
+          <th>Working meaning used on this page</th>
+          <th>What it is not</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Branch</td>
+          <td>
+            A typed mathematical carrier together with its admissibility,
+            laws, operations, distinctions, and interface information.
+          </td>
+          <td>
+            Not merely “a variable.” Two variables with the same numerical
+            carrier may belong to different Branches.
+          </td>
+        </tr>
+        <tr>
+          <td>Interaction</td>
+          <td>
+            A lawful joint mathematical action on a declared admissible
+            domain involving participating Branches.
+          </td>
+          <td>
+            Not every expression that can be typed into a calculator.
+          </td>
+        </tr>
+        <tr>
+          <td>Leaf</td>
+          <td>
+            Information extracted from an Interaction result. One
+            Interaction may expose several Leaves.
+          </td>
+          <td>
+            Not every intermediate symbol. Its origin and extraction are
+            part of its meaning.
+          </td>
+        </tr>
+        <tr>
+          <td>Tree</td>
+          <td>
+            The organized structure coordinating Branches, Interactions,
+            Leaves, Passports, Interfaces, and intermediate computation.
+          </td>
+          <td>
+            Not necessarily a literal botanical tree or a simple binary
+            graph.
+          </td>
+        </tr>
+        <tr>
+          <td>Response</td>
+          <td>
+            The typed mathematical output produced by the organized
+            computation.
+          </td>
+          <td>
+            Not automatically reusable downstream.
+          </td>
+        </tr>
+        <tr>
+          <td>Root</td>
+          <td>
+            A Response or resulting structure whose required downstream
+            admissibility has been verified.
+          </td>
+          <td>
+            Not synonymous with recurrence, conservation, invertibility,
+            or a zero of an equation.
+          </td>
+        </tr>
+        <tr>
+          <td>Seed</td>
+          <td>
+            An optional candidate primitive for information undergoing
+            lawful generative evolution before a declared Root-export
+            condition is reached.
+          </td>
+          <td>
+            Not merely “the first input.” Initial data is a Seed only when
+            the generative role and export condition are actually present.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="teaching">
+      <strong>A useful student habit</strong>
+      Do the native mathematics first. Then ask which BM roles are genuinely
+      present. BM should clarify the structure of the calculation, not force
+      every problem to use every BM object.
+    </div>
+  </section>
+
+
+  <section id="leaf-derivation-lab">
+    <h2>6. Leaves Do Work — They Can Feed Later Mathematics</h2>
+
+    <p>
+      A common misunderstanding is to treat a Leaf as a decorative name for
+      an answer. The more useful picture is that a Leaf exposes a piece of
+      information from one Interaction. If another mathematical operation
+      lawfully accepts that information, the Leaf can participate in a later
+      Interaction.
+    </p>
+
+    <div class="chain">
+      \[
+      \boxed{
+      \text{Branches}
+      \xrightarrow{\text{Interaction}}
+      \text{Leaf}
+      \xrightarrow{\text{new lawful Interaction}}
+      \text{new Leaf}
+      \xrightarrow{}
+      \cdots
+      }
+      \]
+    </div>
+
+    <div class="example" id="leaf-power-energy-temperature">
+      <div class="example-title">Leaf Example A — Electrical Power → Energy → Temperature Change</div>
+      <div class="level">Branch · Interaction · Leaf · Tree · Response · Root</div>
+
+      <p>
+        Start with two Branches:
+        \[
+        B_V:\text{voltage},
+        \qquad
+        B_I:\text{current}.
+        \]
+        Take
+        \[
+        V=24\text{ V},
+        \qquad
+        I=5\text{ A}.
+        \]
+      </p>
+
+      <h4>Interaction 1 — electrical power</h4>
+
+      <div class="calculation">
+        \[
+        \mathcal I_P(V,I)=VI
+        \]
+        gives
+        \[
+        P=(24)(5)=120\text{ W}.
+        \]
+      </div>
+
+      <p>
+        The power value
+        \[
+        L_P=120\text{ W}
+        \]
+        is a Leaf extracted from the voltage-current Interaction.
+      </p>
+
+      <h4>Interaction 2 — use the power Leaf with a time Branch</h4>
+
+      <p>
+        Introduce
+        \[
+        B_t:\text{elapsed time},
+        \qquad
+        t=30\text{ s}.
+        \]
+        The new Interaction is
+        \[
+        \mathcal I_E(L_P,t)=L_Pt.
+        \]
+      </p>
+
+      <div class="calculation">
+        \[
+        E=(120\text{ W})(30\text{ s})
+        =3600\text{ J}.
+        \]
+      </div>
+
+      <p>
+        The extracted energy
+        \[
+        L_E=3600\text{ J}
+        \]
+        is now a new Leaf. It did not come directly from the first
+        Interaction. It came from a second Interaction that used the first
+        Leaf lawfully.
+      </p>
+
+      <h4>Interaction 3 — use the energy Leaf in a thermal calculation</h4>
+
+      <p>
+        Let a thermal-capacitance Branch carry
+        \[
+        C_{\mathrm{th}}=900\text{ J/K}.
+        \]
+        If the simplified native law is
+        \[
+        \Delta T=\frac{E}{C_{\mathrm{th}}},
+        \]
+        then
+      </p>
+
+      <div class="calculation">
+        \[
+        \Delta T
+        =
+        \frac{3600}{900}
+        =
+        4\text{ K}.
+        \]
+      </div>
+
+      <p>
+        The thermal change is another extracted result:
+        \[
+        L_{\Delta T}=4\text{ K}.
+        \]
+      </p>
+
+      <h4>What is the Tree?</h4>
+
+      <div class="chain">
+        \[
+        (B_V,B_I)
+        \xrightarrow{\mathcal I_P}
+        L_P
+        \xrightarrow{\mathcal I_E\text{ with }B_t}
+        L_E
+        \xrightarrow{\mathcal I_T\text{ with }B_{C_{\rm th}}}
+        L_{\Delta T}.
+        \]
+      </div>
+
+      <p>
+        The Tree is the organized calculation containing those Branches,
+        Interactions, Interfaces, and Leaves. If the purpose of the Tree was
+        to predict the temperature increase, then
+        \[
+        R=4\text{ K}
+        \]
+        is its Response.
+      </p>
+
+      <h4>Does the Response become a Root?</h4>
+
+      <p>
+        Suppose a receiving safety Branch accepts predicted rises only when
+        \[
+        \Delta T\le5\text{ K}.
+        \]
+        Since
+        \[
+        4\le5,
+        \]
+        the Response passes that receiving condition and may function as a
+        Root for the next safety calculation, subject to any other declared
+        Passport requirements.
+      </p>
+
+      <div class="plain-language">
+        <strong>In plain language:</strong>
+        one interaction gave us power. Power was useful, so we carried it
+        forward. Power plus time gave energy. Energy plus thermal capacity
+        gave a predicted temperature change. BM keeps the origin and lawful
+        use of each piece visible instead of flattening the whole chain into
+        one unexplained formula.
+      </div>
+    </div>
+
+
+    <div class="example" id="leaf-vector-geometry">
+      <div class="example-title">Leaf Example B — One Vector Interaction Produces Several Useful Leaves</div>
+      <div class="level">Multiple Leaves from one Interaction</div>
+
+      <p>
+        Let
+        \[
+        a=(3,0),
+        \qquad
+        b=(2,2).
+        \]
+        Define one Interaction record containing quantities needed later:
+      </p>
+
+      <div class="mathbox">
+        \[
+        \mathcal I(a,b)
+        =
+        \left(
+        a\cdot b,\;
+        \|a\|,\;
+        \|b\|
+        \right).
+        \]
+      </div>
+
+      <div class="workstep">
+        <strong>Leaf 1 — dot product</strong>
+        \[
+        L_{\cdot}=a\cdot b
+        =3(2)+0(2)
+        =6.
+        \]
+      </div>
+
+      <div class="workstep">
+        <strong>Leaf 2 — first magnitude</strong>
+        \[
+        L_a=\|a\|=3.
+        \]
+      </div>
+
+      <div class="workstep">
+        <strong>Leaf 3 — second magnitude</strong>
+        \[
+        L_b=\|b\|
+        =\sqrt{2^2+2^2}
+        =2\sqrt2.
+        \]
+      </div>
+
+      <p>
+        These Leaves can now be combined to derive the angle:
+      </p>
+
+      <div class="calculation">
+        \[
+        \cos\theta
+        =
+        \frac{L_{\cdot}}{L_aL_b}
+        =
+        \frac{6}{(3)(2\sqrt2)}
+        =
+        \frac1{\sqrt2},
+        \]
+        so
+        \[
+        \theta=\frac{\pi}{4}.
+        \]
+      </div>
+
+      <p>
+        The same Leaves can also help derive the scalar projection of \(b\)
+        onto \(a\):
+      </p>
+
+      <div class="calculation">
+        \[
+        \operatorname{comp}_a b
+        =
+        \frac{a\cdot b}{\|a\|}
+        =
+        \frac63
+        =
+        2.
+        \]
+      </div>
+
+      <p>
+        And the vector projection is
+      </p>
+
+      <div class="calculation">
+        \[
+        \operatorname{proj}_a b
+        =
+        \frac{a\cdot b}{\|a\|^2}a
+        =
+        \frac{6}{9}(3,0)
+        =
+        (2,0).
+        \]
+      </div>
+
+      <div class="teaching">
+        <strong>Why this matters</strong>
+        One Interaction can expose several Leaves, and different downstream
+        mathematics may use different subsets of them. BM does not require
+        every Leaf to be used by every later Task.
+      </div>
+    </div>
+
+
+    <div class="example" id="leaf-residual-correction">
+      <div class="example-title">Leaf Example C — Residual Leaf Drives a Correction</div>
+      <div class="level">Linear algebra · Leaf used to generate the next state</div>
+
+      <p>
+        Consider
+        \[
+        A=
+        \begin{pmatrix}
+        4&0\\
+        0&2
+        \end{pmatrix},
+        \qquad
+        b=
+        \begin{pmatrix}
+        8\\
+        2
+        \end{pmatrix},
+        \]
+        and a trial state
+        \[
+        x_0=
+        \begin{pmatrix}
+        1\\
+        0
+        \end{pmatrix}.
+        \]
+      </p>
+
+      <p>
+        The matrix-state Interaction produces
+        \[
+        Ax_0=
+        \begin{pmatrix}
+        4\\
+        0
+        \end{pmatrix}.
+        \]
+        A residual extraction gives
+      </p>
+
+      <div class="calculation">
+        \[
+        L_r
+        =
+        b-Ax_0
+        =
+        \begin{pmatrix}
+        8\\2
+        \end{pmatrix}
+        -
+        \begin{pmatrix}
+        4\\0
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+        4\\2
+        \end{pmatrix}.
+        \]
+      </div>
+
+      <p>
+        A second Leaf records its norm:
+        \[
+        L_{\|r\|}
+        =
+        \sqrt{4^2+2^2}
+        =
+        \sqrt{20}.
+        \]
+      </p>
+
+      <p>
+        In a chosen iterative method, the residual Leaf can lawfully feed a
+        correction rule. For illustration, take
+        \[
+        x_1=x_0+\alpha L_r
+        \]
+        with \(\alpha=\tfrac14\).
+      </p>
+
+      <div class="calculation">
+        \[
+        x_1
+        =
+        \begin{pmatrix}
+        1\\0
+        \end{pmatrix}
+        +
+        \frac14
+        \begin{pmatrix}
+        4\\2
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+        2\\0.5
+        \end{pmatrix}.
+        \]
+      </div>
+
+      <p>
+        Recompute:
+        \[
+        Ax_1=
+        \begin{pmatrix}
+        8\\1
+        \end{pmatrix},
+        \qquad
+        r_1=
+        \begin{pmatrix}
+        0\\1
+        \end{pmatrix}.
+        \]
+        The new residual is smaller:
+        \[
+        \|r_1\|=1<\sqrt{20}.
+        \]
+      </p>
+
+      <p>
+        The Leaf did not merely summarize the previous Interaction. It became
+        mathematically active in the next one.
+      </p>
+    </div>
+
+
+    <div class="example" id="leaf-probability-decision">
+      <div class="example-title">Leaf Example D — Posterior Probability Leaf Feeds a Decision Branch</div>
+      <div class="level">Probability · Leaf → downstream decision</div>
+
+      <p>
+        Suppose a Bayesian Interaction produces
+        \[
+        L_{\mathrm{post}}
+        =
+        P(H\mid D)
+        =
+        0.82.
+        \]
+        A decision Branch may accept a positive action only when
+        \[
+        P(H\mid D)\ge0.75.
+        \]
+      </p>
+
+      <div class="calculation">
+        \[
+        0.82\ge0.75.
+        \]
+      </div>
+
+      <p>
+        The posterior Leaf is therefore sufficient for this simple threshold
+        decision. If a later Task instead requires the full posterior
+        distribution over several hypotheses, the scalar \(0.82\) may be
+        insufficient. What a Leaf enables depends on what information it
+        actually carries.
+      </p>
+    </div>
+
+
+    <div class="example" id="leaf-spectral-energy">
+      <div class="example-title">Leaf Example E — Spectral Leaves Reconstruct an Energy Diagnostic</div>
+      <div class="level">Fourier analysis · Many Leaves → one diagnostic</div>
+
+      <p>
+        Let a discrete signal have Fourier coefficients
+        \[
+        \widehat u_0=1,
+        \qquad
+        \widehat u_1=2,
+        \qquad
+        \widehat u_2=-1.
+        \]
+        Suppose the spectral Interaction exposes mode-energy Leaves
+        \[
+        L_k=|\widehat u_k|^2.
+        \]
+      </p>
+
+      <div class="workstep">
+        <strong>Mode Leaves</strong>
+        \[
+        L_0=1,
+        \qquad
+        L_1=4,
+        \qquad
+        L_2=1.
+        \]
+      </div>
+
+      <p>
+        A later diagnostic Interaction sums those Leaves:
+      </p>
+
+      <div class="calculation">
+        \[
+        E_{\mathrm{spec}}
+        =
+        \sum_{k=0}^{2}L_k
+        =
+        1+4+1
+        =
+        6.
+        \]
+      </div>
+
+      <p>
+        This is a simple model of how many local Leaves can feed one
+        aggregate diagnostic. In larger PDE work the same structural idea
+        scales to many modes, shells, derivatives, or localized quantities.
+      </p>
+    </div>
+
+    <div class="example" id="leaf-composition-audit">
+      <div class="example-title">Leaf Example F — When a Leaf May Enter the Next Interaction</div>
+      <div class="level">Abstract BM audit · Domain and Passport conditions</div>
+
+      <p>
+        Let an Interaction
+        \[
+        I:D_I\to Z
+        \]
+        expose a Leaf through
+        \[
+        L=\ell(I(x)).
+        \]
+        Suppose a later Interaction wants
+        \[
+        J:D_J\subseteq X_L\times X_C\to W,
+        \qquad
+        L\in X_L.
+        \]
+      </p>
+
+      <p>
+        The fact that \(L\) exists does not by itself authorize
+        \(J(L,c)\). The next step must verify at least
+      </p>
+
+      <div class="mathbox">
+        \[
+        (L,c)\in D_J,
+        \]
+      </div>
+
+      <p>
+        together with the relevant type, law, Interface, and Passport
+        conditions. If those checks pass, a new Leaf may be extracted:
+      </p>
+
+      <div class="mathbox">
+        \[
+        L'
+        =
+        \ell'
+        \bigl(
+        J(L,c)
+        \bigr).
+        \]
+      </div>
+
+      <div class="chain">
+        \[
+        x
+        \xrightarrow{I}
+        z
+        \xrightarrow{\ell}
+        L
+        \xrightarrow[\text{only if admissible}]{J(\,\cdot\,,c)}
+        w
+        \xrightarrow{\ell'}
+        L'.
+        \]
+      </div>
+
+      <p>
+        This is the abstract pattern behind the earlier power, residual,
+        posterior, and spectral examples.
+      </p>
+    </div>
+
+  </section>
+
+
+  <section id="tree-shapes">
+    <h2>7. Trees in Different Mathematical Situations</h2>
+
+    <p>
+      A Tree is the organized BM structure carrying the computation.
+      Students should not assume that every Tree has the same shape.
+      Here are four common patterns.
+    </p>
+
+    <div class="example" id="tree-sequential">
+      <div class="example-title">Tree Example A — Sequential Tree</div>
+      <div class="level">A result from one stage becomes input to the next</div>
+
+      <div class="chain">
+        \[
+        (V,I)
+        \to P
+        \to (P,t)
+        \to E
+        \to (E,C_{\mathrm{th}})
+        \to \Delta T.
+        \]
+      </div>
+
+      <p>
+        This is the power-energy-temperature example above. The structural
+        organization is predominantly sequential.
+      </p>
+    </div>
+
+    <div class="example" id="tree-branching">
+      <div class="example-title">Tree Example B — Branching Use of One Interaction</div>
+      <div class="level">One Interaction exposes several Leaves used differently</div>
+
+      <p>
+        From vectors \(a,b\), one Interaction exposes
+        \[
+        L_{\cdot}=a\cdot b,
+        \qquad
+        L_a=\|a\|,
+        \qquad
+        L_b=\|b\|.
+        \]
+      </p>
+
+      <div class="chain">
+        \[
+        (a,b)
+        \xrightarrow{\mathcal I}
+        \begin{cases}
+        L_{\cdot}\\
+        L_a\\
+        L_b
+        \end{cases}
+        \Longrightarrow
+        \begin{cases}
+        \theta\\
+        \operatorname{comp}_a b\\
+        \operatorname{proj}_a b
+        \end{cases}
+        \]
+      </div>
+
+      <p>
+        The Tree branches because the same extracted information supports
+        several lawful downstream calculations.
+      </p>
+    </div>
+
+    <div class="example" id="tree-parallel">
+      <div class="example-title">Tree Example C — Parallel Paths with a Coherence Check</div>
+      <div class="level">Two lawful routes reach a common destination</div>
+
+      <p>
+        Convert \(20^\circ\mathrm C\) to Kelvin by two routes.
+      </p>
+
+      <h4>Route 1 — direct</h4>
+      <div class="calculation">
+        \[
+        T_K=20+273.15=293.15\text{ K}.
+        \]
+      </div>
+
+      <h4>Route 2 — through Fahrenheit</h4>
+      <div class="calculation">
+        \[
+        T_F=\frac95(20)+32=68^\circ\mathrm F,
+        \]
+        \[
+        T_K=\frac59(68-32)+273.15
+        =20+273.15
+        =293.15\text{ K}.
+        \]
+      </div>
+
+      <p>
+        The Tree contains parallel paths and a coherence requirement:
+        \[
+        F_{\mathrm{direct}}(20)
+        =
+        F_{\mathrm{via}\ F}(20).
+        \]
+      </p>
+    </div>
+
+    <div class="example" id="tree-coupled">
+      <div class="example-title">Tree Example D — Coupled Feedback Tree</div>
+      <div class="level">Output changes a state that participates again</div>
+
+      <p>
+        Let
+        \[
+        e_n=T_\star-T_n,
+        \qquad
+        u_n=K_pe_n,
+        \]
+        and a simplified thermal update be
+        \[
+        T_{n+1}=T_n+\alpha u_n.
+        \]
+      </p>
+
+      <p>
+        With
+        \[
+        T_\star=100,
+        \qquad
+        T_0=80,
+        \qquad
+        K_p=0.5,
+        \qquad
+        \alpha=0.2,
+        \]
+        we obtain
+      </p>
+
+      <div class="calculation">
+        \[
+        e_0=100-80=20,
+        \]
+        \[
+        u_0=0.5(20)=10,
+        \]
+        \[
+        T_1=80+0.2(10)=82.
+        \]
+      </div>
+
+      <p>
+        On the next pass,
+        \[
+        e_1=100-82=18,
+        \]
+        \[
+        u_1=0.5(18)=9,
+        \]
+        \[
+        T_2=82+0.2(9)=83.8.
+        \]
+      </p>
+
+      <p>
+        The Tree is coupled because the Response of one stage changes a
+        Branch that re-enters later computation.
+      </p>
+    </div>
+
+    <div class="teaching">
+      <strong>What to remember</strong>
+      “Tree” names the organized calculation, not one specific graph shape.
+      The mathematics determines whether the organization is sequential,
+      branching, parallel, coupled, or something more specialized.
+    </div>
+  </section>
+
+
+  <section id="seed-principle">
+    <h2>8. Seeds — Generative Information Before Root Export</h2>
+
+    <p>
+      Seed is an optional BM primitive. Use it only when information is
+      supposed to undergo a lawful generative process before it is eligible
+      to export a Root.
+    </p>
+
+    <div class="mathbox">
+      \[
+      S_0
+      \xrightarrow{G}
+      S_1
+      \xrightarrow{G}
+      S_2
+      \xrightarrow{G}
+      \cdots
+      \xrightarrow{\text{export condition}}
+      R.
+      \]
+    </div>
+
+    <p>
+      The important distinction is the export gate. Before the gate is
+      satisfied, the evolving information remains Seed-state information.
+      Once the declared condition is satisfied, the generated result may be
+      tested for Root status at the receiving Interface.
+    </p>
+
+    <div class="plain-language">
+      <strong>Initial data versus Seed:</strong>
+      \(x_0\) is not a Seed just because it appears first. It becomes a Seed
+      only when the problem assigns it a generative role, a lawful update, and
+      a condition that determines when its generated state may be exported.
+    </div>
+
+
+    <div class="example" id="seed-fixed-point">
+      <div class="example-title">Seed Example A — Fixed-Point Generation</div>
+      <div class="level">Scalar Seed · Iteration · Export tolerance · Root test</div>
+
+      <p>
+        Let
+        \[
+        G(s)=\frac12s+1
+        \]
+        and start with Seed state
+        \[
+        S_0=0.
+        \]
+        Declare the export condition
+        \[
+        |G(S_n)-S_n|<0.05.
+        \]
+      </p>
+
+      <div class="calculation">
+        \[
+        S_1=G(0)=1,
+        \]
+        \[
+        S_2=G(1)=1.5,
+        \]
+        \[
+        S_3=G(1.5)=1.75,
+        \]
+        \[
+        S_4=G(1.75)=1.875,
+        \]
+        \[
+        S_5=G(1.875)=1.9375,
+        \]
+        \[
+        S_6=G(1.9375)=1.96875.
+        \]
+      </div>
+
+      <p>
+        At \(S_5\),
+        \[
+        |G(S_5)-S_5|
+        =
+        |1.96875-1.9375|
+        =
+        0.03125
+        <0.05.
+        \]
+      </p>
+
+      <p>
+        So \(S_5\) satisfies the declared Seed export condition. The exported
+        Response is
+        \[
+        R=1.9375.
+        \]
+        If the receiving numerical Branch accepts this tolerance, the Response
+        can function as a Root there.
+      </p>
+
+      <p>
+        Notice the distinction:
+        \[
+        S_0,S_1,\ldots,S_5
+        \]
+        are not all Roots. They are Seed states participating in generation
+        until the export condition is met.
+      </p>
+    </div>
+
+
+    <div class="example" id="seed-newton">
+      <div class="example-title">Seed Example B — Newton Generation for \(\sqrt2\)</div>
+      <div class="level">Numerical Seed · Nonlinear update · Residual-controlled export</div>
+
+      <p>
+        Solve
+        \[
+        f(x)=x^2-2=0
+        \]
+        with Newton's update
+        \[
+        G(x)
+        =
+        x-\frac{x^2-2}{2x}
+        =
+        \frac12\left(x+\frac2x\right).
+        \]
+        Choose
+        \[
+        S_0=1
+        \]
+        and declare that export is allowed when
+        \[
+        |S_n^2-2|<10^{-6}.
+        \]
+      </p>
+
+      <div class="workstep">
+        <strong>First generated Seed state</strong>
+        \[
+        S_1
+        =
+        \frac12\left(1+\frac21\right)
+        =
+        1.5.
+        \]
+        Residual:
+        \[
+        |1.5^2-2|
+        =
+        0.25.
+        \]
+      </div>
+
+      <div class="workstep">
+        <strong>Second generated Seed state</strong>
+        \[
+        S_2
+        =
+        \frac12\left(1.5+\frac2{1.5}\right)
+        =
+        1.4166666667.
+        \]
+        Residual:
+        \[
+        |S_2^2-2|
+        \approx0.00694444.
+        \]
+      </div>
+
+      <div class="workstep">
+        <strong>Third generated Seed state</strong>
+        \[
+        S_3
+        =
+        \frac12\left(
+        1.4166666667+
+        \frac2{1.4166666667}
+        \right)
+        \approx1.4142156863.
+        \]
+        Residual:
+        \[
+        |S_3^2-2|
+        \approx6.0073\times10^{-6}.
+        \]
+      </div>
+
+      <div class="workstep">
+        <strong>Fourth generated Seed state</strong>
+        \[
+        S_4\approx1.4142135624.
+        \]
+        Then
+        \[
+        |S_4^2-2|
+        <10^{-6}.
+        \]
+      </div>
+
+      <p>
+        The Seed generation may now export
+        \[
+        R\approx1.4142135624.
+        \]
+        Whether this exported value is a Root depends on the receiving
+        tolerance and type requirements.
+      </p>
+    </div>
+
+
+    <div class="example" id="seed-krylov">
+      <div class="example-title">Seed Example C — A Vector Generates a Krylov Subspace</div>
+      <div class="level">Vector Seed · Linear-algebraic generation · Structural stopping condition</div>
+
+      <p>
+        Let
+        \[
+        A=
+        \begin{pmatrix}
+        2&1\\
+        0&3
+        \end{pmatrix},
+        \qquad
+        S_0=v=
+        \begin{pmatrix}
+        1\\1
+        \end{pmatrix}.
+        \]
+      </p>
+
+      <p>
+        The generative rule applies \(A\):
+        \[
+        S_{n+1}=AS_n.
+        \]
+      </p>
+
+      <div class="workstep">
+        <strong>First generated vector</strong>
+        \[
+        S_1
+        =
+        Av
+        =
+        \begin{pmatrix}
+        2(1)+1(1)\\
+        3(1)
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+        3\\3
+        \end{pmatrix}.
+        \]
+      </div>
+
+      <p>
+        But
+        \[
+        S_1=3S_0.
+        \]
+        Therefore
+        \[
+        \operatorname{span}\{S_0,S_1\}
+        =
+        \operatorname{span}\{S_0\}
+        \]
+        and no new direction was generated.
+      </p>
+
+      <p>
+        If the declared export condition is “the generated Krylov subspace
+        has stopped increasing in dimension,” then the condition is already
+        met after this step. The generated subspace
+        \[
+        K=\operatorname{span}\{(1,1)^\top\}
+        \]
+        may be exported for downstream spectral or approximation work.
+      </p>
+
+      <div class="teaching">
+        <strong>Why this is a Seed example</strong>
+        The starting vector is being used as a generator of further
+        mathematical structure. The object exported is not merely the original
+        vector; it is the structure produced by the declared generative rule.
+      </div>
+    </div>
+
+
+    <div class="example" id="seed-gradient">
+      <div class="example-title">Seed Example D — Parameter Seed in Gradient Descent</div>
+      <div class="level">Optimization Seed · Generative update · Gradient export condition</div>
+
+      <p>
+        Minimize
+        \[
+        J(\theta)=(\theta-3)^2.
+        \]
+        Its derivative is
+        \[
+        J'(\theta)=2(\theta-3).
+        \]
+        Choose step size
+        \[
+        \alpha=\frac14
+        \]
+        and Seed state
+        \[
+        S_0=\theta_0=0.
+        \]
+      </p>
+
+      <p>
+        The update is
+        \[
+        \theta_{n+1}
+        =
+        \theta_n
+        -
+        \alpha J'(\theta_n).
+        \]
+      </p>
+
+      <div class="calculation">
+        \[
+        \theta_1
+        =
+        0-\frac14(-6)
+        =
+        1.5,
+        \]
+        \[
+        \theta_2
+        =
+        1.5-\frac14(-3)
+        =
+        2.25,
+        \]
+        \[
+        \theta_3
+        =
+        2.25-\frac14(-1.5)
+        =
+        2.625,
+        \]
+        \[
+        \theta_4
+        =
+        2.625-\frac14(-0.75)
+        =
+        2.8125.
+        \]
+      </div>
+
+      <p>
+        If export requires
+        \[
+        |J'(\theta_n)|<0.5,
+        \]
+        then at \(\theta_4\)
+        \[
+        |J'(\theta_4)|
+        =
+        |2(2.8125-3)|
+        =
+        0.375<0.5.
+        \]
+      </p>
+
+      <p>
+        The generative Seed state may now export
+        \[
+        R=2.8125
+        \]
+        to a receiving parameter Branch whose tolerance accepts it.
+      </p>
+    </div>
+  </section>
+
+
+  <section id="roots-many-instances">
+    <h2>9. Roots in Different Mathematical Instances</h2>
+
+    <p>
+      Root is a downstream role. The same BM idea can therefore appear in
+      very different native mathematics.
+    </p>
+
+    <div class="example" id="root-scalar-instance">
+      <div class="example-title">Root Instance A — Scalar Controller Command</div>
+      <div class="level">Scalar Response → actuator Root</div>
+
+      <p>
+        Response:
+        \[
+        R=6.
+        \]
+        Receiver:
+        \[
+        A_U=[-10,10].
+        \]
+        Since
+        \[
+        6\in[-10,10],
+        \]
+        the scalar may function as a Root for that actuator Interface.
+      </p>
+    </div>
+
+    <div class="example" id="root-vector-instance">
+      <div class="example-title">Root Instance B — Vector State Estimate</div>
+      <div class="level">Vector Response → navigation Root</div>
+
+      <p>
+        Suppose an estimator produces
+        \[
+        R=
+        \widehat x
+        =
+        \begin{pmatrix}
+        120\\
+        45\\
+        8\\
+        -1
+        \end{pmatrix},
+        \]
+        interpreted as planar position and velocity.
+      </p>
+
+      <p>
+        A navigation receiver requires:
+        \[
+        \widehat x\in\mathbb R^4,
+        \qquad
+        \|\widehat v\|\le20.
+        \]
+        Here
+        \[
+        \|\widehat v\|
+        =
+        \sqrt{8^2+(-1)^2}
+        =
+        \sqrt{65}
+        \approx8.06<20.
+        \]
+        If the remaining covariance and unit Passports also pass, the vector
+        Response can function as a Root for route planning.
+      </p>
+    </div>
+
+    <div class="example" id="root-matrix-instance">
+      <div class="example-title">Root Instance C — Positive-Definite Covariance Matrix</div>
+      <div class="level">Matrix Response → estimator Root</div>
+
+      <p>
+        Let
+        \[
+        R=P=
+        \begin{pmatrix}
+        2&0.5\\
+        0.5&1
+        \end{pmatrix}.
+        \]
+        A receiving estimator requires a symmetric positive-definite
+        covariance.
+      </p>
+
+      <p>
+        Symmetry is immediate. For a \(2\times2\) symmetric matrix,
+        positivity can be checked by leading principal minors:
+        \[
+        2>0,
+        \]
+        and
+        \[
+        \det P
+        =
+        2(1)-0.5^2
+        =
+        1.75>0.
+        \]
+      </p>
+
+      <p>
+        Therefore \(P\) is positive definite and can pass this structural
+        Root gate.
+      </p>
+    </div>
+
+    <div class="example" id="root-function-instance">
+      <div class="example-title">Root Instance D — A Function Exported into an Integration Branch</div>
+      <div class="level">Function Response → calculus Root</div>
+
+      <p>
+        Suppose a previous Tree produces
+        \[
+        R=f(x)=x^2
+        \]
+        on \([0,1]\).
+        A receiving integration Branch requires
+        \[
+        f\in C([0,1]).
+        \]
+        Since \(x^2\) is continuous there, the function is admissible.
+      </p>
+
+      <p>
+        It can now participate in
+        \[
+        \int_0^1x^2\,dx
+        =
+        \left[\frac{x^3}{3}\right]_0^1
+        =
+        \frac13.
+        \]
+      </p>
+
+      <p>
+        The Root here is a function, not a scalar.
+      </p>
+    </div>
+
+    <div class="example" id="root-probability-instance">
+      <div class="example-title">Root Instance E — Probability Distribution Exported into a Decision Model</div>
+      <div class="level">Distribution Response → probabilistic decision Root</div>
+
+      <p>
+        Suppose the Response is a discrete posterior
+        \[
+        R=
+        (0.1,0.7,0.2).
+        \]
+        A receiving probability Branch requires
+        \[
+        p_i\ge0
+        \quad\text{and}\quad
+        \sum_i p_i=1.
+        \]
+      </p>
+
+      <div class="calculation">
+        \[
+        0.1+0.7+0.2=1.
+        \]
+      </div>
+
+      <p>
+        The distribution passes the normalization gate and can lawfully enter
+        a decision calculation such as expected loss.
+      </p>
+    </div>
+
+    <div class="example" id="root-relative-instance">
+      <div class="example-title">Root Instance F — One Response, Two Receivers, Two Outcomes</div>
+      <div class="level">Root status is Interface-relative</div>
+
+      <p>
+        Let
+        \[
+        R=8.
+        \]
+        Receiver \(A\) accepts
+        \[
+        [0,10],
+        \]
+        but receiver \(B\) accepts
+        \[
+        [0,5].
+        \]
+      </p>
+
+      <div class="calculation">
+        \[
+        8\in[0,10],
+        \qquad
+        8\notin[0,5].
+        \]
+      </div>
+
+      <p>
+        So the same Response can be a Root for \(A\) and not a Root for
+        \(B\). Root status is not a permanent badge attached to the number.
+      </p>
+    </div>
+  </section>
+
+
+  <section id="all-roles-one-example">
+    <h2>10. One Example With Branches, Leaves, a Tree, a Seed, a Response, and a Root</h2>
+
+    <div class="example" id="all-roles-thermal-calibration">
+      <div class="example-title">Integrated Teaching Example — Calibrating a Thermal Controller</div>
+      <div class="level">Major BM structural roles in one calculation</div>
+
+      <p>
+        We will keep the native mathematics deliberately manageable so that
+        the BM roles can be seen clearly.
+      </p>
+
+      <h4>Step 1 — Branches</h4>
+
+      <p>
+        Let the problem contain:
+      </p>
+
+      <ul>
+        <li>\(B_T\): measured temperature;</li>
+        <li>\(B_\star\): target temperature;</li>
+        <li>\(B_K\): controller gain;</li>
+        <li>\(B_u\): controller command;</li>
+        <li>\(B_{\mathrm{safe}}\): admissible command interval.</li>
+      </ul>
+
+      <p>
+        Use
+        \[
+        T=90,
+        \qquad
+        T_\star=100.
+        \]
+      </p>
+
+      <h4>Step 2 — Interaction and Leaf</h4>
+
+      <p>
+        The temperature-target Interaction extracts the error:
+        \[
+        L_e=T_\star-T=100-90=10.
+        \]
+      </p>
+
+      <p>
+        The error is a Leaf because it is information extracted from the
+        declared Interaction between the target and measured-temperature
+        Branches.
+      </p>
+
+      <h4>Step 3 — Seed</h4>
+
+      <p>
+        Suppose the controller gain is not directly accepted. It is generated
+        through a calibration process. Begin with
+        \[
+        S_0=K_0=0.2.
+        \]
+        Let a simple calibration objective be
+        \[
+        J(K)=(K-0.6)^2
+        \]
+        and update
+        \[
+        K_{n+1}
+        =
+        K_n-\frac14J'(K_n).
+        \]
+      </p>
+
+      <p>
+        Since
+        \[
+        J'(K)=2(K-0.6),
+        \]
+        we obtain
+      </p>
+
+      <div class="calculation">
+        \[
+        K_1
+        =
+        0.2-\frac14(-0.8)
+        =
+        0.4,
+        \]
+        \[
+        K_2
+        =
+        0.4-\frac14(-0.4)
+        =
+        0.5,
+        \]
+        \[
+        K_3
+        =
+        0.5-\frac14(-0.2)
+        =
+        0.55.
+        \]
+      </div>
+
+      <p>
+        If the Seed export condition is
+        \[
+        |J'(K)|\le0.1,
+        \]
+        then
+        \[
+        |J'(0.55)|
+        =
+        |2(-0.05)|
+        =
+        0.1.
+        \]
+        The gain Seed has reached its export condition.
+      </p>
+
+      <h4>Step 4 — Use the generated value with the error Leaf</h4>
+
+      <p>
+        The controller Interaction is
+        \[
+        u=K L_e.
+        \]
+        Using
+        \[
+        K=0.55,
+        \qquad
+        L_e=10,
+        \]
+        gives
+      </p>
+
+      <div class="calculation">
+        \[
+        u=(0.55)(10)=5.5.
+        \]
+      </div>
+
+      <p>
+        The command value can be extracted as a new Leaf:
+        \[
+        L_u=5.5.
+        \]
+      </p>
+
+      <h4>Step 5 — Tree</h4>
+
+      <div class="chain">
+        \[
+        (B_T,B_\star)
+        \xrightarrow{\mathcal I_e}
+        L_e
+        \]
+        \[
+        S_0
+        \xrightarrow{G}
+        S_1
+        \xrightarrow{G}
+        S_2
+        \xrightarrow{G}
+        K_{\mathrm{export}}
+        \]
+        \[
+        (K_{\mathrm{export}},L_e)
+        \xrightarrow{\mathcal I_u}
+        L_u.
+        \]
+      </div>
+
+      <p>
+        The Tree is the organized structure containing both the error branch
+        of the calculation and the gain-generation branch, together with
+        their later Interaction.
+      </p>
+
+      <h4>Step 6 — Response</h4>
+
+      <p>
+        If the Tree's requested output is the controller command, then
+        \[
+        R=5.5.
+        \]
+      </p>
+
+      <h4>Step 7 — Root gate</h4>
+
+      <p>
+        Let the actuator accept commands only in
+        \[
+        A_u=[0,6].
+        \]
+        Then
+        \[
+        5.5\in[0,6].
+        \]
+        If the remaining type, unit, and safety Passports are satisfied, the
+        Response may function as a Root for the actuator calculation.
+      </p>
+
+      <h4>Step 8 — What each role did</h4>
+
+      <table class="role-table">
+        <tbody>
+          <tr>
+            <td>Branches</td>
+            <td>Carried temperature, target, gain, command, and safety data.</td>
+          </tr>
+          <tr>
+            <td>Interaction</td>
+            <td>Combined Branches to compute error and command.</td>
+          </tr>
+          <tr>
+            <td>Leaves</td>
+            <td>Exposed the error \(L_e\) and command \(L_u\).</td>
+          </tr>
+          <tr>
+            <td>Seed</td>
+            <td>Generated the controller gain until an export condition was met.</td>
+          </tr>
+          <tr>
+            <td>Tree</td>
+            <td>Organized the parallel gain-generation and error calculations and their merge.</td>
+          </tr>
+          <tr>
+            <td>Response</td>
+            <td>The requested output \(R=5.5\).</td>
+          </tr>
+          <tr>
+            <td>Root</td>
+            <td>The Response after downstream actuator admissibility was verified.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="plain-language">
+        <strong>Why this is not just renaming arithmetic:</strong>
+        the arithmetic is ordinary. BM is recording which mathematical
+        objects are allowed to participate, how information is generated and
+        extracted, how independent parts of the calculation meet, and when a
+        result is actually allowed to enter the next mathematical context.
+      </div>
+    </div>
+  </section>
+
+
+
+  <section id="role-portability">
+    <h2>11. The Same BM Roles Across Different Mathematics</h2>
+
+    <p>
+      BM roles are structural rather than domain-specific. A Branch in
+      probability does not need to look like a Branch in geometry; a Root in
+      numerical analysis does not need to look like a Root in control. What
+      remains stable is the role played in the organized mathematics.
+    </p>
+
+    <table class="role-table">
+      <thead>
+        <tr>
+          <th>Domain</th>
+          <th>Possible Branch</th>
+          <th>Possible Interaction</th>
+          <th>Possible Leaf</th>
+          <th>Possible Root</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Linear algebra</td>
+          <td>Vector-space state \(x\)</td>
+          <td>Matrix-vector action \(Ax\)</td>
+          <td>Residual \(r=b-Ax\)</td>
+          <td>Accepted iterate for a later solver stage</td>
+        </tr>
+        <tr>
+          <td>Probability</td>
+          <td>Prior or likelihood law</td>
+          <td>Bayesian update</td>
+          <td>Posterior statistic</td>
+          <td>Normalized posterior accepted by a decision model</td>
+        </tr>
+        <tr>
+          <td>Control</td>
+          <td>State, estimate, command, or constraint set</td>
+          <td>Estimator or controller evaluation</td>
+          <td>Error, risk, or command</td>
+          <td>Command admitted by an actuator and safety interface</td>
+        </tr>
+        <tr>
+          <td>PDE</td>
+          <td>Field in a declared function space</td>
+          <td>Differentiation, filtering, or nonlinear coupling</td>
+          <td>Energy, dissipation, vorticity, or spectrum</td>
+          <td>Derived object admitted into a continuation or numerical stage</td>
+        </tr>
+        <tr>
+          <td>Quantum mathematics</td>
+          <td>Density operator</td>
+          <td>Channel or measurement</td>
+          <td>Expectation or outcome law</td>
+          <td>Valid output state or classical law admitted downstream</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="teaching">
+      <strong>Student checkpoint</strong>
+      Do not identify the role from the symbol alone. Ask where the object
+      came from, which laws it carries, and what the next mathematical stage
+      requires.
+    </div>
+  </section>
+
+  <!-- ======================================================= -->
+  <!-- LEVEL 0 -->
+  <!-- ======================================================= -->
+
+  <section id="level-0">
+    <h2>12. Level 0 — One Branch</h2>
+
+    <div class="example" id="branch-basic">
+      <div class="example-title">Example 0A — A Temperature Branch</div>
+      <div class="level">Complexity Level 0 · Branch · Admissibility</div>
+
+      <p>
+        Let a mathematical problem contain a temperature variable measured
+        on the Kelvin scale.
+      </p>
+
+      <div class="mathbox">
+        \[
+        X_T=\mathbb R,
+        \qquad
+        A_T=[0,\infty).
+        \]
+      </div>
+
+      <p>
+        A compact Branch record may be written
+      </p>
+
+      <div class="mathbox">
+        \[
+        B_T=
+        \left(
+        \mathsf S_T,
+        \tau_T,
+        X_T,
+        A_T,
+        \mathcal L_T,
+        \mathcal O_T,
+        \mathcal P_T
+        \right),
+        \]
+      </div>
+
+      <p>with one possible interpretation:</p>
+
+      <table>
+        <tbody>
+          <tr>
+            <th>Field</th>
+            <th>Value</th>
+          </tr>
+          <tr>
+            <td>\(\mathsf S_T\)</td>
+            <td>real scalar / physical-quantity sector</td>
+          </tr>
+          <tr>
+            <td>\(\tau_T\)</td>
+            <td>absolute temperature</td>
+          </tr>
+          <tr>
+            <td>\(X_T\)</td>
+            <td>\(\mathbb R\)</td>
+          </tr>
+          <tr>
+            <td>\(A_T\)</td>
+            <td>\([0,\infty)\)</td>
+          </tr>
+          <tr>
+            <td>\(\mathcal L_T\)</td>
+            <td>declared unit and admissibility law</td>
+          </tr>
+          <tr>
+            <td>\(\mathcal O_T\)</td>
+            <td>allowed temperature operations used by the problem</td>
+          </tr>
+          <tr>
+            <td>\(\mathcal P_T\)</td>
+            <td>downstream requirements, initially empty</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="success" id="admissibility-basic">
+        <strong>Admissibility check.</strong>
+        \(T=300\text{ K}\) is admissible. \(T=-20\text{ K}\) is not an
+        admissible state of this Branch.
+      </div>
+
+      <p>
+        Nothing here requires a Tree, Root, stochastic kernel, or large
+        Network. BM stays small because the problem is small.
+      </p>
+    </div>
+
+    <div class="example" id="branch-failure">
+      <div class="example-title">Example 0B — Same Carrier, Different Branch</div>
+      <div class="level">Complexity Level 0 · Type distinction · Failure case</div>
+
+      <p>
+        Consider two scalar Branches with the same carrier:
+      </p>
+
+      <div class="mathbox">
+        \[
+        X_T=\mathbb R,
+        \qquad
+        X_P=\mathbb R.
+        \]
+      </div>
+
+      <p>
+        One represents temperature and one represents pressure.
+        Equality of the underlying carrier does not make them the same
+        mathematical role:
+      </p>
+
+      <div class="mathbox">
+        \[
+        \tau_T\neq\tau_P.
+        \]
+      </div>
+
+      <p>
+        Therefore the assignment
+      </p>
+
+      <div class="mathbox">
+        \[
+        300\text{ K}=300\text{ Pa}
+        \]
+      </div>
+
+      <p>
+        is not authorized merely because both numerical values belong to
+        \(\mathbb R\).
+      </p>
+
+      <div class="warning">
+        <strong>BM point:</strong>
+        carrier equality is weaker than typed mathematical compatibility.
+      </div>
+    </div>
+
+    <div class="example" id="branch-vector">
+      <div class="example-title">Example 0C — A Vector-State Branch with a Geometric Admissible Set</div>
+      <div class="level">Complexity Level 0 · Vector carrier · Explicit admissibility calculation</div>
+
+      <p>
+        Let a planar position state be
+        \[
+        x=(x_1,x_2)\in\mathbb R^2.
+        \]
+        Suppose the problem permits positions only inside a disk of radius
+        \(5\).
+      </p>
+
+      <div class="mathbox">
+        \[
+        B_{\mathrm{pos}}
+        =
+        \left(
+        \mathsf S_{\mathrm{Euclid}},
+        \tau_{\mathrm{position}},
+        \mathbb R^2,
+        A_{\mathrm{pos}},
+        \mathcal L,
+        \mathcal O,
+        \mathcal P
+        \right),
+        \]
+        \[
+        A_{\mathrm{pos}}
+        =
+        \left\{
+        x\in\mathbb R^2:
+        x_1^2+x_2^2\le25
+        \right\}.
+        \]
+      </div>
+
+      <div class="workstep">
+        <strong>Candidate state 1</strong>
+        Take \(x=(3,4)\).
+        Then
+        \[
+        3^2+4^2=9+16=25.
+        \]
+        Therefore \(x\in A_{\mathrm{pos}}\).
+      </div>
+
+      <div class="workstep">
+        <strong>Candidate state 2</strong>
+        Take \(y=(4,4)\).
+        Then
+        \[
+        4^2+4^2=16+16=32>25.
+        \]
+        Therefore \(y\notin A_{\mathrm{pos}}\).
+      </div>
+
+      <p class="result-line">
+        Same carrier, same coordinate format, different admissibility result.
+        The admissible set is part of the Branch.
+      </p>
+    </div>
+
+    <div class="example" id="branch-function-space">
+      <div class="example-title">Example 0D — A Function-Space Branch</div>
+      <div class="level">Complexity Level 0 · Infinite-dimensional carrier · Regularity requirement</div>
+
+      <p>
+        A Branch need not carry a finite-dimensional vector.
+        Let
+      </p>
+
+      <div class="mathbox">
+        \[
+        X_f=C^1([0,1]),
+        \]
+        \[
+        A_f=
+        \left\{
+        f\in C^1([0,1]):
+        f(0)=0,\;
+        \|f'\|_\infty\le2
+        \right\}.
+        \]
+      </div>
+
+      <div class="workstep">
+        <strong>Test \(f(x)=x^2\)</strong>
+        \[
+        f(0)=0,
+        \qquad
+        f'(x)=2x,
+        \qquad
+        \|f'\|_\infty=2.
+        \]
+        Hence \(f\in A_f\).
+      </div>
+
+      <div class="workstep">
+        <strong>Test \(g(x)=\sqrt{x}\)</strong>
+        \(g\) is continuous on \([0,1]\), but
+        \[
+        g'(x)=\frac{1}{2\sqrt{x}}
+        \]
+        is not finite at \(x=0\).
+        Thus \(g\notin C^1([0,1])\), so \(g\notin A_f\).
+      </div>
+
+      <div class="success">
+        BM can carry function-space regularity in the Branch declaration
+        instead of treating every state as an untyped numerical vector.
+      </div>
+    </div>
+
+    <div class="example" id="branch-matrix">
+      <div class="example-title">Example 0E — A Symmetric Positive-Definite Matrix Branch</div>
+      <div class="level">Complexity Level 0 · Matrix carrier · Structural law</div>
+
+      <p>
+        Let
+        \[
+        X_M=\mathbb R^{2\times2},
+        \]
+        but require the admissible matrices to be symmetric positive definite:
+      </p>
+
+      <div class="mathbox">
+        \[
+        A_M=
+        \{M=M^\top:\lambda_{\min}(M)>0\}.
+        \]
+      </div>
+
+      <div class="workstep">
+        <strong>Matrix \(A\)</strong>
+        \[
+        A=
+        \begin{pmatrix}
+        2&1\\
+        1&2
+        \end{pmatrix}.
+        \]
+        Its eigenvalues satisfy
+        \[
+        \det(A-\lambda I)
+        =(2-\lambda)^2-1
+        =\lambda^2-4\lambda+3,
+        \]
+        so
+        \[
+        \lambda\in\{1,3\}.
+        \]
+        Both are positive. Therefore \(A\in A_M\).
+      </div>
+
+      <div class="workstep">
+        <strong>Matrix \(B\)</strong>
+        \[
+        B=
+        \begin{pmatrix}
+        1&2\\
+        2&1
+        \end{pmatrix}.
+        \]
+        Its characteristic polynomial is
+        \[
+        (1-\lambda)^2-4
+        =\lambda^2-2\lambda-3,
+        \]
+        giving
+        \[
+        \lambda\in\{-1,3\}.
+        \]
+        Since one eigenvalue is negative, \(B\notin A_M\).
+      </div>
+
+      <p>
+        Merely storing four real numbers is insufficient to describe the
+        Branch. Symmetry and positivity are native structural obligations.
+      </p>
+    </div>
+
+    <div class="example" id="branch-graph">
+      <div class="example-title">Example 0F — A Directed-Acyclic-Graph Branch</div>
+      <div class="level">Complexity Level 0 · Discrete structure · Non-numerical carrier</div>
+
+      <p>
+        Let \(X_G\) be finite directed graphs and define
+        \[
+        A_G=\{G\in X_G:G\text{ is acyclic}\}.
+        \]
+      </p>
+
+      <div class="workstep">
+        <strong>Graph 1</strong>
+        Edges
+        \[
+        a\to b,\qquad b\to c.
+        \]
+        There is no directed path returning to its starting vertex, so the
+        graph is admissible.
+      </div>
+
+      <div class="workstep">
+        <strong>Graph 2</strong>
+        Add
+        \[
+        c\to a.
+        \]
+        Then
+        \[
+        a\to b\to c\to a
+        \]
+        is a directed cycle. The graph leaves the admissible set.
+      </div>
+
+      <p>
+        This shows why a Branch is not synonymous with a vector space.
+        The carrier and its laws may be discrete and combinatorial.
+      </p>
+    </div>
+
+  </section>
+
+
+  <!-- ======================================================= -->
+  <!-- LEVEL 1 -->
+  <!-- ======================================================= -->
+
+  <section id="level-1">
+    <h2>13. Level 1 — One Lawful Transformation</h2>
+
+    <div class="example" id="transformation-basic">
+      <div class="example-title">Example 1A — Celsius to Fahrenheit</div>
+      <div class="level">Complexity Level 1 · Transformation · Operation · Interface</div>
+
+      <p>
+        Let \(B_C\) represent temperature in degrees Celsius and
+        \(B_F\) represent temperature in degrees Fahrenheit.
+      </p>
+
+      <div class="mathbox">
+        \[
+        f:B_C\to B_F,
+        \qquad
+        f(c)=\frac95c+32.
+        \]
+      </div>
+
+      <p>
+        If \(c=20\), then
+      </p>
+
+      <div class="mathbox">
+        \[
+        f(20)=68.
+        \]
+      </div>
+
+      <div class="audit" id="operation-basic">
+        <strong>Operation audit</strong>
+        <ul>
+          <li>source type declared: Celsius temperature;</li>
+          <li>target type declared: Fahrenheit temperature;</li>
+          <li>formula defined on the intended domain;</li>
+          <li>units are transformed rather than silently relabeled;</li>
+          <li>the target receives a Fahrenheit value.</li>
+        </ul>
+      </div>
+
+      <p id="interface-basic">
+        The conversion formula itself functions as an Interface between
+        the two representations.
+      </p>
+    </div>
+
+    <div class="example">
+      <div class="example-title">Example 1B — A Writable but Unlawful Map</div>
+      <div class="level">Complexity Level 1 · Type failure</div>
+
+      <p>
+        The function
+      </p>
+
+      <div class="mathbox">
+        \[
+        q(c)=c
+        \]
+      </div>
+
+      <p>
+        is a perfectly valid real function, but if it is presented as a
+        Celsius-to-Fahrenheit conversion, it violates the declared Interface.
+        For example,
+      </p>
+
+      <div class="mathbox">
+        \[
+        20^\circ\mathrm C\not\equiv20^\circ\mathrm F.
+        \]
+      </div>
+
+      <p>
+        BM distinguishes <em>formula existence</em> from
+        <em>lawful typed use</em>.
+      </p>
+    </div>
+
+    <div class="example" id="transformation-domain">
+      <div class="example-title">Example 1C — A Partial Square-Root Operation</div>
+      <div class="level">Complexity Level 1 · Domain restriction · Candidate rejection</div>
+
+      <p>
+        Let
+        \[
+        f:\mathbb R_{\ge0}\to\mathbb R_{\ge0},
+        \qquad
+        f(x)=\sqrt{x}.
+        \]
+      </p>
+
+      <div class="workstep">
+        <strong>Input \(x=9\)</strong>
+        \[
+        9\in\mathbb R_{\ge0},
+        \qquad
+        f(9)=3.
+        \]
+        Source admissibility and target admissibility both hold.
+      </div>
+
+      <div class="workstep">
+        <strong>Input \(x=-1\)</strong>
+        \[
+        -1\notin\mathbb R_{\ge0}.
+        \]
+        The proposed real-valued Operation is not defined on this input.
+      </div>
+
+      <div class="warning">
+        Writing the symbol \(\sqrt{-1}\) does not make this a lawful real
+        Branch transformation. One would need to change the mathematical
+        sector and target type.
+      </div>
+    </div>
+
+    <div class="example" id="transformation-matrix">
+      <div class="example-title">Example 1D — Matrix Observation Map</div>
+      <div class="level">Complexity Level 1 · Linear transformation · Shown multiplication</div>
+
+      <p>
+        Let the state Branch be \(\mathbb R^2\) and the observation Branch
+        be \(\mathbb R\). Define
+      </p>
+
+      <div class="mathbox">
+        \[
+        H=
+        \begin{pmatrix}
+        2&-1
+        \end{pmatrix},
+        \qquad
+        y=Hx.
+        \]
+      </div>
+
+      <p>
+        For
+        \[
+        x=
+        \begin{pmatrix}
+        3\\4
+        \end{pmatrix},
+        \]
+        the shown work is
+      </p>
+
+      <div class="calculation">
+        \[
+        y
+        =
+        \begin{pmatrix}
+        2&-1
+        \end{pmatrix}
+        \begin{pmatrix}
+        3\\4
+        \end{pmatrix}
+        =
+        2(3)-1(4)
+        =
+        6-4
+        =
+        2.
+        \]
+      </div>
+
+      <p>
+        The map is lawful as a linear observation map. Whether it is
+        sufficient for a later Task is a separate Passport question.
+      </p>
+    </div>
+
+    <div class="example" id="transformation-normalization">
+      <div class="example-title">Example 1E — Normalization Has a Missing Point</div>
+      <div class="level">Complexity Level 1 · Partial Operation · Domain discovered from formula</div>
+
+      <p>
+        Define
+        \[
+        N(v)=\frac{v}{\|v\|}.
+        \]
+        It is tempting to write
+        \[
+        N:\mathbb R^n\to S^{n-1},
+        \]
+        but that overstates the domain.
+      </p>
+
+      <div class="workstep">
+        <strong>Nonzero input</strong>
+        For \(v=(3,4)\),
+        \[
+        \|v\|=5,
+        \qquad
+        N(v)=\left(\frac35,\frac45\right).
+        \]
+      </div>
+
+      <div class="workstep">
+        <strong>Zero input</strong>
+        For \(v=0\),
+        \[
+        \|v\|=0,
+        \]
+        so division by \(\|v\|\) is undefined.
+      </div>
+
+      <div class="mathbox">
+        \[
+        \boxed{
+        N:\mathbb R^n\setminus\{0\}\to S^{n-1}.
+        }
+        \]
+      </div>
+
+      <p>
+        BM keeps the corrected domain as part of the Operation instead of
+        allowing the notation to silently totalize it.
+      </p>
+    </div>
+
+    <div class="example" id="transformation-operator">
+      <div class="example-title">Example 1F — Differential Operator Between Function-Space Branches</div>
+      <div class="level">Complexity Level 1 · Operator semantics · Regularity</div>
+
+      <p>
+        Let
+        \[
+        D:C^1([0,1])\to C^0([0,1]),
+        \qquad
+        Df=f'.
+        \]
+      </p>
+
+      <div class="workstep">
+        <strong>Valid input</strong>
+        For
+        \[
+        f(x)=x^3,
+        \]
+        \[
+        Df(x)=3x^2\in C^0([0,1]).
+        \]
+      </div>
+
+      <div class="workstep">
+        <strong>Invalid source object</strong>
+        If the source Branch requires \(C^1\) regularity, then
+        \(g(x)=|x-\tfrac12|\) is not admissible because its derivative
+        fails to exist at \(x=\tfrac12\).
+      </div>
+
+      <p>
+        The same “transformation” idea therefore covers operators whose
+        legality depends on function-space structure, not only scalar formulas.
+      </p>
+    </div>
+
+  </section>
+
+
+  <!-- ======================================================= -->
+  <!-- LEVEL 2 -->
+  <!-- ======================================================= -->
+
+  <section id="level-2">
+    <h2>14. Level 2 — Interaction and Leaf Extraction</h2>
+
+    <div class="example" id="interaction-basic">
+      <div class="example-title">Example 2A — Electrical Power from Voltage and Current</div>
+      <div class="level">Complexity Level 2 · Interaction · Leaf</div>
+
+      <p>
+        Let
+      </p>
+
+      <div class="mathbox">
+        \[
+        B_V:\text{voltage},
+        \qquad
+        B_I:\text{current}.
+        \]
+      </div>
+
+      <p>
+        Their lawful Interaction is
+      </p>
+
+      <div class="mathbox">
+        \[
+        \mathcal I_{VI}:
+        A_V\times A_I\to Z,
+        \qquad
+        \mathcal I_{VI}(V,I)=(V,I,VI).
+        \]
+      </div>
+
+      <p>
+        The Interaction result stores more than one quantity.
+        A Leaf extraction map selects the power component:
+      </p>
+
+      <div class="mathbox" id="leaf-basic">
+        \[
+        \ell_P:Z\to\mathbb R,
+        \qquad
+        \ell_P(V,I,VI)=VI.
+        \]
+      </div>
+
+      <p>
+        Hence
+      </p>
+
+      <div class="mathbox">
+        \[
+        P=
+        \ell_P\!\left(
+        \mathcal I_{VI}(V,I)
+        \right)
+        =VI.
+        \]
+      </div>
+
+      <p>
+        If \(V=12\text{ V}\) and \(I=3\text{ A}\), then
+      \[
+      P=36\text{ W}.
+      \]
+      The derived value becomes a BM Leaf only because its originating
+      Interaction and extraction map have been declared.
+      A derived scalar floating elsewhere in a calculation is not
+      automatically a Leaf.
+      </p>
+    </div>
+
+    <div class="example" id="branch-interaction">
+      <div class="example-title">Example 2B — Branches Retain Their Own Roles During Interaction</div>
+      <div class="level">Complexity Level 2 · Branch interaction use</div>
+
+      <p>
+        In the preceding example, voltage and current are not merged into
+        one undifferentiated number space merely because multiplication is
+        defined.
+      </p>
+
+      <div class="mathbox">
+        \[
+        B_V\neq B_I,
+        \qquad
+        \mathcal I_{VI}(B_V,B_I)
+        \leadsto
+        P.
+        \]
+      </div>
+
+      <p>
+        Their types remain available to determine which operation is being
+        performed and what the resulting quantity means.
+      </p>
+    </div>
+
+    <div class="example" id="interaction-force">
+      <div class="example-title">Example 2C — Mass and Acceleration Produce Force</div>
+      <div class="level">Complexity Level 2 · Two Branches · Unit-sensitive Interaction</div>
+
+      <p>
+        Let
+        \[
+        B_m:\text{mass in kg},
+        \qquad
+        B_a:\text{acceleration in m/s}^2.
+        \]
+        Define
+      </p>
+
+      <div class="mathbox">
+        \[
+        \mathcal I_F(m,a)=ma.
+        \]
+      </div>
+
+      <div class="calculation">
+        For
+        \[
+        m=4\text{ kg},
+        \qquad
+        a=3\text{ m/s}^2,
+        \]
+        \[
+        F=ma
+        =(4)(3)
+        =12\text{ kg m/s}^2
+        =12\text{ N}.
+        \]
+      </div>
+
+      <p>
+        The numerical multiplication \(4\times3=12\) is only part of the
+        Interaction. The Branch types determine the physical quantity carried
+        by the result.
+      </p>
+    </div>
+
+    <div class="example" id="interaction-angle">
+      <div class="example-title">Example 2D — Vector Interaction with Multiple Leaves</div>
+      <div class="level">Complexity Level 2 · One Interaction · Several extracted quantities</div>
+
+      <p>
+        Let
+        \[
+        a=(1,0),
+        \qquad
+        b=(1,1).
+        \]
+        Construct an Interaction record
+      </p>
+
+      <div class="mathbox">
+        \[
+        \mathcal I(a,b)
+        =
+        \left(
+        a\cdot b,
+        \|a\|,
+        \|b\|
+        \right).
+        \]
+      </div>
+
+      <div class="calculation">
+        \[
+        a\cdot b=1(1)+0(1)=1,
+        \]
+        \[
+        \|a\|=1,
+        \qquad
+        \|b\|=\sqrt{1^2+1^2}=\sqrt2.
+        \]
+      </div>
+
+      <p>
+        A Leaf may extract the cosine of the included angle:
+      </p>
+
+      <div class="mathbox">
+        \[
+        \lambda_\theta
+        =
+        \frac{a\cdot b}{\|a\|\|b\|}
+        =
+        \frac1{\sqrt2}.
+        \]
+      </div>
+
+      <p>
+        Hence
+        \[
+        \theta=\arccos\left(\frac1{\sqrt2}\right)=\frac\pi4.
+        \]
+      </p>
+
+      <div class="warning">
+        If either vector is zero, the angle Leaf is undefined because
+        \(\|a\|\|b\|=0\). The dot-product Leaf may still exist.
+        Different Leaves can therefore have different admissible domains.
+      </div>
+    </div>
+
+    <div class="example" id="interaction-bayes">
+      <div class="example-title">Example 2E — Bayesian Interaction and Posterior Leaf</div>
+      <div class="level">Complexity Level 2 · Probability Branches · Normalization</div>
+
+      <p>
+        Let \(H\) denote a hypothesis and \(D\) observed data.
+        Suppose
+      </p>
+
+      <div class="mathbox">
+        \[
+        P(H)=0.2,
+        \qquad
+        P(D\mid H)=0.9,
+        \qquad
+        P(D\mid H^c)=0.1.
+        \]
+      </div>
+
+      <div class="workstep">
+        <strong>Unnormalized positive-hypothesis weight</strong>
+        \[
+        w_H=P(D\mid H)P(H)=0.9(0.2)=0.18.
+        \]
+      </div>
+
+      <div class="workstep">
+        <strong>Unnormalized alternative weight</strong>
+        \[
+        w_{H^c}=P(D\mid H^c)P(H^c)=0.1(0.8)=0.08.
+        \]
+      </div>
+
+      <div class="workstep">
+        <strong>Evidence normalization</strong>
+        \[
+        P(D)=0.18+0.08=0.26.
+        \]
+      </div>
+
+      <div class="workstep">
+        <strong>Posterior Leaf</strong>
+        \[
+        P(H\mid D)
+        =
+        \frac{0.18}{0.26}
+        =
+        \frac9{13}
+        \approx0.6923.
+        \]
+      </div>
+
+      <p>
+        BM does not replace Bayes' theorem. It can represent the prior,
+        likelihood, evidence normalization, and posterior as distinct typed
+        participants and extracted information.
+      </p>
+    </div>
+
+    <div class="example" id="interaction-matrix">
+      <div class="example-title">Example 2F — Matrix–Vector Interaction with Dimension Failure</div>
+      <div class="level">Complexity Level 2 · Algebraic compatibility</div>
+
+      <p>
+        Let
+        \[
+        A=
+        \begin{pmatrix}
+        1&2\\
+        0&1
+        \end{pmatrix},
+        \qquad
+        x=
+        \begin{pmatrix}
+        3\\4
+        \end{pmatrix}.
+        \]
+      </p>
+
+      <div class="calculation">
+        \[
+        Ax
+        =
+        \begin{pmatrix}
+        1(3)+2(4)\\
+        0(3)+1(4)
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+        11\\4
+        \end{pmatrix}.
+        \]
+      </div>
+
+      <p>
+        If instead \(x\in\mathbb R^3\), the same \(2\times2\) matrix cannot
+        multiply it. The Interaction fails before any numerical computation
+        because the dimensions are incompatible.
+      </p>
+    </div>
+
+  </section>
+
+
+  <!-- ======================================================= -->
+  <!-- LEVEL 3 -->
+  <!-- ======================================================= -->
+
+  <section id="level-3">
+    <h2>15. Level 3 — Passport, Fibres, and Task Sufficiency</h2>
+
+    <div class="example" id="passport-basic">
+      <div class="example-title">Example 3A — A Lossy Sensor</div>
+      <div class="level">Complexity Level 3 · Passport · Fibre · Task</div>
+
+      <p>
+        Suppose the true state is
+      </p>
+
+      <div class="mathbox">
+        \[
+        x=(T,H)\in X,
+        \]
+      </div>
+
+      <p>
+        where \(T\) is temperature and \(H\) is humidity.
+        A sensor reports only temperature:
+      </p>
+
+      <div class="mathbox">
+        \[
+        r:X\to\mathbb R,
+        \qquad
+        r(T,H)=T.
+        \]
+      </div>
+
+      <p id="fibre-basic">
+        The fibre above an observed temperature \(t\) is
+      </p>
+
+      <div class="mathbox">
+        \[
+        r^{-1}(t)=
+        \{(t,H):H\text{ admissible}\}.
+        \]
+      </div>
+
+      <p>
+        Humidity distinctions have therefore been removed by the
+        representation.
+      </p>
+    </div>
+
+    <div class="example" id="task-basic">
+      <div class="example-title">Example 3B — One Task Survives; Another Fails</div>
+      <div class="level">Complexity Level 3 · Task-relative information</div>
+
+      <p>
+        Consider two downstream Tasks:
+      </p>
+
+      <div class="mathbox">
+        \[
+        T_1(T,H)=
+        \begin{cases}
+        1,&T>30,\\
+        0,&T\le30,
+        \end{cases}
+        \]
+      </div>
+
+      <p>and</p>
+
+      <div class="mathbox">
+        \[
+        T_2(T,H)=H.
+        \]
+      </div>
+
+      <p id="exact-sufficiency-example">
+        If
+        \[
+        r(T,H)=r(T',H'),
+        \]
+        then \(T=T'\), so
+        \[
+        T_1(T,H)=T_1(T',H').
+        \]
+        The representation is exactly sufficient for \(T_1\).
+      </p>
+
+      <p>
+        But the same observation may correspond to different humidity values:
+      </p>
+
+      <div class="mathbox">
+        \[
+        r(25,40)=r(25,90)=25,
+        \]
+      </div>
+
+      <p>while</p>
+
+      <div class="mathbox">
+        \[
+        T_2(25,40)\neq T_2(25,90).
+        \]
+      </div>
+
+      <p>
+        The representation is not sufficient for \(T_2\).
+      </p>
+
+      <div class="success" id="passport-task">
+        <strong>Passport consequence.</strong>
+        If later mathematics requires humidity, the Passport cannot permit
+        the reduction \((T,H)\mapsto T\) without an additional retained
+        humidity channel or an explicitly acceptable approximation.
+      </div>
+    </div>
+
+    <div class="example" id="passport-failure">
+      <div class="example-title">Example 3C — Passport Violation Set</div>
+      <div class="level">Complexity Level 3 · Explicit failure witness</div>
+
+      <p>
+        Let the source Passport predicate require humidity availability:
+      </p>
+
+      <div class="mathbox">
+        \[
+        P_X(T,H)=1.
+        \]
+      </div>
+
+      <p>
+        Let the reduced representation contain no humidity field, so the
+        receiving Passport test fails:
+      </p>
+
+      <div class="mathbox">
+        \[
+        P_Y(r(T,H))=0.
+        \]
+      </div>
+
+      <p>
+        The Passport-defect set is then
+      </p>
+
+      <div class="mathbox">
+        \[
+        \mathfrak D_{r,P}
+        =
+        \{(T,H)\in A_X:
+        P_X(T,H)=1,\;
+        P_Y(r(T,H))=0\}.
+        \]
+      </div>
+
+      <p>
+        Here \(\mathfrak D_{r,P}\neq\varnothing\), so exact Passport
+        preservation fails.
+      </p>
+    </div>
+
+    <div class="example" id="approximate-sufficiency-example">
+      <div class="example-title">Example 3D — Approximate Sufficiency</div>
+      <div class="level">Complexity Level 3 · Approximation</div>
+
+      <p>
+        Suppose a Task requires humidity only to tolerance
+        \(\varepsilon=5\%\).
+        A compressed representation may store a quantized humidity
+        \(\widehat H\) satisfying
+      </p>
+
+      <div class="mathbox">
+        \[
+        |H-\widehat H|\le5.
+        \]
+      </div>
+
+      <p>
+        Exact recoverability may fail while a task-relative approximate
+        criterion succeeds.
+        This is a different claim and must not be relabeled as exact
+        sufficiency.
+      </p>
+    </div>
+
+    <div class="example" id="passport-finite-fibres">
+      <div class="example-title">Example 3E — Exact Fibre Audit on a Finite State Space</div>
+      <div class="level">Complexity Level 3 · Every fibre shown explicitly</div>
+
+      <p>
+        Let
+        \[
+        X=\{a,b,c,d\}
+        \]
+        and define an observation
+      </p>
+
+      <div class="mathbox">
+        \[
+        r(a)=r(b)=0,
+        \qquad
+        r(c)=r(d)=1.
+        \]
+      </div>
+
+      <p>
+        Therefore the fibres are
+      </p>
+
+      <div class="mathbox">
+        \[
+        r^{-1}(0)=\{a,b\},
+        \qquad
+        r^{-1}(1)=\{c,d\}.
+        \]
+      </div>
+
+      <p>
+        Define
+      </p>
+
+      <div class="mathbox">
+        \[
+        T_1(a)=T_1(b)=7,
+        \qquad
+        T_1(c)=T_1(d)=9.
+        \]
+      </div>
+
+      <p>
+        \(T_1\) is constant on every fibre, so it factors through \(r\):
+      </p>
+
+      <div class="mathbox">
+        \[
+        \widetilde T_1(0)=7,
+        \qquad
+        \widetilde T_1(1)=9,
+        \]
+        \[
+        T_1=\widetilde T_1\circ r.
+        \]
+      </div>
+
+      <p>
+        Now define
+      </p>
+
+      <div class="mathbox">
+        \[
+        T_2(a)=0,
+        \qquad
+        T_2(b)=1.
+        \]
+      </div>
+
+      <p>
+        Since \(a\) and \(b\) share one observation but have different Task
+        values, \(T_2\) cannot factor through \(r\).
+      </p>
+    </div>
+
+    <div class="example" id="passport-quantization">
+      <div class="example-title">Example 3F — Quantization Error Carried as a Passport Tolerance</div>
+      <div class="level">Complexity Level 3 · Approximate retention · Explicit error bound</div>
+
+      <p>
+        Let
+        \[
+        r(x)=\operatorname{round}(x)
+        \]
+        and suppose the Task is
+        \[
+        T(x)=2x.
+        \]
+      </p>
+
+      <p>
+        Rounding to the nearest integer satisfies
+        \[
+        |x-r(x)|\le\frac12.
+        \]
+      </p>
+
+      <div class="workstep">
+        <strong>Propagate the representation error into the Task</strong>
+        \[
+        |T(x)-T(r(x))|
+        =
+        |2x-2r(x)|
+        =
+        2|x-r(x)|
+        \le1.
+        \]
+      </div>
+
+      <p>
+        Thus the representation is not exact, but it is sufficient for a
+        Task tolerance of \(1\) or larger.
+      </p>
+
+      <div class="workstep">
+        <strong>Numerical instance</strong>
+        If \(x=3.37\),
+        \[
+        r(x)=3,
+        \qquad
+        T(x)=6.74,
+        \qquad
+        T(r(x))=6,
+        \]
+        so
+        \[
+        |6.74-6|=0.74\le1.
+        \]
+      </div>
+    </div>
+
+    <div class="example" id="passport-joint-task">
+      <div class="example-title">Example 3G — One Representation, Two Simultaneous Tasks</div>
+      <div class="level">Complexity Level 3 · Joint Passport requirement</div>
+
+      <p>
+        Let the state be
+        \[
+        x=(T,H,P),
+        \]
+        representing temperature, humidity, and pressure.
+        Suppose the representation keeps
+        \[
+        r(x)=(T,H).
+        \]
+      </p>
+
+      <p>
+        Task \(A\) asks whether \(T>30\), while Task \(B\) asks whether
+        \(H>80\). Both factor through \(r\).
+      </p>
+
+      <p>
+        Add Task \(C(x)=P\). Now the same representation is insufficient
+        for the joint Task tuple
+      </p>
+
+      <div class="mathbox">
+        \[
+        \mathcal T(x)=
+        \bigl(
+        1_{T>30},
+        1_{H>80},
+        P
+        \bigr).
+        \]
+      </div>
+
+      <p>
+        The Passport required for \(\mathcal T\) must preserve pressure even
+        though Tasks \(A\) and \(B\) do not need it.
+      </p>
+    </div>
+
+    <div class="example" id="passport-serial-loss">
+      <div class="example-title">Example 3H — Serial Reduction Can Preserve One Task and Destroy Another</div>
+      <div class="level">Complexity Level 3 · Information monotonicity</div>
+
+      <p>
+        Let an integer state \(n\in\mathbb Z\) first be represented by
+      </p>
+
+      <div class="mathbox">
+        \[
+        r_1(n)=
+        \bigl(
+        \operatorname{sgn}(n),
+        n\bmod2
+        \bigr),
+        \]
+      </div>
+
+      <p>
+        and then reduced again to parity:
+      </p>
+
+      <div class="mathbox">
+        \[
+        r_2(s,p)=p.
+        \]
+      </div>
+
+      <p>
+        The composite is
+        \[
+        (r_2\circ r_1)(n)=n\bmod2.
+        \]
+      </p>
+
+      <div class="workstep">
+        <strong>Parity Task</strong>
+        \[
+        T_{\mathrm{parity}}(n)=n\bmod2
+        \]
+        survives both stages.
+      </div>
+
+      <div class="workstep">
+        <strong>Sign Task</strong>
+        \[
+        T_{\mathrm{sign}}(n)=\operatorname{sgn}(n)
+        \]
+        is available after \(r_1\) but not after \(r_2\circ r_1\).
+        For example,
+        \[
+        (r_2\circ r_1)(3)
+        =
+        (r_2\circ r_1)(-3)
+        =1,
+        \]
+        but
+        \[
+        \operatorname{sgn}(3)\neq\operatorname{sgn}(-3).
+        \]
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- ======================================================= -->
+  <!-- LEVEL 4 -->
+  <!-- ======================================================= -->
+
+  <section id="level-4">
+    <h2>16. Level 4 — Composition and Interface Failure</h2>
+
+    <div class="example" id="composition-basic">
+      <div class="example-title">Example 4A — Three Lawful Operations</div>
+      <div class="level">Complexity Level 4 · Composition · Typed Path</div>
+
+      <p>
+        Consider
+      </p>
+
+      <div class="mathbox">
+        \[
+        B_C
+        \xrightarrow{f}
+        B_K
+        \xrightarrow{g}
+        B_E,
+        \]
+      </div>
+
+      <p>where</p>
+
+      <div class="mathbox">
+        \[
+        f(c)=c+273.15
+        \]
+      </div>
+
+      <p>
+        converts Celsius to Kelvin and
+      </p>
+
+      <div class="mathbox">
+        \[
+        g(T)=k_B T
+        \]
+      </div>
+
+      <p>
+        maps absolute temperature to the thermal energy scale
+        \(E=k_BT\).
+      </p>
+
+      <p id="typed-path-example">
+        The typed path is meaningful because the output of \(f\) is exactly
+        the kind of input required by \(g\).
+      </p>
+
+      <div class="mathbox">
+        \[
+        (g\circ f)(c)
+        =
+        k_B(c+273.15).
+        \]
+      </div>
+    </div>
+
+    <div class="example" id="composition-failure">
+      <div class="example-title">Example 4B — Individually Valid Formulas, Invalid Chain</div>
+      <div class="level">Complexity Level 4 · Interface defect</div>
+
+      <p>
+        Replace \(f\) by an identity-number map
+      </p>
+
+      <div class="mathbox">
+        \[
+        \widehat f(c)=c
+        \]
+      </div>
+
+      <p>
+        while still pretending its output is Kelvin.
+        Algebraically,
+      </p>
+
+      <div class="mathbox">
+        \[
+        g(\widehat f(c))=k_Bc
+        \]
+      </div>
+
+      <p>
+        is writable.
+        But for \(c=0^\circ\mathrm C\),
+      </p>
+
+      <div class="mathbox">
+        \[
+        k_B(0)
+        \neq
+        k_B(273.15).
+        \]
+      </div>
+
+      <p>
+        The problem is not multiplication.
+        The Interface falsely retyped a Celsius number as an absolute
+        temperature.
+      </p>
+
+      <div class="warning" id="obstruction-example">
+        <strong>Obstruction:</strong>
+        the intermediate object does not satisfy the receiving Branch's
+        semantic and admissibility requirements.
+      </div>
+
+      <div class="success" id="repair-example">
+        <strong>Repair:</strong>
+        restore the lawful conversion
+        \[
+        f(c)=c+273.15.
+        \]
+        The chain is then re-audited.
+      </div>
+
+      <div class="note" id="minimal-repair-example">
+        <strong>Minimal repair question:</strong>
+        if no other defect exists, replacing only the bad Interface is
+        sufficient. Rebuilding unrelated Branches would not be minimal.
+      </div>
+    </div>
+
+    <div class="example" id="composition-domain-shrink">
+      <div class="example-title">Example 4C — Composition Shrinks the Usable Domain</div>
+      <div class="level">Complexity Level 4 · Partial composition · Exact domain calculation</div>
+
+      <p>
+        Let
+        \[
+        f:[0,\infty)\to[0,\infty),
+        \qquad
+        f(x)=\sqrt{x},
+        \]
+        and
+        \[
+        g:(0,\infty)\to\mathbb R,
+        \qquad
+        g(y)=\log y.
+        \]
+      </p>
+
+      <p>
+        Although \(f\) is defined at \(x=0\), the composite is not.
+        The composition domain is
+      </p>
+
+      <div class="calculation">
+        \[
+        D_{g\circ f}
+        =
+        \{x\ge0:f(x)>0\}
+        =
+        (0,\infty).
+        \]
+      </div>
+
+      <div class="workstep">
+        <strong>At \(x=4\)</strong>
+        \[
+        (g\circ f)(4)
+        =
+        \log(\sqrt4)
+        =
+        \log2.
+        \]
+      </div>
+
+      <div class="workstep">
+        <strong>At \(x=0\)</strong>
+        \[
+        f(0)=0,
+        \]
+        but \(0\notin D_g\). Therefore \(g(f(0))\) is undefined.
+      </div>
+    </div>
+
+    <div class="example" id="composition-passport-loss">
+      <div class="example-title">Example 4D — A Lawful Linear Chain that Violates a Norm Passport</div>
+      <div class="level">Complexity Level 4 · Local legality vs global preservation</div>
+
+      <p>
+        Define
+      </p>
+
+      <div class="mathbox">
+        \[
+        A:\mathbb R^2\to\mathbb R^3,
+        \qquad
+        A(x,y)=(x,y,0),
+        \]
+        \[
+        B:\mathbb R^3\to\mathbb R^2,
+        \qquad
+        B(u,v,w)=(2u,v).
+        \]
+      </div>
+
+      <p>
+        Both are lawful linear maps. Their composite is
+      </p>
+
+      <div class="mathbox">
+        \[
+        (B\circ A)(x,y)=(2x,y).
+        \]
+      </div>
+
+      <p>
+        Suppose the Passport requires Euclidean norm preservation.
+      </p>
+
+      <div class="workstep">
+        <strong>Source norm</strong>
+        \[
+        \|(x,y)\|^2=x^2+y^2.
+        \]
+      </div>
+
+      <div class="workstep">
+        <strong>Composite norm</strong>
+        \[
+        \|(2x,y)\|^2=4x^2+y^2.
+        \]
+      </div>
+
+      <p>
+        These are equal only when \(x=0\).
+        Thus the maps are linear and type-compatible, but the composite does
+        not satisfy the declared norm Passport on the full domain.
+      </p>
+    </div>
+
+    <div class="example" id="composition-reciprocal">
+      <div class="example-title">Example 4E — A Hidden Singularity Appears After Translation</div>
+      <div class="level">Complexity Level 4 · Domain pullback</div>
+
+      <p>
+        Let
+        \[
+        f(x)=x-1,
+        \qquad
+        g(y)=\frac1y.
+        \]
+      </p>
+
+      <p>
+        Then
+        \[
+        (g\circ f)(x)=\frac1{x-1}.
+        \]
+      </p>
+
+      <div class="calculation">
+        Since \(g\) requires \(y\neq0\), the composite requires
+        \[
+        f(x)\neq0
+        \iff
+        x-1\neq0
+        \iff
+        x\neq1.
+        \]
+      </div>
+
+      <p>
+        BM's composition audit explicitly pulls the downstream domain
+        requirement back through the upstream map.
+      </p>
+    </div>
+
+    <div class="example" id="composition-sampling">
+      <div class="example-title">Example 4F — Sample Values Without Sample Time Are Insufficient for a Derivative</div>
+      <div class="level">Complexity Level 4 · Interface information · Hidden metadata</div>
+
+      <p>
+        Let a continuous signal be sampled as
+        \[
+        x_0=10,
+        \qquad
+        x_1=14.
+        \]
+        A downstream finite-difference Operation wants
+      </p>
+
+      <div class="mathbox">
+        \[
+        \dot x\approx
+        \frac{x_1-x_0}{\Delta t}.
+        \]
+      </div>
+
+      <p>
+        If \(\Delta t=2\text{ s}\),
+        \[
+        \dot x\approx\frac{4}{2}=2\text{ units/s}.
+        \]
+        If \(\Delta t=0.5\text{ s}\),
+        \[
+        \dot x\approx\frac{4}{0.5}=8\text{ units/s}.
+        \]
+      </p>
+
+      <div class="warning">
+        The pair \((10,14)\) alone does not determine the derivative estimate.
+        Sample spacing is Interface/Passport information required by the
+        downstream Operation.
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- ======================================================= -->
+  <!-- LEVEL 5 -->
+  <!-- ======================================================= -->
+
+  <section id="level-5">
+    <h2>17. Level 5 — Parallel Paths and Coherence</h2>
+
+    <div class="example" id="path-coherence-example">
+      <div class="example-title">Example 5A — Two Routes to Kelvin</div>
+      <div class="level">Complexity Level 5 · Parallel paths · Coherence</div>
+
+      <p>
+        Route \(p\) converts Celsius directly to Kelvin:
+      </p>
+
+      <div class="mathbox">
+        \[
+        F_p(c)=c+273.15.
+        \]
+      </div>
+
+      <p>
+        Route \(q\) converts Celsius to Fahrenheit and then Fahrenheit
+        to Kelvin:
+      </p>
+
+      <div class="mathbox">
+        \[
+        c
+        \xrightarrow{f}
+        \frac95c+32
+        \xrightarrow{g}
+        \frac59(F-32)+273.15.
+        \]
+      </div>
+
+      <p>
+        Therefore
+      </p>
+
+      <div class="mathbox">
+        \[
+        F_q(c)
+        =
+        \frac59
+        \left(
+        \frac95c+32-32
+        \right)
+        +273.15
+        =
+        c+273.15.
+        \]
+      </div>
+
+      <p>
+        Hence
+      </p>
+
+      <div class="mathbox">
+        \[
+        F_p(c)=F_q(c)
+        \]
+      </div>
+
+      <p>
+        on the shared domain.
+      </p>
+
+      <p>
+        The parallel-path defect
+      </p>
+
+      <div class="mathbox">
+        \[
+        \Delta_{p,q}
+        =
+        \{c:F_p(c)\neq F_q(c)\}
+        \]
+      </div>
+
+      <p>
+        is empty.
+      </p>
+    </div>
+
+    <div class="example">
+      <div class="example-title">Example 5B — Numerical Coherence Instead of Exact Equality</div>
+      <div class="level">Complexity Level 5 · Sector-correct equivalence</div>
+
+      <p>
+        Suppose one path is evaluated in high precision and another path
+        is rounded to the nearest \(0.1\text{ K}\).
+        Exact equality may no longer be the correct requirement.
+      </p>
+
+      <p>
+        Define
+      </p>
+
+      <div class="mathbox">
+        \[
+        a\simeq_\varepsilon b
+        \iff
+        |a-b|\le\varepsilon.
+        \]
+      </div>
+
+      <p>
+        Then coherence becomes
+      </p>
+
+      <div class="mathbox">
+        \[
+        F_p(c)\simeq_\varepsilon F_q(c).
+        \]
+      </div>
+
+      <p>
+        BM therefore requires the destination notion of equality or
+        equivalence to be declared rather than assuming literal identity
+        in every sector.
+      </p>
+    </div>
+
+    <div class="example" id="higher-coherence-example">
+      <div class="example-title">Example 5C — From Pairwise Paths to Higher Coherence</div>
+      <div class="level">Complexity Level 5 · Higher compatibility</div>
+
+      <p>
+        With three representations \(B_1,B_2,B_3\), pairwise conversions
+        may form a cycle:
+      </p>
+
+      <div class="mathbox">
+        \[
+        B_1
+        \xrightarrow{F_{12}}
+        B_2
+        \xrightarrow{F_{23}}
+        B_3
+        \xrightarrow{F_{31}}
+        B_1.
+        \]
+      </div>
+
+      <p>
+        Pairwise maps being individually lawful does not automatically
+        prove cycle consistency.
+        One may additionally require
+      </p>
+
+      <div class="mathbox">
+        \[
+        F_{31}\circ F_{23}\circ F_{12}
+        \simeq
+        \operatorname{id}_{B_1}
+      \]
+      </div>
+
+      <p>
+        on the declared admissible domain.
+        This is a higher compatibility obligation generated by the
+        Network, not by any one local arrow alone.
+      </p>
+    </div>
+
+    <div class="example" id="coherence-basis">
+      <div class="example-title">Example 5D — Basis Change Must Close</div>
+      <div class="level">Complexity Level 5 · Inverse path · Exact matrix audit</div>
+
+      <p>
+        Let
+        \[
+        P=
+        \begin{pmatrix}
+        1&1\\
+        0&1
+        \end{pmatrix},
+        \qquad
+        P^{-1}=
+        \begin{pmatrix}
+        1&-1\\
+        0&1
+        \end{pmatrix}.
+        \]
+      </p>
+
+      <p>
+        For
+        \[
+        x=
+        \begin{pmatrix}
+        2\\3
+        \end{pmatrix},
+        \]
+        transform to the new coordinates:
+      </p>
+
+      <div class="calculation">
+        \[
+        y=Px
+        =
+        \begin{pmatrix}
+        1&1\\
+        0&1
+        \end{pmatrix}
+        \begin{pmatrix}
+        2\\3
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+        5\\3
+        \end{pmatrix}.
+        \]
+      </div>
+
+      <p>Transform back:</p>
+
+      <div class="calculation">
+        \[
+        P^{-1}y
+        =
+        \begin{pmatrix}
+        1&-1\\
+        0&1
+        \end{pmatrix}
+        \begin{pmatrix}
+        5\\3
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+        2\\3
+        \end{pmatrix}
+        =x.
+        \]
+      </div>
+
+      <p>
+        The cycle defect is zero for this exact pair of inverse maps.
+      </p>
+    </div>
+
+    <div class="example" id="coherence-units">
+      <div class="example-title">Example 5E — Three Unit Paths to the Same Speed</div>
+      <div class="level">Complexity Level 5 · Multi-route numerical agreement</div>
+
+      <p>
+        Start with
+        \[
+        v=90\text{ km/h}.
+        \]
+      </p>
+
+      <div class="workstep">
+        <strong>Direct path: km/h → m/s</strong>
+        \[
+        90\frac{\text{km}}{\text h}
+        \cdot
+        \frac{1000\text{ m}}{1\text{ km}}
+        \cdot
+        \frac{1\text{ h}}{3600\text{ s}}
+        =
+        25\text{ m/s}.
+        \]
+      </div>
+
+      <div class="workstep">
+        <strong>Path through miles per hour</strong>
+        Using \(1\text{ mile}=1.609344\text{ km}\),
+        \[
+        90\text{ km/h}
+        \approx55.9234\text{ mph}.
+        \]
+        Then using \(1\text{ mph}=0.44704\text{ m/s}\),
+        \[
+        55.9234(0.44704)
+        \approx25.0000\text{ m/s}.
+        \]
+      </div>
+
+      <p>
+        Exact definitions of the conversion constants make the paths
+        mathematically coherent; displayed decimal rounding introduces only
+        numerical presentation error.
+      </p>
+    </div>
+
+    <div class="example" id="coherence-calibration">
+      <div class="example-title">Example 5F — Calibration Loop Exposes an Offset Defect</div>
+      <div class="level">Complexity Level 5 · Cycle residual</div>
+
+      <p>
+        Suppose instrument \(A\) maps to instrument \(B\) by
+        \[
+        F_{AB}(x)=2x+1,
+        \]
+        while the claimed reverse calibration is
+        \[
+        F_{BA}(y)=\frac{y-0.8}{2}.
+        \]
+      </p>
+
+      <p>
+        Compose the loop:
+      </p>
+
+      <div class="calculation">
+        \[
+        (F_{BA}\circ F_{AB})(x)
+        =
+        \frac{(2x+1)-0.8}{2}
+        =
+        x+0.1.
+        \]
+      </div>
+
+      <p>
+        Therefore the cycle does not return the original value:
+        \[
+        \delta(x)
+        =
+        (F_{BA}\circ F_{AB})(x)-x
+        =
+        0.1.
+        \]
+      </p>
+
+      <div class="warning">
+        Each formula is individually well-defined. The defect appears only
+        when the Network requires the round-trip path to represent identity.
+      </div>
+    </div>
+
+    <div class="example" id="coherence-domain-overlap">
+      <div class="example-title">Example 5G — Coherence Is Tested Only Where Both Paths Exist</div>
+      <div class="level">Complexity Level 5 · Shared-domain requirement</div>
+
+      <p>
+        Let
+        \[
+        F_p(x)=\sqrt{x},
+        \qquad
+        D_p=[0,\infty),
+        \]
+        and
+        \[
+        F_q(x)=\frac{x}{\sqrt{x}},
+        \qquad
+        D_q=(0,\infty).
+        \]
+      </p>
+
+      <p>
+        For \(x>0\),
+        \[
+        F_q(x)=\sqrt{x}=F_p(x).
+        \]
+        But \(F_q\) is undefined at \(x=0\).
+      </p>
+
+      <div class="mathbox">
+        \[
+        D_p\cap D_q=(0,\infty).
+        \]
+      </div>
+
+      <p>
+        The correct coherence statement is equality on the shared domain,
+        not an unsupported claim that both paths are globally identical.
+      </p>
+    </div>
+
+  </section>
+
+
+  <!-- ======================================================= -->
+  <!-- LEVEL 6 -->
+  <!-- ======================================================= -->
+
+  <section id="level-6">
+    <h2>18. Level 6 — Response, Root, Export, and Re-entry</h2>
+
+    <div class="example" id="response-example">
+      <div class="example-title">Example 6A — Tree Produces a Response</div>
+      <div class="level">Complexity Level 6 · Tree · Response</div>
+
+      <p>
+        Let a small thermal-control Tree combine
+      </p>
+
+      <ul>
+        <li>a temperature Branch \(B_T\),</li>
+        <li>a target Branch \(B_\star\),</li>
+        <li>an error Interaction, and</li>
+        <li>a controller Operation.</li>
+      </ul>
+
+      <div class="mathbox">
+        \[
+        e=T_\star-T,
+        \qquad
+        u=K_pe.
+        \]
+      </div>
+
+      <p>
+        The organized computation produces a Response
+      </p>
+
+      <div class="mathbox">
+        \[
+        R=u.
+        \]
+      </div>
+
+      <p>
+        Producing \(u\) does not yet establish that \(u\) is admissible
+        for every downstream actuator.
+      </p>
+    </div>
+
+    <div class="example" id="root-example">
+      <div class="example-title">Example 6B — When a Response Becomes a Root</div>
+      <div class="level">Complexity Level 6 · Root decision</div>
+
+      <p>
+        Suppose the receiving actuator requires
+      </p>
+
+      <div class="mathbox">
+        \[
+        A_U=[-10,10].
+        \]
+      </div>
+
+      <p>
+        If the controller produces
+      </p>
+
+      <div class="mathbox">
+        \[
+        R=6,
+        \]
+      </div>
+
+      <p>
+        and all required Passport and Interface conditions are satisfied,
+        the Response is admissible for downstream use:
+      </p>
+
+      <div class="mathbox">
+        \[
+        R
+        \in
+        A_U.
+      \]
+      </div>
+
+      <p>
+        In this role,
+      </p>
+
+      <div class="mathbox">
+        \[
+        \boxed{
+        \text{Root}
+        =
+        \text{Response}
+        +
+        \text{verified downstream admissibility}.
+        }
+      \]
+      </div>
+
+      <p>
+        If instead \(R=15\), the Response exists but is not yet a lawful
+        Root for this actuator.
+      </p>
+    </div>
+
+    <div class="example" id="reentry-example">
+      <div class="example-title">Example 6C — Re-entry into New Mathematics</div>
+      <div class="level">Complexity Level 6 · Export · Re-entry</div>
+
+      <p>
+        Let the accepted controller output be exported into an actuator
+        model:
+      </p>
+
+      <div class="mathbox">
+        \[
+        u
+        \longmapsto
+        \dot x
+        =
+        Ax+Bu.
+      \]
+      </div>
+
+      <p>
+        Re-entry requires more than carrying the number \(u\) across the
+        boundary. The receiving dynamical system must verify:
+      </p>
+
+      <ul>
+        <li>input dimension;</li>
+        <li>units;</li>
+        <li>actuator bounds;</li>
+        <li>time convention;</li>
+        <li>regularity or measurability if required;</li>
+        <li>any stability or safety Passport.</li>
+      </ul>
+
+      <p id="rooting-example">
+        A candidate Rooting event occurs when the accepted Root is
+        lawfully attached to this new mathematical site and further
+        Branch development begins from that attachment.
+      </p>
+    </div>
+
+    <div class="example" id="root-repair">
+      <div class="example-title">Example 6D — Response Rejected, Repaired, and Re-tested</div>
+      <div class="level">Complexity Level 6 · Root gate · Repair semantics</div>
+
+      <p>
+        Suppose a controller produces
+        \[
+        R=15
+        \]
+        but the actuator admits only
+        \[
+        A_U=[-10,10].
+        \]
+      </p>
+
+      <div class="workstep">
+        <strong>Root test</strong>
+        \[
+        15\notin[-10,10].
+        \]
+        The Response exists, but it is not a Root for this receiving Branch.
+      </div>
+
+      <div class="workstep">
+        <strong>Candidate repair</strong>
+        Apply saturation:
+        \[
+        \rho(R)=\operatorname{clip}_{[-10,10]}(15)=10.
+        \]
+      </div>
+
+      <div class="workstep">
+        <strong>Re-test</strong>
+        \[
+        10\in[-10,10].
+        \]
+        The repaired value passes this actuator-domain test.
+      </div>
+
+      <div class="warning">
+        If the downstream Task required the exact value \(15\), clipping would
+        repair admissibility while failing the Task. Repair is therefore
+        evaluated against all relevant obligations, not one bound in isolation.
+      </div>
+    </div>
+
+    <div class="example" id="root-recursive">
+      <div class="example-title">Example 6E — Repeated Root Re-entry Under a Contraction</div>
+      <div class="level">Complexity Level 6 · Repeated Rooting · Explicit convergence</div>
+
+      <p>
+        Consider
+        \[
+        x_{n+1}=F(x_n),
+        \qquad
+        F(x)=\frac12x+1,
+        \]
+        with \(x_0=0\).
+      </p>
+
+      <div class="calculation">
+        \[
+        x_1=1,
+        \]
+        \[
+        x_2=\frac12(1)+1=1.5,
+        \]
+        \[
+        x_3=\frac12(1.5)+1=1.75,
+        \]
+        \[
+        x_4=\frac12(1.75)+1=1.875.
+        \]
+      </div>
+
+      <p>
+        The fixed point solves
+        \[
+        x^\star=\frac12x^\star+1,
+        \]
+        so
+        \[
+        x^\star=2.
+        \]
+      </p>
+
+      <p>
+        Error to the fixed point satisfies
+        \[
+        e_{n+1}
+        =
+        x^\star-x_{n+1}
+        =
+        \frac12(x^\star-x_n)
+        =
+        \frac12e_n.
+        \]
+      </p>
+
+      <p>
+        Thus each lawful re-entry halves the remaining error.
+        This is an example where repeated Root participation is naturally
+        iterative and ordinary fixed-point mathematics applies.
+      </p>
+    </div>
+
+    <div class="example" id="root-nonrecursive">
+      <div class="example-title">Example 6F — A Root Need Not Recur</div>
+      <div class="level">Complexity Level 6 · One-time export</div>
+
+      <p>
+        Suppose a previous Tree produces the symmetric matrix
+        \[
+        R=
+        \begin{pmatrix}
+        2&1\\
+        1&2
+        \end{pmatrix}.
+        \]
+      </p>
+
+      <p>
+        A receiving spectral Branch accepts symmetric matrices and computes
+        eigenvalues:
+        \[
+        \lambda\in\{1,3\}.
+        \]
+      </p>
+
+      <p>
+        \(R\) functions as a Root because it is admissible for the receiving
+        spectral calculation. Nothing requires that the resulting eigenvalues
+        be sent back into the original Tree.
+      </p>
+    </div>
+
+    <div class="example" id="root-relative">
+      <div class="example-title">Example 6G — Root Status Is Receiving-Interface Relative</div>
+      <div class="level">Complexity Level 6 · Multiple receivers</div>
+
+      <p>
+        Let one Response be
+        \[
+        R=8.
+        \]
+      </p>
+
+      <p>
+        Receiver \(A\) accepts
+        \[
+        A_A=[0,10],
+        \]
+        while receiver \(B\) accepts
+        \[
+        A_B=[0,5].
+        \]
+      </p>
+
+      <div class="workstep">
+        <strong>Receiver A</strong>
+        \[
+        8\in[0,10].
+        \]
+        The value may qualify as a Root for \(A\), subject to the remaining
+        Passport checks.
+      </div>
+
+      <div class="workstep">
+        <strong>Receiver B</strong>
+        \[
+        8\notin[0,5].
+        \]
+        The same Response is not a Root for \(B\).
+      </div>
+
+      <p>
+        Root status is therefore not an intrinsic label attached to a number
+        independently of its downstream mathematical context.
+      </p>
+    </div>
+
+  </section>
+
+
+  <!-- ======================================================= -->
+  <!-- LEVEL 7 -->
+  <!-- ======================================================= -->
+
+  <section id="level-7">
+    <h2>19. Level 7 — Mixed Semantic Sectors</h2>
+
+    <div class="example" id="deterministic-example">
+      <div class="example-title">Example 7A — Deterministic Map</div>
+      <div class="level">Complexity Level 7 · Deterministic sector</div>
+
+      <div class="mathbox">
+        \[
+        f:X\to Y,
+        \qquad
+        y=f(x).
+        \]
+      </div>
+
+      <p>
+        One input produces one output.
+        Ordinary function composition applies.
+      </p>
+    </div>
+
+    <div class="example" id="stochastic-example">
+      <div class="example-title">Example 7B — Noisy Sensor as a Markov Kernel</div>
+      <div class="level">Complexity Level 7 · Stochastic sector</div>
+
+      <p>
+        A noisy measurement should not be falsely represented as a
+        deterministic function if the same state can produce different
+        observations.
+      </p>
+
+      <div class="mathbox">
+        \[
+        K:X\rightsquigarrow Y.
+        \]
+      </div>
+
+      <p>
+        For a test function \(\phi:Y\to\mathbb R\),
+      </p>
+
+      <div class="mathbox">
+        \[
+        K^\dagger\phi(x)
+        =
+        \int_Y\phi(y)\,K(x,dy).
+        \]
+      </div>
+
+      <p>
+        If another stochastic channel \(L:Y\rightsquigarrow Z\) follows,
+        composition uses kernel integration:
+      </p>
+
+      <div class="mathbox">
+        \[
+        (L\circ K)(x,A)
+        =
+        \int_Y
+        L(y,A)\,
+        K(x,dy).
+        \]
+      </div>
+
+      <p>
+        This is not the deterministic formula \(L(K(x))\).
+      </p>
+    </div>
+
+    <div class="example" id="nondeterministic-example">
+      <div class="example-title">Example 7C — Nondeterministic Relation</div>
+      <div class="level">Complexity Level 7 · Relational semantics</div>
+
+      <p>
+        Let
+      </p>
+
+      <div class="mathbox">
+        \[
+        R:X\rightrightarrows Y.
+        \]
+      </div>
+
+      <p>
+        For a target set \(U\subseteq Y\), existential reachability is
+      </p>
+
+      <div class="mathbox">
+        \[
+        \Diamond_R(U)
+        =
+        \{x:\exists y\in U,\;xRy\},
+        \]
+      </div>
+
+      <p>while universal safety is</p>
+
+      <div class="mathbox">
+        \[
+        \Box_R(U)
+        =
+        \{x:\forall y,\;xRy\Rightarrow y\in U\}.
+        \]
+      </div>
+
+      <p>
+        These answer different questions.
+        A state may have at least one safe continuation while also having
+        an unsafe continuation.
+      </p>
+    </div>
+
+    <div class="example" id="joint-feasibility-example">
+      <div class="example-title">Example 7D — Joint Feasibility Requires Shared Witnesses</div>
+      <div class="level">Complexity Level 7 · Quantifier scope</div>
+
+      <p>
+        Suppose a control choice \(u\) must satisfy two Tasks:
+      </p>
+
+      <div class="mathbox">
+        \[
+        u\in P_1(x),
+        \qquad
+        u\in P_2(x).
+        \]
+      </div>
+
+      <p>
+        It is not enough that
+      </p>
+
+      <div class="mathbox">
+        \[
+        P_1(x)\neq\varnothing
+        \qquad\text{and}\qquad
+        P_2(x)\neq\varnothing.
+        \]
+      </div>
+
+      <p>
+        Joint feasibility requires
+      </p>
+
+      <div class="mathbox">
+        \[
+        P_1(x)\cap P_2(x)\neq\varnothing.
+        \]
+      </div>
+
+      <p>
+        Otherwise separate witnesses may satisfy each Task individually
+        while no single choice satisfies both.
+      </p>
+    </div>
+
+    <div class="example" id="coupling-example">
+      <div class="example-title">Example 7E — Coupling Two Marginal Models</div>
+      <div class="level">Complexity Level 7 · Coupling</div>
+
+      <p>
+        Suppose two stochastic Branches specify marginals
+        \(\mu\) and \(\nu\).
+        A joint model requires a coupling
+      </p>
+
+      <div class="mathbox">
+        \[
+        \pi\in\Pi(\mu,\nu).
+        \]
+      </div>
+
+      <p>
+        Knowing both marginals does not uniquely determine the joint law.
+        If a downstream Task depends on correlation, the coupling itself
+        becomes Passport-relevant information.
+      </p>
+    </div>
+
+    <div class="example" id="stochastic-matrix-example">
+      <div class="example-title">Example 7F — Discrete Markov Kernels Composed Numerically</div>
+      <div class="level">Complexity Level 7 · Stochastic composition · Full arithmetic</div>
+
+      <p>
+        Let
+        \[
+        K=
+        \begin{pmatrix}
+        0.8&0.2\\
+        0.3&0.7
+        \end{pmatrix},
+        \qquad
+        L=
+        \begin{pmatrix}
+        0.9&0.1\\
+        0.4&0.6
+        \end{pmatrix}.
+        \]
+      </p>
+
+      <p>
+        Each row sums to \(1\), so each matrix may represent a finite-state
+        Markov kernel.
+      </p>
+
+      <div class="calculation">
+        \[
+        KL
+        =
+        \begin{pmatrix}
+        0.8(0.9)+0.2(0.4) &
+        0.8(0.1)+0.2(0.6)\\
+        0.3(0.9)+0.7(0.4) &
+        0.3(0.1)+0.7(0.6)
+        \end{pmatrix}
+        \]
+        \[
+        =
+        \begin{pmatrix}
+        0.80&0.20\\
+        0.55&0.45
+        \end{pmatrix}.
+        \]
+      </div>
+
+      <p>
+        The first input state therefore reaches the two final states with
+        probabilities \(0.80\) and \(0.20\).
+      </p>
+    </div>
+
+    <div class="example" id="nondeterministic-finite-example">
+      <div class="example-title">Example 7G — “May” and “Must” Give Different Answers</div>
+      <div class="level">Complexity Level 7 · Explicit finite relation</div>
+
+      <p>
+        Let
+        \[
+        R(1)=\{a,b\},
+        \qquad
+        R(2)=\{b\},
+        \]
+        and let the desired set be
+        \[
+        U=\{b\}.
+        \]
+      </p>
+
+      <div class="workstep">
+        <strong>May reach \(U\)</strong>
+        State \(1\) has one continuation \(b\in U\), and state \(2\) also
+        reaches \(b\). Hence
+        \[
+        \Diamond_R(U)=\{1,2\}.
+        \]
+      </div>
+
+      <div class="workstep">
+        <strong>Must remain in \(U\)</strong>
+        State \(1\) can also continue to \(a\notin U\), so it fails the
+        universal condition. State \(2\) has only continuation \(b\).
+        Therefore
+        \[
+        \Box_R(U)=\{2\}.
+        \]
+      </div>
+
+      <p>
+        Replacing \(\Box\) by \(\Diamond\) would change a safety statement
+        into an existence statement.
+      </p>
+    </div>
+
+    <div class="example" id="quantum-channel-example">
+      <div class="example-title">Example 7H — A Quantum Dephasing Channel Preserves Some Tasks and Destroys Another</div>
+      <div class="level">Complexity Level 7 · Density matrix · Channel · Passport distinction</div>
+
+      <p>
+        Consider the pure qubit state
+        \[
+        |+\rangle
+        =
+        \frac{|0\rangle+|1\rangle}{\sqrt2},
+        \]
+        with density matrix
+      </p>
+
+      <div class="mathbox">
+        \[
+        \rho
+        =
+        |+\rangle\langle+|
+        =
+        \frac12
+        \begin{pmatrix}
+        1&1\\
+        1&1
+        \end{pmatrix}.
+        \]
+      </div>
+
+      <p>
+        Complete dephasing in the computational basis gives
+      </p>
+
+      <div class="mathbox">
+        \[
+        \mathcal D(\rho)
+        =
+        \frac12
+        \begin{pmatrix}
+        1&0\\
+        0&1
+        \end{pmatrix}.
+        \]
+      </div>
+
+      <div class="workstep">
+        <strong>\(\sigma_z\) expectation</strong>
+        Both before and after dephasing,
+        \[
+        \operatorname{Tr}(\rho\sigma_z)=0.
+        \]
+        A Task asking only for this expectation survives.
+      </div>
+
+      <div class="workstep">
+        <strong>\(\sigma_x\) expectation</strong>
+        Before dephasing,
+        \[
+        \operatorname{Tr}(\rho\sigma_x)=1.
+        \]
+        After dephasing,
+        \[
+        \operatorname{Tr}(\mathcal D(\rho)\sigma_x)=0.
+        \]
+      </div>
+
+      <p>
+        The channel preserves trace and positivity while destroying
+        off-diagonal coherence relevant to the \(\sigma_x\) Task.
+        A quantum Passport must therefore be native to the operator sector.
+      </p>
+    </div>
+
+    <div class="example" id="mixed-semantic-chain">
+      <div class="example-title">Example 7I — One Chain Containing Deterministic, Stochastic, and Relational Steps</div>
+      <div class="level">Complexity Level 7 · Mixed semantics · No forced unification</div>
+
+      <p>
+        Let the true binary state be
+        \[
+        x\in\{0,1\}.
+        \]
+        A deterministic preprocessing map copies the state:
+        \[
+        f(x)=x.
+        \]
+      </p>
+
+      <p>
+        A noisy sensor then uses
+        \[
+        K=
+        \begin{pmatrix}
+        0.9&0.1\\
+        0.2&0.8
+        \end{pmatrix}.
+        \]
+      </p>
+
+      <p>
+        Finally, a nondeterministic decision rule permits
+        \[
+        R(0)=\{\text{wait}\},
+        \qquad
+        R(1)=\{\text{act},\text{wait}\}.
+        \]
+      </p>
+
+      <p>
+        The full chain cannot be represented correctly by writing one
+        ordinary function
+        \[
+        R(K(f(x))).
+        \]
+        The middle object is a probability distribution, and the final object
+        is set-valued. BM keeps the semantic type of each edge explicit.
+      </p>
+    </div>
+
+  </section>
+
+
+  <!-- ======================================================= -->
+  <!-- LEVEL 8 -->
+  <!-- ======================================================= -->
+
+  <section id="level-8">
+    <h2>20. Level 8 — Full BM Configuration</h2>
+
+    <div class="example" id="full-system">
+      <div class="example-title">Example 8A — Multi-Branch Thermal Power and Control Network</div>
+      <div class="level">Complexity Level 8 · Full Configuration · Network · Obstruction · Repair · Root</div>
+
+      <p>
+        Consider a simplified electrically heated thermal system. The native
+        equations come from ordinary circuit, thermal, stochastic-sensing,
+        estimation, and control mathematics. The BM question is whether all
+        of those pieces can participate in one configuration without losing
+        their types, domains, uncertainties, limits, or downstream
+        requirements.
+      </p>
+
+      <h4>Step 1 — Native mathematics</h4>
+
+      <p>
+        Electrical power:
+      </p>
+
+      <div class="mathbox">
+        \[
+        P_e=VI.
+        \]
+      </div>
+
+      <p>
+        Lumped thermal dynamics:
+      </p>
+
+      <div class="mathbox">
+        \[
+        C\dot T
+        =
+        \eta P_e
+        -
+        h(T-T_a).
+        \]
+      </div>
+
+      <p>
+        Sensor model:
+      </p>
+
+      <div class="mathbox">
+        \[
+        Y=T+\varepsilon,
+        \qquad
+        \varepsilon\sim\mathcal N(0,\sigma^2).
+        \]
+      </div>
+
+      <p>
+        Controller:
+      </p>
+
+      <div class="mathbox">
+        \[
+        e=T_\star-\widehat T,
+        \qquad
+        u=\operatorname{sat}_{[0,1]}(K_pe).
+        \]
+      </div>
+
+      <p>
+        Actuator relation:
+      </p>
+
+      <div class="mathbox">
+        \[
+        V=uV_{\max}.
+        \]
+      </div>
+
+
+      <h4>Step 2 — Branch declarations</h4>
+
+      <div class="grid" id="branch-network">
+        <div class="mini-card">
+          <strong>\(B_T\)</strong><br>
+          physical temperature state
+        </div>
+        <div class="mini-card">
+          <strong>\(B_{T_a}\)</strong><br>
+          ambient temperature
+        </div>
+        <div class="mini-card">
+          <strong>\(B_V\)</strong><br>
+          voltage
+        </div>
+        <div class="mini-card">
+          <strong>\(B_I\)</strong><br>
+          current
+        </div>
+        <div class="mini-card">
+          <strong>\(B_P\)</strong><br>
+          electrical power
+        </div>
+        <div class="mini-card">
+          <strong>\(B_Y\)</strong><br>
+          stochastic sensor observation
+        </div>
+        <div class="mini-card">
+          <strong>\(B_{\widehat T}\)</strong><br>
+          estimated temperature
+        </div>
+        <div class="mini-card">
+          <strong>\(B_e\)</strong><br>
+          control error
+        </div>
+        <div class="mini-card">
+          <strong>\(B_u\)</strong><br>
+          bounded command
+        </div>
+        <div class="mini-card">
+          <strong>\(B_\mathcal S\)</strong><br>
+          safety state
+        </div>
+      </div>
+
+
+      <h4>Step 3 — Admissible domains</h4>
+
+      <div class="mathbox">
+        \[
+        T\ge0,
+        \qquad
+        0\le V\le V_{\max},
+        \qquad
+        |I|\le I_{\max},
+        \qquad
+        0\le u\le1.
+        \]
+      </div>
+
+      <p>
+        A safety envelope additionally requires
+      </p>
+
+      <div class="mathbox">
+        \[
+        T\le T_{\max}.
+        \]
+      </div>
+
+
+      <h4>Step 4 — Interactions</h4>
+
+      <p>
+        Electrical Interaction:
+      </p>
+
+      <div class="mathbox">
+        \[
+        \mathcal I_E(V,I)=VI.
+        \]
+      </div>
+
+      <p>
+        Thermal Interaction:
+      </p>
+
+      <div class="mathbox">
+        \[
+        \mathcal I_T(T,T_a,P_e)
+        =
+        \frac{\eta P_e-h(T-T_a)}{C}.
+        \]
+      </div>
+
+      <p>
+        Control Interaction:
+      </p>
+
+      <div class="mathbox">
+        \[
+        \mathcal I_C(T_\star,\widehat T)
+        =
+        \operatorname{sat}_{[0,1]}
+        \left(
+        K_p(T_\star-\widehat T)
+        \right).
+        \]
+      </div>
+
+
+      <h4>Step 5 — Leaves</h4>
+
+      <p>
+        Useful extracted information includes
+      </p>
+
+      <div class="mathbox">
+        \[
+        L_P=P_e,
+        \qquad
+        L_{\dot T}=\dot T,
+        \qquad
+        L_e=e,
+        \qquad
+        L_u=u.
+        \]
+      </div>
+
+
+      <h4>Step 6 — Passports</h4>
+
+      <p>
+        A possible safety/control Passport requires retention of:
+      </p>
+
+      <ul>
+        <li>temperature unit;</li>
+        <li>temperature uncertainty;</li>
+        <li>maximum allowable temperature;</li>
+        <li>actuator saturation bounds;</li>
+        <li>current limit;</li>
+        <li>sample time or time coordinate;</li>
+        <li>sensor/model regime;</li>
+        <li>the distinction between estimated and physical temperature.</li>
+      </ul>
+
+      <p id="law-passport-example">
+        A Law Passport additionally records which thermal evolution law and
+        parameter regime is active.
+      </p>
+
+
+      <h4>Step 7 — Operations and Interfaces</h4>
+
+      <div class="mathbox">
+        \[
+        B_T
+        \rightsquigarrow
+        B_Y
+        \to
+        B_{\widehat T}
+        \to
+        B_e
+        \to
+        B_u
+        \to
+        B_V
+        \to
+        B_P
+        \to
+        B_T.
+        \]
+      </div>
+
+      <p>
+        The first arrow is stochastic.
+        Later arrows may be deterministic.
+        The thermal state closes the feedback loop through continuous-time
+        dynamics.
+      </p>
+
+
+      <h4>Step 8 — Composition audit</h4>
+
+      <p>
+        The system cannot be certified merely by checking each formula in
+        isolation.
+        At minimum the composite must verify:
+      </p>
+
+      <ul>
+        <li>measurement output type is accepted by the estimator;</li>
+        <li>estimator units agree with the controller;</li>
+        <li>controller output respects actuator bounds;</li>
+        <li>actuator voltage respects electrical limits;</li>
+        <li>electrical output is compatible with the thermal model;</li>
+        <li>the resulting trajectory remains inside the safety envelope.</li>
+      </ul>
+
+
+      <h4>Step 9 — Coherence check</h4>
+
+      <p>
+        Suppose temperature is available through both a direct calibrated
+        sensor path and a model-based estimator path:
+      </p>
+
+      <div class="mathbox">
+        \[
+        F_p:Y\mapsto\widehat T_{\mathrm{sensor}},
+        \qquad
+        F_q:(V,I,T_a)\mapsto\widehat T_{\mathrm{model}}.
+        \]
+      </div>
+
+      <p>
+        A diagnostic coherence condition may require
+      </p>
+
+      <div class="mathbox">
+        \[
+        \left|
+        \widehat T_{\mathrm{sensor}}
+        -
+        \widehat T_{\mathrm{model}}
+        \right|
+        \le\delta.
+        \]
+      </div>
+
+      <p>
+        A violation creates a coherence defect rather than being silently
+        averaged away.
+      </p>
+
+
+      <h4>Step 10 — Obstruction</h4>
+
+      <p>
+        Suppose sensor uncertainty grows until
+      </p>
+
+      <div class="mathbox">
+        \[
+        \Pr(T>T_{\max}\mid Y)
+        >
+        p_{\max}.
+        \]
+      </div>
+
+      <p>
+        The existing information is no longer sufficient for the safety
+        Task under the declared risk tolerance.
+      </p>
+
+      <div class="warning">
+        The obstruction is not “the controller is bad” in the abstract.
+        The obstruction is the failure of the current observation and
+        uncertainty state to certify the required safety Task.
+      </div>
+
+
+      <h4>Step 11 — Repair</h4>
+
+      <p>
+        Possible repairs include:
+      </p>
+
+      <ul>
+        <li>retain a second sensor channel;</li>
+        <li>reduce actuation while uncertainty is high;</li>
+        <li>change the estimator regime;</li>
+        <li>increase observation rate;</li>
+        <li>tighten the admissible command set.</li>
+      </ul>
+
+      <p>
+        BM/GURF then asks which repair restores the required Passport with
+        the least unnecessary structural change.
+      </p>
+
+
+      <h4>Step 12 — Response</h4>
+
+      <p>
+        The repaired controller may produce
+      </p>
+
+      <div class="mathbox">
+        \[
+        R=u^\star.
+        \]
+      </div>
+
+
+      <h4>Step 13 — Root decision</h4>
+
+      <p>
+        \(u^\star\) becomes a Root for the actuator Branch only if
+      </p>
+
+      <div class="mathbox">
+        \[
+        0\le u^\star\le1
+      \]
+      </div>
+
+      <p>
+        and all other receiving conditions are satisfied.
+      </p>
+
+
+      <h4>Step 14 — Re-entry</h4>
+
+      <p>
+        The Root is re-entered into the actuator and thermal dynamics,
+        generating the next state and therefore new mathematical
+        participation.
+      </p>
+
+      <div class="mathbox">
+        \[
+        u^\star
+        \to
+        V
+        \to
+        P_e
+        \to
+        \dot T
+        \to
+        T(t+\Delta t).
+        \]
+      </div>
+
+
+      <h4>Step 15 — Configuration-level reading</h4>
+
+      <p>
+        At this point the circuit law, thermal evolution, sensor model,
+        estimator, controller, and safety conditions are all present at once.
+        BM records them as one typed configuration while leaving each native
+        law intact. The useful object is the complete dependency structure:
+        what enters, what is extracted, what must be preserved, what may
+        fail, and what may be reused.
+      </p>
+
+      <div class="mathbox" id="configuration-example">
+        \[
+        \mathcal X
+        =
+        \left(
+        \{B_i\},
+        \{\mathcal I_j\},
+        \{F_e\},
+        \mathcal P,
+        \mathcal C
+        \right).
+        \]
+      </div>
+
+      <p id="network-example">
+        The corresponding Network contains typed nodes, typed edges,
+        stochastic and deterministic paths, feedback, safety constraints,
+        Passport obligations, and coherence tests.
+      </p>
+    </div>
+
+    <div class="example" id="branch-full-system">
+      <div class="example-title">Example 8B — Why “Branch” Scales Beyond a Scalar</div>
+      <div class="level">Complexity Level 8 · Branch full-system use</div>
+
+      <p>
+        In the full system above, a Branch may carry a scalar, probability
+        law, state vector, trajectory, admissible set, operator, or other
+        native mathematical object.
+        What matters is not that every Branch has the same carrier.
+        What matters is that its type, laws, admissibility, and interfaces
+        are declared strongly enough for the global configuration to be
+        checked.
+      </p>
+    </div>
+
+    <div class="example" id="conservative-passport-example">
+      <div class="example-title">Example 8C — Conservative Passport</div>
+      <div class="level">Complexity Level 8 · Conservation tracking</div>
+
+      <p>
+        Suppose a mechanical subproblem exports a reduced state but later
+        mathematics still requires total momentum.
+        The reduced representation may omit microscopic coordinates while
+        retaining
+      </p>
+
+      <div class="mathbox">
+        \[
+        P_{\mathrm{tot}}
+        =
+        \sum_i p_i.
+        \]
+      </div>
+
+      <p>
+        The conserved quantity acts as Passport information that survives
+        representation change even when finer state detail is removed.
+      </p>
+    </div>
+
+    <div class="example" id="full-navigation-system">
+      <div class="example-title">Example 8D — Sensor-Fusion Navigation Configuration</div>
+      <div class="level">Complexity Level 8 · State estimation · Covariance · Control · Safety</div>
+
+      <p>
+        Consider a planar vehicle with state
+        \[
+        x_k=
+        \begin{pmatrix}
+        p_x&p_y&v_x&v_y
+        \end{pmatrix}^{\!\top}.
+        \]
+        A simple discrete kinematic model is
+      </p>
+
+      <div class="mathbox">
+        \[
+        x_{k+1}=Ax_k+Bu_k+w_k.
+        \]
+      </div>
+
+      <p>
+        GPS provides a noisy position observation
+        \[
+        z_k=Hx_k+v_k.
+        \]
+        An estimator carries both a state estimate
+        \(\widehat x_k\) and covariance \(P_k\).
+      </p>
+
+      <h4>Branch set</h4>
+      <ul>
+        <li>\(B_x\): physical state;</li>
+        <li>\(B_u\): control input;</li>
+        <li>\(B_z\): stochastic GPS observation;</li>
+        <li>\(B_{\widehat x}\): estimated state;</li>
+        <li>\(B_P\): covariance matrix;</li>
+        <li>\(B_{\mathrm{obs}}\): obstacle geometry;</li>
+        <li>\(B_{\mathrm{route}}\): requested route;</li>
+        <li>\(B_{\mathrm{cmd}}\): admissible control command.</li>
+      </ul>
+
+      <h4>Covariance Passport</h4>
+      <p>
+        A controller may require
+        \[
+        \operatorname{tr}(P_k)\le P_{\max}
+        \]
+        before allowing a high-speed command.
+      </p>
+
+      <div class="workstep">
+        <strong>Case 1</strong>
+        If
+        \[
+        P_k=
+        \begin{pmatrix}
+        0.2&0\\
+        0&0.3
+        \end{pmatrix},
+        \qquad
+        \operatorname{tr}(P_k)=0.5,
+        \]
+        and \(P_{\max}=1\), the uncertainty gate passes.
+      </div>
+
+      <div class="workstep">
+        <strong>Case 2</strong>
+        If
+        \[
+        P_k=
+        \begin{pmatrix}
+        1.4&0\\
+        0&0.9
+        \end{pmatrix},
+        \qquad
+        \operatorname{tr}(P_k)=2.3>1,
+        \]
+        the same route request no longer justifies the same command.
+      </div>
+
+      <p>
+        A repair may reduce speed, request another observation, or switch
+        estimation regime. The route, state estimate, covariance, and safety
+        decision are separate Branch roles rather than one undifferentiated
+        “navigation value.”
+      </p>
+    </div>
+
+    <div class="example" id="full-energy-chain">
+      <div class="example-title">Example 8E — Electrical → Mechanical → Thermal Energy Chain</div>
+      <div class="level">Complexity Level 8 · Multi-physics interfaces · Singularity and conservation audit</div>
+
+      <p>
+        Let electrical input satisfy
+        \[
+        P_e=VI.
+        \]
+        A motor converts electrical power to mechanical power with efficiency
+        \(\eta\):
+      </p>
+
+      <div class="mathbox">
+        \[
+        P_m=\eta P_e.
+        \]
+      </div>
+
+      <p>
+        Mechanical power relates torque and angular speed by
+        \[
+        P_m=\tau\omega.
+        \]
+        Waste heat is
+        \[
+        P_h=(1-\eta)P_e.
+        \]
+      </p>
+
+      <div class="calculation">
+        Take
+        \[
+        V=48\text{ V},
+        \qquad
+        I=10\text{ A},
+        \qquad
+        \eta=0.90,
+        \qquad
+        \omega=30\text{ rad/s}.
+        \]
+        Then
+        \[
+        P_e=48(10)=480\text{ W},
+        \]
+        \[
+        P_m=0.9(480)=432\text{ W},
+        \]
+        \[
+        P_h=0.1(480)=48\text{ W},
+        \]
+        and
+        \[
+        \tau=\frac{P_m}{\omega}
+        =
+        \frac{432}{30}
+        =
+        14.4\text{ N m}.
+        \]
+      </div>
+
+      <p>
+        Energy accounting closes:
+        \[
+        P_m+P_h=432+48=480=P_e.
+        \]
+      </p>
+
+      <div class="warning">
+        If \(\omega=0\), the formula
+        \[
+        \tau=P_m/\omega
+        \]
+        is singular. The motor may still exert stall torque, but that requires
+        a different native constitutive relation. BM marks the regime change
+        instead of extending this formula through a point where it does not
+        apply.
+      </div>
+    </div>
+
+    <div class="example" id="full-data-pipeline">
+      <div class="example-title">Example 8F — Information Pipeline with Compression, Prediction, and Audit</div>
+      <div class="level">Complexity Level 8 · Representation · Loss · Model Task · Provenance</div>
+
+      <p>
+        Let a source record be
+        \[
+        x=(a,b,c,d).
+        \]
+        A compressor retains only
+        \[
+        r(x)=(a,b).
+        \]
+        A predictor uses
+        \[
+        \widehat y=\beta_0+\beta_1a+\beta_2b.
+        \]
+      </p>
+
+      <p>
+        For a prediction Task depending only on \(a,b\), the reduction may be
+        sufficient. For an audit Task requiring \(c\) or \(d\), it is not.
+      </p>
+
+      <div class="workstep">
+        <strong>Two source states</strong>
+        \[
+        x_1=(1,2,10,4),
+        \qquad
+        x_2=(1,2,99,7).
+        \]
+      </div>
+
+      <div class="workstep">
+        <strong>Compressed representation</strong>
+        \[
+        r(x_1)=r(x_2)=(1,2).
+        \]
+      </div>
+
+      <div class="workstep">
+        <strong>Prediction Task</strong>
+        Both states generate the same \(\widehat y\) because the model uses
+        only \(a,b\).
+      </div>
+
+      <div class="workstep">
+        <strong>Audit Task \(T(x)=c\)</strong>
+        \[
+        T(x_1)=10,
+        \qquad
+        T(x_2)=99.
+        \]
+        The compressed representation cannot support that audit.
+      </div>
+
+      <p>
+        This is the same BM distinction-preservation problem expressed in a
+        computational rather than physical system.
+      </p>
+    </div>
+
+
+    <div class="example" id="full-system-worked-run">
+      <div class="example-title">Example 8G — One Complete Pass Through a Stochastic Electro-Thermal Control Tree</div>
+      <div class="level">Complexity Level 8 · Numeric end-to-end run · Parallel observation · Leaf chain · Root gate</div>
+
+      <p>
+        The symbolic full-system example becomes easier to judge when every
+        major quantity is given a number. We therefore run one complete
+        control step.
+      </p>
+
+      <h4>Given Branch states</h4>
+
+      <table>
+        <tbody>
+          <tr><th>Quantity</th><th>Value</th></tr>
+          <tr><td>Target temperature</td><td>\(T_\star=100^\circ\mathrm C\)</td></tr>
+          <tr><td>Sensor 1</td><td>\(Y_1=92.0^\circ\mathrm C,\ \sigma_1=1.0^\circ\mathrm C\)</td></tr>
+          <tr><td>Sensor 2</td><td>\(Y_2=94.0^\circ\mathrm C,\ \sigma_2=2.0^\circ\mathrm C\)</td></tr>
+          <tr><td>Model estimate</td><td>\(\widehat T_{\rm model}=90.7^\circ\mathrm C\)</td></tr>
+          <tr><td>Controller gain</td><td>\(K_p=0.08\)</td></tr>
+          <tr><td>Maximum voltage</td><td>\(V_{\max}=120\text{ V}\)</td></tr>
+          <tr><td>Heater resistance</td><td>\(R_h=6\Omega\)</td></tr>
+          <tr><td>Thermal efficiency</td><td>\(\eta=0.95\)</td></tr>
+          <tr><td>Ambient temperature</td><td>\(T_a=25^\circ\mathrm C\)</td></tr>
+          <tr><td>Thermal loss coefficient</td><td>\(h=10\text{ W/K}\)</td></tr>
+          <tr><td>Thermal capacity</td><td>\(C=5000\text{ J/K}\)</td></tr>
+        </tbody>
+      </table>
+
+      <h4>Interaction 1 — fuse the two stochastic observations</h4>
+
+      <p>
+        Under independent Gaussian measurement errors, inverse-variance
+        weighting gives
+      </p>
+
+      <div class="mathbox">
+        \[
+        \widehat T
+        =
+        \frac{Y_1/\sigma_1^2+Y_2/\sigma_2^2}
+        {1/\sigma_1^2+1/\sigma_2^2}.
+        \]
+      </div>
+
+      <div class="calculation">
+        \[
+        \widehat T
+        =
+        \frac{92/1^2+94/2^2}
+        {1/1^2+1/2^2}
+        =
+        \frac{92+23.5}{1+0.25}
+        =
+        \frac{115.5}{1.25}
+        =
+        92.4^\circ\mathrm C.
+        \]
+      </div>
+
+      <p>
+        The fused-estimate Leaf is
+        \[
+        L_{\widehat T}=92.4^\circ\mathrm C.
+        \]
+        Its variance is
+      </p>
+
+      <div class="calculation">
+        \[
+        \sigma_{\widehat T}^2
+        =
+        \frac{1}{1/\sigma_1^2+1/\sigma_2^2}
+        =
+        \frac1{1.25}
+        =
+        0.8,
+        \]
+        so
+        \[
+        \sigma_{\widehat T}\approx0.894^\circ\mathrm C.
+        \]
+      </div>
+
+      <p>
+        The uncertainty is a second Leaf. It is not interchangeable with the
+        temperature estimate itself.
+      </p>
+
+      <h4>Parallel-path coherence check</h4>
+
+      <div class="calculation">
+        \[
+        \Delta_{\rm coh}
+        =
+        |\widehat T-\widehat T_{\rm model}|
+        =
+        |92.4-90.7|
+        =
+        1.7^\circ\mathrm C.
+        \]
+      </div>
+
+      <p>
+        With a declared tolerance
+        \[
+        \delta_{\rm coh}=2^\circ\mathrm C,
+        \]
+        the path-coherence Passport passes:
+        \[
+        1.7<2.
+        \]
+      </p>
+
+      <h4>Interaction 2 — form the control-error Leaf</h4>
+
+      <div class="calculation">
+        \[
+        L_e
+        =
+        T_\star-\widehat T
+        =
+        100-92.4
+        =
+        7.6^\circ\mathrm C.
+        \]
+      </div>
+
+      <h4>Interaction 3 — controller Response candidate</h4>
+
+      <div class="calculation">
+        \[
+        u_{\rm raw}
+        =
+        K_pL_e
+        =
+        0.08(7.6)
+        =
+        0.608.
+        \]
+      </div>
+
+      <p>
+        Since
+        \[
+        0\le0.608\le1,
+        \]
+        saturation does not alter the command:
+        \[
+        L_u=0.608.
+        \]
+      </p>
+
+      <h4>Interaction 4 — electrical Leaves</h4>
+
+      <div class="calculation">
+        \[
+        V
+        =
+        uV_{\max}
+        =
+        0.608(120)
+        =
+        72.96\text{ V},
+        \]
+        \[
+        I
+        =
+        \frac{V}{R_h}
+        =
+        \frac{72.96}{6}
+        =
+        12.16\text{ A},
+        \]
+        \[
+        P_e
+        =
+        VI
+        =
+        (72.96)(12.16)
+        \approx887.19\text{ W}.
+        \]
+      </div>
+
+      <p>
+        The electrical Interaction exposes useful Leaves
+        \[
+        L_V=72.96\text{ V},
+        \quad
+        L_I=12.16\text{ A},
+        \quad
+        L_P\approx887.19\text{ W}.
+        \]
+      </p>
+
+      <h4>Interaction 5 — predicted thermal-rate Leaf</h4>
+
+      <p>
+        The physical thermal law uses the physical temperature \(T\). In this
+        control calculation that state is not directly available, so the
+        predictor explicitly evaluates the model at the estimate
+        \(\widehat T\):
+        \[
+        C\widehat{\dot T}
+        =
+        \eta P_e-h(\widehat T-T_a).
+        \]
+        The hat matters: this is a predicted rate, not an identification of
+        estimated and physical state.
+      </p>
+
+      <div class="calculation">
+        \[
+        \eta P_e
+        =
+        0.95(887.19)
+        \approx842.83\text{ W},
+        \]
+        \[
+        h(\widehat T-T_a)
+        =
+        10(92.4-25)
+        =
+        674\text{ W},
+        \]
+        therefore
+        \[
+        \widehat{\dot T}
+        =
+        \frac{842.83-674}{5000}
+        \approx0.03377\text{ K/s}.
+        \]
+      </div>
+
+      <p>
+        The predicted thermal-rate Leaf is
+        \[
+        L_{\widehat{\dot T}}
+        \approx0.03377\text{ K/s}.
+        \]
+      </p>
+
+      <h4>Passport and Root gates</h4>
+
+      <p>
+        Suppose the receiving actuator and safety mathematics require
+        \[
+        0\le u\le1,
+        \qquad
+        I\le15\text{ A},
+        \qquad
+        \Delta_{\rm coh}\le2^\circ\mathrm C.
+        \]
+      </p>
+
+      <div class="calculation">
+        \[
+        0.608\in[0,1],
+        \qquad
+        12.16<15,
+        \qquad
+        1.7<2.
+        \]
+      </div>
+
+      <p>
+        The command Response
+        \[
+        R=u=0.608
+        \]
+        passes these receiving conditions and may function as a Root for the
+        actuator update.
+      </p>
+
+      <h4>Now break one observation Branch</h4>
+
+      <p>
+        Let sensor 2 report
+        \[
+        Y_2=110^\circ\mathrm C
+        \]
+        while its declared standard deviation remains \(2^\circ\mathrm C\).
+        The fused estimate becomes
+      </p>
+
+      <div class="calculation">
+        \[
+        \widehat T_{\rm bad}
+        =
+        \frac{92+110/4}{1.25}
+        =
+        \frac{119.5}{1.25}
+        =
+        95.6^\circ\mathrm C.
+        \]
+      </div>
+
+      <p>
+        Against the model path,
+        \[
+        \Delta_{\rm coh,bad}
+        =
+        |95.6-90.7|
+        =
+        4.9^\circ\mathrm C
+        >
+        2^\circ\mathrm C.
+        \]
+      </p>
+
+      <div class="warning">
+        The coherence defect appears before the actuator stage. Clipping the
+        eventual command would not repair the damaged observation Interface.
+        The repair must address the sensor/estimation path or change the
+        declared uncertainty model.
+      </div>
+
+      <h4>One lawful repair</h4>
+
+      <p>
+        If an independent sensor-diagnostic rule excludes sensor 2, the
+        estimator reverts to sensor 1:
+        \[
+        \widehat T_{\rm repaired}=92^\circ\mathrm C.
+        \]
+        The model-path discrepancy is then
+        \[
+        |92-90.7|=1.3^\circ\mathrm C<2^\circ\mathrm C.
+        \]
+      </p>
+
+      <p>
+        Only after the repair is the downstream controller recomputed. The
+        earliest failed obligation is repaired first, then dependent Leaves
+        are regenerated rather than keeping values produced from a broken
+        path.
+      </p>
+
+      <div class="teaching">
+        <strong>What the student should see</strong>
+        This Tree contains stochastic observations, a deterministic estimator,
+        parallel-path coherence, several Leaf chains, electrical and thermal
+        Branches, a safety Passport, a failed Interface, a repair, a Response,
+        and a Root gate. Each additional BM object corresponds to a real
+        mathematical obligation in the calculation.
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- ======================================================= -->
+  <!-- STRUCTURED QUOTIENT -->
+  <!-- ======================================================= -->
+
+  <section id="quotient-examples">
+    <h2>21. Structured Quotient Example</h2>
+
+    <div class="example" id="structured-quotient-example">
+      <div class="example-title">Example Q1 — A Quotient Must Respect Operations</div>
+      <div class="level">Algebraic sector · Congruence requirement</div>
+
+      <p>
+        Let
+      </p>
+
+      <div class="mathbox">
+        \[
+        A=\mathbb Z
+        \]
+      </div>
+
+      <p>
+        with ordinary addition.
+        Define
+      </p>
+
+      <div class="mathbox">
+        \[
+        x\sim_n y
+        \iff
+        x\equiv y\pmod n.
+        \]
+      </div>
+
+      <p>
+        If
+      </p>
+
+      <div class="mathbox">
+        \[
+        x\sim_n x',
+        \qquad
+        y\sim_n y',
+        \]
+      </div>
+
+      <p>then</p>
+
+      <div class="mathbox">
+        \[
+        x+y
+        \sim_n
+        x'+y'.
+        \]
+      </div>
+
+      <p>
+        Therefore addition descends lawfully to equivalence classes:
+      </p>
+
+      <div class="mathbox">
+        \[
+        [x]+[y]=[x+y].
+        \]
+      </div>
+
+      <p>
+        BM uses this classical congruence principle as a general warning:
+        an observational equivalence relation is not enough by itself to
+        guarantee that every native operation survives quotienting.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ======================================================= -->
+  <!-- DYNAMIC CLOSURE -->
+  <!-- ======================================================= -->
+
+  <section id="dynamic-examples">
+    <h2>22. Dynamic Closure Example</h2>
+
+    <div class="example" id="dynamic-closure-example">
+      <div class="example-title">Example D1 — Static Sufficiency Without Dynamic Closure</div>
+      <div class="level">GURF · Dynamics · Information loss</div>
+
+      <p>
+        Let the full state be
+      </p>
+
+      <div class="mathbox">
+        \[
+        x=(q,p)
+        \]
+      </div>
+
+      <p>
+        with evolution
+      </p>
+
+      <div class="mathbox">
+        \[
+        \dot q=p,
+        \qquad
+        \dot p=-q.
+        \]
+      </div>
+
+      <p>
+        Suppose the representation keeps only position:
+      </p>
+
+      <div class="mathbox">
+        \[
+        R(q,p)=q.
+        \]
+      </div>
+
+      <p>
+        This may be sufficient for the instantaneous Task
+        \(T(q,p)=q\).
+        But there is no single-valued reduced evolution
+      </p>
+
+      <div class="mathbox">
+        \[
+        \widetilde\Phi:R(X)\to R(X)
+      \]
+      </div>
+
+      <p>
+        that determines the future position from \(q\) alone, because two
+        states with the same \(q\) and different \(p\) evolve differently.
+      </p>
+
+      <div class="mathbox">
+        \[
+        R(q,p_1)=R(q,p_2)
+        \]
+      </div>
+
+      <p>does not imply</p>
+
+      <div class="mathbox">
+        \[
+        R(\Phi_t(q,p_1))
+        =
+        R(\Phi_t(q,p_2)).
+        \]
+      </div>
+
+      <p>
+        Thus static Task sufficiency and dynamic closure are different
+        mathematical properties.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ======================================================= -->
+  <!-- LEVEL 9 -->
+  <!-- ======================================================= -->
+
+  <section id="level-9">
+    <h2>23. Level 9 — Research-Scale Native Mathematics</h2>
+
+    <div class="example" id="navier-stokes-example">
+      <div class="example-title">Example 9A — Incompressible Navier–Stokes as a BM Research Configuration</div>
+      <div class="level">Complexity Level 9 · PDE · Spectral analysis · Observation · Continuation</div>
+
+      <div class="note">
+        <strong>Scope.</strong>
+        The Navier–Stokes regularity problem remains open. This example uses
+        established PDE identities to show how a research-scale BM
+        configuration carries state, derived fields, observations,
+        diagnostics, and continuation-relevant information.
+      </div>
+
+      <h4>Step 1 — Native PDE</h4>
+
+      <div class="mathbox">
+        \[
+        \partial_t u
+        +(u\cdot\nabla)u
+        =
+        -\nabla p
+        +\nu\Delta u
+        +f,
+        \qquad
+        \nabla\cdot u=0.
+        \]
+      </div>
+
+      <h4>Step 2 — Candidate Branches</h4>
+
+      <div class="grid">
+        <div class="mini-card">
+          <strong>\(B_u\)</strong><br>
+          velocity field in the declared function space
+        </div>
+        <div class="mini-card">
+          <strong>\(B_p\)</strong><br>
+          pressure modulo the appropriate gauge freedom
+        </div>
+        <div class="mini-card">
+          <strong>\(B_\omega\)</strong><br>
+          vorticity \(\omega=\nabla\times u\)
+        </div>
+        <div class="mini-card">
+          <strong>\(B_{\nabla u}\)</strong><br>
+          velocity-gradient information
+        </div>
+        <div class="mini-card">
+          <strong>\(B_E\)</strong><br>
+          energy diagnostics
+        </div>
+        <div class="mini-card">
+          <strong>\(B_\Omega\)</strong><br>
+          enstrophy or vorticity diagnostics
+        </div>
+        <div class="mini-card">
+          <strong>\(B_k\)</strong><br>
+          spectral/Fourier representation
+        </div>
+        <div class="mini-card">
+          <strong>\(B_{\mathrm{obs}}\)</strong><br>
+          filtered or sampled observation
+        </div>
+        <div class="mini-card">
+          <strong>\(B_{\mathrm{task}}\)</strong><br>
+          continuation or regularity-relevant Task
+        </div>
+      </div>
+
+      <h4>Step 3 — Native transformations</h4>
+
+      <div class="mathbox">
+        \[
+        u
+        \xrightarrow{\nabla\times}
+        \omega,
+        \qquad
+        u
+        \xrightarrow{\mathcal F}
+        \widehat u(k),
+        \qquad
+        u
+        \xrightarrow{G_\ell *}
+        \overline u_\ell.
+        \]
+      </div>
+
+      <p>
+        These are not interchangeable.
+        Differentiation, Fourier transformation, and filtering have
+        different domains and preservation properties.
+      </p>
+
+      <h4>Step 4 — Operation-order problem</h4>
+
+      <p>
+        For a sufficiently regular field and a suitable convolution filter,
+        differentiation may commute with filtering:
+      </p>
+
+      <div class="mathbox">
+        \[
+        \nabla(G_\ell*u)
+        =
+        G_\ell*(\nabla u).
+        \]
+      </div>
+
+      <p>
+        But this identity depends on the actual operator, boundary
+        conditions, regularity, and implementation.
+        BM records the order rather than assuming all processing routes
+        commute.
+      </p>
+
+      <h4>Step 5 — Observation loss</h4>
+
+      <p>
+        A coarse filter
+      </p>
+
+      <div class="mathbox">
+        \[
+        R_\ell(u)=G_\ell*u
+        \]
+      </div>
+
+      <p>
+        may remove high-wavenumber information.
+        If a downstream Task depends on a quantity sensitive to those
+        scales, the corresponding Passport must record that requirement.
+      </p>
+
+      <h4>Step 6 — Interaction example</h4>
+
+      <p>
+        The nonlinear term couples velocity components:
+      </p>
+
+      <div class="mathbox">
+        \[
+        \mathcal I_{\mathrm{NL}}(u,u)
+        =
+        (u\cdot\nabla)u.
+        \]
+      </div>
+
+      <p>
+        In Fourier variables, nonlinear interaction becomes mode coupling
+        subject to wavevector compatibility.
+        BM may treat the participating spectral structures as typed Branches
+        while the Fourier/PDE algebra supplies the actual law.
+      </p>
+
+      <h4>Step 7 — Passport question</h4>
+
+      <p>
+        If a representation retains only total kinetic energy
+      </p>
+
+      <div class="mathbox">
+        \[
+        E(t)=\frac12\int |u(x,t)|^2\,dx,
+        \]
+      </div>
+
+      <p>
+        that scalar does not in general determine vorticity geometry,
+        phase information, local gradients, or all future nonlinear
+        transfers.
+      </p>
+
+      <p>
+        Therefore an energy-only Passport may be sufficient for an
+        energy-reporting Task while being insufficient for a stronger
+        continuation or reconstruction Task.
+      </p>
+
+      <h4>Step 8 — Configuration-level question</h4>
+
+      <p>
+        A research configuration can simultaneously track:
+      </p>
+
+      <ul>
+        <li>the PDE state;</li>
+        <li>spectral representation;</li>
+        <li>filtered observations;</li>
+        <li>derivative fields;</li>
+        <li>nonlinear interactions;</li>
+        <li>diagnostic Leaves;</li>
+        <li>continuation Passports;</li>
+        <li>coherence between physical-space and spectral-space calculations;</li>
+        <li>obstructions created by truncation or filtering.</li>
+      </ul>
+
+      <div class="success">
+        <strong>What this demonstrates.</strong>
+        BM is not being used to rename the Navier–Stokes equations.
+        It is being used to organize a large collection of distinct
+        mathematical representations and transformations whose
+        compatibility matters to the research Task.
+      </div>
+    </div>
+
+
+    <div class="example" id="navier-stokes-energy-derivation">
+      <div class="example-title">Example 9A.1 — Energy Balance as a Derived Leaf Chain</div>
+      <div class="level">Research-scale PDE · Full derivation · Energy Leaf · Dissipation Leaf · Forcing Leaf</div>
+
+      <p>
+        Work on a periodic domain \(\Omega\), with a sufficiently smooth
+        divergence-free velocity field satisfying
+      </p>
+
+      <div class="mathbox">
+        \[
+        \partial_tu+(u\cdot\nabla)u
+        =
+        -\nabla p+\nu\Delta u+f,
+        \qquad
+        \nabla\cdot u=0.
+        \]
+      </div>
+
+      <p>
+        Take the \(L^2\) inner product with \(u\) and integrate over
+        \(\Omega\):
+      </p>
+
+      <div class="calculation">
+        \[
+        \int_\Omega u\cdot\partial_tu\,dx
+        +
+        \int_\Omega u\cdot(u\cdot\nabla)u\,dx
+        =
+        -\int_\Omega u\cdot\nabla p\,dx
+        +
+        \nu\int_\Omega u\cdot\Delta u\,dx
+        +
+        \int_\Omega f\cdot u\,dx.
+        \]
+      </div>
+
+      <h4>Time-derivative term</h4>
+      <div class="calculation">
+        \[
+        \int_\Omega u\cdot\partial_tu\,dx
+        =
+        \frac12\frac{d}{dt}\int_\Omega|u|^2\,dx.
+        \]
+      </div>
+      <p>
+        Define the kinetic-energy Leaf
+        \[
+        L_E=E(t)=\frac12\int_\Omega|u|^2\,dx.
+        \]
+      </p>
+
+      <h4>Convective term</h4>
+      <p>
+        Since
+        \[
+        u\cdot(u\cdot\nabla)u
+        =
+        (u\cdot\nabla)\frac{|u|^2}{2},
+        \]
+        periodicity and \(\nabla\cdot u=0\) give
+      </p>
+      <div class="calculation">
+        \[
+        \int_\Omega
+        (u\cdot\nabla)\frac{|u|^2}{2}\,dx
+        =
+        \int_\Omega\nabla\cdot\left(u\frac{|u|^2}{2}\right)dx
+        -
+        \int_\Omega\frac{|u|^2}{2}\nabla\cdot u\,dx
+        =0.
+        \]
+      </div>
+
+      <h4>Pressure term</h4>
+      <div class="calculation">
+        \[
+        \int_\Omega u\cdot\nabla p\,dx
+        =
+        \int_\Omega\nabla\cdot(pu)\,dx
+        -
+        \int_\Omega p\nabla\cdot u\,dx
+        =0.
+        \]
+      </div>
+
+      <h4>Viscous term</h4>
+      <div class="calculation">
+        \[
+        \int_\Omega u\cdot\Delta u\,dx
+        =
+        -\int_\Omega|\nabla u|^2\,dx.
+        \]
+      </div>
+      <p>
+        Define the dissipation Leaf
+        \[
+        L_D=D(t)=\nu\int_\Omega|\nabla u|^2\,dx.
+        \]
+      </p>
+
+      <h4>Forcing term</h4>
+      <p>
+        Define
+        \[
+        L_F=F(t)=\int_\Omega f\cdot u\,dx.
+        \]
+      </p>
+
+      <h4>Derived energy Response</h4>
+      <div class="mathbox">
+        \[
+        \boxed{\frac{dE}{dt}=-D+F.}
+        \]
+      </div>
+
+      <div class="chain">
+        \[
+        B_u\longrightarrow\begin{cases}L_E\\L_D\end{cases},
+        \qquad
+        (B_f,B_u)\longrightarrow L_F,
+        \]
+        \[
+        (L_E,L_D,L_F)
+        \xrightarrow{\text{energy balance}}
+        \frac{dE}{dt}.
+        \]
+      </div>
+
+      <p>
+        If a later Task asks only whether total energy is increasing, the
+        sign of \(-D+F\) may be sufficient. If it asks how that change was
+        produced, the forcing and dissipation Leaves must remain distinct.
+      </p>
+    </div>
+
+
+    <div class="example" id="navier-stokes-vorticity-derivation">
+      <div class="example-title">Example 9A.2 — Vorticity and Enstrophy Expose a Different Leaf Family</div>
+      <div class="level">Research-scale PDE · Curl Branch · Stretching Leaf · Viscous Leaf</div>
+
+      <p>
+        Define vorticity
+        \[
+        \omega=\nabla\times u.
+        \]
+        For incompressible three-dimensional flow, taking curl gives
+      </p>
+
+      <div class="mathbox">
+        \[
+        \partial_t\omega
+        +(u\cdot\nabla)\omega
+        =
+        (\omega\cdot\nabla)u
+        +\nu\Delta\omega
+        +\nabla\times f.
+        \]
+      </div>
+
+      <p>
+        Multiply by \(\omega\) and integrate over a periodic domain. Under
+        the same smoothness, periodicity, and incompressibility assumptions,
+        the transport term vanishes and integration by parts gives
+      </p>
+
+      <div class="calculation">
+        \[
+        \frac12\frac{d}{dt}\int_\Omega|\omega|^2\,dx
+        =
+        \int_\Omega\omega\cdot(\omega\cdot\nabla)u\,dx
+        -
+        \nu\int_\Omega|\nabla\omega|^2\,dx
+        +
+        \int_\Omega\omega\cdot(\nabla\times f)\,dx.
+        \]
+      </div>
+
+      <p>
+        The calculation exposes the Leaves
+      </p>
+      <div class="mathbox">
+        \[
+        L_\Omega=\frac12\int_\Omega|\omega|^2\,dx,
+        \]
+        \[
+        L_{\rm stretch}
+        =
+        \int_\Omega\omega\cdot(\omega\cdot\nabla)u\,dx,
+        \]
+        \[
+        L_{\nu\omega}
+        =
+        \nu\int_\Omega|\nabla\omega|^2\,dx,
+        \]
+        \[
+        L_{\omega f}
+        =
+        \int_\Omega\omega\cdot(\nabla\times f)\,dx.
+        \]
+      </div>
+
+      <p>
+        Therefore
+        \[
+        \boxed{
+        \frac{dL_\Omega}{dt}
+        =
+        L_{\rm stretch}-L_{\nu\omega}+L_{\omega f}.
+        }
+        \]
+      </p>
+
+      <div class="teaching">
+        <strong>Why this differs from the energy Tree</strong>
+        Energy and enstrophy are both derived from the velocity state, but
+        they answer different questions. An energy-only representation can
+        lose distinctions that matter to vorticity stretching.
+      </div>
+    </div>
+
+
+    <div class="example" id="navier-stokes-passport-loss">
+      <div class="example-title">Example 9A.3 — A Coarse Spectral Passport Can Preserve Energy and Lose Phase</div>
+      <div class="level">Research-scale PDE · Fourier Branch · Information loss · Task dependence</div>
+
+      <p>
+        Let a Fourier representation retain only modal magnitudes
+        \[
+        r(\widehat u)=\{|\widehat u(k)|\}_k
+        \]
+        while discarding phases.
+      </p>
+
+      <p>
+        The modal-energy Leaves \(|\widehat u(k)|^2\) remain available, so a
+        spectral energy sum
+        \[
+        \sum_k|\widehat u(k)|^2
+        \]
+        remains recoverable, with the conventional normalization fixed by the
+        chosen Fourier convention.
+      </p>
+
+      <p>
+        Nonlinear Fourier interactions depend on products of mode amplitudes
+        with their phase relations. Schematically, a triadic contribution
+        contains terms of the form
+      </p>
+
+      <div class="mathbox">
+        \[
+        \widehat u(p)\,\widehat u(q),
+        \qquad
+        p+q=k.
+        \]
+      </div>
+
+      <p>
+        Two velocity fields can therefore share the same magnitude-only
+        observation while producing different phase-sensitive nonlinear
+        transfer information.
+      </p>
+
+      <div class="chain">
+        \[
+        \widehat u
+        \xrightarrow{\text{magnitude-only reduction}}
+        \{|\widehat u(k)|\}
+        \]
+        \[
+        \begin{cases}
+        \text{energy Task: recoverable from magnitudes},\\
+        \text{phase-sensitive transfer Task: generally not recoverable}.
+        \end{cases}
+        \]
+      </div>
+
+      <p>
+        This is a research-scale Passport example: the required distinctions
+        are determined by the downstream Task, not by how detailed the
+        reduced data appears.
+      </p>
+    </div>
+
+    <div class="example" id="quantum-research-example">
+      <div class="example-title">Example 9B — Quantum Information Configuration</div>
+      <div class="level">Complexity Level 9 · Operator sector · Measurement · Distinguishability</div>
+
+      <p>
+        Consider two qubit states
+        \[
+        \rho_0=|0\rangle\langle0|
+        =
+        \begin{pmatrix}
+        1&0\\
+        0&0
+        \end{pmatrix},
+        \]
+        \[
+        \rho_+=|+\rangle\langle+|
+        =
+        \frac12
+        \begin{pmatrix}
+        1&1\\
+        1&1
+        \end{pmatrix}.
+        \]
+      </p>
+
+      <p>
+        A computational-basis measurement has effects
+        \[
+        E_0=|0\rangle\langle0|,
+        \qquad
+        E_1=|1\rangle\langle1|.
+        \]
+      </p>
+
+      <div class="workstep">
+        <strong>Observation from \(\rho_0\)</strong>
+        \[
+        P(0\mid\rho_0)
+        =
+        \operatorname{Tr}(E_0\rho_0)
+        =1.
+        \]
+      </div>
+
+      <div class="workstep">
+        <strong>Observation from \(\rho_+\)</strong>
+        \[
+        P(0\mid\rho_+)
+        =
+        \operatorname{Tr}(E_0\rho_+)
+        =\frac12.
+        \]
+      </div>
+
+      <p>
+        The measurement Branch exports a classical probability law, not the
+        density matrix itself. A downstream Task that needs phase coherence
+        cannot reconstruct it from one computational-basis outcome.
+      </p>
+
+      <p>
+        A BM configuration can distinguish:
+      </p>
+
+      <ul>
+        <li>density-operator Branch;</li>
+        <li>quantum-channel Branch;</li>
+        <li>POVM/measurement Branch;</li>
+        <li>classical observation Branch;</li>
+        <li>Task-specific distinguishability Passport.</li>
+      </ul>
+
+      <p>
+        Operator theory and quantum probability remain the native mathematics;
+        BM coordinates their interfaces and retained distinctions.
+      </p>
+    </div>
+
+    <div class="example" id="lattice-gauge-example">
+      <div class="example-title">Example 9C — Closed-Loop Gauge Observable on a Lattice</div>
+      <div class="level">Complexity Level 9 · Group-valued links · Gauge transformation · Invariant Leaf</div>
+
+      <div class="note">
+        <strong>Scope.</strong>
+        This is a finite lattice-gauge calculation. The four-dimensional
+        Yang–Mills existence and mass-gap problem remains open.
+      </div>
+
+      <p>
+        Let an oriented link \(x\to y\) carry
+        \[
+        U_{xy}\in SU(N).
+        \]
+        Under a local gauge transformation,
+      </p>
+
+      <div class="mathbox">
+        \[
+        U_{xy}
+        \mapsto
+        G_xU_{xy}G_y^{-1}.
+        \]
+      </div>
+
+      <p>
+        Around a closed plaquette
+        \[
+        x_1\to x_2\to x_3\to x_4\to x_1,
+        \]
+        define
+      </p>
+
+      <div class="mathbox">
+        \[
+        U_p
+        =
+        U_{12}U_{23}U_{34}U_{41}.
+        \]
+      </div>
+
+      <p>
+        Transform every link:
+      </p>
+
+      <div class="calculation">
+        \[
+        U_p
+        \mapsto
+        (G_1U_{12}G_2^{-1})
+        (G_2U_{23}G_3^{-1})
+        (G_3U_{34}G_4^{-1})
+        (G_4U_{41}G_1^{-1}).
+        \]
+        Adjacent factors cancel:
+        \[
+        G_2^{-1}G_2
+        =
+        G_3^{-1}G_3
+        =
+        G_4^{-1}G_4
+        =I,
+        \]
+        leaving
+        \[
+        U_p\mapsto G_1U_pG_1^{-1}.
+        \]
+      </div>
+
+      <p>
+        Taking the trace,
+        \[
+        \operatorname{Tr}(G_1U_pG_1^{-1})
+        =
+        \operatorname{Tr}(U_p).
+        \]
+      </p>
+
+      <p>
+        Therefore the Wilson-loop-style Leaf
+        \[
+        W_p=\operatorname{Tr}(U_p)
+        \]
+        is gauge invariant.
+      </p>
+
+      <p>
+        BM can track link Branches, group-valued Operations, local gauge
+        Interfaces, loop composition, and invariant Leaves while the group
+        theory supplies the actual proof.
+      </p>
+    </div>
+
+    <div class="example" id="maxwell-detector-example">
+      <div class="example-title">Example 9D — Electromagnetic Field to Material Response to Detector Output</div>
+      <div class="level">Complexity Level 9 · Field theory · Constitutive interface · Observation</div>
+
+      <p>
+        In a simple linear isotropic medium,
+        \[
+        D=\varepsilon E,
+        \qquad
+        B=\mu H.
+        \]
+        Electromagnetic energy flux is represented by the Poynting vector
+      </p>
+
+      <div class="mathbox">
+        \[
+        S=E\times H.
+        \]
+      </div>
+
+      <p>
+        A detector may report a time-averaged scalar response proportional
+        to incident intensity:
+      </p>
+
+      <div class="mathbox">
+        \[
+        Y
+        =
+        \alpha
+        \frac1{\Delta t}
+        \int_{t_0}^{t_0+\Delta t}
+        S(t)\cdot n\,dt.
+        \]
+      </div>
+
+      <p>
+        The participating Branches may include:
+      </p>
+
+      <ul>
+        <li>field \(E\);</li>
+        <li>field \(H\);</li>
+        <li>material parameters \(\varepsilon,\mu\);</li>
+        <li>surface normal \(n\);</li>
+        <li>integration window \(\Delta t\);</li>
+        <li>detector calibration \(\alpha\);</li>
+        <li>reported observation \(Y\).</li>
+      </ul>
+
+      <p>
+        Removing \(\Delta t\), changing the constitutive regime, or replacing
+        vector flux by an unqualified scalar can make the later detector
+        calculation ambiguous or invalid. BM's job is to retain those
+        Interfaces explicitly.
+      </p>
+    </div>
+
+  </section>
+
+
+  <!-- ======================================================= -->
+  <!-- LEVEL 10 -->
+  <!-- ======================================================= -->
+
+  <section id="level-10">
+    <h2>24. Level 10 — Failure Laboratory</h2>
+
+    <div class="example" id="failure-lab">
+      <div class="example-title">Example 10A — Deliberately Break the Configuration</div>
+      <div class="level">Complexity Level 10 · Failure localization</div>
+
+      <p>
+        This section intentionally introduces common structural failures.
+        The objective is to identify the exact mathematical obligation that
+        fails rather than merely declaring the whole construction “wrong.”
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Failure</th>
+            <th>Construction</th>
+            <th>BM diagnosis</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Type mismatch</td>
+            <td>Feed pressure directly into a temperature-only law.</td>
+            <td>Receiving type contract fails.</td>
+          </tr>
+          <tr>
+            <td>Domain failure</td>
+            <td>Apply \(\log x\) at \(x\le0\) in a real-valued Branch.</td>
+            <td>Operation is outside its declared domain.</td>
+          </tr>
+          <tr>
+            <td>Passport loss</td>
+            <td>Discard humidity before a humidity-dependent Task.</td>
+            <td>Required distinction is not preserved.</td>
+          </tr>
+          <tr>
+            <td>Composition failure</td>
+            <td>Relabel Celsius as Kelvin before a thermal-energy law.</td>
+            <td>Intermediate Interface is unlawful.</td>
+          </tr>
+          <tr>
+            <td>Coherence failure</td>
+            <td>Two conversion paths produce incompatible target values.</td>
+            <td>Parallel-path defect is nonempty.</td>
+          </tr>
+          <tr>
+            <td>Quantifier failure</td>
+            <td>Use separate witnesses for two Tasks requiring one shared action.</td>
+            <td>Joint feasibility was not established.</td>
+          </tr>
+          <tr>
+            <td>Semantic collapse</td>
+            <td>Treat a Markov kernel as an ordinary function.</td>
+            <td>Stochastic semantics were replaced by deterministic semantics.</td>
+          </tr>
+          <tr>
+            <td>False quotient</td>
+            <td>Quotient by an equivalence not respected by the native operation.</td>
+            <td>Operation does not descend to equivalence classes.</td>
+          </tr>
+          <tr>
+            <td>False Root</td>
+            <td>Call a Response a Root before downstream admissibility is checked.</td>
+            <td>Root criterion is incomplete.</td>
+          </tr>
+          <tr>
+            <td>Bad re-entry</td>
+            <td>Export a scalar without units into a unit-sensitive receiving model.</td>
+            <td>Receiving Passport/Interface cannot be verified.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="example">
+      <div class="example-title">Example 10B — Multiple Simultaneous Defects</div>
+      <div class="level">Complexity Level 10 · Nontrivial repair</div>
+
+      <p>
+        Suppose a control Network simultaneously contains:
+      </p>
+
+      <ol>
+        <li>a sensor with excessive uncertainty;</li>
+        <li>a Celsius/Kelvin Interface error;</li>
+        <li>a controller output exceeding actuator bounds; and</li>
+        <li>two estimator paths that disagree beyond tolerance.</li>
+      </ol>
+
+      <p>
+        The configuration may be represented as having a defect record
+      </p>
+
+      <div class="mathbox">
+        \[
+        \mathfrak D(\mathcal X)
+        =
+        \left(
+        D_{\mathrm{obs}},
+        D_{\mathrm{unit}},
+        D_{\mathrm{act}},
+        D_{\mathrm{coh}}
+        \right).
+        \]
+      </div>
+
+      <p>
+        A proposed repair
+      </p>
+
+      <div class="mathbox">
+        \[
+        \rho:
+        \mathcal X
+        \longmapsto
+        \mathcal X'
+      \]
+      </div>
+
+      <p>
+        is successful only if the required defect components vanish or
+        fall inside declared tolerances after re-audit.
+      </p>
+
+      <div class="mathbox">
+        \[
+        \mathfrak D(\mathcal X')
+        \in
+        A_{\mathfrak D}.
+        \]
+      </div>
+
+      <p>
+        This is the kind of situation where the BM organization is meant
+        to become more valuable as structural complexity increases.
+      </p>
+    </div>
+
+    <div class="example" id="failure-type-numeric">
+      <div class="example-title">Example 10C — Worked Type Failure: Same Number, Wrong Quantity</div>
+      <div class="level">Complexity Level 10 · Type defect · Numerical trap</div>
+
+      <p>
+        Suppose a law expects an absolute temperature:
+        \[
+        E=k_BT.
+        \]
+        A source sends the number
+        \[
+        25
+        \]
+        meaning \(25^\circ\mathrm C\), but the receiving Branch interprets it
+        as \(25\text{ K}\).
+      </p>
+
+      <div class="workstep">
+        <strong>Incorrect computation</strong>
+        \[
+        E_{\mathrm{bad}}=25k_B.
+        \]
+      </div>
+
+      <div class="workstep">
+        <strong>Correct conversion</strong>
+        \[
+        T=25+273.15=298.15\text{ K}.
+        \]
+      </div>
+
+      <div class="workstep">
+        <strong>Correct computation</strong>
+        \[
+        E_{\mathrm{good}}=298.15k_B.
+        \]
+      </div>
+
+      <p>
+        The ratio is
+        \[
+        \frac{E_{\mathrm{bad}}}{E_{\mathrm{good}}}
+        =
+        \frac{25}{298.15}
+        \approx0.08385.
+        \]
+        The formulas were valid; the Interface type was wrong.
+      </p>
+    </div>
+
+    <div class="example" id="failure-false-quotient">
+      <div class="example-title">Example 10D — Worked False Quotient</div>
+      <div class="level">Complexity Level 10 · Equivalence not compatible with addition</div>
+
+      <p>
+        On \(\mathbb R\), define
+        \[
+        x\sim y
+        \iff
+        |x|=|y|.
+        \]
+        Then
+        \[
+        1\sim-1.
+        \]
+      </p>
+
+      <p>
+        Try to define addition of equivalence classes by
+        \[
+        [x]+[y]=[x+y].
+        \]
+      </p>
+
+      <div class="workstep">
+        <strong>Choose representatives \(1,1\)</strong>
+        \[
+        [1]+[1]
+        \leadsto
+        [2].
+        \]
+      </div>
+
+      <div class="workstep">
+        <strong>Choose equivalent representatives \(-1,1\)</strong>
+        Since \(-1\sim1\),
+        the same class pair would also allow
+        \[
+        [-1]+[1]
+        \leadsto
+        [0].
+        \]
+      </div>
+
+      <p>
+        But
+        \[
+        [2]\neq[0]
+        \]
+        because \(|2|\neq|0|\).
+        Therefore addition is not well-defined on this quotient.
+      </p>
+
+      <div class="success">
+        This is exactly the kind of failure the structured-quotient gate is
+        designed to expose.
+      </div>
+    </div>
+
+    <div class="example" id="failure-witness-reuse">
+      <div class="example-title">Example 10E — Worked Quantifier Failure</div>
+      <div class="level">Complexity Level 10 · Separate witnesses do not imply joint feasibility</div>
+
+      <p>
+        Let the admissible action set be
+        \[
+        U=\{a,b\}.
+        \]
+        Task 1 accepts only
+        \[
+        P_1=\{a\},
+        \]
+        while Task 2 accepts only
+        \[
+        P_2=\{b\}.
+        \]
+      </p>
+
+      <p>
+        Individually,
+        \[
+        P_1\neq\varnothing,
+        \qquad
+        P_2\neq\varnothing.
+        \]
+        So the statements
+        “there exists an action satisfying Task 1” and
+        “there exists an action satisfying Task 2” are both true.
+      </p>
+
+      <p>
+        But
+        \[
+        P_1\cap P_2
+        =
+        \varnothing.
+        \]
+      </p>
+
+      <p>
+        Hence there is no single action satisfying both simultaneously.
+        The error comes from changing
+        \[
+        (\exists u_1)(\exists u_2)
+        \]
+        into an unsupported shared witness
+        \[
+        \exists u.
+        \]
+      </p>
+    </div>
+
+    <div class="example" id="failure-stochastic-collapse">
+      <div class="example-title">Example 10F — Worked Stochastic-to-Deterministic Collapse Failure</div>
+      <div class="level">Complexity Level 10 · Expectation does not commute with a nonlinear Task</div>
+
+      <p>
+        Let a random output satisfy
+        \[
+        P(Y=0)=\frac12,
+        \qquad
+        P(Y=2)=\frac12.
+        \]
+      </p>
+
+      <p>
+        Its mean is
+        \[
+        \mathbb E[Y]
+        =
+        \frac12(0)+\frac12(2)
+        =1.
+        \]
+      </p>
+
+      <p>
+        Let the downstream Task be
+        \[
+        g(y)=y^2.
+        \]
+      </p>
+
+      <div class="workstep">
+        <strong>Correct stochastic calculation</strong>
+        \[
+        \mathbb E[g(Y)]
+        =
+        \frac12(0^2)+\frac12(2^2)
+        =
+        2.
+        \]
+      </div>
+
+      <div class="workstep">
+        <strong>Incorrect deterministic collapse</strong>
+        Replace the distribution by its mean first:
+        \[
+        g(\mathbb E[Y])
+        =
+        g(1)
+        =
+        1.
+        \]
+      </div>
+
+      <p>
+        Therefore
+        \[
+        \mathbb E[g(Y)]
+        \neq
+        g(\mathbb E[Y]).
+        \]
+        A stochastic Branch cannot generally be replaced by its mean when
+        later mathematics is nonlinear.
+      </p>
+    </div>
+
+    <div class="example" id="failure-multi-defect-repair">
+      <div class="example-title">Example 10G — Repair Order Matters</div>
+      <div class="level">Complexity Level 10 · Multiple defects · Dependency-aware repair</div>
+
+      <p>
+        Suppose a chain has two defects:
+      </p>
+
+      <ol>
+        <li>temperature is mislabeled Celsius as Kelvin;</li>
+        <li>the resulting controller command exceeds actuator limits.</li>
+      </ol>
+
+      <p>
+        If the saturation repair is applied first, it may clip a command
+        generated from the wrong temperature.
+        The result can become numerically admissible while still being based
+        on an invalid upstream state.
+      </p>
+
+      <div class="workstep">
+        <strong>Correct repair order</strong>
+        First repair the unit Interface:
+        \[
+        T_K=T_C+273.15.
+        \]
+      </div>
+
+      <div class="workstep">
+        <strong>Recompute downstream command</strong>
+        Evaluate the controller again using the corrected state.
+      </div>
+
+      <div class="workstep">
+        <strong>Then apply actuator repair if still needed</strong>
+        \[
+        u_{\mathrm{safe}}
+        =
+        \operatorname{clip}_{A_U}(u).
+        \]
+      </div>
+
+      <p>
+        BM therefore treats repair as an operation on a dependency structure,
+        not as a bag of independent fixes.
+      </p>
+    </div>
+
+  </section>
+
+
+
+  <section id="definition-link-guide">
+    <h2>25. Concept Pathways</h2>
+
+    <p>
+      The complexity ladder is one way to read the page. Another is to follow
+      a single BM concept through increasingly demanding mathematics.
+    </p>
+
+    <div class="grid">
+      <div class="mini-card">
+        <h3>Branches</h3>
+        <p>Move from scalar carriers to vectors, matrices, function spaces, graphs, networks, and PDE states.</p>
+        <div class="concept-links">
+          <a href="#branch-basic">Scalar</a>
+          <a href="#branch-vector">Vector</a>
+          <a href="#branch-matrix">Matrix</a>
+          <a href="#branch-function-space">Function space</a>
+          <a href="#branch-network">Network</a>
+        </div>
+      </div>
+
+      <div class="mini-card">
+        <h3>Leaves</h3>
+        <p>Follow extracted information from one Interaction into later derivations.</p>
+        <div class="concept-links">
+          <a href="#leaf-basic">First Leaf</a>
+          <a href="#leaf-power-energy-temperature">Derivation chain</a>
+          <a href="#leaf-vector-geometry">Multiple Leaves</a>
+          <a href="#leaf-residual-correction">Iterative use</a>
+          <a href="#leaf-spectral-energy">Spectral use</a>
+        </div>
+      </div>
+
+      <div class="mini-card">
+        <h3>Trees</h3>
+        <p>Compare sequential, branching, parallel, coupled, and full-system organizations.</p>
+        <div class="concept-links">
+          <a href="#tree-sequential">Sequential</a>
+          <a href="#tree-branching">Branching</a>
+          <a href="#tree-parallel">Parallel</a>
+          <a href="#tree-coupled">Feedback</a>
+          <a href="#full-system">Full system</a>
+        </div>
+      </div>
+
+      <div class="mini-card">
+        <h3>Seeds</h3>
+        <p>Study generative information under fixed-point, Newton, Krylov, and optimization updates.</p>
+        <div class="concept-links">
+          <a href="#seed-fixed-point">Fixed point</a>
+          <a href="#seed-newton">Newton</a>
+          <a href="#seed-krylov">Krylov</a>
+          <a href="#seed-gradient">Gradient</a>
+        </div>
+      </div>
+
+      <div class="mini-card">
+        <h3>Roots</h3>
+        <p>See why Root status depends on the receiving mathematics.</p>
+        <div class="concept-links">
+          <a href="#root-scalar-instance">Scalar</a>
+          <a href="#root-vector-instance">Vector</a>
+          <a href="#root-matrix-instance">Matrix</a>
+          <a href="#root-function-instance">Function</a>
+          <a href="#root-probability-instance">Probability</a>
+        </div>
+      </div>
+
+      <div class="mini-card">
+        <h3>Passports</h3>
+        <p>Move from exact information retention to approximate, serial, quantum, and full-system cases.</p>
+        <div class="concept-links">
+          <a href="#passport-basic">Basic loss</a>
+          <a href="#passport-quantization">Approximate</a>
+          <a href="#passport-serial-loss">Serial loss</a>
+          <a href="#quantum-channel-example">Quantum</a>
+          <a href="#full-system-worked-run">Full system</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="next-expansion">
+    <h2>26. Reading the Examples by Mathematical Domain</h2>
+
+    <p>
+      Students coming from a particular subject can enter through mathematics
+      they already know and then trace the BM structure around it.
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Background</th>
+          <th>Good entry points</th>
+          <th>BM ideas emphasized</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Algebra / linear algebra</td>
+          <td><a href="#interaction-matrix">matrix interaction</a>, <a href="#structured-quotient-example">structured quotient</a>, <a href="#leaf-residual-correction">residual Leaf</a></td>
+          <td>typed operations, admissibility, quotient compatibility, derived information</td>
+        </tr>
+        <tr>
+          <td>Probability / statistics</td>
+          <td><a href="#interaction-bayes">Bayes</a>, <a href="#stochastic-matrix-example">Markov kernels</a>, <a href="#coupling-example">coupling</a></td>
+          <td>stochastic semantics, information retention, joint feasibility</td>
+        </tr>
+        <tr>
+          <td>Calculus / dynamics</td>
+          <td><a href="#seed-newton">Newton Seed</a>, <a href="#dynamic-closure-example">dynamic closure</a>, <a href="#root-recursive">repeated re-entry</a></td>
+          <td>generation, export conditions, continuation, Root reuse</td>
+        </tr>
+        <tr>
+          <td>Engineering / control</td>
+          <td><a href="#all-roles-thermal-calibration">integrated example</a>, <a href="#full-system-worked-run">electro-thermal run</a>, <a href="#full-navigation-system">navigation</a></td>
+          <td>interfaces, Passports, safety gates, repair, feedback Trees</td>
+        </tr>
+        <tr>
+          <td>Mathematical physics</td>
+          <td><a href="#navier-stokes-energy-derivation">Navier–Stokes energy</a>, <a href="#quantum-research-example">quantum information</a>, <a href="#lattice-gauge-example">lattice gauge</a></td>
+          <td>function spaces, operators, invariants, observations, research-scale configurations</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+
+
+  <section id="student-checks">
+    <h2>27. Common Classification Mistakes</h2>
+
+    <p>
+      Several BM roles can be carried by the same underlying mathematical
+      object, so the safest way to classify an object is by its origin and
+      downstream use.
+    </p>
+
+    <table>
+      <thead>
+        <tr><th>Mistake</th><th>Correction</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Calling every variable a Branch</td><td>A Branch carries a declared mathematical type, admissibility, laws, operations, distinctions, and interfaces relevant to the problem.</td></tr>
+        <tr><td>Calling every intermediate result a Leaf</td><td>A Leaf is information extracted from a declared Interaction result.</td></tr>
+        <tr><td>Calling the whole calculation a Root</td><td>The organized calculation is a Tree; its typed output is a Response; Root status concerns lawful downstream participation.</td></tr>
+        <tr><td>Calling every initial value a Seed</td><td>A Seed requires an actual generative role and a declared Root-export condition.</td></tr>
+        <tr><td>Assuming a Root is recursive</td><td>A Root may be reused once, many times, or not recursively at all. Recurrence is an additional property.</td></tr>
+        <tr><td>Assuming two valid maps compose globally</td><td>The intermediate output must lie in the next domain and satisfy the receiving Interface and Passport obligations.</td></tr>
+        <tr><td>Replacing a stochastic Branch by its mean</td><td>That reduction is valid only for Tasks for which discarded distributional information is irrelevant.</td></tr>
+        <tr><td>Assuming one successful Task proves general sufficiency</td><td>Sufficiency is relative to the declared downstream Task or Task family.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="student-check">
+      <strong>Check yourself.</strong>
+      In the power-energy-temperature example, \(120\text{ W}\) is a Leaf
+      after the voltage-current Interaction. When it enters the next
+      Interaction with time, the next Operation must still accept its type,
+      unit, and domain. Being a Leaf records where the information came from;
+      it does not waive later admissibility checks.
+    </div>
+  </section>
+
+
+  <section id="summary">
+    <h2>28. Governing Example Principle</h2>
+
+    <div class="mathbox">
+      \[
+      \boxed{
+      \text{Do not add complexity to display complexity.}
+      }
+      \]
+    </div>
+
+    <div class="mathbox">
+      \[
+      \boxed{
+      \text{Add structure exactly when the mathematics creates a new obligation.}
+      }
+      \]
+    </div>
+
+    <p>
+      In a small problem, BM should remain small. In a large problem, the
+      same vocabulary can coordinate distinct carriers, laws, semantic
+      sectors, paths, Passports, constraints, observations, and receiving
+      interfaces without collapsing them into one kind of mathematics.
+    </p>
+
+    <p>
+      The examples are arranged so that every increase in BM structure
+      corresponds to an increase in an actual mathematical obligation.
+    </p>
+  </section>
+
+</main>
+
+<footer>
+  <p><strong>Branch Mathematics Worked Example Collection</strong></p>
+  <p>Simple cases · complex configurations · failures · repairs · research-scale mathematics</p>
+</footer>
+
+</body>
+</html>
