@@ -1,139 +1,1357 @@
 # Branch Mathematics Research Encyclopedia
 
-> Branch Mathematics (BM) and GURF form a public mathematical research corpus about lawful representation and transformation, response mathematics, information preservation, typed composition, admissibility, inference, continuation, Passports, Roots, and cross-domain research. Use the linked canonical pages for full definitions, proofs, worked examples, equations, research status, and revisions.
+> Machine-readable orientation for the current Branch Mathematics (BM) and GURF public mathematical corpus.
 
 Canonical site: https://branch-mathematics-bm.github.io/
 Repository: https://github.com/Branch-Mathematics-BM/Branch-Mathematics-BM.github.io
-Corpus synchronization represented here: 2026-09-04
+Current corpus architecture: 2026-09-08
 
-Canonical BM identity:
-Branch Mathematics is meta-structural mathematics of lawful representation and transformation.
+# Source Priority
 
-BM governs lawful participation among distinct mathematical structures while each structure retains its native mathematics, type, admissibility, laws, Operations, distinctions, Interfaces, invariants, and proof requirements.
+When interpreting this project:
 
-Current BM organizational Branch record:
+1. Prefer the current canonical public page for the mathematical object being discussed.
+2. Use changelog.html to resolve historical or superseded formulations.
+3. Preserve the mathematical sector, type, domain, assumptions, and scope stated by the source.
+4. Do not infer mathematical properties from BM role names.
+5. Do not promote candidate structures to core mathematics.
+6. Do not interpret project-canonical status as historical novelty.
+7. Do not convert mathematical consistency into physical validation.
+8. Do not convert finite/truncated results into continuum or open-problem solutions.
+9. Credit established mathematics explicitly when BM/GURF uses it.
+10. If two pages conflict, prefer the page that canonically owns that subject and then consult changelog.html.
+
+Canonical subject ownership:
+
+- BM foundations: branch-mathematics.html
+- GURF identity and extension architecture: gurf.html
+- master corpus/status map: encyclopedia.html
+- formal definitions: definitions.html
+- structural architecture: structures.html
+- Passports: passports.html
+- Roots: roots.html
+- SOE: soe.html
+- proved results and counterexamples: theorems.html
+- classified equations: equations.html
+- research status: research.html
+- revision history: changelog.html
+
+# Branch Mathematics Identity
+
+Branch Mathematics is a mathematical metaframework for carrying one mathematical problem through multiple distinct lawful mathematical Branches while preserving the native mathematics of each Branch and governing their lawful representation, interaction, transformation, composition, comparison, realization, computation, export, re-entry, and further mathematical development.
+
+Descriptive identity:
+
+BM is meta-structural mathematics of lawful representation and transformation.
+
+Governing principle:
+
+one problem
+-> multiple lawful mathematical focuses
+-> lawful interaction and combined computation
+-> mathematical consequences
+
+BM does not replace native mathematics.
+
+A PDE remains a PDE.
+A manifold remains a manifold.
+A graph remains a graph.
+A Markov kernel remains a Markov kernel.
+A relation remains a relation.
+A quantum channel remains a quantum channel.
+
+Native mathematics remains authoritative inside each mathematical sector.
+
+# BM Is Plural
+
+The teaching spine
+
+Branch
+-> Interaction
+-> Leaf
+-> Tree
+-> Response
+-> Root
+
+is useful but is not the whole subject.
+
+BM also contains mathematics of:
+
+- problem scope
+- obligation families
+- Operations
+- Interfaces
+- Contracts
+- Passports
+- Configurations
+- Networks
+- realization
+- coherence
+- law/regime context
+- representation
+- fibres
+- structured quotients
+- refinement
+- abstraction
+- information distinctions
+- witness scope
+- coupling
+- feedback
+- Dynamic Closure
+- convergence
+- approximation
+- Defect Calculus
+- obstruction
+- repair
+- export
+- re-entry
+- candidate Rooting
+- candidate Rebranching
+- candidate Seed
+
+# Role-Carrier Separation
+
+Notation:
+
+x |=_C rho
+
+means:
+
+mathematical carrier x occupies BM role rho in Configuration C.
+
+Critical rule:
+
+BM role != new native mathematical species
+
+A role name confers no undeclared mathematical property.
+
+The same carrier may occupy several roles.
+
+Example:
+
+z |=_C Leaf
+z |=_C Response
+z |=_C Root(receiver B_r)
+
+These may all refer to the same underlying mathematical object.
+
+# Problem Scope
+
+Declared mathematical scope of problem P:
+
+S_P
+
+Terminal obligations:
+
+T_P
+
+Active obligation family:
+
+Q_P = ReqCl_(D_C)(T_P)
+
+The active obligation family contains the terminal obligations together with whatever dependencies are mathematically required to support them.
+
+Possible obligations include:
+
+- functions
+- predicates
+- relations
+- PDE conditions
+- regularity
+- native laws
+- convergence
+- reconstruction
+- Interfaces
+- witnesses
+- couplings
+- continuation
+- receiver requirements
+- certification conditions
+
+Critical rule:
+
+representation choice != permission to weaken the problem scope
+
+# Scope Monotonicity
+
+For fixed comparison semantics, if:
+
+Q_1 subset Q_2
+
+then preserving Q_2 implies preserving Q_1.
+
+Therefore:
+
+redundant under Q_2 -> redundant under Q_1
+
+essential under Q_1 -> essential under Q_2
+
+Do not use this monotonicity outside a fixed comparison/admissibility class without further proof.
+
+# Branch
+
+Current organizational Branch record:
+
 B = (S_B, tau_B, X_B, A_B, L_B, O_B, P_B)
 
 Interpretation:
+
 - S_B: mathematical sector
 - tau_B: declared type
-- X_B: carrier or state object
-- A_B: admissible domain or sector-correct analogue
+- X_B: carrier/state object
+- A_B: admissible state/domain object
 - L_B: native laws, identities, constraints, invariants
 - O_B: native Operations
-- P_B: Passport and Interface obligations
+- P_B: relevant Passport / Interface obligations
 
-Current deterministic Set-like Interaction form:
-I : D_I subset A_B1 x ... x A_Bn -> Z_I
+The tuple is organizational.
 
-Leaf extraction:
+It is not a claim that every native mathematical object intrinsically consists of seven independent components.
+
+Critical rule:
+
+mathematical object != automatically BM Branch
+
+# Branch Essentiality
+
+Where a common deterministic carrier is available:
+
+R_B : X_P -> Y_B
+
+Suppose:
+
+q : Y_B -> Y'
+
+coarsens or collapses a proposed Branch distinction.
+
+If a required obligation T cannot descend through the coarsening:
+
+there does not exist T_tilde such that
+
+T = T_tilde o q o R_B
+
+then that lost distinction is essential for the declared scope.
+
+If all required mathematics survives an admissible Branch-removing coarsening, the separate Branch may be redundant for that scope.
+
+Reduced decomposition notation:
+
+B_red(P; S_P)
+
+means a decomposition with no declared admissible Branch-removing coarsening preserving all required mathematics.
+
+This does not imply:
+
+- uniqueness
+- a global minimum
+- canonical decomposition
+
+# Branch Explosion Firewall
+
+Do not call every expression a separate Branch.
+
+Example:
+
+x
+x^2
+x^3
+sin(x)
+
+are not automatically four Branches.
+
+Critical rule:
+
+Branch count is not fundamental mathematical data
+
+Representational duplication != new mathematical freedom
+
+Artifact of one Branch decomposition != property of the underlying problem
+
+# Operation
+
+Operation is the general BM transformation/relation role.
+
+Deterministic specialization:
+
+O : D_O subset X -> Y
+
+Other native sectors may use:
+
+- partial functions
+- relations
+- set-valued maps
+- Markov kernels
+- quantum channels
+- differential operators
+- optimization operators
+- rewrite systems
+- other sector-correct Operations
+
+# Partial Composition
+
+For:
+
+F : D_F subset X -> Y
+G : D_G subset Y -> Z
+
+the true composite domain is:
+
+D_(G o F)
+=
+{x in D_F : F(x) in D_G}
+
+Written source/codomain compatibility alone is not sufficient.
+
+# Interaction
+
+Interaction is an Operation or native relation occupying a declared joint-participation role.
+
+A participation boundary may be represented as:
+
+partial I
+=
+(B_i1^r1, ..., B_ik^rk)
+
+with:
+
+k >= 2
+
+Self-interaction may use distinct roles of the same Branch.
+
+Unary processing normally remains Operation rather than Interaction.
+
+# Interaction Non-Inheritance
+
+Critical rule:
+
+input structure != automatically output structure
+
+Examples:
+
+- vector input does not automatically imply vector output
+- group input does not automatically imply group output
+- topology on an input does not automatically descend to a quotient
+- positivity does not automatically survive an arbitrary transformation
+
+Output structure must be:
+
+- defined
+- induced
+- transported
+- constructed
+- or proved
+
+# Leaf
+
+Suppose:
+
 z = I(x_1,...,x_n)
+
+and:
+
+ell_j : Z_I -> L_j_space
+
+Then:
+
 L_j = ell_j(z)
 
-A formal Leaf requires:
-- declared Interaction provenance
-- a declared extraction map
-- lawful receiving use if it participates later
+may occupy the Leaf role when:
 
-Core structural direction:
-lawful Branches
--> lawful Interactions
--> Leaves and organized Tree/Network computation
--> Response
--> terminal result or Root if the receiving gate passes
+- its derivation/extraction is explicit
+- relevant provenance is retained
+- later mathematics actually uses the result
 
-Tree, Response, and Root are distinct:
-- Tree: organized computation
-- Response: typed mathematical output
-- Root: receiver-relative downstream role after verified admissibility
+Not every intermediate expression is automatically a formal Leaf.
 
-Receiver-relative Root rule:
-r is a Root for receiver B' only if r belongs to the declared Root-admissible receiving domain A_R(B') and the required receiving obligations hold.
+Leaf != automatically Branch
 
-Root does not automatically imply:
-- recursion
+Leaf != automatically terminal output
+
+# Provenance and History
+
+Derivational provenance:
+
+Pi_der
+
+State/history information:
+
+H
+
+These are different structures.
+
+Derivational provenance records how a result was obtained.
+
+State/history records mathematical information required for future system evolution or continuation.
+
+proof history != system memory
+
+# Contract
+
+A Contract is a reusable typed obligation schema.
+
+Notation:
+
+C^rho = (Sigma^rho, Phi^rho)
+
+A Contract is optional when no reusable schema is needed.
+
+# Passport
+
+A Passport is the operative typed obligation family for a particular role/context.
+
+Instantiation:
+
+P^rho_(theta,c)
+=
+Inst_(theta,c)(C^rho)
+
+A Passport may encode:
+
+- type
+- domain
+- regularity
+- law/regime
+- Interface obligations
+- witness scope
+- coupling
+- invariants
+- continuation
+- receiver requirements
+- approximation tolerances
+
+# Passport Applicability
+
+Passport applicability domain:
+
+D_P
+
+Passport acceptance region:
+
+Acc(P) subset D_P
+
+Interpretation:
+
+1. x not in D_P
+   -> Passport is not applicable
+
+2. x in D_P but x not in Acc(P)
+   -> Passport applies and rejects
+
+3. x in Acc(P)
+   -> Passport applies and accepts
+
+Critical rule:
+
+not applicable != applicable but false
+
+# Interface
+
+An Interface is a specified mathematical mechanism allowing distinct structures to:
+
+- communicate
+- compare
+- constrain
+- transport
+- project
+- embed
+- couple
+- share boundaries
+- exchange compatible data
+
+Possible Interface forms include:
+
+- function
+- partial function
+- relation
+- span
+- correspondence
+- boundary map
+- embedding
+- projection
+- quotient
+- comparison map
+- transport law
+- discretization
+- shared boundary object
+
+No property such as injectivity, surjectivity, invertibility, continuity, order preservation, or Passport preservation is automatic.
+
+# Configuration
+
+A Configuration C is the coordinated active BM structure.
+
+Current status ladder:
+
+candidate
+-> well formed
+-> locally admissible
+-> globally realizable
+-> realized Tree
+
+# Well-Formed Configuration
+
+Notation:
+
+WF(C)
+
+Well formed generally requires:
+
+- declared types
+- declared domains/codomains
+- type-correct compositions
+- Passport applicability
+- semantically valid Interfaces
+- typed law/regime data
+- legitimate comparison spaces
+
+Well formed != realizable
+
+# Local Admissibility
+
+For declared local regions U_i:
+
+F(U_i; C,c) != empty
+
+for all i
+
+means local admissibility.
+
+Local admissibility != global realizability
+
+# Global Realizability
+
+GR(C;c)
+
+iff
+
+F(C;c) != empty
+
+where:
+
+F(C;c)
+
+is the lawful realization family.
+
+# Certification Firewall
+
+Semantic truth and certification state are different.
+
+Possible certification states include:
+
+- CERTIFIED REALIZABLE
+- CERTIFIED OBSTRUCTED
+- UNRESOLVED
+
+Critical rule:
+
+failure to certify != certification of failure
+
+# Semantic Dependency
+
+The semantic dependency structure of Configuration C is:
+
+D_C
+
+Possible representations include:
+
+- graph
+- DAG
+- hypergraph
+- factor graph
+- category
+- operator network
+- relation
+- other native dependency structure
+
+Affected dependency closure:
+
+Cl_(D_C)(S)
+
+means the least dependency-closed affected region containing S.
+
+Network != realization
+
+Global constraints must be represented explicitly.
+
+# Realization Family
+
+F(C;c)
+
+contains lawful realizations satisfying all declared:
+
+- Branch admissibility
+- Operation domains
+- Interfaces
+- Passports
+- law/regime requirements
+- witnesses
+- couplings
+- coherence
+- feedback
+- global constraints
+
+Existence of a realization does not imply uniqueness.
+
+Existence does not imply canonical selection.
+
+# Tree
+
+Current canonical Tree definition:
+
+T = (C, xi, Pi, omega, Lambda)
+
+with:
+
+xi in F(C;c)
+
+Interpretation:
+
+- C: Configuration
+- xi: selected lawful realization
+- Pi: required provenance
+- omega: required order/dependency context
+- Lambda: law/regime context
+
+Critical rules:
+
+Configuration != Tree
+
+Network != Tree
+
+Tree does not mean merely "organized computation"
+
+Tree need not be a graph-theoretic tree
+
+# Response
+
+A Response is a typed output of a realized BM computation.
+
+Possible Response forms include:
+
+- scalar/value
+- tuple
+- set
+- relation
+- fibre
+- operator
+- probability law
+- law family
+- geometric object
+- certificate
+- obstruction
+- other native mathematical object
+
+A Response may be terminal.
+
+Response != automatically Root
+
+# Export
+
+Receiver-directed export:
+
+E_r : D_(E_r) subset Y_T -> R_r
+
+r = E_r(Y)
+
+Export is receiver-specific.
+
+Receiver sufficiency may impose additional mathematics.
+
+# Root
+
+Roothood is receiver-relative.
+
+Before evaluating Roothood, require:
+
+r in D_(P_R^B_r)
+
+Then:
+
+r is Root for receiver B_r
+
+iff
+
+r in Acc(P_R^B_r)
+
+Critical rules:
+
+Root(B_1,r) does not imply Root(B_2,r)
+
+wrong type/domain != applicable-but-rejected Root
+
+Root is a BM role, not a new native mathematical species
+
+# Re-entry
+
+Re-entry is later lawful use of an accepted Root.
+
+Possible re-entry consequences include:
+
+- direct use
+- reduction
+- re-Passporting
+- recomputation
+- Configuration update
+- law/regime update
+- repair
+- later mathematical development
+
+Root re-entry does not automatically create a new Branch.
+
+# Root Reuse
+
+Roothood does not imply:
+
+- recurrence
+- iteration
 - convergence
 - conservation
 - invertibility
+- stability
 - physical realization
 - compatibility with every receiver
 
-Rooting and Rebranching are active candidate BM structures.
-Current candidate Rooting form:
-A_attach : D_A subset A_A x A_R(B') -> X'
+A general stage-varying chain may have:
 
-Seed is an optional candidate BM primitive.
-Initial data is not automatically a Seed.
-A Seed requires a declared generative role, lawful update, and export condition.
+R_n in X_n
 
-Exact deterministic recoverability:
-For F : X -> Z and T : X -> W,
-T is exactly recoverable from F iff there exists
+F_n : D_n subset X_n -> X_(n+1)
+
+R_(n+1) = F_n(R_n)
+
+Ordinary iteration requires a self-map:
+
+F : S -> S
+
+R_(n+1) = F(R_n)
+
+Critical rule:
+
+Root reuse != iteration != convergence
+
+Fixed points, cycles, stability, affine recurrences, and convergence are ordinary native dynamical-systems mathematics when an actual iterative system is present.
+
+# Candidate Rooting
+
+Status:
+
+CANDIDATE
+
+Current candidate form:
+
+A : D_A subset A_attach x A_R(B') -> X'
+
+Root reuse alone != Rooting
+
+Rooting requires an explicit attachment/re-entry construction.
+
+# Candidate Rebranching
+
+Status:
+
+CANDIDATE
+
+Rebranching is candidate terminology for a qualifying Rooting/re-entry that initiates genuinely distinct later Branch development.
+
+Critical rule:
+
+Rooting != automatically Rebranching
+
+# Candidate Seed
+
+Status:
+
+CANDIDATE
+
+A candidate Seed requires:
+
+- state space
+- lawful generative update
+- non-export phase
+- export condition/map
+
+Generic form:
+
+S_0
+->G S_1
+->G ...
+-> export
+-> R
+
+Critical rule:
+
+initial data != automatically Seed
+
+# Attachment Complex
+
+Current status:
+
+bridge / candidate infrastructure
+
+Do not treat Attachment Complex as established universal BM machinery unless its formal construction is explicitly provided for the problem.
+
+# Law Space
+
+Current status:
+
+active specialized BM direction
+
+Law assignment:
+
+Lambda : Omega_L rightsquigarrow L
+
+If:
+
+|Lambda(C)| > 1
+
+and downstream mathematics depends on lambda, BM must preserve the multiplicity unless a lawful selector is supplied.
+
+Selector:
+
+s : Omega_L -> L
+
+with:
+
+s(C) in Lambda(C)
+
+Critical rule:
+
+existence != canonical selection
+
+Law Space is not a mandatory separate Branch.
+
+# Representation
+
+For deterministic representation:
+
+F : X -> Y
+
+the fibre over y is:
+
+F^(-1)(y)
+
+Exact deterministic Task sufficiency for:
+
+T : X -> W
+
+holds iff:
+
+F(x)=F(x')
+implies
+T(x)=T(x')
+
+equivalently:
+
+T = T_tilde o F
+
+for:
+
 T_tilde : F(X) -> W
-such that
-T = T_tilde o F.
 
-The natural exact factor domain is the realized image F(X), not automatically all of Z.
+The natural exact factor domain is F(X), the realized image.
 
-Partial composition:
-For F : D_F subset X -> Y and G : D_G subset Y -> Z,
-D_(G o F) = {x in D_F : F(x) in D_G}.
+This is classical factorization mathematics used by BM/GURF.
 
-Dynamic Closure:
-R o Phi = Phi_tilde o R
-when the reduced representation R determines its own exact successor.
-Static Task sufficiency does not imply Dynamic Closure.
+# Structured Quotients
 
-Structured quotient rule:
-Set-level equivalence does not by itself authorize a structured quotient.
-In a finitary algebraic sector, required Operations descend only when the equivalence is a congruence for those Operations.
+Set-level equivalence does not automatically permit native structure to descend.
 
-Semantic-sector firewall:
-- deterministic function != Markov kernel
-- Markov kernel != relation
-- relation != quantum channel
-- approximate similarity != exact equality
-- differential privacy != exact Passport equivalence
+For n-ary Operation sigma, quotient compatibility requires:
 
-Stochastic response:
-K : X rightsquigarrow Y
-K^dagger phi(x) = integral phi(y) K(x,dy)
+x_i ~ y_i for all i
 
-Nondeterministic response:
-Diamond_R(U) = {x : exists y in U with x R y}
-Box_R(U) = {x : for every y, x R y implies y in U}
+implies
 
-Joint feasibility firewall:
-Separate witnesses do not imply one common witness.
-When one common witness is required:
-intersection over c of P_c must be nonempty.
+sigma(x_1,...,x_n)
+~
+sigma(y_1,...,y_n)
 
-Coupling firewall:
-Separate marginals do not determine a joint law.
+Only then is the induced quotient Operation well defined.
+
+observational equivalence != automatically structured quotient
+
+# Dynamic Closure
+
+Let:
+
+Phi : A -> A
+R : A -> Y
+
+and define:
+
+Y_R = R(A)
+
+Exact Dynamic Closure holds iff there exists:
+
+Phi_tilde : Y_R -> Y_R
+
+such that:
+
+R o Phi
+=
+Phi_tilde o R
+
+equivalently:
+
+R(x)=R(x')
+implies
+R(Phi(x))=R(Phi(x'))
+
+Critical rule:
+
+static Task sufficiency != Dynamic Closure
+
+# Convergence
+
+Every statement of the form:
+
+x_n -> x
+
+must declare native convergence semantics.
+
+Examples:
+
+- norm convergence
+- weak convergence
+- weak-star convergence
+- convergence in probability
+- almost-sure convergence
+- operator-topology convergence
+- order convergence
+
+Iteration alone does not imply convergence.
+
+# Approximation
+
+Approximate mathematics requires declared quantitative semantics.
+
+Typical form:
+
+d_Q(x,y) <= epsilon
+
+Must declare:
+
+- comparison space
+- metric/divergence/error functional
+- units/normalization when relevant
+- tolerance semantics
+
+Critical rule:
+
+approximate != informally close
+
+# Coherence
+
+Exact path coherence requires:
+
+1. lawful common input
+2. legitimate comparison space
+3. actual agreement
+
+Typical form:
+
+x in D_P1 intersect D_P2
+
+q_1 : Y_1 -> Q
+q_2 : Y_2 -> Q
+
+q_1 P_1(x)
+=
+q_2 P_2(x)
+
+Do not invent comparison maps solely to force equality.
+
+Approximate coherence requires declared discrepancy and tolerance.
+
+Critical rule:
+
+pairwise coherence != global coherence
+
+# Witness Scope
+
+Independent witnesses:
+
+exists w_1 phi_1(w_1)
+
+and
+
+exists w_2 phi_2(w_2)
+
+Shared witness:
+
+exists w [phi_1(w) and phi_2(w)]
+
+These are not equivalent.
+
+Critical rule:
+
+separate witnesses != shared witness
+
+# Coupling
+
+Coupled witness form:
+
+exists w_1,w_2:
+
+R_1(x,w_1)
+and
+K(w_1,w_2)
+and
+R_2(x,w_2)
+
+K contains the coupling condition.
+
+For probability laws:
+
+marginals != unique joint law
+
 A required joint response needs a declared or established coupling.
 
-Differential privacy firewall:
-For neighboring x ~adj x',
-Pr[M(x) in S] <= exp(epsilon) Pr[M(x') in S] + delta
+# Local-to-Global Realization
+
+Finite rooted-tree special case:
+
+H = (V,E)
+
+with local realization sets:
+
+F_v != empty
+
+and edge compatibility:
+
+C_uv subset F_u x F_v
+
+Global realization family:
+
+F_H
+=
+{(x_v):
+ x_v in F_v
+ and
+ (x_u,x_v) in C_uv
+ for every edge uv}
+
+If all global constraints are explicitly represented and parent-surjectivity holds:
+
+for every edge u->v
+and every x_u in F_u
+there exists x_v in F_v
+with (x_u,x_v) in C_uv
+
+then:
+
+F_H != empty
+
+This is known tree/CSP-style gluing mathematics used by BM.
+
+Critical rule:
+
+local compatibility != global realizability in general
+
+Hidden global constraints invalidate naive tree factorization.
+
+# Defect Calculus
+
+Current status:
+
+ACTIVE SPECIALIZED BM MATHEMATICS
+
+General defect notation:
+
+Def_Psi
+
+where Psi is the failed mathematical condition.
+
+A defect may be:
+
+- set
+- relation
+- scalar
+- vector
+- operator
+- rank
+- geometric obstruction
+- cohomological object
+- other native invariant
+
+No universal scalar BM defect is assumed.
+
+# Task-Labelled Fibre
+
+For representation C:
+
+F_C(c) = C^(-1)(c)
+
+Task-labelled fibre:
+
+D_T(C;c)
+=
+(F_C(c), T restricted to F_C(c))
+
+Ambiguity image:
+
+A_T(C;c)
+=
+T(F_C(c))
+
+Refinement by additional observation W:
+
+F_(C,W)(c,w)
+=
+F_C(c) intersect W^(-1)(w)
+
+Coarsening under P:
+
+F_D(d)
+=
+union over c with P(c)=d of F_C(c)
+
+# Obstruction
+
+An obstruction is a mathematical certificate that required structure cannot exist.
+
+Critical rule:
+
+failure to find != obstruction
+
+# Repair
+
+General admissible repair relation:
+
+R_adm subset Conf x Conf
+
+A repair succeeds only if it:
+
+- restores the failed requirement
+- belongs to the declared admissible repair class
+- preserves protected types/laws/invariants/obligations
+
+Deterministic representation repair may use:
+
+F'(x) = (F(x), q(x))
+
+Task repair succeeds when:
+
+F'(x)=F'(x')
+implies
+T(x)=T(x')
+
+Repair dependency rule:
+
+repair of region S
+
+requires revalidation of:
+
+Cl_(D_C)(S)
+
+unless an invariance theorem proves dependent results unaffected.
+
+# Refinement
+
+Common-source deterministic special case:
+
+R_1 : X_P -> Y_1
+R_2 : X_P -> Y_2
+
+R_1 = A_21 o R_2
+
+may support a scope-relative refinement relation.
+
+Under fixed comparison semantics this is generally a preorder.
+
+A poset requires quotienting mutual refinement.
+
+A lattice requires actual existence of meets and joins.
+
+Critical rule:
+
+preorder != automatically lattice
+
+For heterogeneous Branches, do not force a common source representation.
+
+Possible comparison structures include:
+
+- spans
+- correspondences
+- common realization objects
+- relations
+- fibrations
+- institutions
+- adjunctions
+- other suitable structures
+
+# Information
+
+BM treats information through distinctions carried by mathematical structure.
+
+Information types are not automatically interchangeable.
+
+Conversions require lawful maps or relations.
+
+Noninjective representation is permitted.
+
+Critical rule:
+
+representation loss != total-system destruction of all information
+
+Where an exact deterministic total-system persistence axiom is imposed:
+
+F_hat : X -> Y x H
+
+and:
+
+F_hat(x_1)=F_hat(x_2)
+implies
+x_1 ~_I x_2
+
+Other sectors require native formulations.
+
+# Probability / Sector Firewall
+
+BM does not require probabilistic ontology.
+
+Native probability mathematics remains valid when the mathematical sector uses it.
+
+Critical rule:
+
+probability mathematics != mandatory probabilistic ontology
+
+Critical sector distinctions:
+
+function
+!=
+Markov kernel
+!=
+relation
+!=
+quantum channel
+
+Cross-sector translation requires an explicit Interface.
+
+# Markov Kernels
+
+For:
+
+K : X rightsquigarrow Y
+
+the generic test-function action is:
+
+(K phi)(x)
+=
+integral_Y phi(y) K(x,dy)
+
+Do not use K^dagger merely for generic expectation pullback unless an actual adjoint structure has been defined.
+
+Kernel composition:
+
+(L o K)(x,A)
+=
+integral_Y L(y,A) K(x,dy)
+
+# Nondeterministic Semantics
+
+For relation:
+
+R subset X x Y
+
+may semantics:
+
+Diamond_R(U)
+=
+{x : exists y in U with x R y}
+
+must semantics:
+
+Box_R(U)
+=
+{x : for every y, x R y implies y in U}
+
+Critical rule:
+
+Diamond_R != Box_R
+
+# Differential Privacy
+
+For neighboring inputs x and x':
+
+Pr[M(x) in S]
+<=
+exp(epsilon) Pr[M(x') in S] + delta
+
 for applicable measurable events S.
 
-GURF is the response-specialized framework operating under BM governance.
-Use GURF when genuine response semantics are essential:
+Critical rule:
+
+differential privacy != exact equivalence
+
+# Computability Firewall
+
+BM separates:
+
+existence
+!=
+decidability
+!=
+computability / constructibility
+!=
+complexity
+
+Existence does not automatically produce an algorithm.
+
+An algorithm does not automatically imply efficient computation.
+
+# Heterogeneous Mathematics
+
+BM permits heterogeneous native sectors in one problem.
+
+Examples:
+
+- PDE
+- geometry
+- combinatorics
+- probability
+- optimization
+- algebra
+- operator theory
+- quantum information
+
+Critical rule:
+
+coordination != forced unification of native categories
+
+Use a universal formalism only where the mathematics genuinely supports it.
+
+# GURF Identity
+
+GURF is the response-specialized framework under Branch Mathematics.
+
+Architectural relation:
+
+GURF embeds into BM as a response-specialized framework.
+
+This is not literal set-theoretic inclusion.
+
+GURF specializes problems where mathematical identity depends essentially on:
+
+- Response
 - Observation
 - Task
-- Intervention
-- constraint
-- Regime
 - ambiguity
-- inference
+- sufficiency
+- reconstruction
 - continuation
+- Intervention
 - uncertainty
-- obstruction
-- repair
-- future response
+- response obstruction
+- response repair
+- response certification
 
-Current GURF architecture:
-GURF =
+Domain-independent mathematics remains under BM.
+
+# GURF Architecture
+
+GURF
+=
 Core
 + SOE
 + ACE
@@ -143,43 +1361,466 @@ Core
 + HDE
 + GHSE
 
-Current GURF status:
-- Core: stable / canonical
-- SOE: stable canonical extension
-- ACE: stable canonical extension
-- IRE: stable canonical extension
-- UKE: stable canonical extension
-- GRDE: frozen at GURF-GRDE-008
-- HDE: active canonical extension
-- GHSE: active canonical extension
+Current status:
 
-GURF extension roles:
-- SOE: typed Operations, true domains, order, composition, handoff, provenance, feedback, Intervention, REBIND
-- ACE: admissibility, hard/soft constraints, viability, margins, boundary/tangency, chance constraints, stability/safety gates
-- IRE: inverse recovery, Task-relative identifiability, uncertainty, conditioning, certificates, observation design
-- UKE: nullspace, integral, Green, spectral, resolvent, reproducing, causal, memory/nonlocal response
-- GRDE: frozen diagrammatic response representation calculus; do not invent replacement canonical GRDE architecture
-- HDE: extended/halo response domains, boundary transfer, persistence, memory, local-closure failure, inverse recovery
-- GHSE: joining, hold, persistence, release, hysteresis, dwell, stochastic hold, response-state transition
+- Core: canonical
+- SOE: stable canonical GURF extension
+- ACE: stable canonical GURF extension
+- IRE: stable canonical GURF extension
+- UKE: stable canonical GURF extension
+- GRDE: frozen at GURF-GRDE-008
+- HDE: active canonical GURF extension
+- GHSE: active canonical GURF extension
+
+GURF extensions are not mandatory layers.
+
+Activate only the extension required by the response problem.
+
+# GURF Core
+
+GURF Core includes response-specialized mathematics of:
+
+- Response
+- Observation
+- Task
+- Task family
+- observation fibre
+- Completion Fibre
+- ambiguity
+- exact sufficiency
+- approximate sufficiency
+- Task diameter
+- continuation
+- Dynamic Closure
+- Intervention
+- law/regime response context
+- stochastic response
+- nondeterministic response
+- response obstruction
+- response repair
+- certification
+
+# Completion Fibre
+
+Given response components:
+
+r_alpha : X -> Y_alpha
+
+and retained values ell_alpha:
+
+C_A(ell)
+=
+intersection over alpha of r_alpha^(-1)(ell_alpha)
+
+Interpretation:
+
+empty Completion Fibre
+-> inconsistent retained response information
+
+singleton Completion Fibre
+-> exact source state under the declared model
+
+multiple-point Completion Fibre
+-> source ambiguity remains
+
+# Response Ambiguity
+
+For Task T:
+
+A_T(ell)
+=
+T(C_A(ell))
+
+Task determination may be exact even when the source state remains ambiguous.
+
+Task identifiability != full-state identifiability
+
+# SOE
+
+SOE is the GURF response-operation specialization.
+
+Activate SOE when response depends essentially on:
+
+- Operation identity
+- true Operation domain
+- Operation order
+- handoff
+- provenance
+- history
+- Intervention
+- feedback
+- semantic-sector changes
+
+SOE does not own:
+
+- ordinary function composition
+- partial-map theory
+- control theory
+- fixed-point theory
+- general stability theory
+- Markov kernels
+- relational logic
+- quantum channels
+- generic numerical error analysis
+
+No standalone REBIND primitive is currently required.
+
+Use ordinary Interface replacement/revalidation when:
+
+- type changes
+- calibration changes
+- law/regime changes
+- Passport requirements change
+- receiving context changes
+
+# ACE
+
+ACE is the stable canonical GURF response-admissibility specialization.
+
+Activate ACE when response questions depend on:
+
+- hard constraints
+- soft constraints
+- feasibility
+- safety
+- viability
+- active admissibility sets
+- chance constraints
+- response gates
+
+Native convexity, optimization, viability, and constraint mathematics retain their established meanings.
+
+# IRE
+
+IRE is the stable canonical GURF inference/recovery specialization.
+
+Activate IRE for response questions involving:
+
+- inverse recovery
+- ambiguity
+- identifiability
+- reconstruction
+- stability
+- conditioning
+- observation design
+- certification
+
+Inverse-problem mathematics retains native ownership.
+
+# UKE
+
+UKE is the stable canonical GURF specialization for response problems mediated by:
+
+- nullspaces
+- integral kernels
+- Green kernels
+- spectra
+- resolvents
+- reproducing kernels
+- memory / nonlocal response
+
+Critical kernel firewall:
+
+nullspace kernel
+!=
+integral kernel
+!=
+Green kernel
+!=
+Markov kernel
+
+Example nullspace:
+
+ker F
+=
+{h : Fh=0}
+
+Task may survive nullspace ambiguity when:
+
+h in ker F
+implies
+T(x+h)=T(x)
+
+for admissible states.
+
+Example integral response:
+
+(Kf)(x)
+=
+integral K(x,y) f(y) dy
+
+Example Green kernel:
+
+L_x G(x,x')
+=
+delta(x-x')
+
+Example resolvent:
+
+R(z)
+=
+(L-zI)^(-1)
+
+where the inverse exists.
+
+Example memory response:
+
+y(t)
+=
+integral from -infinity to t
+K(t,s) x(s) ds
+
+UKE does not own:
+
+- operator theory
+- integral equations
+- Green-function theory
+- spectral theory
+- RKHS theory
+- memory-kernel theory
+
+It specializes their consequences for response, observation, recovery, and continuation.
+
+# GRDE
+
+Current status:
+
+FROZEN at GURF-GRDE-008
+
+GRDE is diagrammatic representation of already-defined response mathematics.
+
+Critical rule:
+
+formal mathematics first
+-> diagram second
+
+Do not invent replacement canonical GRDE architecture.
+
+# HDE
+
+Current status:
+
+ACTIVE CANONICAL GURF EXTENSION
+
+HDE specializes response problems involving:
+
+- extended domains
+- hidden/halo state
+- boundary dependence
+- memory
+- persistence
+- local-closure failure
+
+Extended state may be represented as:
+
+x_ext = (x_D, x_H)
+
+Local insufficiency may occur when:
+
+x_D = x_D'
+
+but:
+
+T(x_D,x_H)
+!=
+T(x_D',x_H')
+
+Extended mathematical state != automatically physical halo/substance.
+
+# GHSE
+
+Current status:
+
+ACTIVE CANONICAL GURF EXTENSION
+
+GHSE specializes response questions involving:
+
+- joining
+- hold
+- persistence
+- release
+- joined-state transition
+
+Possible joined-state region:
+
+H subset X_A x X_B
+
+Native joining, mechanics, constraint, hybrid-system, or dynamical mathematics remains authoritative.
+
+# BM / GURF Ownership
 
 Domain-independent mathematics belongs under BM.
+
 Response-specialized mathematics remains under GURF.
 
-BM-owned project mathematics that is not a GURF extension:
-- HEC: BM calculus
-- HEC-S: internal HEC sector
-- Defect Calculus: domain-independent BM mathematics
-- Attachment Complex: bridge object where formal Interfaces are defined
+Current placement:
 
-Historical GURF lineage:
-- GURE -> consolidated into IRE
-- CAR -> surviving functions distributed into ACE and GHSE
-- GALC -> consolidated into UKE
-- XEXT -> closed as an architecture layer
-- ACDRE -> application/bridge lineage
+- Branches: BM
+- Operations: BM + native mathematics
+- Interactions: BM + native mathematics
+- Interfaces: BM
+- Passports: BM
+- Configurations: BM
+- Networks: BM
+- realization: BM
+- coherence: BM coordination + native comparison mathematics
+- Defect Calculus: active specialized BM mathematics
+- Law Space: active specialized BM direction
+- Response / Observation / Task ambiguity: GURF specialization
+- SOE / ACE / IRE / UKE: stable canonical GURF extensions
+- HDE / GHSE: active canonical GURF extensions
+- GRDE: frozen GURF extension
+- Rooting / Rebranching / Seed: candidate BM structures
+- Attachment Complex: bridge / candidate infrastructure
+- HEC: FORMAL RECOVERY REQUIRED
+- HEC-S: FORMAL RECOVERY REQUIRED
 
-Research-status discipline:
-Do not collapse these labels:
+# HEC and HEC-S
+
+Current status:
+
+FORMAL RECOVERY REQUIRED
+
+The historical names remain part of the project record.
+
+They do not currently supply:
+
+- theorem hypotheses
+- equations
+- Operations
+- formal conclusions
+
+Do not invent replacement definitions solely to preserve these names.
+
+# Existing-Mathematics Reduction Rule
+
+Before promoting specialized BM mathematics, compare with established mathematics.
+
+If existing theory M completely realizes proposed structure S:
+
+S
+=
+BM role/application of M
+
+For partial reduction:
+
+S
+=
+S_known
++
+S_residual
+
+The residual is the genuine research target.
+
+Important prior-art comparison families include:
+
+- abstract interpretation
+- Galois connections
+- quotient theory
+- sufficiency theory
+- constraint-satisfaction problems
+- conjunctive queries
+- category theory
+- structured cospans
+- wiring-diagram operads
+- institutions
+- heterogeneous specifications
+- information-flow theory
+- bisimulation
+- lumpability
+- privacy semantics
+
+Critical rule:
+
+known exact mathematics -> credit and use it
+
+# Faithful Representation Research Target
+
+Let:
+
+C_BM
+
+be a declared useful class of BM Configurations.
+
+Major current foundations question:
+
+Can there be a faithful representation:
+
+F : C_BM -> M
+
+into an existing mathematical formalism M?
+
+A successful representation should preserve all distinctions BM actually claims matter, including:
+
+- native mathematical sectors
+- task-relevant Branch distinctions
+- Operations
+- Interactions
+- Interfaces
+- Passports
+- law/regime context
+- provenance/history
+- realization semantics
+- scope obligations
+- export
+- receiver-relative Root semantics
+
+Possible outcomes:
+
+1. full faithful reduction to known mathematics
+   -> clarifies BM as coordinated use of known mathematics
+
+2. faithful reduction only for restricted subclasses
+   -> failure boundary identifies residual research
+
+3. no adequate known representation identified
+   -> sharper target for formal development, but not automatically historical novelty
+
+# 200-Equation Structural Audit
+
+Corpus A:
+
+- 200 equations
+- complete
+- frozen for structural comparison
+- equations 111-200 tagged FRONTIER-SUPPLEMENT
+
+Nine recurring structural roles:
+
+1. representation / transport
+2. composition / decomposition / provenance
+3. admissibility / closure / obstruction
+4. comparison / coherence / context
+5. sufficiency / reconstruction / certification
+6. local-to-global aggregation
+7. dynamics / convergence / scaling / regimes
+8. extremality / rigidity / inverse classification
+9. computability / decidability limits
+
+Corrections produced by the scrub include:
+
+- typed coherence
+- separate domain/output coherence
+- Interaction Non-Inheritance
+- explicit Tree provenance/order/context
+- convergence semantics
+- law/regime context
+- context-carrying and multidimensional Roots
+- feedback semantics
+- computability firewall
+
+Critical rule:
+
+structural stress coverage != historical novelty proof
+
+A complete verified equation-by-equation source manifest for all 200 surviving entries is not currently available in the project record.
+
+Do not fabricate missing arXiv IDs, source equations, or bibliographic metadata.
+
+# Research-Status Discipline
+
+Do not collapse the following categories:
+
 - definition
 - theorem
 - proposition
@@ -191,81 +1832,488 @@ Do not collapse these labels:
 - candidate structure
 - numerical result
 - counterexample
-- physical interpretation
 - mathematical realization
+- physical interpretation
 - physical realization
 - engineering realization
 - historical novelty
 - independent external validation
 
-Current public status:
-- Integrated BM formal architecture: established internally / project-approved
-- External novelty of BM as an integrated mathematical subject: not established
-- Independent external validation: not yet established
-- Applied BM/GURF research: active / experimental where stated
-- Navier-Stokes: active derived mathematics and theorem-kernel work; no Clay Millennium solution claimed
-- Yang-Mills: active conditional research; four-dimensional existence and mass gap remain open
-- Gravity/spacetime: active mathematical-physics research; physical work emphasizes forward-causal geometric effects
-- Quantum information/control: active; no controllable superluminal-signalling mechanism is assumed
-- Extended Rooting/Rebranching: active candidate mathematics
-- Seed: candidate BM primitive
+Critical rule:
 
-Agent interpretation rules:
-- Prefer the canonical public pages linked below.
-- Preserve every result's stated mathematical sector and hypotheses.
-- Do not infer universal validity from a sector-specific result.
-- Do not call every project-derived quantity a formal BM Leaf.
-- Do not identify every Response as a Root.
+mathematical validity
+!=
+historical novelty
+!=
+physical truth
+!=
+empirical validation
+!=
+external validation
+
+# Current Public Status
+
+- BM core architecture: current canonical project baseline
+- External novelty of integrated BM: NOT ESTABLISHED
+- GURF: canonical response-specialized framework under BM
+- GURF Core: canonical
+- SOE: stable canonical GURF extension
+- ACE: stable canonical GURF extension
+- IRE: stable canonical GURF extension
+- UKE: stable canonical GURF extension
+- GRDE: frozen at GURF-GRDE-008
+- HDE: active canonical GURF extension
+- GHSE: active canonical GURF extension
+- Defect Calculus: active specialized BM mathematics
+- Law Space: active specialized BM direction
+- Rooting: CANDIDATE
+- Rebranching: CANDIDATE
+- Seed: CANDIDATE
+- Attachment Complex: bridge / candidate infrastructure
+- HEC: FORMAL RECOVERY REQUIRED
+- HEC-S: FORMAL RECOVERY REQUIRED
+- Corpus A: 200 equations, complete/frozen for structural comparison
+- Navier-Stokes: active derived research; no Clay Millennium solution claimed
+- Yang-Mills: active conditional research; 4D existence/mass gap unresolved
+- Gravity/spacetime: active mathematical / candidate physical-model research
+- Quantum information/control: active structural/applied research
+- Independent external validation: NOT ESTABLISHED
+
+# Navier-Stokes Research
+
+Native incompressible Navier-Stokes mathematics remains authoritative.
+
+Current project work includes active derived Leaves and diagnostics involving:
+
+- derivative covariance
+- strain-gradient covariance
+- triad structure
+- helical-sector loading
+- nonlinear transfer
+- spectral phase
+- continuation diagnostics
+- vorticity structure
+
+Critical rule:
+
+new diagnostic or identity != global regularity theorem
+
+No Clay Millennium Prize solution is claimed.
+
+# Yang-Mills Research
+
+Current Yang-Mills research is conditional and includes finite/truncated work involving:
+
+- boundary susceptibility
+- boundary Green matrices
+- tail floors
+- shell-depth recursion
+- coherent return
+- Gauss-law shell support
+- global-return obstruction
+- variational trial-space enrichment
+
+Critical rule:
+
+finite/truncated spectral gap
+!=
+four-dimensional continuum mass gap
+
+Four-dimensional Yang-Mills existence and mass gap remain unresolved.
+
+# Yang-Mills Variational Firewall
+
+Nested trial-space enrichment may give:
+
+lambda_k^(n+1)
+<=
+lambda_k^n
+
+for ordered Ritz values under the appropriate hypotheses.
+
+This does not imply monotonicity of successive spectral-gap differences.
+
+Ritz-value monotonicity != spectral-gap monotonicity
+
+# Gravity and Spacetime Research
+
+Current status:
+
+active mathematical / candidate physical-model research
+
+General Relativity remains authoritative where GR is being applied.
+
+Current research may include:
+
+- metric reconstruction
+- proper time
+- geodesics
+- tidal response
+- lensing
+- timing/redshift
+- frame dragging
+- inverse observation
+- extended-state hypotheses
+- information-access questions
+
+Critical rule:
+
+mathematical coherence != empirical confirmation of a physical mechanism
+
+# Quantum Information and Control
+
+Native quantum mathematics remains authoritative.
+
+Research includes:
+
+- quantum states
+- channels
+- measurement
+- distinguishability
+- correlations
+- dephasing
+- control
+- accessible information
+- continuation
+- quantum/classical Interfaces
+
+BM does not require probability as a primitive ontology.
+
+Native probability mathematics remains valid.
+
+Critical rules:
+
+probability mathematics != mandatory probabilistic ontology
+
+correlation != controllable superluminal signalling
+
+# Radiation and Light
+
+Research includes:
+
+- electromagnetic propagation
+- absorption
+- reflection
+- detector response
+- thermal emission
+- blackbody/greybody inversion
+- inverse reconstruction
+
+Critical separation:
+
+source emission
+!=
+propagation
+!=
+detector response
+
+# Computation
+
+Critical firewall:
+
+existence
+!=
+decidability
+!=
+computability
+!=
+complexity
+
+Research includes:
+
+- abstraction
+- privacy
+- secure compilation
+- task-preserving transformation
+- resource-aware recovery
+- algorithmic realization
+- certification complexity
+
+# Engineering Realization
+
+Critical rule:
+
+mathematical realization
+!=
+physical realization
+!=
+engineering realization
+
+Engineering gates may include:
+
+- energy
+- heat
+- materials
+- structural limits
+- controls
+- safety
+- causality
+- manufacturability
+- operating envelope
+- failure modes
+
+# Scientific Visualization Rule
+
+Mathematical/scientific visuals must arise from actual equations, models, simulations, or data.
+
+Preferred sequence:
+
+formal mathematics / model / data
+-> visualization
+
+Suitable figures may include:
+
+- curves
+- surfaces
+- vector fields
+- phase portraits
+- spectra
+- heatmaps
+- admissibility regions
+- parameter sweeps
+- coherence defects
+- convergence plots
+- PDE fields
+- response surfaces
+
+Critical rule:
+
+visual metaphor != mathematical visualization
+
+Do not depict BM roles as physical objects moving, growing, searching, attaching, emitting, or sprouting unless the native mathematics literally defines such dynamics.
+
+# Candidate Promotion Rule
+
+A candidate BM structure should be promoted only when:
+
+1. mathematical type is explicit
+2. domain and semantics are explicit
+3. relation to existing BM is explicit
+4. scope-appropriate counterexamples have been tested
+5. terminology is not a duplicate of existing mathematics
+6. imported mathematics is credited
+7. a theorem, construction, obstruction, computation, or indispensable structural distinction requires it
+
+Critical rule:
+
+useful metaphor != BM primitive
+
+# Canonical-Selection Firewall
+
+Critical rule:
+
+one convenient choice != canonical choice
+
+This applies to:
+
+- Branch decompositions
+- realization selection
+- Roots
+- repairs
+- Interfaces
+- quotient representatives
+- law selectors
+- comparison spaces
+
+Existence alone does not provide a canonical selector.
+
+# Role-Erasure / Pseudo-Math Rule
+
+Every serious BM theorem should retain mathematical content after BM role names are erased.
+
+Erase terms such as:
+
+- Branch
+- Leaf
+- Tree
+- Root
+
+and the underlying mathematical claim should remain expressible using native:
+
+- objects
+- domains
+- maps
+- relations
+- operators
+- constraints
+- comparison structures
+- realizability conditions
+
+The chain:
+
+name
+-> analogy
+-> claim
+
+is not accepted mathematics.
+
+The required chain is:
+
+problem
+-> definition
+-> type/domain
+-> law
+-> Operation
+-> proof/counterexample
+-> integration
+
+# Agent Interpretation Rules
+
+When an AI system reads or summarizes this corpus:
+
+- Prefer the current canonical page for each subject.
+- Use changelog.html to resolve superseded terminology.
+- Preserve native mathematical sectors.
+- Preserve stated domains and applicability conditions.
+- Preserve the declared problem scope.
+- Do not call every mathematical object a Branch.
+- Do not call every derived quantity a Leaf.
+- Do not equate Configuration with Tree.
+- Do not equate Network with realization.
+- Do not equate Response with Root.
 - Treat Root status as receiver-relative.
-- Do not promote candidate Rooting, Rebranching, or Seed to universal theorem status.
-- Do not treat project-canonical status as historical novelty.
-- Do not convert mathematical consistency into physical validation.
-- Do not convert a finite/truncated model result into a continuum/open-problem solution.
-- Preserve BM as the broader framework and GURF as response-specialized.
-- Use the Changelog when terminology or status appears to conflict across versions.
+- Check Root Passport applicability before acceptance/rejection.
+- Do not infer Rooting from ordinary Root reuse.
+- Do not infer Rebranching from Rooting.
+- Do not infer iteration from Root reuse.
+- Do not infer convergence from iteration.
+- Do not infer Dynamic Closure from static sufficiency.
+- Do not infer global realization from local admissibility.
+- Do not infer shared witnesses from separate witnesses.
+- Do not infer a joint coupling from marginals.
+- Do not infer a structured quotient from observational equivalence alone.
+- Do not infer a canonical choice from existence.
+- Do not introduce REBIND as a canonical SOE primitive.
+- Do not use K^dagger for generic Markov expectation unless an actual adjoint structure is defined.
+- Do not use HEC or HEC-S as current formal theorem-producing mathematics.
+- Do not promote Rooting, Rebranching, or Seed beyond candidate status.
+- Do not promote candidate physical interpretations into established physics.
+- Do not interpret project-canonical mathematics as historical novelty.
+- Do not convert numerical evidence into proof.
+- Do not convert finite/truncated model results into continuum/open-problem solutions.
+- Explicitly credit established mathematics.
+- Preserve negative results and counterexamples.
+- If information is missing from the corpus, say it is missing rather than inventing it.
 
-## Primary Corpus
+# Primary Corpus
 
-- [Home](https://branch-mathematics-bm.github.io/): Short technical entry point to BM, GURF, current status, and the public corpus.
-- [Branch Mathematics](https://branch-mathematics-bm.github.io/branch-mathematics.html): Authoritative BM identity, seven-field Branch record, admissible Interactions, Leaves, Trees, Responses, Roots, Passports, Operations, Interfaces, Networks, coherence, realization, export, re-entry, candidate Rooting/Rebranching/Seed, BM/GURF ownership, and theorem backbone.
-- [GURF](https://branch-mathematics-bm.github.io/gurf.html): Deep response-framework reference covering Core, SOE, ACE, IRE, UKE, frozen GRDE, HDE, GHSE, stochastic/nondeterministic response, continuation, repair, cross-extension composition, worked architectures, and application status.
-- [Encyclopedia](https://branch-mathematics-bm.github.io/encyclopedia.html): Master navigation and status map for the entire mathematical corpus.
-- [Worked Examples](https://branch-mathematics-bm.github.io/examples.html): Worked mathematics from introductory Branch/Interaction examples through Leaves, Trees, Seeds, Roots, Passports, mixed semantics, full systems, failure laboratories, Navier-Stokes derivations, quantum examples, and research-scale configurations.
+- Home:
+  https://branch-mathematics-bm.github.io/
+  Compact technical entry point and current status.
 
-## Formal Registries
+- Branch Mathematics:
+  https://branch-mathematics-bm.github.io/branch-mathematics.html
+  Authoritative BM identity, scope, Branches, Operations, Interactions, Interfaces, Passports, Configurations, realization, Trees, Responses, Roots, coherence, Defect Calculus, repair, prior-art reduction, and status.
 
-- [Definitions](https://branch-mathematics-bm.github.io/definitions.html): Deep formal definitions with identity, formal data, characteristics, abilities, limits, admissibility, failure modes, sector scope, status, and worked-example links.
-- [Theorems](https://branch-mathematics-bm.github.io/theorems.html): Proof/status registry separating classical infrastructure, BM structural results, GURF response results, conditional kernels, counterexamples, applied identities, provenance, and dependencies.
-- [Equations](https://branch-mathematics-bm.github.io/equations.html): Equation registry with domains, assumptions, semantic sectors, classification, diagnostics, and links to proofs/examples.
-- [Structures](https://branch-mathematics-bm.github.io/structures.html): Structural architecture for Branches, Interactions, Leaves, Trees, Responses, Roots, Passports, Operations, Interfaces, Configurations, Networks, paths, coherence, realization, export, and re-entry.
-- [Passports](https://branch-mathematics-bm.github.io/passports.html): Exact, approximate, stochastic, nondeterministic, privacy, law, conservative, coupling, continuation, repair, transfer, and re-entry information semantics.
-- [Roots](https://branch-mathematics-bm.github.io/roots.html): Receiver-relative Root status, Root Passports, transfer, conservative Roots, re-entry, candidate Rooting/Rebranching, repeated Rooting, iteration firewalls, stability models, and observability.
+- GURF:
+  https://branch-mathematics-bm.github.io/gurf.html
+  Authoritative response-specialized framework covering Core, SOE, ACE, IRE, UKE, frozen GRDE, HDE, GHSE, Tasks, fibres, ambiguity, continuation, Intervention, recovery, and certification.
 
-## GURF Operations
+- Encyclopedia:
+  https://branch-mathematics-bm.github.io/encyclopedia.html
+  Master corpus map and current status index.
 
-- [SOE](https://branch-mathematics-bm.github.io/soe.html): Structured Operations Extension; typed Operations, partial domains, serial/parallel composition, order defects, provenance, handoff, REBIND, feedback, stochastic/relational/quantum Operations, error propagation, failure localization, transactional response checks, and operation-registry specification.
+- Worked Examples:
+  https://branch-mathematics-bm.github.io/examples.html
+  Concrete calculations, counterexamples, failure laboratories, Branch reduction, realization, Passports, Dynamic Closure, repair, Roots, and heterogeneous systems.
 
-## Research and Revision
+# Formal Registries
 
-- [Research](https://branch-mathematics-bm.github.io/research.html): Active BM/GURF foundations, benchmark program, Navier-Stokes, Yang-Mills, gravity/spacetime, quantum information, radiation/light, computation/privacy, engineering realization, evidence, negative results, falsifiability, and promotion gates.
-- [Changelog](https://branch-mathematics-bm.github.io/changelog.html): Formal mathematical revision history including corrections, supersessions, freezes, ownership changes, theorem-status changes, and corpus synchronization.
+- Definitions:
+  https://branch-mathematics-bm.github.io/definitions.html
+  Formal definitions, data, abilities, limits, failure modes, semantic sectors, and maturity status.
 
-## Theorem Backbone
+- Structures:
+  https://branch-mathematics-bm.github.io/structures.html
+  Structural architecture for Branches, Operations, Interactions, Leaves, Configurations, Networks, semantic dependency, realization, Trees, Responses, Roots, Interfaces, coherence, repair, and re-entry.
 
-- [Theorem Registry](https://branch-mathematics-bm.github.io/theorems.html): Includes Exact Recoverability, Passport sufficiency, Completion-Fibre sufficiency, Task quotient, finite exact-carrier lower bound, Task-diameter results, parallel refinement, deterministic serial information loss, typed composite domains, Interface factorization, Leaf propagation, BM-SQ-01 structured quotient, Dynamic Continuation, Dynamic Closure, repair/refinement, Passport-defect localization, Root receiver-relativity, Root iteration firewall, finite deterministic Network evaluation, Markov composition, relational may/must composition, and applied PDE/gauge/quantum identities with explicit provenance.
+- Theorems:
+  https://branch-mathematics-bm.github.io/theorems.html
+  Theorem/proposition/lemma/counterexample/firewall registry with hypotheses, provenance, proof status, and dependencies.
 
-## Research Status
+- Equations:
+  https://branch-mathematics-bm.github.io/equations.html
+  Classified structural, classical, specialized, applied, diagnostic, firewall, and candidate equations.
 
-- [Navier-Stokes Research](https://branch-mathematics-bm.github.io/research.html#navier-stokes): Active derived mathematics and theorem-kernel research; no Clay Millennium solution is claimed.
-- [Yang-Mills Research](https://branch-mathematics-bm.github.io/research.html#yang-mills): Active conditional research; four-dimensional existence and mass gap remain open.
-- [Gravity and Spacetime Research](https://branch-mathematics-bm.github.io/research.html#gravity): Active mathematical/physical-model research with forward-causal physical-realization discipline.
-- [Quantum Information and Control](https://branch-mathematics-bm.github.io/research.html#quantum): Active operator/channel/measurement response research.
-- [Radiation and Light](https://branch-mathematics-bm.github.io/research.html#radiation): Active electromagnetic, radiative-transfer, detector, thermal, and inverse-response research.
-- [Computation, Privacy, and Compilation](https://branch-mathematics-bm.github.io/research.html#computation): Active formal/computational response research.
-- [Engineering Realization](https://branch-mathematics-bm.github.io/research.html#engineering): Application research separating mathematical realizability from physical and engineering feasibility.
+- Passports:
+  https://branch-mathematics-bm.github.io/passports.html
+  Contracts, Passport applicability, exact/approximate sufficiency, stochastic and nondeterministic sectors, coupling, continuation, receiver obligations, Dynamic Closure, repair, and re-entry.
 
-## Optional
+- Roots:
+  https://branch-mathematics-bm.github.io/roots.html
+  Response, Export, receiver-relative Root semantics, Root Passports, terminal use, re-entry, repair, and candidate Rooting/Rebranching/Seed.
 
-- [GitHub Repository](https://github.com/Branch-Mathematics-BM/Branch-Mathematics-BM.github.io): Public source repository for the website.
-- [Sitemap](https://branch-mathematics-bm.github.io/sitemap.xml): Search-engine URL inventory.
-- [Robots](https://branch-mathematics-bm.github.io/robots.txt): Crawler directives.
+- SOE:
+  https://branch-mathematics-bm.github.io/soe.html
+  GURF response-operation specialization: domains, ordering, handoff, provenance, history, Intervention, feedback, mixed sectors, failure localization, and repair revalidation.
+
+# Research and Revision
+
+- Research:
+  https://branch-mathematics-bm.github.io/research.html
+  BM/GURF foundations, faithful representation, prior-art reduction, 200-equation audit, theorem targets, local-to-global research, Navier-Stokes, Yang-Mills, gravity, quantum information, radiation, computation, engineering, falsification, negative results, and promotion gates.
+
+- Changelog:
+  https://branch-mathematics-bm.github.io/changelog.html
+  Formal mathematical revision history including definition corrections, supersessions, ownership changes, status changes, freezes, candidate demotions/promotions, prior-art findings, and corpus synchronization.
+
+# Research Links
+
+- BM foundations:
+  https://branch-mathematics-bm.github.io/research.html#bm-foundations
+
+- Faithful representation problem:
+  https://branch-mathematics-bm.github.io/research.html#faithful
+
+- Prior-art reduction:
+  https://branch-mathematics-bm.github.io/research.html#prior-art
+
+- 200-equation structural audit:
+  https://branch-mathematics-bm.github.io/research.html#corpus
+
+- Navier-Stokes:
+  https://branch-mathematics-bm.github.io/research.html#navier-stokes
+
+- Yang-Mills:
+  https://branch-mathematics-bm.github.io/research.html#yang-mills
+
+- Gravity and spacetime:
+  https://branch-mathematics-bm.github.io/research.html#gravity
+
+- Quantum information and control:
+  https://branch-mathematics-bm.github.io/research.html#quantum
+
+- Radiation and light:
+  https://branch-mathematics-bm.github.io/research.html#radiation
+
+- Computation, privacy, and compilation:
+  https://branch-mathematics-bm.github.io/research.html#computation
+
+- Engineering realization:
+  https://branch-mathematics-bm.github.io/research.html#engineering
+
+# Optional Repository Resources
+
+- GitHub repository:
+  https://github.com/Branch-Mathematics-BM/Branch-Mathematics-BM.github.io
+
+- Sitemap:
+  https://branch-mathematics-bm.github.io/sitemap.xml
+
+- Robots:
+  https://branch-mathematics-bm.github.io/robots.txt
+
+# Governing Interpretation Principle
+
+Preserve native mathematics.
+Separate BM roles from mathematical carriers.
+State scope, type, domain, and semantic sector.
+Distinguish Configuration from realization and Tree.
+Distinguish Response, Export, Root, and re-entry.
+Require lawful Interfaces and comparison spaces.
+Preserve every distinction required by downstream mathematics.
+Keep candidate structures visibly candidate.
+Credit established mathematics rather than renaming it.
+Preserve counterexamples and failed stronger claims.
+Separate mathematical validity from historical novelty and empirical validation.
+Do not invent missing mathematics or missing provenance.
