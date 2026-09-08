@@ -12,7 +12,7 @@
 
   <meta
     name="description"
-    content="Interactive Branch Mathematics symbolic calculator. Enter one or many equations and inspect the native solution, Branch decomposition, Operations, Interactions, Leaves, realization family, Tree status, Response, and Root gate."
+    content="Interactive Branch Mathematics symbolic calculator. Enter one or many equations and inspect the native solution, Branch decomposition, Operations, constraint relations, Leaves, realization family, Tree status, Response, and Root gate."
   >
 
   <meta name="robots" content="index, follow">
@@ -24,7 +24,6 @@
 
   <link rel="describedby" href="/llms.txt">
 
-  <!-- MathJax -->
   <script>
     window.MathJax = {
       tex: {
@@ -43,7 +42,6 @@
     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
   </script>
 
-  <!-- Pyodide -->
   <script
     src="https://cdn.jsdelivr.net/pyodide/v314.0.6/full/pyodide.js">
   </script>
@@ -78,7 +76,7 @@
     }
 
     header p {
-      max-width: 1050px;
+      max-width: 1080px;
       margin: auto;
       color: #e5e7eb;
       font-size: 1.08rem;
@@ -108,7 +106,7 @@
     }
 
     section {
-      margin-bottom: 46px;
+      margin-bottom: 50px;
     }
 
     h2 {
@@ -123,6 +121,12 @@
 
     p {
       margin: 10px 0;
+    }
+
+    code {
+      background: #f3f4f6;
+      padding: 2px 5px;
+      border-radius: 4px;
     }
 
     .calculator-shell {
@@ -229,8 +233,8 @@
     .engine-status {
       margin-top: 18px;
       padding: 12px 15px;
-      border-radius: 7px;
       border: 1px solid #d1d5db;
+      border-radius: 7px;
       background: #f8fafc;
       font-size: 0.94rem;
     }
@@ -272,15 +276,16 @@
 
     .results {
       margin-top: 34px;
+      scroll-margin-top: 20px;
     }
 
     .result-section {
-      margin: 28px 0;
+      margin: 30px 0;
     }
 
     .summary-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
       gap: 12px;
       margin: 18px 0;
     }
@@ -310,7 +315,7 @@
       margin-top: 0;
     }
 
-    .interaction-card,
+    .relation-card,
     .leaf-card,
     .response-card {
       margin: 12px 0;
@@ -320,12 +325,12 @@
       background: #f8fafc;
     }
 
-    .leaf-card {
-      border-left: 4px solid #166534;
+    .relation-card {
+      border-left: 4px solid #7c3aed;
     }
 
-    .interaction-card {
-      border-left: 4px solid #7c3aed;
+    .leaf-card {
+      border-left: 4px solid #166534;
     }
 
     .response-card {
@@ -334,7 +339,7 @@
 
     .math-block {
       overflow-x: auto;
-      padding: 10px 0;
+      padding: 8px 0;
     }
 
     .warning {
@@ -384,6 +389,28 @@
       overflow-x: auto;
     }
 
+    .flow {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin: 22px 0;
+    }
+
+    .flow-node {
+      padding: 10px 13px;
+      border: 1px solid #9ca3af;
+      border-radius: 7px;
+      background: #ffffff;
+      font-weight: bold;
+    }
+
+    .flow-arrow {
+      color: #6b7280;
+      font-weight: bold;
+    }
+
     footer {
       background: #111827;
       color: #ffffff;
@@ -407,6 +434,11 @@
       .controls {
         grid-template-columns: 1fr;
       }
+
+      .flow-arrow {
+        width: 100%;
+        text-align: center;
+      }
     }
   </style>
 </head>
@@ -417,10 +449,10 @@
   <h1>Branch Mathematics Calculator</h1>
 
   <p>
-    Enter one equation or an entire mathematical system. The calculator solves
-    the native mathematics and then exposes the Branch decomposition,
-    Operations, Interactions, derived Leaves, realization structure, Tree
-    status, Response, and receiver-dependent Root gate.
+    Enter one equation or an entire mathematical system. The calculator performs
+    the native symbolic mathematics first, then exposes the task-relative Branch
+    decomposition, Operations and constraint relations, derived Leaves,
+    realization family, Tree status, Response, and receiver-dependent Root gate.
   </p>
 </header>
 
@@ -450,8 +482,7 @@
 
     <div class="calculator-head">
       <strong>Enter one equation per line.</strong>
-      You may enter independent systems, coupled systems, or ordinary
-      expressions.
+      Independent systems, coupled systems, and ordinary expressions are accepted.
     </div>
 
     <div class="calculator-body">
@@ -465,8 +496,7 @@
         spellcheck="false"
         placeholder="Example:
 2*x + y = 7
-x - y = 1">
-2*x + y = 7
+x - y = 1">2*x + y = 7
 x - y = 1</textarea>
 
       <div class="controls">
@@ -497,6 +527,7 @@ x - y = 1</textarea>
       </div>
 
       <div class="buttons">
+
         <button
           id="solveButton"
           class="primary"
@@ -511,9 +542,11 @@ x - y = 1</textarea>
           type="button">
           Clear
         </button>
+
       </div>
 
       <div class="example-row">
+
         <button
           class="example-button"
           data-example="linear">
@@ -543,6 +576,7 @@ x - y = 1</textarea>
           data-example="engineering">
           Engineering chain
         </button>
+
       </div>
 
       <div
@@ -552,23 +586,27 @@ x - y = 1</textarea>
       </div>
 
       <div class="help">
+
         <strong>Input syntax</strong>
 
         <ul>
           <li>One equation per line, or separate equations with semicolons.</li>
           <li><code>^</code> is accepted for powers.</li>
-          <li>Implicit multiplication such as <code>2x</code> is accepted.</li>
-          <li>Standard functions include <code>sin</code>, <code>cos</code>, <code>tan</code>, <code>exp</code>, <code>log</code>, <code>sqrt</code>, and <code>Abs</code>.</li>
+          <li><code>2x</code> and <code>2(x+1)</code> are accepted.</li>
+          <li>Multi-letter variables such as <code>voltage</code>, <code>resistance</code>, and <code>mass_flow</code> remain single variables.</li>
+          <li>Use parentheses for named functions: <code>sin(x)</code>, <code>cos(x)</code>, <code>exp(x)</code>, <code>log(x)</code>, <code>sqrt(x)</code>, <code>Abs(x)</code>.</li>
           <li>A line without <code>=</code> is treated as an expression to simplify.</li>
           <li>Use <code>#</code> for comments.</li>
+          <li>Generic undefined functions such as <code>f(x)</code> are not supported in this first solver.</li>
+          <li>Reserved mathematical constants include <code>pi</code>, <code>E</code>, <code>I</code>, and <code>oo</code>.</li>
         </ul>
 
         <p>
-          This first version is a symbolic algebra/system solver. It does not
-          claim the full natural-language breadth of WolframAlpha. The BM layer
-          explains the mathematical structure produced by the native symbolic
-          computation.
+          This is currently a symbolic algebra/system solver rather than a
+          natural-language WolframAlpha replacement. SymPy performs the native
+          symbolic mathematics; BM supplies the structural interpretation.
         </p>
+
       </div>
 
     </div>
@@ -583,67 +621,122 @@ x - y = 1</textarea>
 
 
 <section>
-  <h2>How the BM View Is Generated</h2>
+  <h2>What the Calculator Is Actually Doing</h2>
+
+  <div class="flow">
+    <span class="flow-node">Input</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-node">Parse</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-node">Branch factorization</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-node">Native solve</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-node">Leaves</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-node">Realization family</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-node">Tree status</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-node">Response</span>
+  </div>
+
+  <h3>Task-relative Branch decomposition</h3>
 
   <p>
-    The calculator does not label equations arbitrarily.
+    The calculator constructs the equation-variable incidence structure.
+    Statements linked by shared variables belong to the same connected
+    computational component.
   </p>
 
-  <h3>Branch decomposition</h3>
-
   <p>
-    Equations and expressions are connected through shared variables.
-    Connected components of that variable-incidence structure form the
-    computational Branch decomposition for the current solve Task.
+    Distinct connected components can be separated for the current explicit
+    solve Task because no submitted constraint couples their variables.
   </p>
 
   <div class="schema">\[
     \boxed{
-    \text{no shared variables between components}
-    \Longrightarrow
-    \text{independent solve components}.
+    \mathfrak F(C;c)
+    =
+    \prod_{k=1}^{m}
+    \mathfrak F(B_k)
     }
   \]</div>
 
-  <h3>Interaction rule</h3>
+  <p>
+    for the explicit algebraic system when the submitted constraints contain no
+    hidden cross-component conditions.
+  </p>
+
+  <div class="warning">
+    This is a task-relative computational Branch decomposition. It is not
+    presented as the unique or globally canonical BM Branch decomposition of
+    every possible later Task.
+  </div>
+
+  <h3>Operation / Interaction firewall</h3>
 
   <p>
-    An equation involving multiple variables is shown as a joint Interaction
-    relation. A unary equation remains an Operation/constraint.
+    A multi-variable equation is a joint constraint relation. It is not called
+    a separate BM Interaction merely because more than one variable appears.
+  </p>
+
+  <p>
+    Under automatic connected-component reduction, any shared-variable
+    coupling already places the relevant statements in the same computational
+    Branch.
+  </p>
+
+  <div class="schema">\[
+    \boxed{
+    \text{multi-variable equation}
+    \not\Rightarrow
+    \text{cross-Branch Interaction}.
+    }
+  \]</div>
+
+  <p>
+    A later calculator version can support explicitly declared heterogeneous
+    Branches and then expose genuine cross-Branch Interactions without merging
+    their native mathematical identities.
   </p>
 
   <h3>Leaves</h3>
 
   <p>
-    Leaves are actual derived mathematical objects such as:
+    Leaves shown by this calculator are actual derived mathematical objects,
+    including:
   </p>
 
   <ul>
     <li>normalized equations;</li>
-    <li>factored polynomials;</li>
     <li>augmented matrices;</li>
     <li>reduced row-echelon forms;</li>
-    <li>verified solution relations.</li>
+    <li>polynomial factorizations;</li>
+    <li>solution relations;</li>
+    <li>verification results.</li>
   </ul>
 
   <h3>Tree firewall</h3>
 
-  <p>
-    The submitted mathematical system is first a Configuration.
-    A Tree requires a lawful realization.
-  </p>
-
   <div class="schema">\[
     \boxed{
-    T=(C,\xi,\Pi,\omega,\Lambda),
+    T
+    =
+    (C,\xi,\Pi,\omega,\Lambda),
     \qquad
     \xi\in\mathfrak F(C;c).
     }
   \]</div>
 
   <p>
-    If several realizations exist, the calculator reports the family but does
-    not silently select one.
+    If the realization is unique, the calculator can identify that realization
+    without making a selection.
+  </p>
+
+  <p>
+    If several realizations exist, it reports the family and refuses to invent
+    a canonical one.
   </p>
 
   <div class="schema">\[
@@ -657,17 +750,18 @@ x - y = 1</textarea>
   <h3>Root firewall</h3>
 
   <p>
-    A solved value is a Response. It becomes a Root only relative to a
-    specified receiving Passport.
+    A solution is a Response. It becomes a Root only relative to a specified
+    receiving Passport.
   </p>
 
   <div class="schema">\[
     \boxed{
-    r\text{ Root for }B_r
+    r
+    \text{ Root for }B_r
     \iff
     r\in
     \operatorname{Acc}
-    (\mathcal P_R^{B_r})
+    (\mathcal P_R^{B_r}).
     }
   \]</div>
 
@@ -705,6 +799,8 @@ from sympy import (
     Integer,
     Float,
     Rational,
+    Function,
+    Number,
     sin,
     cos,
     tan,
@@ -740,7 +836,7 @@ from sympy import (
 from sympy.parsing.sympy_parser import (
     parse_expr,
     standard_transformations,
-    implicit_multiplication_application,
+    implicit_multiplication,
     convert_xor
 )
 
@@ -749,7 +845,7 @@ TRANSFORMS = (
     standard_transformations
     +
     (
-        implicit_multiplication_application,
+        implicit_multiplication,
         convert_xor
     )
 )
@@ -762,6 +858,8 @@ SAFE_GLOBALS = {
     "Integer": Integer,
     "Float": Float,
     "Rational": Rational,
+    "Function": Function,
+    "Number": Number,
 
     "sin": sin,
     "cos": cos,
@@ -788,23 +886,185 @@ SAFE_GLOBALS = {
 }
 
 
-def parse_math(text):
+KNOWN_FUNCTIONS = {
+    "sin",
+    "cos",
+    "tan",
+    "asin",
+    "acos",
+    "atan",
+    "sinh",
+    "cosh",
+    "tanh",
+    "exp",
+    "log",
+    "ln",
+    "sqrt",
+    "Abs"
+}
 
-    return parse_expr(
-        text.strip(),
-        transformations=TRANSFORMS,
-        global_dict=SAFE_GLOBALS,
-        local_dict={},
-        evaluate=True
+
+KNOWN_CONSTANTS = {
+    "pi",
+    "E",
+    "I",
+    "oo"
+}
+
+
+RESERVED_INTERNAL_NAMES = {
+    "Symbol",
+    "Integer",
+    "Float",
+    "Rational",
+    "Function",
+    "Number"
+}
+
+
+ALLOWED_EXPRESSION = pyre.compile(
+    r"^[A-Za-z0-9_+\-*/^().,\s]+$"
+)
+
+
+IDENTIFIER_PATTERN = pyre.compile(
+    r"[A-Za-z_][A-Za-z0-9_]*"
+)
+
+
+FUNCTION_CALL_PATTERN = pyre.compile(
+    r"([A-Za-z_][A-Za-z0-9_]*)\s*\("
+)
+
+
+def symbol_for_name(
+    name,
+    domain_name
+):
+
+    if domain_name == "real":
+
+        return Symbol(
+            name,
+            real=True
+        )
+
+    return Symbol(name)
+
+
+def parse_math(
+    text,
+    domain_name="complex"
+):
+
+    text = text.strip()
+
+    if not text:
+
+        raise ValueError(
+            "Empty expression."
+        )
+
+
+    if "__" in text:
+
+        raise ValueError(
+            "Double-underscore names are not allowed."
+        )
+
+
+    if not ALLOWED_EXPRESSION.fullmatch(text):
+
+        raise ValueError(
+            "Unsupported character or syntax. "
+            "Use ordinary algebraic symbols, "
+            "parentheses, commas, and the listed "
+            "mathematical functions."
+        )
+
+
+    called_names = (
+        FUNCTION_CALL_PATTERN.findall(
+            text
+        )
     )
+
+
+    for name in called_names:
+
+        if name not in KNOWN_FUNCTIONS:
+
+            raise ValueError(
+                "Unknown function '"
+                +
+                name
+                +
+                "'. Generic user-defined functions "
+                "are not supported yet. If you mean "
+                "multiplication, write '*' explicitly."
+            )
+
+
+    local_dict = {}
+
+
+    for name in set(
+        IDENTIFIER_PATTERN.findall(
+            text
+        )
+    ):
+
+        if name in KNOWN_FUNCTIONS:
+            continue
+
+        if name in KNOWN_CONSTANTS:
+            continue
+
+        if name in RESERVED_INTERNAL_NAMES:
+
+            raise ValueError(
+                "'"
+                +
+                name
+                +
+                "' is a reserved parser name."
+            )
+
+
+        local_dict[name] = symbol_for_name(
+            name,
+            domain_name
+        )
+
+
+    try:
+
+        return parse_expr(
+            text,
+            transformations=TRANSFORMS,
+            global_dict=SAFE_GLOBALS,
+            local_dict=local_dict,
+            evaluate=True
+        )
+
+
+    except Exception as exc:
+
+        raise ValueError(
+            "Could not parse expression: "
+            +
+            str(exc)
+        )
 
 
 def latex_safe(obj):
 
     try:
+
         return latex(obj)
 
     except Exception:
+
         return str(obj)
 
 
@@ -812,14 +1072,57 @@ def split_input(text):
 
     entries = []
 
-    for part in pyre.split(r'[\n;]+', text):
 
-        part = part.split("#", 1)[0].strip()
+    for part in pyre.split(
+        r"[\n;]+",
+        text
+    ):
+
+        part = (
+            part.split(
+                "#",
+                1
+            )[0]
+            .strip()
+        )
+
 
         if part:
+
             entries.append(part)
 
+
     return entries
+
+
+def verified_substitution(
+    residuals,
+    substitution
+):
+
+    try:
+
+        values = [
+            simplify(
+                residual.subs(
+                    substitution
+                )
+            )
+            for residual
+            in residuals
+        ]
+
+
+        return all(
+            value == 0
+            for value
+            in values
+        )
+
+
+    except Exception:
+
+        return False
 
 
 def analyze_bm(
@@ -828,10 +1131,34 @@ def analyze_bm(
     domain_name="complex"
 ):
 
+    raw_entries = split_input(
+        text
+    )
+
+
+    if not raw_entries:
+
+        return {
+            "ok": False,
+
+            "errors": [{
+                "message":
+                "No equations or expressions were entered."
+            }]
+        }
+
+
     items = []
+
     errors = []
 
-    raw_entries = split_input(text)
+
+    # ======================================================
+    # PARSE EVERY STATEMENT FIRST
+    #
+    # IMPORTANT:
+    # We do not solve a partially parsed system.
+    # ======================================================
 
     for index, raw in enumerate(
         raw_entries,
@@ -840,16 +1167,40 @@ def analyze_bm(
 
         try:
 
-            if raw.count("=") == 1:
+            equals_count = raw.count("=")
+
+
+            if equals_count == 1:
 
                 lhs_text, rhs_text = [
                     value.strip()
                     for value
-                    in raw.split("=", 1)
+                    in raw.split(
+                        "=",
+                        1
+                    )
                 ]
 
-                lhs = parse_math(lhs_text)
-                rhs = parse_math(rhs_text)
+
+                if not lhs_text or not rhs_text:
+
+                    raise ValueError(
+                        "Both sides of an equation "
+                        "must contain an expression."
+                    )
+
+
+                lhs = parse_math(
+                    lhs_text,
+                    domain_name
+                )
+
+
+                rhs = parse_math(
+                    rhs_text,
+                    domain_name
+                )
+
 
                 equation = Eq(
                     lhs,
@@ -857,15 +1208,18 @@ def analyze_bm(
                     evaluate=False
                 )
 
+
                 residual = simplify(
                     lhs - rhs
                 )
+
 
                 symbols = (
                     set(lhs.free_symbols)
                     |
                     set(rhs.free_symbols)
                 )
+
 
                 items.append({
                     "id": index,
@@ -876,15 +1230,21 @@ def analyze_bm(
                     "symbols": symbols
                 })
 
-            elif raw.count("=") > 1:
+
+            elif equals_count > 1:
 
                 raise ValueError(
-                    "Use only one '=' per equation."
+                    "Use one '=' per equation."
                 )
+
 
             else:
 
-                expression = parse_math(raw)
+                expression = parse_math(
+                    raw,
+                    domain_name
+                )
+
 
                 items.append({
                     "id": index,
@@ -897,6 +1257,7 @@ def analyze_bm(
                     )
                 })
 
+
         except Exception as exc:
 
             errors.append({
@@ -906,18 +1267,11 @@ def analyze_bm(
             })
 
 
-    if not items:
+    if errors:
 
         return {
             "ok": False,
-            "errors": (
-                errors
-                if errors
-                else [{
-                    "message":
-                    "No valid mathematics was entered."
-                }]
-            )
+            "errors": errors
         }
 
 
@@ -928,57 +1282,68 @@ def analyze_bm(
                 for item in items
             ]
         ),
-        key=lambda symbol: symbol.name
+        key=lambda symbol:
+        symbol.name
     )
 
 
-    target_names = [
+    # ======================================================
+    # TARGET VARIABLES
+    # ======================================================
+
+    requested_target_names = [
         value.strip()
         for value
         in pyre.split(
-            r'[\s,]+',
+            r"[\s,]+",
             targets_text.strip()
         )
         if value.strip()
     ]
 
 
-    target_symbols = []
+    symbol_map = {
+        symbol.name: symbol
+        for symbol in all_symbols
+    }
 
-    if target_names:
 
-        symbol_map = {
-            symbol.name: symbol
-            for symbol in all_symbols
-        }
+    missing_targets = [
+        name
+        for name
+        in requested_target_names
+        if name not in symbol_map
+    ]
 
-        missing_targets = []
 
-        for name in target_names:
+    if missing_targets:
 
-            if name in symbol_map:
+        return {
+            "ok": False,
 
-                target_symbols.append(
-                    symbol_map[name]
-                )
-
-            else:
-
-                missing_targets.append(name)
-
-        if missing_targets:
-
-            errors.append({
+            "errors": [{
                 "message":
                 "Requested solve variable(s) "
                 "not present in the input: "
                 +
-                ", ".join(missing_targets)
-            })
+                ", ".join(
+                    missing_targets
+                )
+            }]
+        }
+
+
+    target_symbols = [
+        symbol_map[name]
+        for name
+        in requested_target_names
+    ]
 
 
     # ======================================================
-    # BUILD VARIABLE-INCIDENCE CONNECTED COMPONENTS
+    # VARIABLE-INCIDENCE COMPONENTS
+    #
+    # Statements sharing variables remain connected.
     # ======================================================
 
     item_count = len(items)
@@ -998,6 +1363,7 @@ def analyze_bm(
 
             value = parent[value]
 
+
         return value
 
 
@@ -1006,13 +1372,18 @@ def analyze_bm(
         root_a = find(a)
         root_b = find(b)
 
+
         if root_a != root_b:
+
             parent[root_b] = root_a
 
 
     symbol_owner = {}
 
-    for item_index, item in enumerate(items):
+
+    for item_index, item in enumerate(
+        items
+    ):
 
         for symbol in item["symbols"]:
 
@@ -1032,14 +1403,22 @@ def analyze_bm(
 
     components = {}
 
-    for item_index in range(item_count):
 
-        root = find(item_index)
+    for item_index in range(
+        item_count
+    ):
+
+        root = find(
+            item_index
+        )
+
 
         components.setdefault(
             root,
             []
-        ).append(item_index)
+        ).append(
+            item_index
+        )
 
 
     component_list = list(
@@ -1051,7 +1430,7 @@ def analyze_bm(
 
 
     # ======================================================
-    # ANALYZE EACH BRANCH
+    # ANALYZE EACH COMPUTATIONAL BRANCH
     # ======================================================
 
     for branch_number, component in enumerate(
@@ -1061,7 +1440,8 @@ def analyze_bm(
 
         branch_items = [
             items[item_index]
-            for item_index in component
+            for item_index
+            in component
         ]
 
 
@@ -1069,31 +1449,42 @@ def analyze_bm(
             set().union(
                 *[
                     item["symbols"]
-                    for item in branch_items
+                    for item
+                    in branch_items
                 ]
             ),
-            key=lambda symbol: symbol.name
+            key=lambda symbol:
+            symbol.name
         )
 
 
         equations = [
             item["obj"]
-            for item in branch_items
-            if item["kind"] == "equation"
+            for item
+            in branch_items
+            if item["kind"]
+            ==
+            "equation"
         ]
 
 
         residuals = [
             item["residual"]
-            for item in branch_items
-            if item["kind"] == "equation"
+            for item
+            in branch_items
+            if item["kind"]
+            ==
+            "equation"
         ]
 
 
         expressions = [
             item["obj"]
-            for item in branch_items
-            if item["kind"] == "expression"
+            for item
+            in branch_items
+            if item["kind"]
+            ==
+            "expression"
         ]
 
 
@@ -1101,8 +1492,10 @@ def analyze_bm(
 
             branch_targets = [
                 symbol
-                for symbol in target_symbols
-                if symbol in branch_variables
+                for symbol
+                in target_symbols
+                if symbol
+                in branch_variables
             ]
 
         else:
@@ -1114,14 +1507,74 @@ def analyze_bm(
 
         trace = []
 
+        relations = []
+
 
         # --------------------------------------------------
-        # LEAF: normalization / simplification
+        # BASIC NATIVE RELATIONS / OPERATIONS
         # --------------------------------------------------
 
         for item in branch_items:
 
             if item["kind"] == "equation":
+
+                symbol_names = sorted(
+                    symbol.name
+                    for symbol
+                    in item["symbols"]
+                )
+
+
+                if len(symbol_names) >= 2:
+
+                    relation_text = (
+                        "Joint constraint relation among "
+                        +
+                        ", ".join(
+                            symbol_names
+                        )
+                        +
+                        ". It is retained inside this "
+                        "connected Branch rather than "
+                        "being automatically promoted "
+                        "to a cross-Branch Interaction."
+                    )
+
+                elif len(symbol_names) == 1:
+
+                    relation_text = (
+                        "Unary equation / constraint "
+                        "on "
+                        +
+                        symbol_names[0]
+                        +
+                        "."
+                    )
+
+                else:
+
+                    relation_text = (
+                        "Constant constraint."
+                    )
+
+
+                relations.append({
+                    "label":
+                    "R"
+                    +
+                    str(
+                        item["id"]
+                    ),
+
+                    "latex":
+                    latex_safe(
+                        item["obj"]
+                    ),
+
+                    "text":
+                    relation_text
+                })
+
 
                 normalized = Eq(
                     item["residual"],
@@ -1129,20 +1582,28 @@ def analyze_bm(
                     evaluate=False
                 )
 
+
                 trace.append({
                     "label":
-                    f"L{item['id']}",
+                    "L"
+                    +
+                    str(
+                        item["id"]
+                    ),
 
                     "title":
                     "Normalized equation",
 
                     "latex":
-                    latex_safe(normalized),
+                    latex_safe(
+                        normalized
+                    ),
 
                     "text":
-                    "The equation was rewritten as "
-                    "lhs - rhs = 0."
+                    "Derived by rewriting the "
+                    "equation as lhs - rhs = 0."
                 })
+
 
             else:
 
@@ -1150,22 +1611,32 @@ def analyze_bm(
                     item["obj"]
                 )
 
+
                 trace.append({
                     "label":
-                    f"L{item['id']}",
+                    "L"
+                    +
+                    str(
+                        item["id"]
+                    ),
 
                     "title":
                     "Simplified expression",
 
                     "latex":
-                    latex_safe(simplified),
+                    latex_safe(
+                        simplified
+                    ),
 
                     "text":
                     "Native symbolic simplification."
                 })
 
 
-        classification = "expression"
+        classification = (
+            "expression evaluation"
+        )
+
 
         response_latex = []
 
@@ -1183,14 +1654,14 @@ def analyze_bm(
 
 
         # ==================================================
-        # EQUATION SYSTEM
+        # EQUATION SYSTEM WITH VARIABLES
         # ==================================================
 
         if equations and branch_variables:
 
 
             # ----------------------------------------------
-            # OPTIONAL TARGETED SOLVE
+            # TARGETED SOLVE
             # ----------------------------------------------
 
             if (
@@ -1205,88 +1676,118 @@ def analyze_bm(
                     "targeted symbolic system"
                 )
 
-                try:
 
-                    solutions = sp.solve(
-                        equations,
-                        branch_targets,
-                        dict=True,
-                        simplify=True
+                if not branch_targets:
+
+                    response_text = (
+                        "This Branch contains no requested "
+                        "target variable. It is retained "
+                        "in the global Configuration."
                     )
 
-                    if solutions:
-
-                        for solution in solutions:
-
-                            response_latex.append(
-                                latex_safe(solution)
-                            )
-
-                            residual_values = [
-                                simplify(
-                                    residual.subs(
-                                        solution
-                                    )
-                                )
-                                for residual
-                                in residuals
-                            ]
-
-                            verification.append(
-                                all(
-                                    value == 0
-                                    for value
-                                    in residual_values
-                                )
-                            )
+                    multiple_realizations = True
 
 
-                        response_text = (
-                            f"SymPy returned "
-                            f"{len(solutions)} "
-                            f"explicit targeted "
-                            f"solution record(s)."
+                else:
+
+                    try:
+
+                        solutions = sp.solve(
+                            equations,
+                            branch_targets,
+                            dict=True,
+                            simplify=True
                         )
 
 
-                        # The full Configuration may still
-                        # contain free non-target variables.
-                        unique_realization = False
+                        if solutions:
 
-                        multiple_realizations = True
+                            for solution in solutions:
+
+                                response_latex.append(
+                                    latex_safe(
+                                        solution
+                                    )
+                                )
 
 
-                    else:
+                                verification.append(
+                                    verified_substitution(
+                                        residuals,
+                                        solution
+                                    )
+                                )
+
+
+                            response_text = (
+                                "Explicit symbolic targeted "
+                                "solution record(s)."
+                            )
+
+
+                            multiple_realizations = True
+
+
+                            trace.append({
+                                "label":
+                                "L-SOLVE",
+
+                                "title":
+                                "Targeted solution relation",
+
+                                "latex":
+                                r"\left\{"
+                                +
+                                ",\\;"
+                                .join(
+                                    latex_safe(
+                                        solution
+                                    )
+                                    for solution
+                                    in solutions
+                                )
+                                +
+                                r"\right\}",
+
+                                "text":
+                                "Derived by native symbolic "
+                                "equation solving."
+                            })
+
+
+                        else:
+
+                            unresolved = True
+
+                            response_text = (
+                                "No explicit targeted "
+                                "solution was returned. "
+                                "This does not by itself "
+                                "certify that no solution "
+                                "exists."
+                            )
+
+
+                    except Exception as exc:
 
                         unresolved = True
 
                         response_text = (
-                            "No explicit targeted solution "
-                            "was returned. The system may "
-                            "be inconsistent or unresolved "
-                            "by this symbolic method."
+                            "Targeted symbolic solving "
+                            "did not complete: "
+                            +
+                            str(exc)
                         )
-
-
-                except Exception as exc:
-
-                    unresolved = True
-
-                    response_text = (
-                        "Targeted symbolic solve "
-                        "could not complete: "
-                        +
-                        str(exc)
-                    )
 
 
             else:
 
                 # ------------------------------------------
-                # TEST FOR LINEAR SYSTEM
+                # LINEAR TEST
                 # ------------------------------------------
 
                 linear_system = False
+
 
                 try:
 
@@ -1295,7 +1796,8 @@ def analyze_bm(
                             residual,
                             *branch_variables
                         ).total_degree()
-                        <= 1
+                        <=
+                        1
 
                         for residual
                         in residuals
@@ -1307,12 +1809,13 @@ def analyze_bm(
 
 
                 # ------------------------------------------
-                # TEST FOR SINGLE UNIVARIATE POLYNOMIAL
+                # UNIVARIATE POLYNOMIAL TEST
                 # ------------------------------------------
 
                 polynomial = None
 
                 univariate_polynomial = False
+
 
                 if (
                     len(equations) == 1
@@ -1335,7 +1838,7 @@ def analyze_bm(
 
 
                 # ==========================================
-                # LINEAR
+                # LINEAR SYSTEM
                 # ==========================================
 
                 if linear_system:
@@ -1343,6 +1846,7 @@ def analyze_bm(
                     classification = (
                         "linear system"
                     )
+
 
                     try:
 
@@ -1353,11 +1857,13 @@ def analyze_bm(
                             )
                         )
 
+
                         augmented = (
                             matrix_A.row_join(
                                 vector_b
                             )
                         )
+
 
                         reduced, pivots = (
                             augmented.rref()
@@ -1372,12 +1878,13 @@ def analyze_bm(
                             "Augmented matrix",
 
                             "latex":
-                            latex_safe(augmented),
+                            latex_safe(
+                                augmented
+                            ),
 
                             "text":
-                            "The linear equations were "
-                            "converted to an augmented "
-                            "matrix."
+                            "The linear constraints were "
+                            "converted to matrix form."
                         })
 
 
@@ -1389,11 +1896,12 @@ def analyze_bm(
                             "Reduced row-echelon form",
 
                             "latex":
-                            latex_safe(reduced),
+                            latex_safe(
+                                reduced
+                            ),
 
                             "text":
-                            "Exact Gaussian elimination / "
-                            "row reduction."
+                            "Exact row reduction."
                         })
 
 
@@ -1407,13 +1915,34 @@ def analyze_bm(
 
 
                         response_latex.append(
-                            latex_safe(solution_set)
+                            latex_safe(
+                                solution_set
+                            )
                         )
+
 
                         response_text = (
                             "Exact linear-system "
                             "solution set."
                         )
+
+
+                        trace.append({
+                            "label":
+                            "L-SOLVE",
+
+                            "title":
+                            "Solution relation",
+
+                            "latex":
+                            latex_safe(
+                                solution_set
+                            ),
+
+                            "text":
+                            "Derived from the reduced "
+                            "linear system."
+                        })
 
 
                         if solution_set == EmptySet:
@@ -1427,27 +1956,40 @@ def analyze_bm(
                                 FiniteSet
                             )
                             and
-                            len(solution_set) == 1
+                            len(solution_set)
+                            ==
+                            1
                         ):
 
                             solution_tuple = next(
-                                iter(solution_set)
+                                iter(
+                                    solution_set
+                                )
                             )
+
 
                             free_symbols = set()
 
+
                             for value in solution_tuple:
+
                                 free_symbols |= (
                                     value.free_symbols
                                 )
 
 
                             unique_realization = (
-                                len(free_symbols) == 0
+                                len(
+                                    free_symbols
+                                )
+                                ==
+                                0
                             )
 
+
                             multiple_realizations = (
-                                not unique_realization
+                                not
+                                unique_realization
                             )
 
 
@@ -1459,22 +2001,10 @@ def analyze_bm(
                             )
 
 
-                            residual_values = [
-                                simplify(
-                                    residual.subs(
-                                        substitution
-                                    )
-                                )
-                                for residual
-                                in residuals
-                            ]
-
-
                             verification.append(
-                                all(
-                                    value == 0
-                                    for value
-                                    in residual_values
+                                verified_substitution(
+                                    residuals,
+                                    substitution
                                 )
                             )
 
@@ -1489,7 +2019,7 @@ def analyze_bm(
                         unresolved = True
 
                         response_text = (
-                            "Linear solve could not "
+                            "Linear solving did not "
                             "complete: "
                             +
                             str(exc)
@@ -1506,8 +2036,19 @@ def analyze_bm(
                         "univariate polynomial"
                     )
 
+
                     variable = (
                         branch_variables[0]
+                    )
+
+
+                    expanded_form = expand(
+                        residuals[0]
+                    )
+
+
+                    factored_form = factor(
+                        residuals[0]
                     )
 
 
@@ -1520,9 +2061,7 @@ def analyze_bm(
 
                         "latex":
                         latex_safe(
-                            expand(
-                                residuals[0]
-                            )
+                            expanded_form
                         ),
 
                         "text":
@@ -1549,9 +2088,7 @@ def analyze_bm(
 
                         "latex":
                         latex_safe(
-                            factor(
-                                residuals[0]
-                            )
+                            factored_form
                         ),
 
                         "text":
@@ -1587,8 +2124,11 @@ def analyze_bm(
 
 
                         response_latex.append(
-                            latex_safe(solution_set)
+                            latex_safe(
+                                solution_set
+                            )
                         )
+
 
                         response_text = (
                             "Solution set over "
@@ -1597,6 +2137,25 @@ def analyze_bm(
                             +
                             "."
                         )
+
+
+                        trace.append({
+                            "label":
+                            "L-SOLVE",
+
+                            "title":
+                            "Solution set",
+
+                            "latex":
+                            latex_safe(
+                                solution_set
+                            ),
+
+                            "text":
+                            "Derived by exact symbolic "
+                            "solution over the selected "
+                            "domain."
+                        })
 
 
                         if solution_set == EmptySet:
@@ -1610,11 +2169,20 @@ def analyze_bm(
                         ):
 
                             unique_realization = (
-                                len(solution_set) == 1
+                                len(
+                                    solution_set
+                                )
+                                ==
+                                1
                             )
 
+
                             multiple_realizations = (
-                                len(solution_set) > 1
+                                len(
+                                    solution_set
+                                )
+                                >
+                                1
                             )
 
 
@@ -1622,7 +2190,8 @@ def analyze_bm(
 
                                 verification.append(
                                     simplify(
-                                        residuals[0].subs(
+                                        residuals[0]
+                                        .subs(
                                             variable,
                                             solution
                                         )
@@ -1642,7 +2211,7 @@ def analyze_bm(
                         unresolved = True
 
                         response_text = (
-                            "Polynomial solve could not "
+                            "Polynomial solving did not "
                             "complete: "
                             +
                             str(exc)
@@ -1669,13 +2238,34 @@ def analyze_bm(
 
 
                         response_latex.append(
-                            latex_safe(solution_set)
+                            latex_safe(
+                                solution_set
+                            )
                         )
+
 
                         response_text = (
                             "Symbolic nonlinear "
                             "solution set."
                         )
+
+
+                        trace.append({
+                            "label":
+                            "L-SOLVE",
+
+                            "title":
+                            "Solution relation",
+
+                            "latex":
+                            latex_safe(
+                                solution_set
+                            ),
+
+                            "text":
+                            "Derived by native nonlinear "
+                            "symbolic solving."
+                        })
 
 
                         if solution_set == EmptySet:
@@ -1699,6 +2289,7 @@ def analyze_bm(
                                     solutions[0]
                                 )
 
+
                                 if isinstance(
                                     solution_tuple,
                                     Tuple
@@ -1706,7 +2297,9 @@ def analyze_bm(
 
                                     free_symbols = set()
 
+
                                     for value in solution_tuple:
+
                                         free_symbols |= (
                                             value.free_symbols
                                         )
@@ -1753,22 +2346,10 @@ def analyze_bm(
                                     )
 
 
-                                    residual_values = [
-                                        simplify(
-                                            residual.subs(
-                                                substitution
-                                            )
-                                        )
-                                        for residual
-                                        in residuals
-                                    ]
-
-
                                     verification.append(
-                                        all(
-                                            value == 0
-                                            for value
-                                            in residual_values
+                                        verified_substitution(
+                                            residuals,
+                                            substitution
                                         )
                                     )
 
@@ -1783,15 +2364,15 @@ def analyze_bm(
                         unresolved = True
 
                         response_text = (
-                            "Nonlinear solve could not "
-                            "complete: "
+                            "Nonlinear symbolic solving "
+                            "did not complete: "
                             +
                             str(exc)
                         )
 
 
         # ==================================================
-        # CONSTANT EQUATION
+        # CONSTANT EQUATIONS
         # ==================================================
 
         elif equations and not branch_variables:
@@ -1800,16 +2381,25 @@ def analyze_bm(
                 "constant constraint"
             )
 
+
             truth_values = [
-                simplify(residual) == 0
-                for residual in residuals
+                simplify(
+                    residual
+                )
+                ==
+                0
+
+                for residual
+                in residuals
             ]
 
 
-            if all(truth_values):
+            if all(
+                truth_values
+            ):
 
                 response_text = (
-                    "All constant equations are true."
+                    "All constant constraints are true."
                 )
 
                 response_latex.append(
@@ -1822,9 +2412,8 @@ def analyze_bm(
             else:
 
                 response_text = (
-                    "At least one constant equation is "
-                    "false. This Branch has no "
-                    "realization."
+                    "At least one constant constraint "
+                    "is false."
                 )
 
                 response_latex.append(
@@ -1844,80 +2433,26 @@ def analyze_bm(
                 "expression evaluation"
             )
 
+
             for expression in expressions:
+
+                simplified = simplify(
+                    expression
+                )
+
 
                 response_latex.append(
                     latex_safe(
-                        simplify(expression)
+                        simplified
                     )
                 )
+
 
             response_text = (
                 "Expression simplification only. "
                 "No equation realization was requested "
                 "for this Branch."
             )
-
-
-        # ==================================================
-        # OPERATION / INTERACTION CLASSIFICATION
-        # ==================================================
-
-        interactions = []
-
-        for item in branch_items:
-
-            if item["kind"] != "equation":
-                continue
-
-
-            symbol_count = len(
-                item["symbols"]
-            )
-
-
-            if symbol_count >= 2:
-
-                interactions.append({
-                    "label":
-                    f"I{item['id']}",
-
-                    "text":
-                    "Joint equation relation among "
-                    +
-                    ", ".join(
-                        sorted(
-                            symbol.name
-                            for symbol
-                            in item["symbols"]
-                        )
-                    )
-                    +
-                    ".",
-
-                    "latex":
-                    latex_safe(
-                        item["obj"]
-                    )
-                })
-
-
-            else:
-
-                interactions.append({
-                    "label":
-                    f"O{item['id']}",
-
-                    "text":
-                    "Unary equation / constraint. "
-                    "Treated as an Operation rather "
-                    "than a multi-variable Interaction.",
-
-                    "latex":
-                    latex_safe(
-                        item["obj"]
-                    )
-                })
 
 
         branches.append({
@@ -1940,7 +2475,9 @@ def analyze_bm(
 
             "input_latex":
             [
-                latex_safe(item["obj"])
+                latex_safe(
+                    item["obj"]
+                )
                 for item
                 in branch_items
             ],
@@ -1948,8 +2485,8 @@ def analyze_bm(
             "classification":
             classification,
 
-            "interactions":
-            interactions,
+            "relations":
+            relations,
 
             "trace":
             trace,
@@ -1976,22 +2513,31 @@ def analyze_bm(
             verification,
 
             "has_equations":
-            bool(equations)
+            bool(
+                equations
+            )
         })
 
 
     # ======================================================
-    # GLOBAL CONFIGURATION / TREE STATUS
+    # GLOBAL CONFIGURATION STATUS
     # ======================================================
 
     equation_branches = [
         branch
-        for branch in branches
-        if branch["has_equations"]
+        for branch
+        in branches
+        if branch[
+            "has_equations"
+        ]
     ]
 
 
     if not equation_branches:
+
+        realization_class = (
+            "expression-only"
+        )
 
         tree_status = (
             "No equation realization was requested. "
@@ -2001,61 +2547,114 @@ def analyze_bm(
 
     elif any(
         branch["no_realization"]
-        for branch in equation_branches
+        for branch
+        in equation_branches
     ):
+
+        realization_class = (
+            "empty"
+        )
 
         tree_status = (
             "At least one Branch has an empty "
-            "solution set. The submitted Configuration "
-            "has no computed global realization, so "
-            "no Tree exists for these constraints."
+            "computed solution set. The submitted "
+            "Configuration therefore has no computed "
+            "global realization for these constraints, "
+            "so no Tree exists for this input."
         )
 
 
     elif any(
         branch["unresolved"]
-        for branch in equation_branches
+        for branch
+        in equation_branches
     ):
+
+        realization_class = (
+            "unresolved"
+        )
 
         tree_status = (
             "Realization status is unresolved for "
-            "at least one Branch. No Tree is "
-            "certified by this computation."
+            "at least one Branch. This computation "
+            "does not certify a Tree."
         )
 
 
     elif all(
         branch["unique"]
-        for branch in equation_branches
+        for branch
+        in equation_branches
     ):
+
+        realization_class = (
+            "unique"
+        )
 
         tree_status = (
             "Every equation Branch has a unique "
-            "computed symbolic realization. Because "
-            "the Branch components are independent "
-            "under the detected variable-incidence "
-            "decomposition, the combined Configuration "
-            "has a unique computed realization and can "
-            "instantiate a Tree."
+            "computed symbolic realization. The "
+            "independent Branch realizations combine "
+            "into a unique computed global realization, "
+            "which can instantiate the Tree for this "
+            "explicit solve Configuration."
         )
 
 
     else:
 
-        tree_status = (
-            "A realization family exists or may contain "
-            "free/multiple solutions, but no unique "
-            "realization is selected. The calculator "
-            "does not invent a canonical Tree selection."
+        realization_class = (
+            "family"
         )
+
+        tree_status = (
+            "A nonempty realization family exists or "
+            "contains free/multiple solutions. Any "
+            "selected lawful realization could "
+            "instantiate a Tree, but the calculator "
+            "does not invent a canonical selection."
+        )
+
+
+    if len(branches) > 1:
+
+        branch_factorization = (
+            "The submitted constraint-incidence graph "
+            "has "
+            +
+            str(
+                len(branches)
+            )
+            +
+            " connected components. Under the explicit "
+            "solve Task and absent hidden global "
+            "constraints, the global realization family "
+            "factorizes across these components."
+        )
+
+    else:
+
+        branch_factorization = (
+            "All submitted variable-dependent "
+            "statements lie in one connected "
+            "computational component for this solve "
+            "Task."
+        )
+
+
+    interaction_status = (
+        "No separate cross-Branch Interaction is "
+        "inferred automatically. Shared-variable "
+        "constraints are retained inside the same "
+        "connected computational Branch. This avoids "
+        "manufacturing BM Interactions from ordinary "
+        "multi-variable equations."
+    )
 
 
     return {
         "ok":
         True,
-
-        "errors":
-        errors,
 
         "domain":
         domain_name,
@@ -2107,10 +2706,21 @@ def analyze_bm(
         ],
 
         "branch_count":
-        len(branches),
+        len(
+            branches
+        ),
 
         "branches":
         branches,
+
+        "branch_factorization":
+        branch_factorization,
+
+        "interaction_status":
+        interaction_status,
+
+        "realization_class":
+        realization_class,
 
         "tree_status":
         tree_status,
@@ -2123,13 +2733,16 @@ def analyze_bm(
         ),
 
         "engine":
-        "SymPy symbolic algebra running through Pyodide"
+        (
+            "SymPy symbolic algebra running locally "
+            "through Pyodide"
+        )
     }
 `;
 
 
 /* =========================================================
-   INITIALIZE PYODIDE
+   INITIALIZATION
    ========================================================= */
 
 async function initializeEngine() {
@@ -2150,7 +2763,7 @@ async function initializeEngine() {
       "engine-status engine-loading";
 
     status.textContent =
-      "Loading Python symbolic engine and SymPy…";
+      "Loading Python and SymPy…";
 
 
     pyodide = await loadPyodide({
@@ -2193,7 +2806,7 @@ async function initializeEngine() {
 
 
 /* =========================================================
-   HTML HELPERS
+   HELPERS
    ========================================================= */
 
 function escapeHtml(value) {
@@ -2220,7 +2833,7 @@ function mathBlock(latex) {
 
 
 /* =========================================================
-   RENDER RESULTS
+   RENDER
    ========================================================= */
 
 async function renderResults(data) {
@@ -2236,22 +2849,58 @@ async function renderResults(data) {
     const messages =
       (data.errors || [])
       .map(
-        item =>
-          `<li>${escapeHtml(
-            item.message || "Unknown error"
-          )}</li>`
+        error => {
+
+          const line =
+            error.line
+            ?
+            `<strong>Line ${error.line}:</strong> `
+            :
+            "";
+
+          const raw =
+            error.raw
+            ?
+            `<code>${escapeHtml(error.raw)}</code><br>`
+            :
+            "";
+
+          return `
+            <li>
+              ${line}
+              ${raw}
+              ${escapeHtml(
+                error.message
+                ||
+                "Unknown parser error."
+              )}
+            </li>
+          `;
+        }
       )
       .join("");
 
 
     container.innerHTML = `
       <div class="error-box">
-        <strong>Could not parse the input.</strong>
-        <ul>${messages}</ul>
+        <strong>
+          The input was not solved.
+        </strong>
+
+        <p>
+          Every statement must parse successfully before
+          the calculator will solve the Configuration.
+          It will not silently drop invalid equations.
+        </p>
+
+        <ul>
+          ${messages}
+        </ul>
       </div>
     `;
 
-    return;
+
+    return false;
   }
 
 
@@ -2259,51 +2908,18 @@ async function renderResults(data) {
 
 
   /* -------------------------------------------------------
-     PARSE WARNINGS
-     ------------------------------------------------------- */
-
-  if (
-    data.errors
-    &&
-    data.errors.length
-  ) {
-
-    html += `
-      <div class="warning">
-        <strong>Input warnings</strong>
-        <ul>
-          ${
-            data.errors.map(
-              error =>
-                `<li>
-                  ${
-                    escapeHtml(
-                      error.message
-                      ||
-                      "Input warning"
-                    )
-                  }
-                </li>`
-            ).join("")
-          }
-        </ul>
-      </div>
-    `;
-  }
-
-
-  /* -------------------------------------------------------
-     CONFIGURATION SUMMARY
+     CONFIGURATION
      ------------------------------------------------------- */
 
   html += `
     <div class="result-section">
 
-      <h2>1. Configuration</h2>
+      <h2>1. Parsed Configuration</h2>
 
       <p>
-        The submitted mathematics is treated first as a
-        candidate Configuration for the solve Task.
+        The submitted mathematics is first treated as a
+        candidate Configuration for the explicit symbolic
+        solve Task.
       </p>
 
       <div class="summary-grid">
@@ -2327,7 +2943,7 @@ async function renderResults(data) {
         </div>
 
         <div class="summary-card">
-          <strong>Detected Branches</strong>
+          <strong>Branch components</strong>
           ${data.branch_count}
         </div>
 
@@ -2354,12 +2970,10 @@ async function renderResults(data) {
 
     html += `
       <div class="info">
-        <strong>Targeted solve:</strong>
-        ${
-          escapeHtml(
-            data.targets.join(", ")
-          )
-        }
+        <strong>Requested target variables:</strong>
+        ${escapeHtml(
+          data.targets.join(", ")
+        )}
       </div>
     `;
   }
@@ -2373,7 +2987,7 @@ async function renderResults(data) {
   for (const item of data.items) {
 
     html += `
-      <div class="interaction-card">
+      <div class="relation-card">
 
         <strong>
           ${
@@ -2386,7 +3000,9 @@ async function renderResults(data) {
           ${item.id}
         </strong>
 
-        ${mathBlock(item.latex)}
+        ${mathBlock(
+          item.latex
+        )}
 
         <span class="tag">
           Variables:
@@ -2420,12 +3036,35 @@ async function renderResults(data) {
 
       <h2>2. Branch Decomposition</h2>
 
-      <p>
-        Branches are induced from connected components of
-        the equation-variable incidence structure for this
-        solve Task. Statements sharing variables remain in
-        the same Branch.
-      </p>
+      <div class="info">
+        ${escapeHtml(
+          data.branch_factorization
+        )}
+      </div>
+
+      ${
+        data.branch_count > 1
+        ?
+        `
+          <div class="schema">
+            \\[
+              \\mathfrak F(C;c)
+              =
+              \\prod_{k=1}^{${data.branch_count}}
+              \\mathfrak F(B_k)
+            \\]
+          </div>
+        `
+        :
+        ""
+      }
+
+      <div class="warning">
+        This decomposition is relative to the explicit
+        symbolic solve Task. It is not asserted to be
+        the unique global BM Branch decomposition for
+        every possible downstream Task.
+      </div>
   `;
 
 
@@ -2438,97 +3077,82 @@ async function renderResults(data) {
           Branch B${branch.id}
         </h3>
 
-        <div>
-          <span class="tag">
-            ${
-              escapeHtml(
-                branch.classification
-              )
-            }
-          </span>
+        <span class="tag">
+          ${escapeHtml(
+            branch.classification
+          )}
+        </span>
 
-          <span class="tag">
-            Variables:
-            ${
-              branch.variables.length
-              ?
-              escapeHtml(
-                branch.variables.join(", ")
-              )
-              :
-              "none"
-            }
-          </span>
+        <span class="tag">
+          Variables:
+          ${
+            branch.variables.length
+            ?
+            escapeHtml(
+              branch.variables.join(", ")
+            )
+            :
+            "none"
+          }
+        </span>
 
-          <span class="tag">
-            Statements:
-            ${
-              escapeHtml(
-                branch.item_ids.join(", ")
-              )
-            }
-          </span>
-        </div>
-    `;
+        <span class="tag">
+          Statements:
+          ${escapeHtml(
+            branch.item_ids.join(", ")
+          )}
+        </span>
 
-
-    html += `
-      <h3>Native input</h3>
+        <h3>Native input</h3>
     `;
 
 
     for (
-      const equationLatex
+      const inputLatex
       of branch.input_latex
     ) {
 
       html += mathBlock(
-        equationLatex
+        inputLatex
       );
     }
 
 
-    /* -----------------------------------------------------
-       OPERATIONS / INTERACTIONS
-       ----------------------------------------------------- */
-
     if (
-      branch.interactions
+      branch.relations
       &&
-      branch.interactions.length
+      branch.relations.length
     ) {
 
       html += `
-        <h3>Operations / Interactions</h3>
+        <h3>
+          Operations / constraint relations
+        </h3>
       `;
 
 
       for (
-        const interaction
-        of branch.interactions
+        const relation
+        of branch.relations
       ) {
 
         html += `
-          <div class="interaction-card">
+          <div class="relation-card">
 
             <strong>
-              ${
-                escapeHtml(
-                  interaction.label
-                )
-              }
+              ${escapeHtml(
+                relation.label
+              )}
             </strong>
 
             <p>
-              ${
-                escapeHtml(
-                  interaction.text
-                )
-              }
+              ${escapeHtml(
+                relation.text
+              )}
             </p>
 
             ${mathBlock(
-              interaction.latex
+              relation.latex
             )}
 
           </div>
@@ -2537,40 +3161,35 @@ async function renderResults(data) {
     }
 
 
-    /* -----------------------------------------------------
-       LEAVES
-       ----------------------------------------------------- */
-
     html += `
-      <h3>Derived Leaves / computation trace</h3>
+      <h3>
+        Derived Leaves / computation trace
+      </h3>
     `;
 
 
-    for (const leaf of branch.trace) {
+    for (
+      const leaf
+      of branch.trace
+    ) {
 
       html += `
         <div class="leaf-card">
 
           <strong>
-            ${
-              escapeHtml(
-                leaf.label
-              )
-            }
+            ${escapeHtml(
+              leaf.label
+            )}
             —
-            ${
-              escapeHtml(
-                leaf.title
-              )
-            }
+            ${escapeHtml(
+              leaf.title
+            )}
           </strong>
 
           <p>
-            ${
-              escapeHtml(
-                leaf.text
-              )
-            }
+            ${escapeHtml(
+              leaf.text
+            )}
           </p>
 
           ${mathBlock(
@@ -2582,21 +3201,15 @@ async function renderResults(data) {
     }
 
 
-    /* -----------------------------------------------------
-       RESPONSE
-       ----------------------------------------------------- */
-
     html += `
       <h3>Branch Response</h3>
 
       <div class="response-card">
 
         <p>
-          ${
-            escapeHtml(
-              branch.response_text
-            )
-          }
+          ${escapeHtml(
+            branch.response_text
+          )}
         </p>
     `;
 
@@ -2618,13 +3231,13 @@ async function renderResults(data) {
       branch.verified.length
     ) {
 
-      const verificationPassed =
+      const verified =
         branch.verified.every(
           Boolean
         );
 
 
-      if (verificationPassed) {
+      if (verified) {
 
         html += `
           <div class="good">
@@ -2640,26 +3253,29 @@ async function renderResults(data) {
         html += `
           <div class="warning">
             At least one returned expression could
-            not be verified to zero by direct exact
-            substitution.
+            not be confirmed by exact substitution.
           </div>
         `;
       }
     }
 
 
-    if (branch.no_realization) {
+    if (
+      branch.no_realization
+    ) {
 
       html += `
         <div class="error-box">
-          This Branch has an empty computed
-          realization set.
+          The computed realization set for this
+          Branch is empty.
         </div>
       `;
     }
 
 
-    if (branch.unresolved) {
+    if (
+      branch.unresolved
+    ) {
 
       html += `
         <div class="warning">
@@ -2683,21 +3299,60 @@ async function renderResults(data) {
 
 
   /* -------------------------------------------------------
-     TREE STATUS
+     INTERACTION AUDIT
      ------------------------------------------------------- */
 
   html += `
     <div class="result-section">
 
-      <h2>3. Realization and Tree Status</h2>
+      <h2>3. Interaction Audit</h2>
 
       <div class="info">
-        ${
-          escapeHtml(
-            data.tree_status
-          )
-        }
+        ${escapeHtml(
+          data.interaction_status
+        )}
       </div>
+
+      <div class="schema">
+        \\[
+          \\boxed{
+          \\text{multi-variable relation}
+          \\not\\Rightarrow
+          \\text{cross-Branch Interaction}
+          }
+        \\]
+      </div>
+
+    </div>
+  `;
+
+
+  /* -------------------------------------------------------
+     TREE / REALIZATION
+     ------------------------------------------------------- */
+
+  html += `
+    <div class="result-section">
+
+      <h2>4. Realization and Tree Status</h2>
+
+      ${
+        data.realization_class === "unique"
+        ?
+        `<div class="good">
+          ${escapeHtml(data.tree_status)}
+        </div>`
+        :
+        data.realization_class === "empty"
+        ?
+        `<div class="error-box">
+          ${escapeHtml(data.tree_status)}
+        </div>`
+        :
+        `<div class="info">
+          ${escapeHtml(data.tree_status)}
+        </div>`
+      }
 
       <div class="schema">
         \\[
@@ -2716,17 +3371,17 @@ async function renderResults(data) {
 
 
   /* -------------------------------------------------------
-     GLOBAL RESPONSE
+     RESPONSE
      ------------------------------------------------------- */
 
   html += `
     <div class="result-section">
 
-      <h2>4. Combined Response</h2>
+      <h2>5. Combined Response</h2>
 
       <p>
         The Branch Responses together form the symbolic
-        Response of the submitted Configuration.
+        Response produced by this solve Configuration.
       </p>
   `;
 
@@ -2737,15 +3392,13 @@ async function renderResults(data) {
       <div class="response-card">
 
         <strong>
-          Response from B${branch.id}
+          B${branch.id} Response
         </strong>
 
         <p>
-          ${
-            escapeHtml(
-              branch.response_text
-            )
-          }
+          ${escapeHtml(
+            branch.response_text
+          )}
         </p>
     `;
 
@@ -2773,20 +3426,18 @@ async function renderResults(data) {
 
 
   /* -------------------------------------------------------
-     ROOT FIREWALL
+     ROOT
      ------------------------------------------------------- */
 
   html += `
     <div class="result-section">
 
-      <h2>5. Root Gate</h2>
+      <h2>6. Root Gate</h2>
 
       <div class="warning">
-        ${
-          escapeHtml(
-            data.root_status
-          )
-        }
+        ${escapeHtml(
+          data.root_status
+        )}
       </div>
 
       <div class="schema">
@@ -2806,34 +3457,28 @@ async function renderResults(data) {
 
 
   /* -------------------------------------------------------
-     ENGINE NOTE
+     PROVENANCE
      ------------------------------------------------------- */
 
   html += `
     <div class="result-section">
 
-      <h2>6. Solver Provenance</h2>
+      <h2>7. Solver Provenance</h2>
 
       <p>
-        Native symbolic engine:
+        Native engine:
         <strong>
-          ${
-            escapeHtml(
-              data.engine
-            )
-          }
+          ${escapeHtml(
+            data.engine
+          )}
         </strong>
       </p>
 
-      <p>
-        BM supplies the structural interpretation.
-        SymPy supplies the symbolic algebra.
-      </p>
-
       <div class="good">
-        BM role names are not used to manufacture
-        algebraic results. The solver result exists
-        independently of the BM labels.
+        SymPy produces the algebraic result.
+        BM describes the lawful structural roles.
+        BM terminology is not being used to manufacture
+        the symbolic solution.
       </div>
 
     </div>
@@ -2871,11 +3516,14 @@ async function renderResults(data) {
     behavior: "smooth",
     block: "start"
   });
+
+
+  return true;
 }
 
 
 /* =========================================================
-   RUN SOLVER
+   SOLVE
    ========================================================= */
 
 async function solveInput() {
@@ -2895,18 +3543,15 @@ async function solveInput() {
       "engineStatus"
     );
 
-
   const input =
     document.getElementById(
       "mathInput"
     ).value;
 
-
   const targets =
     document.getElementById(
       "targets"
     ).value;
-
 
   const domain =
     document.getElementById(
@@ -2934,7 +3579,7 @@ async function solveInput() {
     "engine-status engine-loading";
 
   status.textContent =
-    "Solving symbolic system…";
+    "Parsing and solving the submitted mathematics…";
 
 
   try {
@@ -2973,16 +3618,30 @@ json.dumps(
       );
 
 
-    await renderResults(
-      data
-    );
+    const success =
+      await renderResults(
+        data
+      );
 
 
-    status.className =
-      "engine-status engine-ready";
+    if (success) {
 
-    status.textContent =
-      "Calculation complete. Symbolic engine ready.";
+      status.className =
+        "engine-status engine-ready";
+
+      status.textContent =
+        "Calculation complete. Symbolic engine ready.";
+
+    }
+
+    else {
+
+      status.className =
+        "engine-status engine-error";
+
+      status.textContent =
+        "Input rejected. Nothing was silently removed from the system.";
+    }
 
   }
 
@@ -2993,7 +3652,9 @@ json.dumps(
     ).innerHTML = `
       <div class="error-box">
         <strong>Solver error</strong><br>
-        ${escapeHtml(error.message)}
+        ${escapeHtml(
+          error.message
+        )}
       </div>
     `;
 
@@ -3108,6 +3769,10 @@ document
             EXAMPLES[key] || "";
 
           document.getElementById(
+            "targets"
+          ).value = "";
+
+          document.getElementById(
             "results"
           ).innerHTML = "";
         }
@@ -3137,7 +3802,7 @@ document
 
 
 /* =========================================================
-   START ENGINE
+   START
    ========================================================= */
 
 initializeEngine();
