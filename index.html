@@ -8,12 +8,16 @@
 
   <meta
     name="description"
-    content="Branch Mathematics and GURF: a public mathematical research encyclopedia for lawful representation, transformation, response, worked examples, formal definitions, theorems, equations, structures, Passports, Roots, and active research."
+    content="Branch Mathematics and GURF: a public mathematical research encyclopedia for multi-branch mathematical problems, lawful representation and transformation, response mathematics, formal definitions, proofs, equations, structures, Passports, Roots, worked examples, prior-art analysis, and active research."
   >
 
   <meta name="robots" content="index, follow">
 
-  <link rel="canonical" href="https://branch-mathematics-bm.github.io/">
+  <link
+    rel="canonical"
+    href="https://branch-mathematics-bm.github.io/"
+  >
+
   <link rel="describedby" href="/llms.txt">
 
   <script>
@@ -22,36 +26,45 @@
         inlineMath: [['\\(', '\\)']],
         displayMath: [['\\[', '\\]']]
       },
-      svg: { fontCache: 'global' }
+      svg: {
+        fontCache: 'global'
+      }
     };
   </script>
 
-  <script id="MathJax-script" async
+  <script
+    id="MathJax-script"
+    async
     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
   </script>
 
   <style>
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
-      font-family: Arial, Helvetica, sans-serif;
       margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.72;
       color: #202124;
-      background: #fff;
-      line-height: 1.7;
+      background: #ffffff;
     }
 
     header {
       background: #111827;
-      color: #fff;
-      padding: 62px 20px;
+      color: #ffffff;
       text-align: center;
+      padding: 70px 20px;
     }
 
     header h1 {
       margin: 0;
-      font-size: 2.75rem;
+      font-size: 2.9rem;
     }
 
     header h2 {
@@ -64,10 +77,10 @@
     }
 
     header p {
-      max-width: 960px;
+      max-width: 1040px;
       margin: 18px auto 0;
       color: #e5e7eb;
-      font-size: 1.08rem;
+      font-size: 1.1rem;
     }
 
     nav {
@@ -77,36 +90,49 @@
     }
 
     nav a {
-      color: white;
-      text-decoration: none;
       display: inline-block;
       margin: 7px 10px;
+      color: #ffffff;
+      text-decoration: none;
     }
 
-    nav a:hover { text-decoration: underline; }
+    nav a:hover {
+      text-decoration: underline;
+    }
 
     main {
-      max-width: 1080px;
+      max-width: 1180px;
       margin: auto;
       padding: 42px 20px;
     }
 
     section {
-      margin-bottom: 60px;
+      margin-bottom: 62px;
       scroll-margin-top: 18px;
     }
 
     h2 {
-      border-bottom: 2px solid #e5e7eb;
-      padding-bottom: 8px;
       margin-top: 0;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #e5e7eb;
     }
 
-    h3 { margin-top: 24px; }
-    p { margin: 10px 0; }
+    h3 {
+      margin-top: 25px;
+    }
 
-    ul { padding-left: 24px; }
-    li { margin: 6px 0; }
+    p {
+      margin: 10px 0;
+    }
+
+    ul,
+    ol {
+      padding-left: 26px;
+    }
+
+    li {
+      margin: 6px 0;
+    }
 
     table {
       width: 100%;
@@ -114,30 +140,33 @@
       margin: 22px 0;
     }
 
-    th, td {
+    th,
+    td {
       border: 1px solid #d1d5db;
       padding: 11px 12px;
       text-align: left;
       vertical-align: top;
     }
 
-    th { background: #f3f4f6; }
+    th {
+      background: #f3f4f6;
+    }
 
     .hero-grid,
     .grid,
     .status-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
-      gap: 16px;
-      margin-top: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 17px;
+      margin-top: 22px;
     }
 
     .card,
     .formal-card {
       border: 1px solid #d1d5db;
-      border-radius: 8px;
-      padding: 21px;
-      background: #fff;
+      border-radius: 9px;
+      padding: 22px;
+      background: #ffffff;
     }
 
     .formal-card {
@@ -163,10 +192,10 @@
     }
 
     .schema {
+      background: #f8fafc;
       border-left: 4px solid #374151;
       padding: 18px 22px;
-      margin: 24px 0;
-      background: #f8fafc;
+      margin: 22px 0;
       overflow-x: auto;
     }
 
@@ -178,21 +207,19 @@
       overflow-x: auto;
     }
 
-    .status-note,
-    .warning {
-      padding: 17px 19px;
-      margin: 20px 0;
-    }
-
     .status-note {
       background: #f8fafc;
       border: 1px solid #d1d5db;
       border-radius: 8px;
+      padding: 17px 19px;
+      margin: 20px 0;
     }
 
     .warning {
-      background: #fafafa;
-      border-left: 4px solid #6b7280;
+      background: #fff7ed;
+      border-left: 4px solid #c2410c;
+      padding: 17px 19px;
+      margin: 20px 0;
     }
 
     .tag {
@@ -200,39 +227,91 @@
       padding: 3px 8px;
       margin: 2px 4px 2px 0;
       border-radius: 5px;
-      font-size: .82rem;
+      font-size: 0.82rem;
       font-weight: bold;
       border: 1px solid #9ca3af;
       background: #f3f4f6;
     }
 
-    .tag-classical { background: #eff6ff; border-color: #93c5fd; }
-    .tag-bm { background: #ecfdf5; border-color: #6ee7b7; }
-    .tag-gurf { background: #f5f3ff; border-color: #c4b5fd; }
-    .tag-conditional { background: #fffbeb; border-color: #fcd34d; }
-    .tag-open { background: #fef2f2; border-color: #fca5a5; }
+    .tag-classical {
+      background: #eff6ff;
+      border-color: #93c5fd;
+    }
+
+    .tag-bm {
+      background: #ecfdf5;
+      border-color: #6ee7b7;
+    }
+
+    .tag-gurf {
+      background: #f5f3ff;
+      border-color: #c4b5fd;
+    }
+
+    .tag-candidate {
+      background: #fffbeb;
+      border-color: #fcd34d;
+    }
+
+    .tag-open {
+      background: #fef2f2;
+      border-color: #fca5a5;
+    }
 
     .path {
-      padding: 13px 0;
+      padding: 14px 0;
       border-bottom: 1px solid #e5e7eb;
     }
 
-    .path:last-child { border-bottom: 0; }
+    .path:last-child {
+      border-bottom: 0;
+    }
+
+    .crosslinks {
+      border-top: 1px solid #d1d5db;
+      padding-top: 14px;
+      margin-top: 20px;
+      font-size: 0.94rem;
+    }
+
+    .crosslinks a {
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .crosslinks a:hover {
+      text-decoration: underline;
+    }
 
     footer {
       background: #111827;
-      color: white;
+      color: #ffffff;
       text-align: center;
-      padding: 28px 20px;
-      margin-top: 45px;
+      padding: 30px 20px;
+      margin-top: 50px;
     }
 
-    footer p { margin: 5px 0; }
+    footer p {
+      margin: 5px 0;
+    }
 
-    @media (max-width: 600px) {
-      header h1 { font-size: 2rem; }
-      header h2 { font-size: 1.15rem; }
-      main { padding: 30px 16px; }
+    @media (max-width: 620px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      header h2 {
+        font-size: 1.15rem;
+      }
+
+      main {
+        padding: 30px 16px;
+      }
+
+      th,
+      td {
+        padding: 9px;
+      }
     }
   </style>
 </head>
@@ -242,10 +321,13 @@
 <header>
   <h1>Branch Mathematics</h1>
   <h2>BM and GURF Mathematical Research Encyclopedia</h2>
+
   <p>
-    A public mathematical corpus for lawful representation and transformation,
-    response mathematics, worked examples, formal definitions, proofs,
-    equations, structures, and active research.
+    A public mathematical corpus for carrying one problem through multiple
+    lawful mathematical structures while preserving their native mathematics,
+    governing their interaction and realization, and studying which
+    distinctions must survive for later computation, response, inference,
+    continuation, export, and reuse.
   </p>
 </header>
 
@@ -260,6 +342,7 @@
   <a href="structures.html">Structures</a>
   <a href="passports.html">Passports</a>
   <a href="roots.html">Roots</a>
+  <a href="soe.html">SOE</a>
   <a href="research.html">Research</a>
   <a href="changelog.html">Changelog</a>
 </nav>
@@ -267,121 +350,345 @@
 <main>
 
 <section id="welcome">
-  <h2>What This Site Contains</h2>
+  <h2>1. What This Site Contains</h2>
 
   <p>
-    This is the public mathematical corpus for <strong>Branch Mathematics
-    (BM)</strong>, <strong>GURF</strong>, and the research programs developed
-    through them.
+    This is the public mathematical corpus for
+    <strong>Branch Mathematics (BM)</strong>,
+    <strong>GURF</strong>,
+    and the research programs developed through them.
   </p>
 
   <p>
-    The site contains formal definitions, worked calculations, exact and
-    conditional equations, proofs, counterexamples, structures, Passports,
-    Roots, research status, applications, and a formal revision record.
+    The site contains:
   </p>
+
+  <ul>
+    <li>formal definitions;</li>
+    <li>worked examples and counterexamples;</li>
+    <li>theorem and equation registries;</li>
+    <li>structural mathematics;</li>
+    <li>Passports and Interfaces;</li>
+    <li>Responses, Exports, Roots, and re-entry;</li>
+    <li>GURF response mathematics;</li>
+    <li>research programs;</li>
+    <li>prior-art reduction;</li>
+    <li>a formal mathematical changelog.</li>
+  </ul>
 
   <div class="hero-grid">
+
     <div class="card">
-      <h3>New to the subject?</h3>
+      <h3>Start with BM</h3>
       <p>
-        Begin with the BM overview, then work through Examples before diving
-        into the formal registries.
+        Read the mathematical identity, core architecture, scope discipline,
+        Branch admissibility, realization, and current research boundaries.
       </p>
-      <a href="branch-mathematics.html">Start with Branch Mathematics →</a>
+      <a href="branch-mathematics.html">
+        Open Branch Mathematics →
+      </a>
     </div>
 
     <div class="card">
-      <h3>Already mathematically trained?</h3>
+      <h3>See it work</h3>
       <p>
-        Use the Encyclopedia as the master map, then move directly into
-        Definitions, Theorems, Equations, Structures, Passports, or Research.
+        Work through actual algebra, fibres, dynamic closure, control,
+        stochastic systems, PDE examples, Roots, repairs, and failure cases.
       </p>
-      <a href="encyclopedia.html">Open the Encyclopedia →</a>
+      <a href="examples.html">
+        Open Worked Examples →
+      </a>
     </div>
 
     <div class="card">
-      <h3>Want to see it work?</h3>
+      <h3>Audit the corpus</h3>
       <p>
-        The Examples registry develops the framework through actual algebra,
-        probability, control, PDE, quantum, stochastic, and failure examples.
+        Use the Encyclopedia as the master map, then inspect Definitions,
+        Structures, Equations, Theorems, Passports, and Research directly.
       </p>
-      <a href="examples.html">Open Worked Examples →</a>
+      <a href="encyclopedia.html">
+        Open the Encyclopedia →
+      </a>
     </div>
+
   </div>
 
   <div class="status-note">
     <strong>Reading rule.</strong>
     A displayed formula may be a definition, structural schema, classical
-    imported result, proved BM/GURF result, applied identity, conditional
-    research object, or worked example. The registries distinguish those
-    statuses explicitly.
+    imported theorem, proved BM/GURF result, conditional statement, candidate
+    formula, applied identity, counterexample, or research object. The formal
+    registries state those statuses explicitly.
   </div>
 </section>
 
 
 <section id="bm">
-  <h2>Branch Mathematics</h2>
+  <h2>2. Branch Mathematics</h2>
 
-  <div class="formal-card">
-    <p>
-      <strong>
-        Branch Mathematics is meta-structural mathematics of lawful
-        representation and transformation.
-      </strong>
-    </p>
+  <div class="definition-box">
 
     <p>
-      BM studies how distinct mathematical structures can participate in one
-      problem while retaining their own types, admissible states, laws,
-      Operations, distinctions, Interfaces, invariants, and native notions of
-      validity.
+      <strong>Branch Mathematics is a mathematical metaframework for carrying
+      one mathematical problem through multiple distinct lawful mathematical
+      Branches while preserving the native mathematics of each Branch and
+      governing their lawful representation, interaction, transformation,
+      composition, comparison, realization, computation, export, re-entry, and
+      further mathematical development.</strong>
     </p>
+
   </div>
 
-  <div class="schema">
-    \[
+  <div class="schema">\[
     \boxed{
-    \text{lawful Branches}
-    \longrightarrow
-    \text{lawful Interactions}
-    \longrightarrow
-    \text{Leaves / organized computation}
-    \longrightarrow
-    \text{Response}
-    \longrightarrow
-    \begin{cases}
-    \text{terminal result},\\[3pt]
-    \text{Root if a receiving gate passes}.
-    \end{cases}
+    \text{one problem}
+    \to
+    \text{many lawful mathematical focuses}
+    \to
+    \text{lawful interaction and combined computation}
+    \to
+    \text{mathematical consequences}.
     }
-    \]
-  </div>
+  \]</div>
 
   <p>
-    This is a structural learning schema, not a claim that all BM computations
-    are deterministic, sequential, reversible, or graph-theoretically
-    tree-shaped.
+    Descriptively:
   </p>
 
-  <a class="link-button" href="branch-mathematics.html">
-    Read the authoritative BM foundation →
-  </a>
+  <div class="schema">\[
+    \boxed{
+    \text{BM is meta-structural mathematics of lawful representation
+    and transformation}.
+    }
+  \]</div>
+
+  <p>
+    A PDE remains a PDE. A manifold remains a manifold. A Markov kernel remains
+    a Markov kernel. A quantum channel remains a quantum channel. BM coordinates
+    mathematical participation without silently replacing native semantics.
+  </p>
+
+  <div class="schema">\[
+    \boxed{
+    \text{BM coordination}
+    \neq
+    \text{replacement of native mathematics}.
+    }
+  \]</div>
+
+  <p>
+    <a class="link-button" href="branch-mathematics.html">
+      Read the authoritative BM foundation →
+    </a>
+  </p>
 </section>
 
 
-<section id="formal-core">
-  <h2>Compact Formal Core</h2>
+<section id="plural">
+  <h2>3. BM Is Not One Pipeline</h2>
 
   <p>
-    The homepage exposes only the minimum formal machinery needed to read the
-    rest of the site.
+    A useful teaching spine is:
   </p>
 
-  <div class="definition-box">
-    \[
+  <div class="schema">\[
+    \text{Branch}
+    \to
+    \text{Interaction}
+    \to
+    \text{Leaf}
+    \to
+    \text{Tree}
+    \to
+    \text{Response}
+    \to
+    \text{Root}.
+  \]</div>
+
+  <p>
+    But the subject is larger than that linear picture.
+  </p>
+
+  <div class="grid">
+
+    <div class="formal-card">
+      <h3>Structure</h3>
+      <p>
+        Branches, Operations, Interactions, Leaves, Interfaces, Networks,
+        Configurations, Trees.
+      </p>
+    </div>
+
+    <div class="formal-card">
+      <h3>Representation</h3>
+      <p>
+        Passports, fibres, quotients, abstraction, refinement, realization,
+        information preservation.
+      </p>
+    </div>
+
+    <div class="formal-card">
+      <h3>Compatibility</h3>
+      <p>
+        Domains, law/regime context, coherence, coupling, witness scope,
+        local-to-global realization.
+      </p>
+    </div>
+
+    <div class="formal-card">
+      <h3>Dynamics</h3>
+      <p>
+        Dynamic Closure, feedback, continuation, convergence semantics,
+        approximation, regime switching.
+      </p>
+    </div>
+
+    <div class="formal-card">
+      <h3>Failure and repair</h3>
+      <p>
+        Defects, obstructions, admissible repair, dependency invalidation,
+        revalidation.
+      </p>
+    </div>
+
+    <div class="formal-card">
+      <h3>Downstream use</h3>
+      <p>
+        Response, Export, Root, re-entry, receiver-specific obligations, and
+        candidate attachment structures.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+<section id="role-carrier">
+  <h2>4. Role-Carrier Separation</h2>
+
+  <p>
+    BM role names organize mathematical participation. They do not create new
+    mathematical species.
+  </p>
+
+  <div class="schema">\[
     \boxed{
-    B=
+    x
+    \models_C
+    \rho
+    }
+  \]</div>
+
+  <p>
+    means that mathematical object \(x\) occupies role \(\rho\) in
+    Configuration \(C\).
+  </p>
+
+  <div class="schema">\[
+    \boxed{
+    \text{BM role}
+    \neq
+    \text{native mathematical species}.
+    }
+  \]</div>
+
+  <p>
+    The same mathematical carrier may occupy several roles:
+  </p>
+
+  <div class="schema">\[
+    z
+    \models_C
+    \mathrm{Leaf}
+    \land
+    \mathrm{Response}
+    \land
+    \mathrm{Root}_{B_r}.
+  \]</div>
+
+  <div class="warning">
+    BM terminology is not permitted to supply mathematical properties that the
+    native object, definition, Operation, Passport, theorem, or realization
+    does not actually possess.
+  </div>
+</section>
+
+
+<section id="scope">
+  <h2>5. Problem Scope and Required Obligations</h2>
+
+  <p>
+    Structural sufficiency and Branch necessity are relative to the declared
+    mathematical problem.
+  </p>
+
+  <div class="schema">\[
+    \boxed{
+    \mathfrak S_P
+    =
+    \text{declared scope of problem }P.
+    }
+  \]</div>
+
+  <p>
+    Let:
+  </p>
+
+  <div class="schema">\[
+    \mathscr T_P
+    =
+    \text{terminal obligations}.
+  \]</div>
+
+  <p>
+    The active requirement family is:
+  </p>
+
+  <div class="schema">\[
+    \boxed{
+    \mathscr Q_P
+    =
+    \operatorname{ReqCl}_{\mathfrak D_C}
+    (\mathscr T_P).
+    }
+  \]</div>
+
+  <p>
+    Obligations may concern:
+  </p>
+
+  <ul>
+    <li>future Tasks;</li>
+    <li>Operation domains;</li>
+    <li>native laws;</li>
+    <li>regularity;</li>
+    <li>Interfaces;</li>
+    <li>witnesses and couplings;</li>
+    <li>continuation;</li>
+    <li>receiver requirements;</li>
+    <li>convergence;</li>
+    <li>global realization.</li>
+  </ul>
+
+  <div class="schema">\[
+    \boxed{
+    \text{representation}
+    \not\Rightarrow
+    \text{permission to weaken the scope until it becomes sufficient}.
+    }
+  \]</div>
+</section>
+
+
+<section id="compact-core">
+  <h2>6. Compact Formal Core</h2>
+
+  <h3>Branch</h3>
+
+  <div class="schema">\[
+    \boxed{
+    B
+    =
     \left(
     \mathsf S_B,
     \tau_B,
@@ -392,149 +699,810 @@
     \mathcal P_B
     \right).
     }
-    \]
+  \]</div>
 
-    <p>
-      A Branch records its mathematical sector, type, carrier, admissible
-      states, native laws, native Operations, and Passport/Interface
-      obligations.
-    </p>
-  </div>
+  <p>
+    The record organizes mathematical sector, type, carrier, admissible states,
+    native laws, Operations, and obligations. It is not a universal ontology.
+  </p>
+
+  <h3>Operation</h3>
+
+  <div class="schema">\[
+    \boxed{
+    O:
+    D_O
+    \subseteq
+    X
+    \to
+    Y.
+    }
+  \]</div>
+
+  <p>
+    This is the deterministic specialization. Relations, kernels, channels,
+    differential operators, optimization maps, set-valued maps, and other
+    native structures remain permitted.
+  </p>
 
   <h3>Interaction</h3>
 
-  <div class="schema">
-    \[
-    \boxed{
-    I:
-    D_I
-    \subseteq
-    A_{B_1}\times\cdots\times A_{B_n}
-    \longrightarrow
-    Z_I.
-    }
-    \]
-  </div>
-
   <p>
-    The actual Interaction domain is part of the mathematical object.
-    Ambient carrier membership does not imply admissibility.
+    Interaction is an Operation or native relation occupying a declared
+    joint-participation role.
   </p>
 
-  <h3>Leaf extraction</h3>
+  <div class="schema">\[
+    \boxed{
+    \partial I
+    =
+    \left(
+    B_{i_1}^{r_1},
+    \ldots,
+    B_{i_k}^{r_k}
+    \right),
+    \qquad
+    k\ge2.
+    }
+  \]</div>
 
-  <div class="schema">
-    \[
-    z=I(x_1,\ldots,x_n),
+  <h3>Leaf</h3>
+
+  <div class="schema">\[
+    z
+    =
+    I(\ldots),
     \qquad
     \boxed{
-    L_j=\ell_j(z).
+    L_j
+    =
+    \ell_j(z).
     }
-    \]
-  </div>
+  \]</div>
 
   <p>
-    Leaves carry explicit provenance. A later Interaction may use a Leaf only
-    when its own receiving domain and Interface obligations accept it.
+    A Leaf is an identified derived result retained because later mathematics
+    needs it. Not every intermediate expression is promoted to a Leaf.
   </p>
-
-  <h3>Partial composition</h3>
-
-  <div class="schema">
-    \[
-    F:D_F\subseteq X\to Y,
-    \qquad
-    G:D_G\subseteq Y\to Z,
-    \]
-    \[
-    \boxed{
-    D_{G\circ F}
-    =
-    \{x\in D_F:F(x)\in D_G\}.
-    }
-    \]
-  </div>
-
-  <p>
-    Matching written types are not enough. Composition must also preserve the
-    required laws, Passports, Interfaces, and admissibility.
-  </p>
-
-  <h3>Path coherence</h3>
-
-  <div class="schema">
-    \[
-    \Delta_{p,q}
-    =
-    \{x\in D_p\cap D_q:
-    F_p(x)\not\simeq_DF_q(x)\},
-    \]
-    \[
-    \boxed{
-    \Delta_{p,q}=\varnothing
-    }
-    \]
-    for exact coherence on the shared domain.
-  </div>
 </section>
 
 
-<section id="semantic-sectors">
-  <h2>Sector-Correct Semantics</h2>
+<section id="branch-discipline">
+  <h2>7. Branch Discipline</h2>
+
+  <div class="schema">\[
+    \boxed{
+    \text{mathematical object}
+    \not\Rightarrow
+    \text{BM Branch}.
+    }
+  \]</div>
 
   <p>
-    BM does not flatten different mathematical sectors into ordinary
-    deterministic functions.
+    A proposed Branch distinction must perform mathematical work relative to
+    \(\mathfrak S_P\).
+  </p>
+
+  <p>
+    In a deterministic common-carrier setting:
+  </p>
+
+  <div class="schema">\[
+    R_{\mathcal B}:
+    X_P
+    \to
+    Y_{\mathcal B}.
+  \]</div>
+
+  <p>
+    If proposed coarsening:
+  </p>
+
+  <div class="schema">\[
+    q:
+    Y_{\mathcal B}
+    \to
+    Y'
+  \]</div>
+
+  <p>
+    destroys a required obligation \(T\):
+  </p>
+
+  <div class="schema">\[
+    \boxed{
+    T
+    \neq
+    \widetilde T
+    \circ
+    q
+    \circ
+    R_{\mathcal B},
+    }
+  \]</div>
+
+  <p>
+    then the collapsed distinction is essential for that scope.
+  </p>
+
+  <div class="schema">\[
+    \boxed{
+    x,\;
+    x^2,\;
+    x^3,\;
+    \sin x
+    \text{ are not automatically four Branches}.
+    }
+  \]</div>
+
+  <div class="schema">\[
+    \boxed{
+    \text{Branch count is not fundamental mathematical data}.
+    }
+  \]</div>
+</section>
+
+
+<section id="composition">
+  <h2>8. Composition and Interface Discipline</h2>
+
+  <p>
+    For partial deterministic maps:
+  </p>
+
+  <div class="schema">\[
+    F:
+    D_F
+    \subseteq
+    X
+    \to
+    Y,
+    \qquad
+    G:
+    D_G
+    \subseteq
+    Y
+    \to
+    Z,
+  \]</div>
+
+  <div class="schema">\[
+    \boxed{
+    D_{G\circ F}
+    =
+    \{
+    x\in D_F:
+    F(x)\in D_G
+    \}.
+    }
+  \]</div>
+
+  <p>
+    Matching written source/codomain labels are not enough.
+  </p>
+
+  <p>
+    An Interface must state how distinct structures communicate, compare,
+    transport, constrain, or share mathematical data.
+  </p>
+
+  <div class="schema">\[
+    \boxed{
+    \text{ambient compatibility}
+    \not\Rightarrow
+    \text{lawful Interface compatibility}.
+    }
+  \]</div>
+</section>
+
+
+<section id="passports">
+  <h2>9. Contracts and Passports</h2>
+
+  <p>
+    A Contract is a reusable typed obligation schema:
+  </p>
+
+  <div class="schema">\[
+    \boxed{
+    \mathcal C^\rho
+    =
+    (\Sigma^\rho,\Phi^\rho).
+    }
+  \]</div>
+
+  <p>
+    A Passport is an operative instantiation:
+  </p>
+
+  <div class="schema">\[
+    \boxed{
+    \mathcal P^\rho_{\theta,c}
+    =
+    \operatorname{Inst}_{\theta,c}
+    (\mathcal C^\rho).
+    }
+  \]</div>
+
+  <p>
+    Contracts are optional when no reusable schema is needed.
+  </p>
+
+  <h3>Applicability</h3>
+
+  <div class="schema">\[
+    \boxed{
+    \operatorname{Acc}(\mathcal P)
+    \subseteq
+    D_{\mathcal P}.
+    }
+  \]</div>
+
+  <p>
+    The following are distinct:
+  </p>
+
+  <ul>
+    <li>outside the Passport domain;</li>
+    <li>inside the domain but rejected;</li>
+    <li>inside the acceptance region.</li>
+  </ul>
+
+  <div class="schema">\[
+    \boxed{
+    \text{not applicable}
+    \neq
+    \text{applicable but false}.
+    }
+  \]</div>
+
+  <p>
+    <a class="link-button" href="passports.html">
+      Read the Passport registry →
+    </a>
+  </p>
+</section>
+
+
+<section id="realization">
+  <h2>10. Configuration, Realization, and Tree</h2>
+
+  <p>
+    A Configuration \(C\) coordinates the active BM structure.
+  </p>
+
+  <div class="schema">\[
+    \boxed{
+    \text{candidate}
+    \to
+    \mathrm{WF}(C)
+    \to
+    \text{local admissibility}
+    \to
+    \text{global realizability}
+    \to
+    \text{Tree}.
+    }
+  \]</div>
+
+  <h3>Local admissibility</h3>
+
+  <div class="schema">\[
+    \boxed{
+    \mathfrak F(U_i;C,c)
+    \neq
+    \varnothing
+    \qquad
+    \forall U_i.
+    }
+  \]</div>
+
+  <h3>Global realizability</h3>
+
+  <div class="schema">\[
+    \boxed{
+    \mathrm{GR}(C;c)
+    \iff
+    \mathfrak F(C;c)
+    \neq
+    \varnothing.
+    }
+  \]</div>
+
+  <h3>Tree</h3>
+
+  <div class="schema">\[
+    \boxed{
+    T
+    =
+    (C,\xi,\Pi,\omega,\Lambda),
+    \qquad
+    \xi
+    \in
+    \mathfrak F(C;c).
+    }
+  \]</div>
+
+  <p>
+    \(\Pi\) carries required provenance, \(\omega\) required order/dependency
+    context, and \(\Lambda\) law/regime context.
+  </p>
+
+  <div class="schema">\[
+    \boxed{
+    \text{Configuration}
+    \neq
+    \text{Tree}.
+    }
+  \]</div>
+
+  <div class="schema">\[
+    \boxed{
+    \text{local admissibility}
+    \not\Rightarrow
+    \text{global realizability}.
+    }
+  \]</div>
+</section>
+
+
+<section id="dependency">
+  <h2>11. Network and Semantic Dependency</h2>
+
+  <p>
+    BM represents semantic dependency by:
+  </p>
+
+  <div class="schema">\[
+    \boxed{
+    \mathfrak D_C.
+    }
+  \]</div>
+
+  <p>
+    Depending on the native mathematics, this may be a:
+  </p>
+
+  <ul>
+    <li>graph;</li>
+    <li>DAG;</li>
+    <li>hypergraph;</li>
+    <li>factor graph;</li>
+    <li>category;</li>
+    <li>operator network;</li>
+    <li>relation;</li>
+    <li>other appropriate dependency structure.</li>
+  </ul>
+
+  <p>
+    For affected region \(S\):
+  </p>
+
+  <div class="schema">\[
+    \boxed{
+    \operatorname{Cl}_{\mathfrak D_C}(S)
+    }
+  \]</div>
+
+  <p>
+    is the least dependency-closed affected region containing \(S\).
+  </p>
+
+  <div class="schema">\[
+    \boxed{
+    \text{repair of }S
+    \Longrightarrow
+    \text{revalidate }
+    \operatorname{Cl}_{\mathfrak D_C}(S)
+    }
+  \]</div>
+
+  <p>
+    unless an invariance theorem proves the dependent claims unaffected.
+  </p>
+</section>
+
+
+<section id="coherence">
+  <h2>12. Coherence</h2>
+
+  <p>
+    Parallel paths require:
+  </p>
+
+  <ol>
+    <li>common lawful input domain;</li>
+    <li>legitimate comparison into a common space;</li>
+    <li>agreement under that comparison.</li>
+  </ol>
+
+  <div class="schema">\[
+    x
+    \in
+    D_{P_1}
+    \cap
+    D_{P_2},
+  \]</div>
+
+  <div class="schema">\[
+    q_1:
+    Y_1
+    \to
+    Q,
+    \qquad
+    q_2:
+    Y_2
+    \to
+    Q,
+  \]</div>
+
+  <div class="schema">\[
+    \boxed{
+    q_1P_1(x)
+    =
+    q_2P_2(x).
+    }
+  \]</div>
+
+  <div class="warning">
+    A comparison map may not be invented solely to force two outputs to become
+    equal.
+  </div>
+
+  <div class="schema">\[
+    \boxed{
+    \text{pairwise coherence}
+    \not\Rightarrow
+    \text{global coherence}.
+    }
+  \]</div>
+</section>
+
+
+<section id="dynamic">
+  <h2>13. Dynamic Closure</h2>
+
+  <p>
+    Let:
+  </p>
+
+  <div class="schema">\[
+    \Phi:
+    A
+    \to
+    A,
+    \qquad
+    R:
+    A
+    \to
+    Y,
+    \qquad
+    Y_R
+    =
+    R(A).
+  \]</div>
+
+  <p>
+    Exact Dynamic Closure holds when:
+  </p>
+
+  <div class="schema">\[
+    \boxed{
+    \widetilde\Phi:
+    Y_R
+    \to
+    Y_R,
+    \qquad
+    R\circ\Phi
+    =
+    \widetilde\Phi
+    \circ
+    R.
+    }
+  \]</div>
+
+  <p>
+    Equivalently:
+  </p>
+
+  <div class="schema">\[
+    \boxed{
+    R(x)
+    =
+    R(x')
+    \Longrightarrow
+    R(\Phi(x))
+    =
+    R(\Phi(x')).
+    }
+  \]</div>
+
+  <div class="schema">\[
+    \boxed{
+    \text{static Task sufficiency}
+    \not\Rightarrow
+    \text{Dynamic Closure}.
+    }
+  \]</div>
+</section>
+
+
+<section id="roots">
+  <h2>14. Response, Export, Root, and Re-entry</h2>
+
+  <div class="schema">\[
+    \boxed{
+    \text{Tree}
+    \to
+    \text{Response}
+    \xrightarrow{E_r}
+    \text{exported candidate}
+    \xrightarrow{\mathcal P_R^{B_r}}
+    \text{Root}
+    \to
+    \text{lawful re-entry or terminal use}.
+    }
+  \]</div>
+
+  <h3>Response</h3>
+
+  <p>
+    A typed output of a realized BM computation.
+  </p>
+
+  <h3>Export</h3>
+
+  <div class="schema">\[
+    \boxed{
+    E_r:
+    D_{E_r}
+    \subseteq
+    \mathcal Y_T
+    \to
+    \mathcal R_r.
+    }
+  \]</div>
+
+  <h3>Root</h3>
+
+  <div class="schema">\[
+    \boxed{
+    r
+    \text{ is Root for }B_r
+    \iff
+    r
+    \in
+    \operatorname{Acc}
+    (\mathcal P_R^{B_r}).
+    }
+  \]</div>
+
+  <p>
+    Roothood is receiver-relative.
+  </p>
+
+  <div class="schema">\[
+    \boxed{
+    \text{Root}_{B_1}(r)
+    \not\Rightarrow
+    \text{Root}_{B_2}(r).
+    }
+  \]</div>
+
+  <p>
+    Repeated Root use becomes ordinary dynamical iteration only when an actual
+    self-map exists:
+  </p>
+
+  <div class="schema">\[
+    F:
+    S
+    \to
+    S,
+    \qquad
+    R_{n+1}
+    =
+    F(R_n).
+  \]</div>
+
+  <div class="schema">\[
+    \boxed{
+    \text{Root reuse}
+    \not\Rightarrow
+    \text{iteration}
+    \not\Rightarrow
+    \text{convergence}.
+    }
+  \]</div>
+
+  <p>
+    <a class="link-button" href="roots.html">
+      Read the Root registry →
+    </a>
+  </p>
+</section>
+
+
+<section id="candidate">
+  <h2>15. Candidate Structures</h2>
+
+  <p>
+    The following structures are retained but are not part of the established
+    core architecture:
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Structure</th>
+        <th>Current status</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>Rooting</td>
+        <td>Candidate</td>
+      </tr>
+
+      <tr>
+        <td>Rebranching</td>
+        <td>Candidate</td>
+      </tr>
+
+      <tr>
+        <td>Seed</td>
+        <td>Candidate</td>
+      </tr>
+
+      <tr>
+        <td>Attachment Complex</td>
+        <td>Bridge / candidate infrastructure</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Candidate Rooting</h3>
+
+  <div class="schema">\[
+    \boxed{
+    \mathcal A:
+    D_{\mathcal A}
+    \subseteq
+    A_{\mathrm{attach}}
+    \times
+    A_R(B')
+    \to
+    X'.
+    }
+  \]</div>
+
+  <div class="schema">\[
+    \boxed{
+    \text{Root reuse}
+    \not\Rightarrow
+    \text{Rooting}
+    \not\Rightarrow
+    \text{Rebranching}.
+    }
+  \]</div>
+
+  <h3>Candidate Seed</h3>
+
+  <div class="schema">\[
+    S_0
+    \xrightarrow{G}
+    S_1
+    \xrightarrow{G}
+    \cdots
+    \xrightarrow{\text{export condition}}
+    Y.
+  \]</div>
+
+  <div class="schema">\[
+    \boxed{
+    \text{initial data}
+    \not\Rightarrow
+    \text{Seed}.
+    }
+  \]</div>
+</section>
+
+
+<section id="sector-semantics">
+  <h2>16. Sector-Correct Semantics</h2>
+
+  <p>
+    BM does not flatten heterogeneous mathematics into ordinary deterministic
+    functions.
   </p>
 
   <div class="grid">
+
     <div class="formal-card">
       <h3>Deterministic</h3>
-      \[
-      F:X\to Y.
-      \]
-      <p>Ordinary function composition and exact fibres apply where defined.</p>
+
+      <div class="schema">\[
+        F:
+        X
+        \to
+        Y.
+      \]</div>
+
+      <p>
+        Ordinary composition and exact fibres apply when their hypotheses are
+        satisfied.
+      </p>
     </div>
 
     <div class="formal-card">
       <h3>Stochastic</h3>
-      \[
-      K:X\rightsquigarrow Y,
-      \]
-      \[
-      K^\dagger\phi(x)
-      =
-      \int_Y\phi(y)\,K(x,dy).
-      \]
-      <p>Composition is kernel integration, not deterministic substitution.</p>
+
+      <div class="schema">\[
+        K:
+        X
+        \rightsquigarrow
+        Y.
+      \]</div>
+
+      <div class="schema">\[
+        \boxed{
+        (K\varphi)(x)
+        =
+        \int_Y
+        \varphi(y)
+        K(x,dy).
+        }
+      \]</div>
+
+      <p>
+        No adjoint notation is assumed unless an actual adjoint structure has
+        been defined.
+      </p>
     </div>
 
     <div class="formal-card">
       <h3>Nondeterministic</h3>
-      \[
-      \Diamond_R(U)
-      =
-      \{x:\exists y\in U,\ xRy\},
-      \]
-      \[
-      \Box_R(U)
-      =
-      \{x:\forall y,\ xRy\Rightarrow y\in U\}.
-      \]
-      <p>Possibility and guarantee remain distinct.</p>
+
+      <div class="schema">\[
+        \Diamond_R(U)
+        =
+        \{
+        x:
+        \exists y\in U,\;
+        xRy
+        \},
+      \]</div>
+
+      <div class="schema">\[
+        \Box_R(U)
+        =
+        \{
+        x:
+        \forall y,\;
+        xRy
+        \Rightarrow
+        y\in U
+        \}.
+      \]</div>
+
+      <p>
+        Possibility and guarantee remain distinct.
+      </p>
     </div>
 
     <div class="formal-card">
       <h3>Quantum / Operator</h3>
+
       <p>
         States, operators, channels, positivity, normalization, measurement,
-        and operator domains retain their native mathematics.
+        spectra, and operator domains retain native quantum/operator semantics.
       </p>
     </div>
+
   </div>
 
-  <div class="schema">
-    \[
+  <div class="schema">\[
     \boxed{
     \text{function}
     \neq
@@ -544,522 +1512,1330 @@
     \neq
     \text{quantum channel}.
     }
-    \]
-  </div>
-</section>
-
-
-<section id="bm-roles">
-  <h2>BM Structural Roles</h2>
-
-  <div class="grid">
-    <div class="card"><h3>Branch</h3><p>Typed mathematical carrier with its admissibility, laws, Operations, distinctions, and Interfaces.</p></div>
-    <div class="card"><h3>Interaction</h3><p>Lawful mathematical action on a declared admissible domain.</p></div>
-    <div class="card"><h3>Leaf</h3><p>Declared information extracted from an Interaction result.</p></div>
-    <div class="card"><h3>Tree</h3><p>Organized computation joining Branches, Interactions, Leaves, Passports, Interfaces, and dependencies.</p></div>
-    <div class="card"><h3>Response</h3><p>Typed mathematical output produced by the organized computation.</p></div>
-    <div class="card"><h3>Root</h3><p>Receiver-relative downstream role assigned only after the required receiving gate passes.</p></div>
-    <div class="card"><h3>Passport</h3><p>Information or semantic obligations that later mathematics requires to remain available.</p></div>
-    <div class="card"><h3>Operation</h3><p>Typed lawful transformation with explicit domain, assumptions, and compatibility conditions.</p></div>
-    <div class="card"><h3>Interface</h3><p>Conditions governing lawful transfer between representations or Branches.</p></div>
-    <div class="card"><h3>Seed</h3><p>Optional candidate primitive for lawful generative evolution before a declared export condition.</p></div>
-  </div>
-</section>
-
-
-<section id="tree-response-root">
-  <h2>Tree, Response, and Root Are Different Roles</h2>
-
-  <table>
-    <thead><tr><th>Role</th><th>Meaning</th></tr></thead>
-    <tbody>
-      <tr><td><strong>Tree</strong></td><td>The organized computation.</td></tr>
-      <tr><td><strong>Response</strong></td><td>The typed output produced by that computation.</td></tr>
-      <tr><td><strong>Root</strong></td><td>The downstream role of a Response/result for a receiver whose gate has been verified.</td></tr>
-    </tbody>
-  </table>
-
-  <div class="schema">
-    \[
-    \boxed{
-    r\text{ is a Root for }B'
-    \iff
-    r\in A_R(B')
-    \text{ and the required receiving obligations hold}.
-    }
-    \]
-  </div>
+  \]</div>
 </section>
 
 
 <section id="gurf">
-  <h2>GURF</h2>
-
-  <div class="formal-card">
-    <p>
-      <strong>
-        GURF is the response-specialized framework under Branch Mathematics
-        governance.
-      </strong>
-    </p>
-
-    <p>
-      It is invoked when a problem genuinely contains response semantics:
-      observations, Tasks, interventions, constraints, Regimes, ambiguity,
-      inference, continuation, uncertainty, or future response.
-    </p>
-  </div>
-
-  <div class="schema">
-    \[
-    \boxed{
-    \text{Branch Mathematics}
-    \longrightarrow
-    \text{GURF when genuine response semantics are present}.
-    }
-    \]
-  </div>
-
-  <h3>One central exact test</h3>
+  <h2>17. GURF</h2>
 
   <p>
-    For a deterministic retained representation \(r:X\to Y\) and Task
-    \(T:X\to W\),
+    GURF is the response-specialized framework under Branch Mathematics.
   </p>
 
-  <div class="schema">
-    \[
+  <div class="schema">\[
     \boxed{
-    r(x)=r(x')
-    \Longrightarrow
-    T(x)=T(x')
+    \mathrm{GURF}
+    \hookrightarrow
+    \mathrm{BM}
+    \quad
+    \text{as a response-specialized framework}.
     }
-    \]
-    if and only if
-    \[
-    \boxed{
-    T=\widetilde T\circ r,
+  \]</div>
+
+  <p>
+    This is an architectural specialization relation, not literal set
+    containment.
+  </p>
+
+  <p>
+    GURF activates when the essential mathematical question concerns:
+  </p>
+
+  <ul>
+    <li>Response;</li>
+    <li>Observation;</li>
+    <li>Task sufficiency;</li>
+    <li>ambiguity;</li>
+    <li>reconstruction;</li>
+    <li>Intervention;</li>
+    <li>continuation;</li>
+    <li>response obstruction;</li>
+    <li>response repair;</li>
+    <li>response certification.</li>
+  </ul>
+
+  <h3>Central exact deterministic test</h3>
+
+  <p>
+    For:
+  </p>
+
+  <div class="schema">\[
+    r:
+    X
+    \to
+    Y,
     \qquad
-    \widetilde T:r(X)\to W.
+    T:
+    X
+    \to
+    W,
+  \]</div>
+
+  <p>
+    Task sufficiency holds iff:
+  </p>
+
+  <div class="schema">\[
+    \boxed{
+    r(x)
+    =
+    r(x')
+    \Longrightarrow
+    T(x)
+    =
+    T(x')
     }
-    \]
+  \]</div>
+
+  <p>
+    equivalently:
+  </p>
+
+  <div class="schema">\[
+    \boxed{
+    T
+    =
+    \widetilde T
+    \circ
+    r,
+    \qquad
+    \widetilde T:
+    r(X)
+    \to
+    W.
+    }
+  \]</div>
+
+  <div class="status-note">
+    This factorization theorem is classical mathematics. GURF uses it as one
+    exact response-sufficiency sector rather than claiming ownership of the
+    theorem.
   </div>
 
   <p>
-    GURF extends far beyond this exact deterministic test into stochastic,
-    nondeterministic, approximate, constrained, inverse, kernel, extended-domain,
-    hold-state, and dynamic response mathematics.
+    <a class="link-button" href="gurf.html">
+      Read the deep GURF reference →
+    </a>
   </p>
-
-  <a class="link-button" href="gurf.html">
-    Read the deep GURF reference →
-  </a>
 </section>
 
 
-<section id="gurf-hierarchy">
-  <h2>Current GURF Architecture</h2>
+<section id="gurf-architecture">
+  <h2>18. Current GURF Architecture</h2>
 
   <table>
-    <thead><tr><th>Component</th><th>Primary role</th><th>Status</th></tr></thead>
+    <thead>
+      <tr>
+        <th>Component</th>
+        <th>Response specialization</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+
     <tbody>
-      <tr><td><strong>Core</strong></td><td>Response, Observation, Tasks, fibres, sufficiency, continuation, obstruction, repair.</td><td>Stable / canonical</td></tr>
-      <tr><td><strong>SOE</strong></td><td>Operations, order, composition, handoff, feedback, Intervention, REBIND.</td><td>Stable canonical</td></tr>
-      <tr><td><strong>ACE</strong></td><td>Admissibility, hard/soft constraints, viability, margins, safety and stability gates.</td><td>Stable canonical</td></tr>
-      <tr><td><strong>IRE</strong></td><td>Inference, recovery, identifiability, uncertainty, conditioning, certification, observation design.</td><td>Stable canonical</td></tr>
-      <tr><td><strong>UKE</strong></td><td>Nullspace, integral, Green, spectral, resolvent, reproducing, causal, memory response.</td><td>Stable canonical</td></tr>
-      <tr><td><strong>GRDE</strong></td><td>Frozen diagrammatic response representation calculus.</td><td>Frozen at GURF-GRDE-008</td></tr>
-      <tr><td><strong>HDE</strong></td><td>Extended/halo response state, boundary transfer, persistence, memory, local-closure failure.</td><td>Active canonical</td></tr>
-      <tr><td><strong>GHSE</strong></td><td>Joining, hold, persistence, release, hysteresis, response-state transition.</td><td>Active canonical</td></tr>
+      <tr>
+        <td>Core</td>
+        <td>
+          Response, Observation, Tasks, fibres, ambiguity, sufficiency,
+          continuation, obstruction, repair.
+        </td>
+        <td>Canonical</td>
+      </tr>
+
+      <tr>
+        <td>SOE</td>
+        <td>
+          Response dependence on Operation domain, order, handoff, provenance,
+          history, feedback, Intervention, and semantic sector.
+        </td>
+        <td>Stable canonical</td>
+      </tr>
+
+      <tr>
+        <td>ACE</td>
+        <td>
+          Response admissibility, constraints, feasibility, safety, viability,
+          and response gates.
+        </td>
+        <td>Stable canonical</td>
+      </tr>
+
+      <tr>
+        <td>IRE</td>
+        <td>
+          Response inference, ambiguity, identifiability, reconstruction,
+          conditioning, and certification.
+        </td>
+        <td>Stable canonical</td>
+      </tr>
+
+      <tr>
+        <td>UKE</td>
+        <td>
+          Response questions involving nullspaces, integral kernels, Green
+          kernels, spectra, resolvents, and memory.
+        </td>
+        <td>Stable canonical</td>
+      </tr>
+
+      <tr>
+        <td>GRDE</td>
+        <td>Frozen diagrammatic representation of defined response mathematics.</td>
+        <td>Frozen at GURF-GRDE-008</td>
+      </tr>
+
+      <tr>
+        <td>HDE</td>
+        <td>
+          Extended-domain, hidden-state, boundary, memory, and persistence
+          response questions.
+        </td>
+        <td>Active canonical</td>
+      </tr>
+
+      <tr>
+        <td>GHSE</td>
+        <td>
+          Joining, hold, persistence, release, and response-state transition.
+        </td>
+        <td>Active canonical</td>
+      </tr>
     </tbody>
   </table>
 
-  <div class="status-note">
-    <strong>Activation rule.</strong>
-    An extension is used only when its specialized response semantics are
-    genuinely present.
-  </div>
+  <div class="schema">\[
+    \boxed{
+    \text{domain-independent mathematics}
+    \to
+    \mathrm{BM},
+    \qquad
+    \text{essential response semantics}
+    \to
+    \mathrm{GURF}.
+    }
+  \]</div>
 </section>
 
 
 <section id="ownership">
-  <h2>BM and GURF Mathematical Ownership</h2>
-
-  <div class="schema">
-    \[
-    \boxed{
-    \text{domain-independent mathematical kernel}
-    \longrightarrow
-    \mathrm{BM},
-    }
-    \]
-    \[
-    \boxed{
-    \text{essential response semantics}
-    \longrightarrow
-    \mathrm{GURF}.
-    }
-    \]
-  </div>
+  <h2>19. Current Mathematical Ownership</h2>
 
   <table>
-    <thead><tr><th>Structure</th><th>Current placement</th></tr></thead>
+    <thead>
+      <tr>
+        <th>Structure</th>
+        <th>Current placement</th>
+      </tr>
+    </thead>
+
     <tbody>
-      <tr><td>HEC</td><td>BM calculus.</td></tr>
-      <tr><td>HEC-S</td><td>Internal sector of HEC.</td></tr>
-      <tr><td>Defect Calculus</td><td>Domain-independent mathematics under BM.</td></tr>
-      <tr><td>Attachment Complex</td><td>Bridge object where its formal Interfaces are defined.</td></tr>
+      <tr>
+        <td>Branches / Operations / Interfaces</td>
+        <td>BM domain-independent architecture</td>
+      </tr>
+
+      <tr>
+        <td>Configurations / Networks / realization</td>
+        <td>BM</td>
+      </tr>
+
+      <tr>
+        <td>General Passport structure</td>
+        <td>BM</td>
+      </tr>
+
+      <tr>
+        <td>Defect Calculus</td>
+        <td>Active specialized BM mathematics</td>
+      </tr>
+
+      <tr>
+        <td>Law Space</td>
+        <td>Active specialized BM direction</td>
+      </tr>
+
+      <tr>
+        <td>Response / Observation / Task ambiguity</td>
+        <td>GURF specialization</td>
+      </tr>
+
+      <tr>
+        <td>Rooting</td>
+        <td>Candidate BM structure</td>
+      </tr>
+
+      <tr>
+        <td>Rebranching</td>
+        <td>Candidate BM structure</td>
+      </tr>
+
+      <tr>
+        <td>Seed</td>
+        <td>Candidate BM structure</td>
+      </tr>
+
+      <tr>
+        <td>Attachment Complex</td>
+        <td>Bridge / candidate infrastructure</td>
+      </tr>
+
+      <tr>
+        <td>HEC</td>
+        <td>Formal recovery required</td>
+      </tr>
+
+      <tr>
+        <td>HEC-S</td>
+        <td>Formal recovery required</td>
+      </tr>
     </tbody>
   </table>
+
+  <div class="warning">
+    HEC and HEC-S may not currently supply theorem hypotheses, equations, or
+    conclusions until their defining mathematics has been formally recovered.
+  </div>
+</section>
+
+
+<section id="defects">
+  <h2>20. Defects, Obstruction, and Repair</h2>
+
+  <p>
+    A BM defect is indexed by the actual failed condition:
+  </p>
+
+  <div class="schema">\[
+    \boxed{
+    \operatorname{Def}_{\Psi}.
+    }
+  \]</div>
+
+  <p>
+    There is no universal BM defect scalar.
+  </p>
+
+  <h3>Task-labelled fibre</h3>
+
+  <div class="schema">\[
+    F_C(c)
+    =
+    C^{-1}(c),
+  \]</div>
+
+  <div class="schema">\[
+    \boxed{
+    \mathfrak D_T(C;c)
+    =
+    \left(
+    F_C(c),
+    T|_{F_C(c)}
+    \right).
+    }
+  \]</div>
+
+  <p>
+    Ambiguity image:
+  </p>
+
+  <div class="schema">\[
+    \boxed{
+    \mathfrak A_T(C;c)
+    =
+    T(F_C(c)).
+    }
+  \]</div>
+
+  <h3>Repair</h3>
+
+  <div class="schema">\[
+    \boxed{
+    \mathscr R_{\mathrm{adm}}
+    \subseteq
+    \mathsf{Conf}
+    \times
+    \mathsf{Conf}.
+    }
+  \]</div>
+
+  <div class="schema">\[
+    \boxed{
+    \text{failure to find a realization}
+    \neq
+    \text{certificate that no realization exists}.
+    }
+  \]</div>
+</section>
+
+
+<section id="local-global">
+  <h2>21. Local-to-Global Realization</h2>
+
+  <p>
+    For a finite rooted tree \(H=(V,E)\), local realization sets
+    \(F_v\neq\varnothing\), and edge compatibility:
+  </p>
+
+  <div class="schema">\[
+    C_{uv}
+    \subseteq
+    F_u
+    \times
+    F_v,
+  \]</div>
+
+  <p>
+    exact factorization gives:
+  </p>
+
+  <div class="schema">\[
+    \boxed{
+    \mathfrak F_H
+    =
+    \left\{
+    (x_v):
+    x_v\in F_v,\;
+    (x_u,x_v)\in C_{uv}
+    \ \forall uv\in E
+    \right\}.
+    }
+  \]</div>
+
+  <p>
+    Under parent-surjectivity:
+  </p>
+
+  <div class="schema">\[
+    \forall(u\to v),
+    \forall x_u\in F_u,
+    \exists x_v\in F_v:
+    (x_u,x_v)\in C_{uv},
+  \]</div>
+
+  <p>
+    one obtains:
+  </p>
+
+  <div class="schema">\[
+    \boxed{
+    \mathfrak F_H
+    \neq
+    \varnothing.
+    }
+  \]</div>
+
+  <div class="status-note">
+    This is known tree-gluing / constraint-satisfaction style mathematics used
+    by BM. Hidden global or hyperedge constraints invalidate the ordinary tree
+    factorization unless they are explicitly represented.
+  </div>
+</section>
+
+
+<section id="prior-art">
+  <h2>22. Existing-Mathematics Reduction Rule</h2>
+
+  <p>
+    BM does not treat reuse of established mathematics as a defect.
+  </p>
+
+  <div class="schema">\[
+    \boxed{
+    \text{if established theory }M
+    \text{ completely realizes proposed structure }S,
+    \quad
+    S
+    =
+    \text{BM role/application of }M.
+    }
+  \]</div>
+
+  <p>
+    Partial reduction:
+  </p>
+
+  <div class="schema">\[
+    \boxed{
+    S
+    =
+    S_{\mathrm{known}}
+    +
+    S_{\mathrm{residual}}.
+    }
+  \]</div>
+
+  <p>
+    The residual is the genuine mathematical research target.
+  </p>
+
+  <h3>Current comparison families</h3>
+
+  <ul>
+    <li>abstract interpretation and Galois connections;</li>
+    <li>quotients and statistical/task sufficiency;</li>
+    <li>constraint satisfaction and conjunctive queries;</li>
+    <li>category theory;</li>
+    <li>structured cospans and open systems;</li>
+    <li>wiring-diagram operads;</li>
+    <li>institutions and heterogeneous specification;</li>
+    <li>information-flow theories;</li>
+    <li>bisimulation and lumpability;</li>
+    <li>privacy semantics.</li>
+  </ul>
+
+  <div class="schema">\[
+    \boxed{
+    \text{known mathematics}
+    \Longrightarrow
+    \text{credit and use it}.
+    }
+  \]</div>
+</section>
+
+
+<section id="faithful-representation">
+  <h2>23. Major Foundations Question</h2>
+
+  <p>
+    The principal current foundations question is:
+  </p>
+
+  <div class="schema">\[
+    \boxed{
+    \text{Can the useful BM Configuration class be represented
+    faithfully inside an existing formalism?}
+    }
+  \]</div>
+
+  <p>
+    Let:
+  </p>
+
+  <div class="schema">\[
+    \mathfrak C_{\mathrm{BM}}
+    =
+    \text{declared class of BM Configurations}.
+  \]</div>
+
+  <p>
+    Seek:
+  </p>
+
+  <div class="schema">\[
+    \boxed{
+    \mathcal F:
+    \mathfrak C_{\mathrm{BM}}
+    \to
+    \mathfrak M
+    }
+  \]</div>
+
+  <p>
+    preserving all claimed:
+  </p>
+
+  <ul>
+    <li>task-relevant Branch distinctions;</li>
+    <li>native mathematics;</li>
+    <li>Operations and Interfaces;</li>
+    <li>Passports;</li>
+    <li>law/regime context;</li>
+    <li>provenance/history;</li>
+    <li>realization semantics;</li>
+    <li>scope obligations;</li>
+    <li>export and receiver semantics.</li>
+  </ul>
+
+  <div class="status-note">
+    A complete reduction to an existing formalism would clarify BM rather than
+    invalidate its organizational use. A failure boundary may instead identify
+    the actual residual mathematics.
+  </div>
 </section>
 
 
 <section id="corpus">
-  <h2>Core Mathematical Corpus</h2>
+  <h2>24. 200-Equation Structural Audit</h2>
+
+  <p>
+    A 200-equation cross-domain corpus was used as an internal structural
+    stress test. Corpus A is frozen for comparison.
+  </p>
+
+  <p>
+    The audit identified nine recurring structural roles:
+  </p>
+
+  <ol>
+    <li>representation / transport;</li>
+    <li>composition / decomposition / provenance;</li>
+    <li>admissibility / closure / obstruction;</li>
+    <li>comparison / coherence / context;</li>
+    <li>sufficiency / reconstruction / certification;</li>
+    <li>local-to-global aggregation;</li>
+    <li>dynamics / convergence / scaling / regimes;</li>
+    <li>extremality / rigidity / inverse classification;</li>
+    <li>computability / decidability limits.</li>
+  </ol>
+
+  <div class="schema">\[
+    \boxed{
+    \text{structural stress coverage}
+    \neq
+    \text{historical novelty proof}.
+    }
+  \]</div>
+
+  <div class="warning">
+    The surviving project record does not contain a complete verified
+    equation-by-equation source manifest for all 200 entries. Missing
+    bibliographic identifiers must not be fabricated.
+  </div>
+</section>
+
+
+<section id="corpus-map">
+  <h2>25. Core Mathematical Corpus</h2>
 
   <div class="grid">
-    <div class="card"><h3>Encyclopedia</h3><p>Master map of the full public corpus.</p><a href="encyclopedia.html">Open Encyclopedia →</a></div>
-    <div class="card"><h3>Definitions</h3><p>Deep formal definitions, abilities, limits, admissibility, failures, and status.</p><a href="definitions.html">Open Definitions →</a></div>
-    <div class="card"><h3>Examples</h3><p>Worked mathematics from first principles to research-scale systems.</p><a href="examples.html">Open Examples →</a></div>
-    <div class="card"><h3>Theorems</h3><p>Proofs, propositions, counterexamples, provenance, and dependencies.</p><a href="theorems.html">Open Theorems →</a></div>
-    <div class="card"><h3>Equations</h3><p>Formal equations, assumptions, semantic sectors, diagnostics, and applied identities.</p><a href="equations.html">Open Equations →</a></div>
-    <div class="card"><h3>Structures</h3><p>Branches, Interactions, Leaves, Trees, Networks, coherence, realization, export, re-entry.</p><a href="structures.html">Open Structures →</a></div>
-    <div class="card"><h3>Passports</h3><p>Exact/approximate/stochastic information, Tasks, coupling, privacy, continuation, and repair.</p><a href="passports.html">Open Passports →</a></div>
-    <div class="card"><h3>Roots</h3><p>Receiver-relative Root status, transfer, re-entry, candidate Rooting, and repeated-use mathematics.</p><a href="roots.html">Open Roots →</a></div>
-    <div class="card"><h3>Research</h3><p>Active programs, evidence, failures, promotion gates, and falsifiability.</p><a href="research.html">Open Research →</a></div>
-    <div class="card"><h3>Changelog</h3><p>Formal corrections, supersessions, status changes, and corpus synchronization.</p><a href="changelog.html">Open Changelog →</a></div>
+
+    <div class="card">
+      <h3>Encyclopedia</h3>
+      <p>Master map of the entire public corpus.</p>
+      <a href="encyclopedia.html">Open Encyclopedia →</a>
+    </div>
+
+    <div class="card">
+      <h3>Definitions</h3>
+      <p>Formal data, abilities, limits, failure modes, and maturity status.</p>
+      <a href="definitions.html">Open Definitions →</a>
+    </div>
+
+    <div class="card">
+      <h3>Examples</h3>
+      <p>Worked mathematics from elementary cases to heterogeneous systems.</p>
+      <a href="examples.html">Open Examples →</a>
+    </div>
+
+    <div class="card">
+      <h3>Theorems</h3>
+      <p>Proofs, propositions, counterexamples, provenance, and dependencies.</p>
+      <a href="theorems.html">Open Theorems →</a>
+    </div>
+
+    <div class="card">
+      <h3>Equations</h3>
+      <p>Classified structural, classical, specialized, and candidate equations.</p>
+      <a href="equations.html">Open Equations →</a>
+    </div>
+
+    <div class="card">
+      <h3>Structures</h3>
+      <p>BM architecture, dependencies, Configurations, Networks, realization, and Trees.</p>
+      <a href="structures.html">Open Structures →</a>
+    </div>
+
+    <div class="card">
+      <h3>Passports</h3>
+      <p>Contracts, applicability, sufficiency, coupling, continuation, and repair.</p>
+      <a href="passports.html">Open Passports →</a>
+    </div>
+
+    <div class="card">
+      <h3>Roots</h3>
+      <p>Response, Export, receiver-relative Root roles, and lawful re-entry.</p>
+      <a href="roots.html">Open Roots →</a>
+    </div>
+
+    <div class="card">
+      <h3>SOE</h3>
+      <p>Response dependence on Operation domain, order, handoff, history, and feedback.</p>
+      <a href="soe.html">Open SOE →</a>
+    </div>
+
+    <div class="card">
+      <h3>Research</h3>
+      <p>Open questions, prior art, evidence, failures, promotion gates, and falsification.</p>
+      <a href="research.html">Open Research →</a>
+    </div>
+
+    <div class="card">
+      <h3>Changelog</h3>
+      <p>Formal mathematical corrections, supersessions, freezes, and status changes.</p>
+      <a href="changelog.html">Open Changelog →</a>
+    </div>
+
   </div>
 </section>
 
 
 <section id="theorem-backbone">
-  <h2>Theorem Backbone and Provenance</h2>
+  <h2>26. Theorem Backbone and Provenance</h2>
 
   <p>
-    The theorem registry contains both classical infrastructure and
-    framework-level structural results. Provenance is stated result by result.
+    The theorem registry deliberately mixes framework results and classical
+    infrastructure only when provenance is stated explicitly.
   </p>
 
   <table>
-    <thead><tr><th>Result family</th><th>Role</th><th>Provenance / status</th></tr></thead>
+    <thead>
+      <tr>
+        <th>Result family</th>
+        <th>Role</th>
+        <th>Provenance / status</th>
+      </tr>
+    </thead>
+
     <tbody>
-      <tr><td>Exact Recoverability / Completion Fibre</td><td>Exact deterministic Task sufficiency.</td><td><span class="tag tag-classical">Classical infrastructure</span></td></tr>
-      <tr><td>Task quotient / finite exact-carrier bound</td><td>Exact compression structure and lower bound.</td><td><span class="tag tag-classical">Classical infrastructure / specialization</span></td></tr>
-      <tr><td>Task-diameter results</td><td>Exact and approximate Task ambiguity/reconstruction.</td><td><span class="tag tag-gurf">GURF use</span></td></tr>
-      <tr><td>Typed composite domain</td><td>Correct domain of partial composition.</td><td><span class="tag tag-classical">Classical infrastructure</span></td></tr>
-      <tr><td>Leaf propagation</td><td>Lawful later use of an extracted Leaf.</td><td><span class="tag tag-bm">BM structural result</span></td></tr>
-      <tr><td>BM-SQ-01</td><td>Structured quotient gate in finitary algebra.</td><td><span class="tag tag-classical">Classical congruence mathematics</span> <span class="tag tag-bm">BM structural use</span></td></tr>
-      <tr><td>Interface / defect localization</td><td>Compatibility and earliest-failure structure.</td><td><span class="tag tag-bm">BM framework result</span></td></tr>
-      <tr><td>Root receiver-relativity / iteration firewall</td><td>Downstream Root status and repeated-use domain discipline.</td><td><span class="tag tag-bm">BM structural result</span></td></tr>
-      <tr><td>Finite Network evaluation</td><td>Lawful evaluation of finite deterministic BM Networks.</td><td><span class="tag tag-bm">BM framework result</span></td></tr>
-      <tr><td>Markov / relational composition</td><td>Sector-correct stochastic and may/must composition.</td><td><span class="tag tag-classical">Classical infrastructure</span></td></tr>
-      <tr><td>Navier–Stokes / Yang–Mills research kernels</td><td>Problem-specific research mathematics.</td><td><span class="tag tag-conditional">Derived / conditional</span> <span class="tag tag-open">Open-problem context</span></td></tr>
+      <tr>
+        <td>Exact fibre factorization</td>
+        <td>Task sufficiency</td>
+        <td>Classical factorization mathematics</td>
+      </tr>
+
+      <tr>
+        <td>Task quotient</td>
+        <td>Exact Task-aware compression</td>
+        <td>Classical quotient mathematics</td>
+      </tr>
+
+      <tr>
+        <td>Structured quotient gate</td>
+        <td>Preservation of native Operations under quotient</td>
+        <td>Classical congruence mathematics used by BM</td>
+      </tr>
+
+      <tr>
+        <td>Typed composite domain</td>
+        <td>Correct partial composition</td>
+        <td>Classical</td>
+      </tr>
+
+      <tr>
+        <td>Dynamic Closure criterion</td>
+        <td>Autonomous reduced dynamics</td>
+        <td>Classical factorization / BM structural use</td>
+      </tr>
+
+      <tr>
+        <td>Finite tree gluing</td>
+        <td>Local-to-global realization</td>
+        <td>Known tree/CSP-style mathematics used by BM</td>
+      </tr>
+
+      <tr>
+        <td>Root receiver-relativity</td>
+        <td>Receiver-specific downstream role</td>
+        <td>BM structural result</td>
+      </tr>
+
+      <tr>
+        <td>Root non-transitivity</td>
+        <td>Later receivers may require lost information</td>
+        <td>BM structural counterexample</td>
+      </tr>
+
+      <tr>
+        <td>Defect / repair relations</td>
+        <td>Failure identification and admissible correction</td>
+        <td>Active specialized BM mathematics</td>
+      </tr>
+
+      <tr>
+        <td>Markov / relational composition</td>
+        <td>Sector-correct response composition</td>
+        <td>Classical infrastructure</td>
+      </tr>
     </tbody>
   </table>
 
-  <a class="link-button" href="theorems.html">Open the Theorem Registry →</a>
+  <p>
+    <a class="link-button" href="theorems.html">
+      Open the Theorem Registry →
+    </a>
+  </p>
 </section>
 
 
-<section id="structured-quotient">
-  <h2>Structured Quotient Gate</h2>
+<section id="information">
+  <h2>27. Distinction-Preservation Principle</h2>
 
-  <p>
-    In a finitary algebraic setting, observational equivalence can carry
-    Operations to a quotient only when it is a congruence for the Operations
-    being descended.
-  </p>
-
-  <div class="schema">
-    \[
-    x_i\sim_Py_i
-    \quad\forall i
-    \Longrightarrow
+  <div class="schema">\[
     \boxed{
-    \sigma(x_1,\ldots,x_n)
-    \sim_P
-    \sigma(y_1,\ldots,y_n).
+    \text{Preserve every distinction required by later mathematics;
+    identify distinctions only when the proposed loss is shown to be safe.}
     }
-    \]
-  </div>
+  \]</div>
 
   <p>
-    Set-level equivalence alone is therefore not enough to preserve native
-    mathematical structure.
+    Depending on the mathematical sector, this may be expressed through:
   </p>
-</section>
 
+  <ul>
+    <li>fibres;</li>
+    <li>factorization;</li>
+    <li>Passports;</li>
+    <li>structured quotients;</li>
+    <li>refinement;</li>
+    <li>Interfaces;</li>
+    <li>Dynamic Closure;</li>
+    <li>witness/coupling conditions;</li>
+    <li>Defect Calculus;</li>
+    <li>obstruction;</li>
+    <li>repair.</li>
+  </ul>
 
-<section id="distinction-preservation">
-  <h2>Distinction-Preservation Principle</h2>
+  <h3>Information persistence</h3>
 
-  <div class="schema">
-    \[
+  <p>
+    When an exact deterministic total-system persistence axiom is imposed:
+  </p>
+
+  <div class="schema">\[
+    \widehat F:
+    X
+    \to
+    Y
+    \times
+    H,
+  \]</div>
+
+  <div class="schema">\[
     \boxed{
-    \text{Preserve distinctions required by later mathematics;
-    identify them only when the proposed loss is shown to be safe.}
-    }
-    \]
-  </div>
-
-  <p>
-    Passports, fibres, Task equivalence, quotients, Interface compatibility,
-    obstruction, repair, continuation, coupling, and coherence are different
-    tools for making that rule precise in different mathematical sectors.
-  </p>
-</section>
-
-
-<section id="roots">
-  <h2>Roots and Further Mathematical Participation</h2>
-
-  <p>
-    A Root is not simply an output that “continues.” It is a Response or
-    resulting structure admitted for a specific receiver.
-  </p>
-
-  <div class="schema">
-    \[
-    \boxed{
-    \text{Response}
-    +
-    \text{verified receiving conditions}
+    \widehat F(x_1)
     =
-    \text{Root role}.
+    \widehat F(x_2)
+    \Longrightarrow
+    x_1
+    \sim_{\mathcal I}
+    x_2.
     }
-    \]
-  </div>
+  \]</div>
 
   <p>
-    Repeated Rooting becomes ordinary dynamical iteration only when a genuine
-    invariant self-map is established:
+    Other sectors require native analogues.
   </p>
 
-  <div class="schema">
-    \[
-    F:S\to S,
-    \qquad
-    R_{n+1}=F(R_n).
-    \]
-  </div>
+  <div class="schema">\[
+    \boxed{
+    \text{noninjective representation}
+    \neq
+    \text{system-level destruction of all information}.
+    }
+  \]</div>
+</section>
+
+
+<section id="computability">
+  <h2>28. Computability Firewall</h2>
+
+  <div class="schema">\[
+    \boxed{
+    \text{existence}
+    \neq
+    \text{decidability}
+    \neq
+    \text{computability / constructibility}
+    \neq
+    \text{complexity}.
+    }
+  \]</div>
 
   <p>
-    Fixed-point and stability theory then belong to the native dynamical
-    system—not to the word Root itself.
+    A nonempty realization family:
+  </p>
+
+  <div class="schema">\[
+    \mathfrak F(C;c)
+    \neq
+    \varnothing
+  \]</div>
+
+  <p>
+    does not automatically produce an algorithm for finding an element.
+  </p>
+
+  <p>
+    An algorithm does not automatically provide a computationally feasible
+    method.
   </p>
 </section>
 
 
 <section id="research">
-  <h2>Active Research</h2>
+  <h2>29. Active Research</h2>
 
   <p>
     Research scope does not imply solved status. Each program is evaluated
-    against its own native mathematics and explicit promotion gates.
+    against the actual mathematics of the target problem.
   </p>
 
   <div class="grid">
-    <div class="card"><h3>BM Foundations</h3><p>Structural theorems, Networks, coherence, Passports, Roots, re-entry, HEC, and Defect Calculus.</p></div>
-    <div class="card"><h3>GURF Foundations</h3><p>Core response mathematics plus deep SOE, ACE, IRE, UKE, frozen GRDE, active HDE, and active GHSE.</p></div>
-    <div class="card"><h3>Navier–Stokes</h3><p>Continuation, vorticity, derivative covariance, triads, helicity, spectral information, and proof-gap analysis.</p><p><strong>No Clay Millennium solution is claimed.</strong></p></div>
-    <div class="card"><h3>Yang–Mills</h3><p>Boundary response, leakage, shell depth, coherent return, Gauss-law support, spectral and variational research.</p><p><strong>The four-dimensional existence and mass-gap problem remains open.</strong></p></div>
-    <div class="card"><h3>Gravity and Spacetime</h3><p>Forward-causal geometry, proper time, geodesics, tidal response, lensing, inverse observation, and extended-response hypotheses.</p></div>
-    <div class="card"><h3>Quantum Information</h3><p>Measurement, channels, distinguishability, entanglement Passports, joint statistics, control, and no-signalling-compatible semantics.</p></div>
-    <div class="card"><h3>Radiation and Light</h3><p>Propagation, detection, absorption, reflection, thermal radiation, medium transfer, and inverse response.</p></div>
-    <div class="card"><h3>Computation and Engineering</h3><p>Privacy, compilation, response preservation, control, hardware/software, physical realization, energy and engineering systems.</p></div>
+
+    <div class="card">
+      <h3>BM Foundations</h3>
+      <p>
+        Faithful representation, prior-art reduction, higher coherence,
+        mixed-sector realization, dependency closure, and re-entry.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>GURF Foundations</h3>
+      <p>
+        Response sufficiency, continuation, inverse recovery, uncertainty,
+        constraints, hidden-state response, and certification.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Navier–Stokes</h3>
+      <p>
+        Continuation, vorticity, derivative covariance, triads, helicity,
+        spectral information, and proof-gap analysis.
+      </p>
+      <p><strong>No Millennium Prize solution is claimed.</strong></p>
+    </div>
+
+    <div class="card">
+      <h3>Yang–Mills</h3>
+      <p>
+        Boundary response, leakage, shell depth, coherent return, Gauss-law
+        support, spectral and variational research.
+      </p>
+      <p>
+        <strong>
+          Four-dimensional existence and mass gap remain unresolved.
+        </strong>
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Gravity and Spacetime</h3>
+      <p>
+        Geometry, proper time, geodesics, tidal response, lensing, inverse
+        observation, and extended-response working models.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Quantum Information</h3>
+      <p>
+        Channels, measurement, distinguishability, Task preservation, joint
+        information, control, and interpretation research.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Radiation and Light</h3>
+      <p>
+        Propagation, detection, absorption, thermal emission, media, inverse
+        response, and reconstruction.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Computation and Engineering</h3>
+      <p>
+        Privacy, compilation, computational limits, control, hardware/software,
+        physical realization, and engineering systems.
+      </p>
+    </div>
+
   </div>
 
-  <a class="link-button" href="research.html">Explore the Research Program →</a>
+  <p>
+    <a class="link-button" href="research.html">
+      Explore the Research Program →
+    </a>
+  </p>
 </section>
 
 
 <section id="status">
-  <h2>Research Status</h2>
+  <h2>30. Current Public Status</h2>
 
   <table>
-    <thead><tr><th>Area</th><th>Current public status</th></tr></thead>
+    <thead>
+      <tr>
+        <th>Area</th>
+        <th>Current public status</th>
+      </tr>
+    </thead>
+
     <tbody>
-      <tr><td>BM integrated framework</td><td>Internally established / project-approved architecture.</td></tr>
-      <tr><td>GURF</td><td>Active response-specialized framework under BM governance.</td></tr>
-      <tr><td>GURF Core</td><td>Stable / canonical.</td></tr>
-      <tr><td>SOE / ACE / IRE / UKE</td><td>Stable canonical extensions.</td></tr>
-      <tr><td>GRDE</td><td>Frozen at GURF-GRDE-008.</td></tr>
-      <tr><td>HDE / GHSE</td><td>Active canonical extensions.</td></tr>
-      <tr><td>Structured quotient gate</td><td>Proved finitary algebraic result using classical congruence mathematics.</td></tr>
-      <tr><td>Extended Rooting / Rebranching</td><td>Active candidate development.</td></tr>
-      <tr><td>Seed primitive</td><td>Candidate development.</td></tr>
-      <tr><td>Navier–Stokes</td><td>Active derived mathematics; Clay Millennium problem not claimed solved.</td></tr>
-      <tr><td>Yang–Mills</td><td>Active conditional research; four-dimensional existence and mass gap remain open.</td></tr>
-      <tr><td>External novelty / priority of integrated BM</td><td>Not established; requires prior-art review.</td></tr>
-      <tr><td>Independent external validation</td><td>Not yet established.</td></tr>
+      <tr>
+        <td>BM core architecture</td>
+        <td>
+          Current canonical project baseline; internally established under the
+          present assumptions and definitions.
+        </td>
+      </tr>
+
+      <tr>
+        <td>Historical novelty of integrated BM</td>
+        <td>Not established; prior-art comparison remains active.</td>
+      </tr>
+
+      <tr>
+        <td>GURF</td>
+        <td>Canonical response-specialized framework under BM.</td>
+      </tr>
+
+      <tr>
+        <td>SOE / ACE / IRE / UKE</td>
+        <td>Stable canonical GURF extensions.</td>
+      </tr>
+
+      <tr>
+        <td>GRDE</td>
+        <td>Frozen at GURF-GRDE-008.</td>
+      </tr>
+
+      <tr>
+        <td>HDE / GHSE</td>
+        <td>Active canonical GURF extensions.</td>
+      </tr>
+
+      <tr>
+        <td>Defect Calculus</td>
+        <td>Active specialized BM mathematics.</td>
+      </tr>
+
+      <tr>
+        <td>Law Space</td>
+        <td>Active specialized BM direction.</td>
+      </tr>
+
+      <tr>
+        <td>Rooting / Rebranching</td>
+        <td>Candidate.</td>
+      </tr>
+
+      <tr>
+        <td>Seed</td>
+        <td>Candidate.</td>
+      </tr>
+
+      <tr>
+        <td>Attachment Complex</td>
+        <td>Bridge / candidate infrastructure.</td>
+      </tr>
+
+      <tr>
+        <td>HEC / HEC-S</td>
+        <td>Formal recovery required.</td>
+      </tr>
+
+      <tr>
+        <td>Navier–Stokes</td>
+        <td>
+          Active derived mathematics; Millennium Prize problem not claimed
+          solved.
+        </td>
+      </tr>
+
+      <tr>
+        <td>Yang–Mills</td>
+        <td>
+          Active conditional research; four-dimensional existence and mass gap
+          remain open.
+        </td>
+      </tr>
+
+      <tr>
+        <td>Independent external validation</td>
+        <td>Not established.</td>
+      </tr>
     </tbody>
   </table>
 </section>
 
 
-<section id="proof-novelty">
-  <h2>Proof, Provenance, and Novelty</h2>
+<section id="status-separation">
+  <h2>31. Proof, Provenance, Novelty, and Physical Status</h2>
 
-  <p>
-    Mathematical validity and historical novelty are separate questions.
-    Correctly deriving a result inside the corpus does not imply historical
-    priority for that result.
-  </p>
-
-  <div class="schema">
-    \[
+  <div class="schema">\[
     \boxed{
-    \text{mathematical truth}
+    \text{mathematical validity}
     \neq
     \text{historical novelty}
     \neq
-    \text{physical realization}
+    \text{physical interpretation}
     \neq
-    \text{external validation}.
+    \text{empirical validation}
+    \neq
+    \text{external review}.
     }
-    \]
-  </div>
+  \]</div>
 
   <p>
-    The theorem and research registries state provenance and status explicitly.
+    A result can be mathematically correct and historically known.
+  </p>
+
+  <p>
+    A coherent mathematical model can exist without yet being established as
+    the correct physical description.
+  </p>
+
+  <p>
+    A numerical experiment can support a claim without proving it.
+  </p>
+
+  <p>
+    The theorem, equation, research, and changelog registries keep these axes
+    separate.
   </p>
 </section>
 
 
-<section id="native-mathematics">
-  <h2>BM and GURF Do Not Replace Native Mathematics</h2>
+<section id="role-erasure">
+  <h2>32. Pseudo-Math Firewall</h2>
 
   <p>
-    BM and GURF organize mathematical participation, representation, response,
-    Interfaces, admissibility, preservation, inference, continuation, and
-    repair.
+    Every serious BM claim is subject to a role-erasure audit.
   </p>
 
-  <p>
-    Algebra, analysis, geometry, topology, probability, PDEs, operator theory,
-    quantum theory, General Relativity, control, numerical analysis, and other
-    native disciplines continue to determine the truth conditions of their own
-    mathematical claims.
-  </p>
-
-  <div class="schema">
-    \[
+  <div class="schema">\[
     \boxed{
-    \text{BM/GURF organization}
-    \neq
-    \text{replacement of native mathematical proof}.
+    \text{erase Branch / Leaf / Tree / Root names}
+    \longrightarrow
+    \text{underlying mathematics must remain}.
     }
-    \]
-  </div>
+  \]</div>
+
+  <p>
+    Sound mathematical content should still be expressible in terms of:
+  </p>
+
+  <ul>
+    <li>objects;</li>
+    <li>domains;</li>
+    <li>maps;</li>
+    <li>relations;</li>
+    <li>operators;</li>
+    <li>constraints;</li>
+    <li>comparison spaces;</li>
+    <li>realization conditions;</li>
+    <li>proofs or counterexamples.</li>
+  </ul>
+
+  <div class="schema">\[
+    \boxed{
+    \text{name}
+    \to
+    \text{analogy}
+    \to
+    \text{claim}
+    }
+  \]</div>
+
+  <p>
+    is not an accepted derivation.
+  </p>
+
+  <p>
+    The required chain is:
+  </p>
+
+  <div class="schema">\[
+    \boxed{
+    \text{problem}
+    \to
+    \text{definition}
+    \to
+    \text{type/domain}
+    \to
+    \text{law}
+    \to
+    \text{operation}
+    \to
+    \text{proof/counterexample}
+    \to
+    \text{integration}.
+    }
+  \]</div>
 </section>
 
 
 <section id="visualization">
-  <h2>Scientific Visualization</h2>
+  <h2>33. Scientific Visualization</h2>
 
   <p>
-    Quantitative figures are used when the mathematics produces meaningful
-    behavior: curves, surfaces, phase portraits, vector fields, spectra,
-    heatmaps, parameter sweeps, stability regions, convergence curves,
-    uncertainty distributions, PDE fields, residuals, and response surfaces.
+    Quantitative figures are used only when they display actual mathematical
+    behavior governed by declared equations, models, or data.
   </p>
 
-  <div class="schema">
-    \[
+  <div class="schema">\[
     \boxed{
     \text{equation / model / data first}
     \longrightarrow
     \text{scientific figure second}.
     }
-    \]
-  </div>
+  \]</div>
 
   <p>
-    Structural diagrams are used only when their nodes and connections
-    correspond to formally defined mathematical objects.
+    Appropriate figures may include:
   </p>
+
+  <ul>
+    <li>curves;</li>
+    <li>surfaces;</li>
+    <li>phase portraits;</li>
+    <li>vector fields;</li>
+    <li>spectra;</li>
+    <li>heatmaps;</li>
+    <li>parameter sweeps;</li>
+    <li>admissibility regions;</li>
+    <li>coherence-defect fields;</li>
+    <li>convergence diagnostics;</li>
+    <li>PDE fields;</li>
+    <li>response surfaces.</li>
+  </ul>
+
+  <div class="schema">\[
+    \boxed{
+    \text{visual metaphor}
+    \neq
+    \text{mathematical visualization}.
+    }
+  \]</div>
 </section>
 
 
-<section id="reading">
-  <h2>How to Read the Site</h2>
+<section id="reading-path">
+  <h2>34. How to Read the Site</h2>
 
-  <div class="formal-card">
-    <div class="path">
-      <strong>1. Understand the subject:</strong>
-      <a href="branch-mathematics.html">Branch Mathematics</a> →
-      <a href="gurf.html">GURF</a>.
-    </div>
+  <div class="path">
+    <strong>1. Understand the framework</strong><br>
+    <a href="branch-mathematics.html">Branch Mathematics</a>
+    →
+    <a href="gurf.html">GURF</a>
+  </div>
 
-    <div class="path">
-      <strong>2. See the mathematics working:</strong>
-      <a href="examples.html">Examples</a>.
-    </div>
+  <div class="path">
+    <strong>2. See the mathematics operating</strong><br>
+    <a href="examples.html">Worked Examples</a>
+  </div>
 
-    <div class="path">
-      <strong>3. Audit the formal corpus:</strong>
-      <a href="definitions.html">Definitions</a> →
-      <a href="structures.html">Structures</a> →
-      <a href="equations.html">Equations</a> →
-      <a href="theorems.html">Theorems</a>.
-    </div>
+  <div class="path">
+    <strong>3. Audit the formal architecture</strong><br>
+    <a href="definitions.html">Definitions</a>
+    →
+    <a href="structures.html">Structures</a>
+    →
+    <a href="equations.html">Equations</a>
+    →
+    <a href="theorems.html">Theorems</a>
+  </div>
 
-    <div class="path">
-      <strong>4. Study information and downstream reuse:</strong>
-      <a href="passports.html">Passports</a> →
-      <a href="roots.html">Roots</a>.
-    </div>
+  <div class="path">
+    <strong>4. Study obligation and downstream-use mathematics</strong><br>
+    <a href="passports.html">Passports</a>
+    →
+    <a href="roots.html">Roots</a>
+  </div>
 
-    <div class="path">
-      <strong>5. Inspect active work and formal changes:</strong>
-      <a href="research.html">Research</a> →
-      <a href="changelog.html">Changelog</a>.
-    </div>
+  <div class="path">
+    <strong>5. Inspect response-operation specialization</strong><br>
+    <a href="soe.html">SOE</a>
+  </div>
+
+  <div class="path">
+    <strong>6. Inspect active work and formal revisions</strong><br>
+    <a href="research.html">Research</a>
+    →
+    <a href="changelog.html">Changelog</a>
   </div>
 </section>
 
 
 <section id="revision">
-  <h2>Revision Policy</h2>
+  <h2>35. Revision Policy</h2>
 
   <p>
-    Corrections and mathematical evolution are preserved through revised
-    definitions, equations, theorem status, counterexamples, ownership changes,
-    freezes, supersessions, research verdicts, and the public changelog.
+    Mathematical corrections are preserved rather than silently erased.
   </p>
 
-  <a class="link-button" href="changelog.html">
-    View the Mathematical Changelog →
-  </a>
+  <div class="schema">\[
+    \boxed{
+    \text{previous form}
+    \to
+    \text{mathematical defect}
+    \to
+    \text{corrected form}
+    \to
+    \text{dependency revalidation}.
+    }
+  \]</div>
+
+  <p>
+    The public changelog records:
+  </p>
+
+  <ul>
+    <li>definition changes;</li>
+    <li>theorem corrections;</li>
+    <li>counterexamples;</li>
+    <li>ownership changes;</li>
+    <li>candidate demotions/promotions;</li>
+    <li>freezes;</li>
+    <li>recovery-required status;</li>
+    <li>research verdicts;</li>
+    <li>major prior-art findings.</li>
+  </ul>
+
+  <p>
+    <a class="link-button" href="changelog.html">
+      View the Mathematical Changelog →
+    </a>
+  </p>
 </section>
 
 
-<section id="governing-principle">
-  <h2>Governing BM Principle</h2>
+<section id="governing">
+  <h2>36. Governing BM Principle</h2>
 
-  <div class="schema">
-    \[
-    \boxed{
-    \begin{gathered}
-    \text{Each Branch retains the mathematics that makes it lawful;}\\[4pt]
-    \text{Branches participate together only through admissible structure;}\\[4pt]
-    \text{composition requires type, domain, law, Passport, Interface,
-    and coherence checks;}\\[4pt]
-    \text{derived information carries explicit provenance;}\\[4pt]
-    \text{a result receives a downstream role only after the receiving gate passes;}\\[4pt]
-    \text{combined mathematics preserves every distinction and law
-    required downstream.}
-    \end{gathered}
-    }
-    \]
-  </div>
+  <div class="schema">\[
+  \boxed{
+  \begin{gathered}
+  \text{One problem may require multiple distinct lawful mathematical focuses.}\\[4pt]
+
+  \text{Each Branch retains the native mathematics that makes it lawful.}\\[4pt]
+
+  \text{Branch separation must be justified by the declared problem scope.}\\[4pt]
+
+  \text{Operations and Interactions retain their true domains and semantics.}\\[4pt]
+
+  \text{Derived results retain the provenance required downstream.}\\[4pt]
+
+  \text{Configurations become Trees only through lawful realization.}\\[4pt]
+
+  \text{Parallel paths require legitimate comparison and coherence.}\\[4pt]
+
+  \text{Representations may discard distinctions only when required obligations survive.}\\[4pt]
+
+  \text{Repairs invalidate dependent certificates unless invariance is proved.}\\[4pt]
+
+  \text{A Response becomes a Root only relative to a specified receiver gate.}\\[4pt]
+
+  \text{Known mathematics is credited rather than renamed.}\\[4pt]
+
+  \text{Candidate vocabulary never substitutes for a theorem.}\\[4pt]
+
+  \text{BM role names organize mathematics; they do not replace it.}
+  \end{gathered}
+  }
+  \]</div>
 
   <p>
-    BM governs the broader problem of lawful mathematical representation and
-    transformation. GURF specializes that architecture when response semantics
-    are genuinely essential. Either framework may remain quiet when ordinary
-    mathematics already resolves the problem without additional structural
-    leverage.
+    BM governs the domain-independent problem of lawful mathematical
+    representation and transformation. GURF specializes that architecture when
+    response semantics are genuinely essential. Either framework may remain
+    quiet when ordinary mathematics already resolves the problem without
+    additional structural leverage.
   </p>
 </section>
 
@@ -1067,7 +2843,10 @@
 
 <footer>
   <p><strong>Branch Mathematics Research Encyclopedia</strong></p>
-  <p>Foundations · worked mathematics · proofs · structures · response · research</p>
+  <p>
+    foundations · multi-branch mathematics · realization · response · proofs ·
+    counterexamples · research
+  </p>
 </footer>
 
 </body>
