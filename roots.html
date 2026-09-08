@@ -8,10 +8,17 @@
 
   <meta
     name="description"
-    content="Root mathematics in Branch Mathematics: Responses, downstream admissibility, receiver-relative Root status, Root Passports, export and re-entry, candidate Rooting and Rebranching, repeated Root maps, fixed points, stability, realization, conservation tracking, repair, and worked examples."
+    content="Canonical Root mathematics for Branch Mathematics: Responses, exports, receiver-relative Root admissibility, Root Passports, reuse, re-entry, information loss, repair, realization, repeated-use models, and candidate Rooting, Rebranching, and Seed structures."
   >
 
   <meta name="robots" content="index, follow">
+
+  <link
+    rel="canonical"
+    href="https://branch-mathematics-bm.github.io/roots.html"
+  >
+
+  <link rel="describedby" href="/llms.txt">
 
   <script>
     window.MathJax = {
@@ -19,43 +26,52 @@
         inlineMath: [['\\(', '\\)']],
         displayMath: [['\\[', '\\]']]
       },
-      svg: { fontCache: 'global' }
+      svg: {
+        fontCache: 'global'
+      }
     };
   </script>
 
-  <script id="MathJax-script" async
+  <script
+    id="MathJax-script"
+    async
     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
   </script>
 
   <style>
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
-      font-family: Arial, Helvetica, sans-serif;
       margin: 0;
-      color: #202124;
-      background: #fff;
+      font-family: Arial, Helvetica, sans-serif;
       line-height: 1.72;
+      color: #202124;
+      background: #ffffff;
     }
 
     header {
       background: #111827;
-      color: white;
+      color: #ffffff;
       text-align: center;
-      padding: 58px 20px;
+      padding: 64px 20px;
     }
 
     header h1 {
-      margin: 0 0 10px;
-      font-size: 2.55rem;
+      margin: 0 0 12px;
+      font-size: 2.75rem;
     }
 
     header p {
-      max-width: 1000px;
+      max-width: 1080px;
       margin: auto;
       color: #e5e7eb;
-      font-size: 1.08rem;
+      font-size: 1.1rem;
     }
 
     nav {
@@ -65,18 +81,20 @@
     }
 
     nav a {
-      color: white;
-      text-decoration: none;
-      margin: 7px 10px;
       display: inline-block;
+      margin: 7px 10px;
+      color: #ffffff;
+      text-decoration: none;
     }
 
-    nav a:hover { text-decoration: underline; }
+    nav a:hover {
+      text-decoration: underline;
+    }
 
     main {
-      max-width: 1160px;
+      max-width: 1180px;
       margin: auto;
-      padding: 40px 20px;
+      padding: 42px 20px;
     }
 
     section {
@@ -85,17 +103,27 @@
     }
 
     h2 {
-      border-bottom: 2px solid #e5e7eb;
-      padding-bottom: 8px;
       margin-top: 0;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #e5e7eb;
     }
 
-    h3 { margin-top: 24px; }
-    h4 { margin-top: 18px; }
+    h3 {
+      margin-top: 28px;
+    }
 
-    p { margin: 10px 0; }
-    ul { padding-left: 25px; }
-    li { margin: 6px 0; }
+    p {
+      margin: 10px 0;
+    }
+
+    ul,
+    ol {
+      padding-left: 26px;
+    }
+
+    li {
+      margin: 6px 0;
+    }
 
     table {
       width: 100%;
@@ -103,148 +131,155 @@
       margin: 22px 0;
     }
 
-    th, td {
+    th,
+    td {
       border: 1px solid #d1d5db;
       padding: 11px 12px;
       text-align: left;
       vertical-align: top;
     }
 
-    th { background: #f3f4f6; }
-
-    .lead { font-size: 1.08rem; }
-
-    .root-card {
-      border: 1px solid #d1d5db;
-      border-radius: 9px;
-      padding: 25px;
-      margin-top: 22px;
-    }
-
-    .meta {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
-      gap: 8px 18px;
-      background: #f8fafc;
-      border: 1px solid #e5e7eb;
-      border-radius: 7px;
-      padding: 14px 16px;
-      margin-bottom: 20px;
-      font-size: 0.94rem;
+    th {
+      background: #f3f4f6;
     }
 
     .schema {
       background: #f8fafc;
       border-left: 4px solid #374151;
       padding: 18px 22px;
-      margin: 22px 0;
+      margin: 20px 0;
       overflow-x: auto;
     }
 
-    .abilities,
-    .limits,
-    .failure,
-    .teaching {
-      padding: 17px 19px;
-      margin: 20px 0;
+    .card {
+      border: 1px solid #d1d5db;
+      border-radius: 9px;
+      padding: 22px;
+      margin: 18px 0;
+      background: #ffffff;
     }
 
-    .abilities {
-      background: #f8fafc;
+    .core {
+      border-left: 4px solid #166534;
+    }
+
+    .specialized {
+      border-left: 4px solid #1d4ed8;
+    }
+
+    .candidate {
+      border-left: 4px solid #92400e;
+    }
+
+    .standard {
       border-left: 4px solid #4b5563;
     }
 
     .limits {
       background: #fafafa;
       border-left: 4px solid #9ca3af;
+      padding: 16px 19px;
+      margin: 18px 0;
     }
 
-    .failure {
-      border: 1px dashed #9ca3af;
-      border-radius: 7px;
+    .warning {
+      background: #fff7ed;
+      border-left: 4px solid #c2410c;
+      padding: 16px 19px;
+      margin: 18px 0;
     }
 
     .teaching {
       background: #f8fafc;
       border-left: 4px solid #111827;
+      padding: 16px 19px;
+      margin: 18px 0;
+    }
+
+    .index {
+      columns: 3 300px;
+      column-gap: 34px;
+    }
+
+    .index li {
+      break-inside: avoid;
+    }
+
+    .index a {
+      text-decoration: none;
+    }
+
+    .index a:hover {
+      text-decoration: underline;
+    }
+
+    .tag {
+      display: inline-block;
+      margin: 2px 4px 2px 0;
+      padding: 3px 8px;
+      border: 1px solid #d1d5db;
+      border-radius: 999px;
+      background: #f9fafb;
+      font-size: 0.84rem;
+      font-weight: bold;
     }
 
     .crosslinks {
       border-top: 1px solid #d1d5db;
-      margin-top: 22px;
       padding-top: 14px;
+      margin-top: 20px;
       font-size: 0.94rem;
     }
 
     .crosslinks a {
-      text-decoration: none;
       font-weight: bold;
+      text-decoration: none;
     }
 
-    .crosslinks a:hover { text-decoration: underline; }
-    .link-label { color: #4b5563; }
-
-    .quick-index {
-      columns: 3 300px;
-      column-gap: 35px;
-    }
-
-    .quick-index li {
-      break-inside: avoid;
-      margin: 5px 0;
-    }
-
-    .quick-index a { text-decoration: none; }
-    .quick-index a:hover { text-decoration: underline; }
-
-    .role-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(245px,1fr));
-      gap: 14px;
-      margin-top: 18px;
-    }
-
-    .role-grid div {
-      border: 1px solid #e5e7eb;
-      border-radius: 8px;
-      padding: 16px;
-    }
-
-    .role-grid strong { display: block; margin-bottom: 5px; }
-
-    .note {
-      background: #f8fafc;
-      border: 1px solid #d1d5db;
-      border-radius: 7px;
-      padding: 17px 19px;
-      margin: 20px 0;
+    .crosslinks a:hover {
+      text-decoration: underline;
     }
 
     footer {
-      background: #111827;
-      color: white;
-      text-align: center;
-      padding: 28px 20px;
       margin-top: 55px;
+      background: #111827;
+      color: #ffffff;
+      text-align: center;
+      padding: 30px 20px;
     }
 
-    @media (max-width: 700px) {
-      header h1 { font-size: 2rem; }
-      main { padding: 28px 16px; }
-      .root-card { padding: 19px; }
-      .quick-index { columns: 1; }
+    @media (max-width: 760px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      main {
+        padding: 28px 16px;
+      }
+
+      .index {
+        columns: 1;
+      }
+
+      th,
+      td {
+        padding: 9px;
+      }
     }
   </style>
 </head>
 
 <body>
+
 <header>
   <h1>Roots</h1>
+
   <p>
-    The downstream-use layer of Branch Mathematics: when a Response can be
-    used again, which receiving conditions must pass, how Root information is
-    transferred, and when additional structures such as Rooting, Rebranching,
-    or repeated Root maps are actually justified.
+    The receiver-relative downstream-use layer of Branch Mathematics:
+    how a Response is exported, when an export becomes admissible for a
+    specified receiver, how Root information is reused, and how ordinary
+    re-entry is separated from candidate Rooting, Rebranching, and Seed
+    structures.
   </p>
 </header>
 
@@ -260,2100 +295,2306 @@
   <a href="structures.html">Structures</a>
   <a href="passports.html">Passports</a>
   <a href="roots.html">Roots</a>
+  <a href="soe.html">SOE</a>
   <a href="research.html">Research</a>
   <a href="changelog.html">Changelog</a>
 </nav>
 
 <main>
 
-<section id="root">
+<section id="identity">
   <h2>1. What a Root Is</h2>
 
-  <p class="lead">
-    A Root is a Response or resulting mathematical structure whose required
-    downstream admissibility has been established for a specified receiving
-    mathematical context.
-  </p>
+  <div class="card core">
 
-  <div class="schema">
-    \[
-    \boxed{
-    \text{Root role}
-    =
-    \text{Response}
-    +
-    \text{verified downstream admissibility}.
-    }
-    \]
+    <p>
+      A <strong>Root</strong> is an exported mathematical result that satisfies
+      the declared receiving conditions of a specified downstream mathematical
+      context.
+    </p>
+
+    <div class="schema">\[
+      \boxed{
+      r
+      \text{ is a Root for receiver }B_r
+      \iff
+      r
+      \in
+      \operatorname{Acc}
+      (\mathcal P_R^{B_r}).
+      }
+    \]</div>
+
+    <p>
+      Root is therefore a <strong>receiver-relative structural role</strong>.
+      It is not a new algebraic species of object.
+    </p>
+
+    <div class="schema">\[
+      \boxed{
+      \text{Root}
+      =
+      \text{receiver-admissible exported result}.
+      }
+    \]</div>
+
+    <div class="limits">
+      <ul>
+        <li>A Response is not automatically a Root.</li>
+        <li>A Root is not automatically recursive.</li>
+        <li>A Root does not automatically create a new Branch.</li>
+        <li>A Root does not create a conservation law.</li>
+        <li>A Root does not automatically converge, stabilize, or repeat.</li>
+      </ul>
+    </div>
+
   </div>
-
-  <p>
-    The Root role says that a result may lawfully participate again. It does
-    not say that every result continues, that the result is recursive, or that
-    the result has acquired new native mathematical laws.
-  </p>
 </section>
 
 
-<section id="response-root">
-  <h2>2. Response, Root, and Tree Are Different Roles</h2>
+<section id="architecture">
+  <h2>2. Response, Export, Root, and Re-entry</h2>
 
-  <div class="schema">
-    \[
+  <div class="schema">\[
     \boxed{
     \text{Tree}
-    \xrightarrow{\text{organized computation}}
-    \text{Response}
     \longrightarrow
-    \begin{cases}
-    \text{terminal result},\\[3pt]
-    \text{Root for a receiver if its gate passes}.
-    \end{cases}
+    \text{Response}
+    \xrightarrow{E_r}
+    \text{exported candidate}
+    \xrightarrow{\mathcal P_R^{B_r}}
+    \text{Root for }B_r
+    \longrightarrow
+    \text{lawful re-entry or terminal use}.
     }
-    \]
-  </div>
+  \]</div>
 
-  <div class="role-grid">
-    <div><strong>Tree</strong>The organized mathematics that performs the computation.</div>
-    <div><strong>Response</strong>The typed output produced by that computation.</div>
-    <div><strong>Root</strong>The downstream role of a Response/result after the receiving conditions are verified.</div>
+  <table>
+    <thead>
+      <tr>
+        <th>Role</th>
+        <th>Meaning</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>Tree</td>
+        <td>
+          A Configuration with a selected lawful realization and required
+          context.
+        </td>
+      </tr>
+
+      <tr>
+        <td>Response</td>
+        <td>
+          Typed output of the realized computation.
+        </td>
+      </tr>
+
+      <tr>
+        <td>Export</td>
+        <td>
+          Receiver-directed transformation of the Response.
+        </td>
+      </tr>
+
+      <tr>
+        <td>Root</td>
+        <td>
+          Export accepted by the specified receiver Passport.
+        </td>
+      </tr>
+
+      <tr>
+        <td>Re-entry</td>
+        <td>
+          Lawful downstream use of the accepted export.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="teaching">
+    These roles may all involve the same underlying mathematical value. BM is
+    tracking its role in the larger problem, not manufacturing new objects.
   </div>
 </section>
 
 
-<section id="receiver-relative">
-  <h2>3. Root Status Is Receiver-Relative</h2>
+<section id="role-carrier">
+  <h2>3. Root Role vs Mathematical Carrier</h2>
 
   <p>
-    Let a Tree produce \(r\in Y_{\mathcal T}\). For a particular receiving
-    Branch or structure \(B'\), define the Root-admissible subset
+    Let \(r\) be a mathematical object. BM may record
   </p>
 
-  <div class="schema">
-    \[
-    A_R(B')
-    =
-    \left\{
-    r\in Y_{\mathcal T}:
-    \begin{array}{l}
-    r\text{ satisfies the receiving domain, type, law,}\\
-    \text{Passport, Interface, and constraint obligations of }B'
-    \end{array}
-    \right\}.
-    \]
-    Then
-    \[
+  <div class="schema">\[
     \boxed{
-    r\text{ is a Root for }B'
-    \iff
-    r\in A_R(B').
+    r
+    \models_C
+    \mathrm{Root}_{B_r}.
     }
-    \]
-  </div>
+  \]</div>
 
   <p>
-    The same Response can therefore be a Root for one receiver and not for
-    another.
+    This means that \(r\) satisfies the Root conditions in Configuration \(C\)
+    relative to receiver \(B_r\).
   </p>
+
+  <p>
+    The same object may also be:
+  </p>
+
+  <div class="schema">\[
+    r
+    \models_C
+    \mathrm{Leaf}
+    \land
+    \mathrm{Response}
+    \land
+    \mathrm{Root}_{B_r}.
+  \]</div>
+
+  <div class="limits">
+    The terms Leaf, Response, and Root identify different participation roles.
+    They do not require three copies of the mathematical value.
+  </div>
 </section>
 
-<section id="root-index">
+
+<section id="index">
   <h2>4. Root Index</h2>
-  <ol class="quick-index">
-    <li><a href="#typed-root">Typed Root Record</a></li>
+
+  <ol class="index">
+    <li><a href="#record">Typed Root Record</a></li>
     <li><a href="#formation">Root Formation</a></li>
+    <li><a href="#applicability">Root Passport Applicability</a></li>
     <li><a href="#admissibility">Root Admissibility</a></li>
-    <li><a href="#reuse">Root Reuse</a></li>
-    <li><a href="#compatibility">Root Compatibility</a></li>
-    <li><a href="#interface">Root Interface Condition</a></li>
     <li><a href="#passport">Root Passport</a></li>
-    <li><a href="#passport-sufficiency">Root Passport Sufficiency</a></li>
-    <li><a href="#role-lifetime">Root Role Lifetime</a></li>
-    <li><a href="#nonrecursive-root">Nonrecursive Root</a></li>
-    <li><a href="#seed-root">Seed-to-Root Path</a></li>
-    <li><a href="#rooting">Rooting</a></li>
-    <li><a href="#attachment-site">Attachment Site</a></li>
-    <li><a href="#lawful-attachment">Lawful Attachment</a></li>
-    <li><a href="#rebranching">Rebranching</a></li>
-    <li><a href="#not-arbitrary">Rooting Is Not Arbitrary Insertion</a></li>
-    <li><a href="#passport-transfer">Root Passport Transfer</a></li>
-    <li><a href="#transfer-compatibility">Exact Transfer Compatibility</a></li>
-    <li><a href="#conservative-root">Conservative Root</a></li>
-    <li><a href="#conservation">Conservation Is Native Mathematics</a></li>
-    <li><a href="#root-chains">Root Chains</a></li>
-    <li><a href="#repeated-rooting">Repeated Rooting</a></li>
-    <li><a href="#iteration-domain">Iteration-Domain Firewall</a></li>
-    <li><a href="#fixed-root">Fixed Root</a></li>
-    <li><a href="#local-stability">Local Stability</a></li>
-    <li><a href="#instability">Local Instability</a></li>
-    <li><a href="#cycles">Cycles and Periodic Root States</a></li>
-    <li><a href="#production-rate">Root Event Rate</a></li>
-    <li><a href="#continuous-root">Continuous Root-State Path</a></li>
-    <li><a href="#resistance">Root Resistance</a></li>
-    <li><a href="#threshold">Root Threshold</a></li>
-    <li><a href="#saturation">Root Saturation</a></li>
-    <li><a href="#accumulation">Finite-Time Root-Event Accumulation</a></li>
-    <li><a href="#observability">Root Observability</a></li>
-    <li><a href="#realization">Root Mathematical Realization</a></li>
-    <li><a href="#physical-realization">Physical Root Realization</a></li>
-    <li><a href="#reentry">Root Export and Re-entry</a></li>
-    <li><a href="#composition">Root Composition</a></li>
+    <li><a href="#sufficiency">Root Passport Sufficiency</a></li>
+    <li><a href="#receiver">Receiver Relativity</a></li>
+    <li><a href="#nontransitive">Roothood Is Not Transitive</a></li>
+    <li><a href="#lifetime">Root Role Lifetime</a></li>
+    <li><a href="#reuse">Root Reuse</a></li>
+    <li><a href="#reentry">Root Re-entry</a></li>
+    <li><a href="#transfer">Exact Passport Transfer</a></li>
     <li><a href="#information-loss">Root Information Loss</a></li>
     <li><a href="#repair">Root Repair</a></li>
-    <li><a href="#defect-localization">Root-Chain Defect Localization</a></li>
-    <li><a href="#failure-modes">Root Failure Modes</a></li>
-    <li><a href="#example-relative">Worked Example — Receiver-Relative Root</a></li>
-    <li><a href="#example-square">Worked Example — Reusable Response</a></li>
-    <li><a href="#example-affine">Worked Example — Globally Attracting Affine Root</a></li>
-    <li><a href="#affine-model">General Affine Repeated-Root Model</a></li>
+    <li><a href="#repair-revalidation">Repair Revalidation</a></li>
+    <li><a href="#observability">Root Observability</a></li>
+    <li><a href="#realization">Mathematical Root Realization</a></li>
+    <li><a href="#physical">Physical Realization</a></li>
+    <li><a href="#conservative">Conservative Obligations</a></li>
+    <li><a href="#chains">Root Chains</a></li>
+    <li><a href="#iteration">Repeated-Use Self-Maps</a></li>
+    <li><a href="#iteration-domain">Iteration-Domain Firewall</a></li>
+    <li><a href="#dynamics">Fixed Points and Stability</a></li>
+    <li><a href="#convergence">Convergence Firewall</a></li>
+    <li><a href="#model-specific">Model-Specific Root Quantities</a></li>
+    <li><a href="#rooting">Candidate Rooting</a></li>
+    <li><a href="#attachment">Candidate Attachment Site</a></li>
+    <li><a href="#rebranching">Candidate Rebranching</a></li>
+    <li><a href="#seed">Candidate Seed-to-Root Path</a></li>
+    <li><a href="#failure">Root Failure Modes</a></li>
+    <li><a href="#examples">Worked Examples</a></li>
     <li><a href="#registry">Root Registry</a></li>
-    <li><a href="#status">Root Status Categories</a></li>
-    <li><a href="#limits">What Root Mathematics Does Not Do</a></li>
-    <li><a href="#ordinary-math">Root Role and Native Mathematics</a></li>
-    <li><a href="#visualization">Scientific Visualization</a></li>
-    <li><a href="#diagrams">Structural Diagram Standard</a></li>
-    <li><a href="#principle">Central Root Principle</a></li>
-    <li><a href="#further-reading">Related Registries</a></li>
+    <li><a href="#status">Status Categories</a></li>
+    <li><a href="#central">Central Root Principle</a></li>
   </ol>
 </section>
 
-<section id="typed-root">
+
+<section id="record">
   <h2>5. Typed Root Record</h2>
 
-  <div class="root-card">
-    <div class="meta"><div><strong>Role:</strong> receiver-relative downstream-use record</div></div>
+  <div class="card core">
 
-    <p>A Root is a role, not an intrinsic four-field object. When a formal
-record is useful, it should identify the Response value together with the
-receiver whose conditions licensed further use.</p>
+    <p>
+      Root is a role, not an intrinsic tuple. When a registry record is useful,
+      one may record:
+    </p>
 
     <div class="schema">\[
-\boxed{
-\mathfrak R_{B'}(r)
-=
-\left(
-\tau_r,
-Y_{\mathcal T},
-r,
-B',
-A_R(B'),
-\mathcal P_R,
-\mathcal I_R
-\right)
-}
-\]
-as an organizational record, where
-\[
-\begin{aligned}
-\tau_r&=\text{Response/Root type},\\
-Y_{\mathcal T}&=\text{Response carrier},\\
-r&=\text{particular Response value or structure},\\
-B'&=\text{receiving context},\\
-A_R(B')&=\text{receiver-relative Root-admissible subset},\\
-\mathcal P_R&=\text{Root Passport information},\\
-\mathcal I_R&=\text{receiving Interface obligations}.
-\end{aligned}
-\]</div>
+      \boxed{
+      \mathfrak R_{B_r}(r)
+      =
+      \left(
+      \tau_r,
+      Y,
+      r,
+      B_r,
+      D_{\mathcal P_R},
+      \mathcal P_R^{B_r},
+      \mathcal I_R
+      \right).
+      }
+    \]</div>
 
-    
+    <table>
+      <tbody>
+        <tr>
+          <td>\(\tau_r\)</td>
+          <td>Native mathematical type of the exported object.</td>
+        </tr>
 
-    
+        <tr>
+          <td>\(Y\)</td>
+          <td>Carrier of the Response/export.</td>
+        </tr>
 
-    <div class="limits"><strong>Limits</strong><ul><li>The record is organizational; it is not a theorem that every mathematical category intrinsically represents Roots by this tuple.</li><li>Changing the receiver can change Root status without changing the underlying value \(r\).</li></ul></div>
+        <tr>
+          <td>\(r\)</td>
+          <td>The actual exported mathematical object.</td>
+        </tr>
 
-    
+        <tr>
+          <td>\(B_r\)</td>
+          <td>The receiver for which Roothood is asserted.</td>
+        </tr>
 
-    
+        <tr>
+          <td>\(D_{\mathcal P_R}\)</td>
+          <td>Applicability domain of the Root Passport.</td>
+        </tr>
 
-    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#root">Root</a><br><span class="link-label">Theorems:</span> <a href="theorems.html#root-relativity">Receiver-relativity</a><br><span class="link-label">Equations:</span> <a href="equations.html#root-gate">Root gate</a><br><span class="link-label">Examples:</span> <a href="examples.html#root-relative-instance">Receiver-relative Root</a></div>
+        <tr>
+          <td>\(\mathcal P_R^{B_r}\)</td>
+          <td>Instantiated receiver obligations.</td>
+        </tr>
+
+        <tr>
+          <td>\(\mathcal I_R\)</td>
+          <td>Receiving Interface information.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="limits">
+      The record is organizational. Other sectors may use a richer or different
+      native representation.
+    </div>
+
   </div>
 </section>
+
 
 <section id="formation">
   <h2>6. Root Formation</h2>
 
-  <div class="root-card">
-    <div class="meta"><div><strong>Role:</strong> Response-to-Root gate</div></div>
+  <div class="card core">
 
-    <p>Production of a result establishes a Response. Root formation adds a
-separate receiving test.</p>
+    <p>
+      Production of an output establishes a Response. Root formation is a
+      separate receiver test.
+    </p>
 
     <div class="schema">\[
-F:D_F\to Y_{\mathcal T},
-\qquad
-r=F(x),
-\]
-\[
-\boxed{
-x\in D_F
-\quad\text{and}\quad
-r\in A_R(B')
-\Longrightarrow
-r\text{ may function as a Root for }B'.
-}
-\]</div>
+      T
+      \xrightarrow{\mathcal E}
+      Y,
+      \qquad
+      E_r:
+      D_{E_r}
+      \subseteq
+      Y
+      \to
+      \mathcal R_r,
+    \]</div>
 
-    
+    <div class="schema">\[
+      r=E_r(Y).
+    \]</div>
 
-    <div class="abilities"><strong>What this structure allows</strong><ul><li>Separate output production from downstream permission.</li><li>Make the receiving context explicit.</li></ul></div>
+    <p>
+      Root formation requires:
+    </p>
 
-    <div class="limits"><strong>Limits</strong><ul><li>The implication is relative to the declared gate \(A_R(B')\). It does not establish Root status for unrelated receivers.</li></ul></div>
+    <div class="schema">\[
+      \boxed{
+      r
+      \in
+      \operatorname{Acc}
+      (\mathcal P_R^{B_r}).
+      }
+    \]</div>
 
-    
+    <div class="schema">\[
+      \boxed{
+      \text{Response production}
+      \neq
+      \text{Root formation}.
+      }
+    \]</div>
 
-    
-
-    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#response">Response</a> · <a href="definitions.html#root">Root</a><br><span class="link-label">Examples:</span> <a href="examples.html#all-roles-thermal-calibration">Integrated Root gate</a></div>
   </div>
 </section>
+
+
+<section id="applicability">
+  <h2>7. Root Passport Applicability</h2>
+
+  <div class="card core">
+
+    <p>
+      Before a Root Passport can accept or reject an export, the export must
+      lie in its applicability domain.
+    </p>
+
+    <div class="schema">\[
+      \operatorname{Acc}
+      (\mathcal P_R^{B_r})
+      \subseteq
+      D_{\mathcal P_R^{B_r}}.
+    \]</div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Case</th>
+          <th>Meaning</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>
+            \[
+              r
+              \notin
+              D_{\mathcal P_R^{B_r}}
+            \]
+          </td>
+
+          <td>
+            The Root Passport is not applicable. The export has the wrong
+            type/domain for this Root gate.
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            \[
+              r
+              \in
+              D_{\mathcal P_R^{B_r}}
+              \setminus
+              \operatorname{Acc}
+              (\mathcal P_R^{B_r})
+            \]
+          </td>
+
+          <td>
+            The Root Passport applies but rejects.
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            \[
+              r
+              \in
+              \operatorname{Acc}
+              (\mathcal P_R^{B_r})
+            \]
+          </td>
+
+          <td>
+            The Root Passport applies and accepts.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="schema">\[
+      \boxed{
+      \text{wrong Root-candidate type}
+      \neq
+      \text{valid candidate that fails its gate}.
+      }
+    \]</div>
+
+  </div>
+</section>
+
 
 <section id="admissibility">
-  <h2>7. Root Admissibility</h2>
+  <h2>8. Root Admissibility</h2>
 
-  <div class="root-card">
-    <div class="meta"><div><strong>Role:</strong> receiving gate</div></div>
+  <div class="card core">
 
-    <p>The Root-admissible set contains exactly the Responses accepted for the
-specified downstream role.</p>
+    <p>
+      In Set-like sectors, the receiver-admissible Root region may be written
+    as
+    </p>
 
     <div class="schema">\[
-\boxed{
-A_R(B')
-\subseteq
-Y_{\mathcal T}.
-}
-\]
-Typical membership conditions may include
-\[
-\begin{gathered}
-\text{type}\;+\;\text{domain}\;+\;\text{constraints}\;+\;\text{regularity}\\
-+\;\text{law/Regime}\;+\;\text{Passport}\;+\;\text{Interface}
-+\;\text{required invariants}.
-\end{gathered}
-\]</div>
+      \boxed{
+      A_R(B_r)
+      =
+      \operatorname{Acc}
+      (\mathcal P_R^{B_r}).
+      }
+    \]</div>
 
-    
+    <p>
+      Typical obligations may involve:
+    </p>
 
-    
+    <ul>
+      <li>type;</li>
+      <li>domain;</li>
+      <li>regularity;</li>
+      <li>law or regime;</li>
+      <li>receiver constraints;</li>
+      <li>Interface compatibility;</li>
+      <li>witness or coupling data;</li>
+      <li>required invariants;</li>
+      <li>future-use information.</li>
+    </ul>
 
-    <div class="limits"><strong>Limits</strong><ul><li>No universal Root admissible set exists; the receiver determines the gate.</li></ul></div>
+    <div class="limits">
+      Some sectors use predicates, subobjects, cones, relations, operator
+      domains, kernels, or other native admissibility structures instead of a
+      literal subset.
+    </div>
 
-    <div class="failure"><strong>Failure conditions</strong><ul><li>Response lies outside the receiving domain.</li><li>Required Passport information is missing.</li><li>Native constraints or law conditions fail.</li></ul></div>
-
-    
-
-    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#admissibility">Admissibility</a><br><span class="link-label">Examples:</span> <a href="examples.html#root-scalar-instance">Scalar Root</a> · <a href="examples.html#root-matrix-instance">Matrix Root</a></div>
   </div>
 </section>
 
-<section id="reuse">
-  <h2>8. Root Reuse</h2>
-
-  <div class="root-card">
-    <div class="meta"><div><strong>Role:</strong> lawful later participation</div></div>
-
-    <p>After becoming a Root for one receiving context, the result may be
-used in a later Interaction only if that later Interaction also admits the
-actual input tuple.</p>
-
-    <div class="schema">\[
-J:
-D_J
-\subseteq
-A_R(B')\times A_B
-\longrightarrow
-Z,
-\]
-\[
-\boxed{
-(r,b)\in D_J.
-}
-\]</div>
-
-    
-
-    <div class="abilities"><strong>What this structure allows</strong><ul><li>Use a previous result as later mathematical input.</li><li>Combine a Root with a new Branch state.</li></ul></div>
-
-    <div class="limits"><strong>Limits</strong><ul><li>Passing one receiving gate does not waive the next Interaction's domain or Passport requirements.</li><li>Root reuse can be nonrecursive.</li></ul></div>
-
-    
-
-    
-
-    <div class="crosslinks"><span class="link-label">Structures:</span> <a href="structures.html#root">Root</a> · <a href="structures.html#interaction">Interaction</a><br><span class="link-label">Examples:</span> <a href="examples.html#root-function-instance">Function Root reused by integration</a></div>
-  </div>
-</section>
-
-<section id="compatibility">
-  <h2>9. Root Compatibility</h2>
-
-  <div class="root-card">
-    <div class="meta"><div><strong>Role:</strong> multi-condition receiving compatibility</div></div>
-
-    <p>Root compatibility is usually an intersection of logically distinct
-receiving conditions rather than one generic yes/no property.</p>
-
-    <div class="schema">\[
-\boxed{
-A_R(B')
-=
-A_{\rm type}
-\cap
-A_{\rm domain}
-\cap
-A_{\rm law}
-\cap
-A_{\rm Passport}
-\cap
-A_{\rm Interface}
-\cap
-A_{\rm constraint}
-\cap\cdots
-}
-\]
-when the Set intersection model is appropriate.</div>
-
-    <h3>Carries</h3><ul><li>Type compatibility.</li><li>Domain compatibility.</li><li>Law and Regime compatibility.</li><li>Passport compatibility.</li><li>Interface compatibility.</li><li>Constraint and invariant compatibility.</li></ul>
-
-    
-
-    <div class="limits"><strong>Limits</strong><ul><li>Some sectors encode admissibility by subobjects, predicates, cones, relations, operator domains, or other structures rather than literal Set intersections.</li></ul></div>
-
-    
-
-    
-
-    
-  </div>
-</section>
-
-<section id="interface">
-  <h2>10. Root Interface Condition</h2>
-
-  <div class="root-card">
-    <div class="meta"><div><strong>Role:</strong> source-output to receiver composition</div></div>
-
-    <p>A Root candidate produced by \(F\) can enter a receiving map \(G\)
-only when the actual output lands in the receiving domain.</p>
-
-    <div class="schema">\[
-F:D_F\subseteq X\to Y_R,
-\qquad
-G:D_G\subseteq Y_R\to Z,
-\]
-\[
-\boxed{
-D_{G\circ F}
-=
-\{x\in D_F:F(x)\in D_G\}.
-}
-\]</div>
-
-    
-
-    
-
-    <div class="limits"><strong>Limits</strong><ul><li>Composability does not by itself prove Passport, invariant, law, or Task preservation.</li></ul></div>
-
-    
-
-    
-
-    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#typed-composite-domain">Typed composite-domain theorem</a><br><span class="link-label">Equations:</span> <a href="equations.html#composite-domain">Composite domain</a><br><span class="link-label">Structures:</span> <a href="structures.html#interface">Interface</a></div>
-  </div>
-</section>
 
 <section id="passport">
-  <h2>11. Root Passport</h2>
+  <h2>9. Root Passport</h2>
 
-  <div class="root-card">
-    <div class="meta"><div><strong>Role:</strong> downstream information carried with Root use</div></div>
+  <div class="card core">
 
-    <p>A Root Passport records information needed to interpret and reuse the
-Root lawfully downstream.</p>
+    <p>
+      A Root Passport is the receiver's instantiated obligation structure for
+      lawful downstream use.
+    </p>
 
-    <div class="schema">\[
-\boxed{
-P_R:A_R(B')\to Q_R
-}
-\]
-in one exact deterministic realization.</div>
+    <p>
+      It may contain:
+    </p>
 
-    <h3>Carries</h3><ul><li>Type and units.</li><li>Invariants and conservation data.</li><li>Law/Regime context.</li><li>Interface information.</li><li>Uncertainty or coupling information.</li><li>Admissibility certificates.</li><li>Task-relevant distinctions.</li></ul>
+    <ul>
+      <li>type and units;</li>
+      <li>law/regime context;</li>
+      <li>required Interface data;</li>
+      <li>witness or coupling conditions;</li>
+      <li>admissibility certificates;</li>
+      <li>Task-relevant distinctions;</li>
+      <li>continuation information;</li>
+      <li>native invariant obligations;</li>
+      <li>quantitative error bounds.</li>
+    </ul>
 
-    
+    <div class="limits">
+      The visible value \(r\) need not literally encode every item in the Root
+      Passport, provided the required information remains lawfully available
+      to the receiver.
+    </div>
 
-    <div class="limits"><strong>Limits</strong><ul><li>A Root's visible value need not contain every item in its Passport.</li><li>Other semantic sectors may require kernels, relations, operators, couplings, or approximate comparisons.</li></ul></div>
-
-    
-
-    
-
-    <div class="crosslinks"><span class="link-label">Passports:</span> <a href="passports.html#passport">Passport definition</a><br><span class="link-label">Examples:</span> <a href="examples.html#root-example">Root/Passport system</a></div>
   </div>
 </section>
 
-<section id="passport-sufficiency">
-  <h2>12. Root Passport Sufficiency</h2>
 
-  <div class="root-card">
-    <div class="meta"><div><strong>Role:</strong> exact deterministic downstream Task sufficiency</div></div>
+<section id="sufficiency">
+  <h2>10. Root Passport Sufficiency</h2>
 
-    <p>For a later Task \(T_R\), the Root Passport is exactly sufficient when
-the Task factors through the realized Root Passport representation.</p>
+  <div class="card standard">
+
+    <p>
+      In exact deterministic semantics, let
+    </p>
 
     <div class="schema">\[
-T_R:A_R(B')\to W,
-\]
-\[
-\boxed{
-T_R
-=
-\widetilde T_R\circ P_R,
-\qquad
-\widetilde T_R:P_R(A_R(B'))\to W.
-}
-\]
-Equivalently,
-\[
-P_R(r)=P_R(r')
-\Longrightarrow
-\boxed{
-T_R(r)=T_R(r').
-}
-\]</div>
+      P_R:
+      A_R(B_r)
+      \to
+      Q_R
+    \]</div>
 
-    
+    <p>
+      be the Root Passport representation and
+    </p>
 
-    
+    <div class="schema">\[
+      T_R:
+      A_R(B_r)
+      \to
+      W
+    \]</div>
 
-    <div class="limits"><strong>Limits</strong><ul><li>Sufficiency is relative to the declared downstream Task.</li><li>Static Root-Passport sufficiency does not imply a dynamically closed repeated-Root model.</li></ul></div>
+    <p>
+      a later receiver Task.
+    </p>
 
-    
+    <p>
+      Exact sufficiency means:
+    </p>
 
-    
+    <div class="schema">\[
+      \boxed{
+      T_R
+      =
+      \widetilde T_R
+      \circ
+      P_R,
+      \qquad
+      \widetilde T_R:
+      P_R(A_R(B_r))
+      \to
+      W.
+      }
+    \]</div>
 
-    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#recoverability">Exact Recoverability</a><br><span class="link-label">Passports:</span> <a href="passports.html#sufficiency">Exact Passport sufficiency</a></div>
+    <p>
+      Equivalently:
+    </p>
+
+    <div class="schema">\[
+      P_R(r)
+      =
+      P_R(r')
+      \Longrightarrow
+      \boxed{
+      T_R(r)
+      =
+      T_R(r').
+      }
+    \]</div>
+
+    <div class="limits">
+      Root Passport sufficiency is receiver- and Task-relative.
+    </div>
+
   </div>
 </section>
 
-<section id="role-lifetime">
+
+<section id="receiver">
+  <h2>11. Root Status Is Receiver-Relative</h2>
+
+  <div class="card core">
+
+    <div class="schema">\[
+      \boxed{
+      r
+      \text{ Root for }B_1
+      \not\Rightarrow
+      r
+      \text{ Root for }B_2.
+      }
+    \]</div>
+
+    <p>
+      Example:
+    </p>
+
+    <div class="schema">\[
+      r=8,
+    \]</div>
+
+    <div class="schema">\[
+      A_R(B_1)
+      =
+      [0,10],
+      \qquad
+      A_R(B_2)
+      =
+      [0,5].
+    \]</div>
+
+    <p>
+      Therefore:
+    </p>
+
+    <div class="schema">\[
+      8
+      \in
+      A_R(B_1),
+      \qquad
+      8
+      \notin
+      A_R(B_2).
+    \]</div>
+
+    <div class="teaching">
+      Nothing about the scalar \(8\) changed. Only its receiver-relative role
+      changed.
+    </div>
+
+  </div>
+</section>
+
+
+<section id="nontransitive">
+  <h2>12. Roothood Is Not Transitive</h2>
+
+  <div class="card core">
+
+    <p>
+      Suppose a Response contains
+    </p>
+
+    <div class="schema">\[
+      Y=(x,y).
+    \]</div>
+
+    <p>
+      Receiver \(B_1\) needs only \(x\), so
+    </p>
+
+    <div class="schema">\[
+      E_1(Y)=x
+    \]</div>
+
+    <p>
+      is sufficient for \(B_1\).
+    </p>
+
+    <p>
+      A later receiver \(B_2\) needs
+    </p>
+
+    <div class="schema">\[
+      x+y.
+    \]</div>
+
+    <p>
+      The previous Root \(x\) cannot determine this quantity.
+    </p>
+
+    <div class="schema">\[
+      \boxed{
+      \text{Root for }B_1
+      \not\Rightarrow
+      \text{Root for every descendant receiver}.
+      }
+    \]</div>
+
+  </div>
+</section>
+
+
+<section id="lifetime">
   <h2>13. Root Role Lifetime</h2>
 
-  <div class="root-card">
-    <div class="meta"><div><strong>Role:</strong> context-dependent persistence of Root status</div></div>
+  <div class="card core">
 
-    <p>Root status can persist, change, or end when the receiving context,
-active law, Passport requirements, or admissible region changes.</p>
+    <p>
+      Root status can depend on receiver, context, regime, time, or active
+      obligations.
+    </p>
 
     <div class="schema">\[
-\boxed{
-r\in A_R(B',\lambda,t)
-}
-\]
-can depend on receiver \(B'\), Regime/law index \(\lambda\), or time \(t\).</div>
+      \boxed{
+      r
+      \in
+      A_R
+      (B_r,\lambda,t,c).
+      }
+    \]</div>
 
-    
+    <p>
+      A mathematical value may remain unchanged while its Root role changes.
+    </p>
 
-    <div class="abilities"><strong>What this structure allows</strong><ul><li>Represent a result that is reusable in one phase of a calculation but not another.</li></ul></div>
+    <div class="limits">
+      Root is not a permanent intrinsic label attached to an object forever.
+    </div>
 
-    <div class="limits"><strong>Limits</strong><ul><li>The underlying mathematical value can remain unchanged while its Root role changes.</li></ul></div>
-
-    
-
-    
-
-    
   </div>
 </section>
 
-<section id="nonrecursive-root">
-  <h2>14. Nonrecursive Root</h2>
 
-  <div class="root-card">
-    <div class="meta"><div><strong>Role:</strong> one-time downstream reuse</div></div>
+<section id="reuse">
+  <h2>14. Root Reuse</h2>
 
-    <p>A Root need not be fed back into the same Root-generating process.
-One lawful downstream use is enough for the Root role.</p>
+  <div class="card core">
+
+    <p>
+      A Root may participate in later mathematics only when the actual later
+      Operation or Interaction accepts it.
+    </p>
 
     <div class="schema">\[
-\boxed{
-\text{Response }r
-\longrightarrow
-\text{one admissible receiving Operation}
-\longrightarrow
-\text{terminal later result}.
-}
-\]</div>
+      J:
+      D_J
+      \subseteq
+      A_R(B_r)
+      \times
+      A_B
+      \to
+      Z.
+    \]</div>
 
-    
+    <div class="schema">\[
+      \boxed{
+      (r,b)
+      \in
+      D_J.
+      }
+    \]</div>
 
-    
+    <div class="limits">
+      Passing one Root gate does not waive later domain, Interface, Passport,
+      law, or coupling requirements.
+    </div>
 
-    <div class="limits"><strong>Limits</strong><ul><li>Recurrence is an additional dynamical property, not part of the Root definition.</li></ul></div>
-
-    
-
-    
-
-    <div class="crosslinks"><span class="link-label">Examples:</span> <a href="examples.html#root-nonrecursive">Nonrecursive Root</a></div>
   </div>
 </section>
 
-<section id="seed-root">
-  <h2>15. Seed-to-Root Path</h2>
-
-  <div class="root-card">
-    <div class="meta"><div><strong>Role:</strong> optional generative route to a Root candidate</div><div><strong>Status:</strong> Seed remains a candidate BM primitive</div></div>
-
-    <p>When the candidate Seed primitive is present, Seed states generate
-until a declared export condition produces a Response. That Response still
-requires a Root gate.</p>
-
-    <div class="schema">\[
-S_0\xrightarrow{G}S_1\xrightarrow{G}\cdots
-\xrightarrow{\text{Seed export}}
-R_{\rm response}
-\xrightarrow{\text{receiving gate}}
-\boxed{\text{Root if admitted}.}
-\]</div>
-
-    
-
-    
-
-    <div class="limits"><strong>Limits</strong><ul><li>Not every Root comes from a Seed.</li><li>Meeting a Seed export condition produces a Response candidate, not automatic Root status.</li></ul></div>
-
-    
-
-    
-
-    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#seed">Seed</a> · <a href="definitions.html#seed-export">Seed export</a><br><span class="link-label">Examples:</span> <a href="examples.html#seed-newton">Newton Seed</a> · <a href="examples.html#seed-fixed-point">Fixed-point Seed</a></div>
-  </div>
-</section>
-
-<section id="rooting">
-  <h2>16. Rooting</h2>
-
-  <div class="root-card">
-    <div class="meta"><div><strong>Role:</strong> candidate attachment structure</div><div><strong>Status:</strong> active candidate BM structural definition</div></div>
-
-    <p>Rooting is candidate BM language for a lawful attachment of a Root or
-other compatible Root-derived structure to a mathematically defined
-attachment site from which additional development may occur.</p>
-
-    <div class="schema">\[
-\boxed{
-\text{compatible Root-derived object}
-+
-\text{admissible attachment site}
-+
-\text{lawful attachment map}
-\Longrightarrow
-\text{candidate Rooting event}.
-}
-\]</div>
-
-    
-
-    
-
-    <div class="limits"><strong>Limits</strong><ul><li>Rooting is not required for every Root.</li><li>Attachment need not be interior unless the native mathematics requires interior attachment.</li><li>A Rooting event does not guarantee Rebranching.</li></ul></div>
-
-    
-
-    
-
-    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#rooting">Rooting</a><br><span class="link-label">Structures:</span> <a href="structures.html#rooting">Rooting</a><br><span class="link-label">Examples:</span> <a href="examples.html#rooting-example">Rooting example</a></div>
-  </div>
-</section>
-
-<section id="attachment-site">
-  <h2>17. Attachment Site</h2>
-
-  <div class="root-card">
-    <div class="meta"><div><strong>Role:</strong> candidate receiving location/object</div></div>
-
-    <p>An attachment site is a mathematically typed location, subobject,
-boundary, node, state, morphism, parameter locus, geometric region, or other
-native structure at which attachment is defined.</p>
-
-    <div class="schema">\[
-a\in A_A
-\]
-for an admissible attachment-site object \(A_A\), with Root state
-\[
-r\in A_R(B').
-\]
-A candidate attachment Operation may be
-\[
-\boxed{
-\mathcal A:
-D_{\mathcal A}
-\subseteq
-A_A\times A_R(B')
-\to X'.
-}
-\]</div>
-
-    
-
-    
-
-    <div class="limits"><strong>Limits</strong><ul><li>The attachment-site object is sector-specific.</li><li>Ambient membership alone is insufficient; the pair must lie in the attachment domain.</li></ul></div>
-
-    
-
-    
-
-    
-  </div>
-</section>
-
-<section id="lawful-attachment">
-  <h2>18. Lawful Attachment</h2>
-
-  <div class="root-card">
-    <div class="meta"><div><strong>Role:</strong> candidate attachment-domain gate</div></div>
-
-    <p>Attachment is lawful only for pairs accepted by the native attachment
-Operation.</p>
-
-    <div class="schema">\[
-\boxed{
-(a,r)\in D_{\mathcal A}.
-}
-\]</div>
-
-    <h3>Carries</h3><ul><li>Local type and geometric/algebraic compatibility.</li><li>Boundary or operator-domain conditions.</li><li>Passport and invariant compatibility.</li><li>Constraints and receiving-law context.</li></ul>
-
-    
-
-    
-
-    <div class="failure"><strong>Failure conditions</strong><ul><li>No attachment map exists.</li><li>The pair lies outside its domain.</li><li>Attachment destroys a required native law or Passport.</li></ul></div>
-
-    
-
-    
-  </div>
-</section>
-
-<section id="rebranching">
-  <h2>19. Rebranching</h2>
-
-  <div class="root-card">
-    <div class="meta"><div><strong>Role:</strong> candidate downstream development after attachment</div><div><strong>Status:</strong> active candidate BM structure</div></div>
-
-    <p>If a lawful attachment produces a new state or structure that admits
-additional Operations or Interactions, the resulting new Branch development
-is candidate Rebranching.</p>
-
-    <div class="schema">\[
-x'
-=
-\mathcal A(a,r),
-\]
-\[
-x'\in D_{J_k}
-\quad\text{for at least one admissible later }J_k,
-\]
-\[
-\boxed{
-x'
-\xrightarrow{J_k}
-\text{new lawful Branch development}.
-}
-\]</div>
-
-    
-
-    
-
-    <div class="limits"><strong>Limits</strong><ul><li>Rooting does not imply Rebranching.</li><li>The new development must be defined by the receiving mathematics.</li></ul></div>
-
-    
-
-    
-
-    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#rebranching">Rebranching</a></div>
-  </div>
-</section>
-
-<section id="not-arbitrary">
-  <h2>20. Rooting Is Not Arbitrary Insertion</h2>
-
-  <div class="root-card">
-    <div class="meta"><div><strong>Role:</strong> candidate-structure firewall</div></div>
-
-    <p>An intuitive relationship between two mathematical objects is not an
-attachment rule.</p>
-
-    <div class="schema">\[
-\boxed{
-\text{Rooting requires}
-\begin{cases}
-\text{typed attachment site},\\
-\text{defined attachment Operation},\\
-\text{admissible input pair},\\
-\text{law/Passport/Interface compatibility},\\
-\text{admissible resulting structure}.
-\end{cases}
-}
-\]</div>
-
-    
-
-    
-
-    <div class="limits"><strong>Limits</strong><ul><li>Graphical proximity, verbal analogy, or shared notation do not establish Rooting.</li></ul></div>
-
-    
-
-    
-
-    
-  </div>
-</section>
-
-<section id="passport-transfer">
-  <h2>21. Root Passport Transfer</h2>
-
-  <div class="root-card">
-    <div class="meta"><div><strong>Role:</strong> candidate Root-information transfer structure</div><div><strong>Status:</strong> active candidate BM structure</div></div>
-
-    <p>When a Root is produced from source information, downstream use may
-require a translated Passport rather than the visible Root value alone.</p>
-
-    <div class="schema">\[
-\boxed{
-P_S
-\xrightarrow{\tau}
-P_R
-\xrightarrow{\text{receiving Interface}}
-P_{\rm recv}.
-}
-\]</div>
-
-    
-
-    
-
-    <div class="limits"><strong>Limits</strong><ul><li>The transfer maps and receiving semantics must be defined explicitly.</li></ul></div>
-
-    
-
-    
-
-    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#root-passport-transfer">Root Passport Transfer</a><br><span class="link-label">Passports:</span> <a href="passports.html#root-transfer">Root Passport Transfer</a></div>
-  </div>
-</section>
-
-<section id="transfer-compatibility">
-  <h2>22. Exact Transfer Compatibility</h2>
-
-  <div class="root-card">
-    <div class="meta"><div><strong>Role:</strong> deterministic Root-Passport factorization</div></div>
-
-    <p>Let \(P_S:X\to Q_S\), \(F:X\to A_R(B')\), and
-\(P_R:A_R(B')\to Q_R\). Exact transfer through a translation map
-\(\tau:P_S(X)\to Q_R\) requires</p>
-
-    <div class="schema">\[
-\boxed{
-P_R\circ F
-=
-\tau\circ P_S.
-}
-\]</div>
-
-    
-
-    
-
-    <div class="limits"><strong>Limits</strong><ul><li>The factorization is exact and deterministic. Stochastic or approximate Passport transfer requires its own semantics.</li></ul></div>
-
-    
-
-    
-
-    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#interface-factorization">Interface factorization</a><br><span class="link-label">Passports:</span> <a href="passports.html#root-transfer-map">Exact Root transfer</a></div>
-  </div>
-</section>
-
-<section id="conservative-root">
-  <h2>23. Conservative Root</h2>
-
-  <div class="root-card">
-    <div class="meta"><div><strong>Role:</strong> candidate Root carrying independently required invariants</div><div><strong>Status:</strong> candidate research structure</div></div>
-
-    <p>A Conservative Root is candidate terminology for a Root whose lawful
-downstream role requires specified native invariants or conserved quantities
-to remain available.</p>
-
-    <div class="schema">\[
-C_X:X\to V,
-\qquad
-C_R:A_R(B')\to V,
-\]
-\[
-\boxed{
-C_R(F(x))=C_X(x).
-}
-\]</div>
-
-    
-
-    
-
-    <div class="limits"><strong>Limits</strong><ul><li>The invariant must already be justified by the native mathematics.</li><li>The Root role does not create conservation.</li></ul></div>
-
-    
-
-    
-
-    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#invariant-transfer">Invariant-transfer criterion</a><br><span class="link-label">Passports:</span> <a href="passports.html#conservative">Conservative Passport</a><br><span class="link-label">Examples:</span> <a href="examples.html#conservative-passport-example">Conservative Passport example</a></div>
-  </div>
-</section>
-
-<section id="conservation">
-  <h2>24. Conservation Is Not Created by Rooting</h2>
-
-  <div class="root-card">
-    <div class="meta"><div><strong>Role:</strong> native-mathematics firewall</div></div>
-
-    <p>Conservation is an independent mathematical property of the native
-system or transformation. BM can track, transfer, or require it as a Passport
-condition.</p>
-
-    <div class="schema">\[
-\boxed{
-C(\Phi_t(x))=C(x)
-}
-\]
-when the native theory proves conservation, and
-\[
-\boxed{
-C_R(F(x))=C_X(x)
-}
-\]
-when a Root transfer must preserve it.</div>
-
-    
-
-    
-
-    <div class="limits"><strong>Limits</strong><ul><li>Root, Rooting, Rebranching, or Passport terminology cannot manufacture a conservation law.</li></ul></div>
-
-    
-
-    
-
-    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#conservation">Conserved quantity</a></div>
-  </div>
-</section>
-
-<section id="root-chains">
-  <h2>25. Root Chains</h2>
-
-  <div class="root-card">
-    <div class="meta"><div><strong>Role:</strong> typed stage-varying downstream chain</div></div>
-
-    <p>A Root chain is more general than iteration by one self-map. Root
-spaces, Operations, and receiving conditions may vary from stage to stage.</p>
-
-    <div class="schema">\[
-R_n\in A_n,
-\qquad
-F_n:D_n\subseteq A_n\to Y_{n+1},
-\]
-\[
-R_{n+1}=F_n(R_n),
-\qquad
-\boxed{
-R_n\in D_n
-\quad\text{and}\quad
-R_{n+1}\in A_{n+1}.
-}
-\]</div>
-
-    
-
-    <div class="abilities"><strong>What this structure allows</strong><ul><li>Model serial downstream reuse through changing mathematical types or Interfaces.</li></ul></div>
-
-    <div class="limits"><strong>Limits</strong><ul><li>A Root chain need not possess one fixed state space, one fixed map, a fixed point, or a notion of time.</li></ul></div>
-
-    
-
-    
-
-    <div class="crosslinks"><span class="link-label">Equations:</span> <a href="equations.html#root-chain">General Root chain</a></div>
-  </div>
-</section>
-
-<section id="repeated-rooting">
-  <h2>26. Repeated Rooting</h2>
-
-  <div class="root-card">
-    <div class="meta"><div><strong>Role:</strong> special repeated-use model</div></div>
-
-    <p>Repeated Rooting reduces to ordinary iteration only when one
-Root-generating map is actually defined repeatedly on an invariant admissible
-Root region.</p>
-
-    <div class="schema">\[
-F:D_F\subseteq X_R\to X_R.
-\]
-A trajectory is lawful through step \(n\) when
-\[
-R_k\in D_F
-\quad
-(k=0,\ldots,n-1).
-\]
-A sufficient all-time closure condition is an invariant subset
-\[
-\boxed{
-S\subseteq D_F,
-\qquad
-F(S)\subseteq S.
-}
-\]</div>
-
-    
-
-    
-
-    <div class="limits"><strong>Limits</strong><ul><li>Repeated Rooting is not part of the Root definition.</li><li>No stability or convergence follows merely from closure.</li></ul></div>
-
-    
-
-    
-
-    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#root-iteration-firewall">Root iteration firewall</a><br><span class="link-label">Structures:</span> <a href="structures.html#repeated-rooting">Repeated Rooting</a><br><span class="link-label">Examples:</span> <a href="examples.html#root-recursive">Repeated Root</a></div>
-  </div>
-</section>
-
-<section id="iteration-domain">
-  <h2>27. Iteration-Domain Firewall</h2>
-
-  <div class="root-card">
-    <div class="meta"><div><strong>Role:</strong> partial-map iteration condition</div></div>
-
-    <p>A one-step Root map can be lawful while its second or later iteration
-is not.</p>
-
-    <div class="schema">\[
-R_1=F(R_0)
-\]
-is defined if \(R_0\in D_F\), while
-\[
-R_2=F(R_1)
-\]
-requires additionally
-\[
-\boxed{
-F(R_0)\in D_F.
-}
-\]</div>
-
-    
-
-    
-
-    
-
-    <div class="failure"><strong>Failure conditions</strong><ul><li>The first output leaves the map domain.</li><li>A later Passport, law, or constraint gate fails.</li><li>The map changes type so self-iteration is not defined.</li></ul></div>
-
-    
-
-    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#root-iteration-firewall">Root iteration firewall</a></div>
-  </div>
-</section>
-
-<section id="fixed-root">
-  <h2>28. Fixed Root</h2>
-
-  <div class="root-card">
-    <div class="meta"><div><strong>Role:</strong> fixed point of a genuine repeated-Root map</div></div>
-
-    <p>For a self-map defined on an admissible repeated-Root state space, a
-fixed Root is an ordinary fixed point.</p>
-
-    <div class="schema">\[
-F:S\to S,
-\qquad
-\boxed{
-R_*=F(R_*).
-}
-\]</div>
-
-    
-
-    
-
-    <div class="limits"><strong>Limits</strong><ul><li>Fixed-point existence, uniqueness, basin structure, and convergence come from ordinary fixed-point/dynamical mathematics, not from Root status.</li></ul></div>
-
-    
-
-    
-
-    <div class="crosslinks"><span class="link-label">Equations:</span> <a href="equations.html#fixed-root">Fixed Root</a><br><span class="link-label">Examples:</span> <a href="examples.html#root-recursive">Repeated Root example</a></div>
-  </div>
-</section>
-
-<section id="local-stability">
-  <h2>29. Local Stability of a Repeated Root Map</h2>
-
-  <div class="root-card">
-    <div class="meta"><div><strong>Role:</strong> classical discrete-map stability applied to a Root model</div></div>
-
-    <p>Let \(F:\mathbb R^d\to\mathbb R^d\) be \(C^1\) near a fixed Root
-\(R_*\). A standard sufficient condition for local asymptotic stability is</p>
-
-    <div class="schema">\[
-\boxed{
-\rho\!\left(J_F(R_*)\right)<1,
-}
-\]
-where \(\rho\) is spectral radius.</div>
-
-    
-
-    
-
-    <div class="limits"><strong>Limits</strong><ul><li>The criterion requires an actual differentiable repeated-Root map on an admissible neighborhood.</li><li>It is local, not global.</li><li>Non-Euclidean state spaces require the appropriate native stability theory.</li></ul></div>
-
-    
-
-    
-
-    
-  </div>
-</section>
-
-<section id="instability">
-  <h2>30. Local Instability</h2>
-
-  <div class="root-card">
-    <div class="meta"><div><strong>Role:</strong> classical discrete-map instability applied to a Root model</div></div>
-
-    <p>For a \(C^1\) discrete map, an eigenvalue of the Jacobian with modulus
-greater than one gives an unstable direction at the fixed point.</p>
-
-    <div class="schema">\[
-\boxed{
-\rho(J_F(R_*))>1
-\Longrightarrow
-R_*\text{ is locally unstable}
-}
-\]
-under the usual discrete-map hypotheses.</div>
-
-    
-
-    
-
-    <div class="limits"><strong>Limits</strong><ul><li>The borderline case \(
-ho=1\) is generally inconclusive and requires higher-order analysis.</li></ul></div>
-
-    
-
-    
-
-    
-  </div>
-</section>
-
-<section id="cycles">
-  <h2>31. Cycles and Periodic Root States</h2>
-
-  <div class="root-card">
-    <div class="meta"><div><strong>Role:</strong> periodic behavior of a repeated-Root map</div></div>
-
-    <p>If a repeated-Root map is genuinely defined, ordinary dynamical
-systems theory can contain cycles as well as fixed points.</p>
-
-    <div class="schema">\[
-\boxed{
-F^p(R_*)=R_*,
-\qquad
-F^k(R_*)\neq R_*
-\quad(1\le k<p)
-}
-\]
-for a period-\(p\) Root-state cycle.</div>
-
-    
-
-    
-
-    <div class="limits"><strong>Limits</strong><ul><li>Periodic behavior belongs to the specific map \(F\), not to the Root role itself.</li></ul></div>
-
-    
-
-    
-
-    
-  </div>
-</section>
-
-<section id="production-rate">
-  <h2>32. Root Production Rate</h2>
-
-  <div class="root-card">
-    <div class="meta"><div><strong>Role:</strong> model-dependent event-rate quantity</div><div><strong>Status:</strong> model-dependent quantity</div></div>
-
-    <p>If a model defines distinct Root-production events at times
-\(t_0<t_1<t_2<\cdots\), one may define</p>
-
-    <div class="schema">\[
-\Delta t_n=t_{n+1}-t_n,
-\qquad
-\boxed{
-\nu_n=\frac1{\Delta t_n}
-}
-\]
-when \(\Delta t_n>0\).</div>
-
-    
-
-    
-
-    <div class="limits"><strong>Limits</strong><ul><li>BM has no universal Root-production rate.</li><li>The event definition and time parameter must come from the model.</li></ul></div>
-
-    
-
-    
-
-    <div class="crosslinks"><span class="link-label">Equations:</span> <a href="equations.html#root-rate">Discrete Root event rate</a></div>
-  </div>
-</section>
-
-<section id="continuous-root">
-  <h2>33. Continuous Root Activity / Root-State Path</h2>
-
-  <div class="root-card">
-    <div class="meta"><div><strong>Role:</strong> continuous model-dependent Root role</div></div>
-
-    <p>A model may instead contain a continuous path of states that all
-satisfy the Root gate for a given receiver over some interval.</p>
-
-    <div class="schema">\[
-R:I\to X_R,
-\qquad
-\boxed{
-R(t)\in A_R(B',t)
-\quad\forall t\in I.
-}
-\]
-If the native state space supports differentiation,
-\[
-\boxed{
-\dot R(t)=\frac{dR}{dt}.
-}
-\]</div>
-
-    
-
-    
-
-    <div class="limits"><strong>Limits</strong><ul><li>Continuous Root state is different from a sequence of discrete Root events.</li><li>On manifolds, \(\dot R(t)\) is a tangent vector; on more general spaces a derivative may not exist.</li></ul></div>
-
-    
-
-    
-
-    <div class="crosslinks"><span class="link-label">Equations:</span> <a href="equations.html#continuous-rate">Continuous Root rate</a></div>
-  </div>
-</section>
-
-<section id="resistance">
-  <h2>34. Root Resistance</h2>
-
-  <div class="root-card">
-    <div class="meta"><div><strong>Role:</strong> model-specific barrier/cost concept</div><div><strong>Status:</strong> research concept requiring domain-specific definition</div></div>
-
-    <p>The word resistance has no universal Root-theoretic meaning. It becomes
-mathematical only after a model supplies a barrier, cost, metric, action,
-constraint margin, or other obstruction quantity.</p>
-
-    <div class="schema">\[
-\boxed{
-\mathcal R_{\rm root}(x)
-=
-\text{declared model-specific barrier/cost to Root formation or transfer}
-}
-\]
-or, in an energy-barrier model,
-\[
-\boxed{
-\Delta\mathcal E
-=
-\mathcal E_{\rm barrier}
--
-\mathcal E_{\rm current}.
-}
-\]</div>
-
-    
-
-    
-
-    <div class="limits"><strong>Limits</strong><ul><li>No universal Root resistance exists.</li><li>Different domains can use completely different barrier mathematics.</li></ul></div>
-
-    
-
-    
-
-    
-  </div>
-</section>
-
-<section id="threshold">
-  <h2>35. Root Threshold</h2>
-
-  <div class="root-card">
-    <div class="meta"><div><strong>Role:</strong> model-specific gate parameter</div></div>
-
-    <p>A threshold exists only in a model that declares an ordered criterion
-for Root formation or transfer.</p>
-
-    <div class="schema">\[
-\boxed{
-H(x)\ge H_c.
-}
-\]</div>
-
-    
-
-    
-
-    <div class="limits"><strong>Limits</strong><ul><li>The function \(H\), ordering, units, and critical value \(H_c\) come from the model.</li><li>BM supplies no universal Root threshold.</li></ul></div>
-
-    
-
-    
-
-    
-  </div>
-</section>
-
-<section id="saturation">
-  <h2>36. Root Saturation</h2>
-
-  <div class="root-card">
-    <div class="meta"><div><strong>Role:</strong> model-specific bounded-response concept</div></div>
-
-    <p>Saturation is present when a Root-generating or receiving model imposes
-a bound or asymptote on an otherwise growing quantity.</p>
-
-    <div class="schema">\[
-\boxed{
-R_{n+1}
-=
-\operatorname{sat}_{A_R}(F(R_n))
-}
-\]
-is one possible model when a mathematically defined saturation operator
-\(\operatorname{sat}_{A_R}\) exists.</div>
-
-    
-
-    
-
-    <div class="limits"><strong>Limits</strong><ul><li>Saturation is not universal Root behavior.</li><li>Clipping an inadmissible result does not automatically repair an upstream Interface or Passport failure.</li></ul></div>
-
-    
-
-    
-
-    
-  </div>
-</section>
-
-<section id="accumulation">
-  <h2>37. Finite-Time Root-Event Accumulation</h2>
-
-  <div class="root-card">
-    <div class="meta"><div><strong>Role:</strong> Zeno-type event-time condition</div></div>
-
-    <p>For distinct modeled Root events with intervals
-\(\Delta t_n>0\), infinitely many events accumulate before a finite limiting
-time exactly when the event-time series converges.</p>
-
-    <div class="schema">\[
-\boxed{
-\sum_{n=0}^{\infty}\Delta t_n<\infty.
-}
-\]</div>
-
-    
-
-    
-
-    <div class="limits"><strong>Limits</strong><ul><li>Whether such accumulation is mathematically admissible or physically realizable is determined by the native model.</li></ul></div>
-
-    
-
-    
-
-    <div class="crosslinks"><span class="link-label">Equations:</span> <a href="equations.html#accumulation">Accumulation criterion</a></div>
-  </div>
-</section>
-
-<section id="observability">
-  <h2>38. Root Observability</h2>
-
-  <div class="root-card">
-    <div class="meta"><div><strong>Role:</strong> representation of Root state</div></div>
-
-    <p>A Root state can be downstream-admissible without being directly
-observable. An observation map may expose only part of the Root information.</p>
-
-    <div class="schema">\[
-H:A_R(B')\to Y,
-\qquad
-y=H(r).
-\]
-For a Root Task \(T_R\), exact recoverability requires
-\[
-H(r)=H(r')
-\Longrightarrow
-\boxed{
-T_R(r)=T_R(r').
-}
-\]</div>
-
-    
-
-    
-
-    <div class="limits"><strong>Limits</strong><ul><li>Observability is Task-relative unless full-state reconstruction is explicitly required.</li><li>Stochastic observations require stochastic semantics.</li></ul></div>
-
-    
-
-    
-
-    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#recoverability">Exact Recoverability</a><br><span class="link-label">Passports:</span> <a href="passports.html#sufficiency">Task-relative sufficiency</a></div>
-  </div>
-</section>
-
-<section id="realization">
-  <h2>39. Root Realization</h2>
-
-  <div class="root-card">
-    <div class="meta"><div><strong>Role:</strong> mathematical existence of the Root structure</div></div>
-
-    <p>An abstract Root specification is not enough. The claimed Root object,
-receiver, admissible domain, and Interface must exist in the target
-mathematical sector.</p>
-
-    <div class="schema">\[
-\boxed{
-\text{abstract Root specification}
-\xrightarrow{\text{realization}}
-\text{actual object satisfying the stated Root obligations}.
-}
-\]</div>
-
-    
-
-    
-
-    
-
-    <div class="failure"><strong>Failure conditions</strong><ul><li>No object satisfies the required constraints.</li><li>Required quotient, operator, map, domain, or Interface does not exist.</li><li>The receiving admissible set is empty.</li></ul></div>
-
-    
-
-    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#mathematical-realizability">Mathematical realizability</a><br><span class="link-label">Structures:</span> <a href="structures.html#realization">Realization</a></div>
-  </div>
-</section>
-
-<section id="physical-realization">
-  <h2>40. Physical Root Realization</h2>
-
-  <div class="root-card">
-    <div class="meta"><div><strong>Role:</strong> application-level realization</div></div>
-
-    <p>A mathematically realized Root can still fail to correspond to an
-achievable physical mechanism.</p>
-
-    <div class="schema">\[
-\boxed{
-\text{mathematical Root realization}
-\not\Rightarrow
-\text{physical Root realization}.
-}
-\]</div>
-
-    
-
-    
-
-    <div class="limits"><strong>Limits</strong><ul><li>Physical realization additionally depends on empirically valid laws, causality, scales, materials, boundary/initial conditions, stability, and implementation.</li></ul></div>
-
-    
-
-    
-
-    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#physical-realizability">Physical realizability</a></div>
-  </div>
-</section>
 
 <section id="reentry">
-  <h2>41. Root Export and Re-entry</h2>
+  <h2>15. Root Re-entry</h2>
 
-  <div class="root-card">
-    <div class="meta"><div><strong>Role:</strong> two-gate downstream transfer</div></div>
+  <div class="card core">
 
-    <p>Export and re-entry are separate mathematical steps. A Root may be
-represented elsewhere without being admissible for the later receiver.</p>
+    <p>
+      Export and re-entry are separate mathematical steps.
+    </p>
 
     <div class="schema">\[
-E:A_R(B')\to Y_E,
-\qquad
-Q:D_Q\subseteq Y_E\to A_B,
-\]
-\[
-\boxed{
-D_{Q\circ E}
-=
-\{r\in A_R(B'):E(r)\in D_Q\}.
-}
-\]</div>
+      E:
+      A_R(B_1)
+      \to
+      Y_E,
+    \]</div>
 
-    
+    <div class="schema">\[
+      Q:
+      D_Q
+      \subseteq
+      Y_E
+      \to
+      Z.
+    \]</div>
 
-    
+    <p>
+      The actual re-entry domain is
+    </p>
 
-    <div class="limits"><strong>Limits</strong><ul><li>Successful export does not imply lawful re-entry.</li><li>The receiver can require additional Passport or law information beyond \(E(r)\).</li></ul></div>
+    <div class="schema">\[
+      \boxed{
+      D_{Q\circ E}
+      =
+      \{
+      r
+      \in
+      A_R(B_1):
+      E(r)
+      \in
+      D_Q
+      \}.
+      }
+    \]</div>
 
-    
+    <div class="schema">\[
+      \boxed{
+      \text{successful Root export}
+      \not\Rightarrow
+      \text{successful later re-entry}.
+      }
+    \]</div>
 
-    
-
-    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#export">Export</a> · <a href="definitions.html#reentry">Re-entry</a><br><span class="link-label">Structures:</span> <a href="structures.html#export">Export</a> · <a href="structures.html#reentry">Re-entry</a><br><span class="link-label">Examples:</span> <a href="examples.html#reentry-example">Re-entry example</a></div>
   </div>
 </section>
 
-<section id="composition">
-  <h2>42. Root Composition</h2>
 
-  <div class="root-card">
-    <div class="meta"><div><strong>Role:</strong> ordinary lawful composition in the Root role</div></div>
+<section id="transfer">
+  <h2>16. Exact Root-Passport Transfer</h2>
 
-    <p>When one Root-processing Operation feeds another, the composite domain
-is determined exactly as for any partial maps.</p>
+  <div class="card standard">
+
+    <p>
+      Root-Passport transfer does not require a new independent Root theory.
+      In exact deterministic semantics it is ordinary Interface/factorization
+      mathematics.
+    </p>
+
+    <p>
+      Let
+    </p>
 
     <div class="schema">\[
-F:D_F\subseteq A_R(B_1)\to Y,
-\qquad
-G:D_G\subseteq Y\to Z,
-\]
-\[
-\boxed{
-D_{G\circ F}
-=
-\{r\in D_F:F(r)\in D_G\}.
-}
-\]</div>
+      P_S:
+      X
+      \to
+      Q_S,
+    \]</div>
 
-    
+    <div class="schema">\[
+      F:
+      X
+      \to
+      A_R(B_r),
+    \]</div>
 
-    
+    <div class="schema">\[
+      P_R:
+      A_R(B_r)
+      \to
+      Q_R.
+    \]</div>
 
-    <div class="limits"><strong>Limits</strong><ul><li>Root terminology does not change the mathematics of composition.</li></ul></div>
+    <p>
+      Exact transfer through
+      \[
+        \tau:
+        P_S(X)
+        \to
+        Q_R
+      \]
+      requires:
+    </p>
 
-    
+    <div class="schema">\[
+      \boxed{
+      P_R
+      \circ
+      F
+      =
+      \tau
+      \circ
+      P_S.
+      }
+    \]</div>
 
-    
+    <div class="limits">
+      Stochastic, relational, approximate, or quantum transfers require their
+      own native semantics.
+    </div>
 
-    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#typed-composite-domain">Composite-domain theorem</a></div>
   </div>
 </section>
+
 
 <section id="information-loss">
-  <h2>43. Root Information Loss</h2>
+  <h2>17. Root Information Loss</h2>
 
-  <div class="root-card">
-    <div class="meta"><div><strong>Role:</strong> downstream distinction loss</div></div>
+  <div class="card specialized">
 
-    <p>A Root representation can be lawful for one Task while erasing
-distinctions needed by a later Task.</p>
+    <p>
+      A Root representation may be sufficient for one receiver and
+      insufficient for a later one.
+    </p>
 
     <div class="schema">\[
-P_R(r)=P_R(r')
-\quad\text{but}\quad
-\boxed{
-T_2(r)\neq T_2(r').
-}
-\]</div>
+      P_R(r)
+      =
+      P_R(r')
+    \]</div>
 
-    
+    <p>
+      while
+    </p>
 
-    <div class="abilities"><strong>What this structure allows</strong><ul><li>Identify why a previously sufficient Root representation must be refined for a richer receiver.</li></ul></div>
+    <div class="schema">\[
+      \boxed{
+      T_2(r)
+      \neq
+      T_2(r').
+      }
+    \]</div>
 
-    <div class="limits"><strong>Limits</strong><ul><li>Information loss is Task-relative; it is not automatically a failure for every downstream use.</li></ul></div>
+    <p>
+      The representation then loses a distinction required by the later Task.
+    </p>
 
-    
+    <div class="schema">\[
+      \boxed{
+      \text{earlier Root sufficiency}
+      \not\Rightarrow
+      \text{later receiver sufficiency}.
+      }
+    \]</div>
 
-    
-
-    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#recoverability">Exact Recoverability</a><br><span class="link-label">Examples:</span> <a href="examples.html#root-relative-instance">Receiver-relative reuse</a></div>
   </div>
 </section>
+
 
 <section id="repair">
-  <h2>44. Root Repair</h2>
+  <h2>18. Root Repair</h2>
 
-  <div class="root-card">
-    <div class="meta"><div><strong>Role:</strong> refinement of an insufficient Root representation</div></div>
+  <div class="card specialized">
 
-    <p>If Root Passport \(P_R\) is insufficient for a later Task, additional
-information \(q\) repairs the representation when the refined Passport becomes
-sufficient.</p>
-
-    <div class="schema">\[
-P_R:A_R(B')\to Q_R,
-\qquad
-q:A_R(B')\to Z,
-\]
-\[
-\boxed{
-(P_R,q):A_R(B')\to Q_R\times Z,
-}
-\]
-with repair success when
-\[
-\boxed{
-T_R
-=
-\widehat T_R\circ(P_R,q)
-}
-\]
-on the realized refined image.</div>
-
-    
-
-    
-
-    <div class="limits"><strong>Limits</strong><ul><li>Repair can create new cost, privacy, Interface, or stability obligations.</li></ul></div>
-
-    
-
-    
-
-    <div class="crosslinks"><span class="link-label">Passports:</span> <a href="passports.html#repair">Passport repair</a><br><span class="link-label">Examples:</span> <a href="examples.html#root-repair">Root repair example</a></div>
-  </div>
-</section>
-
-<section id="defect-localization">
-  <h2>45. Root-Chain Defect Localization</h2>
-
-  <div class="root-card">
-    <div class="meta"><div><strong>Role:</strong> serial downstream failure localization</div></div>
-
-    <p>When a Root passes through several receiving Interfaces, a failed
-final Passport can be localized to an earlier defect or to a later defect
-pulled back through upstream Operations.</p>
+    <p>
+      If Root Passport \(P_R\) is insufficient for later Task \(T_R\), a
+      refined representation may add information
+    </p>
 
     <div class="schema">\[
-\boxed{
-D_{g\circ f}
-\subseteq
-D_f\cup f^{-1}(D_g).
-}
-\]</div>
+      q:
+      A_R(B_r)
+      \to
+      Z.
+    \]</div>
 
-    
-
-    <div class="abilities"><strong>What this structure allows</strong><ul><li>Find the earliest failed Root handoff.</li><li>Repair there and recompute dependent downstream results.</li></ul></div>
-
-    <div class="limits"><strong>Limits</strong><ul><li>The theorem shown uses Boolean/predicate Passports; other semantics require their own defect notion.</li></ul></div>
-
-    
-
-    
-
-    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#passport-defect-localization">Passport-defect localization</a><br><span class="link-label">Passports:</span> <a href="passports.html#defect-localization">Defect localization</a></div>
-  </div>
-</section>
-
-<section id="failure-modes">
-  <h2>46. Root Failure Modes</h2>
-
-  <div class="root-card">
-    <div class="meta"><div><strong>Role:</strong> failure taxonomy</div></div>
-
-    <p>Root failures are downstream-use failures. They should be stated at the earliest obligation that actually breaks.</p>
-
-    <div class="schema">
-<table>
-  <thead><tr><th>Failure</th><th>Meaning</th></tr></thead>
-  <tbody>
-    <tr><td>Response-only</td><td>A value was produced but no receiving Root gate was established.</td></tr>
-    <tr><td>Type failure</td><td>The receiver does not accept the Root candidate's type.</td></tr>
-    <tr><td>Domain failure</td><td>The candidate lies outside the receiving Operation's domain.</td></tr>
-    <tr><td>Passport failure</td><td>Required distinctions, law context, uncertainty, coupling, or metadata are missing.</td></tr>
-    <tr><td>Constraint failure</td><td>The candidate violates a receiving admissibility condition.</td></tr>
-    <tr><td>Law failure</td><td>Native mathematical laws or Regime conditions are violated.</td></tr>
-    <tr><td>Invariant failure</td><td>A required independently established invariant is not preserved.</td></tr>
-    <tr><td>Interface failure</td><td>Source/export and receiver representations cannot be connected lawfully.</td></tr>
-    <tr><td>Attachment failure</td><td>A candidate Rooting pair lies outside the attachment domain.</td></tr>
-    <tr><td>Realization failure</td><td>The abstract Root structure has no admissible realization.</td></tr>
-    <tr><td>Continuation failure</td><td>The Root representation lacks information required by later mathematics.</td></tr>
-    <tr><td>Iteration failure</td><td>A proposed repeated Root map leaves its own domain or violates a later receiving gate.</td></tr>
-    <tr><td>Re-entry failure</td><td>The exported Root representation is inadmissible for the receiver.</td></tr>
-  </tbody>
-</table>
-</div>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="crosslinks"><span class="link-label">Examples:</span> <a href="examples.html#failure-lab">Failure laboratory</a></div>
-  </div>
-</section>
-
-<section id="example-relative">
-  <h2>47. Worked Example — Receiver-Relative Root</h2>
-
-  <div class="root-card">
-    <div class="meta"><div><strong>Role:</strong> worked scalar example</div></div>
-
-    <p>Suppose a Tree produces the Response</p>
+    <p>
+      yielding
+    </p>
 
     <div class="schema">\[
-r=8.
-\]
-Receiver \(B_1\) accepts
-\[
-A_R(B_1)=[0,10],
-\]
-while receiver \(B_2\) accepts
-\[
-A_R(B_2)=[0,5].
-\]
-Therefore
-\[
-\boxed{
-8\in A_R(B_1)
-}
-\qquad\text{but}\qquad
-\boxed{
-8\notin A_R(B_2).
-}
-\]</div>
+      \boxed{
+      (P_R,q):
+      A_R(B_r)
+      \to
+      Q_R
+      \times
+      Z.
+      }
+    \]</div>
 
-    
-
-    
-
-    
-
-    
-
-    <div class="teaching"><strong>Teaching note</strong><p>Nothing about the scalar 8 changes. Only its downstream role changes. This is why Root should not be defined as an intrinsic permanent property of an output.</p></div>
-
-    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#root-relativity">Receiver-relativity proposition</a><br><span class="link-label">Examples:</span> <a href="examples.html#root-relative-instance">Same example in the worked registry</a></div>
-  </div>
-</section>
-
-<section id="example-square">
-  <h2>48. Worked Example — Reusable Response</h2>
-
-  <div class="root-card">
-    <div class="meta"><div><strong>Role:</strong> worked repeated-use example</div></div>
-
-    <p>Let \(F(x)=x^2\) on \(\mathbb R\), with a repeated-use receiver that
-accepts every real output.</p>
+    <p>
+      Repair succeeds when
+    </p>
 
     <div class="schema">\[
-R_0=3,
-\qquad
-R_1=F(R_0)=9,
-\qquad
-R_2=F(R_1)=81,
-\]
-and generally
-\[
-\boxed{
-R_{n+1}=R_n^2.
-}
-\]</div>
+      \boxed{
+      T_R
+      =
+      \widehat T_R
+      \circ
+      (P_R,q)
+      }
+    \]</div>
 
-    
+    <p>
+      on the realized refined image, and when the repair belongs to the
+      declared admissible repair class.
+    </p>
 
-    
+    <div class="limits">
+      Repair may introduce new cost, privacy, complexity, Interface, or
+      stability obligations.
+    </div>
 
-    <div class="limits"><strong>Limits</strong><ul><li>This is an ordinary scalar iteration whose outputs remain in the repeated-use domain. It is not a universal model of Rooting.</li><li>The trajectory diverges rapidly for \(R_0>1\); closure does not imply stability.</li></ul></div>
-
-    
-
-    
-
-    
   </div>
 </section>
 
-<section id="example-affine">
-  <h2>49. Worked Example — Globally Attracting Affine Root</h2>
 
-  <div class="root-card">
-    <div class="meta"><div><strong>Role:</strong> worked stable repeated-Root model</div></div>
+<section id="repair-revalidation">
+  <h2>19. Repair Revalidation</h2>
 
-    <p>Consider the genuine repeated-Root self-map</p>
+  <div class="card core">
+
+    <p>
+      If repair changes data in region \(S\), the affected semantic dependency
+      closure is
+    </p>
 
     <div class="schema">\[
-F(R)=\frac12R+1,
-\qquad
-R\in\mathbb R.
-\]
-The fixed Root is
-\[
-R_*=2.
-\]
-Subtracting the fixed point gives
-\[
-R_{n+1}-2
-=
-\frac12(R_n-2),
-\]
-hence
-\[
-\boxed{
-R_n
-=
-2+2^{-n}(R_0-2)
-\longrightarrow
-2.
-}
-\]</div>
+      \boxed{
+      \operatorname{Cl}_{\mathfrak D_C}(S).
+      }
+    \]</div>
 
-    
+    <p>
+      Every dependent Root certificate must then be:
+    </p>
 
-    
-
-    <div class="limits"><strong>Limits</strong><ul><li>The global attraction statement belongs to this affine map, not to Roots in general.</li></ul></div>
-
-    
-
-    
-
-    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#affine-repeated-root">Affine repeated-Root formula</a> · <a href="theorems.html#affine-convergence">Affine convergence</a></div>
-  </div>
-</section>
-
-<section id="affine-model">
-  <h2>50. General Affine Repeated-Root Model</h2>
-
-  <div class="root-card">
-    <div class="meta"><div><strong>Role:</strong> classical affine dynamics used as a Root model</div></div>
-
-    <p>For</p>
+    <ol>
+      <li>recomputed; or</li>
+      <li>shown invariant under the repair.</li>
+    </ol>
 
     <div class="schema">\[
-R_{n+1}=\alpha R_n+\beta,
-\]
-if \(\alpha\neq1\),
-\[
-\boxed{
-R_*=\frac{\beta}{1-\alpha},
-}
-\]
-and
-\[
-\boxed{
-R_n
-=
-R_*+\alpha^n(R_0-R_*).
-}
-\]
-Thus
-\[
-\begin{array}{c|c}
-|\alpha|<1 & R_n\to R_*\\
-\alpha=1 & R_n=R_0+n\beta\\
-\alpha=-1 & \text{typically period two}\\
-|\alpha|>1 & \text{deviation from }R_*\text{ grows geometrically}
-\end{array}
-\]</div>
+      \boxed{
+      \text{upstream repair}
+      \not\Rightarrow
+      \text{Root status remains certified}.
+      }
+    \]</div>
 
-    
-
-    
-
-    <div class="limits"><strong>Limits</strong><ul><li>This is classical scalar affine dynamics, used here to teach repeated Root behavior after the repeated-use hypotheses have been established.</li></ul></div>
-
-    
-
-    
-
-    <div class="crosslinks"><span class="link-label">Theorems:</span> <a href="theorems.html#affine-repeated-root">Affine formula</a><br><span class="link-label">Equations:</span> <a href="equations.html#affine">Affine Root iteration</a></div>
   </div>
 </section>
 
-<section id="registry">
-  <h2>51. Root Registry</h2>
 
-  <div class="root-card">
-    <div class="meta"><div><strong>Role:</strong> stable formal reference</div></div>
+<section id="observability">
+  <h2>20. Root Observability</h2>
 
-    <p>Formal Roots and Root structures may receive stable identifiers in
-the project Root registry</p>
+  <div class="card specialized">
+
+    <p>
+      A Root can be downstream-admissible without being directly observable in
+      full.
+    </p>
 
     <div class="schema">\[
-\boxed{
-\mathrm{BM\text{-}R00}
-\;-\;
-\mathrm{BM\text{-}R99},
-}
-\]
-with \(R99\) reserved for the master Root registry.
+      H:
+      A_R(B_r)
+      \to
+      Y.
+    \]</div>
 
-<table>
-  <thead><tr><th>Field</th><th>What a formal Root record should state</th></tr></thead>
-  <tbody>
-    <tr><td>Identifier</td><td>Stable BM-R identifier if the Root is entered into the formal registry.</td></tr>
-    <tr><td>Status</td><td>Canonical, proved property, conditional, active candidate, or experimental application.</td></tr>
-    <tr><td>Source</td><td>Tree, Branches, Interaction, or Operation that produced the Response.</td></tr>
-    <tr><td>Response type</td><td>Carrier, mathematical sector, units/regularity where relevant.</td></tr>
-    <tr><td>Receiver</td><td>The exact Branch or structure for which Root status is asserted.</td></tr>
-    <tr><td>Root gate</td><td>Receiving domain, constraints, laws, Passports, and Interfaces.</td></tr>
-    <tr><td>Root Passport</td><td>Information required for later reuse.</td></tr>
-    <tr><td>Transfer/re-entry</td><td>Export map, transfer map, re-entry domain, and receiver conditions.</td></tr>
-    <tr><td>Attachment</td><td>Only when candidate Rooting is actually defined: site type and attachment domain.</td></tr>
-    <tr><td>Dynamic model</td><td>Only when repeated use is actually defined: map, invariant domain, fixed/cycle/stability hypotheses.</td></tr>
-    <tr><td>Realization</td><td>Mathematical and, when relevant, physical realization conditions.</td></tr>
-  </tbody>
-</table>
-</div>
-
-    
-
-    
-
-    <div class="limits"><strong>Limits</strong><ul><li>The registry identifier is a reference mechanism; it does not replace the mathematical Root gate.</li></ul></div>
-
-    
-
-    
-
-    
-  </div>
-</section>
-
-<section id="status">
-  <h2>52. Root Status Categories</h2>
-
-  <div class="root-card">
-    <div class="meta"><div><strong>Role:</strong> reference classification</div></div>
-
-    <p>Status separates the canonical Root role from candidate extensions and model-specific behavior.</p>
-
-    <div class="schema">
-<table>
-  <thead><tr><th>Status</th><th>Meaning</th></tr></thead>
-  <tbody>
-    <tr><td>Canonical</td><td>The Root role itself is accepted in the BM architecture.</td></tr>
-    <tr><td>Proved</td><td>A particular Root property is established under stated hypotheses.</td></tr>
-    <tr><td>Conditional</td><td>The Root property is valid only while explicit hypotheses hold.</td></tr>
-    <tr><td>Active candidate</td><td>An extended mechanism such as Rooting/Rebranching is being used provisionally but remains candidate.</td></tr>
-    <tr><td>Experimental</td><td>An application or numerical realization is being tested.</td></tr>
-  </tbody>
-</table>
-</div>
-
-    
-
-    
-
-    <div class="limits"><strong>Limits</strong><ul><li>Status is not historical novelty, priority, or physical validation.</li></ul></div>
-
-    
-
-    
-
-    
-  </div>
-</section>
-
-<section id="limits">
-  <h2>53. What Root Mathematics Does Not Do</h2>
-
-  <div class="root-card">
-    <div class="meta"><div><strong>Role:</strong> scope limits</div></div>
-
-    <p>The Root role is intentionally narrow: downstream admissibility for a specified mathematical use.</p>
-
-    
-
-    
-
-    
-
-    <div class="limits"><strong>Limits</strong><ul><li>A Response is not automatically a Root.</li><li>A Root is not an intrinsic permanent property independent of the receiver.</li><li>A Root does not make invalid mathematics valid.</li><li>A Root does not create conservation or an invariant.</li><li>A Root does not guarantee compatibility with another Branch or Operation.</li><li>A Root does not automatically recur.</li><li>Rooting does not authorize arbitrary attachment.</li><li>Rooting does not require every attachment site to be interior.</li><li>Rooting does not guarantee Rebranching.</li><li>A Root chain need not use one fixed map or state space.</li><li>Repeated Rooting is not automatically a dynamical system.</li><li>Fixed points, cycles, stability, chaos, thresholds, saturation, resistance, and rates are properties of specific models, not the word Root.</li><li>Mathematical Root realization does not imply physical Root realization.</li><li>Successful export does not imply lawful re-entry.</li></ul></div>
-
-    
-
-    
-
-    
-  </div>
-</section>
-
-<section id="ordinary-math">
-  <h2>54. Root Role and Native Mathematics</h2>
-
-  <div class="root-card">
-    <div class="meta"><div><strong>Role:</strong> division of labor</div></div>
-
-    <p>Once a repeated-use or attachment structure has been defined,
-established mathematics determines its behavior.</p>
+    <p>
+      For Root Task \(T_R\), exact recoverability requires:
+    </p>
 
     <div class="schema">\[
-\boxed{
-\text{Root role determines lawful downstream participation;}
-\qquad
-\text{native mathematics determines the resulting behavior}.
-}
-\]</div>
+      H(r)
+      =
+      H(r')
+      \Longrightarrow
+      \boxed{
+      T_R(r)
+      =
+      T_R(r').
+      }
+    \]</div>
 
-    <h3>Carries</h3><ul><li>Fixed-point and dynamical systems theory.</li><li>Algebra and topology.</li><li>Functional/operator analysis.</li><li>Probability and control.</li><li>Graph/category theory.</li><li>Numerical analysis and optimization.</li><li>Differential equations and bifurcation theory.</li></ul>
+    <div class="limits">
+      Full Root reconstruction is required only if the declared Task actually
+      requires full Root reconstruction.
+    </div>
 
-    
-
-    
-
-    
-
-    <div class="teaching"><strong>Teaching note</strong><p>This keeps the vocabulary useful: BM tells you when the result may legally enter the next piece of mathematics; the next piece of mathematics then does its own work.</p></div>
-
-    
   </div>
 </section>
 
-<section id="visualization">
-  <h2>55. Scientific Visualization</h2>
 
-  <div class="root-card">
-    <div class="meta"><div><strong>Role:</strong> quantitative figure standard</div></div>
+<section id="realization">
+  <h2>21. Mathematical Root Realization</h2>
 
-    <p>Root figures should visualize an actual mathematical model rather than
-a decorative Root diagram.</p>
+  <div class="card core">
 
-    
-
-    <h3>Carries</h3><ul><li>Root value versus iteration.</li><li>Convergence/error decay.</li><li>Parameter sweeps and stable/unstable regions.</li><li>Cycles or bifurcations.</li><li>Root event rate when events are defined.</li><li>Threshold/barrier curves.</li><li>Invariant drift.</li><li>Repair cost versus retained information.</li><li>Re-entry or admissibility margins.</li></ul>
-
-    
-
-    <div class="limits"><strong>Limits</strong><ul><li>Every figure should state equations, parameters, domains, initial conditions, axes, and numerical method where applicable.</li></ul></div>
-
-    
-
-    
-
-    
-  </div>
-</section>
-
-<section id="diagrams">
-  <h2>56. Structural Diagram Standard</h2>
-
-  <div class="root-card">
-    <div class="meta"><div><strong>Role:</strong> formal visualization rule</div></div>
-
-    <p>A Root diagram is authoritative only when every node, edge, attachment
-site, Passport transfer, Root path, and Interface corresponds to a formally
-defined mathematical object on the page or in the structural registry.</p>
+    <p>
+      A proposed Root specification must correspond to an actual mathematical
+      object in the native sector.
+    </p>
 
     <div class="schema">\[
-\boxed{
-\text{formal structure first}
-\longrightarrow
-\text{diagram second}.
-}
-\]</div>
+      \boxed{
+      \text{Root specification}
+      +
+      \text{receiver}
+      +
+      \text{Passport}
+      +
+      \text{Interface}
+      \longrightarrow
+      \text{actual admissible mathematical instance}.
+      }
+    \]</div>
 
-    
+    <p>
+      Failure may occur because:
+    </p>
 
-    
+    <ul>
+      <li>no candidate exists;</li>
+      <li>the receiver domain is empty;</li>
+      <li>the required Interface does not exist;</li>
+      <li>the required quotient/operator/map is undefined;</li>
+      <li>the receiver Passport cannot be satisfied.</li>
+    </ul>
 
-    <div class="limits"><strong>Limits</strong><ul><li>No structural diagram should introduce attachment or transfer relations that have not been mathematically defined.</li></ul></div>
-
-    
-
-    
-
-    
   </div>
 </section>
 
-<section id="principle">
-  <h2>57. Central Root Principle</h2>
 
-  <div class="root-card">
-    <div class="meta"><div><strong>Role:</strong> governing BM Root rule</div></div>
+<section id="physical">
+  <h2>22. Mathematical vs Physical Root Realization</h2>
 
-    <p>A lawful mathematical result may itself become lawful mathematical
-input—but only for the receiver whose conditions it satisfies.</p>
+  <div class="card specialized">
 
     <div class="schema">\[
-\boxed{
-\begin{gathered}
-\text{produce a Response;}\\
-\text{name the receiving mathematics;}\\
-\text{verify type, domain, law, Passport, Interface, and constraints;}\\
-\text{assign Root status only after that gate;}\\
-\text{re-check every later receiving gate independently.}
-\end{gathered}
-}
-\]</div>
+      \boxed{
+      \text{mathematical Root realization}
+      \not\Rightarrow
+      \text{physical realization}.
+      }
+    \]</div>
 
-    
+    <p>
+      Physical realization additionally depends on:
+    </p>
 
-    
+    <ul>
+      <li>empirically valid physical laws;</li>
+      <li>materials;</li>
+      <li>scales;</li>
+      <li>initial and boundary conditions;</li>
+      <li>causality;</li>
+      <li>stability;</li>
+      <li>implementation constraints.</li>
+    </ul>
 
-    
-
-    
-
-    
-
-    <div class="crosslinks"><span class="link-label">Examples:</span> <a href="examples.html#all-roles-thermal-calibration">Integrated Root example</a></div>
   </div>
 </section>
 
-<section id="further-reading">
-  <h2>58. Related Registries</h2>
+
+<section id="conservative">
+  <h2>23. Conservative Obligations on Roots</h2>
+
+  <div class="card specialized">
+
+    <p>
+      BM does not need a new intrinsic species called a “Conservative Root.”
+      Instead, conservation is represented as a Root-Passport obligation when
+      the native mathematics requires it.
+    </p>
+
+    <p>
+      Let
+    </p>
+
+    <div class="schema">\[
+      C_X:
+      X
+      \to
+      V,
+      \qquad
+      C_R:
+      A_R(B_r)
+      \to
+      V.
+    \]</div>
+
+    <p>
+      Preservation may require:
+    </p>
+
+    <div class="schema">\[
+      \boxed{
+      C_R(F(x))
+      =
+      C_X(x).
+      }
+    \]</div>
+
+    <div class="warning">
+      Root, Passport, Rooting, or Rebranching terminology cannot manufacture a
+      conservation law. Conservation must already follow from the native
+      mathematics.
+    </div>
+
+  </div>
+</section>
+
+
+<section id="chains">
+  <h2>24. Root Chains</h2>
+
+  <div class="card standard">
+
+    <p>
+      A serial chain of Root uses need not be iteration of one self-map.
+    </p>
+
+    <div class="schema">\[
+      R_n
+      \in
+      A_n,
+      \qquad
+      F_n:
+      D_n
+      \subseteq
+      A_n
+      \to
+      Y_{n+1}.
+    \]</div>
+
+    <div class="schema">\[
+      R_{n+1}
+      =
+      F_n(R_n).
+    \]</div>
+
+    <p>
+      Lawfulness requires:
+    </p>
+
+    <div class="schema">\[
+      \boxed{
+      R_n
+      \in
+      D_n,
+      \qquad
+      R_{n+1}
+      \in
+      A_{n+1}.
+      }
+    \]</div>
+
+    <div class="limits">
+      A Root chain need not have one fixed state space, one fixed map, a fixed
+      point, or a time parameter.
+    </div>
+
+  </div>
+</section>
+
+
+<section id="iteration">
+  <h2>25. Repeated-Use Self-Maps</h2>
+
+  <div class="card standard">
+
+    <p>
+      Ordinary iteration appears only when an actual self-map is defined:
+    </p>
+
+    <div class="schema">\[
+      \boxed{
+      F:
+      D_F
+      \subseteq
+      X_R
+      \to
+      X_R.
+      }
+    \]</div>
+
+    <p>
+      A sufficient all-time invariant region is
+    </p>
+
+    <div class="schema">\[
+      \boxed{
+      S
+      \subseteq
+      D_F,
+      \qquad
+      F(S)
+      \subseteq
+      S.
+      }
+    \]</div>
+
+    <div class="schema">\[
+      \boxed{
+      \text{Root reuse}
+      \not\Rightarrow
+      \text{iteration}.
+      }
+    \]</div>
+
+    <div class="limits">
+      Once such a self-map exists, its dynamics are ordinary dynamical-systems
+      mathematics.
+    </div>
+
+  </div>
+</section>
+
+
+<section id="iteration-domain">
+  <h2>26. Iteration-Domain Firewall</h2>
+
+  <div class="card core">
+
+    <p>
+      One lawful application of a Root-processing map does not guarantee that a
+      second application is defined.
+    </p>
+
+    <div class="schema">\[
+      R_1
+      =
+      F(R_0)
+    \]</div>
+
+    <p>
+      requires
+    </p>
+
+    <div class="schema">\[
+      R_0
+      \in
+      D_F.
+    \]</div>
+
+    <p>
+      But
+    </p>
+
+    <div class="schema">\[
+      R_2
+      =
+      F(R_1)
+    \]</div>
+
+    <p>
+      additionally requires
+    </p>
+
+    <div class="schema">\[
+      \boxed{
+      F(R_0)
+      \in
+      D_F.
+      }
+    \]</div>
+
+    <div class="schema">\[
+      \boxed{
+      \text{one-step validity}
+      \not\Rightarrow
+      \text{iterability}.
+      }
+    \]</div>
+
+  </div>
+</section>
+
+
+<section id="dynamics">
+  <h2>27. Fixed Points, Cycles, and Stability</h2>
+
+  <div class="card standard">
+
+    <p>
+      Once a genuine repeated-use self-map
+    </p>
+
+    <div class="schema">\[
+      F:
+      S
+      \to
+      S
+    \]</div>
+
+    <p>
+      exists, fixed points are ordinary fixed points:
+    </p>
+
+    <div class="schema">\[
+      \boxed{
+      R_*
+      =
+      F(R_*).
+      }
+    \]</div>
+
+    <p>
+      Periodic points satisfy
+    </p>
+
+    <div class="schema">\[
+      F^p(R_*)
+      =
+      R_*.
+    \]</div>
+
+    <p>
+      In a differentiable finite-dimensional setting, ordinary local
+      stability theory may use
+    </p>
+
+    <div class="schema">\[
+      \rho
+      \left(
+      J_F(R_*)
+      \right)
+      <
+      1
+    \]</div>
+
+    <p>
+      as a sufficient local asymptotic-stability condition.
+    </p>
+
+    <div class="limits">
+      <ul>
+        <li>Fixed-point existence is not implied by Roothood.</li>
+        <li>Stability is not implied by Roothood.</li>
+        <li>Periodic behavior belongs to the actual map \(F\).</li>
+        <li>Non-Euclidean sectors require native stability mathematics.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+
+<section id="convergence">
+  <h2>28. Root Convergence Firewall</h2>
+
+  <div class="card core">
+
+    <p>
+      BM never infers convergence merely because Root states are repeatedly
+      produced.
+    </p>
+
+    <div class="schema">\[
+      \boxed{
+      R_n
+      \to
+      R_*
+    \]</div>
+
+    <p>
+      requires a declared convergence structure.
+    </p>
+
+    <p>
+      Depending on the native sector this may mean:
+    </p>
+
+    <ul>
+      <li>metric convergence;</li>
+      <li>norm convergence;</li>
+      <li>weak convergence;</li>
+      <li>weak-* convergence;</li>
+      <li>operator convergence;</li>
+      <li>order convergence;</li>
+      <li>convergence in probability;</li>
+      <li>another native notion.</li>
+    </ul>
+
+    <div class="schema">\[
+      \boxed{
+      \text{iteration}
+      \not\Rightarrow
+      \text{convergence}.
+      }
+    \]</div>
+
+  </div>
+</section>
+
+
+<section id="model-specific">
+  <h2>29. Model-Specific Root Quantities</h2>
+
+  <div class="card specialized">
+
+    <p>
+      The following words have no universal Root-theoretic meaning:
+    </p>
+
+    <ul>
+      <li>Root production rate;</li>
+      <li>Root resistance;</li>
+      <li>Root threshold;</li>
+      <li>Root saturation;</li>
+      <li>continuous Root activity;</li>
+      <li>finite-time Root-event accumulation.</li>
+    </ul>
+
+    <p>
+      They become mathematics only after a particular model defines the
+      required quantity.
+    </p>
+
+    <h3>Example: event rate</h3>
+
+    <div class="schema">\[
+      \Delta t_n
+      =
+      t_{n+1}
+      -
+      t_n,
+      \qquad
+      \nu_n
+      =
+      \frac{1}{\Delta t_n}.
+    \]</div>
+
+    <h3>Example: threshold</h3>
+
+    <div class="schema">\[
+      H(x)
+      \ge
+      H_c.
+    \]</div>
+
+    <h3>Example: finite-time accumulation</h3>
+
+    <div class="schema">\[
+      \sum_{n=0}^{\infty}
+      \Delta t_n
+      <
+      \infty.
+    \]</div>
+
+    <div class="limits">
+      These formulas belong to the individual model. BM supplies no universal
+      Root rate, threshold, resistance, saturation, or event law.
+    </div>
+
+  </div>
+</section>
+
+
+<section id="rooting">
+  <h2>30. Candidate Rooting</h2>
+
+  <div class="card candidate">
+
+    <p>
+      <strong>Status: Candidate.</strong>
+    </p>
+
+    <p>
+      Rooting is reserved for a more specific attachment operation than
+      ordinary Root reuse or re-entry.
+    </p>
+
+    <div class="schema">\[
+      \boxed{
+      \mathcal A:
+      D_{\mathcal A}
+      \subseteq
+      A_{\mathrm{attach}}
+      \times
+      A_R(B_r)
+      \to
+      X'.
+      }
+    \]</div>
+
+    <p>
+      A candidate Rooting event requires:
+    </p>
+
+    <ul>
+      <li>a typed attachment object or site;</li>
+      <li>a mathematically defined attachment Operation;</li>
+      <li>an admissible input pair;</li>
+      <li>law/Passport/Interface compatibility;</li>
+      <li>an admissible resulting mathematical structure.</li>
+    </ul>
+
+    <div class="schema">\[
+      \boxed{
+      \text{Root reuse}
+      \not\Rightarrow
+      \text{Rooting}.
+      }
+    \]</div>
+
+    <div class="warning">
+      Graphical proximity, verbal analogy, or shared notation does not establish
+      a Rooting operation.
+    </div>
+
+  </div>
+</section>
+
+
+<section id="attachment">
+  <h2>31. Candidate Attachment Site</h2>
+
+  <div class="card candidate">
+
+    <p>
+      An attachment site is whatever native mathematical object the attachment
+      Operation actually uses.
+    </p>
+
+    <p>
+      It may be:
+    </p>
+
+    <ul>
+      <li>a point;</li>
+      <li>a node;</li>
+      <li>a boundary;</li>
+      <li>a subobject;</li>
+      <li>a parameter locus;</li>
+      <li>a morphism;</li>
+      <li>a state;</li>
+      <li>a geometric region;</li>
+      <li>another sector-specific object.</li>
+    </ul>
+
+    <div class="schema">\[
+      a
+      \in
+      A_{\mathrm{attach}},
+      \qquad
+      r
+      \in
+      A_R(B_r).
+    \]</div>
+
+    <p>
+      Lawful attachment requires:
+    </p>
+
+    <div class="schema">\[
+      \boxed{
+      (a,r)
+      \in
+      D_{\mathcal A}.
+      }
+    \]</div>
+
+    <div class="limits">
+      Ambient membership alone is not sufficient.
+    </div>
+
+  </div>
+</section>
+
+
+<section id="rebranching">
+  <h2>32. Candidate Rebranching</h2>
+
+  <div class="card candidate">
+
+    <p>
+      <strong>Status: Candidate.</strong>
+    </p>
+
+    <p>
+      Rebranching is candidate terminology for genuinely new Branch development
+      after lawful attachment or re-entry.
+    </p>
+
+    <p>
+      Suppose
+    </p>
+
+    <div class="schema">\[
+      x'
+      =
+      \mathcal A(a,r).
+    \]</div>
+
+    <p>
+      A later Operation
+    </p>
+
+    <div class="schema">\[
+      J_k:
+      D_{J_k}
+      \to
+      Z_k
+    \]</div>
+
+    <p>
+      may generate new development when
+    </p>
+
+    <div class="schema">\[
+      x'
+      \in
+      D_{J_k}.
+    \]</div>
+
+    <p>
+      But separate Branch status must still satisfy the BM Branch-essentiality
+      criterion.
+    </p>
+
+    <div class="schema">\[
+      \boxed{
+      \text{Rooting}
+      \not\Rightarrow
+      \text{Rebranching}.
+      }
+    \]</div>
+
+  </div>
+</section>
+
+
+<section id="seed">
+  <h2>33. Candidate Seed-to-Root Path</h2>
+
+  <div class="card candidate">
+
+    <p>
+      <strong>Status: Candidate.</strong>
+    </p>
+
+    <p>
+      If the Seed structure is used, it requires an actual state space,
+      generative update, admissibility rule, and export condition.
+    </p>
+
+    <div class="schema">\[
+      S_0
+      \xrightarrow{G}
+      S_1
+      \xrightarrow{G}
+      \cdots
+      \xrightarrow{\text{export condition}}
+      Y.
+    \]</div>
+
+    <p>
+      The export condition produces a Response candidate.
+    </p>
+
+    <p>
+      Roothood still requires a separate receiver gate:
+    </p>
+
+    <div class="schema">\[
+      \boxed{
+      \text{Seed export}
+      \to
+      \text{Response}
+      \not\Rightarrow
+      \text{Root}.
+      }
+    \]</div>
+
+    <div class="limits">
+      <ul>
+        <li>Not every Root comes from a Seed.</li>
+        <li>Ordinary initial data is not automatically a Seed.</li>
+        <li>Seed terminology does not replace the actual generative mathematics.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+
+<section id="failure">
+  <h2>34. Root Failure Modes</h2>
 
   <table>
-    <thead><tr><th>Question</th><th>Continue with</th></tr></thead>
+    <thead>
+      <tr>
+        <th>Failure</th>
+        <th>Meaning</th>
+      </tr>
+    </thead>
+
     <tbody>
-      <tr><td>What exactly is a Root, Response, Seed, or Re-entry?</td><td><a href="definitions.html#root">Definitions</a></td></tr>
-      <tr><td>How do Roots sit inside Trees and Networks?</td><td><a href="structures.html#root">Structures</a></td></tr>
-      <tr><td>What information must travel with a Root?</td><td><a href="passports.html#root-transfer">Passports</a></td></tr>
-      <tr><td>Which fixed-point, receiver-relativity, and iteration results are proved?</td><td><a href="theorems.html#root-relativity">Theorems</a></td></tr>
-      <tr><td>What are the governing equations?</td><td><a href="equations.html#root-gate">Equations</a></td></tr>
-      <tr><td>What do scalar, vector, matrix, function, probability, recursive, and nonrecursive Roots look like?</td><td><a href="examples.html#roots-many-instances">Examples</a></td></tr>
+      <tr>
+        <td>Response-only</td>
+        <td>
+          A mathematical output exists but no receiver Root gate has been
+          established.
+        </td>
+      </tr>
+
+      <tr>
+        <td>Applicability failure</td>
+        <td>
+          The export is not even in the Root Passport domain.
+        </td>
+      </tr>
+
+      <tr>
+        <td>Passport rejection</td>
+        <td>
+          The export is a valid candidate type but fails receiver obligations.
+        </td>
+      </tr>
+
+      <tr>
+        <td>Domain failure</td>
+        <td>
+          The Root cannot enter the proposed downstream Operation.
+        </td>
+      </tr>
+
+      <tr>
+        <td>Law/regime failure</td>
+        <td>
+          Required active-law context is absent or inconsistent.
+        </td>
+      </tr>
+
+      <tr>
+        <td>Witness/coupling failure</td>
+        <td>
+          Required shared or coupled witness data do not exist.
+        </td>
+      </tr>
+
+      <tr>
+        <td>Invariant failure</td>
+        <td>
+          A native invariant required by the receiver is not preserved.
+        </td>
+      </tr>
+
+      <tr>
+        <td>Interface failure</td>
+        <td>
+          The export and receiver cannot be lawfully connected.
+        </td>
+      </tr>
+
+      <tr>
+        <td>Continuation failure</td>
+        <td>
+          The Root representation lacks information needed by later mathematics.
+        </td>
+      </tr>
+
+      <tr>
+        <td>Re-entry failure</td>
+        <td>
+          A valid Root for one receiver does not satisfy the next receiver.
+        </td>
+      </tr>
+
+      <tr>
+        <td>Iteration failure</td>
+        <td>
+          A repeated-use self-map leaves its own domain or violates later gates.
+        </td>
+      </tr>
+
+      <tr>
+        <td>Attachment failure</td>
+        <td>
+          A candidate Rooting pair lies outside the attachment Operation domain.
+        </td>
+      </tr>
+
+      <tr>
+        <td>Stale certification</td>
+        <td>
+          Upstream repair modified data on which Roothood depended.
+        </td>
+      </tr>
     </tbody>
   </table>
+</section>
+
+
+<section id="examples">
+  <h2>35. Worked Examples</h2>
+
+
+  <div class="card standard">
+
+    <h3>Example A — Receiver-relative scalar Root</h3>
+
+    <div class="schema">\[
+      r=8.
+    \]</div>
+
+    <p>
+      Receiver \(B_1\):
+    </p>
+
+    <div class="schema">\[
+      A_R(B_1)
+      =
+      [0,10].
+    \]</div>
+
+    <p>
+      Receiver \(B_2\):
+    </p>
+
+    <div class="schema">\[
+      A_R(B_2)
+      =
+      [0,5].
+    \]</div>
+
+    <p>
+      Therefore:
+    </p>
+
+    <div class="schema">\[
+      \boxed{
+      8
+      \text{ is Root for }B_1,
+      }
+    \]</div>
+
+    <div class="schema">\[
+      \boxed{
+      8
+      \text{ is not Root for }B_2.
+      }
+    \]</div>
+
+  </div>
+
+
+  <div class="card standard">
+
+    <h3>Example B — Root reuse without Rooting</h3>
+
+    <p>
+      Suppose
+    </p>
+
+    <div class="schema">\[
+      r=4
+    \]</div>
+
+    <p>
+      is accepted by a receiver whose next Operation is
+    </p>
+
+    <div class="schema">\[
+      G(r)
+      =
+      \sqrt r.
+    \]</div>
+
+    <p>
+      Then:
+    </p>
+
+    <div class="schema">\[
+      G(4)=2.
+    \]</div>
+
+    <p>
+      This is ordinary lawful Root reuse.
+    </p>
+
+    <div class="schema">\[
+      \boxed{
+      \text{No attachment structure is required.}
+      }
+    \]</div>
+
+  </div>
+
+
+  <div class="card standard">
+
+    <h3>Example C — Genuine repeated-use map</h3>
+
+    <p>
+      Let
+    </p>
+
+    <div class="schema">\[
+      F(R)
+      =
+      \frac12R+1.
+    \]</div>
+
+    <p>
+      Then the fixed point satisfies
+    </p>
+
+    <div class="schema">\[
+      R_*
+      =
+      \frac12R_*+1,
+    \]</div>
+
+    <p>
+      hence
+    </p>
+
+    <div class="schema">\[
+      \boxed{
+      R_*=2.
+      }
+    \]</div>
+
+    <p>
+      Iteration gives
+    </p>
+
+    <div class="schema">\[
+      R_n
+      =
+      2
+      +
+      2^{-n}
+      (R_0-2),
+    \]</div>
+
+    <p>
+      and therefore
+    </p>
+
+    <div class="schema">\[
+      R_n
+      \to
+      2
+    \]</div>
+
+    <p>
+      in the ordinary Euclidean topology.
+    </p>
+
+    <div class="limits">
+      The convergence belongs to this affine map and topology, not to Roothood.
+    </div>
+
+  </div>
+
+
+  <div class="card specialized">
+
+    <h3>Example D — Root information loss</h3>
+
+    <p>
+      Suppose a Response is
+    </p>
+
+    <div class="schema">\[
+      Y=(x,y).
+    \]</div>
+
+    <p>
+      The first receiver needs only \(x\), so
+    </p>
+
+    <div class="schema">\[
+      E_1(x,y)=x.
+    \]</div>
+
+    <p>
+      A later receiver needs
+    </p>
+
+    <div class="schema">\[
+      T_2(x,y)=x+y.
+    \]</div>
+
+    <p>
+      Then \(E_1\) is sufficient for the first receiver but not the second.
+    </p>
+
+    <div class="schema">\[
+      \boxed{
+      \text{Root sufficiency is scope- and receiver-relative.}
+      }
+    \]</div>
+
+  </div>
+
+</section>
+
+
+<section id="registry">
+  <h2>36. Root Registry</h2>
+
+  <div class="card core">
+
+    <p>
+      Formal Root records may receive stable identifiers:
+    </p>
+
+    <div class="schema">\[
+      \boxed{
+      \mathrm{BM\text{-}R00}
+      -
+      \mathrm{BM\text{-}R99}.
+      }
+    \]</div>
+
+    <p>
+      \(R99\) is reserved for the master Root registry.
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Field</th>
+          <th>What the record should state</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>Identifier</td>
+          <td>Stable BM-R identifier.</td>
+        </tr>
+
+        <tr>
+          <td>Status</td>
+          <td>Core role, proved property, conditional property, candidate extension, or application.</td>
+        </tr>
+
+        <tr>
+          <td>Source</td>
+          <td>Tree / Response / Operation that produced the export.</td>
+        </tr>
+
+        <tr>
+          <td>Native type</td>
+          <td>Carrier, units, regularity, and sector semantics where relevant.</td>
+        </tr>
+
+        <tr>
+          <td>Receiver</td>
+          <td>The exact receiver for which Roothood is asserted.</td>
+        </tr>
+
+        <tr>
+          <td>Root Passport</td>
+          <td>Applicability domain and acceptance obligations.</td>
+        </tr>
+
+        <tr>
+          <td>Export</td>
+          <td>The receiver-directed export map.</td>
+        </tr>
+
+        <tr>
+          <td>Re-entry</td>
+          <td>Later Operation domain and receiver conditions.</td>
+        </tr>
+
+        <tr>
+          <td>Provenance</td>
+          <td>Configuration / Tree / version from which the Root certificate follows.</td>
+        </tr>
+
+        <tr>
+          <td>Candidate attachment</td>
+          <td>Only if Rooting is actually defined.</td>
+        </tr>
+
+        <tr>
+          <td>Repeated-use model</td>
+          <td>Only if a genuine self-map or stage-varying Root chain exists.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="limits">
+      A registry identifier does not substitute for the mathematical Root gate.
+    </div>
+
+  </div>
+</section>
+
+
+<section id="status">
+  <h2>37. Root Status Categories</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Status</th>
+        <th>Meaning</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>Core</td>
+        <td>
+          The receiver-relative Root role itself.
+        </td>
+      </tr>
+
+      <tr>
+        <td>Proved property</td>
+        <td>
+          A property of a particular Root system established under explicit
+          hypotheses.
+        </td>
+      </tr>
+
+      <tr>
+        <td>Conditional</td>
+        <td>
+          Valid only while a stated receiver, domain, law, or Passport
+          condition holds.
+        </td>
+      </tr>
+
+      <tr>
+        <td>Candidate</td>
+        <td>
+          Rooting, Rebranching, Seed, or another unpromoted extension.
+        </td>
+      </tr>
+
+      <tr>
+        <td>Application</td>
+        <td>
+          Domain-specific or physical implementation of Root mathematics.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="limits">
+    These status labels do not establish historical novelty or empirical
+    validation.
+  </div>
+</section>
+
+
+<section id="not-do">
+  <h2>38. What Root Mathematics Does Not Do</h2>
+
+  <div class="warning">
+
+    <ul>
+      <li>A Response is not automatically a Root.</li>
+      <li>A Root is not an intrinsic permanent property of a value.</li>
+      <li>Roothood is always receiver-relative.</li>
+      <li>Roothood is not automatically transitive across receivers.</li>
+      <li>A Root does not create a native law.</li>
+      <li>A Root does not create a conservation law.</li>
+      <li>A Root does not automatically create a Branch.</li>
+      <li>A Root does not automatically define a self-map.</li>
+      <li>A Root does not imply iteration.</li>
+      <li>Iteration does not imply convergence.</li>
+      <li>A Root chain does not imply one fixed state space.</li>
+      <li>Rooting is not ordinary Root reuse.</li>
+      <li>Rooting does not imply Rebranching.</li>
+      <li>Seed export does not automatically produce a Root.</li>
+      <li>Threshold, resistance, saturation, and rate are model-specific.</li>
+      <li>A Root name is not a proof of realizability.</li>
+    </ul>
+
+  </div>
+</section>
+
+
+<section id="central">
+  <h2>39. Central Root Principle</h2>
+
+  <div class="schema">\[
+  \boxed{
+  \begin{gathered}
+  \text{A Tree produces a Response.}\\[4pt]
+
+  \text{An Export prepares that Response for a specified receiver.}\\[4pt]
+
+  \text{The receiver Passport determines applicability and acceptance.}\\[4pt]
+
+  \text{An accepted export occupies the Root role for that receiver.}\\[4pt]
+
+  \text{Roothood is receiver-relative and not generally transitive.}\\[4pt]
+
+  \text{A Root may terminate or re-enter later mathematics.}\\[4pt]
+
+  \text{Re-entry must satisfy the actual next domain and Passport.}\\[4pt]
+
+  \text{Repeated Root use becomes ordinary iteration only when a self-map exists.}\\[4pt]
+
+  \text{Fixed points, cycles, stability, rates, thresholds, and convergence}\\
+  \text{belong to the native model rather than to Roothood itself.}\\[4pt]
+
+  \text{Rooting, Rebranching, and Seed remain candidate specialized structures.}\\[4pt]
+
+  \text{No Root terminology creates mathematics that was not actually defined.}
+  \end{gathered}
+  }
+  \]</div>
+
+  <div class="crosslinks">
+    Continue to:
+    <a href="branch-mathematics.html">BM Foundation</a> ·
+    <a href="definitions.html">Definitions</a> ·
+    <a href="structures.html">Structures</a> ·
+    <a href="passports.html">Passports</a> ·
+    <a href="theorems.html">Theorems</a> ·
+    <a href="examples.html">Examples</a>
+  </div>
 </section>
 
 </main>
 
 <footer>
-  <p><strong>Branch Mathematics Roots</strong></p>
-  <p>Responses · receiving gates · Passports · Rooting · re-entry · repeated-use mathematics</p>
+  <strong>Branch Mathematics Root Registry</strong><br>
+  Response · Export · receiver gate · Root · lawful re-entry ·
+  candidate attachment structures kept separate
 </footer>
+
 </body>
 </html>
