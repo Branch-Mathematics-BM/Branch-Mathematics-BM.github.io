@@ -1,504 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
-  <title>Branch Mathematics Calculator | BM Solver</title>
-
-  <meta
-    name="description"
-    content="Interactive Branch Mathematics calculator for symbolic equations, formal mathematical statements, Branch decomposition, Leaves, realization analysis, Tree status, Responses, and Root gates."
-  >
-
-  <meta name="robots" content="index, follow">
-
-  <link
-    rel="canonical"
-    href="https://branch-mathematics-bm.github.io/calculator.html"
-  >
-
-  <link rel="describedby" href="/llms.txt">
-
-  <script>
-    window.MathJax = {
-      tex: {
-        inlineMath: [['\\(', '\\)']],
-        displayMath: [['\\[', '\\]']]
-      },
-      svg: {
-        fontCache: 'global'
-      }
-    };
-  </script>
-
-  <script
-    id="MathJax-script"
-    async
-    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
-  </script>
-
-  <script
-    src="https://cdn.jsdelivr.net/pyodide/v314.0.6/full/pyodide.js">
-  </script>
-
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.7;
-      color: #202124;
-      background: #ffffff;
-    }
-
-    header {
-      background: #111827;
-      color: #ffffff;
-      text-align: center;
-      padding: 64px 20px;
-    }
-
-    header h1 {
-      margin: 0 0 10px;
-      font-size: 2.7rem;
-    }
-
-    header p {
-      max-width: 1080px;
-      margin: auto;
-      color: #e5e7eb;
-      font-size: 1.08rem;
-    }
-
-    nav {
-      background: #1f2937;
-      text-align: center;
-      padding: 12px 10px;
-    }
-
-    nav a {
-      display: inline-block;
-      margin: 7px 9px;
-      color: #ffffff;
-      text-decoration: none;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    main {
-      max-width: 1220px;
-      margin: auto;
-      padding: 42px 20px 70px;
-    }
-
-    section {
-      margin-bottom: 50px;
-    }
-
-    h2 {
-      margin-top: 0;
-      padding-bottom: 8px;
-      border-bottom: 2px solid #e5e7eb;
-    }
-
-    h3 {
-      margin-top: 24px;
-    }
-
-    p {
-      margin: 10px 0;
-    }
-
-    code {
-      background: #f3f4f6;
-      padding: 2px 5px;
-      border-radius: 4px;
-    }
-
-    .calculator-shell {
-      border: 1px solid #d1d5db;
-      border-radius: 12px;
-      overflow: hidden;
-      background: #ffffff;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
-    }
-
-    .calculator-head {
-      padding: 22px 24px;
-      background: #f8fafc;
-      border-bottom: 1px solid #d1d5db;
-    }
-
-    .calculator-body {
-      padding: 24px;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 7px;
-      font-weight: bold;
-    }
-
-    textarea {
-      width: 100%;
-      min-height: 300px;
-      resize: vertical;
-      padding: 16px;
-      border: 1px solid #9ca3af;
-      border-radius: 8px;
-      font-family: Consolas, Monaco, "Courier New", monospace;
-      font-size: 1rem;
-      line-height: 1.55;
-      background: #ffffff;
-      color: #111827;
-    }
-
-    textarea:focus,
-    input:focus,
-    select:focus {
-      outline: 2px solid #374151;
-      outline-offset: 1px;
-    }
-
-    .controls {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 15px;
-      margin-top: 16px;
-    }
-
-    input,
-    select {
-      width: 100%;
-      padding: 11px 12px;
-      border: 1px solid #9ca3af;
-      border-radius: 7px;
-      background: #ffffff;
-      font-size: 0.98rem;
-    }
-
-    .buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 18px;
-    }
-
-    button {
-      border: 0;
-      border-radius: 7px;
-      padding: 11px 17px;
-      font-size: 0.97rem;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .primary {
-      background: #111827;
-      color: #ffffff;
-    }
-
-    .primary:hover {
-      background: #374151;
-    }
-
-    .secondary {
-      background: #e5e7eb;
-      color: #111827;
-    }
-
-    .secondary:hover {
-      background: #d1d5db;
-    }
-
-    button:disabled {
-      opacity: 0.55;
-      cursor: wait;
-    }
-
-    .engine-status {
-      margin-top: 18px;
-      padding: 12px 15px;
-      border: 1px solid #d1d5db;
-      border-radius: 7px;
-      background: #f8fafc;
-      font-size: 0.94rem;
-    }
-
-    .engine-ready {
-      border-left: 4px solid #166534;
-    }
-
-    .engine-loading {
-      border-left: 4px solid #1d4ed8;
-    }
-
-    .engine-error {
-      border-left: 4px solid #b91c1c;
-      background: #fef2f2;
-    }
-
-    .help {
-      margin-top: 18px;
-      padding: 16px 18px;
-      background: #f8fafc;
-      border-left: 4px solid #374151;
-    }
-
-    .example-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 12px;
-    }
-
-    .example-button {
-      padding: 7px 11px;
-      font-size: 0.88rem;
-      background: #f3f4f6;
-      color: #111827;
-      border: 1px solid #d1d5db;
-    }
-
-    .results {
-      margin-top: 34px;
-      scroll-margin-top: 20px;
-    }
-
-    .result-section {
-      margin: 30px 0;
-    }
-
-    .summary-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 12px;
-      margin: 18px 0;
-    }
-
-    .summary-card {
-      padding: 15px;
-      border: 1px solid #d1d5db;
-      border-radius: 8px;
-      background: #f9fafb;
-    }
-
-    .summary-card strong {
-      display: block;
-      margin-bottom: 5px;
-    }
-
-    .statement-card,
-    .branch-card,
-    .leaf-card,
-    .response-card {
-      margin: 14px 0;
-      padding: 17px;
-      border: 1px solid #d1d5db;
-      border-radius: 8px;
-      background: #ffffff;
-    }
-
-    .branch-card {
-      border-left: 5px solid #1d4ed8;
-      padding: 22px;
-      margin: 24px 0;
-    }
-
-    .leaf-card {
-      border-left: 4px solid #166534;
-      background: #f8fafc;
-    }
-
-    .response-card {
-      border-left: 4px solid #b45309;
-      background: #fffbeb;
-    }
-
-    .formal-card {
-      border-left: 4px solid #7c3aed;
-      background: #faf5ff;
-    }
-
-    .symbolic-card {
-      border-left: 4px solid #0369a1;
-      background: #f0f9ff;
-    }
-
-    .constraint-card {
-      border-left: 4px solid #b45309;
-      background: #fffbeb;
-    }
-
-    .math-block {
-      overflow-x: auto;
-      padding: 8px 0;
-    }
-
-    .raw-math {
-      margin: 10px 0;
-      padding: 12px;
-      overflow-x: auto;
-      white-space: pre-wrap;
-      word-break: break-word;
-      border: 1px solid #e5e7eb;
-      border-radius: 6px;
-      background: #ffffff;
-      font-family: Consolas, Monaco, "Courier New", monospace;
-    }
-
-    .warning {
-      margin: 16px 0;
-      padding: 15px 18px;
-      background: #fff7ed;
-      border-left: 4px solid #c2410c;
-    }
-
-    .good {
-      margin: 16px 0;
-      padding: 15px 18px;
-      background: #f0fdf4;
-      border-left: 4px solid #166534;
-    }
-
-    .info {
-      margin: 16px 0;
-      padding: 15px 18px;
-      background: #eff6ff;
-      border-left: 4px solid #1d4ed8;
-    }
-
-    .unresolved {
-      margin: 16px 0;
-      padding: 15px 18px;
-      background: #faf5ff;
-      border-left: 4px solid #7c3aed;
-    }
-
-    .error-box {
-      margin: 16px 0;
-      padding: 15px 18px;
-      background: #fef2f2;
-      border-left: 4px solid #b91c1c;
-    }
-
-    .tag {
-      display: inline-block;
-      margin: 3px 5px 3px 0;
-      padding: 3px 8px;
-      border: 1px solid #d1d5db;
-      border-radius: 999px;
-      background: #f9fafb;
-      font-size: 0.82rem;
-      font-weight: bold;
-    }
-
-    .tag-computable {
-      background: #ecfdf5;
-      border-color: #86efac;
-    }
-
-    .tag-formal {
-      background: #faf5ff;
-      border-color: #c4b5fd;
-    }
-
-    .tag-symbolic {
-      background: #eff6ff;
-      border-color: #93c5fd;
-    }
-
-    .tag-constraint {
-      background: #fffbeb;
-      border-color: #fcd34d;
-    }
-
-    .schema {
-      background: #f8fafc;
-      border-left: 4px solid #374151;
-      padding: 18px 22px;
-      margin: 18px 0;
-      overflow-x: auto;
-    }
-
-    .flow {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      margin: 22px 0;
-    }
-
-    .flow-node {
-      padding: 10px 13px;
-      border: 1px solid #9ca3af;
-      border-radius: 7px;
-      background: #ffffff;
-      font-weight: bold;
-    }
-
-    .flow-arrow {
-      color: #6b7280;
-      font-weight: bold;
-    }
-
-    footer {
-      background: #111827;
-      color: #ffffff;
-      text-align: center;
-      padding: 30px 20px;
-    }
-
-    @media (max-width: 760px) {
-      header h1 {
-        font-size: 2rem;
-      }
-
-      main {
-        padding: 28px 15px 55px;
-      }
-
-      .calculator-body {
-        padding: 17px;
-      }
-
-      .controls {
-        grid-template-columns: 1fr;
-      }
-
-      .flow-arrow {
-        width: 100%;
-        text-align: center;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Branch Mathematics Calculator | BM Solver</title>
+<meta name="description" content="Branch Mathematics calculator for symbolic equations, formal mathematical systems, computational Branches, formal dependency clusters, Leaves, realization analysis, Responses, and Root gates.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://branch-mathematics-bm.github.io/calculator.html">
+<link rel="describedby" href="/llms.txt">
+
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']]
+  }
+};
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script src="https://cdn.jsdelivr.net/pyodide/v314.0.6/full/pyodide.js"></script>
+
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;line-height:1.7;color:#202124;background:#fff}
+header{background:#111827;color:#fff;text-align:center;padding:64px 20px}
+header h1{margin:0 0 10px;font-size:2.7rem}
+header p{max-width:1100px;margin:auto;color:#e5e7eb;font-size:1.08rem}
+nav{background:#1f2937;text-align:center;padding:12px 10px}
+nav a{display:inline-block;margin:7px 9px;color:#fff;text-decoration:none}
+nav a:hover{text-decoration:underline}
+main{max-width:1220px;margin:auto;padding:42px 20px 70px}
+section{margin-bottom:52px}
+h2{margin-top:0;padding-bottom:8px;border-bottom:2px solid #e5e7eb}
+h3{margin-top:25px}
+code{background:#f3f4f6;padding:2px 5px;border-radius:4px}
+.calculator-shell{border:1px solid #d1d5db;border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 8px 24px rgba(0,0,0,.06)}
+.calculator-head{padding:22px 24px;background:#f8fafc;border-bottom:1px solid #d1d5db}
+.calculator-body{padding:24px}
+label{display:block;margin-bottom:7px;font-weight:bold}
+textarea{width:100%;min-height:320px;resize:vertical;padding:16px;border:1px solid #9ca3af;border-radius:8px;font-family:Consolas,Monaco,"Courier New",monospace;font-size:1rem;line-height:1.55;color:#111827;background:#fff}
+textarea:focus,input:focus,select:focus{outline:2px solid #374151;outline-offset:1px}
+.controls{display:grid;grid-template-columns:2fr 1fr;gap:15px;margin-top:16px}
+input,select{width:100%;padding:11px 12px;border:1px solid #9ca3af;border-radius:7px;background:#fff;font-size:.98rem}
+.buttons,.example-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+button{border:0;border-radius:7px;padding:11px 17px;font-size:.97rem;font-weight:bold;cursor:pointer}
+.primary{background:#111827;color:#fff}
+.primary:hover{background:#374151}
+.secondary,.example-button{background:#e5e7eb;color:#111827}
+.secondary:hover,.example-button:hover{background:#d1d5db}
+button:disabled{opacity:.55;cursor:wait}
+.example-button{padding:7px 11px;font-size:.88rem;border:1px solid #d1d5db}
+.engine-status{margin-top:18px;padding:12px 15px;border:1px solid #d1d5db;border-radius:7px;background:#f8fafc;font-size:.94rem}
+.engine-ready{border-left:4px solid #166534}
+.engine-loading{border-left:4px solid #1d4ed8}
+.engine-error{border-left:4px solid #b91c1c;background:#fef2f2}
+.help{margin-top:18px;padding:16px 18px;background:#f8fafc;border-left:4px solid #374151}
+.results{margin-top:34px;scroll-margin-top:20px}
+.result-section{margin:30px 0 42px}
+.summary-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:18px 0}
+.summary-card{padding:15px;border:1px solid #d1d5db;border-radius:8px;background:#f9fafb}
+.summary-card strong{display:block;margin-bottom:5px}
+.statement-card,.branch-card,.cluster-card,.leaf-card,.response-card{margin:14px 0;padding:17px;border:1px solid #d1d5db;border-radius:8px;background:#fff}
+.branch-card{border-left:5px solid #1d4ed8;margin:24px 0;padding:22px}
+.cluster-card{border-left:5px solid #7c3aed;margin:24px 0;padding:22px;background:#faf5ff}
+.leaf-card{border-left:4px solid #166534;background:#f0fdf4}
+.response-card{border-left:4px solid #b45309;background:#fffbeb}
+.formal-card{border-left:4px solid #7c3aed;background:#faf5ff}
+.symbolic-card{border-left:4px solid #0369a1;background:#f0f9ff}
+.constraint-card{border-left:4px solid #b45309;background:#fffbeb}
+.raw-math{margin:10px 0;padding:12px;white-space:pre-wrap;overflow-x:auto;word-break:break-word;border:1px solid #e5e7eb;border-radius:6px;background:#fff;font-family:Consolas,Monaco,"Courier New",monospace}
+.math-block{overflow-x:auto;padding:8px 0}
+.tag{display:inline-block;margin:3px 5px 3px 0;padding:3px 8px;border:1px solid #d1d5db;border-radius:999px;background:#f9fafb;font-size:.82rem;font-weight:bold}
+.tag-computable{background:#ecfdf5;border-color:#86efac}
+.tag-symbolic{background:#eff6ff;border-color:#93c5fd}
+.tag-formal{background:#faf5ff;border-color:#c4b5fd}
+.tag-constraint{background:#fffbeb;border-color:#fcd34d}
+.tag-provisional{background:#f5f3ff;border-color:#a78bfa}
+.good,.info,.warning,.unresolved,.error-box{margin:16px 0;padding:15px 18px}
+.good{background:#f0fdf4;border-left:4px solid #166534}
+.info{background:#eff6ff;border-left:4px solid #1d4ed8}
+.warning{background:#fff7ed;border-left:4px solid #c2410c}
+.unresolved{background:#faf5ff;border-left:4px solid #7c3aed}
+.error-box{background:#fef2f2;border-left:4px solid #b91c1c}
+.schema{background:#f8fafc;border-left:4px solid #374151;padding:18px 22px;margin:18px 0;overflow-x:auto}
+.flow{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px;margin:22px 0}
+.flow-node{padding:10px 13px;border:1px solid #9ca3af;border-radius:7px;background:#fff;font-weight:bold}
+.flow-arrow{color:#6b7280;font-weight:bold}
+footer{background:#111827;color:#fff;text-align:center;padding:30px 20px}
+@media(max-width:760px){
+  header h1{font-size:2rem}
+  main{padding:28px 15px 55px}
+  .calculator-body{padding:17px}
+  .controls{grid-template-columns:1fr}
+  .flow-arrow{width:100%;text-align:center}
+}
+</style>
 </head>
 
 <body>
-
 <header>
   <h1>Branch Mathematics Calculator</h1>
-
   <p>
-    Enter ordinary algebra, systems of equations, or formal mathematical
-    notation. Computable mathematics is solved by the native symbolic engine.
-    Formal mathematics that exceeds the current engine is retained as an
-    unresolved part of the Configuration rather than silently discarded.
+    Enter ordinary algebra, systems of equations, or formal mathematical notation.
+    Parsed mathematics may generate verified computational Branches. Unsupported
+    research notation remains visible as unresolved formal structure and is never
+    silently converted into fake variables or fake Branches.
   </p>
 </header>
 
@@ -520,2603 +127,1145 @@
 </nav>
 
 <main>
-
 <section>
-
   <h2>Mathematical Input</h2>
 
   <div class="calculator-shell">
-
     <div class="calculator-head">
-      <strong>Enter as much mathematics as you need.</strong>
-      The calculator classifies every statement before attempting computation.
+      <strong>Enter one or many mathematical statements.</strong>
+      Wrapped or copied multiline expressions are reconstructed when delimiter
+      structure shows that the next physical line is a continuation.
     </div>
 
     <div class="calculator-body">
+      <label for="mathInput">Equations / expressions / formal statements</label>
 
-      <label for="mathInput">
-        Equations / expressions / formal statements
-      </label>
-
-      <textarea
-        id="mathInput"
-        spellcheck="false"
-        placeholder="Examples:
-2*x + y = 7
-x - y = 1
-
-H=λF+(1−λ)G (0<λ<1)
-
-π(F)=τr
-
-SL2(F[X±1,Y±1])∖E2(F[X±1,Y±1])"
-      >2*x + y = 7
+      <textarea id="mathInput" spellcheck="false">2*x + y = 7
 x - y = 1</textarea>
 
       <div class="controls">
-
         <div>
-          <label for="targets">
-            Solve for — optional
-          </label>
-
-          <input
-            id="targets"
-            type="text"
-            placeholder="Example: x, y"
-          >
+          <label for="targets">Solve for — optional</label>
+          <input id="targets" type="text" placeholder="Example: x, y">
         </div>
 
         <div>
-          <label for="domain">
-            Number domain
-          </label>
-
+          <label for="domain">Number domain</label>
           <select id="domain">
             <option value="complex">Complex</option>
             <option value="real">Real</option>
           </select>
         </div>
-
       </div>
 
       <div class="buttons">
-
-        <button
-          id="solveButton"
-          class="primary"
-          type="button"
-          disabled>
-          Analyze with BM
-        </button>
-
-        <button
-          id="clearButton"
-          class="secondary"
-          type="button">
-          Clear
-        </button>
-
+        <button id="solveButton" class="primary" type="button" disabled>Analyze with BM</button>
+        <button id="clearButton" class="secondary" type="button">Clear</button>
       </div>
 
       <div class="example-row">
-
-        <button class="example-button" data-example="linear">
-          Linear system
-        </button>
-
-        <button class="example-button" data-example="quadratic">
-          Quadratic
-        </button>
-
-        <button class="example-button" data-example="independent">
-          Independent Branches
-        </button>
-
-        <button class="example-button" data-example="engineering">
-          Engineering chain
-        </button>
-
-        <button class="example-button" data-example="advanced">
-          Advanced notation
-        </button>
-
+        <button class="example-button" data-example="linear">Linear system</button>
+        <button class="example-button" data-example="quadratic">Quadratic</button>
+        <button class="example-button" data-example="independent">Independent Branches</button>
+        <button class="example-button" data-example="engineering">Engineering chain</button>
+        <button class="example-button" data-example="advanced">Advanced notation</button>
       </div>
 
-      <div
-        id="engineStatus"
-        class="engine-status engine-loading">
-        Loading symbolic engine…
-      </div>
+      <div id="engineStatus" class="engine-status engine-loading">Loading symbolic engine…</div>
 
       <div class="help">
-
-        <strong>Three possible statement statuses</strong>
-
+        <strong>Structural rule</strong>
         <ul>
-          <li>
-            <strong>COMPUTABLE:</strong>
-            the native symbolic engine can operate directly on it.
-          </li>
-
-          <li>
-            <strong>SYMBOLIC:</strong>
-            the notation parses, but contains undefined maps/functions or
-            other data preventing complete solution.
-          </li>
-
-          <li>
-            <strong>FORMAL:</strong>
-            mathematically meaningful notation is retained even when the
-            current CAS cannot safely infer its semantics.
-          </li>
+          <li><strong>COMPUTABLE:</strong> parsed native mathematics the CAS can operate on.</li>
+          <li><strong>SYMBOLIC:</strong> parsed mathematics containing an undefined function or map.</li>
+          <li><strong>CONSTRAINT:</strong> a recognized constraint that is not yet solved by this interface.</li>
+          <li><strong>FORMAL / UNRESOLVED:</strong> mathematical notation whose semantics are preserved rather than guessed.</li>
         </ul>
 
         <p>
-          This means symbols such as
-          <code>λ</code>,
-          <code>π</code>,
-          <code>∑</code>,
-          <code>⊗</code>,
-          <code>∖</code>,
-          and
-          <code>±</code>
-          no longer cause the entire Configuration to be rejected.
+          Only parsed computable incidence is allowed to produce a
+          <strong>verified computational Branch</strong>.
+          Symbolic/constraint statements remain parsed unresolved obligations.
+          Formal notation may be grouped into a
+          <strong>provisional formal cluster</strong>, but that cluster is not
+          asserted to be a BM Branch.
         </p>
-
       </div>
-
     </div>
   </div>
 
   <div id="results" class="results"></div>
-
 </section>
 
-
 <section>
-
   <h2>Calculator Semantics</h2>
 
   <div class="flow">
-    <span class="flow-node">Input</span>
+    <span class="flow-node">Physical text</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-node">Logical statements</span>
     <span class="flow-arrow">→</span>
     <span class="flow-node">Classification</span>
     <span class="flow-arrow">→</span>
-    <span class="flow-node">Dependency</span>
+    <span class="flow-node">Typed incidence</span>
     <span class="flow-arrow">→</span>
-    <span class="flow-node">Branches</span>
-    <span class="flow-arrow">→</span>
-    <span class="flow-node">Native computation</span>
+    <span class="flow-node">Computation</span>
     <span class="flow-arrow">→</span>
     <span class="flow-node">Leaves</span>
     <span class="flow-arrow">→</span>
     <span class="flow-node">Realization audit</span>
   </div>
 
-  <h3>Formal mathematics is not an error</h3>
-
+  <h3>Statement reconstruction</h3>
   <div class="schema">\[
     \boxed{
-    \text{unsupported by current CAS}
+    \text{physical newline}
     \not\Rightarrow
-    \text{mathematically invalid}.
+    \text{new mathematical statement}
     }
   \]</div>
 
-  <p>
-    A formal statement remains part of the Configuration. If that statement is
-    required for the current Branch realization, the calculator reports the
-    realization as unresolved.
-  </p>
-
-  <h3>No silent deletion</h3>
-
+  <h3>Formal token firewall</h3>
   <div class="schema">\[
     \boxed{
-    \text{unresolved obligation}
-    \neq
-    \text{permission to erase the obligation}.
+    \text{unparsed text fragment}
+    \not\Rightarrow
+    \text{mathematical variable}
     }
   \]</div>
 
-  <h3>Partial reductions are not complete solutions</h3>
-
-  <p>
-    The calculator may simplify a computable subset while explicitly stating
-    that formal or symbolic obligations remain.
-  </p>
-
+  <h3>Branch firewall</h3>
   <div class="schema">\[
     \boxed{
-    \text{partial native reduction}
-    \neq
-    \text{global realization}.
+    \text{formal syntactic cluster}
+    \not\Rightarrow
+    \text{BM Branch}
+    }
+  \]</div>
+
+  <h3>Response firewall</h3>
+  <div class="schema">\[
+    \boxed{
+    \text{classification report}
+    \not\Rightarrow
+    \text{computed Response}
     }
   \]</div>
 
   <h3>Tree status</h3>
-
   <div class="schema">\[
     \boxed{
     T=(C,\xi,\Pi,\omega,\Lambda),
     \qquad
-    \xi\in\mathfrak F(C;c).
+    \xi\in\mathfrak F(C;c)
     }
   \]</div>
-
-  <p>
-    A Tree is certified only when the required Configuration has a lawful
-    realization under the mathematics actually supplied.
-  </p>
-
 </section>
-
 </main>
-
 
 <footer>
   <strong>Branch Mathematics Calculator</strong><br>
-  symbolic computation · formal mathematics · Branch decomposition · Leaves ·
-  realization · Tree status · Response
+  symbolic computation · formal preservation · verified Branches · Leaves · realization · Response · Root gate
 </footer>
 
-
 <script>
-
-const PYODIDE_INDEX =
-  "https://cdn.jsdelivr.net/pyodide/v314.0.6/full/";
-
+const PYODIDE_INDEX = "https://cdn.jsdelivr.net/pyodide/v314.0.6/full/";
 let pyodide = null;
-
 
 const PYTHON_ENGINE = String.raw`
 
 import json
 import re as pyre
-
+import unicodedata
 import sympy as sp
-
 from sympy import (
-    Eq,
-    Symbol,
-    Integer,
-    Float,
-    Rational,
-    Function,
-    Number,
-    sin,
-    cos,
-    tan,
-    asin,
-    acos,
-    atan,
-    sinh,
-    cosh,
-    tanh,
-    exp,
-    log,
-    sqrt,
-    Abs,
-    pi,
-    E,
-    I,
-    oo,
-    simplify,
-    latex,
-    Poly,
-    linear_eq_to_matrix,
-    linsolve,
-    solveset,
-    nonlinsolve,
-    S,
-    FiniteSet,
-    EmptySet,
-    Tuple,
-    factor,
-    expand
+    Eq, Symbol, Integer, Float, Rational, Function, Number,
+    sin, cos, tan, asin, acos, atan, sinh, cosh, tanh,
+    exp, log, sqrt, Abs, pi, E, I, oo, simplify, latex,
+    Poly, linear_eq_to_matrix, linsolve, solveset, nonlinsolve,
+    S, FiniteSet, EmptySet, Tuple, factor
 )
-
 from sympy.core.function import AppliedUndef
-
 from sympy.parsing.sympy_parser import (
-    parse_expr,
-    standard_transformations,
-    implicit_multiplication,
-    convert_xor
+    parse_expr, standard_transformations,
+    implicit_multiplication, convert_xor
 )
 
-
-TRANSFORMS = (
-    standard_transformations
-    +
-    (
-        implicit_multiplication,
-        convert_xor
-    )
-)
-
+TRANSFORMS = standard_transformations + (implicit_multiplication, convert_xor)
 
 SAFE_GLOBALS = {
-
     "__builtins__": {},
-
-    "Symbol": Symbol,
-    "Integer": Integer,
-    "Float": Float,
-    "Rational": Rational,
-    "Function": Function,
-    "Number": Number,
-
-    "sin": sin,
-    "cos": cos,
-    "tan": tan,
-
-    "asin": asin,
-    "acos": acos,
-    "atan": atan,
-
-    "sinh": sinh,
-    "cosh": cosh,
-    "tanh": tanh,
-
-    "exp": exp,
-    "log": log,
-    "ln": log,
-    "sqrt": sqrt,
-    "Abs": Abs,
-
-    "pi": pi,
-    "E": E,
-    "I": I,
-    "oo": oo
+    "Symbol": Symbol, "Integer": Integer, "Float": Float,
+    "Rational": Rational, "Function": Function, "Number": Number,
+    "sin": sin, "cos": cos, "tan": tan,
+    "asin": asin, "acos": acos, "atan": atan,
+    "sinh": sinh, "cosh": cosh, "tanh": tanh,
+    "exp": exp, "log": log, "ln": log, "sqrt": sqrt, "Abs": Abs,
+    "pi": pi, "E": E, "I": I, "oo": oo,
 }
-
 
 KNOWN_FUNCTIONS = {
-    "sin",
-    "cos",
-    "tan",
-    "asin",
-    "acos",
-    "atan",
-    "sinh",
-    "cosh",
-    "tanh",
-    "exp",
-    "log",
-    "ln",
-    "sqrt",
-    "Abs"
+    "sin","cos","tan","asin","acos","atan","sinh","cosh","tanh",
+    "exp","log","ln","sqrt","Abs"
 }
+KNOWN_CONSTANTS = {"pi","E","I","oo"}
+RESERVED_INTERNAL = {"Symbol","Integer","Float","Rational","Function","Number"}
 
-
-KNOWN_CONSTANTS = {
-    "pi",
-    "E",
-    "I",
-    "oo"
-}
-
-
-RESERVED_INTERNAL = {
-    "Symbol",
-    "Integer",
-    "Float",
-    "Rational",
-    "Function",
-    "Number"
-}
-
-
-GREEK_LETTERS = (
+GREEK_STRING = (
     "αβγδεζηθικλμνξοπρστυφχψω"
     "ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩ"
 )
+GREEK_CHARS = set(GREEK_STRING)
 
+IDENTIFIER_PATTERN = pyre.compile(r"[^\W\d]\w*", pyre.UNICODE)
+FUNCTION_CALL_PATTERN = pyre.compile(r"([^\W\d]\w*)\s*\(", pyre.UNICODE)
+ALLOWED_COMPUTABLE = pyre.compile(r"^[\w+\-*/^().,\s]+$", pyre.UNICODE)
 
-IDENTIFIER_PATTERN = pyre.compile(
-    r"[^\W\d]\w*",
-    pyre.UNICODE
+ADVANCED_MARKERS = (
+    "∖","⊗","∑","∫","±","∈","∉","⊂","⊆","⊃","⊇",
+    "≅","≈","≍","∼","⇒","⇔","↦","→","←","∥",
+    "⎧","⎨","⎩","{","}","[","]","∞"
 )
 
+LINE_SEPARATOR_PATTERN = pyre.compile(r"\r\n|[\r\n\u0085\u2028\u2029]")
 
-FUNCTION_CALL_PATTERN = pyre.compile(
-    r"([^\W\d]\w*)\s*\(",
-    pyre.UNICODE
-)
-
-
-ALLOWED_COMPUTABLE = pyre.compile(
-    r"^[\w+\-*/^().,<>=\s]+$",
-    pyre.UNICODE
-)
-
-
-FORMAL_MARKERS = (
-    "∖",
-    "⊗",
-    "∑",
-    "±",
-    "∈",
-    "∉",
-    "⊂",
-    "⊆",
-    "⊃",
-    "⊇",
-    "≅",
-    "≈",
-    "⇒",
-    "⇔",
-    "↦",
-    "→",
-    "←",
-    "[",
-    "]",
-    "{",
-    "}"
-)
-
+def normalize_line_separators(text):
+    return LINE_SEPARATOR_PATTERN.sub("\n", text)
 
 def normalize_unicode(text):
-
+    text = unicodedata.normalize("NFC", text)
     replacements = {
-
-        "−": "-",
-        "–": "-",
-        "—": "-",
-
-        "×": "*",
-        "·": "*",
-        "÷": "/",
-
-        "＝": "=",
-        "，": ","
+        "−":"-","–":"-","—":"-",
+        "×":"*","·":"*","∗":"*","÷":"/",
+        "＝":"=","，":",","≤":"<=","≥":">="
     }
-
-
     for source, target in replacements.items():
-
-        text = text.replace(
-            source,
-            target
-        )
-
-
-    # Greek-letter juxtaposition:
-    #
-    # λF -> λ*F
-    # τr -> τ*r
-    #
-    # π(F) remains π(F).
-
+        text = text.replace(source, target)
     text = pyre.sub(
-        rf"([{GREEK_LETTERS}])(?=[A-Za-z_])",
+        rf"([{GREEK_STRING}])(?=[A-Za-z_])",
         r"\1*",
         text
     )
-
-
     return text
 
+def delimiter_profile(text):
+    pairs = {"(":")","[":"]","{":"}"}
+    closing = {v:k for k,v in pairs.items()}
+    stack = []
+    unmatched_closes = 0
+    for char in text:
+        if char in pairs:
+            stack.append(char)
+        elif char in closing:
+            if stack and stack[-1] == closing[char]:
+                stack.pop()
+            else:
+                unmatched_closes += 1
+    return len(stack), unmatched_closes
 
-def split_input(text):
+def ends_with_continuation_operator(text):
+    return bool(
+        pyre.search(r"(?:[=+\-*/^,]|∫|∑|⊗|→|↦)\s*$", text.rstrip())
+    )
 
-    entries = []
+def needs_more_text(text):
+    open_count, _ = delimiter_profile(text)
+    return open_count > 0 or ends_with_continuation_operator(text)
 
+def split_top_level_semicolons(text):
+    parts = []
+    buffer = ""
+    pairs = {"(":")","[":"]","{":"}"}
+    closing = {v:k for k,v in pairs.items()}
+    stack = []
+    for char in text:
+        if char in pairs:
+            stack.append(char)
+        elif char in closing:
+            if stack and stack[-1] == closing[char]:
+                stack.pop()
+        if char == ";" and not stack:
+            if buffer.strip():
+                parts.append(buffer.strip())
+            buffer = ""
+        else:
+            buffer += char
+    if buffer.strip():
+        parts.append(buffer.strip())
+    return parts
 
-    for raw_line in text.splitlines():
+def group_logical_statements(text):
+    normalized = normalize_line_separators(text)
+    physical_lines = normalized.split("\n")
 
-        raw_line = (
-            raw_line
-            .split("#", 1)[0]
-            .strip()
-        )
+    groups = []
+    buffer = ""
+    buffer_line_count = 0
+    nonempty_physical_count = 0
+    joined_line_count = 0
 
+    def flush():
+        nonlocal buffer, buffer_line_count
+        if not buffer.strip():
+            buffer = ""
+            buffer_line_count = 0
+            return
+        pieces = split_top_level_semicolons(buffer.strip())
+        for piece in pieces:
+            groups.append({
+                "text": piece,
+                "source_line_count": buffer_line_count
+            })
+        buffer = ""
+        buffer_line_count = 0
 
-        if not raw_line:
+    for raw_line in physical_lines:
+        line = raw_line.split("#", 1)[0].strip()
 
+        if not line:
+            if buffer and not needs_more_text(buffer):
+                flush()
             continue
 
+        nonempty_physical_count += 1
 
-        pieces = [
-            piece.strip()
-            for piece
-            in raw_line.split(";")
-            if piece.strip()
-        ]
+        if buffer:
+            buffer += " " + line
+            buffer_line_count += 1
+            joined_line_count += 1
+        else:
+            buffer = line
+            buffer_line_count = 1
 
+        if not needs_more_text(buffer):
+            _, unmatched_closes = delimiter_profile(buffer)
+            if unmatched_closes == 0:
+                flush()
 
-        entries.extend(
-            pieces
-        )
+    flush()
 
+    # Repair pass: if a fragment begins with an unmatched close delimiter,
+    # stitch it to the preceding fragment. This handles odd PDF/browser
+    # line separators that survived the first pass.
+    repaired = []
+    for group in groups:
+        text_value = group["text"]
+        _, unmatched_closes = delimiter_profile(text_value)
+        if repaired and unmatched_closes > 0:
+            previous = repaired[-1]
+            previous["text"] += " " + text_value
+            previous["source_line_count"] += group["source_line_count"]
+            joined_line_count += group["source_line_count"]
+        else:
+            repaired.append(group)
 
-    return entries
-
+    return repaired, nonempty_physical_count, joined_line_count
 
 def split_side_condition(raw):
-
-    text = normalize_unicode(
-        raw.strip()
-    ).rstrip(",")
-
-
-    pattern = (
-        r"^(.*?)"
-        r"(?:\s+\("
-        r"([^()]*(?:<=|>=|<|>)[^()]*)"
-        r"\))\s*$"
-    )
-
-
+    text = normalize_unicode(raw.strip()).rstrip(",")
     match = pyre.match(
-        pattern,
+        r"^(.*?)\s+\(([^()]*(?:<=|>=|<|>)[^()]*)\)\s*$",
         text
     )
+    if match and "=" in match.group(1):
+        return match.group(1).strip(), match.group(2).strip()
+    return text, None
 
-
-    if (
-        match
-        and
-        "=" in match.group(1)
-    ):
-
-        return (
-            match.group(1).strip(),
-            match.group(2).strip()
-        )
-
-
-    return (
-        text,
-        None
-    )
-
-
-def contains_formal_marker(text):
-
-    return any(
-        marker in text
-        for marker
-        in FORMAL_MARKERS
-    )
-
-
-def extract_identifiers(text):
-
-    normalized = normalize_unicode(
-        text
-    )
-
-
-    tokens = set(
-        IDENTIFIER_PATTERN.findall(
-            normalized
-        )
-    )
-
-
-    return sorted(
-        token
-        for token
-        in tokens
-        if token not in KNOWN_FUNCTIONS
-        and token not in KNOWN_CONSTANTS
-        and token not in RESERVED_INTERNAL
-    )
-
-
-def make_symbol(
-    name,
-    domain_name
-):
-
+def make_symbol(name, domain_name):
     if domain_name == "real":
+        return Symbol(name, real=True)
+    return Symbol(name)
 
-        return Symbol(
-            name,
-            real=True
-        )
-
-
-    return Symbol(
-        name
-    )
-
-
-def parse_math(
-    text,
-    domain_name="complex"
-):
-
-    text = normalize_unicode(
-        text.strip()
-    )
-
-
+def parse_math(text, domain_name="complex"):
+    text = normalize_unicode(text.strip())
     if not text:
-
-        raise ValueError(
-            "Empty expression."
-        )
-
-
+        raise ValueError("empty expression")
     if "__" in text:
+        raise ValueError("double-underscore names are not allowed")
+    if not ALLOWED_COMPUTABLE.fullmatch(text):
+        raise ValueError("outside current computable parser")
 
-        raise ValueError(
-            "Double-underscore names are not allowed."
-        )
-
-
-    if not ALLOWED_COMPUTABLE.fullmatch(
-        text
-    ):
-
-        raise ValueError(
-            "Expression is outside the current "
-            "computable parser."
-        )
-
-
-    called_names = set(
-        FUNCTION_CALL_PATTERN.findall(
-            text
-        )
-    )
-
-
-    identifiers = set(
-        IDENTIFIER_PATTERN.findall(
-            text
-        )
-    )
-
-
+    called_names = set(FUNCTION_CALL_PATTERN.findall(text))
+    identifiers = set(IDENTIFIER_PATTERN.findall(text))
     local_dict = {}
 
-
     for name in identifiers:
-
-        if name in KNOWN_CONSTANTS:
-
+        if name in KNOWN_FUNCTIONS or name in KNOWN_CONSTANTS:
             continue
-
-
-        if name in KNOWN_FUNCTIONS:
-
-            continue
-
-
         if name in RESERVED_INTERNAL:
-
-            raise ValueError(
-                "'"
-                +
-                name
-                +
-                "' is reserved."
-            )
-
-
+            raise ValueError("'" + name + "' is reserved")
         if name in called_names:
-
-            local_dict[name] = Function(
-                name
-            )
-
-
+            local_dict[name] = Function(name)
         else:
-
-            local_dict[name] = make_symbol(
-                name,
-                domain_name
-            )
-
+            local_dict[name] = make_symbol(name, domain_name)
 
     return parse_expr(
-
         text,
-
         transformations=TRANSFORMS,
-
         global_dict=SAFE_GLOBALS,
-
         local_dict=local_dict,
-
         evaluate=True
     )
 
-
 def latex_safe(obj):
-
     try:
-
-        return latex(
-            obj
-        )
-
-
+        return latex(obj)
     except Exception:
+        return str(obj)
 
-        return str(
-            obj
-        )
+def strong_formal_tokens(text):
+    normalized = normalize_unicode(text)
+    tokens = set()
 
+    for char in normalized:
+        if char in GREEK_CHARS:
+            tokens.add(char)
 
-def formal_reasons(text):
+    for head in FUNCTION_CALL_PATTERN.findall(normalized):
+        if head in KNOWN_FUNCTIONS:
+            continue
+        if len(head) == 1:
+            tokens.add(head)
+        elif head.isalpha() and head[0].isupper() and len(head) <= 4:
+            tokens.add(head)
 
-    reasons = []
+    if "=" in normalized:
+        lhs = normalized.split("=", 1)[0].strip()
+        match = pyre.match(r"^([^\W\d]\w*)", lhs, pyre.UNICODE)
+        if match:
+            name = match.group(1)
+            if len(name) == 1:
+                tokens.add(name)
+            elif name.isalpha() and name[0].isupper() and len(name) <= 4:
+                tokens.add(name)
 
+    return sorted(tokens)
 
+def formal_kind(text):
+    if "otherwise" in text or any(m in text for m in ("⎧","⎨","⎩")):
+        return "piecewise definition"
+    if "∫" in text:
+        return "formal integral relation"
+    if "∑" in text and "⊗" in text:
+        return "indexed tensor-sum relation"
+    if "∥" in text:
+        return "norm / functional inequality"
+    if "∈" in text and "{" in text:
+        return "set-builder definition"
+    if any(m in text for m in ("≍","≈","∼")):
+        return "comparison / asymptotic relation"
     if "∖" in text:
+        return "set-difference / quotient-like expression"
+    return "formal mathematical statement"
 
-        reasons.append(
-            "Contains ∖. The calculator will not "
-            "guess whether this denotes set difference, "
-            "coset/quotient notation, or another "
-            "context-specific operation."
-        )
-
-
-    if "⊗" in text:
-
-        reasons.append(
-            "Contains tensor-product notation. "
-            "The tensor factors and spaces must be "
-            "declared before automatic reduction."
-        )
-
-
-    if "∑" in text:
-
-        reasons.append(
-            "Contains indexed summation notation. "
-            "The compact index syntax is preserved "
-            "rather than guessed."
-        )
-
-
-    if "±" in text:
-
-        reasons.append(
-            "Contains ± notation. In an exponent or "
-            "index such as X±1, the calculator will "
-            "not guess whether this means two values, "
-            "Laurent generators, or another convention."
-        )
-
-
-    if "[" in text or "]" in text:
-
-        reasons.append(
-            "Contains bracketed algebraic/index notation "
-            "that is not automatically interpreted as "
-            "ordinary scalar arithmetic."
-        )
-
-
-    if not reasons:
-
-        reasons.append(
-            "The statement exceeds the current safe "
-            "symbolic parser and is retained formally."
-        )
-
-
-    return reasons
-
-
-def classify_statement(
-    raw,
-    statement_id,
-    domain_name
-):
-
-    main,
-    side_condition = split_side_condition(
-        raw
+def formal_reason(text):
+    kind = formal_kind(text)
+    reasons = {
+        "formal integral relation":
+            "Integral notation is preserved. Bounds, differential, decorated functions, and copied superscript/subscript structure are not guessed.",
+        "indexed tensor-sum relation":
+            "Indexed sum and tensor-product structure is preserved, but compact copied index syntax is not reconstructed without additional typing.",
+        "norm / functional inequality":
+            "Norm-space notation is preserved. The calculator does not guess the normed spaces, measure, exponent convention, or constant semantics.",
+        "set-builder definition":
+            "Set-builder structure is recognized and preserved without guessing the surrounding algebraic category.",
+        "piecewise definition":
+            "Piecewise structure is recognized and preserved. The current adapter does not yet reconstruct all copied case-layout typography.",
+        "comparison / asymptotic relation":
+            "Comparison/asymptotic notation is preserved. Its precise constants and regime must come from the native mathematics.",
+        "set-difference / quotient-like expression":
+            "The operation is preserved without guessing its exact native interpretation."
+    }
+    return reasons.get(
+        kind,
+        "The statement exceeds the current safe symbolic parser and is retained formally."
     )
 
+def classify_statement(raw, statement_id, domain_name, source_line_count=1):
+    main, side_condition = split_side_condition(raw)
 
-    raw_for_tokens = main
-
-
-    if side_condition:
-
-        raw_for_tokens += (
-            " "
-            +
-            side_condition
-        )
-
-
-    # ======================================================
-    # FORMAL MATHEMATICS
-    # ======================================================
-
-    if contains_formal_marker(
-        main
-    ):
-
+    if any(marker in raw for marker in ADVANCED_MARKERS):
         return {
-
-            "id":
-            statement_id,
-
-            "raw":
-            raw,
-
-            "normalized":
-            main,
-
-            "status":
-            "formal",
-
-            "kind":
-            "formal statement",
-
-            "tokens":
-            extract_identifiers(
-                raw_for_tokens
-            ),
-
-            "side_condition":
-            side_condition,
-
-            "reasons":
-            formal_reasons(
-                main
-            )
+            "id": statement_id,
+            "raw": raw,
+            "source_line_count": source_line_count,
+            "status": "formal",
+            "kind": formal_kind(raw),
+            "strong_tokens": strong_formal_tokens(raw),
+            "side_condition": side_condition,
+            "reason": formal_reason(raw)
         }
-
-
-    # ======================================================
-    # INEQUALITY / CONSTRAINT STATEMENT
-    # ======================================================
-
-    if (
-        ("<" in main or ">" in main)
-        and
-        "=" not in main
-    ):
-
-        return {
-
-            "id":
-            statement_id,
-
-            "raw":
-            raw,
-
-            "normalized":
-            main,
-
-            "status":
-            "constraint",
-
-            "kind":
-            "constraint",
-
-            "tokens":
-            extract_identifiers(
-                main
-            ),
-
-            "side_condition":
-            None,
-
-            "reasons": [
-                "Constraint retained as a mathematical "
-                "obligation. Full inequality solving is "
-                "not yet part of this calculator."
-            ]
-        }
-
-
-    # ======================================================
-    # EQUATION
-    # ======================================================
 
     if main.count("=") == 1:
-
-        lhs_text,
-        rhs_text = [
-            piece.strip()
-            for piece
-            in main.split(
-                "=",
-                1
-            )
-        ]
-
-
+        lhs_text, rhs_text = [part.strip() for part in main.split("=", 1)]
         try:
-
-            lhs = parse_math(
-                lhs_text,
-                domain_name
-            )
-
-
-            rhs = parse_math(
-                rhs_text,
-                domain_name
-            )
-
-
-            equation = Eq(
-                lhs,
-                rhs,
-                evaluate=False
-            )
-
-
-            residual = simplify(
-                lhs - rhs
-            )
-
-
-            unknown_functions = sorted(
-                {
-                    str(atom.func)
-                    for atom
-                    in equation.atoms(
-                        AppliedUndef
-                    )
-                }
-            )
-
-
-            symbols = sorted(
-                {
-                    symbol.name
-                    for symbol
-                    in equation.free_symbols
-                }
-            )
-
-
-            if unknown_functions:
-
-                status = "symbolic"
-
-                kind = (
-                    "symbolic relation with "
-                    "undefined map/function"
-                )
-
-
-            else:
-
-                status = "computable"
-
-                kind = "equation"
-
-
+            lhs = parse_math(lhs_text, domain_name)
+            rhs = parse_math(rhs_text, domain_name)
+            equation = Eq(lhs, rhs, evaluate=False)
+            residual = simplify(lhs - rhs)
+            undefined_functions = sorted({
+                str(atom.func)
+                for atom in equation.atoms(AppliedUndef)
+            })
+            tokens = {symbol.name for symbol in equation.free_symbols}
+            tokens.update(undefined_functions)
             return {
-
-                "id":
-                statement_id,
-
-                "raw":
-                raw,
-
-                "normalized":
-                main,
-
-                "status":
-                status,
-
-                "kind":
-                kind,
-
-                "tokens":
-                symbols,
-
-                "side_condition":
-                side_condition,
-
-                "equation":
-                equation,
-
-                "residual":
-                residual,
-
-                "equation_latex":
-                latex_safe(
-                    equation
-                ),
-
-                "residual_latex":
-                latex_safe(
-                    Eq(
-                        residual,
-                        0,
-                        evaluate=False
-                    )
-                ),
-
-                "unknown_functions":
-                unknown_functions,
-
-                "reasons":
-                (
-                    [
-                        "Undefined symbolic map/function: "
-                        +
-                        ", ".join(
-                            unknown_functions
-                        )
-                        +
-                        ". The relation is preserved, but "
-                        "the calculator will not invent a "
-                        "definition for it."
-                    ]
-                    if unknown_functions
-                    else
-                    []
+                "id": statement_id,
+                "raw": raw,
+                "source_line_count": source_line_count,
+                "status": "symbolic" if undefined_functions else "computable",
+                "kind": "symbolic relation" if undefined_functions else "equation",
+                "tokens": sorted(tokens),
+                "side_condition": side_condition,
+                "equation": equation,
+                "residual": residual,
+                "equation_latex": latex_safe(equation),
+                "residual_latex": latex_safe(Eq(residual, 0, evaluate=False)),
+                "unknown_functions": undefined_functions,
+                "reason": (
+                    "Undefined map/function " + ", ".join(undefined_functions) +
+                    " is preserved symbolically."
+                    if undefined_functions else None
                 )
             }
-
-
         except Exception as exc:
-
             return {
-
-                "id":
-                statement_id,
-
-                "raw":
-                raw,
-
-                "normalized":
-                main,
-
-                "status":
-                "formal",
-
-                "kind":
-                "formal statement",
-
-                "tokens":
-                extract_identifiers(
-                    raw_for_tokens
-                ),
-
-                "side_condition":
-                side_condition,
-
-                "reasons": [
-                    "The notation could not be reduced "
-                    "safely by the current symbolic "
-                    "parser: "
-                    +
-                    str(exc)
-                ]
+                "id": statement_id,
+                "raw": raw,
+                "source_line_count": source_line_count,
+                "status": "formal",
+                "kind": "formal mathematical statement",
+                "strong_tokens": strong_formal_tokens(raw),
+                "side_condition": side_condition,
+                "reason": "The relation could not be safely parsed: " + str(exc)
             }
-
-
-    # ======================================================
-    # MULTIPLE EQUAL SIGNS
-    # ======================================================
 
     if main.count("=") > 1:
-
         return {
-
-            "id":
-            statement_id,
-
-            "raw":
-            raw,
-
-            "normalized":
-            main,
-
-            "status":
-            "formal",
-
-            "kind":
-            "formal indexed/relation statement",
-
-            "tokens":
-            extract_identifiers(
-                raw_for_tokens
-            ),
-
-            "side_condition":
-            side_condition,
-
-            "reasons": [
-                "Multiple '=' symbols occur in one "
-                "statement. Rather than guessing which "
-                "belongs to an index bound and which "
-                "defines the outer equation, the "
-                "calculator preserves the statement "
-                "formally."
-            ]
+            "id": statement_id,
+            "raw": raw,
+            "source_line_count": source_line_count,
+            "status": "formal",
+            "kind": "formal indexed/relation statement",
+            "strong_tokens": strong_formal_tokens(raw),
+            "side_condition": side_condition,
+            "reason": (
+                "Multiple equality signs occur in one compact statement. "
+                "The calculator will not guess which equality belongs to an index bound."
+            )
         }
 
-
-    # ======================================================
-    # EXPRESSION
-    # ======================================================
+    if any(comparator in main for comparator in ("<=",">=","<",">")):
+        return {
+            "id": statement_id,
+            "raw": raw,
+            "source_line_count": source_line_count,
+            "status": "constraint",
+            "kind": "constraint",
+            "tokens": sorted(set(IDENTIFIER_PATTERN.findall(main))),
+            "side_condition": None,
+            "reason": "Constraint recognized. General constraint solving is not yet enabled."
+        }
 
     try:
-
-        expression = parse_math(
-            main,
-            domain_name
-        )
-
-
-        unknown_functions = sorted(
-            {
-                str(atom.func)
-                for atom
-                in expression.atoms(
-                    AppliedUndef
-                )
-            }
-        )
-
-
-        if unknown_functions:
-
-            status = "symbolic"
-
-            kind = (
-                "symbolic expression with "
-                "undefined map/function"
-            )
-
-
-        else:
-
-            status = "computable"
-
-            kind = "expression"
-
-
+        expression = parse_math(main, domain_name)
+        undefined_functions = sorted({
+            str(atom.func)
+            for atom in expression.atoms(AppliedUndef)
+        })
+        tokens = {symbol.name for symbol in expression.free_symbols}
+        tokens.update(undefined_functions)
         return {
-
-            "id":
-            statement_id,
-
-            "raw":
-            raw,
-
-            "normalized":
-            main,
-
-            "status":
-            status,
-
-            "kind":
-            kind,
-
-            "tokens":
-            sorted(
-                {
-                    symbol.name
-                    for symbol
-                    in expression.free_symbols
-                }
-            ),
-
-            "side_condition":
-            side_condition,
-
-            "expression":
-            expression,
-
-            "expression_latex":
-            latex_safe(
-                expression
-            ),
-
-            "unknown_functions":
-            unknown_functions,
-
-            "reasons":
-            (
-                [
-                    "Undefined symbolic map/function: "
-                    +
-                    ", ".join(
-                        unknown_functions
-                    )
-                ]
-                if unknown_functions
-                else
-                []
+            "id": statement_id,
+            "raw": raw,
+            "source_line_count": source_line_count,
+            "status": "symbolic" if undefined_functions else "computable",
+            "kind": "symbolic expression" if undefined_functions else "expression",
+            "tokens": sorted(tokens),
+            "side_condition": side_condition,
+            "expression": expression,
+            "expression_latex": latex_safe(expression),
+            "unknown_functions": undefined_functions,
+            "reason": (
+                "Undefined map/function " + ", ".join(undefined_functions) +
+                " is preserved symbolically."
+                if undefined_functions else None
             )
         }
-
-
     except Exception as exc:
-
         return {
-
-            "id":
-            statement_id,
-
-            "raw":
-            raw,
-
-            "normalized":
-            main,
-
-            "status":
-            "formal",
-
-            "kind":
-            "formal expression",
-
-            "tokens":
-            extract_identifiers(
-                raw_for_tokens
-            ),
-
-            "side_condition":
-            side_condition,
-
-            "reasons": [
-                "The statement is retained formally: "
-                +
-                str(exc)
-            ]
+            "id": statement_id,
+            "raw": raw,
+            "source_line_count": source_line_count,
+            "status": "formal",
+            "kind": formal_kind(raw),
+            "strong_tokens": strong_formal_tokens(raw),
+            "side_condition": side_condition,
+            "reason": "The statement is retained formally: " + str(exc)
         }
 
-
-def statement_json_view(
-    statement
-):
-
-    output = {
-
-        "id":
-        statement["id"],
-
-        "raw":
-        statement["raw"],
-
-        "normalized":
-        statement["normalized"],
-
-        "status":
-        statement["status"],
-
-        "kind":
-        statement["kind"],
-
-        "tokens":
-        statement["tokens"],
-
-        "side_condition":
-        statement.get(
-            "side_condition"
-        ),
-
-        "reasons":
-        statement.get(
-            "reasons",
-            []
-        )
+def public_statement(statement):
+    result = {
+        "id": statement["id"],
+        "raw": statement["raw"],
+        "source_line_count": statement.get("source_line_count", 1),
+        "status": statement["status"],
+        "kind": statement["kind"],
+        "side_condition": statement.get("side_condition"),
+        "tokens": statement.get("tokens", []),
+        "strong_tokens": statement.get("strong_tokens", []),
+        "reason": statement.get("reason")
     }
-
-
     for key in (
-        "equation_latex",
-        "residual_latex",
-        "expression_latex",
-        "unknown_functions"
+        "equation_latex","residual_latex",
+        "expression_latex","unknown_functions"
     ):
-
         if key in statement:
+            result[key] = statement[key]
+    return result
 
-            output[key] = statement[key]
+def classify_solution_set(solution_set):
+    if solution_set == EmptySet:
+        return "empty"
+    if isinstance(solution_set, FiniteSet):
+        if len(solution_set) == 1:
+            value = next(iter(solution_set))
+            if isinstance(value, Tuple):
+                free_symbols = set()
+                for component in value:
+                    free_symbols |= component.free_symbols
+                return "family" if free_symbols else "unique"
+            return "family" if getattr(value, "free_symbols", set()) else "unique"
+        return "family"
+    return "family"
 
-
-    return output
-
-
-def solve_computable_branch(
-    statements,
-    domain_name,
-    requested_targets
-):
-
+def solve_computational_branch(statements, domain_name, requested_targets):
     equations = [
-        statement
-        for statement
-        in statements
-        if statement["status"]
-        ==
-        "computable"
-        and
-        "equation" in statement
+        s for s in statements
+        if s["status"] == "computable" and "equation" in s
     ]
-
-
     expressions = [
-        statement
-        for statement
-        in statements
-        if statement["status"]
-        ==
-        "computable"
-        and
-        "expression" in statement
+        s for s in statements
+        if s["status"] == "computable" and "expression" in s
     ]
-
-
-    blockers = [
-        statement
-        for statement
-        in statements
-        if statement["status"]
-        in (
-            "formal",
-            "symbolic",
-            "constraint"
-        )
-        or
-        statement.get(
-            "side_condition"
-        )
+    side_condition_ids = [
+        s["id"] for s in statements if s.get("side_condition")
     ]
-
-
     leaves = []
 
-
-    # ======================================================
-    # EVERY PARSED EQUATION GETS A NORMALIZATION LEAF
-    # ======================================================
-
-    for statement in equations:
-
+    for s in equations:
         leaves.append({
-
-            "label":
-            "L"
-            +
-            str(
-                statement["id"]
-            ),
-
-            "title":
-            "Normalized equation",
-
-            "latex":
-            statement[
-                "residual_latex"
-            ],
-
-            "text":
-            "Derived by rewriting lhs - rhs = 0."
+            "label": "L" + str(s["id"]),
+            "title": "Normalized equation",
+            "latex": s["residual_latex"],
+            "text": "Derived by rewriting lhs - rhs = 0."
         })
 
-
-    # ======================================================
-    # EVERY COMPUTABLE EXPRESSION GETS A SIMPLIFICATION LEAF
-    # ======================================================
-
-    for statement in expressions:
-
-        simplified = simplify(
-            statement["expression"]
-        )
-
-
+    for s in expressions:
+        simplified = simplify(s["expression"])
         leaves.append({
-
-            "label":
-            "L"
-            +
-            str(
-                statement["id"]
-            ),
-
-            "title":
-            "Simplified expression",
-
-            "latex":
-            latex_safe(
-                simplified
-            ),
-
-            "text":
-            "Native symbolic simplification."
+            "label": "L" + str(s["id"]),
+            "title": "Simplified expression",
+            "latex": latex_safe(simplified),
+            "text": "Native symbolic simplification."
         })
-
-
-    # ======================================================
-    # IF FORMAL/SYMBOLIC OBLIGATIONS EXIST, DO NOT CLAIM
-    # A COMPLETE BRANCH REALIZATION.
-    # ======================================================
-
-    if blockers:
-
-        return {
-
-            "status":
-            "unresolved",
-
-            "complete":
-            False,
-
-            "leaves":
-            leaves,
-
-            "response_latex":
-            [],
-
-            "response_text":
-            (
-                "Partial native reductions were computed "
-                "where possible, but this Branch contains "
-                "formal, symbolic, side-condition, or "
-                "constraint obligations. No complete "
-                "Branch realization is certified."
-            ),
-
-            "blocker_ids":
-            [
-                blocker["id"]
-                for blocker
-                in blockers
-            ]
-        }
-
 
     if not equations:
-
         return {
-
-            "status":
-            "expression-only",
-
-            "complete":
-            True,
-
-            "leaves":
-            leaves,
-
-            "response_latex":
-            [
-                leaf["latex"]
-                for leaf
-                in leaves
-            ],
-
-            "response_text":
-            "Expression simplification completed.",
-
-            "blocker_ids":
-            []
+            "status": "expression-only",
+            "complete": True,
+            "leaves": leaves,
+            "response_latex": [leaf["latex"] for leaf in leaves],
+            "response_text": "Expression simplification completed.",
+            "blocker_ids": side_condition_ids
         }
 
-
-    residuals = [
-        statement["residual"]
-        for statement
-        in equations
-    ]
-
-
-    all_symbols = sorted(
-
-        set().union(
-            *[
-                statement[
-                    "equation"
-                ].free_symbols
-                for statement
-                in equations
-            ]
-        ),
-
-        key=lambda symbol:
-        symbol.name
+    residuals = [s["residual"] for s in equations]
+    symbols = sorted(
+        set().union(*[s["equation"].free_symbols for s in equations]),
+        key=lambda symbol: symbol.name
     )
 
-
-    if requested_targets:
-
-        symbol_map = {
-            symbol.name:
-            symbol
-            for symbol
-            in all_symbols
-        }
-
-
-        targets = [
-            symbol_map[name]
-            for name
-            in requested_targets
-            if name
-            in symbol_map
-        ]
-
-
-    else:
-
-        targets = list(
-            all_symbols
-        )
-
-
-    # ======================================================
-    # CONSTANT EQUATIONS
-    # ======================================================
-
-    if not all_symbols:
-
-        all_true = all(
-            simplify(
-                residual
-            )
-            ==
-            0
-            for residual
-            in residuals
-        )
-
-
-        if all_true:
-
-            return {
-
-                "status":
-                "unique",
-
-                "complete":
-                True,
-
-                "leaves":
-                leaves,
-
-                "response_latex":
-                [r"\mathrm{True}"],
-
-                "response_text":
-                "All constant constraints are true.",
-
-                "blocker_ids":
-                []
-            }
-
-
+    if not symbols:
+        all_true = all(simplify(residual) == 0 for residual in residuals)
         return {
-
-            "status":
-            "empty",
-
-            "complete":
-            True,
-
-            "leaves":
-            leaves,
-
-            "response_latex":
-            [r"\varnothing"],
-
-            "response_text":
-            "The constant constraints are inconsistent.",
-
-            "blocker_ids":
-            []
+            "status": "unique" if all_true else "empty",
+            "complete": not side_condition_ids,
+            "leaves": leaves,
+            "response_latex": [r"\mathrm{True}" if all_true else r"\varnothing"],
+            "response_text": (
+                "All constant relations are satisfied."
+                if all_true else
+                "The constant relations are inconsistent."
+            ),
+            "blocker_ids": side_condition_ids
         }
 
+    symbol_map = {symbol.name:symbol for symbol in symbols}
+    branch_targets = [
+        symbol_map[name]
+        for name in requested_targets
+        if name in symbol_map
+    ]
 
-    # ======================================================
-    # DETECT LINEAR SYSTEM
-    # ======================================================
+    if branch_targets and set(branch_targets) != set(symbols):
+        try:
+            solutions = sp.solve(
+                [s["equation"] for s in equations],
+                branch_targets,
+                dict=True,
+                simplify=True
+            )
+            response_latex = [latex_safe(solution) for solution in solutions]
+            if solutions:
+                leaves.append({
+                    "label": "L-TARGET",
+                    "title": "Targeted solution relation",
+                    "latex": r"\left\{" + ",\;".join(response_latex) + r"\right\}",
+                    "text": "Native targeted symbolic solve."
+                })
+                return {
+                    "status": "targeted",
+                    "complete": False,
+                    "leaves": leaves,
+                    "response_latex": response_latex,
+                    "response_text": (
+                        "A targeted symbolic Response was obtained, "
+                        "but non-target variables or obligations remain."
+                    ),
+                    "blocker_ids": side_condition_ids
+                }
+        except Exception:
+            pass
 
-    linear = False
-
-
+    linear_system = False
     try:
-
-        linear = all(
-
-            Poly(
-                residual,
-                *all_symbols
-            ).total_degree()
-            <=
-            1
-
-            for residual
-            in residuals
+        linear_system = all(
+            Poly(residual, *symbols).total_degree() <= 1
+            for residual in residuals
         )
-
-
     except Exception:
+        linear_system = False
 
-        linear = False
-
-
-    # ======================================================
-    # LINEAR SYSTEM
-    # ======================================================
-
-    if linear:
-
+    if linear_system:
         try:
-
-            matrix_A,
-            vector_b = linear_eq_to_matrix(
-                [
-                    statement["equation"]
-                    for statement
-                    in equations
-                ],
-                all_symbols
+            matrix_A, vector_b = linear_eq_to_matrix(
+                [s["equation"] for s in equations],
+                symbols
             )
-
-
-            augmented = matrix_A.row_join(
-                vector_b
-            )
-
-
-            reduced,
-            pivots = augmented.rref()
-
+            augmented = matrix_A.row_join(vector_b)
+            reduced, pivots = augmented.rref()
 
             leaves.append({
-
-                "label":
-                "L-MATRIX",
-
-                "title":
-                "Augmented matrix",
-
-                "latex":
-                latex_safe(
-                    augmented
-                ),
-
-                "text":
-                "Linear constraints converted to matrix form."
+                "label": "L-MATRIX",
+                "title": "Augmented matrix",
+                "latex": latex_safe(augmented),
+                "text": "Linear relations converted to matrix form."
+            })
+            leaves.append({
+                "label": "L-RREF",
+                "title": "Reduced row-echelon form",
+                "latex": latex_safe(reduced),
+                "text": "Exact row reduction."
             })
 
+            solution_set = linsolve((matrix_A, vector_b), *symbols)
 
             leaves.append({
-
-                "label":
-                "L-RREF",
-
-                "title":
-                "Reduced row-echelon form",
-
-                "latex":
-                latex_safe(
-                    reduced
-                ),
-
-                "text":
-                "Exact row reduction."
+                "label": "L-SOLVE",
+                "title": "Solution relation",
+                "latex": latex_safe(solution_set),
+                "text": "Exact linear-system solution set."
             })
 
-
-            solution_set = linsolve(
-                (
-                    matrix_A,
-                    vector_b
-                ),
-                *all_symbols
-            )
-
-
-            leaves.append({
-
-                "label":
-                "L-SOLVE",
-
-                "title":
-                "Solution relation",
-
-                "latex":
-                latex_safe(
-                    solution_set
-                ),
-
-                "text":
-                "Exact linear solution set."
-            })
-
-
-            if solution_set == EmptySet:
-
-                status = "empty"
-
-
-            elif (
-                isinstance(
-                    solution_set,
-                    FiniteSet
-                )
-                and
-                len(solution_set)
-                ==
-                1
-            ):
-
-                tuple_value = next(
-                    iter(
-                        solution_set
-                    )
-                )
-
-
-                free_symbols = set()
-
-
-                for value in tuple_value:
-
-                    free_symbols |= (
-                        value.free_symbols
-                    )
-
-
-                if free_symbols:
-
-                    status = "family"
-
-                else:
-
-                    status = "unique"
-
-
-            else:
-
-                status = "family"
-
+            status = classify_solution_set(solution_set)
 
             return {
-
-                "status":
-                status,
-
-                "complete":
-                True,
-
-                "leaves":
-                leaves,
-
-                "response_latex":
-                [
-                    latex_safe(
-                        solution_set
-                    )
-                ],
-
-                "response_text":
-                "Exact linear-system solution set.",
-
-                "blocker_ids":
-                []
+                "status": "unresolved" if side_condition_ids else status,
+                "complete": not side_condition_ids,
+                "leaves": leaves,
+                "response_latex": [latex_safe(solution_set)],
+                "response_text": (
+                    "Linear Response computed, but side conditions remain unresolved."
+                    if side_condition_ids else
+                    "Exact linear-system Response."
+                ),
+                "blocker_ids": side_condition_ids
             }
-
-
         except Exception as exc:
-
             return {
-
-                "status":
-                "unresolved",
-
-                "complete":
-                False,
-
-                "leaves":
-                leaves,
-
-                "response_latex":
-                [],
-
-                "response_text":
-                (
-                    "Linear symbolic solving did not "
-                    "complete: "
-                    +
-                    str(exc)
-                ),
-
-                "blocker_ids":
-                []
+                "status": "unresolved",
+                "complete": False,
+                "leaves": leaves,
+                "response_latex": [],
+                "response_text": "Linear symbolic solve did not complete: " + str(exc),
+                "blocker_ids": side_condition_ids
             }
 
-
-    # ======================================================
-    # ONE-VARIABLE POLYNOMIAL
-    # ======================================================
-
-    if (
-        len(equations) == 1
-        and
-        len(all_symbols) == 1
-    ):
-
-        variable = all_symbols[0]
-
-
+    if len(equations) == 1 and len(symbols) == 1:
+        variable = symbols[0]
         try:
-
-            polynomial = Poly(
-                residuals[0],
-                variable
-            )
-
+            polynomial = Poly(residuals[0], variable)
 
             leaves.append({
-
-                "label":
-                "L-FACTOR",
-
-                "title":
-                "Polynomial factorization",
-
-                "latex":
-                latex_safe(
-                    factor(
-                        residuals[0]
-                    )
-                ),
-
-                "text":
-                (
-                    "Polynomial degree "
-                    +
-                    str(
-                        polynomial.degree()
-                    )
-                    +
-                    "."
-                )
+                "label": "L-FACTOR",
+                "title": "Polynomial factorization",
+                "latex": latex_safe(factor(residuals[0])),
+                "text": "Polynomial degree " + str(polynomial.degree()) + "."
             })
 
-
-            solve_domain = (
-                S.Reals
-                if domain_name
-                ==
-                "real"
-                else
-                S.Complexes
-            )
-
-
+            solve_domain = S.Reals if domain_name == "real" else S.Complexes
             solution_set = solveset(
                 residuals[0],
                 variable,
                 domain=solve_domain
             )
 
-
             leaves.append({
-
-                "label":
-                "L-SOLVE",
-
-                "title":
-                "Solution set",
-
-                "latex":
-                latex_safe(
-                    solution_set
-                ),
-
-                "text":
-                "Exact symbolic solution."
+                "label": "L-SOLVE",
+                "title": "Solution set",
+                "latex": latex_safe(solution_set),
+                "text": "Exact symbolic solution over selected domain."
             })
 
-
-            if solution_set == EmptySet:
-
-                status = "empty"
-
-
-            elif isinstance(
-                solution_set,
-                FiniteSet
-            ):
-
-                status = (
-                    "unique"
-                    if
-                    len(solution_set)
-                    ==
-                    1
-                    else
-                    "family"
-                )
-
-
-            else:
-
-                status = "family"
-
+            status = classify_solution_set(solution_set)
 
             return {
-
-                "status":
-                status,
-
-                "complete":
-                True,
-
-                "leaves":
-                leaves,
-
-                "response_latex":
-                [
-                    latex_safe(
-                        solution_set
-                    )
-                ],
-
-                "response_text":
-                "Exact symbolic solution set.",
-
-                "blocker_ids":
-                []
+                "status": "unresolved" if side_condition_ids else status,
+                "complete": not side_condition_ids,
+                "leaves": leaves,
+                "response_latex": [latex_safe(solution_set)],
+                "response_text": (
+                    "Polynomial Response computed, but side conditions remain unresolved."
+                    if side_condition_ids else
+                    "Exact symbolic Response."
+                ),
+                "blocker_ids": side_condition_ids
             }
-
-
         except Exception:
-
             pass
 
-
-    # ======================================================
-    # GENERAL NONLINEAR SYSTEM
-    # ======================================================
-
     try:
-
-        solution_set = nonlinsolve(
-            residuals,
-            all_symbols
-        )
-
+        solution_set = nonlinsolve(residuals, symbols)
 
         leaves.append({
-
-            "label":
-            "L-SOLVE",
-
-            "title":
-            "Solution relation",
-
-            "latex":
-            latex_safe(
-                solution_set
-            ),
-
-            "text":
-            "Native nonlinear symbolic solution."
+            "label": "L-SOLVE",
+            "title": "Solution relation",
+            "latex": latex_safe(solution_set),
+            "text": "Native nonlinear symbolic solve."
         })
 
-
-        if solution_set == EmptySet:
-
-            status = "empty"
-
-
-        elif isinstance(
-            solution_set,
-            FiniteSet
-        ):
-
-            solutions = list(
-                solution_set
-            )
-
-
-            if len(solutions) == 1:
-
-                only = solutions[0]
-
-                if isinstance(
-                    only,
-                    Tuple
-                ):
-
-                    free_symbols = set()
-
-
-                    for value in only:
-
-                        free_symbols |= (
-                            value.free_symbols
-                        )
-
-
-                    status = (
-                        "unique"
-                        if not free_symbols
-                        else
-                        "family"
-                    )
-
-
-                else:
-
-                    status = "family"
-
-
-            else:
-
-                status = "family"
-
-
-        else:
-
-            status = "family"
-
+        status = classify_solution_set(solution_set)
 
         return {
-
-            "status":
-            status,
-
-            "complete":
-            True,
-
-            "leaves":
-            leaves,
-
-            "response_latex":
-            [
-                latex_safe(
-                    solution_set
-                )
-            ],
-
-            "response_text":
-            "Symbolic nonlinear solution set.",
-
-            "blocker_ids":
-            []
-        }
-
-
-    except Exception as exc:
-
-        return {
-
-            "status":
-            "unresolved",
-
-            "complete":
-            False,
-
-            "leaves":
-            leaves,
-
-            "response_latex":
-            [],
-
-            "response_text":
-            (
-                "The native symbolic engine could "
-                "not complete this system: "
-                +
-                str(exc)
+            "status": "unresolved" if side_condition_ids else status,
+            "complete": not side_condition_ids,
+            "leaves": leaves,
+            "response_latex": [latex_safe(solution_set)],
+            "response_text": (
+                "Nonlinear Response computed, but side conditions remain unresolved."
+                if side_condition_ids else
+                "Symbolic nonlinear Response."
             ),
-
-            "blocker_ids":
-            []
+            "blocker_ids": side_condition_ids
         }
-
-
-def analyze_bm(
-    text,
-    targets_text="",
-    domain_name="complex"
-):
-
-    raw_entries = split_input(
-        text
-    )
-
-
-    if not raw_entries:
-
+    except Exception as exc:
         return {
-
-            "ok":
-            False,
-
-            "errors": [{
-                "message":
-                "No mathematics was entered."
-            }]
+            "status": "unresolved",
+            "complete": False,
+            "leaves": leaves,
+            "response_latex": [],
+            "response_text": "Native symbolic solve did not complete: " + str(exc),
+            "blocker_ids": side_condition_ids
         }
 
+def connected_components(records, token_key):
+    if not records:
+        return []
 
-    statements = []
-
-
-    for statement_id, raw in enumerate(
-        raw_entries,
-        start=1
-    ):
-
-        statements.append(
-
-            classify_statement(
-                raw,
-                statement_id,
-                domain_name
-            )
-        )
-
-
-    # ======================================================
-    # REQUESTED TARGETS
-    # ======================================================
-
-    requested_targets = [
-
-        item.strip()
-
-        for item
-        in pyre.split(
-            r"[\s,]+",
-            targets_text.strip()
-        )
-
-        if item.strip()
-    ]
-
-
-    # ======================================================
-    # SYNTACTIC DEPENDENCY / CONNECTED COMPONENTS
-    #
-    # For formal statements we use identifier incidence.
-    # This is explicitly provisional/task-relative.
-    # ======================================================
-
-    count = len(
-        statements
-    )
-
-
-    parent = list(
-        range(
-            count
-        )
-    )
-
+    count = len(records)
+    parent = list(range(count))
 
     def find(index):
-
         while parent[index] != index:
-
-            parent[index] = parent[
-                parent[index]
-            ]
-
+            parent[index] = parent[parent[index]]
             index = parent[index]
-
-
         return index
 
-
-    def union(a, b):
-
-        root_a = find(a)
-
-        root_b = find(b)
-
-
-        if root_a != root_b:
-
-            parent[root_b] = root_a
-
+    def union(first, second):
+        root_first = find(first)
+        root_second = find(second)
+        if root_first != root_second:
+            parent[root_second] = root_first
 
     token_owner = {}
 
-
-    for index, statement in enumerate(
-        statements
-    ):
-
-        for token in statement[
-            "tokens"
-        ]:
-
+    for index, record in enumerate(records):
+        for token in record.get(token_key, []):
             if token in token_owner:
-
-                union(
-                    index,
-                    token_owner[token]
-                )
-
-
+                union(index, token_owner[token])
             else:
-
                 token_owner[token] = index
 
-
     components = {}
+    for index in range(count):
+        components.setdefault(find(index), []).append(index)
 
+    return list(components.values())
 
-    for index in range(
-        count
-    ):
+def analyze_bm(text, targets_text="", domain_name="complex"):
+    grouped, physical_line_count, joined_line_count = group_logical_statements(text)
 
-        root = find(
-            index
-        )
+    if not grouped:
+        return {
+            "ok": False,
+            "message": "No mathematics was entered."
+        }
 
-
-        components.setdefault(
-            root,
-            []
-        ).append(
-            index
-        )
-
-
-    branches = []
-
-
-    for branch_id, component in enumerate(
-        components.values(),
-        start=1
-    ):
-
-        branch_statements = [
-            statements[index]
-            for index
-            in component
-        ]
-
-
-        branch_tokens = sorted(
-
-            set().union(
-                *[
-                    set(
-                        statement[
-                            "tokens"
-                        ]
-                    )
-                    for statement
-                    in branch_statements
-                ]
-            )
-        )
-
-
-        solve_result = solve_computable_branch(
-
-            branch_statements,
-
+    statements = [
+        classify_statement(
+            group["text"],
+            statement_id,
             domain_name,
-
-            requested_targets
+            group.get("source_line_count", 1)
         )
-
-
-        branches.append({
-
-            "id":
-            branch_id,
-
-            "statement_ids":
-            [
-                statement["id"]
-                for statement
-                in branch_statements
-            ],
-
-            "tokens":
-            branch_tokens,
-
-            "formal_count":
-            sum(
-                statement["status"]
-                ==
-                "formal"
-                for statement
-                in branch_statements
-            ),
-
-            "symbolic_count":
-            sum(
-                statement["status"]
-                ==
-                "symbolic"
-                for statement
-                in branch_statements
-            ),
-
-            "constraint_count":
-            sum(
-                statement["status"]
-                ==
-                "constraint"
-                for statement
-                in branch_statements
-            ),
-
-            "computable_count":
-            sum(
-                statement["status"]
-                ==
-                "computable"
-                for statement
-                in branch_statements
-            ),
-
-            "solve":
-            solve_result
-        })
-
-
-    # ======================================================
-    # GLOBAL REALIZATION / TREE STATUS
-    # ======================================================
-
-    branch_statuses = [
-        branch["solve"]["status"]
-        for branch
-        in branches
+        for statement_id, group in enumerate(grouped, start=1)
     ]
 
+    requested_targets = [
+        value.strip()
+        for value in pyre.split(r"[\s,]+", targets_text.strip())
+        if value.strip()
+    ]
 
-    if any(
-        status
-        ==
-        "empty"
-        for status
-        in branch_statuses
-    ):
+    computational_statements = [
+        s for s in statements
+        if s["status"] == "computable"
+    ]
 
-        global_status = "empty"
+    parsed_unresolved = [
+        s for s in statements
+        if s["status"] in ("symbolic", "constraint")
+    ]
 
-        tree_status = (
-            "At least one Branch has an empty computed "
-            "realization set. The submitted Configuration "
-            "therefore has no computed global realization."
+    formal_statements = [
+        s for s in statements
+        if s["status"] == "formal"
+    ]
+
+    computational_components = connected_components(
+        computational_statements,
+        "tokens"
+    )
+
+    computational_branches = []
+    for branch_id, component in enumerate(computational_components, start=1):
+        branch_statements = [
+            computational_statements[index]
+            for index in component
+        ]
+        branch_tokens = sorted(
+            set().union(*[
+                set(statement.get("tokens", []))
+                for statement in branch_statements
+            ])
         )
-
-
-    elif any(
-        status
-        ==
-        "unresolved"
-        for status
-        in branch_statuses
-    ):
-
-        global_status = "unresolved"
-
-        tree_status = (
-            "At least one Branch contains unresolved "
-            "formal or symbolic obligations. Those "
-            "statements remain part of the Configuration. "
-            "No complete Tree is certified."
+        solution = solve_computational_branch(
+            branch_statements,
+            domain_name,
+            requested_targets
         )
+        computational_branches.append({
+            "id": branch_id,
+            "statement_ids": [s["id"] for s in branch_statements],
+            "tokens": branch_tokens,
+            "solution": solution
+        })
 
+    parsed_clusters = []
+    parsed_components = connected_components(
+        parsed_unresolved,
+        "tokens"
+    )
+    for cluster_id, component in enumerate(parsed_components, start=1):
+        cluster_statements = [parsed_unresolved[index] for index in component]
+        parsed_clusters.append({
+            "id": cluster_id,
+            "statement_ids": [s["id"] for s in cluster_statements],
+            "tokens": sorted(set().union(*[
+                set(s.get("tokens", []))
+                for s in cluster_statements
+            ]))
+        })
 
-    elif all(
-        status
-        in (
-            "unique",
-            "expression-only"
+    formal_clusters = []
+    formal_components = connected_components(
+        formal_statements,
+        "strong_tokens"
+    )
+    for cluster_id, component in enumerate(formal_components, start=1):
+        cluster_statements = [formal_statements[index] for index in component]
+        formal_clusters.append({
+            "id": cluster_id,
+            "statement_ids": [s["id"] for s in cluster_statements],
+            "hints": sorted(set().union(*[
+                set(s.get("strong_tokens", []))
+                for s in cluster_statements
+            ]))
+        })
+
+    response_branches = [
+        branch
+        for branch in computational_branches
+        if branch["solution"]["response_latex"]
+    ]
+    response_count = len(response_branches)
+
+    unresolved_exists = bool(
+        formal_statements
+        or parsed_unresolved
+        or any(
+            branch["solution"]["status"] in ("unresolved","targeted")
+            for branch in computational_branches
         )
-        for status
-        in branch_statuses
-    ):
+    )
 
-        global_status = "unique"
-
-        tree_status = (
-            "Every required computational Branch has a "
-            "complete unique result under the current "
-            "explicit Task. The combined realization can "
-            "instantiate the Tree."
+    if response_count == 0:
+        response_status = (
+            "No computed mathematical Response was produced. "
+            "The output is a classification and dependency audit."
         )
-
-
+    elif unresolved_exists:
+        response_status = (
+            "One or more computational Responses were produced, "
+            "but unresolved obligations remain. "
+            "No complete global Response is certified."
+        )
     else:
-
-        global_status = "family"
-
-        tree_status = (
-            "A nonempty realization family exists, but "
-            "one or more Branches admit multiple or free "
-            "realizations. The calculator does not invent "
-            "a canonical realization."
+        response_status = (
+            "The verified computational Branches produced a complete "
+            "Response for the submitted computational Configuration."
         )
 
+    if formal_statements or parsed_unresolved:
+        global_status = "unresolved"
+        tree_status = (
+            "Formal, symbolic, or unsolved constraint obligations remain. "
+            "They are retained in the candidate Configuration, "
+            "so no complete Tree is certified."
+        )
+    elif any(
+        branch["solution"]["status"] == "empty"
+        for branch in computational_branches
+    ):
+        global_status = "empty"
+        tree_status = (
+            "At least one verified computational Branch has an empty "
+            "realization set. No global realization exists."
+        )
+    elif any(
+        branch["solution"]["status"] in ("unresolved","targeted")
+        for branch in computational_branches
+    ):
+        global_status = "unresolved"
+        tree_status = (
+            "At least one verified computational Branch remains "
+            "unresolved or only partially solved."
+        )
+    elif computational_branches and all(
+        branch["solution"]["status"] in ("unique","expression-only")
+        for branch in computational_branches
+    ):
+        global_status = "unique"
+        tree_status = (
+            "Every verified computational Branch has a complete unique "
+            "result for this explicit Task. Their product gives a unique "
+            "computed realization that may instantiate the Tree."
+        )
+    elif computational_branches:
+        global_status = "family"
+        tree_status = (
+            "A nonempty computational realization family exists, "
+            "but it is not unique. No canonical realization is selected."
+        )
+    else:
+        global_status = "unresolved"
+        tree_status = (
+            "No verified computational Branch exists yet. "
+            "Only unresolved mathematical structure was classified."
+        )
+
+    if response_count == 0:
+        root_status = (
+            "No computed Response exists, so there is no computed "
+            "Root candidate to test."
+        )
+    elif global_status in ("unresolved","empty"):
+        root_status = (
+            "Only partial or obstructed computation is available. "
+            "No complete global Root candidate is asserted."
+        )
+    else:
+        root_status = (
+            "A computed Response exists, but Root status is "
+            "receiver-relative and requires a receiving Passport."
+        )
 
     status_counts = {
-
-        "computable":
-        sum(
-            statement["status"]
-            ==
-            "computable"
-            for statement
-            in statements
-        ),
-
-        "symbolic":
-        sum(
-            statement["status"]
-            ==
-            "symbolic"
-            for statement
-            in statements
-        ),
-
-        "formal":
-        sum(
-            statement["status"]
-            ==
-            "formal"
-            for statement
-            in statements
-        ),
-
-        "constraint":
-        sum(
-            statement["status"]
-            ==
-            "constraint"
-            for statement
-            in statements
-        )
+        "computable": sum(s["status"] == "computable" for s in statements),
+        "symbolic": sum(s["status"] == "symbolic" for s in statements),
+        "constraint": sum(s["status"] == "constraint" for s in statements),
+        "formal": sum(s["status"] == "formal" for s in statements)
     }
 
-
     return {
-
-        "ok":
-        True,
-
-        "statements":
-        [
-            statement_json_view(
-                statement
-            )
-            for statement
-            in statements
-        ],
-
-        "status_counts":
-        status_counts,
-
-        "branches":
-        branches,
-
-        "branch_count":
-        len(
-            branches
-        ),
-
-        "requested_targets":
-        requested_targets,
-
-        "domain":
-        domain_name,
-
-        "global_status":
-        global_status,
-
-        "tree_status":
-        tree_status,
-
-        "root_status":
-        (
-            "The computed output is a Response. "
-            "Root status is not evaluated because "
-            "no receiving Passport was supplied."
-        ),
-
-        "dependency_note":
-        (
-            "Branch components are inferred from "
-            "shared identifiers in the submitted "
-            "mathematics. For fully parsed equations "
-            "this is variable incidence. For formal "
-            "notation it is provisional syntactic "
-            "incidence and must not be mistaken for "
-            "a unique canonical BM decomposition."
-        ),
-
-        "engine":
-        (
-            "SymPy symbolic algebra through Pyodide, "
-            "with a BM formal-statement preservation layer"
+        "ok": True,
+        "physical_line_count": physical_line_count,
+        "logical_statement_count": len(statements),
+        "joined_line_count": joined_line_count,
+        "statements": [public_statement(s) for s in statements],
+        "status_counts": status_counts,
+        "computational_branches": computational_branches,
+        "parsed_clusters": parsed_clusters,
+        "formal_clusters": formal_clusters,
+        "global_status": global_status,
+        "tree_status": tree_status,
+        "response_count": response_count,
+        "response_status": response_status,
+        "root_status": root_status,
+        "engine": (
+            "SymPy symbolic algebra through Pyodide plus a conservative "
+            "BM formal-structure layer"
         )
     }
 
 `;
 
-
-/* =========================================================
-   INITIALIZE ENGINE
-   ========================================================= */
-
 async function initializeEngine() {
-
-  const status =
-    document.getElementById(
-      "engineStatus"
-    );
-
-  const solveButton =
-    document.getElementById(
-      "solveButton"
-    );
+  const status = document.getElementById("engineStatus");
+  const solveButton = document.getElementById("solveButton");
 
   try {
-
-    status.className =
-      "engine-status engine-loading";
-
-    status.textContent =
-      "Loading Python and SymPy…";
-
+    status.className = "engine-status engine-loading";
+    status.textContent = "Loading Python and SymPy…";
 
     pyodide = await loadPyodide({
       indexURL: PYODIDE_INDEX
     });
 
+    await pyodide.loadPackage("sympy");
+    pyodide.runPython(PYTHON_ENGINE);
 
-    await pyodide.loadPackage(
-      "sympy"
-    );
-
-
-    pyodide.runPython(
-      PYTHON_ENGINE
-    );
-
-
-    status.className =
-      "engine-status engine-ready";
-
-    status.textContent =
-      "Engine ready. Formal notation will be preserved even when it cannot yet be computed.";
-
-
+    status.className = "engine-status engine-ready";
+    status.textContent = "Engine ready. Parsed and formal mathematics will be kept distinct.";
     solveButton.disabled = false;
-
-  }
-
-  catch (error) {
-
-    status.className =
-      "engine-status engine-error";
-
-    status.textContent =
-      "The symbolic engine could not load: "
-      +
-      error.message;
+  } catch (error) {
+    status.className = "engine-status engine-error";
+    status.textContent = "The symbolic engine could not load: " + error.message;
   }
 }
 
-
-/* =========================================================
-   HELPERS
-   ========================================================= */
-
 function escapeHtml(value) {
-
   return String(value)
     .replaceAll("&", "&amp;")
     .replaceAll("<", "&lt;")
@@ -3125,106 +1274,58 @@ function escapeHtml(value) {
     .replaceAll("'", "&#039;");
 }
 
-
 function mathBlock(latex) {
-
-  return `
-    <div class="math-block">
-      \\[
-        ${latex}
-      \\]
-    </div>
-  `;
+  return `<div class="math-block">\\[${latex}\\]</div>`;
 }
-
 
 function statusTag(status) {
-
   if (status === "computable") {
-
-    return `
-      <span class="tag tag-computable">
-        COMPUTABLE
-      </span>
-    `;
+    return `<span class="tag tag-computable">COMPUTABLE</span>`;
   }
-
 
   if (status === "symbolic") {
-
-    return `
-      <span class="tag tag-symbolic">
-        SYMBOLIC
-      </span>
-    `;
+    return `<span class="tag tag-symbolic">SYMBOLIC</span>`;
   }
-
 
   if (status === "constraint") {
-
-    return `
-      <span class="tag tag-constraint">
-        CONSTRAINT
-      </span>
-    `;
+    return `<span class="tag tag-constraint">CONSTRAINT</span>`;
   }
 
-
-  return `
-    <span class="tag tag-formal">
-      FORMAL / UNRESOLVED
-    </span>
-  `;
+  return `<span class="tag tag-formal">FORMAL / UNRESOLVED</span>`;
 }
 
-
-/* =========================================================
-   RENDER
-   ========================================================= */
-
 async function renderResults(data) {
-
-  const container =
-    document.getElementById(
-      "results"
-    );
-
+  const container = document.getElementById("results");
 
   if (!data.ok) {
-
     container.innerHTML = `
       <div class="error-box">
-        ${
-          escapeHtml(
-            data.errors?.[0]?.message
-            ||
-            "No mathematics was entered."
-          )
-        }
+        ${escapeHtml(data.message || "No mathematics was entered.")}
       </div>
     `;
-
     return;
   }
 
-
   let html = "";
-
-
-  /* =======================================================
-     1. STATEMENT CLASSIFICATION
-     ======================================================= */
 
   html += `
     <div class="result-section">
-
-      <h2>1. Statement Classification</h2>
+      <h2>1. Statement Reconstruction</h2>
 
       <div class="summary-grid">
+        <div class="summary-card">
+          <strong>Nonempty physical lines</strong>
+          ${data.physical_line_count}
+        </div>
 
         <div class="summary-card">
-          <strong>Total statements</strong>
-          ${data.statements.length}
+          <strong>Logical statements</strong>
+          ${data.logical_statement_count}
+        </div>
+
+        <div class="summary-card">
+          <strong>Continuation lines joined</strong>
+          ${data.joined_line_count}
         </div>
 
         <div class="summary-card">
@@ -3241,506 +1342,356 @@ async function renderResults(data) {
           <strong>Formal</strong>
           ${data.status_counts.formal}
         </div>
-
-        <div class="summary-card">
-          <strong>Constraints</strong>
-          ${data.status_counts.constraint}
-        </div>
-
-        <div class="summary-card">
-          <strong>Branch components</strong>
-          ${data.branch_count}
-        </div>
-
       </div>
   `;
 
-
-  for (const statement of data.statements) {
-
-    let extraClass = "";
-
-    if (statement.status === "formal") {
-      extraClass = "formal-card";
-    }
-
-    else if (statement.status === "symbolic") {
-      extraClass = "symbolic-card";
-    }
-
-    else if (statement.status === "constraint") {
-      extraClass = "constraint-card";
-    }
-
-
+  if (data.joined_line_count > 0) {
     html += `
-      <div class="statement-card ${extraClass}">
-
-        <strong>
-          Statement ${statement.id}
-        </strong>
-
-        ${statusTag(
-          statement.status
-        )}
-
-        <span class="tag">
-          ${escapeHtml(
-            statement.kind
-          )}
-        </span>
-
-        <div class="raw-math">${escapeHtml(
-          statement.raw
-        )}</div>
-    `;
-
-
-    if (statement.equation_latex) {
-
-      html += `
-        <strong>Parsed relation</strong>
-
-        ${mathBlock(
-          statement.equation_latex
-        )}
-      `;
-    }
-
-
-    if (statement.expression_latex) {
-
-      html += `
-        <strong>Parsed expression</strong>
-
-        ${mathBlock(
-          statement.expression_latex
-        )}
-      `;
-    }
-
-
-    if (statement.side_condition) {
-
-      html += `
-        <div class="warning">
-          <strong>Side condition retained:</strong>
-          <code>${escapeHtml(
-            statement.side_condition
-          )}</code>
-        </div>
-      `;
-    }
-
-
-    if (
-      statement.tokens
-      &&
-      statement.tokens.length
-    ) {
-
-      html += `
-        <p>
-          <strong>
-            Detected identifiers:
-          </strong>
-          ${escapeHtml(
-            statement.tokens.join(", ")
-          )}
-        </p>
-      `;
-    }
-
-
-    if (
-      statement.reasons
-      &&
-      statement.reasons.length
-    ) {
-
-      html += `
-        <ul>
-          ${
-            statement.reasons.map(
-              reason =>
-                `<li>${escapeHtml(reason)}</li>`
-            ).join("")
-          }
-        </ul>
-      `;
-    }
-
-
-    html += `
+      <div class="good">
+        ${data.joined_line_count} physical continuation line(s) were joined
+        to an unfinished mathematical statement.
       </div>
     `;
   }
 
-
-  html += `
-    </div>
-  `;
-
-
-  /* =======================================================
-     2. DEPENDENCY / BRANCHES
-     ======================================================= */
+  html += `</div>`;
 
   html += `
     <div class="result-section">
-
-      <h2>2. Dependency and Branch Structure</h2>
-
-      <div class="info">
-        ${escapeHtml(
-          data.dependency_note
-        )}
-      </div>
+      <h2>2. Statement Classification</h2>
   `;
 
+  for (const statement of data.statements) {
+    let extraClass = "";
 
-  for (const branch of data.branches) {
+    if (statement.status === "formal") {
+      extraClass = "formal-card";
+    } else if (statement.status === "symbolic") {
+      extraClass = "symbolic-card";
+    } else if (statement.status === "constraint") {
+      extraClass = "constraint-card";
+    }
 
     html += `
-      <div class="branch-card">
+      <div class="statement-card ${extraClass}">
+        <strong>Statement ${statement.id}</strong>
+        ${statusTag(statement.status)}
+        <span class="tag">${escapeHtml(statement.kind)}</span>
 
-        <h3>
-          Branch B${branch.id}
-        </h3>
+        ${
+          statement.source_line_count > 1
+          ? `<span class="tag">joined from ${statement.source_line_count} physical lines</span>`
+          : ""
+        }
+
+        <div class="raw-math">${escapeHtml(statement.raw)}</div>
+    `;
+
+    if (statement.equation_latex) {
+      html += `
+        <strong>Parsed relation</strong>
+        ${mathBlock(statement.equation_latex)}
+      `;
+    }
+
+    if (statement.expression_latex) {
+      html += `
+        <strong>Parsed expression</strong>
+        ${mathBlock(statement.expression_latex)}
+      `;
+    }
+
+    if (statement.side_condition) {
+      html += `
+        <div class="warning">
+          <strong>Side condition retained:</strong>
+          <code>${escapeHtml(statement.side_condition)}</code>
+        </div>
+      `;
+    }
+
+    if (
+      statement.status !== "formal" &&
+      statement.tokens &&
+      statement.tokens.length
+    ) {
+      html += `
+        <p>
+          <strong>Verified parsed identifiers:</strong>
+          ${escapeHtml(statement.tokens.join(", "))}
+        </p>
+      `;
+    }
+
+    if (
+      statement.status === "formal" &&
+      statement.strong_tokens &&
+      statement.strong_tokens.length
+    ) {
+      html += `
+        <p>
+          <strong>Conservative dependency hints:</strong>
+          ${escapeHtml(statement.strong_tokens.join(", "))}
+        </p>
+
+        <p>
+          <small>
+            These are dependency hints only. They are not declared to be
+            a complete variable list.
+          </small>
+        </p>
+      `;
+    }
+
+    if (statement.reason) {
+      html += `
+        <div class="${statement.status === "formal" ? "unresolved" : "info"}">
+          ${escapeHtml(statement.reason)}
+        </div>
+      `;
+    }
+
+    html += `</div>`;
+  }
+
+  html += `</div>`;
+
+  html += `
+    <div class="result-section">
+      <h2>3. Verified Computational Branches</h2>
+  `;
+
+  if (data.computational_branches.length === 0) {
+    html += `
+      <div class="warning">
+        No verified computational Branch was inferred.
+        Formal or symbolic groupings are not being promoted to BM Branches.
+      </div>
+    `;
+  }
+
+  for (const branch of data.computational_branches) {
+    html += `
+      <div class="branch-card">
+        <h3>Computational Branch B${branch.id}</h3>
 
         <span class="tag">
           Statements:
-          ${escapeHtml(
-            branch.statement_ids.join(", ")
-          )}
+          ${escapeHtml(branch.statement_ids.join(", "))}
         </span>
 
         <span class="tag">
-          Computable:
-          ${branch.computable_count}
+          Verified identifiers:
+          ${
+            branch.tokens.length
+            ? escapeHtml(branch.tokens.join(", "))
+            : "none"
+          }
         </span>
-
-        <span class="tag">
-          Symbolic:
-          ${branch.symbolic_count}
-        </span>
-
-        <span class="tag">
-          Formal:
-          ${branch.formal_count}
-        </span>
-
-        <span class="tag">
-          Constraints:
-          ${branch.constraint_count}
-        </span>
-
-        ${
-          branch.tokens.length
-          ?
-          `
-            <p>
-              <strong>
-                Incidence identifiers:
-              </strong>
-              ${escapeHtml(
-                branch.tokens.join(", ")
-              )}
-            </p>
-          `
-          :
-          ""
-        }
     `;
 
+    if (branch.solution.leaves && branch.solution.leaves.length) {
+      html += `<h3>Derived Leaves</h3>`;
 
-    if (
-      branch.solve.leaves
-      &&
-      branch.solve.leaves.length
-    ) {
-
-      html += `
-        <h3>
-          Derived Leaves
-        </h3>
-      `;
-
-
-      for (const leaf of branch.solve.leaves) {
-
+      for (const leaf of branch.solution.leaves) {
         html += `
           <div class="leaf-card">
-
             <strong>
-              ${escapeHtml(
-                leaf.label
-              )}
+              ${escapeHtml(leaf.label)}
               —
-              ${escapeHtml(
-                leaf.title
-              )}
+              ${escapeHtml(leaf.title)}
             </strong>
 
-            <p>
-              ${escapeHtml(
-                leaf.text
-              )}
-            </p>
-
-            ${mathBlock(
-              leaf.latex
-            )}
-
+            <p>${escapeHtml(leaf.text)}</p>
+            ${mathBlock(leaf.latex)}
           </div>
         `;
       }
     }
 
-
     if (
-      branch.solve.status === "unresolved"
+      branch.solution.response_latex &&
+      branch.solution.response_latex.length
     ) {
-
-      html += `
-        <div class="unresolved">
-
-          <strong>
-            Branch realization unresolved.
-          </strong>
-
-          <p>
-            ${escapeHtml(
-              branch.solve.response_text
-            )}
-          </p>
-
-          ${
-            branch.solve.blocker_ids.length
-            ?
-            `
-              <p>
-                Blocking statement(s):
-                ${escapeHtml(
-                  branch.solve.blocker_ids.join(", ")
-                )}
-              </p>
-            `
-            :
-            ""
-          }
-
-        </div>
-      `;
-    }
-
-
-    else {
-
       html += `
         <div class="response-card">
-
-          <strong>
-            Branch Response
-          </strong>
-
-          <p>
-            ${escapeHtml(
-              branch.solve.response_text
-            )}
-          </p>
+          <strong>Branch Response</strong>
+          <p>${escapeHtml(branch.solution.response_text)}</p>
       `;
 
-
-      for (
-        const response
-        of branch.solve.response_latex
-      ) {
-
-        html += mathBlock(
-          response
-        );
+      for (const response of branch.solution.response_latex) {
+        html += mathBlock(response);
       }
 
+      if (
+        branch.solution.blocker_ids &&
+        branch.solution.blocker_ids.length
+      ) {
+        html += `
+          <div class="warning">
+            Unresolved obligation statement(s):
+            ${escapeHtml(branch.solution.blocker_ids.join(", "))}
+          </div>
+        `;
+      }
 
+      html += `</div>`;
+    } else {
       html += `
+        <div class="unresolved">
+          <strong>No completed Response</strong>
+          <p>${escapeHtml(branch.solution.response_text)}</p>
         </div>
       `;
     }
 
-
-    html += `
-      </div>
-    `;
+    html += `</div>`;
   }
 
-
-  html += `
-    </div>
-  `;
-
-
-  /* =======================================================
-     3. GLOBAL REALIZATION
-     ======================================================= */
+  html += `</div>`;
 
   html += `
     <div class="result-section">
-
-      <h2>3. Global Realization Audit</h2>
+      <h2>4. Parsed Unresolved Obligations</h2>
   `;
 
-
-  if (
-    data.global_status === "unique"
-  ) {
-
+  if (data.parsed_clusters.length === 0) {
     html += `
       <div class="good">
-        ${escapeHtml(
-          data.tree_status
-        )}
+        No parsed symbolic/constraint clusters remain.
       </div>
     `;
   }
 
-
-  else if (
-    data.global_status === "empty"
-  ) {
-
+  for (const cluster of data.parsed_clusters) {
     html += `
-      <div class="error-box">
-        ${escapeHtml(
-          data.tree_status
-        )}
+      <div class="cluster-card">
+        <h3>Parsed Cluster P${cluster.id}</h3>
+
+        <span class="tag tag-provisional">UNRESOLVED</span>
+
+        <span class="tag">
+          Statements:
+          ${escapeHtml(cluster.statement_ids.join(", "))}
+        </span>
+
+        ${
+          cluster.tokens.length
+          ? `<p><strong>Parsed identifiers:</strong> ${escapeHtml(cluster.tokens.join(", "))}</p>`
+          : ""
+        }
+
+        <div class="unresolved">
+          The statement semantics were parsed, but the current solver did not
+          promote this cluster to a verified computational Branch.
+        </div>
       </div>
     `;
   }
 
-
-  else if (
-    data.global_status === "unresolved"
-  ) {
-
-    html += `
-      <div class="unresolved">
-        ${escapeHtml(
-          data.tree_status
-        )}
-      </div>
-    `;
-  }
-
-
-  else {
-
-    html += `
-      <div class="info">
-        ${escapeHtml(
-          data.tree_status
-        )}
-      </div>
-    `;
-  }
-
-
-  html += `
-      <div class="schema">
-        \\[
-          T
-          =
-          (C,\\xi,\\Pi,\\omega,\\Lambda),
-          \\qquad
-          \\xi
-          \\in
-          \\mathfrak F(C;c).
-        \\]
-      </div>
-
-      <div class="schema">
-        \\[
-          \\boxed{
-          \\text{unresolved formal obligation}
-          \\neq
-          \\text{permission to delete it}
-          }
-        \\]
-      </div>
-
-    </div>
-  `;
-
-
-  /* =======================================================
-     4. RESPONSE
-     ======================================================= */
+  html += `</div>`;
 
   html += `
     <div class="result-section">
-
-      <h2>4. Response</h2>
-
-      <p>
-        The calculator reports all completed Branch
-        Responses together with every unresolved formal
-        obligation.
-      </p>
-  `;
-
-
-  for (const branch of data.branches) {
-
-    html += `
-      <div class="response-card">
-
-        <strong>
-          B${branch.id}
-        </strong>
-
-        <p>
-          ${escapeHtml(
-            branch.solve.response_text
-          )}
-        </p>
-    `;
-
-
-    for (
-      const response
-      of branch.solve.response_latex
-    ) {
-
-      html += mathBlock(
-        response
-      );
-    }
-
-
-    html += `
-      </div>
-    `;
-  }
-
-
-  html += `
-    </div>
-  `;
-
-
-  /* =======================================================
-     5. ROOT
-     ======================================================= */
-
-  html += `
-    <div class="result-section">
-
-      <h2>5. Root Gate</h2>
+      <h2>5. Provisional Formal Clusters</h2>
 
       <div class="warning">
-        ${escapeHtml(
-          data.root_status
-        )}
+        Formal clusters are organizational only.
+        They are not automatically BM Branches.
+      </div>
+  `;
+
+  if (data.formal_clusters.length === 0) {
+    html += `
+      <div class="good">
+        No unresolved formal clusters remain.
+      </div>
+    `;
+  }
+
+  for (const cluster of data.formal_clusters) {
+    html += `
+      <div class="cluster-card">
+        <h3>Formal Cluster F${cluster.id}</h3>
+
+        <span class="tag tag-provisional">PROVISIONAL</span>
+
+        <span class="tag">
+          Statements:
+          ${escapeHtml(cluster.statement_ids.join(", "))}
+        </span>
+
+        ${
+          cluster.hints && cluster.hints.length
+          ? `
+            <p>
+              <strong>Conservative dependency hints:</strong>
+              ${escapeHtml(cluster.hints.join(", "))}
+            </p>
+          `
+          : `
+            <p>
+              No sufficiently reliable identifier was extracted for automatic
+              cross-statement dependency.
+            </p>
+          `
+        }
+
+        <div class="unresolved">
+          Mathematical semantics remain unresolved.
+          This cluster is preserved but not promoted to a verified Branch.
+        </div>
+      </div>
+    `;
+  }
+
+  html += `</div>`;
+
+  html += `
+    <div class="result-section">
+      <h2>6. Global Realization Audit</h2>
+  `;
+
+  if (data.global_status === "unique") {
+    html += `<div class="good">${escapeHtml(data.tree_status)}</div>`;
+  } else if (data.global_status === "empty") {
+    html += `<div class="error-box">${escapeHtml(data.tree_status)}</div>`;
+  } else {
+    html += `<div class="unresolved">${escapeHtml(data.tree_status)}</div>`;
+  }
+
+  html += `
+      <div class="schema">
+        \\[
+          T=(C,\\xi,\\Pi,\\omega,\\Lambda),
+          \\qquad
+          \\xi\\in\\mathfrak F(C;c)
+        \\]
+      </div>
+    </div>
+  `;
+
+  html += `
+    <div class="result-section">
+      <h2>7. Response Status</h2>
+
+      <div class="${data.response_count > 0 ? "info" : "warning"}">
+        ${escapeHtml(data.response_status)}
+      </div>
+
+      <p>
+        Completed computational Responses:
+        <strong>${data.response_count}</strong>
+      </p>
+    </div>
+  `;
+
+  html += `
+    <div class="result-section">
+      <h2>8. Root Gate</h2>
+
+      <div class="warning">
+        ${escapeHtml(data.root_status)}
       </div>
 
       <div class="schema">
@@ -3748,71 +1699,37 @@ async function renderResults(data) {
           z
           \\text{ is Root for receiver }B_\\beta
           \\iff
-          z
-          \\in
-          \\operatorname{Acc}
-          (\\mathcal P_R^{B_\\beta}).
+          z\\in\\operatorname{Acc}
+          (\\mathcal P_R^{B_\\beta})
         \\]
       </div>
-
     </div>
   `;
-
-
-  /* =======================================================
-     6. PROVENANCE
-     ======================================================= */
 
   html += `
     <div class="result-section">
-
-      <h2>6. Solver Provenance</h2>
-
-      <p>
-        <strong>
-          ${escapeHtml(
-            data.engine
-          )}
-        </strong>
-      </p>
+      <h2>9. Solver Provenance</h2>
 
       <div class="good">
-        SymPy performs supported native symbolic
-        computation. The BM layer preserves formal
-        statements, records unresolved obligations,
-        and describes the resulting structural status.
-      </div>
+        <strong>${escapeHtml(data.engine)}</strong>
 
+        <p>
+          Native symbolic computation, parsed unresolved mathematics,
+          and formal structural preservation are deliberately separated.
+        </p>
+      </div>
     </div>
   `;
 
-
   container.innerHTML = html;
 
-
-  if (
-    window.MathJax
-    &&
-    window.MathJax.typesetPromise
-  ) {
-
+  if (window.MathJax && window.MathJax.typesetPromise) {
     try {
-
-      await MathJax.typesetPromise(
-        [container]
-      );
-
-    }
-
-    catch (error) {
-
-      console.error(
-        "MathJax rendering error:",
-        error
-      );
+      await MathJax.typesetPromise([container]);
+    } catch (error) {
+      console.error("MathJax rendering error:", error);
     }
   }
-
 
   container.scrollIntoView({
     behavior: "smooth",
@@ -3820,87 +1737,35 @@ async function renderResults(data) {
   });
 }
 
-
-/* =========================================================
-   EXECUTION
-   ========================================================= */
-
 async function analyzeInput() {
+  if (!pyodide) return;
 
-  if (!pyodide) {
-    return;
-  }
-
-
-  const button =
-    document.getElementById(
-      "solveButton"
-    );
-
-  const status =
-    document.getElementById(
-      "engineStatus"
-    );
-
-  const input =
-    document.getElementById(
-      "mathInput"
-    ).value;
-
-  const targets =
-    document.getElementById(
-      "targets"
-    ).value;
-
-  const domain =
-    document.getElementById(
-      "domain"
-    ).value;
-
+  const button = document.getElementById("solveButton");
+  const status = document.getElementById("engineStatus");
+  const input = document.getElementById("mathInput").value;
+  const targets = document.getElementById("targets").value;
+  const domain = document.getElementById("domain").value;
 
   if (!input.trim()) {
-
-    document.getElementById(
-      "results"
-    ).innerHTML = `
+    document.getElementById("results").innerHTML = `
       <div class="warning">
         Enter at least one mathematical statement.
       </div>
     `;
-
     return;
   }
 
-
   button.disabled = true;
-
-  status.className =
-    "engine-status engine-loading";
-
+  status.className = "engine-status engine-loading";
   status.textContent =
-    "Classifying and analyzing the submitted mathematics…";
-
+    "Reconstructing statements, classifying notation, and running supported mathematics…";
 
   try {
+    pyodide.globals.set("bm_input_text", input);
+    pyodide.globals.set("bm_targets_text", targets);
+    pyodide.globals.set("bm_domain_name", domain);
 
-    pyodide.globals.set(
-      "bm_input_text",
-      input
-    );
-
-    pyodide.globals.set(
-      "bm_targets_text",
-      targets
-    );
-
-    pyodide.globals.set(
-      "bm_domain_name",
-      domain
-    );
-
-
-    const jsonResult =
-      pyodide.runPython(`
+    const jsonResult = pyodide.runPython(`
 json.dumps(
     analyze_bm(
         bm_input_text,
@@ -3908,74 +1773,35 @@ json.dumps(
         bm_domain_name
     )
 )
-      `);
+    `);
 
+    const data = JSON.parse(jsonResult);
+    await renderResults(data);
 
-    const data =
-      JSON.parse(
-        jsonResult
-      );
-
-
-    await renderResults(
-      data
-    );
-
-
-    status.className =
-      "engine-status engine-ready";
-
-    status.textContent =
-      "Analysis complete. Symbolic engine ready.";
-
-  }
-
-  catch (error) {
-
-    document.getElementById(
-      "results"
-    ).innerHTML = `
+    status.className = "engine-status engine-ready";
+    status.textContent = "Analysis complete. Engine ready.";
+  } catch (error) {
+    document.getElementById("results").innerHTML = `
       <div class="error-box">
-        <strong>
-          Internal calculator error
-        </strong>
-        <br>
-        ${escapeHtml(
-          error.message
-        )}
+        <strong>Internal calculator error</strong>
+        <div class="raw-math">${escapeHtml(error.message)}</div>
       </div>
     `;
 
-
-    status.className =
-      "engine-status engine-error";
-
-    status.textContent =
-      "The calculator encountered an internal error.";
-
-  }
-
-  finally {
-
+    status.className = "engine-status engine-error";
+    status.textContent = "The calculator encountered an internal error.";
+  } finally {
     button.disabled = false;
   }
 }
 
-
-/* =========================================================
-   EXAMPLES
-   ========================================================= */
-
 const EXAMPLES = {
-
   linear:
 `2*x + y = 7
 x - y = 1`,
 
-
   quadratic:
 `x^2 - 5*x + 6 = 0`,
-
 
   independent:
 `x + y = 10
@@ -3983,7 +1809,6 @@ x - y = 2
 
 a + b = 7
 a - b = 1`,
-
 
   engineering:
 `voltage = current * resistance
@@ -3993,107 +1818,48 @@ voltage = 12
 resistance = 6
 time = 10`,
 
-
   advanced:
-`SL2(F[X±1,Y±1])∖E2(F[X±1,Y±1])
-H=λF+(1−λ)G (0<λ<1)
-π(F)=τr
-Xn=∑i=1stiA⊗ni,`
+`F(η∗(α),α,n)=E(α,s)+κ(α,s)∫10t3βˆ(t
+α,s)s−32dt
+Δ∗={z∈C:|z|>1}
+Xn=∑i=1stiA⊗ni
+∥u∥2L2(W)≥cW∥u∥2L2(T)
+ρ(ℓdp,ℓdq)≍p,qdγ(p,q)
+γ(p,q)=⎧⎩⎨3/2−max{1/p,1/q},1/2+min{1/p,1/q},min{1/p+1/q,2−1/p−1/q},1<p,q<2,2<p,q<∞,otherwise.`
 };
 
-
-/* =========================================================
-   EVENTS
-   ========================================================= */
+document
+  .getElementById("solveButton")
+  .addEventListener("click", analyzeInput);
 
 document
-  .getElementById(
-    "solveButton"
-  )
-  .addEventListener(
-    "click",
-    analyzeInput
-  );
-
+  .getElementById("clearButton")
+  .addEventListener("click", () => {
+    document.getElementById("mathInput").value = "";
+    document.getElementById("targets").value = "";
+    document.getElementById("results").innerHTML = "";
+  });
 
 document
-  .getElementById(
-    "clearButton"
-  )
-  .addEventListener(
-    "click",
-    () => {
+  .querySelectorAll(".example-button")
+  .forEach(button => {
+    button.addEventListener("click", () => {
+      const key = button.dataset.example;
+      document.getElementById("mathInput").value = EXAMPLES[key] || "";
+      document.getElementById("targets").value = "";
+      document.getElementById("results").innerHTML = "";
+    });
+  });
 
-      document.getElementById(
-        "mathInput"
-      ).value = "";
-
-      document.getElementById(
-        "targets"
-      ).value = "";
-
-      document.getElementById(
-        "results"
-      ).innerHTML = "";
+document
+  .getElementById("mathInput")
+  .addEventListener("keydown", event => {
+    if (event.ctrlKey && event.key === "Enter") {
+      analyzeInput();
     }
-  );
-
-
-document
-  .querySelectorAll(
-    ".example-button"
-  )
-  .forEach(
-    button => {
-
-      button.addEventListener(
-        "click",
-        () => {
-
-          const key =
-            button.dataset.example;
-
-          document.getElementById(
-            "mathInput"
-          ).value =
-            EXAMPLES[key] || "";
-
-          document.getElementById(
-            "targets"
-          ).value = "";
-
-          document.getElementById(
-            "results"
-          ).innerHTML = "";
-        }
-      );
-    }
-  );
-
-
-document
-  .getElementById(
-    "mathInput"
-  )
-  .addEventListener(
-    "keydown",
-    event => {
-
-      if (
-        event.ctrlKey
-        &&
-        event.key === "Enter"
-      ) {
-
-        analyzeInput();
-      }
-    }
-  );
-
+  });
 
 initializeEngine();
-
 </script>
-
 </body>
 </html>
