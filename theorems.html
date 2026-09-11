@@ -1,2381 +1,985 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Theorem Registry | Branch Mathematics and GURF</title>
-
-  <meta
-    name="description"
-    content="Theorem registry for Branch Mathematics and GURF: proved results, classical infrastructure, BM and GURF structural specializations, quantitative bounds, counterexamples, sector firewalls, and applied mathematical identities."
-  >
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Theorems and Proofs | Branch Mathematics</title>
+  <meta name="description" content="Canonical Branch Mathematics and GURF supporting theorem register for the 10 September 2026 mathematical edition: corrected T01-T55 statements and complete scoped proofs.">
   <meta name="robots" content="index, follow">
-
-  <script>
-    window.MathJax = {
-      tex: {
-        inlineMath: [['\\(', '\\)']],
-        displayMath: [['\\[', '\\]']]
-      },
-      svg: { fontCache: 'global' }
-    };
-  </script>
-
-  <script id="MathJax-script" async
-    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
-  </script>
-
+  <link rel="describedby" href="llms.txt">
+  <link rel="stylesheet" href="assets/current.css">
+  <script>window.MathJax={tex:{inlineMath:[["$","$"],["\(","\)"]]},options:{skipHtmlTags:["script","noscript","style","textarea","pre","code"]}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
   <style>
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      margin: 0;
-      color: #202124;
-      background: #fff;
-      line-height: 1.72;
-    }
-
-    header {
-      background: #111827;
-      color: #fff;
-      text-align: center;
-      padding: 58px 20px;
-    }
-
-    header h1 {
-      margin: 0 0 10px;
-      font-size: 2.55rem;
-    }
-
-    header p {
-      max-width: 1000px;
-      margin: auto;
-      color: #e5e7eb;
-      font-size: 1.08rem;
-    }
-
-    nav {
-      background: #1f2937;
-      text-align: center;
-      padding: 12px 10px;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 7px 10px;
-      display: inline-block;
-    }
-
-    nav a:hover { text-decoration: underline; }
-
-    main {
-      max-width: 1140px;
-      margin: auto;
-      padding: 40px 20px;
-    }
-
-    section {
-      margin-bottom: 58px;
-      scroll-margin-top: 18px;
-    }
-
-    h2 {
-      border-bottom: 2px solid #e5e7eb;
-      padding-bottom: 8px;
-      margin-top: 0;
-    }
-
-    h3 { margin-top: 25px; }
-    h4 { margin-top: 20px; }
-
-    p { margin: 10px 0; }
-
-    ul { padding-left: 25px; }
-    li { margin: 6px 0; }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 22px 0;
-    }
-
-    th, td {
-      border: 1px solid #d1d5db;
-      padding: 11px 12px;
-      vertical-align: top;
-      text-align: left;
-    }
-
-    th { background: #f3f4f6; }
-
-    code {
-      background: #f3f4f6;
-      padding: 2px 5px;
-      border-radius: 4px;
-    }
-
-    .lead { font-size: 1.08rem; }
-
-    .theorem-card {
-      border: 1px solid #d1d5db;
-      border-radius: 9px;
-      padding: 26px;
-      margin-top: 22px;
-    }
-
-    .status-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
-      gap: 8px 18px;
-      background: #f8fafc;
-      border: 1px solid #e5e7eb;
-      border-radius: 7px;
-      padding: 15px 17px;
-      margin-bottom: 22px;
-      font-size: 0.94rem;
-    }
-
-    .mathbox {
-      background: #f8fafc;
-      border-left: 4px solid #374151;
-      padding: 18px 21px;
-      margin: 20px 0;
-      overflow-x: auto;
-    }
-
-    .proofstep {
-      border-left: 3px solid #9ca3af;
-      padding: 10px 16px;
-      margin: 13px 0;
-    }
-
-    .limits {
-      background: #fafafa;
-      border-left: 4px solid #9ca3af;
-      padding: 17px 19px;
-      margin: 20px 0;
-    }
-
-    .counterexample {
-      background: #fff;
-      border: 1px dashed #9ca3af;
-      padding: 18px 20px;
-      margin: 20px 0;
-      border-radius: 7px;
-    }
-
-    .teaching {
-      background: #f8fafc;
-      border-left: 4px solid #111827;
-      padding: 17px 19px;
-      margin: 20px 0;
-    }
-
-    .crosslinks {
-      border-top: 1px solid #d1d5db;
-      padding-top: 14px;
-      margin-top: 22px;
-      font-size: 0.94rem;
-    }
-
-    .crosslinks a {
-      font-weight: bold;
-      text-decoration: none;
-    }
-
-    .crosslinks a:hover { text-decoration: underline; }
-
-    .link-label { color: #4b5563; font-weight: bold; }
-
-    .tag {
-      display: inline-block;
-      padding: 4px 8px;
-      margin: 3px 5px 3px 0;
-      border: 1px solid #9ca3af;
-      border-radius: 5px;
-      font-size: 0.82rem;
-      font-weight: bold;
-      background: #f3f4f6;
-    }
-
-    .tag.classical { background: #eff6ff; border-color: #93c5fd; }
-    .tag.bm { background: #ecfdf5; border-color: #6ee7b7; }
-    .tag.gurf { background: #f5f3ff; border-color: #c4b5fd; }
-    .tag.conditional { background: #fffbeb; border-color: #fcd34d; }
-    .tag.applied { background: #f8fafc; border-color: #94a3b8; }
-
-    .quick-index {
-      columns: 2 390px;
-      column-gap: 42px;
-    }
-
-    .quick-index li {
-      break-inside: avoid;
-      margin: 5px 0;
-    }
-
-    .quick-index a { text-decoration: none; }
-    .quick-index a:hover { text-decoration: underline; }
-
-    .dependency td:first-child { font-weight: bold; width: 33%; }
-
-    footer {
-      background: #111827;
-      color: white;
-      text-align: center;
-      padding: 28px 20px;
-      margin-top: 55px;
-    }
-
-    @media (max-width: 700px) {
-      header h1 { font-size: 2rem; }
-      main { padding: 28px 16px; }
-      .theorem-card { padding: 19px; }
-      .quick-index { columns: 1; }
-    }
-  </style>
+    .hero-ref{max-width:1080px}
+    .hero-ref .intro{max-width:960px}
+    .proof-policy{border-left:4px solid var(--accent);background:#eaf0ed;padding:16px 19px;border-radius:6px;margin:22px 0}
+    .principal-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:26px 0 34px}
+    .principal-grid .panel{margin:0;text-decoration:none;color:inherit}
+    .principal-grid h2{border:0;padding:0;margin:0 0 8px;font-size:25px}
+    .principal-grid p{font-size:14px;color:var(--muted);margin:0}
+    .registry-nav{background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:20px;margin:28px 0 38px}
+    .registry-nav h2{border:0;padding:0;margin:0 0 13px;font-size:24px}
+    .range-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-bottom:20px}
+    .range-link{display:block;border:1px solid var(--line);border-radius:6px;padding:12px 14px;text-decoration:none;background:#fbfbf6}
+    .range-link strong{display:block;color:var(--ink)}
+    .range-link span{display:block;color:var(--muted);font-size:13px;margin-top:3px}
+    .theorem-index{display:grid;grid-template-columns:repeat(11,minmax(0,1fr));gap:6px}
+    .theorem-index a{display:flex;align-items:center;justify-content:center;min-height:34px;border:1px solid var(--line);border-radius:5px;background:#fffef9;text-decoration:none;font-size:12px;font-weight:700}
+    .range-head{margin:54px 0 20px;padding-top:25px;border-top:3px double var(--line)}
+    .range-head h2{border:0;padding:0;margin:0 0 7px;font-size:31px}
+    .range-head p{color:var(--muted);margin:0;max-width:820px}
+    .theorem-card{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:24px 26px;margin:18px 0;box-shadow:0 1px 0 rgba(23,45,60,.03)}
+    .theorem-card h2{border:0;padding:0;margin:0 0 13px;font-size:27px;scroll-margin-top:20px}
+    .theorem-meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:13px}
+    .badge{display:inline-block;font:700 11px/1.1 system-ui;letter-spacing:.075em;text-transform:uppercase;padding:5px 7px;border-radius:4px;border:1px solid transparent}
+    .badge.classical{background:#edf1ee;color:#405b53;border-color:#d3ddd7}
+    .badge.gurf{background:#e6f0f2;color:#175965;border-color:#c6dadd}
+    .badge.bm{background:#e8efec;color:#285f4b;border-color:#cadbd3}
+    .badge.structural{background:#eeeaf4;color:#5c4875;border-color:#dad0e6}
+    .badge.quantitative{background:#eef0f8;color:#465884;border-color:#d5d9e8}
+    .badge.counterexample{background:#f8e8e5;color:#853d35;border-color:#e7c7c2}
+    .badge.supporting{background:#f2ece3;color:#755b31;border-color:#e2d5c0}
+    .stable-id{font:700 11px/1.1 ui-monospace,SFMono-Regular,Consolas,monospace;color:var(--muted);letter-spacing:.04em}
+    .theorem-card p{margin:12px 0}
+    .theorem-card .math.display{overflow:auto;padding:7px 0}
+    .theorem-card strong:first-child{color:#294f5f}
+    .backlink{font-size:12px;margin-top:16px!important}
+    .backlink a{color:var(--muted)}
+    .registry-boundary{border-left:4px solid #973f35;background:#f8e8e5;padding:16px 19px;border-radius:6px;margin:30px 0}
+    .compat-anchor{position:relative;top:-10px}
+    @media(max-width:920px){.principal-grid{grid-template-columns:1fr 1fr}.theorem-index{grid-template-columns:repeat(8,minmax(0,1fr))}}
+    @media(max-width:700px){.principal-grid,.range-grid{grid-template-columns:1fr}.theorem-index{grid-template-columns:repeat(5,minmax(0,1fr))}.theorem-card{padding:19px 17px}}
+</style>
 </head>
-
 <body>
-<header>
-  <h1>Theorem Registry</h1>
-  <p>
-    Proved statements, structural specializations, quantitative bounds,
-    counterexamples, and applied identities used in Branch Mathematics and
-    GURF. Every entry separates proof status from mathematical provenance.
-  </p>
+
+<header class="site-head">
+  <a class="brand" href="index.html">Branch Mathematics</a>
+  <nav aria-label="Main navigation">
+    <a href="index.html">Corpus</a>
+    <a href="branch-mathematics.html">BM</a>
+    <a href="theorems.html" aria-current="page">Theorems</a>
+    <a href="gurf.html">GURF</a>
+    <a href="calculator.html">Calculator</a>
+    <a href="models.html">3D models</a>
+    <a href="book.html">Book</a>
+  </nav>
 </header>
 
-<nav>
-  <a href="index.html">Home</a>
-  <a href="branch-mathematics.html">Branch Mathematics</a>
-  <a href="gurf.html">GURF</a>
-  <a href="encyclopedia.html">Encyclopedia</a>
-  <a href="definitions.html">Definitions</a>
-  <a href="examples.html">Examples</a>
-  <a href="theorems.html">Theorems</a>
-  <a href="equations.html">Equations</a>
-  <a href="structures.html">Structures</a>
-  <a href="passports.html">Passports</a>
-  <a href="roots.html">Roots</a>
-  <a href="research.html">Research</a>
-  <a href="changelog.html">Changelog</a>
-</nav>
-
 <main>
-
-<section id="audit-2026-09-09">
-  <h2>Theorem audit — September 9, 2026</h2>
-  <p>This revision distinguishes exact recovery, existence of evolution,
-  analytic continuation, and physically admissible reconstruction. Section
-  numbers and existing link anchors are preserved. The
-  <a href="status-registry.html">canonical status registry</a> governs maturity
-  labels; no novelty or candidate-structure promotion is made by this revision.</p>
-  <p>OpenAI reported a forced three-dimensional Navier–Stokes blowup construction
-  targeting Clay alternatives C and D on September 8, with accompanying Lean
-  formalizations. This BM/GURF audit has not independently verified the full
-  proof or executed the formalization. The stated result does not establish
-  unforced Navier–Stokes blowup. BM/GURF claims no Clay solution.
-  <a href="https://openai.com/index/navier-stokes-solution/">Announcement</a> ·
-  <a href="https://cdn.openai.com/pdf/32d9f210-8b73-45e0-91bc-82a30aef8a9a/navier-stokes.pdf">Theorem 1.1</a> ·
-  <a href="https://github.com/openai/NavierStokesAndEuler">Formalization repository</a>.</p>
-  <p>Corrected here: future-Task theorem naming and partial domains; finite-limit
-  qualifications; finite-carrier attainment; dephasing recovery semantics;
-  relational existence; Gaussian proof details; two malformed mathematical commands.</p>
-</section>
-
-<section id="standard">
-  <h2>1. How to Read the Registry</h2>
-
-  <p class="lead">
-    A theorem can be correct without being new, and a useful BM or GURF
-    specialization can rely on classical mathematics. This registry says
-    which is which directly on every result.
+<article class="article hero-ref" id="top">
+  <p class="eyebrow">Canonical supporting result register · 10 September 2026</p>
+  <h1>Theorems and proofs</h1>
+  <p class="intro">
+    Stable theorem IDs retain their identity. Corollaries, counterexamples, propositions, identities,
+    restrictions, and classical theorems remain labeled by their mathematical role rather than being
+    presented as independent deep discoveries. The register below gives the corrected T01–T55
+    statements and their scoped proofs from the mathematical edition.
   </p>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Label</th>
-        <th>Meaning in this registry</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="tag classical">Classical infrastructure</span></td>
-        <td>Established mathematics used directly: factorization, congruence, projection, Markov composition, relational composition, PDE identities, and similar results.</td>
-      </tr>
-      <tr>
-        <td><span class="tag bm">BM structural result</span></td>
-        <td>A proved statement formulated in BM roles or interfaces. This label does not assert external historical novelty.</td>
-      </tr>
-      <tr>
-        <td><span class="tag gurf">GURF response result</span></td>
-        <td>A proved response/task/observation specialization used by GURF. Again, framework use and historical novelty are separate questions.</td>
-      </tr>
-      <tr>
-        <td><span class="tag conditional">Conditional result</span></td>
-        <td>The conclusion is proved only under additional hypotheses stated in the entry.</td>
-      </tr>
-      <tr>
-        <td><span class="tag applied">Applied identity</span></td>
-        <td>A domain-specific established identity carried through BM/GURF structure without being relabeled as a new theorem of that domain.</td>
-      </tr>
-      <tr>
-        <td>Counterexample / firewall</td>
-        <td>An explicit construction showing why a stronger transport, quotient, closure, quantifier, privacy, or semantic claim is invalid.</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div class="mathbox">
-    \[
-    \boxed{
-    \text{proof status}
-    \quad\text{and}\quad
-    \text{mathematical provenance}
-    \quad\text{are recorded separately}.
-    }
-    \]
-  </div>
-</section>
-
-
-<section id="novelty">
-  <h2>2. Proof, Framework Role, and Novelty Are Different Questions</h2>
-
-  <p>
-    The registry uses a result only for what its proof establishes. A
-    classical theorem can be central to BM or GURF without becoming a new
-    theorem merely because the framework gives it a new role.
-  </p>
-
-  <div class="mathbox">
-    \[
-    \boxed{
-    \text{proved}
-    \not\Rightarrow
-    \text{historically novel}
-    \not\Rightarrow
-    \text{physically realized}.
-    }
-    \]
+  <div class="proof-policy">
+    <strong>Proof policy.</strong> Every result is only as strong as its stated hypotheses. The proofs
+    below are mathematical arguments within those hypotheses; no machine-checked proof or historical
+    novelty claim is implied. The principal combined developments are kept separate from this
+    supporting register.
   </div>
 
-  <p>
-    Conversely, a result formulated naturally in BM can be mathematically
-    useful even while external priority remains a separate literature question.
-  </p>
-</section>
-
-<section id="registry-index">
-  <h2>3. Result Index</h2>
-  <ol class="quick-index">
-    <li><a href="#passport-equivalence">Passport Equivalence</a></li>
-    <li><a href="#recoverability">Exact Recoverability / Fibre Factorization</a></li>
-    <li><a href="#passport-sufficiency">Passport Sufficiency</a></li>
-    <li><a href="#completion-fibre">Completion-Fibre Sufficiency</a></li>
-    <li><a href="#task-minimal-quotient">Minimal Exact Task Quotient</a></li>
-    <li><a href="#finite-carrier-bound">Finite Exact Carrier Lower Bound</a></li>
-    <li><a href="#parallel-refinement">Parallel Observation Refinement</a></li>
-    <li><a href="#serial-loss">Deterministic Serial Information Loss</a></li>
-    <li><a href="#bm-sq-01">BM-SQ-01 Structured Quotient</a></li>
-    <li><a href="#quotient-counterexample">Raw Observation Quotient Counterexample</a></li>
-    <li><a href="#interface-factorization">Interface Factorization</a></li>
-    <li><a href="#typed-composite-domain">Typed Composite Domain</a></li>
-    <li><a href="#dynamic-continuation">Future-Task Factorization</a></li>
-    <li><a href="#repair-refinement">Repair Refinement</a></li>
-    <li><a href="#sufficiency-refinement">Sufficiency Under Refinement</a></li>
-    <li><a href="#joint-feasibility">Separate vs Joint Feasibility</a></li>
-    <li><a href="#quantifier-scope">Quantifier-Scope Non-Equivalence</a></li>
-    <li><a href="#stochastic-factorization">Stochastic Response-Law Factorization</a></li>
-    <li><a href="#markov-composition">Markov Test-Pullback Composition</a></li>
-    <li><a href="#stochastic-mean-counterexample">Mean Collapse Counterexample</a></li>
-    <li><a href="#nondeterministic">Existential vs Universal Response</a></li>
-    <li><a href="#relational-composition">Relational May/Must Composition</a></li>
-    <li><a href="#root-iteration-firewall">Root Iteration Admissibility</a></li>
-    <li><a href="#root-relativity">Root Receiver-Relativity</a></li>
-    <li><a href="#affine-repeated-root">Affine Repeated-Root Formula</a></li>
-    <li><a href="#affine-convergence">Affine Global Convergence</a></li>
-    <li><a href="#worked-root">Worked Root Corollary</a></li>
-    <li><a href="#invariant-transfer">Invariant Transfer</a></li>
-    <li><a href="#dynamic-closure">Dynamic Closure</a></li>
-    <li><a href="#task-vs-closure">Task Sufficiency Does Not Imply Closure</a></li>
-    <li><a href="#leaf-propagation">Leaf Propagation Admissibility</a></li>
-    <li><a href="#passport-defect-localization">Serial Passport-Defect Localization</a></li>
-    <li><a href="#path-coherence">Path Coherence Transitivity</a></li>
-    <li><a href="#finite-network-evaluation">Finite Deterministic Network Evaluation</a></li>
-    <li><a href="#task-diameter">Exact Task-Diameter Criterion</a></li>
-    <li><a href="#approximate-task-diameter">Approximate Fibre-Diameter Reconstruction</a></li>
-    <li><a href="#lipschitz-serial-bound">Lipschitz Serial Error Bound</a></li>
-    <li><a href="#gaussian-fisher-carrier">Gaussian Local Fisher Carrier</a></li>
-    <li><a href="#mahalanobis-carrier">Finite-Hypothesis Mahalanobis Carrier</a></li>
-    <li><a href="#ns-energy">Navier–Stokes Energy Identity</a></li>
-    <li><a href="#ns-enstrophy">Navier–Stokes Enstrophy Identity</a></li>
-    <li><a href="#wilson-loop">Wilson-Loop Gauge Invariance</a></li>
-    <li><a href="#dephasing">Qubit Dephasing Identity</a></li>
-    <li><a href="#privacy-firewall">Privacy Firewall</a></li>
-    <li><a href="#sector-firewall">Theorem Sector Firewall</a></li>
-  </ol>
-</section>
-
-<section id="passport-equivalence">
-  <h2>4. Passport Equivalence Theorem</h2>
-  <div class="theorem-card">
-    <div class="status-grid">
-      <div><strong>Classification:</strong> Theorem</div>
-      <div><strong>Provenance:</strong> <span class="tag classical">Classical infrastructure</span> used as a BM Passport specialization</div>
-      <div><strong>Sector:</strong> deterministic Set semantics</div>
-      
-    </div>
-    
-    <h3>Statement</h3>
-    
-    <p>Let \(b_c:X\to Y_c\) be a family of functions indexed by \(c\in\mathcal C\).
-    Define</p>
-    <div class="mathbox">
-      \[
-      x\sim_Px'
-      \iff
-      b_c(x)=b_c(x')
-      \quad\forall c\in\mathcal C.
-      \]
-    </div>
-    <p>Then \(\sim_P\) is an equivalence relation on \(X\).</p>
-    <h3>Proof</h3>
-    <div class="proofstep"><strong>Reflexive.</strong> For every \(c\), \(b_c(x)=b_c(x)\).</div>
-    <div class="proofstep"><strong>Symmetric.</strong> Equality of each \(b_c(x)\) and \(b_c(x')\) is symmetric.</div>
-    <div class="proofstep"><strong>Transitive.</strong> If \(b_c(x)=b_c(x')\) and \(b_c(x')=b_c(x'')\) for every \(c\), then \(b_c(x)=b_c(x'')\) for every \(c\).</div>
-    <p>Hence \(\sim_P\) is reflexive, symmetric, and transitive. \(\square\)</p>
-    
-    <div class="limits"><strong>Limits</strong><ul><li>This is the kernel equivalence of a family of deterministic observations. It is not a universal model of stochastic, metric, privacy, quantum, or relational indistinguishability.</li></ul></div>
-    <div class="teaching"><strong>Reading note</strong><p>The theorem is elementary but important because every later exact Set-level quotient argument depends on knowing exactly which equivalence is being used.</p></div>
-    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#passport">Passport</a> · <a href="definitions.html#passport-equivalence">Passport equivalence</a><br><span class="link-label">Worked examples:</span> <a href="examples.html#passport-finite-fibres">Finite fibres</a></div>
-  </div>
-</section>
-
-<section id="recoverability">
-  <h2>5. Exact Recoverability / Fibre-Factorization Theorem</h2>
-  <div class="theorem-card">
-    <div class="status-grid">
-      <div><strong>Classification:</strong> Theorem</div>
-      <div><strong>Provenance:</strong> <span class="tag classical">Classical factorization criterion</span> central to GURF exact sufficiency</div>
-      <div><strong>Sector:</strong> deterministic Set semantics</div>
-      
-    </div>
-    
-    <h3>Statement</h3>
-    
-    <p>Let \(r:X\to Y\) and \(T:X\to W\). The following are equivalent:</p>
-    <ol>
-      <li>there exists \(\widetilde T:r(X)\to W\) with \(T=\widetilde T\circ r\);</li>
-      <li>\(T\) is constant on every fibre of \(r\):</li>
-    </ol>
-    <div class="mathbox">
-      \[
-      \boxed{
-      r(x)=r(x')
-      \Longrightarrow
-      T(x)=T(x').
-      }
-      \]
-    </div>
-    <h3>Proof</h3>
-    <div class="proofstep">
-      <strong>(1) \(\Rightarrow\) (2).</strong>
-      If \(r(x)=r(x')\), then
-      \[
-      T(x)=\widetilde T(r(x))
-      =\widetilde T(r(x'))
-      =T(x').
-      \]
-    </div>
-    <div class="proofstep">
-      <strong>(2) \(\Rightarrow\) (1).</strong>
-      For \(y\in r(X)\), choose any \(x\) with \(r(x)=y\) and define
-      \[
-      \widetilde T(y)=T(x).
-      \]
-      Fibre constancy makes this independent of the chosen representative.
-      Therefore \(T=\widetilde T\circ r\).
-    </div>
-    <p>\(\square\)</p>
-    <h3>Consequences</h3><ul><li>Exact Task sufficiency can be tested fibre by fibre.</li><li>The factor map is required only on \(r(X)\); extension to all of \(Y\) is a separate question.</li></ul>
-    
-    
-    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#exact-sufficiency">Exact sufficiency</a> · <a href="definitions.html#fibre">Fibre</a><br><span class="link-label">Worked examples:</span> <a href="examples.html#exact-sufficiency-example">Exact sufficiency</a> · <a href="examples.html#passport-finite-fibres">Finite fibre audit</a></div>
-  </div>
-</section>
-
-<section id="passport-sufficiency">
-  <h2>6. Passport Sufficiency Corollary</h2>
-  <div class="theorem-card">
-    <div class="status-grid">
-      <div><strong>Classification:</strong> Corollary</div>
-      <div><strong>Provenance:</strong> <span class="tag gurf">GURF response specialization</span> of Exact Recoverability</div>
-      <div><strong>Sector:</strong> deterministic Set semantics</div>
-      
-    </div>
-    
-    <h3>Statement</h3>
-    
-    <p>Let \(B_P:X\to Q_P\) be a combined Passport map. A Task \(T:X\to W\)
-    is exactly recoverable from the Passport exactly when</p>
-    <div class="mathbox">
-      \[
-      x\sim_Px'
-      \Longrightarrow
-      T(x)=T(x').
-      \]
-      Equivalently,
-      \[
-      \boxed{\sim_P\subseteq\sim_T.}
-      \]
-    </div>
-    <h3>Proof</h3><p>Apply Exact Recoverability to \(r=B_P\). The fibres of \(B_P\) are exactly the Passport-equivalence classes. \(\square\)</p>
-    
-    <div class="limits"><strong>Limits</strong><ul><li>Sufficiency is relative to the declared Task.</li><li>The result is exact and deterministic.</li></ul></div>
-    
-    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#passport">Passport</a> · <a href="definitions.html#task">Task</a><br><span class="link-label">Worked examples:</span> <a href="examples.html#passport-task">Task-specific Passport</a> · <a href="examples.html#passport-failure">Passport failure</a></div>
-  </div>
-</section>
-
-<section id="completion-fibre">
-  <h2>7. Completion-Fibre Sufficiency Theorem</h2>
-  <div class="theorem-card">
-    <div class="status-grid">
-      <div><strong>Classification:</strong> Theorem</div>
-      <div><strong>Provenance:</strong> <span class="tag gurf">GURF exact-set specialization</span> of fibre factorization</div>
-      <div><strong>Sector:</strong> deterministic Set semantics with a valid joint product</div>
-      
-    </div>
-    
-    <h3>Statement</h3>
-    
-    <p>Let \(r_\alpha:X\to Y_\alpha\) and define the joint observation
-    \(r_A(x)=(r_\alpha(x))_{\alpha\in A}\). For
-    \(\ell=(\ell_\alpha)_{\alpha\in A}\), define</p>
-    <div class="mathbox">
-      \[
-      \mathfrak C_A(\ell)
-      =
-      \bigcap_{\alpha\in A}
-      r_\alpha^{-1}(\ell_\alpha).
-      \]
-    </div>
-    <p>A Task \(T:X\to W\) factors through \(r_A\) exactly when \(T\) is
-    constant on every nonempty Completion Fibre. Equivalently,</p>
-    <div class="mathbox">
-      \[
-      \boxed{
-      \left|T(\mathfrak C_A(\ell))\right|\le1
-      \quad\text{for every }\ell.
-      }
-      \]
-    </div>
-    <h3>Proof</h3><p>By construction \(r_A^{-1}(\ell)=\mathfrak C_A(\ell)\). Apply Exact Recoverability to \(r_A\). \(\square\)</p>
-    
-    <div class="limits"><strong>Limits</strong><ul><li>The Set product is not automatically the correct joint object in measurable, topological, categorical, or quantum settings.</li><li>A nonempty collection of marginal fibres does not itself specify a probabilistic coupling.</li></ul></div>
-    
-    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#completion-fibre">Completion fibre</a> · <a href="definitions.html#combined-passport">Combined Passport</a><br><span class="link-label">Worked examples:</span> <a href="examples.html#passport-finite-fibres">Finite completion fibre</a> · <a href="examples.html#coupling-example">Coupling</a></div>
-  
-    <div class="limits"><strong>Existence:</strong> An empty completion fibre
-    satisfies the at-most-one condition vacuously. The recovery map is defined
-    only on the realized observation image. Nonemptiness is a separate
-    realizability obligation; at most one extension does not mean exactly one.</div>
-  </div>
-</section>
-
-<section id="task-minimal-quotient">
-  <h2>8. Minimal Exact Task-Quotient Proposition</h2>
-  <div class="theorem-card">
-    <div class="status-grid">
-      <div><strong>Classification:</strong> Proposition</div>
-      <div><strong>Provenance:</strong> <span class="tag gurf">GURF structural use</span> of a classical quotient fact</div>
-      <div><strong>Sector:</strong> deterministic Set semantics</div>
-      
-    </div>
-    
-    <h3>Statement</h3>
-    
-    <p>For \(T:X\to W\), define \(x\sim_Tx'\iff T(x)=T(x')\).
-    Among equivalence relations \(E\) on \(X\) whose quotient representation
-    is exactly sufficient for \(T\), \(\sim_T\) is the coarsest allowable
-    identification:</p>
-    <div class="mathbox">
-      \[
-      E\subseteq\sim_T.
-      \]
-    </div>
-    <p>The quotient \(X/{\sim_T}\) therefore merges every pair that can be
-    merged without destroying exact determination of \(T\).</p>
-    <h3>Proof</h3>
-    <p>If the quotient by \(E\) is sufficient for \(T\), equal quotient classes
-    must imply equal Task values. Thus \(xEx'\Rightarrow T(x)=T(x')\), so
-    \(E\subseteq\sim_T\). Conversely the quotient by \(\sim_T\) is sufficient,
-    because \(T\) is constant on its own equivalence classes. \(\square\)</p>
-    <h3>Consequences</h3><ul><li>The exact Task itself generates a canonical maximal compression at the level of Set partitions.</li></ul>
-    <div class="limits"><strong>Limits</strong><ul><li>Additional algebraic, topological, smooth, measurable, privacy, or dynamic structure can forbid this quotient or require more information.</li></ul></div>
-    
-    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#task-equivalence">Task equivalence</a> · <a href="definitions.html#structured-quotient">Structured quotient</a><br><span class="link-label">Worked examples:</span> <a href="examples.html#passport-basic">Parity Task</a></div>
-  </div>
-</section>
-
-<section id="finite-carrier-bound">
-  <h2>9. Finite Exact Carrier Cardinality Bound</h2>
-  <div class="theorem-card">
-    <div class="status-grid">
-      <div><strong>Classification:</strong> Theorem</div>
-      <div><strong>Provenance:</strong> <span class="tag gurf">GURF information bound</span> from elementary finite-set factorization</div>
-      <div><strong>Sector:</strong> finite deterministic Set semantics</div>
-      
-    </div>
-    
-    <h3>Statement</h3>
-    
-    <p>Let \(X\) be finite, \(r:X\to Y\), and \(T:X\to W\). If \(r\) is
-    exactly sufficient for \(T\), then</p>
-    <div class="mathbox">
-      \[
-      \boxed{|r(X)|\ge |T(X)|.}
-      \]
-    </div>
-    <p>Within the class of sufficient representations, the lower bound is
-    attained by \(r=T\), or by an invertible relabelling \(r=b\circ T\),
-    where \(b:T(X)\to r(X)\) is a bijection. Equal image cardinality alone
-    does not imply sufficiency.</p>
-    <h3>Proof</h3>
-    <p>Sufficiency gives \(T=\widetilde T\circ r\) for
-    \(\widetilde T:r(X)\to W\). Because every value in \(T(X)\) is
-    \(\widetilde T(y)\) for some \(y\in r(X)\), the restriction
-    \(\widetilde T:r(X)\to T(X)\) is surjective. A surjection between finite
-    sets requires \(|r(X)|\ge|T(X)|\). \(\square\)</p>
-    <h3>Consequences</h3><ul><li>Exact finite compression cannot use fewer realized carrier states than there are distinct Task values.</li></ul>
-    <div class="limits"><strong>Limits</strong><ul><li>This is a cardinality bound, not a bit-complexity, rate-distortion, statistical sufficiency, or computational-complexity theorem.</li></ul></div>
-    
-    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#exact-sufficiency">Exact sufficiency</a><br><span class="link-label">Worked examples:</span> <a href="examples.html#passport-finite-fibres">Finite fibres</a></div>
-  
-    <h3>Equality case and counterexample</h3>
-    <p>For a sufficient representation on finite \(X\), equality holds exactly
-    when the induced recovery map is bijective, equivalently when \(r\) and
-    \(T\) have the same fibres. The proof is that a surjection between finite
-    sets of equal size is bijective.</p>
-    <p>For \(X=\{0,1\}^2\), \(r(a,b)=a\), and \(T(a,b)=b\), both images
-    have size two, but \(r(0,0)=r(0,1)\) while the Task values differ.
-    A bijection between the image sets without compatibility with the Task
-    is therefore insufficient.</p>
-  </div>
-</section>
-
-<section id="parallel-refinement">
-  <h2>10. Parallel Observation Refinement Theorem</h2>
-  <div class="theorem-card">
-    <div class="status-grid">
-      <div><strong>Classification:</strong> Theorem</div>
-      <div><strong>Provenance:</strong> <span class="tag classical">Classical product-map identity</span> used by GURF</div>
-      <div><strong>Sector:</strong> deterministic Set semantics</div>
-      
-    </div>
-    
-    <h3>Statement</h3>
-    
-    <p>For \(F:X\to Y\), \(G:X\to Z\), and \(H=(F,G):X\to Y\times Z\),</p>
-    <div class="mathbox">
-      \[
-      \boxed{\sim_H=\sim_F\cap\sim_G}
-      \]
-      and
-      \[
-      \boxed{H^{-1}(y,z)=F^{-1}(y)\cap G^{-1}(z).}
-      \]
-    </div>
-    <h3>Proof</h3><p>\(H(x)=H(x')\) holds exactly when both coordinates agree. The fibre identity is the same coordinatewise condition. \(\square\)</p>
-    <h3>Consequences</h3><ul><li>Adding a genuinely independent exact observation can refine ambiguity.</li><li>Parallel observations cannot make the exact equivalence coarser.</li></ul>
-    <div class="limits"><strong>Limits</strong><ul><li>A pair of marginal stochastic laws is not automatically a joint observation without a coupling.</li></ul></div>
-    
-    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#refinement">Information refinement</a><br><span class="link-label">Worked examples:</span> <a href="examples.html#tree-parallel">Parallel Tree</a> · <a href="examples.html#full-system-worked-run">Sensor fusion</a></div>
-  </div>
-</section>
-
-<section id="serial-loss">
-  <h2>11. Deterministic Serial Information-Loss Theorem</h2>
-  <div class="theorem-card">
-    <div class="status-grid">
-      <div><strong>Classification:</strong> Theorem</div>
-      <div><strong>Provenance:</strong> <span class="tag classical">Classical composition fact</span> used as a GURF data-processing firewall</div>
-      <div><strong>Sector:</strong> deterministic Set semantics</div>
-      
-    </div>
-    
-    <h3>Statement</h3>
-    
-    <p>Let \(F:X\to Y\) and \(G:Y\to Z\). Then</p>
-    <div class="mathbox">
-      \[
-      F(x)=F(x')
-      \Longrightarrow
-      (G\circ F)(x)=(G\circ F)(x'),
-      \]
-      hence
-      \[
-      \boxed{\sim_F\subseteq\sim_{G\circ F}.}
-      \]
-    </div>
-    <h3>Proof</h3><p>Apply the single-valued map \(G\) to the equality \(F(x)=F(x')\). \(\square\)</p>
-    <h3>Consequences</h3><ul><li>A deterministic downstream Operation cannot recover a distinction already erased upstream unless additional information enters by another channel.</li></ul>
-    <div class="limits"><strong>Limits</strong><ul><li>The theorem does not say downstream processing cannot improve noise, stability, calibration, or a different Task.</li><li>Other semantic sectors need their own data-processing statements.</li></ul></div>
-    
-    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#transformation">Transformation</a> · <a href="definitions.html#refinement">Information refinement</a><br><span class="link-label">Worked examples:</span> <a href="examples.html#passport-serial-loss">Serial loss</a></div>
-  </div>
-</section>
-
-<section id="bm-sq-01">
-  <h2>12. BM-SQ-01 — Structured Quotient Criterion</h2>
-  <div class="theorem-card">
-    <div class="status-grid">
-      <div><strong>Classification:</strong> Theorem</div>
-      <div><strong>Provenance:</strong> <span class="tag classical">Classical congruence criterion</span> organized as BM structured-quotient result</div>
-      <div><strong>Sector:</strong> finitary algebra</div>
-      <div><strong>Project identifier:</strong> BM-SQ-01</div>
-    </div>
-    
-    <h3>Statement</h3>
-    
-    <p>Let \(A=(X,\Sigma)\) be a finitary algebra and let \(\sim_P\) be a
-    Passport-induced equivalence relation. For each \(n\)-ary operation
-    \(\sigma\in\Sigma\), define</p>
-    <div class="mathbox">
-      \[
-      \overline\sigma([x_1]_P,\ldots,[x_n]_P)
-      =
-      [\sigma(x_1,\ldots,x_n)]_P.
-      \]
-    </div>
-    <p>These quotient Operations are well-defined for every
-    \(\sigma\in\Sigma\) if and only if \(\sim_P\) is a congruence:</p>
-    <div class="mathbox">
-      \[
-      x_i\sim_Px_i'\ \forall i
-      \Longrightarrow
-      \sigma(x_1,\ldots,x_n)
-      \sim_P
-      \sigma(x_1',\ldots,x_n').
-      \]
-    </div>
-    <h3>Proof</h3>
-    <div class="proofstep">
-      <strong>Congruence implies well-defined quotient.</strong>
-      Different representatives of the same classes are coordinatewise
-      equivalent; compatibility sends them to equivalent outputs, so the
-      output class is independent of representatives.
-    </div>
-    <div class="proofstep">
-      <strong>Well-defined quotient implies congruence.</strong>
-      If \(x_i\sim_Px_i'\), then \([x_i]_P=[x_i']_P\). Equality of the
-      quotient Operations on these equal input classes gives equality of the
-      output classes, which is the congruence condition.
-    </div>
-    <p>\(\square\)</p>
-    <h3>Consequences</h3><ul><li>A Passport equivalence suitable for observation is not automatically suitable for algebraic quotienting.</li></ul>
-    <div class="limits"><strong>Limits</strong><ul><li>This is universal-algebra mathematics. The BM contribution here is the structural use of the criterion, not a claim to have discovered congruences.</li><li>Topology, probability, operator theory, geometry, and quantum structures require their native quotient conditions.</li></ul></div>
-    
-    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#structured-quotient">Structured quotient</a> · <a href="definitions.html#congruence">Congruence</a><br><span class="link-label">Worked examples:</span> <a href="examples.html#structured-quotient-example">Structured quotient</a> · <a href="examples.html#failure-false-quotient">False quotient</a></div>
-  
-    <div class="limits"><strong>Partial operations:</strong> For an exact
-    quotient that preserves definedness, coordinatewise equivalent input tuples
-    must agree on membership in the operation domain; when defined, their
-    outputs must be equivalent. Output agreement alone is insufficient.
-    The displayed theorem is the total-operation case.</div>
-  </div>
-</section>
-
-<section id="quotient-counterexample">
-  <h2>13. Raw Observation Does Not Guarantee an Operation-Compatible Quotient</h2>
-  <div class="theorem-card">
-    <div class="status-grid">
-      <div><strong>Classification:</strong> Counterexample</div>
-      <div><strong>Provenance:</strong> Classical counterexample used as a BM quotient firewall</div>
-      <div><strong>Sector:</strong> deterministic Set/algebraic example</div>
-      
-    </div>
-    
-    <h3>Statement</h3>
-    
-    <p>On \(X=\mathbb R^2\), define</p>
-    <div class="mathbox">
-      \[
-      (x_1,x_2)\sim_P(y_1,y_2)
-      \iff x_1=y_1,
-      \qquad
-      \sigma(x_1,x_2)=(x_2,x_1).
-      \]
-    </div>
-    <p>Take \(x=(1,2)\) and \(y=(1,9)\). Then \(x\sim_Py\), but</p>
-    <div class="mathbox">
-      \[
-      \sigma(x)=(2,1),
-      \qquad
-      \sigma(y)=(9,1),
-      \qquad
-      \sigma(x)\not\sim_P\sigma(y).
-      \]
-    </div>
-    <p>Thus the observation equivalence is not a congruence for
-    \(\sigma\).</p>
-    <h3>Proof</h3><p>The displayed calculation directly violates the congruence condition. \(\square\)</p>
-    
-    
-    
-    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#structured-quotient">Structured quotient</a><br><span class="link-label">Worked examples:</span> <a href="examples.html#failure-false-quotient">False quotient</a></div>
-  </div>
-</section>
-
-<section id="interface-factorization">
-  <h2>14. Interface Factorization Theorem</h2>
-  <div class="theorem-card">
-    <div class="status-grid">
-      <div><strong>Classification:</strong> Theorem</div>
-      <div><strong>Provenance:</strong> <span class="tag bm">BM structural specialization</span> of Exact Recoverability</div>
-      <div><strong>Sector:</strong> deterministic Set semantics</div>
-      
-    </div>
-    
-    <h3>Statement</h3>
-    
-    <p>Let \(P_1:X\to Q_1\), \(F:X\to Y\), and \(P_2:Y\to Q_2\).
-    A map \(G:P_1(X)\to Q_2\) satisfying</p>
-    <div class="mathbox">
-      \[
-      \boxed{P_2\circ F=G\circ P_1}
-      \]
-    </div>
-    <p>exists exactly when \(P_2\circ F\) is constant on the fibres of
-    \(P_1\).</p>
-    <h3>Proof</h3><p>Apply Exact Recoverability with \(r=P_1\) and \(T=P_2\circ F\). \(\square\)</p>
-    <h3>Consequences</h3><ul><li>The theorem tests whether the receiving Passport can be computed from the sending Passport without reconstructing the full source state.</li></ul>
-    <div class="limits"><strong>Limits</strong><ul><li>The result certifies only the declared Set-level Passport factorization; native structural compatibility of \(F\), \(P_1\), and \(P_2\) is separate.</li></ul></div>
-    
-    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#interface">Interface</a> · <a href="definitions.html#passport">Passport</a><br><span class="link-label">Worked examples:</span> <a href="examples.html#composition-passport-loss">Interface failure</a></div>
-  
-    <div class="limits"><strong>Continuation transfer:</strong> Recovering a
-    receiving Passport is not the same as reconstructing a source trajectory
-    at a boundary. The reconstruction must remain defined, have the required
-    regularity, and preserve the native equation on the extended trajectory.</div>
-  </div>
-</section>
-
-<section id="typed-composite-domain">
-  <h2>15. Typed Composite-Domain Theorem</h2>
-  <div class="theorem-card">
-    <div class="status-grid">
-      <div><strong>Classification:</strong> Theorem</div>
-      <div><strong>Provenance:</strong> <span class="tag bm">BM structural statement</span> of the exact domain of composition</div>
-      <div><strong>Sector:</strong> partial deterministic maps</div>
-      
-    </div>
-    
-    <h3>Statement</h3>
-    
-    <p>Let \(F:D_F\subseteq X\to Y\) and
-    \(G:D_G\subseteq Y\to Z\). Then the composite \(G\circ F\) is defined
-    exactly on</p>
-    <div class="mathbox">
-      \[
-      \boxed{
-      D_{G\circ F}
-      =
-      \{x\in D_F:F(x)\in D_G\}.
-      }
-      \]
-    </div>
-    <h3>Proof</h3>
-    <p>For \(G(F(x))\) to be meaningful, first \(x\) must lie in \(D_F\),
-    and then the produced value \(F(x)\) must lie in \(D_G\). These conditions
-    are also sufficient. \(\square\)</p>
-    <h3>Consequences</h3><ul><li>A declared codomain \(Y\) does not mean every \(F(x)\) is admissible for the next Operation.</li><li>Composite admissibility can be strictly smaller than the source domain.</li></ul>
-    
-    
-    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#composition">Composition</a> · <a href="definitions.html#admissibility">Admissibility</a><br><span class="link-label">Worked examples:</span> <a href="examples.html#composition-domain-shrink">Domain shrink</a> · <a href="examples.html#composition-reciprocal">Reciprocal singularity</a></div>
-  </div>
-</section>
-
-<section id="dynamic-continuation">
-  <h2>16. Future-Task Factorization for a Declared Evolution</h2>
-  <div class="theorem-card">
-    <div class="status-grid">
-      <div><strong>Classification:</strong> Theorem</div>
-      <div><strong>Provenance:</strong> <span class="tag gurf">GURF response specialization</span> of fibre factorization</div>
-      <div><strong>Sector:</strong> deterministic dynamics</div>
-      
-    </div>
-    
-    <h3>Statement</h3>
-    
-    <p>Let \(r:X\to Y\), let \(\Phi_t:X\to X\) be a declared evolution,
-    and let \(T:X\to W\) be a future Task. The future Task
-    \(T\circ\Phi_t\) is determined exactly by the current observation \(r\)
-    if and only if</p>
-    <div class="mathbox">
-      \[
-      r(x)=r(x')
-      \Longrightarrow
-      T(\Phi_t(x))=T(\Phi_t(x')).
-      \]
-    </div>
-    <h3>Proof</h3><p>Apply Exact Recoverability to the Task \(T_t=T\circ\Phi_t\). \(\square\)</p>
-    <h3>Consequences</h3><ul><li>A present representation can be sufficient for a future Task even if it does not reconstruct the entire future state.</li></ul>
-    <div class="limits"><strong>Limits</strong><ul><li>One time \(t\) does not imply all-time closure.</li><li>Stochastic and nondeterministic evolution require sector-correct continuation semantics.</li></ul></div>
-    
-    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#continuation">Continuation</a> · <a href="definitions.html#task">Task</a><br><span class="link-label">Worked examples:</span> <a href="examples.html#dynamic-closure-example">Dynamic closure example</a></div>
-  
-    <div class="limits"><strong>Existence is a hypothesis:</strong>
-    This theorem recovers a future Task for an already-defined evolution.
-    It neither establishes the evolution map nor extends a PDE solution
-    beyond its native domain or smooth lifespan.</div>
-    <h3 id="partial-future-task">Partial deterministic evolution</h3>
-    <p>For \(\Phi_t:D_t\subseteq X\to X\), an exact response preserving
-    both availability and the Task value factors through \(r\) exactly when:</p>
-    <ol>
-      <li>\(r(x)=r(x')\Rightarrow[x\in D_t\iff x'\in D_t]\).</li>
-      <li>For \(x,x'\in D_t\), equal observations imply
-      \(T(\Phi_t(x))=T(\Phi_t(x'))\).</li>
-    </ol>
-    <p><strong>Proof.</strong> Apply Exact Recoverability to the total Task with
-    disjoint values \(\operatorname{Available}(T(\Phi_t(x)))\) on \(D_t\)
-    and \(\operatorname{Unavailable}\) outside it. Equality of tagged values
-    is exactly the two conditions. The tag records mathematical definedness,
-    not a physical state or an algorithm for determining \(D_t\).</p>
-    <p>If recovery is explicitly conditioned on existence, factorization may
-    instead be restricted to \(D_t\). That weaker statement does not preserve
-    availability on all of \(X\).</p>
-  </div>
-</section>
-
-<section id="repair-refinement">
-  <h2>17. Repair Refinement Proposition</h2>
-  <div class="theorem-card">
-    <div class="status-grid">
-      <div><strong>Classification:</strong> Proposition</div>
-      <div><strong>Provenance:</strong> <span class="tag gurf">GURF response result</span> from the joint-observation identity</div>
-      <div><strong>Sector:</strong> deterministic Set semantics</div>
-      
-    </div>
-    
-    <h3>Statement</h3>
-    
-    <p>Let \(r:X\to Y\) be an observation and \(q:X\to Z\) an added repair
-    observation. Then</p>
-    <div class="mathbox">
-      \[
-      \boxed{\sim_{(r,q)}\subseteq\sim_r.}
-      \]
-    </div>
-    <h3>Proof</h3><p>If \((r,q)(x)=(r,q)(x')\), then in particular \(r(x)=r(x')\). \(\square\)</p>
-    <h3>Consequences</h3><ul><li>Adding exact observation information cannot enlarge a deterministic ambiguity class.</li></ul>
-    <div class="limits"><strong>Limits</strong><ul><li>A refinement may still fail the actual Task or may worsen numerical stability, cost, privacy, or other objectives.</li></ul></div>
-    
-    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#repair">Repair</a> · <a href="definitions.html#refinement">Information refinement</a><br><span class="link-label">Worked examples:</span> <a href="examples.html#repair-example">Repair</a> · <a href="examples.html#full-system-worked-run">Sensor repair</a></div>
-  </div>
-</section>
-
-<section id="sufficiency-refinement">
-  <h2>18. Sufficiency Is Preserved Under Exact Refinement</h2>
-  <div class="theorem-card">
-    <div class="status-grid">
-      <div><strong>Classification:</strong> Corollary</div>
-      <div><strong>Provenance:</strong> <span class="tag gurf">GURF response corollary</span> of equivalence inclusion</div>
-      <div><strong>Sector:</strong> deterministic Set semantics</div>
-      
-    </div>
-    
-    <h3>Statement</h3>
-    
-    <p>If \(r\) is sufficient for \(T\) and
-    \(\sim_s\subseteq\sim_r\), then \(s\) is also sufficient for \(T\).</p>
-    <h3>Proof</h3>
-    <div class="mathbox">
-      \[
-      \sim_s\subseteq\sim_r\subseteq\sim_T.
-      \]
-    </div>
-    <p>Hence \(s\) satisfies the exact sufficiency criterion. \(\square\)</p>
-    
-    <div class="limits"><strong>Limits</strong><ul><li>This is exact refinement. Approximate/noisy refinement requires its own stability analysis.</li></ul></div>
-    
-    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#exact-sufficiency">Exact sufficiency</a></div>
-  </div>
-</section>
-
-<section id="joint-feasibility">
-  <h2>19. Separate Feasibility Does Not Imply Joint Feasibility</h2>
-  <div class="theorem-card">
-    <div class="status-grid">
-      <div><strong>Classification:</strong> Counterexample / exact logical distinction</div>
-      <div><strong>Provenance:</strong> Classical set theory used as a BM/GURF coupling firewall</div>
-      <div><strong>Sector:</strong> Set semantics</div>
-      
-    </div>
-    
-    <h3>Statement</h3>
-    
-    <p>From \(P_c\neq\varnothing\) for every \(c\), it does not follow that
-    \(\bigcap_cP_c\neq\varnothing\).</p>
-    <div class="counterexample">
-      Let \(X=\{0,1\}\), \(P_1=\{0\}\), and \(P_2=\{1\}\).
-      Both feasible sets are nonempty but
-      \[
-      P_1\cap P_2=\varnothing.
-      \]
-    </div>
-    <h3>Proof</h3><p>The displayed sets are an explicit counterexample. \(\square\)</p>
-    
-    
-    
-    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#joint-feasibility">Joint feasibility</a><br><span class="link-label">Worked examples:</span> <a href="examples.html#joint-feasibility-example">Shared witness</a> · <a href="examples.html#failure-witness-reuse">Failure</a></div>
-  </div>
-</section>
-
-<section id="quantifier-scope">
-  <h2>20. Quantifier-Scope Non-Equivalence</h2>
-  <div class="theorem-card">
-    <div class="status-grid">
-      <div><strong>Classification:</strong> Counterexample / exact logical distinction</div>
-      <div><strong>Provenance:</strong> Classical logic used as a BM/GURF witness-scope firewall</div>
-      <div><strong>Sector:</strong> logical / relational</div>
-      
-    </div>
-    
-    <h3>Statement</h3>
-    
-    <p>In general,</p>
-    <div class="mathbox">
-      \[
-      \forall c\,\exists x_c\,P(c,x_c)
-      \not\Rightarrow
-      \exists x\,\forall c\,P(c,x).
-      \]
-    </div>
-    <div class="counterexample">
-      Let \(c\in\{0,1\}\) and \(P(c,x)\iff x=c\).
-      Each \(c\) has a witness \(x_c=c\), but no single \(x\) works for both.
-    </div>
-    <h3>Proof</h3><p>The counterexample proves non-implication. \(\square\)</p>
-    
-    
-    
-    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#joint-feasibility">Joint feasibility</a><br><span class="link-label">Worked examples:</span> <a href="examples.html#failure-witness-reuse">Witness reuse failure</a></div>
-  </div>
-</section>
-
-<section id="stochastic-factorization">
-  <h2>21. Stochastic Response-Law Factorization at the Law-Value Level</h2>
-  <div class="theorem-card">
-    <div class="status-grid">
-      <div><strong>Classification:</strong> Theorem with measurable-realization caveat</div>
-      <div><strong>Provenance:</strong> <span class="tag classical">Set-level factorization</span> applied to probability-law-valued responses</div>
-      <div><strong>Sector:</strong> map into a space of probability laws</div>
-      
-    </div>
-    
-    <h3>Statement</h3>
-    
-    <p>Let \(r:X\to Y\) and let \(M:X\to\mathcal P(Z)\) assign a probability
-    law to each source state. There exists a Set map
-    \(\widetilde M:r(X)\to\mathcal P(Z)\) with
-    \(M=\widetilde M\circ r\) if and only if</p>
-    <div class="mathbox">
-      \[
-      r(x)=r(x')
-      \Longrightarrow
-      M(x)=M(x')
-      \]
-      as probability laws.
-    </div>
-    <h3>Proof</h3><p>Regard \(\mathcal P(Z)\) simply as a Set and apply Exact Recoverability. \(\square\)</p>
-    
-    <div class="limits"><strong>Limits</strong><ul><li>If \(\widetilde M\) must be measurable or itself a Markov kernel, Set-level factorization is insufficient; the required measurable structure must be proved.</li></ul></div>
-    
-    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#stochastic">Stochastic semantics</a><br><span class="link-label">Worked examples:</span> <a href="examples.html#stochastic-example">Stochastic semantics</a></div>
-  </div>
-</section>
-
-<section id="markov-composition">
-  <h2>22. Markov Test-Pullback Composition Theorem</h2>
-  <div class="theorem-card">
-    <div class="status-grid">
-      <div><strong>Classification:</strong> Theorem</div>
-      <div><strong>Provenance:</strong> <span class="tag classical">Classical Markov-kernel composition identity</span> used by BM/GURF</div>
-      <div><strong>Sector:</strong> measurable stochastic semantics</div>
-      
-    </div>
-    
-    <h3>Statement</h3>
-    
-    <p>Let \(K:X\rightsquigarrow Y\) and
-    \(L:Y\rightsquigarrow Z\) be Markov kernels. Define</p>
-    <div class="mathbox">
-      \[
-      (L\circ K)(x,A)
-      =
-      \int_Y L(y,A)\,K(x,dy).
-      \]
-    </div>
-    <p>For every bounded measurable test function \(\phi:Z\to\mathbb R\),</p>
-    <div class="mathbox">
-      \[
-      \boxed{
-      (L\circ K)^\dagger\phi
-      =
-      K^\dagger(L^\dagger\phi).
-      }
-      \]
-    </div>
-    <h3>Proof</h3>
-    <div class="proofstep">
-      By definition,
-      \[
-      (L\circ K)^\dagger\phi(x)
-      =
-      \int_Z\phi(z)(L\circ K)(x,dz).
-      \]
-    </div>
-    <div class="proofstep">
-      Substitute the composed kernel and use Tonelli/Fubini under the bounded
-      measurable hypotheses:
-      \[
-      =
-      \int_Y
-      \left[
-      \int_Z\phi(z)L(y,dz)
-      \right]K(x,dy).
-      \]
-    </div>
-    <div class="proofstep">
-      The inner integral is \(L^\dagger\phi(y)\), hence the result is
-      \(K^\dagger(L^\dagger\phi)(x)\).
-    </div>
-    <p>\(\square\)</p>
-    <h3>Consequences</h3><ul><li>Stochastic composition propagates test observables by nested expectation, not by ordinary point substitution.</li></ul>
-    
-    
-    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#stochastic">Stochastic semantics</a><br><span class="link-label">Worked examples:</span> <a href="examples.html#stochastic-matrix-example">Kernel multiplication</a></div>
-  </div>
-</section>
-
-<section id="stochastic-mean-counterexample">
-  <h2>23. Mean Collapse Is Not Generally Task-Sufficient</h2>
-  <div class="theorem-card">
-    <div class="status-grid">
-      <div><strong>Classification:</strong> Counterexample</div>
-      <div><strong>Provenance:</strong> Classical probability counterexample used as a GURF reduction firewall</div>
-      <div><strong>Sector:</strong> probability</div>
-      
-    </div>
-    
-    <h3>Statement</h3>
-    
-    <p>Let \(Y=0\) with probability \(1/2\) and \(Y=2\) with probability
-    \(1/2\). Then \(\mathbb E[Y]=1\), but for \(g(y)=y^2\),</p>
-    <div class="mathbox">
-      \[
-      \mathbb E[g(Y)]
-      =
-      \frac12(0^2)+\frac12(2^2)
-      =
-      2,
-      \]
-      while
-      \[
-      g(\mathbb E[Y])=1.
-      \]
-      Therefore
-      \[
-      \boxed{\mathbb E[g(Y)]\neq g(\mathbb E[Y]).}
-      \]
-    </div>
-    <h3>Proof</h3><p>The explicit calculation is the counterexample. \(\square\)</p>
-    <h3>Consequences</h3><ul><li>Replacing a stochastic Branch by its mean can destroy information needed by nonlinear downstream Tasks.</li></ul>
-    
-    
-    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#stochastic">Stochastic semantics</a> · <a href="definitions.html#passport">Passport</a><br><span class="link-label">Worked examples:</span> <a href="examples.html#failure-stochastic-collapse">Failure laboratory</a></div>
-  </div>
-</section>
-
-<section id="nondeterministic">
-  <h2>24. Existential and Universal Nondeterministic Responses Differ</h2>
-  <div class="theorem-card">
-    <div class="status-grid">
-      <div><strong>Classification:</strong> Exact distinction with counterexample</div>
-      <div><strong>Provenance:</strong> Classical relational semantics used as a BM/GURF sector firewall</div>
-      <div><strong>Sector:</strong> relations</div>
-      
-    </div>
-    
-    <h3>Statement</h3>
-    
-    <p>For a relation \(R\subseteq X\times Y\) and \(U\subseteq Y\), define</p>
-    <div class="mathbox">
-      \[
-      \Diamond_R(U)=\{x:\exists y\in U,\ xRy\},
-      \]
-      \[
-      \Box_R(U)=\{x:\forall y,\ xRy\Rightarrow y\in U\}.
-      \]
-    </div>
-    <p>In general \(\Diamond_R(U)\neq\Box_R(U)\).</p>
-    <div class="counterexample">
-      If one state \(x\) satisfies \(xR0\) and \(xR1\), and \(U=\{1\}\),
-      then \(x\in\Diamond_R(U)\) but \(x\notin\Box_R(U)\).
-    </div>
-    <h3>Proof</h3><p>The counterexample proves the distinction. \(\square\)</p>
-    
-    
-    
-    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#existential">Existential reachability</a> · <a href="definitions.html#universal">Universal safety</a><br><span class="link-label">Worked examples:</span> <a href="examples.html#nondeterministic-finite-example">Finite relation</a></div>
-  
-    <div class="limits"><strong>Existence:</strong> If \(x\) has no
-    \(R\)-successor, it belongs to \(\Box_R(U)\) for every \(U\).
-    Existence together with universal satisfaction instead requires
-    \(\operatorname{Dom}(R)\cap\Box_R(U)\). These are different predicates.</div>
-  </div>
-</section>
-
-<section id="relational-composition">
-  <h2>25. Relational May/Must Composition Theorem</h2>
-  <div class="theorem-card">
-    <div class="status-grid">
-      <div><strong>Classification:</strong> Theorem</div>
-      <div><strong>Provenance:</strong> <span class="tag classical">Classical relational composition identity</span> used by BM/GURF</div>
-      <div><strong>Sector:</strong> relations</div>
-      
-    </div>
-    
-    <h3>Statement</h3>
-    
-    <p>Let \(R\subseteq X\times Y\), \(S\subseteq Y\times Z\), and
-    \(U\subseteq Z\). Then</p>
-    <div class="mathbox">
-      \[
-      \boxed{
-      \Diamond_{S\circ R}(U)
-      =
-      \Diamond_R(\Diamond_S(U))
-      }
-      \]
-      and
-      \[
-      \boxed{
-      \Box_{S\circ R}(U)
-      =
-      \Box_R(\Box_S(U)).
-      }
-      \]
-    </div>
-    <h3>Proof</h3>
-    <div class="proofstep">
-      \(x\in\Diamond_{S\circ R}(U)\) exactly when there exist \(y,z\) with
-      \(xRy\), \(ySz\), and \(z\in U\). This is exactly
-      \(x\in\Diamond_R(\Diamond_S(U))\).
-    </div>
-    <div class="proofstep">
-      \(x\in\Box_{S\circ R}(U)\) exactly when every \(z\) reachable through
-      some \(y\) lies in \(U\). Equivalently, every \(R\)-successor \(y\)
-      has all of its \(S\)-successors in \(U\), i.e.
-      \(y\in\Box_S(U)\). Hence \(x\in\Box_R(\Box_S(U))\).
-    </div>
-    <p>\(\square\)</p>
-    <h3>Consequences</h3><ul><li>The may/must quantifier is preserved through relational composition instead of being silently interchanged.</li></ul>
-    
-    
-    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#nondeterministic">Nondeterministic semantics</a></div>
-  
-    <div class="limits"><strong>Do not change the quantifier semantics:</strong>
-    If \(\operatorname{Must}^{+}_R(U)=\operatorname{Dom}(R)\cap\Box_R(U)\),
-    the displayed Box composition law cannot simply be reused for
-    \(\operatorname{Must}^{+}\). Let \(xRa,xRb,bSz\), with no successor
-    for \(a\) and \(z\in U\). The composite has a nonempty successor set
-    contained in \(U\), but the intermediate branch through \(a\) fails
-    the nonempty-successor requirement. Ordinary Box composition remains valid.</div>
-  </div>
-</section>
-
-<section id="root-iteration-firewall">
-  <h2>26. Root Iteration Admissibility Firewall</h2>
-  <div class="theorem-card">
-    <div class="status-grid">
-      <div><strong>Classification:</strong> BM structural proposition</div>
-      <div><strong>Provenance:</strong> <span class="tag bm">BM structural result</span></div>
-      <div><strong>Sector:</strong> typed partial deterministic re-entry</div>
-      
-    </div>
-    
-    <h3>Statement</h3>
-    
-    <p>Let a Root value \(R_n\) be proposed for re-entry through a partial
-    update \(F:D_F\subseteq X\to X\). The iteration</p>
-    <div class="mathbox">
-      \[
-      R_{n+1}=F(R_n)
-      \]
-    </div>
-    <p>is lawful only while \(R_n\in D_F\) and every required receiving
-    Passport and admissibility condition remains satisfied at each step.</p>
-    <h3>Proof</h3><p>This follows directly from the definition of a partial Operation and the BM definition of Root: downstream participation is licensed only in the receiving admissible domain. Induction applies step by step. \(\square\)</p>
-    
-    <div class="limits"><strong>Limits</strong><ul><li>This is an admissibility theorem, not a convergence theorem.</li><li>Root status at one step does not establish perpetual Root status.</li></ul></div>
-    
-    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#root">Root</a> · <a href="definitions.html#reentry">Re-entry</a><br><span class="link-label">Worked examples:</span> <a href="examples.html#root-recursive">Repeated Root</a></div>
-  
-    <div class="limits"><strong>Accumulation times:</strong> Admissibility
-    of every finite step does not establish convergence or an admissible
-    limit. Those are separate native mathematical obligations.</div>
-  </div>
-</section>
-
-<section id="root-relativity">
-  <h2>27. Root Receiver-Relativity Proposition</h2>
-  <div class="theorem-card">
-    <div class="status-grid">
-      <div><strong>Classification:</strong> Proposition</div>
-      <div><strong>Provenance:</strong> <span class="tag bm">BM structural result</span></div>
-      <div><strong>Sector:</strong> general receiving-context principle</div>
-      
-    </div>
-    
-    <h3>Statement</h3>
-    
-    <p>Let \(R\) be one Response and let two receiving Branches have
-    admissible domains \(A_1\) and \(A_2\). It is possible for</p>
-    <div class="mathbox">
-      \[
-      R\in A_1,
-      \qquad
-      R\notin A_2.
-      \]
-    </div>
-    <p>Therefore Root status is relative to a specified receiving
-    mathematical context rather than an intrinsic permanent property of the
-    Response alone.</p>
-    <h3>Proof</h3><p>By the BM Root definition, Root status requires downstream admissibility. Different receivers may have different admissible domains or Passports, so one can pass while the other fails. \(\square\)</p>
-    
-    
-    
-    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#root">Root</a><br><span class="link-label">Worked examples:</span> <a href="examples.html#root-relative-instance">Two receivers</a></div>
-  </div>
-</section>
-
-<section id="affine-repeated-root">
-  <h2>28. Affine Repeated-Root Formula</h2>
-  <div class="theorem-card">
-    <div class="status-grid">
-      <div><strong>Classification:</strong> Theorem</div>
-      <div><strong>Provenance:</strong> <span class="tag classical">Classical affine iteration</span> used as a Root example</div>
-      <div><strong>Sector:</strong> scalar deterministic dynamics</div>
-      
-    </div>
-    
-    <h3>Statement</h3>
-    
-    <p>Let \(R_{n+1}=\alpha R_n+\beta\) with \(\alpha\neq1\). Define
-    \(R_*=\beta/(1-\alpha)\). Then</p>
-    <div class="mathbox">
-      \[
-      \boxed{
-      R_n
-      =
-      R_*+\alpha^n(R_0-R_*).
-      }
-      \]
-    </div>
-    <h3>Proof</h3>
-    <p>Subtract the fixed-point equation \(R_*=\alpha R_*+\beta\):</p>
-    <div class="mathbox">
-      \[
-      R_{n+1}-R_*=\alpha(R_n-R_*).
-      \]
-    </div>
-    <p>Iterating gives
-    \(R_n-R_*=\alpha^n(R_0-R_*)\). \(\square\)</p>
-    
-    <div class="limits"><strong>Limits</strong><ul><li>The affine formula does not generalize unchanged to nonlinear or state-dependent updates.</li></ul></div>
-    
-    <div class="crosslinks"><span class="link-label">Worked examples:</span> <a href="examples.html#seed-fixed-point">Fixed-point Seed</a> · <a href="examples.html#root-recursive">Repeated Root</a></div>
-  </div>
-</section>
-
-<section id="affine-convergence">
-  <h2>29. Affine Root Global-Convergence Corollary</h2>
-  <div class="theorem-card">
-    <div class="status-grid">
-      <div><strong>Classification:</strong> Corollary</div>
-      <div><strong>Provenance:</strong> <span class="tag classical">Classical contraction of an affine scalar map</span></div>
-      <div><strong>Sector:</strong> scalar deterministic dynamics</div>
-      
-    </div>
-    
-    <h3>Statement</h3>
-    
-    <p>Under the affine formula, if \(|\alpha|<1\), then for every finite
-    \(R_0\in\mathbb R\),</p>
-    <div class="mathbox">
-      \[
-      \boxed{\lim_{n\to\infty}R_n=R_*.}
-      \]
-    </div>
-    <h3>Proof</h3><p>Since \(|\alpha|<1\), \(\alpha^n\to0\). Substitute into the affine formula. \(\square\)</p>
-    
-    <div class="limits"><strong>Limits</strong><ul><li>Global convergence here belongs to this scalar affine system; local Jacobian criteria for nonlinear systems are different results.</li></ul></div>
-    
-    
-  </div>
-</section>
-
-<section id="worked-root">
-  <h2>30. Worked Root Example Corollary</h2>
-  <div class="theorem-card">
-    <div class="status-grid">
-      <div><strong>Classification:</strong> Corollary / worked instance</div>
-      <div><strong>Provenance:</strong> Direct specialization of the affine iteration formula</div>
-      <div><strong>Sector:</strong> scalar deterministic dynamics</div>
-      
-    </div>
-    
-    <h3>Statement</h3>
-    
-    <p>For</p>
-    <div class="mathbox">
-      \[
-      R_{n+1}=\frac12R_n+1,
-      \qquad
-      R_0=0,
-      \]
-    </div>
-    <p>the fixed point is \(R_*=2\) and</p>
-    <div class="mathbox">
-      \[
-      R_n=2(1-2^{-n}),
-      \qquad
-      |R_*-R_n|=2^{1-n}.
-      \]
-    </div>
-    <h3>Proof</h3><p>Set \(\alpha=\tfrac12\), \(\beta=1\), and \(R_0=0\) in the affine formula. \(\square\)</p>
-    
-    
-    
-    <div class="crosslinks"><span class="link-label">Worked examples:</span> <a href="examples.html#seed-fixed-point">Fixed-point generation</a></div>
-  </div>
-</section>
-
-<section id="invariant-transfer">
-  <h2>31. Invariant-Transfer Criterion</h2>
-  <div class="theorem-card">
-    <div class="status-grid">
-      <div><strong>Classification:</strong> Exact criterion</div>
-      <div><strong>Provenance:</strong> <span class="tag bm">BM structural specialization</span> of invariant preservation</div>
-      <div><strong>Sector:</strong> deterministic transformation</div>
-      
-    </div>
-    
-    <h3>Statement</h3>
-    
-    <p>Let \(F:X\to Y\), let \(C_X:X\to V\) be an established invariant
-    quantity on the source, and \(C_Y:Y\to V\) its declared representation
-    on the target. Exact invariant transfer means</p>
-    <div class="mathbox">
-      \[
-      \boxed{C_Y\circ F=C_X.}
-      \]
-    </div>
-    <h3>Proof</h3><p>The equality is exactly the statement that every transformed state carries the same invariant value under the target representation. \(\square\)</p>
-    
-    <div class="limits"><strong>Limits</strong><ul><li>This criterion does not create a conservation law; the native mathematics must establish the invariant first.</li></ul></div>
-    
-    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#conservation">Conserved quantity</a><br><span class="link-label">Worked examples:</span> <a href="examples.html#conservative-passport-example">Conservative Passport</a></div>
-  </div>
-</section>
-
-<section id="dynamic-closure">
-  <h2>32. Dynamic Closure Theorem</h2>
-  <div class="theorem-card">
-    <div class="status-grid">
-      <div><strong>Classification:</strong> Theorem</div>
-      <div><strong>Provenance:</strong> <span class="tag gurf">GURF response specialization</span> of Exact Recoverability</div>
-      <div><strong>Sector:</strong> deterministic dynamics</div>
-      
-    </div>
-    
-    <h3>Statement</h3>
-    
-    <p>Let \(\Phi:X\to X\) be an evolution and \(R:X\to Y\) a reduced
-    representation. A reduced map
-    \(\widetilde\Phi:R(X)\to R(X)\) satisfying</p>
-    <div class="mathbox">
-      \[
-      \boxed{R\circ\Phi=\widetilde\Phi\circ R}
-      \]
-    </div>
-    <p>exists if and only if</p>
-    <div class="mathbox">
-      \[
-      R(x)=R(x')
-      \Longrightarrow
-      R(\Phi(x))=R(\Phi(x')).
-      \]
-    </div>
-    <h3>Proof</h3><p>Apply Exact Recoverability with observation \(R\) and Task \(R\circ\Phi\). \(\square\)</p>
-    <h3>Consequences</h3><ul><li>Dynamic closure is exact factorization of future reduced state through present reduced state.</li></ul>
-    <div class="limits"><strong>Limits</strong><ul><li>One-step closure does not by itself establish regularity, stability, accuracy under perturbation, or a physical reduced model.</li></ul></div>
-    
-    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#dynamic-closure">Dynamic closure</a><br><span class="link-label">Worked examples:</span> <a href="examples.html#dynamic-closure-example">Dynamic closure</a></div>
-  
-    <h3 id="partial-dynamic-closure">Partial-map closure</h3>
-    <p>For \(\Phi:D\subseteq X\to X\), an exact reduced partial map
-    \(\widetilde\Phi:\widetilde D\subseteq R(X)\to R(X)\) preserving
-    definedness must satisfy</p>
-    <div class="mathbox">\[
-      D=R^{-1}(\widetilde D),\qquad
-      R\circ\Phi=\widetilde\Phi\circ R\quad\text{on }D.
-    \]</div>
-    <p>It exists exactly when membership in \(D\) is constant on every
-    \(R\)-fibre and \(R\circ\Phi\) is constant on each fibre restricted
-    to \(D\). Define \(\widetilde D=R(D)\); the two conditions prove
-    respectively domain equality and representative-independent output.</p>
-    <p>For \(x'=x^2\) on \([0,\infty)\), evolution at time \(t\) is
-    defined on \(D_t=\{x:tx&lt;1\}\). A constant observation has identical
-    outputs wherever evolution exists, yet hides unequal lifetimes. It fails
-    the definedness condition. Neither closure variant supplies global
-    smoothness or an endpoint limit.</p>
-  </div>
-</section>
-
-<section id="task-vs-closure">
-  <h2>33. Task Sufficiency Does Not Imply Dynamic Closure</h2>
-  <div class="theorem-card">
-    <div class="status-grid">
-      <div><strong>Classification:</strong> Counterexample</div>
-      <div><strong>Provenance:</strong> Exact GURF distinction</div>
-      <div><strong>Sector:</strong> deterministic dynamics</div>
-      
-    </div>
-    
-    <h3>Statement</h3>
-    
-    <p>Let \(X=\mathbb R^2\), \(R(x_1,x_2)=x_1\), and
-    \(T(x_1,x_2)=x_1\). Then \(R\) is exactly sufficient for the current
-    Task \(T\). Define</p>
-    <div class="mathbox">
-      \[
-      \Phi(x_1,x_2)=(x_2,x_2).
-      \]
-    </div>
-    <p>For \(x=(0,1)\) and \(x'=(0,2)\),</p>
-    <div class="mathbox">
-      \[
-      R(x)=R(x')=0,
-      \qquad
-      R(\Phi(x))=1,
-      \qquad
-      R(\Phi(x'))=2.
-      \]
-    </div>
-    <p>Hence no \(\widetilde\Phi\) can satisfy
-    \(R\circ\Phi=\widetilde\Phi\circ R\).</p>
-    <h3>Proof</h3><p>The two states have equal reduced present state but unequal reduced next state, violating the closure criterion. \(\square\)</p>
-    
-    
-    
-    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#exact-sufficiency">Exact sufficiency</a> · <a href="definitions.html#dynamic-closure">Dynamic closure</a><br><span class="link-label">Worked examples:</span> <a href="examples.html#dynamic-closure-example">Closure counterexample</a></div>
-  </div>
-</section>
-
-<section id="leaf-propagation">
-  <h2>34. Leaf Propagation Admissibility Theorem</h2>
-  <div class="theorem-card">
-    <div class="status-grid">
-      <div><strong>Classification:</strong> Theorem</div>
-      <div><strong>Provenance:</strong> <span class="tag bm">BM structural result</span></div>
-      <div><strong>Sector:</strong> typed partial deterministic Interactions</div>
-      
-    </div>
-    
-    <h3>Statement</h3>
-    
-    <p>Let \(I:D_I\to Z\), let \(\ell:Z\to L\) extract a Leaf, and let a
-    later Interaction be \(J:D_J\subseteq L\times C\to W\).
-    Then the derived composite</p>
-    <div class="mathbox">
-      \[
-      K(x,c)=J(\ell(I(x)),c)
-      \]
-    </div>
-    <p>is defined exactly on</p>
-    <div class="mathbox">
-      \[
-      \boxed{
-      D_K
-      =
-      \{(x,c):x\in D_I,\;(\ell(I(x)),c)\in D_J\}.
-      }
-      \]
-    </div>
-    <h3>Proof</h3><p>The first condition is necessary and sufficient to form \(I(x)\) and the Leaf \(\ell(I(x))\); the second is necessary and sufficient for the receiving Interaction \(J\). Together they are exactly the composite domain. \(\square\)</p>
-    <h3>Consequences</h3><ul><li>Being a Leaf records provenance; it does not waive later domain, type, unit, or Passport checks.</li></ul>
-    
-    
-    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#leaf">Leaf</a> · <a href="definitions.html#interaction">Interaction</a><br><span class="link-label">Worked examples:</span> <a href="examples.html#leaf-power-energy-temperature">Power to energy to temperature</a> · <a href="examples.html#leaf-composition-audit">Abstract Leaf audit</a></div>
-  </div>
-</section>
-
-<section id="passport-defect-localization">
-  <h2>35. Serial Passport-Defect Localization Theorem</h2>
-  <div class="theorem-card">
-    <div class="status-grid">
-      <div><strong>Classification:</strong> Theorem</div>
-      <div><strong>Provenance:</strong> <span class="tag bm">BM structural result</span></div>
-      <div><strong>Sector:</strong> deterministic predicate Passports on a two-stage chain</div>
-      
-    </div>
-    
-    <h3>Statement</h3>
-    
-    <p>Let \(f:A\to B\) and \(g:B\to C\) be composable Operations.
-    Let \(P_A,P_B,P_C\) be Boolean Passport predicates. Define local
-    defects</p>
-    <div class="mathbox">
-      \[
-      D_f
-      =
-      \{a:P_A(a)\land\neg P_B(f(a))\},
-      \]
-      \[
-      D_g
-      =
-      \{b:P_B(b)\land\neg P_C(g(b))\},
-      \]
-    </div>
-    <p>and the composite defect</p>
-    <div class="mathbox">
-      \[
-      D_{g\circ f}
-      =
-      \{a:P_A(a)\land\neg P_C(g(f(a)))\}.
-      \]
-    </div>
-    <p>Then</p>
-    <div class="mathbox">
-      \[
-      \boxed{
-      D_{g\circ f}
-      \subseteq
-      D_f\cup f^{-1}(D_g).
-      }
-      \]
-    </div>
-    <h3>Proof</h3>
-    <p>Take \(a\in D_{g\circ f}\). Then \(P_A(a)\) holds and
-    \(P_C(g(f(a)))\) fails.</p>
-    <div class="proofstep">
-      If \(P_B(f(a))\) fails, then by definition \(a\in D_f\).
-    </div>
-    <div class="proofstep">
-      If \(P_B(f(a))\) holds, then \(f(a)\in D_g\), because its \(P_B\)
-      predicate holds while the final \(P_C\) predicate fails. Hence
-      \(a\in f^{-1}(D_g)\).
-    </div>
-    <p>These two cases are exhaustive, proving the inclusion. \(\square\)</p>
-    <h3>Consequences</h3><ul><li>A failed final Passport can be localized to an earlier Interface failure or to a later defect pulled back through the upstream map.</li><li>The same case-splitting argument extends inductively to finite chains.</li></ul>
-    <div class="limits"><strong>Limits</strong><ul><li>The inclusion can be strict: an early Passport failure may later map to a state satisfying the final predicate, so not every local defect is necessarily a final defect.</li><li>Non-Boolean Passports require an appropriate defect semantics.</li></ul></div>
-    
-    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#interface-defect">Interface defect</a> · <a href="definitions.html#passport">Passport</a><br><span class="link-label">Worked examples:</span> <a href="examples.html#composition-passport-loss">Composition Passport failure</a> · <a href="examples.html#full-system-worked-run">Full-system repair</a></div>
-  
-    <div class="limits"><strong>Finite scope:</strong> The finite-chain
-    argument does not imply that failure at an accumulation-time endpoint
-    must occur at an earlier finite step. The endpoint needs its own
-    existence and limiting-predicate analysis.</div>
-  </div>
-</section>
-
-<section id="path-coherence">
-  <h2>36. Path-Coherence Transitivity Proposition</h2>
-  <div class="theorem-card">
-    <div class="status-grid">
-      <div><strong>Classification:</strong> Proposition</div>
-      <div><strong>Provenance:</strong> <span class="tag bm">BM structural result</span> from transitivity of the destination equivalence</div>
-      <div><strong>Sector:</strong> parallel deterministic paths</div>
-      
-    </div>
-    
-    <h3>Statement</h3>
-    
-    <p>Let \(F_p,F_q,F_r\) be three paths into a common destination \(D\),
-    defined on a common subset \(U\), and let \(\simeq_D\) be an
-    equivalence relation. If for every \(x\in U\),</p>
-    <div class="mathbox">
-      \[
-      F_p(x)\simeq_DF_q(x)
-      \quad\text{and}\quad
-      F_q(x)\simeq_DF_r(x),
-      \]
-    </div>
-    <p>then \(F_p(x)\simeq_DF_r(x)\) for every \(x\in U\).</p>
-    <h3>Proof</h3><p>Apply transitivity of \(\simeq_D\) pointwise on \(U\). \(\square\)</p>
-    
-    <div class="limits"><strong>Limits</strong><ul><li>The common domain matters; pairwise coherence on unrelated domains does not create a global comparison.</li><li>The destination relation must actually be transitive.</li></ul></div>
-    
-    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#path-coherence">Path coherence</a><br><span class="link-label">Worked examples:</span> <a href="examples.html#path-coherence-example">Parallel coherence</a> · <a href="examples.html#coherence-domain-overlap">Shared-domain case</a></div>
-  </div>
-</section>
-
-<section id="finite-network-evaluation">
-  <h2>37. Finite Deterministic Network Evaluation Theorem</h2>
-  <div class="theorem-card">
-    <div class="status-grid">
-      <div><strong>Classification:</strong> Theorem</div>
-      <div><strong>Provenance:</strong> <span class="tag classical">Finite DAG induction</span> formulated as a BM Network evaluation result</div>
-      <div><strong>Sector:</strong> finite deterministic acyclic Network</div>
-      
-    </div>
-    <h3>Assumptions</h3><ul><li>The dependency graph is finite and acyclic.</li><li>Every source node has one specified admissible value.</li><li>Every non-source node \(v\) has a single-valued Operation \(F_v\) on the tuple of predecessor outputs.</li><li>For the actual predecessor tuple, \(F_v\) is defined and maps into the node's admissible domain.</li></ul>
-    <h3>Statement</h3>
-    
-    <p>Under these assumptions, the Network has a unique evaluation at every
-    node. Moreover every computed node value is admissible.</p>
-    <h3>Proof</h3>
-    <p>A finite DAG admits a topological ordering
-    \(v_1,\ldots,v_N\). Evaluate source nodes first. Suppose all nodes before
-    \(v_k\) have unique admissible values. Every predecessor of \(v_k\)
-    occurs earlier in the topological order, so its predecessor tuple is
-    already uniquely known. The declared single-valued Operation \(F_{v_k}\)
-    therefore gives one unique value, and the admissibility hypothesis puts
-    it in \(A_{v_k}\). Induction completes the evaluation. \(\square\)</p>
-    <h3>Consequences</h3><ul><li>Local deterministic Operations plus an acyclic dependency structure are enough for unique finite evaluation.</li><li>Cycles, nondeterminism, implicit equations, or multiple fixed points require additional mathematics.</li></ul>
-    
-    
-    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#network">Network</a> · <a href="definitions.html#configuration">Configuration</a><br><span class="link-label">Worked examples:</span> <a href="examples.html#full-system-worked-run">Full system</a> · <a href="examples.html#full-navigation-system">Navigation network</a></div>
-  
-    <h3 id="finite-evaluation-limit">Finite evaluation versus a limit</h3>
-    <p>For \(x(t)=1/(1-t)\), sample
-    \(t_n=1-1/(n+1)\). Every finite sample \(x(t_n)=n+1\) exists, but
-    there is no finite endpoint at \(t=1\). All finite-prefix evaluations
-    can therefore succeed while an endpoint is absent. Passing to a limit
-    requires convergence or compactness and compatibility of the limiting laws.</p>
-  </div>
-</section>
-
-<section id="task-diameter">
-  <h2>38. Exact Task-Diameter Criterion</h2>
-  <div class="theorem-card">
-    <div class="status-grid">
-      <div><strong>Classification:</strong> Theorem</div>
-      <div><strong>Provenance:</strong> <span class="tag gurf">GURF metric reformulation</span> of exact fibre constancy</div>
-      <div><strong>Sector:</strong> deterministic representation with metric Task space</div>
-      
-    </div>
-    
-    <h3>Statement</h3>
-    
-    <p>Let \(r:X\to Y\), \(T:X\to(W,d)\). For a nonempty fibre
-    \(C_y=r^{-1}(y)\), define</p>
-    <div class="mathbox">
-      \[
-      \operatorname{diam}_T(C_y)
-      =
-      \sup_{x,x'\in C_y}d(T(x),T(x')).
-      \]
-    </div>
-    <p>Then \(r\) is exactly sufficient for \(T\) if and only if</p>
-    <div class="mathbox">
-      \[
-      \boxed{
-      \operatorname{diam}_T(C_y)=0
-      \quad\forall y\in r(X).
-      }
-      \]
-    </div>
-    <h3>Proof</h3>
-    <p>If \(r\) is sufficient, \(T\) is constant on every fibre, so every
-    diameter is zero. Conversely, in a metric space, diameter zero implies
-    all Task values in the fibre coincide. Apply Exact Recoverability.
-    \(\square\)</p>
-    
-    
-    
-    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#task-diameter">Task diameter</a> · <a href="definitions.html#exact-sufficiency">Exact sufficiency</a></div>
-  </div>
-</section>
-
-<section id="approximate-task-diameter">
-  <h2>39. Approximate Fibre-Diameter Reconstruction Proposition</h2>
-  <div class="theorem-card">
-    <div class="status-grid">
-      <div><strong>Classification:</strong> Proposition</div>
-      <div><strong>Provenance:</strong> <span class="tag gurf">GURF approximate response bound</span></div>
-      <div><strong>Sector:</strong> metric Task space with a chosen section</div>
-      
-    </div>
-    <h3>Assumptions</h3><ul><li>A section \(s:r(X)\to X\) is chosen with \(r(s(y))=y\).</li><li>Every nonempty fibre has Task diameter at most \(\varepsilon\).</li></ul>
-    <h3>Statement</h3>
-    
-    <p>Define \(\widehat T(y)=T(s(y))\). Then for every \(x\in X\),</p>
-    <div class="mathbox">
-      \[
-      \boxed{
-      d\!\left(T(x),\widehat T(r(x))\right)
-      \le\varepsilon.
-      }
-      \]
-    </div>
-    <h3>Proof</h3>
-    <p>The points \(x\) and \(s(r(x))\) lie in the same fibre. By the
-    fibre-diameter hypothesis, the distance between their Task values is at
-    most \(\varepsilon\). \(\square\)</p>
-    
-    <div class="limits"><strong>Limits</strong><ul><li>The bound depends on the declared metric and fibre-diameter hypothesis.</li><li>A better center than a representative may improve the constant; this proposition does not claim optimality.</li></ul></div>
-    
-    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#approximate-sufficiency">Approximate sufficiency</a> · <a href="definitions.html#task-diameter">Task diameter</a></div>
-  </div>
-</section>
-
-<section id="lipschitz-serial-bound">
-  <h2>40. Lipschitz Serial Error-Propagation Bound</h2>
-  <div class="theorem-card">
-    <div class="status-grid">
-      <div><strong>Classification:</strong> Theorem</div>
-      <div><strong>Provenance:</strong> <span class="tag classical">Classical Lipschitz bound</span> used by BM/GURF approximate composition</div>
-      <div><strong>Sector:</strong> metric deterministic maps</div>
-      
-    </div>
-    <h3>Assumptions</h3><ul><li>\(G:Y\to Z\) is \(L\)-Lipschitz: \(d_Z(Gy,Gy')\le Ld_Y(y,y')\).</li></ul>
-    <h3>Statement</h3>
-    
-    <p>If two upstream outputs satisfy
-    \(d_Y(F(x),F(x'))\le\varepsilon\), then</p>
-    <div class="mathbox">
-      \[
-      \boxed{
-      d_Z(G(F(x)),G(F(x')))
-      \le L\varepsilon.
-      }
-      \]
-    </div>
-    <h3>Proof</h3><p>Apply the Lipschitz inequality to \(y=F(x)\) and \(y'=F(x')\). \(\square\)</p>
-    <h3>Consequences</h3><ul><li>Approximate composition needs quantitative stability data; exact serial-loss inclusion alone is not enough.</li></ul>
-    
-    
-    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#approximate-sufficiency">Approximate sufficiency</a><br><span class="link-label">Worked examples:</span> <a href="examples.html#passport-quantization">Quantization propagation</a></div>
-  
-    <div class="limits"><strong>Uniformity and domain:</strong> Both compared
-    values must lie in the declared domain. For reconstruction
-    \(H(y)=y/(1-y)\) on \([0,1)\), one has
-    \(H'(y)=(1-y)^{-2}\). On \([0,1-\delta]\) the bound is
-    \(L=\delta^{-2}\), which is not uniform as \(\delta\downarrow0\).
-    Small transformed errors alone do not certify source regularity.</div>
-  </div>
-</section>
-
-<section id="gaussian-fisher-carrier">
-  <h2>41. Gaussian Local Fisher-Carrier Theorem</h2>
-  <div class="theorem-card">
-    <div class="status-grid">
-      <div><strong>Classification:</strong> Theorem</div>
-      <div><strong>Provenance:</strong> <span class="tag classical">Classical Gaussian Fisher-information / orthogonal-projection result</span> used by current GURF task-aware compression</div>
-      <div><strong>Sector:</strong> finite-dimensional Gaussian inference</div>
-      
-    </div>
-    <h3>Assumptions</h3><ul><li>Observation \(y\sim N(\mu(\theta),V)\) has positive-definite covariance \(V\) independent of the scalar parameter \(\theta\) in the local model.</li><li>The mean \(\mu(\theta)\) is differentiable.</li><li>Compression in whitened coordinates is an orthogonal projection \(P=P^T=P^2\), held fixed when differentiating the local model.</li></ul>
-    <h3>Statement</h3>
-    
-    <p>Define the whitened local Task direction</p>
-    <div class="mathbox">
-      \[
-      g
-      =
-      V^{-1/2}\frac{d\mu}{d\theta}.
-      \]
-    </div>
-    <p>The full local Fisher information is
-    \(I_{\rm full}=\|g\|^2\). After projection \(P\),</p>
-    <div class="mathbox">
-      \[
-      \boxed{
-      I(P)=\|Pg\|^2\le\|g\|^2.
-      }
-      \]
-    </div>
-    <p>Equality holds exactly when \(g\in\operatorname{ran}(P)\). For any
-    nonzero \(g\), the one-dimensional subspace
-    \(\operatorname{span}\{g\}\) therefore preserves all local Fisher
-    information for the scalar Task.</p>
-    <h3>Proof</h3>
-    <p>Because \(P\) is an orthogonal projection,</p>
-    <div class="mathbox">
-      \[
-      g=Pg+(I-P)g,
-      \qquad
-      Pg\perp(I-P)g.
-      \]
-    </div>
-    <p>Pythagoras gives
-    \[
-    \|g\|^2
-    =
-    \|Pg\|^2+\|(I-P)g\|^2
-    \ge\|Pg\|^2.
-    \]
-    Equality holds iff \((I-P)g=0\), i.e. \(g\in\operatorname{ran}(P)\).
-    \(\square\)</p>
-    <h3>Consequences</h3><ul><li>A variance-maximizing compression such as generic PCA need not preserve the parameter direction \(g\).</li><li>The theorem identifies the minimal local linear carrier for one Gaussian scalar parameter.</li></ul>
-    <div class="limits"><strong>Limits</strong><ul><li>This is local, Gaussian, and covariance-frozen. Nonlinear, non-Gaussian, parameter-dependent-covariance, global, or multi-parameter problems require different analysis.</li></ul></div>
-    
-    <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#task">Task</a> · <a href="definitions.html#approximate-sufficiency">Approximate sufficiency</a></div>
-  
-    <h3>Justification of the Fisher formulas</h3>
-    <p>For whitened \(z=V^{-1/2}y\), mean \(m=V^{-1/2}\mu\), and
-    \(g=m'\), the Gaussian score is \(g^T(z-m)\). Its expected square
-    is \(\|g\|^2\). Let the columns of \(Q\) be an orthonormal basis
-    of \(\operatorname{ran}(P)\), so \(P=QQ^T\). The coordinates
-    \(Q^Tz\) have identity covariance and mean derivative \(Q^Tg\),
-    giving \(I(P)=\|Q^Tg\|^2=\|Pg\|^2\). This avoids inverting the
-    singular ambient covariance \(P\). If \(g=0\), the local Fisher
-    Task needs no positive-dimensional carrier. Local Fisher preservation
-    does not by itself establish global exact sufficiency.</p>
-  </div>
-</section>
-
-<section id="mahalanobis-carrier">
-  <h2>42. Finite-Hypothesis Mahalanobis-Carrier Theorem</h2>
-  <div class="theorem-card">
-    <div class="status-grid">
-      <div><strong>Classification:</strong> Theorem</div>
-      <div><strong>Provenance:</strong> <span class="tag classical">Classical linear algebra</span> used by GURF task-aware finite-hypothesis compression</div>
-      <div><strong>Sector:</strong> finite-dimensional whitened Euclidean geometry</div>
-      
-    </div>
-    
-    <h3>Statement</h3>
-    
-    <p>Let \(M\ge1\) and let whitened model points be \(z_1,\ldots,z_M\in\mathbb R^n\).
-    Define</p>
-    <div class="mathbox">
-      \[
-      D=
-      [\,z_2-z_1,\ldots,z_M-z_1\,].
-      \]
-    </div>
-    <p>An orthogonal projection \(P\) preserves every pairwise Euclidean
-    distance among the \(z_a\) exactly if and only if</p>
-    <div class="mathbox">
-      \[
-      \operatorname{col}(D)\subseteq\operatorname{ran}(P).
-      \]
-    </div>
-    <p>Hence the smallest exact linear carrier has dimension</p>
-    <div class="mathbox">
-      \[
-      \boxed{\operatorname{rank}(D).}
-      \]
-    </div>
-    <h3>Proof</h3>
-    <div class="proofstep">
-      Every pairwise difference \(z_a-z_b\) is a linear combination of the
-      columns \(z_j-z_1\), so all pairwise differences lie in
-      \(\operatorname{col}(D)\).
-    </div>
-    <div class="proofstep">
-      Orthogonal projection preserves the norm of a vector \(v\) exactly iff
-      \(v\in\operatorname{ran}(P)\). Therefore all pairwise distances are
-      preserved iff all pairwise difference vectors lie in the projection
-      range, equivalently iff \(\operatorname{col}(D)\subseteq
-      \operatorname{ran}(P)\).
-    </div>
-    <p>The minimal dimension is the dimension of that column space,
-    \(\operatorname{rank}(D)\). \(\square\)</p>
-    
-    <div class="limits"><strong>Limits</strong><ul><li>This is an exact finite-hypothesis linear result in whitened Euclidean geometry, not a universal nonlinear compression theorem.</li></ul></div>
-    
-    
-  </div>
-</section>
-
-<section id="ns-energy">
-  <h2>43. Periodic Incompressible Navier–Stokes Energy Identity</h2>
-  <div class="theorem-card">
-    <div class="status-grid">
-      <div><strong>Classification:</strong> Applied identity</div>
-      <div><strong>Provenance:</strong> <span class="tag applied">Classical PDE identity</span> carried as a BM Leaf derivation</div>
-      <div><strong>Sector:</strong> smooth incompressible Navier–Stokes on a periodic domain</div>
-      
-    </div>
-    <h3>Assumptions</h3><ul><li>\(u,p,f\) are sufficiently smooth for the integrations by parts.</li><li>\(\nabla\cdot u=0\).</li><li>The spatial domain is periodic, so boundary flux integrals vanish.</li></ul>
-    <h3>Statement</h3>
-    
-    <p>For</p>
-    <div class="mathbox">
-      \[
-      \partial_tu+(u\cdot\nabla)u
-      =
-      -\nabla p+\nu\Delta u+f,
-      \qquad
-      \nabla\cdot u=0,
-      \]
-    </div>
-    <p>define</p>
-    <div class="mathbox">
-      \[
-      E(t)=\frac12\int_\Omega|u|^2dx,
-      \quad
-      D(t)=\nu\int_\Omega|\nabla u|^2dx,
-      \quad
-      F(t)=\int_\Omega f\cdot u\,dx.
-      \]
-    </div>
-    <p>Then</p>
-    <div class="mathbox">
-      \[
-      \boxed{\frac{dE}{dt}=-D+F.}
-      \]
-    </div>
-    <h3>Proof</h3>
-    <p>Take the \(L^2\) inner product with \(u\). The time term gives
-    \(dE/dt\). The convective term is the integral of a divergence plus a
-    term proportional to \(\nabla\cdot u\), so it vanishes. The pressure term
-    also vanishes by incompressibility and periodicity. Integration by parts
-    gives \(\int u\cdot\Delta u=-\int|\nabla u|^2\). The forcing term remains
-    as \(F(t)\). \(\square\)</p>
-    
-    <div class="limits"><strong>Limits</strong><ul><li>This identity does not solve the three-dimensional regularity problem.</li></ul></div>
-    
-    <div class="crosslinks"><span class="link-label">Worked examples:</span> <a href="examples.html#navier-stokes-energy-derivation">Full derivation</a></div>
-  
-    <div class="limits"><strong>Time domain:</strong> This classical identity
-    holds on intervals where the stated regularity and integration hypotheses
-    hold. It proves neither extension through a singular time nor closure of
-    an evolution for the displayed scalar quantities.</div>
-  </div>
-</section>
-
-<section id="ns-enstrophy">
-  <h2>44. Three-Dimensional Vorticity / Enstrophy Identity</h2>
-  <div class="theorem-card">
-    <div class="status-grid">
-      <div><strong>Classification:</strong> Applied identity</div>
-      <div><strong>Provenance:</strong> <span class="tag applied">Classical PDE identity</span> carried as a distinct BM Leaf family</div>
-      <div><strong>Sector:</strong> smooth 3D incompressible Navier–Stokes on a periodic domain</div>
-      
-    </div>
-    
-    <h3>Statement</h3>
-    
-    <p>With \(\omega=\nabla\times u\),</p>
-    <div class="mathbox">
-      \[
-      \partial_t\omega+(u\cdot\nabla)\omega
-      =
-      (\omega\cdot\nabla)u+\nu\Delta\omega+\nabla\times f.
-      \]
-    </div>
-    <p>Therefore</p>
-    <div class="mathbox">
-      \[
-      \boxed{
-      \frac12\frac{d}{dt}\int_\Omega|\omega|^2dx
-      =
-      \int_\Omega\omega\cdot(\omega\cdot\nabla)u\,dx
-      -
-      \nu\int_\Omega|\nabla\omega|^2dx
-      +
-      \int_\Omega\omega\cdot(\nabla\times f)\,dx.
-      }
-      \]
-    </div>
-    <h3>Proof</h3><p>Take curl of the incompressible equation, dot the vorticity equation with \(\omega\), integrate, use incompressibility and periodicity to remove transport, and integrate the Laplacian term by parts. \(\square\)</p>
-    
-    <div class="limits"><strong>Limits</strong><ul><li>The stretching term is one reason the 3D problem differs sharply from the 2D enstrophy structure.</li><li>The identity is not a regularity theorem.</li></ul></div>
-    
-    <div class="crosslinks"><span class="link-label">Worked examples:</span> <a href="examples.html#navier-stokes-vorticity-derivation">Vorticity derivation</a></div>
-  
-    <div class="limits"><strong>Time domain:</strong> This classical identity
-    holds on intervals where the stated regularity and integration hypotheses
-    hold. It proves neither extension through a singular time nor closure of
-    an evolution for the displayed scalar quantities.</div>
-  </div>
-</section>
-
-<section id="wilson-loop">
-  <h2>45. Lattice Wilson-Loop Gauge-Invariance Identity</h2>
-  <div class="theorem-card">
-    <div class="status-grid">
-      <div><strong>Classification:</strong> Applied identity</div>
-      <div><strong>Provenance:</strong> <span class="tag applied">Classical lattice gauge-theory identity</span></div>
-      <div><strong>Sector:</strong> finite lattice gauge theory</div>
-      
-    </div>
-    
-    <h3>Statement</h3>
-    
-    <p>Let link variables transform as</p>
-    <div class="mathbox">
-      \[
-      U_{xy}\mapsto
-      \Omega_xU_{xy}\Omega_y^{-1}.
-      \]
-    </div>
-    <p>For a closed loop
-    \(C=(x_0x_1)(x_1x_2)\cdots(x_{m-1}x_0)\), define</p>
-    <div class="mathbox">
-      \[
-      W(C)=
-      \operatorname{tr}
-      \left(
-      U_{x_0x_1}\cdots U_{x_{m-1}x_0}
-      \right).
-      \]
-    </div>
-    <p>Then \(W(C)\) is gauge invariant.</p>
-    <h3>Proof</h3>
-    <p>After transformation, adjacent factors
-    \(\Omega_{x_j}^{-1}\Omega_{x_j}\) cancel. The loop product becomes
-    \(\Omega_{x_0}U(C)\Omega_{x_0}^{-1}\). Trace is invariant under
-    conjugation, so \(W(C)\) is unchanged. \(\square\)</p>
-    
-    <div class="limits"><strong>Limits</strong><ul><li>This finite identity does not establish four-dimensional quantum Yang–Mills existence or a mass gap.</li></ul></div>
-    
-    <div class="crosslinks"><span class="link-label">Worked examples:</span> <a href="examples.html#lattice-gauge-example">Lattice gauge example</a></div>
-  </div>
-</section>
-
-<section id="dephasing">
-  <h2>46. Qubit Dephasing Population/Coherence Identity</h2>
-  <div class="theorem-card">
-    <div class="status-grid">
-      <div><strong>Classification:</strong> Applied identity</div>
-      <div><strong>Provenance:</strong> <span class="tag applied">Classical quantum-information channel calculation</span></div>
-      <div><strong>Sector:</strong> qubit density operators</div>
-      
-    </div>
-    
-    <h3>Statement</h3>
-    
-    <p>For</p>
-    <div class="mathbox">
-      \[
-      \rho=
-      \begin{pmatrix}
-      a&c\\
-      c^*&1-a
-      \end{pmatrix},
-      \qquad
-      \mathcal D_\lambda(\rho)
-      =
-      \begin{pmatrix}
-      a&\lambda c\\
-      \lambda c^*&1-a
-      \end{pmatrix},
-      \quad 0\le\lambda\le1,
-      \]
-    </div>
-    <p>the computational-basis populations are preserved while the
-    off-diagonal coherence is multiplied by \(\lambda\).</p>
-    <h3>Proof</h3><p>The identity is immediate from the matrix entries. In particular \(\operatorname{tr}(|0\rangle\langle0|\mathcal D_\lambda(\rho))=a\), while the off-diagonal entry becomes \(\lambda c\). \(\square\)</p>
-    <h3>Consequences</h3><ul><li>Computational-basis populations are preserved while coherence entries are
-    attenuated. Exact recovery depends on the parameter and on whether the Task
-    concerns known matrix data or a physically admissible recovery channel.</li></ul>
-    
-    
-    <div class="crosslinks"><span class="link-label">Worked examples:</span> <a href="examples.html#quantum-channel-example">Quantum dephasing</a></div>
-  
-    <h3>Recovery semantics</h3>
-    <p>For known \(0&lt;\lambda\le1\), the map is injective on density
-    matrices: recover \(c\) by dividing the output off-diagonal entry by
-    \(\lambda\). Off-diagonal errors are amplified by \(1/\lambda\).
-    At \(\lambda=0\), opposite coherences with the same populations
-    have identical outputs, so exact recovery fails.</p>
-    <p>For \(0&lt;\lambda&lt;1\), the algebraic inverse on the realized
-    image does not extend to a positive map on all density matrices. Applied
-    to the matrix with all entries \(1/2\), its eigenvalues would be
-    \((1\pm1/\lambda)/2\), one negative. Since a linear inverse is unique,
-    no quantum channel can universally invert this dephasing map.
-    Exact matrix recovery, stable inference, and physical recovery are separate
-    Tasks. An unknown \(\lambda\) requires its own inference analysis.</p>
-  </div>
-</section>
-
-<section id="exact-approximate">
-  <h2>47. Exact and Approximate Results Must Stay Separate</h2>
-  <p>
-    Equality-based theorems above are exact. Replacing equality by a metric,
-    divergence, risk, confidence interval, operator norm, probability bound, or
-    tolerance creates a different mathematical claim.
-  </p>
-  <div class="mathbox">
-    \[
-    \boxed{
-    \text{exact equality}
-    \neq
-    \text{approximate control}
-    }
-    \]
-  </div>
-  <p>
-    Approximate results therefore state the comparison structure, assumptions,
-    constants, error propagation, and probability semantics when relevant.
-  </p>
-</section>
-
-<section id="privacy-firewall">
-  <h2>48. Privacy Is Not an Exact-Equivalence Corollary</h2>
-  <p>
-    Differential privacy is governed by inequalities between output laws, not
-    by ordinary exact Passport-equivalence classes. A typical requirement is
-  </p>
-  <div class="mathbox">
-    \[
-    \Pr[M(x)\in S]
-    \le
-    e^\varepsilon
-    \Pr[M(x')\in S]
-    +\delta
-    \]
-    for adjacent inputs \(x\sim_{\rm adj}x'\).
-  </div>
-  <p>
-    Exact Set-level recoverability or quotient theorems must therefore not be
-    transported into privacy semantics without rebuilding the probabilistic
-    hypotheses.
-  </p>
-  <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#sector-firewall">Sector firewall</a></div>
-</section>
-
-<section id="sector-firewall">
-  <h2>49. Theorem Sector Firewall</h2>
-  <p>
-    Similar notation does not make different semantic objects identical.
-  </p>
-  <div class="mathbox">
-    \[
-    f:X\to Y,
-    \qquad
-    K:X\rightsquigarrow Y,
-    \qquad
-    R:X\rightrightarrows Y,
-    \qquad
-    \Phi:\mathcal B(\mathcal H)\to\mathcal B(\mathcal K)
-    \]
-    represent different kinds of mathematical maps.
-  </div>
-  <p>
-    A theorem moves from one sector to another only after the target sector's
-    objects, composition laws, equivalences, regularity, positivity,
-    measurability, quantifiers, or operator conditions have been re-established.
-  </p>
-  <div class="crosslinks"><span class="link-label">Definitions:</span> <a href="definitions.html#sector-firewall">Sector firewall</a><br><span class="link-label">Worked examples:</span> <a href="examples.html#mixed-semantic-chain">Mixed semantics</a></div>
-</section>
-
-<section id="dependency">
-  <h2>50. Dependency Structure</h2>
-  <table class="dependency">
-    <thead>
-      <tr><th>Result</th><th>Primary mathematical dependency</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>Passport Sufficiency</td><td>Exact Recoverability</td></tr>
-      <tr><td>Completion-Fibre Sufficiency</td><td>Exact Recoverability + joint observation</td></tr>
-      <tr><td>Minimal Exact Task Quotient</td><td>Task equivalence + Exact Recoverability</td></tr>
-      <tr><td>Finite Carrier Bound</td><td>Factorization + finite-set surjection cardinality</td></tr>
-      <tr><td>Parallel Refinement</td><td>Product-map equality</td></tr>
-      <tr><td>Serial Information Loss</td><td>Function composition</td></tr>
-      <tr><td>BM-SQ-01</td><td>Classical congruence criterion</td></tr>
-      <tr><td>Interface Factorization</td><td>Exact Recoverability</td></tr>
-      <tr><td>Future-Task Factorization</td><td>Exact Recoverability applied to \(T\circ\Phi_t\)</td></tr>
-      <tr><td>Repair Refinement</td><td>Parallel Observation Refinement</td></tr>
-      <tr><td>Dynamic Closure</td><td>Exact Recoverability applied to \(R\circ\Phi\)</td></tr>
-      <tr><td>Markov Pullback Composition</td><td>Kernel composition + Tonelli/Fubini</td></tr>
-      <tr><td>Relational May/Must Composition</td><td>Definition of relation composition + quantifiers</td></tr>
-      <tr><td>Leaf Propagation</td><td>Partial-map composite domain</td></tr>
-      <tr><td>Passport Defect Localization</td><td>Case split on intermediate Passport predicate</td></tr>
-      <tr><td>Finite Network Evaluation</td><td>Topological order + induction on a finite DAG</td></tr>
-      <tr><td>Task Diameter Criterion</td><td>Metric diameter + fibre constancy</td></tr>
-      <tr><td>Gaussian Fisher Carrier</td><td>Gaussian Fisher information + orthogonal projection</td></tr>
-      <tr><td>Mahalanobis Carrier</td><td>Whitening + Euclidean projection geometry</td></tr>
-    </tbody>
-  </table>
-</section>
-
-<section id="current-status">
-  <h2>51. Registry Status by Mathematical Role</h2>
-  <p>
-    The strongest use of this page is not to make every result look new. It is
-    to make the dependency and scope of each result impossible to confuse.
-  </p>
-  <table>
-    <thead><tr><th>Group</th><th>Status</th></tr></thead>
-    <tbody>
-      <tr>
-        <td>Exact deterministic factorization family</td>
-        <td>Proved; classical infrastructure used centrally by GURF.</td>
-      </tr>
-      <tr>
-        <td>BM structured quotient BM-SQ-01</td>
-        <td>Proved finitary algebraic specialization of the classical congruence criterion.</td>
-      </tr>
-      <tr>
-        <td>BM structural admissibility/coherence results</td>
-        <td>Proved within their stated deterministic/predicate hypotheses; external novelty is not implied by the label.</td>
-      </tr>
-      <tr>
-        <td>Stochastic and relational results</td>
-        <td>Separated from deterministic semantics and proved with their native composition rules.</td>
-      </tr>
-      <tr>
-        <td>Gaussian task-aware carrier results</td>
-        <td>Proved classical linear/Gaussian results used as a GURF compression benchmark.</td>
-      </tr>
-      <tr>
-        <td>Navier–Stokes / gauge / quantum entries</td>
-        <td>Established domain identities used as applied BM/GURF examples, not relabeled as newly discovered field theorems.</td>
-      </tr>
-      <tr>
-        <td>Candidate Rooting and Seed general theories</td>
-        <td>Not promoted here to universal theorem status beyond the specific proved update/admissibility examples.</td>
-      </tr>
-    </tbody>
-  </table>
-</section>
-
-<section id="principle">
-  <h2>52. Central Proof Principle</h2>
-  <div class="mathbox">
-    \[
-    \boxed{
-    \begin{gathered}
-    \text{state the native mathematical objects;}\\
-    \text{state the sector and admissible domain;}\\
-    \text{state the exact claim;}\\
-    \text{prove only that claim;}\\
-    \text{separate framework role from provenance;}\\
-    \text{preserve counterexamples and failed transports.}
-    \end{gathered}
-    }
-    \]
+  <div class="principal-grid">
+    <a class="panel" href="interfaces.html">
+      <h2>Finite interface synthesis</h2>
+      <p>T55-C1–C7 and T55-C7R: trace lifting, stable task quotient, radius bounds, error propagation, composition, minimal repair, and simultaneous finite refinement.</p>
+    </a>
+    <a class="panel" href="representation.html">
+      <h2>Receiver-constrained representation</h2>
+      <p>LEV 013–016: weighted reconstruction, exact zero-price criterion, Grassmann stationarity, one-discarded-dimension reduction, and matrix balancing.</p>
+    </a>
+    <a class="panel" href="supporting-proofs.html">
+      <h2>Additional supporting proofs</h2>
+      <p>Preserved detailed identities and application calculations retained under their descriptive anchors.</p>
+    </a>
   </div>
 
-  <p>
-    Branch Mathematics and GURF become more useful when the registry makes
-    ordinary mathematics, framework-level structure, and open research easy
-    to distinguish rather than making them look alike.
-  </p>
-</section>
+<nav class="registry-nav" aria-label="Theorem registry navigation"><h2>Quick index</h2><div class="range-grid">
+<a class="range-link" href="#fibre-representation"><strong>T01–T12</strong><span>Fibre factorization, representation, quotient structure, composition, and Dynamic Closure</span></a>
+<a class="range-link" href="#realization-repair"><strong>T13–T28</strong><span>Branch essentiality, realizability, Roots, coherence, serial defects, and repair</span></a>
+<a class="range-link" href="#stochastic-quantitative"><strong>T29–T42</strong><span>Markov closure, quantitative recovery, applied identities, sector boundaries, and approximate lumpability</span></a>
+<a class="range-link" href="#receiver-global"><strong>T43–T55</strong><span>Root transfer, gluing, receiver order, relational cycles, Configuration maps, and integrated continuation</span></a>
+</div><div class="theorem-index">
+<a href="#T01" title="Jump to T01">T01</a>
+<a href="#T02" title="Jump to T02">T02</a>
+<a href="#T03" title="Jump to T03">T03</a>
+<a href="#T04" title="Jump to T04">T04</a>
+<a href="#T05" title="Jump to T05">T05</a>
+<a href="#T06" title="Jump to T06">T06</a>
+<a href="#T07" title="Jump to T07">T07</a>
+<a href="#T08" title="Jump to T08">T08</a>
+<a href="#T09" title="Jump to T09">T09</a>
+<a href="#T10" title="Jump to T10">T10</a>
+<a href="#T11" title="Jump to T11">T11</a>
+<a href="#T12" title="Jump to T12">T12</a>
+<a href="#T13" title="Jump to T13">T13</a>
+<a href="#T14" title="Jump to T14">T14</a>
+<a href="#T15" title="Jump to T15">T15</a>
+<a href="#T16" title="Jump to T16">T16</a>
+<a href="#T17" title="Jump to T17">T17</a>
+<a href="#T18" title="Jump to T18">T18</a>
+<a href="#T19" title="Jump to T19">T19</a>
+<a href="#T20" title="Jump to T20">T20</a>
+<a href="#T21" title="Jump to T21">T21</a>
+<a href="#T22" title="Jump to T22">T22</a>
+<a href="#T23" title="Jump to T23">T23</a>
+<a href="#T24" title="Jump to T24">T24</a>
+<a href="#T25" title="Jump to T25">T25</a>
+<a href="#T26" title="Jump to T26">T26</a>
+<a href="#T27" title="Jump to T27">T27</a>
+<a href="#T28" title="Jump to T28">T28</a>
+<a href="#T29" title="Jump to T29">T29</a>
+<a href="#T30" title="Jump to T30">T30</a>
+<a href="#T31" title="Jump to T31">T31</a>
+<a href="#T32" title="Jump to T32">T32</a>
+<a href="#T33" title="Jump to T33">T33</a>
+<a href="#T34" title="Jump to T34">T34</a>
+<a href="#T35" title="Jump to T35">T35</a>
+<a href="#T36" title="Jump to T36">T36</a>
+<a href="#T37" title="Jump to T37">T37</a>
+<a href="#T38" title="Jump to T38">T38</a>
+<a href="#T39" title="Jump to T39">T39</a>
+<a href="#T40" title="Jump to T40">T40</a>
+<a href="#T41" title="Jump to T41">T41</a>
+<a href="#T42" title="Jump to T42">T42</a>
+<a href="#T43" title="Jump to T43">T43</a>
+<a href="#T44" title="Jump to T44">T44</a>
+<a href="#T45" title="Jump to T45">T45</a>
+<a href="#T46" title="Jump to T46">T46</a>
+<a href="#T47" title="Jump to T47">T47</a>
+<a href="#T48" title="Jump to T48">T48</a>
+<a href="#T49" title="Jump to T49">T49</a>
+<a href="#T50" title="Jump to T50">T50</a>
+<a href="#T51" title="Jump to T51">T51</a>
+<a href="#T52" title="Jump to T52">T52</a>
+<a href="#T53" title="Jump to T53">T53</a>
+<a href="#T54" title="Jump to T54">T54</a>
+<a href="#T55" title="Jump to T55">T55</a>
+</div></nav>
 
+  <div class="registry-boundary">
+    <strong>Reading boundary.</strong> A theorem being present in this register does not mean its
+    mathematical ingredients are historically new. Classical quotient, congruence, Markov lumpability,
+    gluing, graph, matrix, and categorical results keep their classical status. BM/GURF labels record
+    how a result is used in this corpus.
+  </div>
+
+<section class="range-head" id="fibre-representation"><p class="eyebrow">Register range</p><h2>T01–T12</h2><p>Fibre factorization, representation, quotient structure, composition, and Dynamic Closure</p></section>
+<span class="compat-anchor" id="t01" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T01">
+<div class="theorem-meta"><span class="stable-id">T01</span><span class="badge classical">Classical theorem</span></div>
+<h2 id="T01">T01 Exact fibre factorization</h2>
+<p><strong>Classical theorem.</strong> For functions <span class="math inline">\(R:X\to Z\)</span> and <span class="math inline">\(T:X\to W\)</span>, there exists a unique <span class="math inline">\(D:R(X)\to W\)</span> with <span class="math inline">\(DR=T\)</span> iff <span class="math inline">\(R(x)=R(x')\)</span> implies <span class="math inline">\(T(x)=T(x')\)</span>.</p>
+<p><strong>Proof.</strong> Factorization implies the implication by
+substitution. Conversely, for each realized <span class="math inline">\(z\)</span>, the values <span class="math inline">\(T(x)\)</span> with <span class="math inline">\(R(x)=z\)</span> form one singleton; define <span class="math inline">\(D(z)\)</span> to be its unique element. This is
+independent of any representative, gives <span class="math inline">\(DR=T\)</span>, and forces uniqueness on <span class="math inline">\(R(X)\)</span>. Empty unrealized fibres are outside
+that domain. No regularity of <span class="math inline">\(D\)</span>
+follows. <span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<span class="compat-anchor" id="t02" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T02">
+<div class="theorem-meta"><span class="stable-id">T02</span><span class="badge gurf">GURF corollary</span></div>
+<h2 id="T02">T02 Passport sufficiency</h2>
+<p><strong>GURF corollary.</strong> In the deterministic observation
+sector, let <span class="math inline">\(B_P:X\to Q_P\)</span> collect
+the specified Passport observations. A task <span class="math inline">\(T\)</span> factors through <span class="math inline">\(B_P\)</span> iff <span class="math inline">\(\ker
+B_P\subseteq\ker T\)</span>.</p>
+<p><strong>Proof.</strong> Substitute <span class="math inline">\(B_P\)</span> for <span class="math inline">\(R\)</span> in T01. This treats the observation
+part of a Passport, not every possible native contract as a function.
+<span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<span class="compat-anchor" id="t03" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T03">
+<div class="theorem-meta"><span class="stable-id">T03</span><span class="badge gurf">GURF corollary</span></div>
+<h2 id="T03">T03 Completion fibre sufficiency</h2>
+<p><strong>GURF corollary.</strong> For a set-indexed family <span class="math inline">\(r_\alpha\)</span> whose product is defined, let
+<span class="math inline">\(R(x)=(r_\alpha(x))_\alpha\)</span>. A task
+is recoverable exactly when it is constant on every nonempty <span class="math inline">\(\bigcap_\alpha
+r_\alpha^{-1}(\ell_\alpha)\)</span>.</p>
+<p><strong>Proof.</strong> The displayed intersection is precisely <span class="math inline">\(R^{-1}(\ell)\)</span>, so T01 applies. For a
+proposed observation, check nonemptiness separately before reporting a
+recovered value. <span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<span class="compat-anchor" id="t04" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T04">
+<div class="theorem-meta"><span class="stable-id">T04</span><span class="badge classical">Classical quotient theorem in BM scope</span></div>
+<h2 id="T04">T04 Canonical exact task quotient</h2>
+<p><strong>Classical quotient theorem in BM scope.</strong> For a task
+family <span class="math inline">\(\mathscr Q\)</span>, put <span class="math inline">\(E_{\mathscr Q}=\bigcap_{T\in\mathscr Q}\ker
+T\)</span>. This is the coarsest equivalence whose quotient preserves
+every task. Any sufficient representation <span class="math inline">\(R\)</span> induces a unique map <span class="math inline">\(h:R(X)\to X/E_{\mathscr Q}\)</span> with <span class="math inline">\(hR=q_{\mathscr Q}\)</span>.</p>
+<p><strong>Proof.</strong> Intersections of equivalences are
+equivalences. Each task is constant on its classes, so T01 gives task
+factorization. Sufficiency of <span class="math inline">\(R\)</span>
+implies <span class="math inline">\(\ker R\subseteq E_{\mathscr
+Q}\)</span>; T01 applied to <span class="math inline">\(q_{\mathscr
+Q}\)</span> gives <span class="math inline">\(h\)</span>. Every
+task-sufficient equivalence is contained in <span class="math inline">\(E_{\mathscr Q}\)</span>, proving coarsestness.
+Structured admissibility is additional. <span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<span class="compat-anchor" id="t05" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T05">
+<div class="theorem-meta"><span class="stable-id">T05</span><span class="badge classical">Classical counting corollary</span></div>
+<h2 id="T05">T05 Finite exact carrier bound</h2>
+<p><strong>Classical counting corollary.</strong> If <span class="math inline">\(X\)</span> is finite and <span class="math inline">\(T=DR\)</span>, then <span class="math inline">\(|R(X)|\ge|T(X)|\)</span>. Equality within the
+sufficient class holds iff <span class="math inline">\(R\)</span> and
+<span class="math inline">\(T\)</span> have the same fibres,
+equivalently <span class="math inline">\(R=bT\)</span> for a bijection
+on realized images.</p>
+<p><strong>Proof.</strong> <span class="math inline">\(D:R(X)\to
+T(X)\)</span> is surjective. Equal finite cardinalities make it
+bijective; set <span class="math inline">\(b=D^{-1}\)</span>. Conversely
+a bijective relabelling preserves the fibres and cardinality. Merely
+equal-sized images do not imply sufficiency: <span class="math inline">\(R(a,b)=a\)</span>, <span class="math inline">\(T(a,b)=b\)</span> on <span class="math inline">\(\{0,1\}^2\)</span> is a counterexample. <span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<span class="compat-anchor" id="t06" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T06">
+<div class="theorem-meta"><span class="stable-id">T06</span><span class="badge classical">Classical identity</span></div>
+<h2 id="T06">T06 Parallel observation refinement</h2>
+<p><strong>Classical identity.</strong> <span class="math inline">\(\ker(R,S)=\ker R\cap\ker S\)</span> for two
+functions on the same source.</p>
+<p><strong>Proof.</strong> Ordered pairs are equal iff both coordinates
+are equal. Thus adding <span class="math inline">\(S\)</span> cannot
+enlarge an observation fibre. Correlated measurements still require
+their declared joint domain. <span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<span class="compat-anchor" id="t07" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T07">
+<div class="theorem-meta"><span class="stable-id">T07</span><span class="badge classical">Classical identity</span></div>
+<h2 id="T07">T07 Deterministic serial information loss</h2>
+<p><strong>Classical identity.</strong> For composable total functions
+<span class="math inline">\(R,S\)</span>, <span class="math inline">\(\ker R\subseteq\ker(SR)\)</span>. A task that
+separates an <span class="math inline">\(R\)</span>-merged pair cannot
+be recovered from <span class="math inline">\(SR\)</span> alone.</p>
+<p><strong>Proof.</strong> <span class="math inline">\(R(x)=R(x')\)</span> implies <span class="math inline">\(S(Rx)=S(Rx')\)</span>. Apply the necessity
+direction of T01 to any separating task. An independent side channel
+changes the observation and is outside this assertion. <span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<span class="compat-anchor" id="t08" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T08">
+<div class="theorem-meta"><span class="stable-id">T08</span><span class="badge classical">Classical congruence theorem</span></div>
+<h2 id="T08">T08 Structured quotient criterion</h2>
+<p><strong>Classical congruence theorem.</strong> Let <span class="math inline">\(E\)</span> be an equivalence on <span class="math inline">\(X\)</span> with specified finite-arity partial
+operations <span class="math inline">\(g:D_g\subseteq X^m\to X\)</span>.
+An exact quotient operation preserving definedness exists for each <span class="math inline">\(g\)</span> iff coordinatewise <span class="math inline">\(E\)</span>-equivalent tuples have identical domain
+membership and, when defined, <span class="math inline">\(E\)</span>-equivalent outputs.</p>
+<p><strong>Proof.</strong> Any quotient operation makes both properties
+necessary because equivalent tuples have the same quotient input.
+Conversely use the domain membership to define a saturated quotient
+domain, and define the output to be <span class="math inline">\([g(x)]\)</span>. The second property makes it
+representative-independent. These constructions work for every declared
+operation; native continuity or smoothness needs further hypotheses.
+<span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<span class="compat-anchor" id="t09" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T09">
+<div class="theorem-meta"><span class="stable-id">T09</span><span class="badge classical">Classical partial-map theorem</span></div>
+<h2 id="T09">T09 Typed composite domain</h2>
+<p><strong>Classical partial-map theorem.</strong> For <span class="math inline">\(f:D_f\subseteq X\to Y\)</span> and <span class="math inline">\(g:D_g\subseteq Y\to Z\)</span>, the domain of
+<span class="math inline">\(gf\)</span> is <span class="math inline">\(D_f\cap f^{-1}(D_g)\)</span>, with the preimage
+evaluated where <span class="math inline">\(f\)</span> exists.</p>
+<p><strong>Proof.</strong> Evaluation requires first <span class="math inline">\(x\in D_f\)</span>, then <span class="math inline">\(f(x)\in D_g\)</span>; these requirements are also
+sufficient. For three maps both parenthesizations require exactly the
+same successive membership tests and give the same value, proving
+associativity where defined. <span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<span class="compat-anchor" id="t10" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T10">
+<div class="theorem-meta"><span class="stable-id">T10</span><span class="badge gurf">GURF corollary</span></div>
+<h2 id="T10">T10 Future task factorization for a declared evolution</h2>
+<p><strong>GURF corollary.</strong> For an already-defined total
+evolution <span class="math inline">\(\Phi_t\)</span>, the future task
+<span class="math inline">\(T\Phi_t\)</span> is recoverable from <span class="math inline">\(R\)</span> iff it is constant on <span class="math inline">\(R\)</span>-fibres. For a partial <span class="math inline">\(\Phi_t:D_t\to X\)</span>, recovery of both
+availability and value additionally requires <span class="math inline">\(D_t\)</span> saturated under <span class="math inline">\(R\)</span>.</p>
+<p><strong>Proof.</strong> Apply T01 to <span class="math inline">\(T\Phi_t\)</span> in the total case. In the partial
+case apply it to the total tagged function taking value <span class="math inline">\((\mathrm{available},T\Phi_t(x))\)</span> on <span class="math inline">\(D_t\)</span> and a distinct unavailable tag
+elsewhere. Equal tagged values are exactly saturation plus equality on
+defined pairs. No existence or extension of <span class="math inline">\(\Phi_t\)</span> has been proved. <span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<span class="compat-anchor" id="t11" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T11">
+<div class="theorem-meta"><span class="stable-id">T11</span><span class="badge gurf">BM and GURF structural specialization</span></div>
+<h2 id="T11">T11 Exact Dynamic Closure</h2>
+<p><strong>BM and GURF structural specialization.</strong> For total
+<span class="math inline">\(f:X\to X\)</span>, a unique <span class="math inline">\(\bar f:R(X)\to R(X)\)</span> with <span class="math inline">\(Rf=\bar fR\)</span> exists iff <span class="math inline">\(\ker R\subseteq\ker(Rf)\)</span>. When it exists,
+<span class="math inline">\(Rf^m=\bar f^mR\)</span> for every finite
+<span class="math inline">\(m\)</span>. For partial <span class="math inline">\(f\)</span>, require domain saturation as well.</p>
+<p><strong>Proof.</strong> Apply T01 to task <span class="math inline">\(Rf\)</span>. The finite-iterate identity holds at
+zero, and <span class="math inline">\(Rf^{m+1}=\bar f Rf^m=\bar
+f^{m+1}R\)</span> completes induction. Partial closure follows from T10
+with task <span class="math inline">\(R\)</span>; compose only where
+successive maps exist. For the canonical task quotient this is exactly
+congruence of the task equivalence under <span class="math inline">\(f\)</span>. <span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<span class="compat-anchor" id="t12" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T12">
+<div class="theorem-meta"><span class="stable-id">T12</span><span class="badge counterexample">Counterexample</span></div>
+<h2 id="T12">T12 Static sufficiency does not imply closure</h2>
+<p><strong>Counterexample.</strong> On <span class="math inline">\(X=\mathbb R^2\)</span>, let <span class="math inline">\(R(x,y)=x\)</span>, task <span class="math inline">\(T=x\)</span>, and <span class="math inline">\(f(x,y)=(x+y,y)\)</span>. <span class="math inline">\(R\)</span> exactly answers the present task but is
+not dynamically closed.</p>
+<p><strong>Proof.</strong> <span class="math inline">\(T=R\)</span>. Yet
+<span class="math inline">\((0,0)\)</span> and <span class="math inline">\((0,1)\)</span> have equal observation and
+successor observations 0 and 1. T11 fails. <span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<section class="range-head" id="realization-repair"><p class="eyebrow">Register range</p><h2>T13–T28</h2><p>Branch essentiality, realizability, Roots, coherence, serial defects, and repair</p></section>
+<span class="compat-anchor" id="t13" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T13">
+<div class="theorem-meta"><span class="stable-id">T13</span><span class="badge bm">BM proposition</span></div>
+<h2 id="T13">T13 Branch essentiality monotonicity</h2>
+<p><strong>BM proposition.</strong> Fix a candidate class of
+Branch-removing coarsenings independently of the obligation test. If a
+Branch is essential for <span class="math inline">\(\mathscr Q\)</span>,
+it remains essential for any <span class="math inline">\(\mathscr
+Q'\supseteq\mathscr Q\)</span> with the same candidate class.</p>
+<p><strong>Proof.</strong> Every candidate fails some obligation in
+<span class="math inline">\(\mathscr Q\)</span>; that same obligation
+belongs to <span class="math inline">\(\mathscr Q'\)</span>.
+Quantifying over the unchanged class proves the claim. If the candidate
+class changes, this argument no longer establishes monotonicity. <span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<span class="compat-anchor" id="t14" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T14">
+<div class="theorem-meta"><span class="stable-id">T14</span><span class="badge structural">Structural corollary</span></div>
+<h2 id="T14">T14 Refinement and composition</h2>
+<p><strong>Structural corollary.</strong> Define <span class="math inline">\(R\preceq S\)</span> when <span class="math inline">\(R=hS\)</span> on the source. This relation is
+reflexive and transitive. If <span class="math inline">\(R\)</span>
+preserves the source task family and <span class="math inline">\(S\)</span> preserves the induced tasks on <span class="math inline">\(R(X)\)</span>, then <span class="math inline">\(SR\)</span> preserves the source tasks.</p>
+<p><strong>Proof.</strong> The identity gives reflexivity and
+composition of factoring maps gives transitivity. For a source task
+<span class="math inline">\(T=DR\)</span> and induced task <span class="math inline">\(D=ES\)</span>, substitution gives <span class="math inline">\(T=ESR\)</span>. Distinguish this composition
+statement from the notation for comparing two representations on one
+source. <span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<span class="compat-anchor" id="t15" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T15">
+<div class="theorem-meta"><span class="stable-id">T15</span><span class="badge counterexample">Counterexample</span></div>
+<h2 id="T15">T15 Branch count need not be invariant</h2>
+<p><strong>Counterexample.</strong> Without a rule forbidding
+regrouping, a product state <span class="math inline">\(X\times
+Y\)</span> can be carried by one product Branch or by two Branches with
+a declared pairing Interaction.</p>
+<p><strong>Proof.</strong> The map <span class="math inline">\((x,y)\mapsto(x,y)\)</span> is a bijection between
+the resulting total states and preserves every native product task
+carried by the pairing. The counts are one and two. Thus raw count is
+not determined by those total-state semantics. No claim is made for a
+separately defined irreducible decomposition. <span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<span class="compat-anchor" id="t16" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T16">
+<div class="theorem-meta"><span class="stable-id">T16</span><span class="badge classical">Classical gluing theorem</span></div>
+<h2 id="T16">T16 Finite tree gluing</h2>
+<p><strong>Classical gluing theorem.</strong> On a finite tree let node
+<span class="math inline">\(i\)</span> carry nonempty <span class="math inline">\(A_i\)</span>. For every edge <span class="math inline">\(ij\)</span>, maps <span class="math inline">\(r_{ij}:A_i\to S_{ij}\)</span> and <span class="math inline">\(r_{ji}:A_j\to S_{ij}\)</span> have equal images.
+Then a compatible tuple exists, and any chosen value at any one node
+extends to such a tuple.</p>
+<p><strong>Proof.</strong> Root the tree at the chosen node. Given a
+parent’s value, image equality supplies a child value matching that
+edge. Choose it and continue away from the root. Finiteness terminates
+the construction; each edge is checked once and no child has two parents
+imposing additional conditions. This proves extension and existence.
+Cycles or cross-obligations require another theorem. <span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<span class="compat-anchor" id="t17" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T17">
+<div class="theorem-meta"><span class="stable-id">T17</span><span class="badge counterexample">Counterexample</span></div>
+<h2 id="T17">T17 Local realizability does not imply global
+realizability</h2>
+<p><strong>Counterexample.</strong> The three Boolean constraints <span class="math inline">\(a=b\)</span>, <span class="math inline">\(b=c\)</span>, <span class="math inline">\(a\ne
+c\)</span> are each satisfiable, and every pair is satisfiable, but
+their conjunction is not.</p>
+<p><strong>Proof.</strong> The first two imply <span class="math inline">\(a=c\)</span>, contradicting the third. Pairs are
+witnessed respectively by <span class="math inline">\((0,0,0)\)</span>,
+<span class="math inline">\((0,0,1)\)</span>, and <span class="math inline">\((1,0,0)\)</span>. This concerns simultaneous
+feasibility, not transitivity of equality. <span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<span class="compat-anchor" id="t18" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T18">
+<div class="theorem-meta"><span class="stable-id">T18</span><span class="badge classical">Classical theorem</span></div>
+<h2 id="T18">T18 Finite deterministic DAG evaluation</h2>
+<p><strong>Classical theorem.</strong> A finite directed acyclic
+dependency graph with fixed source values and deterministic partial node
+operations has a unique evaluation if every operation is defined and
+accepted on its actual predecessor values.</p>
+<p><strong>Proof.</strong> A finite DAG has a topological ordering:
+repeatedly remove a node with no predecessor; if none existed, following
+predecessors would eventually form a cycle. Evaluate in this order. Each
+input was fixed earlier, so each output exists by hypothesis and is
+unique. Induction proves the entire evaluation. Other topological orders
+give the same values by the same dependency induction. No infinite-limit
+conclusion follows. <span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<span class="compat-anchor" id="t19" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T19">
+<div class="theorem-meta"><span class="stable-id">T19</span><span class="badge counterexample">Counterexample</span></div>
+<h2 id="T19">T19 Quantifier scope matters</h2>
+<p><strong>Counterexample.</strong> <span class="math inline">\(\forall
+x\in\{0,1\}\ \exists y\in\{0,1\}:y=x\)</span> is true; <span class="math inline">\(\exists y\ \forall x:y=x\)</span> is false.</p>
+<p><strong>Proof.</strong> Choose <span class="math inline">\(y=x\)</span> separately in the first formula. A
+shared <span class="math inline">\(y\)</span> in the second would equal
+both 0 and 1. A Passport must specify which witness can be reused. <span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<span class="compat-anchor" id="t20" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T20">
+<div class="theorem-meta"><span class="stable-id">T20</span><span class="badge counterexample">Counterexample</span></div>
+<h2 id="T20">T20 Separate feasibility does not imply joint
+feasibility</h2>
+<p><strong>Counterexample.</strong> Nonempty sets <span class="math inline">\(A=\{0\}\)</span> and <span class="math inline">\(B=\{1\}\)</span> have empty intersection.</p>
+<p><strong>Proof.</strong> A joint witness would have to be both 0 and
+1. Independent witnesses exist, but that answers a different quantified
+task. <span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<span class="compat-anchor" id="t21" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T21">
+<div class="theorem-meta"><span class="stable-id">T21</span><span class="badge bm">BM proposition</span></div>
+<h2 id="T21">T21 Root receiver relativity</h2>
+<p><strong>BM proposition.</strong> A fixed typed export <span class="math inline">\(e\)</span> can be accepted by one receiver and
+rejected by another.</p>
+<p><strong>Proof.</strong> Let both applicability domains be <span class="math inline">\(\mathbb R\)</span>, with acceptance sets <span class="math inline">\(A_1=[0,\infty)\)</span> and <span class="math inline">\(A_2=[1,\infty)\)</span>. The export <span class="math inline">\(e=1/2\)</span> belongs to <span class="math inline">\(A_1\)</span> and not <span class="math inline">\(A_2\)</span>. Hence Root status must include its
+receiver and contract. <span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<span class="compat-anchor" id="t22" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T22">
+<div class="theorem-meta"><span class="stable-id">T22</span><span class="badge counterexample">Counterexample</span></div>
+<h2 id="T22">T22 Root acceptance is not automatically transitive</h2>
+<p><strong>Counterexample.</strong> Acceptance at an intermediate
+receiver does not imply acceptance after translation to a later one.</p>
+<p><strong>Proof.</strong> Take <span class="math inline">\(e=1\)</span>, first acceptance set <span class="math inline">\([0,\infty)\)</span>, translation <span class="math inline">\(\tau(y)=-y\)</span>, and second acceptance set
+<span class="math inline">\([0,\infty)\)</span>. The first acceptance
+holds and <span class="math inline">\(\tau(e)=-1\)</span> is rejected.
+T43 states the additional transport condition that suffices. <span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<span class="compat-anchor" id="t23" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T23">
+<div class="theorem-meta"><span class="stable-id">T23</span><span class="badge counterexample">Symmetry obstruction</span></div>
+<h2 id="T23">T23 Existence does not provide a canonical selection</h2>
+<p><strong>Symmetry obstruction.</strong> A nonempty realization family
+alone does not determine a selection invariant under all its
+symmetries.</p>
+<p><strong>Proof.</strong> Take a two-element family with no additional
+data. The transposition is a symmetry. Any selected element is moved by
+it, so no invariant choice exists. Adding an order, cost, or other
+selection rule changes the data and may permit selection. <span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<span class="compat-anchor" id="t24" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T24">
+<div class="theorem-meta"><span class="stable-id">T24</span><span class="badge structural">Structural proposition</span></div>
+<h2 id="T24">T24 Path coherence transitivity</h2>
+<p><strong>Structural proposition.</strong> If three defined paths have
+outputs in one comparison space with a transitive relation <span class="math inline">\(\sim\)</span>, and <span class="math inline">\(p(x)\sim q(x)\)</span> and <span class="math inline">\(q(x)\sim r(x)\)</span> for every <span class="math inline">\(x\)</span> in their declared common domain, then
+<span class="math inline">\(p(x)\sim r(x)\)</span> there.</p>
+<p><strong>Proof.</strong> Apply transitivity pointwise. The assertion
+neither enlarges the common domain nor proves independent higher-order
+obligations. <span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<span class="compat-anchor" id="t25" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T25">
+<div class="theorem-meta"><span class="stable-id">T25</span><span class="badge counterexample">Classical counterexample family</span></div>
+<h2 id="T25">T25 Cyclic separator consistency can fail globally</h2>
+<p><strong>Classical counterexample family.</strong> For <span class="math inline">\(n\ge3\)</span> Boolean variables on a cycle,
+impose equality on consecutive edges <span class="math inline">\(1\)</span> through <span class="math inline">\(n-1\)</span> and inequality on the closing edge.
+Every edge relation has full projection on either endpoint and therefore
+agrees with neighbors on separators. The global join is empty.</p>
+<p><strong>Proof.</strong> Every Boolean endpoint value has an extension
+on each individual equality or inequality edge, proving separator
+consistency. The equality path forces <span class="math inline">\(x_1=x_n\)</span> while the closing edge forbids
+it. This is the cyclic boundary of T44 and is distinct from T24. <span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<span class="compat-anchor" id="t26" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T26">
+<div class="theorem-meta"><span class="stable-id">T26</span><span class="badge bm">BM specialization</span></div>
+<h2 id="T26">T26 Finite serial Passport defect localization</h2>
+<p><strong>BM specialization.</strong> Let <span class="math inline">\(f_k:X_{k-1}\to X_k\)</span> be total for <span class="math inline">\(1\le k\le n\)</span>, with predicates <span class="math inline">\(P_k\)</span>, and <span class="math inline">\(F_k=f_k\cdots f_1\)</span>, <span class="math inline">\(F_0=I\)</span>. Set <span class="math inline">\(D_k=\{u:P_{k-1}(u),\ \neg P_k(f_ku)\}\)</span>.
+Then</p>
+<p><span class="math display">\[\{x:P_0(x),\ \neg
+P_n(F_nx)\}\subseteq\bigcup_{k=1}^nF_{k-1}^{-1}(D_k).\]</span></p>
+<p><strong>Proof.</strong> A Boolean sequence starting true and ending
+false has a first true-to-false step. That step puts <span class="math inline">\(F_{k-1}x\)</span> in <span class="math inline">\(D_k\)</span>. If failure is absorbing at every
+stage for every input, membership on the right also implies initial
+truth and final failure, giving equality. For partial operations
+restrict to defined chains or introduce an explicit failure tag. A
+failure appearing only at an infinite limit is outside this finite
+theorem. <span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<span class="compat-anchor" id="t27" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T27">
+<div class="theorem-meta"><span class="stable-id">T27</span><span class="badge supporting">Corollary of T06</span></div>
+<h2 id="T27">T27 Exact repair refinement</h2>
+<p><strong>Corollary of T06.</strong> Adding a lawful side observation
+<span class="math inline">\(Q\)</span> changes a representation <span class="math inline">\(R\)</span> to <span class="math inline">\((R,Q)\)</span> with kernel <span class="math inline">\(\ker R\cap\ker Q\)</span>.</p>
+<p><strong>Proof.</strong> T06 gives the identity and its inclusion in
+<span class="math inline">\(\ker R\)</span>. No source for <span class="math inline">\(Q\)</span> is constructed by this identity; its
+availability is an independent requirement. <span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<span class="compat-anchor" id="t28" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T28">
+<div class="theorem-meta"><span class="stable-id">T28</span><span class="badge bm">BM certification theorem</span></div>
+<h2 id="T28">T28 Repair closure and revalidation</h2>
+<p><strong>BM certification theorem.</strong> Let <span class="math inline">\(\operatorname{Cl}\)</span> be a closure operator
+on a component set, and <span class="math inline">\(A=\operatorname{Cl}(S)\)</span>. Then <span class="math inline">\(A\)</span> is the least closed set containing
+<span class="math inline">\(S\)</span>. A certificate depending only on
+coordinates outside <span class="math inline">\(A\)</span> survives any
+change confined to <span class="math inline">\(A\)</span>. On a full
+product <span class="math inline">\(X=\prod_{v\in V}X_v\)</span> with
+finite <span class="math inline">\(V\)</span>, a predicate <span class="math inline">\(\varphi\)</span> is invariant under every change
+in <span class="math inline">\(A\)</span> iff its essential coordinate
+support is disjoint from <span class="math inline">\(A\)</span>.</p>
+<p><strong>Proof.</strong> Extensivity and idempotence make <span class="math inline">\(A\)</span> a closed superset. If <span class="math inline">\(S\subseteq B=\operatorname{Cl}(B)\)</span>,
+monotonicity gives <span class="math inline">\(A\subseteq B\)</span>. A
+certificate of unchanged coordinates has unchanged arguments. For the
+final assertion, an essential coordinate in <span class="math inline">\(A\)</span> gives two states differing only there
+that change <span class="math inline">\(\varphi\)</span>, contradicting
+invariance. Conversely, if no coordinate in <span class="math inline">\(A\)</span> is essential, replace the finitely many
+changed coordinates one at a time; the predicate stays unchanged at each
+replacement. <span class="math inline">\(\square\)</span></p>
+<p>The finite-product qualification is essential. On <span class="math inline">\(\{0,1\}^{\mathbb N}\)</span>, the predicate
+“infinitely many coordinates are 1” has no individually essential
+coordinate but changes between the all-zero and all-one sequences.
+Constrained products also require an admissible-path argument;
+coordinate replacements may leave the source domain.</p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<section class="range-head" id="stochastic-quantitative"><p class="eyebrow">Register range</p><h2>T29–T42</h2><p>Markov closure, quantitative recovery, applied identities, sector boundaries, and approximate lumpability</p></section>
+<span class="compat-anchor" id="t29" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T29">
+<div class="theorem-meta"><span class="stable-id">T29</span><span class="badge classical">Classical strong lumpability theorem</span></div>
+<h2 id="T29">T29 Finite Markov closure</h2>
+<p><strong>Classical strong lumpability theorem.</strong> For a finite
+stochastic matrix <span class="math inline">\(K\)</span> and surjection
+<span class="math inline">\(R:X\to Z\)</span>, a reduced Markov matrix
+preserving the one-step observed law for every initial distribution
+exists iff for <span class="math inline">\(R(x)=R(x')\)</span> and
+each <span class="math inline">\(z\)</span>,</p>
+<p><span class="math display">\[\sum_{R(y)=z}K(x,y)=\sum_{R(y)=z}K(x',y).\]</span></p>
+<p><strong>Proof.</strong> Necessity follows by choosing point-mass
+initial distributions at <span class="math inline">\(x,x'\)</span>.
+Conversely define the reduced row by these sums; nonnegativity and row
+sum one are inherited. Summing against an arbitrary initial distribution
+proves the observed-law identity. Support equality alone does not
+establish equality of these sums. <span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<span class="compat-anchor" id="t30" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T30">
+<div class="theorem-meta"><span class="stable-id">T30</span><span class="badge classical">Classical identity</span></div>
+<h2 id="T30">T30 Markov test-function composition</h2>
+<p><strong>Classical identity.</strong> For composable Markov kernels
+<span class="math inline">\(K,L\)</span> and bounded measurable <span class="math inline">\(\phi\)</span>, <span class="math inline">\((KL)^\dagger\phi=K^\dagger(L^\dagger\phi)\)</span>,
+where <span class="math inline">\(K^\dagger\psi(x)=\int\psi(y)K(x,dy)\)</span>.</p>
+<p><strong>Proof.</strong> Substitute <span class="math inline">\((KL)(x,A)=\int L(y,A)K(x,dy)\)</span> into the
+left integral. Equality of iterated integrals holds first for indicator
+functions by the definition, then for simple functions by linearity,
+nonnegative measurable functions by monotone convergence, and bounded
+signed functions by positive/negative decomposition. These are kernel
+hypotheses, not ordinary deterministic composition. <span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<span class="compat-anchor" id="t31" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T31">
+<div class="theorem-meta"><span class="stable-id">T31</span><span class="badge supporting">Metric corollary</span></div>
+<h2 id="T31">T31 Exact task diameter criterion</h2>
+<p><strong>Metric corollary.</strong> For metric-valued <span class="math inline">\(T\)</span>, exact sufficiency of <span class="math inline">\(R\)</span> is equivalent to every nonempty task
+fibre image having diameter zero.</p>
+<p><strong>Proof.</strong> A metric has <span class="math inline">\(d(u,v)=0\)</span> iff <span class="math inline">\(u=v\)</span>, so zero diameter is exactly fibre
+constancy in T01. A pseudometric gives equality only after passing to
+its zero-distance quotient. <span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<span class="compat-anchor" id="t32" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T32">
+<div class="theorem-meta"><span class="stable-id">T32</span><span class="badge quantitative">Quantitative theorem</span></div>
+<h2 id="T32">T32 Two-sided reconstruction bound</h2>
+<p><strong>Quantitative theorem.</strong> Let <span class="math inline">\(\Delta=\sup_{z\in
+R(X)}\operatorname{diam}T(R^{-1}z)\)</span>. Every decoder has
+worst-case error at least <span class="math inline">\(\Delta/2\)</span>.
+If a fibre section exists, a representative decoder has error at most
+<span class="math inline">\(\Delta\)</span>. For bounded real-valued
+tasks the midpoint decoder attains <span class="math inline">\(\Delta/2\)</span>.</p>
+<p><strong>Proof.</strong> For two points in a fibre, triangle
+inequality bounds their task distance by the sum of their errors against
+the shared decoded value, hence by twice the worst-case error. Take
+suprema. A representative task value lies in the fibre image and is
+within its diameter of every other member. In a bounded real fibre, the
+midpoint of its infimum and supremum has maximal error half its range,
+whether endpoints are attained or merely approached. The lower bound
+proves optimality. No continuous or admissible decoder class is assumed.
+<span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<span class="compat-anchor" id="t33" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T33">
+<div class="theorem-meta"><span class="stable-id">T33</span><span class="badge classical">Classical quantitative theorem</span></div>
+<h2 id="T33">T33 Lipschitz serial error propagation</h2>
+<p><strong>Classical quantitative theorem.</strong> Suppose at step
+<span class="math inline">\(k\)</span> the approximate update differs
+from the exact update by at most <span class="math inline">\(\delta_k\)</span> on the relevant states, and the
+exact update is <span class="math inline">\(L_k\)</span>-Lipschitz
+there. If the prior error is <span class="math inline">\(e_{k-1}\)</span>, then <span class="math inline">\(e_k\le\delta_k+L_ke_{k-1}\)</span>.</p>
+<p><strong>Proof.</strong> Insert the exact update of the approximate
+prior state between the two compared outputs. Triangle inequality bounds
+the first difference by <span class="math inline">\(\delta_k\)</span>
+and Lipschitz continuity bounds the second by <span class="math inline">\(L_ke_{k-1}\)</span>. Repeated substitution gives
+<span class="math inline">\(e_n\le
+e_0\prod_{j=1}^nL_j+\sum_{k=1}^n\delta_k\prod_{j=k+1}^nL_j\)</span>.
+Every compared point must be in the domain of the relevant estimate.
+<span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<span class="compat-anchor" id="t34" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T34">
+<div class="theorem-meta"><span class="stable-id">T34</span><span class="badge classical">Classical applied identity</span></div>
+<h2 id="T34">T34 Periodic incompressible energy identity</h2>
+<p><strong>Classical applied identity.</strong> On a periodic torus, for
+a smooth divergence-free solution of <span class="math inline">\(\partial_tu+(u\cdot\nabla)u=-\nabla p+\nu\Delta
+u+f\)</span> with <span class="math inline">\(\nu&gt;0\)</span>,</p>
+<p><span class="math display">\[\tfrac12\frac
+d{dt}\|u\|_2^2=-\nu\|\nabla u\|_2^2+\langle u,f\rangle.\]</span></p>
+<p><strong>Proof.</strong> Take the spatial inner product with <span class="math inline">\(u\)</span>. The transport term integrates to <span class="math inline">\(\int\nabla\cdot(u|u|^2/2)=0\)</span>; the pressure
+term integrates to <span class="math inline">\(-\int p\nabla\cdot
+u=0\)</span>; integration by parts gives <span class="math inline">\(\langle u,\Delta u\rangle=-\|\nabla
+u\|_2^2\)</span>. Periodicity removes boundary terms. This identity
+holds on the smooth solution’s existing interval; it does not prove
+global regularity or closure of an energy-only representation. <span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<span class="compat-anchor" id="t35" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T35">
+<div class="theorem-meta"><span class="stable-id">T35</span><span class="badge classical">Classical applied identity</span></div>
+<h2 id="T35">T35 Wilson-loop gauge invariance</h2>
+<p><strong>Classical applied identity.</strong> For matrices <span class="math inline">\(U_{ij}\)</span> on the oriented edges of a closed
+loop and invertible gauge matrices <span class="math inline">\(g_i\)</span>, let <span class="math inline">\(U'_{ij}=g_iU_{ij}g_j^{-1}\)</span>. The trace
+of the ordered loop product is unchanged.</p>
+<p><strong>Proof.</strong> Multiplying around the loop cancels adjacent
+<span class="math inline">\(g_j^{-1}g_j\)</span>, leaving <span class="math inline">\(g_0(U_{01}\cdots U_{m0})g_0^{-1}\)</span>. Trace
+cyclicity removes the remaining conjugation. This finite-dimensional
+algebra supplies neither a continuum quantum field construction nor a
+mass-gap proof. <span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<span class="compat-anchor" id="t36" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T36">
+<div class="theorem-meta"><span class="stable-id">T36</span><span class="badge counterexample">Governing restriction with counterexample</span></div>
+<h2 id="T36">T36 Sector non-portability</h2>
+<p><strong>Governing restriction with counterexample.</strong> A
+set-level factorization does not imply a factorization in a more
+restrictive native category.</p>
+<p><strong>Proof of the obstruction.</strong> Let <span class="math inline">\(X=\mathbb R\)</span> have the discrete topology,
+let <span class="math inline">\(Z=\mathbb R\)</span> have its usual
+topology, and let <span class="math inline">\(R\)</span> be the identity
+on underlying sets. The map <span class="math inline">\(T:X\to\{0,1\}\)</span> indicating nonnegative
+reals is continuous from discrete <span class="math inline">\(X\)</span>. Its unique set-level factor through
+<span class="math inline">\(R\)</span> is discontinuous at zero in usual
+<span class="math inline">\(Z\)</span>. Thus a continuous decoder cannot
+be inferred from T01. The general restriction is a rule of valid theorem
+application, not a new universal theorem. <span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<span class="compat-anchor" id="t37" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T37">
+<div class="theorem-meta"><span class="stable-id">T37</span><span class="badge classical">Classical semantic proposition</span></div>
+<h2 id="T37">T37 Realization monotonicity</h2>
+<p><strong>Classical semantic proposition.</strong> With signature and
+context fixed, <span class="math inline">\(\Gamma\subseteq\Gamma'\)</span> implies <span class="math inline">\(\mathfrak
+F(\Sigma,\Gamma';c)\subseteq\mathfrak
+F(\Sigma,\Gamma;c)\)</span>.</p>
+<p><strong>Proof.</strong> An interpretation satisfying every obligation
+of <span class="math inline">\(\Gamma'\)</span> satisfies every
+member of its subset <span class="math inline">\(\Gamma\)</span>. No
+existence follows from this inclusion. <span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<span class="compat-anchor" id="t38" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T38">
+<div class="theorem-meta"><span class="stable-id">T38</span><span class="badge structural">Structural theorem</span></div>
+<h2 id="T38">T38 Independent Configuration product</h2>
+<p><strong>Structural theorem.</strong> If interpretation spaces split
+as a product, obligations act separately on the two factors, and there
+are no cross-obligations, then the combined realization family is the
+product of the two realization families.</p>
+<p><strong>Proof.</strong> A pair satisfies the combined obligations iff
+its first coordinate satisfies the first set and its second satisfies
+the second set. This characterizes exactly the Cartesian product. An
+undeclared shared constraint invalidates the premise. <span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<span class="compat-anchor" id="t39" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T39">
+<div class="theorem-meta"><span class="stable-id">T39</span><span class="badge classical">Classical group theorem</span></div>
+<h2 id="T39">T39 Single-cycle holonomy</h2>
+<p><strong>Classical group theorem.</strong> For group labels <span class="math inline">\(g_i\)</span> on an oriented <span class="math inline">\(n\)</span>-cycle, potentials with <span class="math inline">\(g_i=h_i^{-1}h_{i+1}\)</span>, <span class="math inline">\(h_{n+1}=h_1\)</span>, exist iff <span class="math inline">\(g_1\cdots g_n=e\)</span>.</p>
+<p><strong>Proof.</strong> Necessity is telescoping in the specified
+order. Conversely choose <span class="math inline">\(h_1=e\)</span> and
+recursively <span class="math inline">\(h_{i+1}=h_i g_i\)</span>. The
+product condition closes the final edge. No commutativity is required.
+<span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<span class="compat-anchor" id="t40" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T40">
+<div class="theorem-meta"><span class="stable-id">T40</span><span class="badge classical">Classical graph theorem</span></div>
+<h2 id="T40">T40 Fundamental-cycle criterion</h2>
+<p><strong>Classical graph theorem.</strong> In a finite connected graph
+with reverse-edge labels the inverses of forward labels, global
+potentials as in T39 exist iff the holonomy around every fundamental
+cycle of one spanning tree is trivial. There are <span class="math inline">\(|E|-|V|+1\)</span> such edges to check, counting
+undirected edges once.</p>
+<p><strong>Proof.</strong> Necessity follows by telescoping along any
+loop. For sufficiency fix a root and define each potential by the
+ordered product on its unique spanning-tree path. Tree edges then
+satisfy the equation. The cycle condition on each non-tree edge says
+precisely that its given label equals the potential-derived one. All
+edges now satisfy the equation. A spanning tree has <span class="math inline">\(|V|-1\)</span> edges, giving the count. <span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<span class="compat-anchor" id="t41" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T41">
+<div class="theorem-meta"><span class="stable-id">T41</span><span class="badge quantitative">Stochastic quantitative theorem</span></div>
+<h2 id="T41">T41 One-step approximate lumpability</h2>
+<p><strong>Stochastic quantitative theorem.</strong> In the finite
+setting of T29, suppose aggregated rows in each observation block have
+total-variation diameter at most <span class="math inline">\(\varepsilon\)</span>. Choose one representative
+row per block to form <span class="math inline">\(\bar K\)</span>. Then
+<span class="math inline">\(d_{\rm TV}(R_\#(\mu K),(R_\#\mu)\bar
+K)\le\varepsilon\)</span> for every initial law <span class="math inline">\(\mu\)</span>.</p>
+<p><strong>Proof.</strong> Write the difference as the <span class="math inline">\(\mu(x)\)</span>-weighted sum of the differences
+between each aggregated row and its block representative. Half the <span class="math inline">\(\ell^1\)</span> norm of a sum is at most the sum
+of half-norms, so the distance is at most <span class="math inline">\(\sum_x\mu(x)\varepsilon=\varepsilon\)</span>.
+<span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<span class="compat-anchor" id="t42" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T42">
+<div class="theorem-meta"><span class="stable-id">T42</span><span class="badge supporting">Derived corollary</span></div>
+<h2 id="T42">T42 Multi-step approximate lumpability</h2>
+<p><strong>Derived corollary.</strong> Under T41 the <span class="math inline">\(m\)</span>-step discrepancy is at most <span class="math inline">\(\min(1,m\varepsilon)\)</span>.</p>
+<p><strong>Proof.</strong> A stochastic matrix contracts total
+variation: for a signed row vector <span class="math inline">\(v\)</span>, <span class="math inline">\(\sum_z|\sum_yv_yK_{yz}|\le\sum_y|v_y|\sum_zK_{yz}=\|v\|_1\)</span>.
+Insert one reduced step applied to the actual aggregated law. T41 bounds
+the fresh error by <span class="math inline">\(\varepsilon\)</span> and
+contraction carries the previous error unchanged or smaller. Starting at
+zero gives <span class="math inline">\(m\varepsilon\)</span> by
+induction; distance between laws is also at most one. <span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<section class="range-head" id="receiver-global"><p class="eyebrow">Register range</p><h2>T43–T55</h2><p>Root transfer, gluing, receiver order, relational cycles, Configuration maps, and integrated continuation</p></section>
+<span class="compat-anchor" id="t43" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T43">
+<div class="theorem-meta"><span class="stable-id">T43</span><span class="badge bm">BM proposition</span></div>
+<h2 id="T43">T43 Certified Root transfer</h2>
+<p><strong>BM proposition.</strong> If <span class="math inline">\(e\in
+A_B\)</span> and a defined translator <span class="math inline">\(\tau\)</span> satisfies <span class="math inline">\(\tau(A_B)\subseteq A_C\)</span>, then <span class="math inline">\(\tau(e)\in A_C\)</span>.</p>
+<p><strong>Proof.</strong> Membership and the image inclusion imply the
+conclusion directly. The inclusion must encode all required receiver
+conditions; one passed task is insufficient if acceptance includes
+others. <span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<span class="compat-anchor" id="t44" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T44">
+<div class="theorem-meta"><span class="stable-id">T44</span><span class="badge classical">Classical local-to-global theorem</span></div>
+<h2 id="T44">T44 Join-tree hypergraph gluing</h2>
+<p><strong>Classical local-to-global theorem.</strong> A finite family
+of scopes <span class="math inline">\(V_i\)</span> has a join tree with
+the running-intersection property. Each carries a nonempty relation
+<span class="math inline">\(A_i\subseteq\prod_{v\in V_i}X_v\)</span>.
+Adjacent relations have equal projections on <span class="math inline">\(V_i\cap V_j\)</span>. Then the global natural join
+is nonempty and its projection to every <span class="math inline">\(V_i\)</span> is exactly <span class="math inline">\(A_i\)</span>.</p>
+<p><strong>Proof.</strong> Choose any tuple at a chosen root. Move
+outward along the tree, extending each selected parent tuple to a child
+tuple with the same separator values using projection equality. A child
+variable already assigned elsewhere must occur on the entire connecting
+path by running intersection, hence in its parent separator; its value
+is therefore consistent. Thus the local tuples assemble into one global
+assignment. Any chosen root tuple extends, proving surjectivity of the
+global projection to that relation. Rooting at any node proves the claim
+for every <span class="math inline">\(A_i\)</span>; the reverse
+projection inclusion follows from the definition of join. <span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<span class="compat-anchor" id="t45" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T45">
+<div class="theorem-meta"><span class="stable-id">T45</span><span class="badge bm">Elementary BM formulation</span></div>
+<h2 id="T45">T45 Scope erasure obstruction</h2>
+<p><strong>Elementary BM formulation.</strong> An encoding retaining
+only a carrier arrow <span class="math inline">\(R\)</span> while
+erasing its task scope cannot determine whether that arrow is sufficient
+for the original scope.</p>
+<p><strong>Proof.</strong> Use the same constant <span class="math inline">\(R:\{0,1\}\to\{*\}\)</span> twice. It is sufficient
+for a constant task and insufficient for the identity task. The encoding
+produces the same object for opposite sufficiency outcomes. This does
+not obstruct enriched formalisms that retain the scope. <span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<span class="compat-anchor" id="t46" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T46">
+<div class="theorem-meta"><span class="stable-id">T46</span><span class="badge classical">Classical refinement lattice in BM scope</span></div>
+<h2 id="T46">T46 Receiver information order</h2>
+<p><strong>Classical refinement lattice in BM scope.</strong> If <span class="math inline">\(\mathscr Q_1\subseteq\mathscr Q_2\)</span>, then
+<span class="math inline">\(q_{\mathscr Q_1}\)</span> factors through
+<span class="math inline">\(q_{\mathscr Q_2}\)</span>. The least common
+refinement preserving both task families is the quotient by <span class="math inline">\(E_{\mathscr Q_1}\cap E_{\mathscr Q_2}=E_{\mathscr
+Q_1\cup\mathscr Q_2}\)</span>.</p>
+<p><strong>Proof.</strong> Adding kernels to an intersection only
+decreases the equivalence relation. Containment gives the induced
+quotient map by T01. Any equivalence preserving both task families lies
+in both kernels and hence their intersection; that intersection itself
+preserves both. This proves the universal least-refinement property.
+<span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<span class="compat-anchor" id="t47" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T47">
+<div class="theorem-meta"><span class="stable-id">T47</span><span class="badge quantitative">Quantitative specialization</span></div>
+<h2 id="T47">T47 Receiver sufficiency modulus</h2>
+<p><strong>Quantitative specialization.</strong> For nonempty metric
+task family <span class="math inline">\(T_i:X\to W_i\)</span>, use the
+product output with sup distance (possibly extended) and <span class="math inline">\(\omega(R)=\sup_{R(x)=R(x')}\sup_i
+d_i(T_i(x),T_i(x'))\)</span>. Unrestricted joint-task decoders
+satisfy <span class="math inline">\(\omega/2\le e^*\le\omega\)</span>
+when fibre representatives exist. Moreover <span class="math inline">\(\omega=0\)</span> iff every task factors through
+<span class="math inline">\(R\)</span>.</p>
+<p><strong>Proof.</strong> Apply T32 to the product task, whose fibre
+diameter is exactly <span class="math inline">\(\omega\)</span>. The
+triangle argument and representative construction work also for extended
+sup distance. Zero distance means equality in every coordinate, so T01
+applies to each task. A receiver imposing constraints on decoded tuples
+can increase the optimum and needs a separate feasible-center analysis.
+<span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<span class="compat-anchor" id="t48" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T48">
+<div class="theorem-meta"><span class="stable-id">T48</span><span class="badge supporting">Corollary</span></div>
+<h2 id="T48">T48 Quantitative Root transfer</h2>
+<p><strong>Corollary.</strong> Suppose ideal incoming value <span class="math inline">\(y\)</span> and supplied value <span class="math inline">\(\hat y\)</span> satisfy <span class="math inline">\(d(y,\hat y)\le\varepsilon\)</span>, the translator
+<span class="math inline">\(\tau\)</span> is <span class="math inline">\(L\)</span>-Lipschitz on both, and desired output
+<span class="math inline">\(z\)</span> obeys <span class="math inline">\(d(z,\tau(y))\le\delta\)</span>. Then <span class="math inline">\(d(z,\tau(\hat
+y))\le\delta+L\varepsilon\)</span>.</p>
+<p><strong>Proof.</strong> Insert <span class="math inline">\(\tau(y)\)</span> and apply triangle inequality and
+the Lipschitz bound. This estimates error; receiver acceptance also
+needs the bound to meet its tolerance and the output to meet other
+obligations. <span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<span class="compat-anchor" id="t49" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T49">
+<div class="theorem-meta"><span class="stable-id">T49</span><span class="badge classical">Classical relational theorem</span></div>
+<h2 id="T49">T49 Relational cycle criterion</h2>
+<p><strong>Classical relational theorem.</strong> For a finite cyclic
+chain <span class="math inline">\(R_i\subseteq X_i\times
+X_{i+1}\)</span> with <span class="math inline">\(X_{n+1}=X_1\)</span>,
+a simultaneous cyclic realization exists iff <span class="math inline">\((R_n\circ\cdots\circ
+R_1)\cap\Delta_{X_1}\ne\varnothing\)</span>.</p>
+<p><strong>Proof.</strong> A cyclic realization provides intermediate
+witnesses for a diagonal pair in the composite. Conversely the
+definition of finite relational composition supplies the intermediate
+states for such a diagonal pair. Additional constraints beyond these
+relations must still be checked. <span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<span class="compat-anchor" id="t50" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T50">
+<div class="theorem-meta"><span class="stable-id">T50</span><span class="badge classical">Classical categorical construction</span></div>
+<h2 id="T50">T50 Satisfaction-preserving Configuration maps</h2>
+<p><strong>Classical categorical construction.</strong> Fix size
+conventions and typed interpretation transformations as morphisms, each
+sending satisfying interpretations of its source Configuration to
+satisfying interpretations of its target. Identity transformations and
+composable transformations form a category.</p>
+<p><strong>Proof.</strong> Identity preserves satisfaction. If <span class="math inline">\(F\)</span> and <span class="math inline">\(G\)</span> preserve it, a satisfying source is
+sent by <span class="math inline">\(F\)</span> to a satisfying
+intermediate and by <span class="math inline">\(G\)</span> to a
+satisfying target. Composition and identities inherit associativity and
+unit laws from the specified transformation composition. This meta-level
+construction does not collapse native sector mathematics into one
+category of bare sets. <span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<span class="compat-anchor" id="t51" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T51">
+<div class="theorem-meta"><span class="stable-id">T51</span><span class="badge classical">Classical proposition</span></div>
+<h2 id="T51">T51 Configuration refinement preorder</h2>
+<p><strong>Classical proposition.</strong> At fixed signature and
+context define <span class="math inline">\(C_2\preceq C_1\)</span> iff
+<span class="math inline">\(\mathfrak F(C_2)\subseteq\mathfrak
+F(C_1)\)</span>. This is a preorder and becomes a partial order after
+identifying Configurations with the same realization family.</p>
+<p><strong>Proof.</strong> Reflexivity and transitivity are those of
+inclusion. Mutual inclusion is equality of realization families, which
+is exactly the chosen quotient equivalence; antisymmetry follows on
+equivalence classes. <span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<span class="compat-anchor" id="t52" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T52">
+<div class="theorem-meta"><span class="stable-id">T52</span><span class="badge counterexample">Categorical counterexample</span></div>
+<h2 id="T52">T52 Acceptance does not determine an adjunction</h2>
+<p><strong>Categorical counterexample.</strong> Object-level
+Root/Passport acceptance data alone cannot imply an adjunction.</p>
+<p><strong>Proof.</strong> A single accepting Root and Passport can be
+represented by two terminal categories, where unique functors are
+adjoint. The same object data can instead have a one-object Root
+category with two endomorphisms and a terminal Passport category.
+Functors exist in both directions, but the corresponding hom sets have
+sizes two and one, so the natural bijection required for either
+adjunction is impossible. Additional morphism structure is
+indispensable. <span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<span class="compat-anchor" id="t53" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T53">
+<div class="theorem-meta"><span class="stable-id">T53</span><span class="badge supporting">Finite integrated theorem</span></div>
+<h2 id="T53">T53 Mixed deterministic and stochastic continuation</h2>
+<p><strong>Finite integrated theorem.</strong> On finite <span class="math inline">\(X\times Y\)</span>, let the next <span class="math inline">\(x\)</span> be <span class="math inline">\(f(x)\)</span> and the next <span class="math inline">\(y\)</span> have conditional law <span class="math inline">\(K_{x,y}\)</span>. Retain <span class="math inline">\((r(x),s(y))\)</span>. If <span class="math inline">\(rf=\bar f r\)</span> and the probabilities
+assigned by <span class="math inline">\(K_{x,y}\)</span> to each <span class="math inline">\(s\)</span>-block depend only on <span class="math inline">\((r(x),s(y))\)</span>, the joint kernel is strongly
+lumpable through that representation.</p>
+<p><strong>Proof.</strong> The probability of a reduced next pair <span class="math inline">\((a,b)\)</span> is the indicator <span class="math inline">\(\mathbf1_{r(f(x))=a}\)</span> times <span class="math inline">\(\sum_{s(y')=b}K_{x,y}(y')\)</span>. The
+first factor depends only on <span class="math inline">\(r(x)\)</span>
+by deterministic closure, and the second depends only on the retained
+pair by assumption. The product is therefore constant on every joint
+observation fibre. T29 gives a reduced Markov chain for every initial
+law. Dependence of <span class="math inline">\(K\)</span> on both native
+coordinates has not been discarded. <span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<span class="compat-anchor" id="t54" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T54">
+<div class="theorem-meta"><span class="stable-id">T54</span><span class="badge supporting">Relational specialization</span></div>
+<h2 id="T54">T54 Relational exact task factorization</h2>
+<p><strong>Relational specialization.</strong> For <span class="math inline">\(\mathcal E\subseteq X\times Y\)</span>, <span class="math inline">\(R:Y\to Z\)</span>, and source task <span class="math inline">\(T:X\to W\)</span>, put <span class="math inline">\(\mathcal O(x)=R(\mathcal E[x])\)</span>. A decoder
+on <span class="math inline">\(\bigcup_x\mathcal O(x)\)</span>
+satisfying <span class="math inline">\(D(Ry)=T(x)\)</span> for every
+<span class="math inline">\(x\mathcal E y\)</span> exists iff <span class="math inline">\(\mathcal O(x)\cap\mathcal
+O(x')\ne\varnothing\)</span> implies <span class="math inline">\(T(x)=T(x')\)</span>.</p>
+<p><strong>Proof.</strong> A shared observed value would have to decode
+to both tasks, proving necessity. Conversely all source tasks attached
+to a realized observed value agree by the implication; use that unique
+value to define the decoder. Equivalently apply T01 to the incidence
+pairs <span class="math inline">\((x,z)\)</span> with <span class="math inline">\(z\in\mathcal O(x)\)</span>. States without
+successors give no observed value and need a separate availability task
+if relevant. <span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+<span class="compat-anchor" id="t55" aria-hidden="true"></span>
+<section class="theorem-card" aria-labelledby="T55">
+<div class="theorem-meta"><span class="stable-id">T55</span><span class="badge supporting">Relational specialization</span></div>
+<h2 id="T55">T55 Exact relational Dynamic Closure</h2>
+<p><strong>Relational specialization.</strong> For <span class="math inline">\(\mathcal E\subseteq X\times X\)</span> and <span class="math inline">\(R:X\to Z\)</span>, a reduced relation on <span class="math inline">\(R(X)\)</span> satisfying <span class="math inline">\(\bar{\mathcal E}[R(x)]=R(\mathcal E[x])\)</span>
+exists iff <span class="math inline">\(R(x)=R(x')\)</span> implies
+equality of those successor-image sets.</p>
+<p><strong>Proof.</strong> Necessity follows because the reduced
+relation assigns one successor set to each reduced state. For
+sufficiency assign the common successor-image set to that state; fibre
+equality makes it well-defined. The empty set is a legitimate successor
+set and preserves dead ends. This is factorization of a power-set-valued
+map. It does not determine a stochastic law. <span class="math inline">\(\square\)</span></p>
+<p class="backlink"><a href="#top">Back to theorem index ↑</a></p></section>
+
+  <section class="range-head" id="principal-families">
+    <p class="eyebrow">Beyond the supporting register</p>
+    <h2>Connected principal theorem families</h2>
+    <p>The mathematical edition keeps its two main developments consolidated rather than inflating each supporting step into a separate headline theorem.</p>
+  </section>
+
+  <div class="principal-grid">
+    <a class="panel" id="t55-c1" href="interfaces.html#t55-c1"><h2>T55-C1–C7 / C7R</h2><p>Finite exact and relational interface synthesis with explicit domain, successor-signature, Interaction-context, coarsestness, and termination arguments.</p></a>
+    <a class="panel" id="lev-013" href="representation.html#lev-013"><h2>LEV 013–016</h2><p>Weighted reconstruction and the exact criterion for whether the stricter orthogonal-projector receiver pays zero admissibility price.</p></a>
+    <a class="panel" href="audit.html"><h2>Counterexample atlas</h2><p>Failure boundaries for partial maps, cyclic gluing, approximate quotients, analytic continuation, quantum inversion, and other overextensions.</p></a>
+  </div>
+
+  <!-- Compatibility anchors used by other rebuilt pages. -->
+  <span id="t55-c7" class="compat-anchor" aria-hidden="true"></span>
+  <span id="t55-c7r" class="compat-anchor" aria-hidden="true"></span>
+  <span id="lev-014" class="compat-anchor" aria-hidden="true"></span>
+  <span id="lev-014c" class="compat-anchor" aria-hidden="true"></span>
+  <span id="lev-015" class="compat-anchor" aria-hidden="true"></span>
+  <span id="lev-016" class="compat-anchor" aria-hidden="true"></span>
+</article>
 </main>
-
 <footer>
-  <p><strong>Branch Mathematics and GURF Theorem Registry</strong></p>
-  <p>Statements · assumptions · proofs · provenance · limits · counterexamples</p>
+  Mathematical edition 2026-09-10 ·
+  <a href="branch-mathematics.html">Branch Mathematics</a> ·
+  <a href="gurf.html">GURF</a> ·
+  <a href="status-registry.html">Status registry</a> ·
+  <a href="audit.html">Audit and sources</a>
 </footer>
 </body>
 </html>
