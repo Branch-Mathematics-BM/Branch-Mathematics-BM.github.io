@@ -1,0 +1,1372 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Finite Interface Synthesis | Branch Mathematics</title>
+  <meta name="description" content="Finite interface synthesis in Branch Mathematics: exact simultaneous refinement, relational closure, Interaction descent, minimal receiver repair, witnesses, approximate bounds, examples, and proof boundaries.">
+  <meta name="robots" content="index, follow">
+  <link rel="describedby" href="llms.txt">
+  <link rel="stylesheet" href="assets/current.css">
+
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$","$"],["\\(","\\)"]],
+        displayMath: [["\\[","\\]"]]
+      },
+      options: { skipHtmlTags: ["script","noscript","style","textarea","pre","code"] }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+  <style>
+    .hero-ref{max-width:1040px}
+    .hero-ref .intro{max-width:940px}
+    .page-toc{
+      margin:24px 0 36px;
+      padding:20px;
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:8px;
+    }
+    .page-toc h2{font-size:23px;margin:0 0 12px;padding:0;border:0}
+    .page-toc ol{columns:2;column-gap:36px;margin:0;padding-left:22px}
+    .page-toc li{break-inside:avoid;margin:5px 0}
+
+    .definition,.theorem,.proof,.example-box,.limit-box,.prior-art{
+      border-radius:8px;
+      padding:18px 20px;
+      margin:18px 0;
+    }
+    .definition{
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-left:4px solid var(--accent);
+    }
+    .theorem{
+      background:#e8f0ed;
+      border:1px solid #cadbd4;
+      border-left:5px solid #246348;
+    }
+    .proof{
+      background:#fffdf7;
+      border:1px solid #ded8c9;
+    }
+    .example-box{
+      background:#f1f5f5;
+      border:1px solid #cad6d6;
+    }
+    .limit-box{
+      background:#f8e8e5;
+      border:1px solid #e4c2bc;
+      border-left:5px solid #973f35;
+    }
+    .prior-art{
+      background:#fbf4e8;
+      border:1px solid #e5d3b4;
+      border-left:5px solid #b17725;
+    }
+    .definition h3,.theorem h3,.proof h3,.example-box h3,.limit-box h3,.prior-art h3{
+      margin:0 0 10px;
+    }
+
+    .math-band{
+      background:#eaf0ed;
+      border-radius:6px;
+      padding:16px 20px;
+      margin:16px 0;
+      overflow:auto;
+    }
+    .theorem .math-band{background:#f2f7f5}
+    .proof .math-band{background:#f2f1eb}
+
+    .reference-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:18px;
+      margin:22px 0;
+    }
+    .reference-grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .reference-grid .panel{margin:0}
+    .reference-grid h3{margin-top:0}
+
+    .family-grid{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:12px;
+      margin:22px 0;
+    }
+    .family-card{
+      padding:15px;
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:7px;
+    }
+    .family-card strong{
+      display:block;
+      font-family:Georgia,'Times New Roman',serif;
+      font-size:18px;
+      margin-bottom:5px;
+    }
+    .family-card p{font-size:13px;color:var(--muted);margin:0}
+
+    .status-tag{
+      display:inline-block;
+      font-size:11px;
+      line-height:1;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      font-weight:800;
+      padding:5px 7px;
+      border-radius:4px;
+      vertical-align:middle;
+      background:#eaf3ed;
+      color:#246348;
+    }
+    .status-tag.related{
+      background:#edf1f4;
+      color:#325364;
+    }
+
+    .formula-list{
+      display:grid;
+      gap:12px;
+      margin:18px 0;
+    }
+    .formula-list > div{
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:7px;
+      padding:14px 16px;
+    }
+
+    .proof-step{
+      margin:22px 0;
+      padding-left:18px;
+      border-left:3px solid var(--line);
+    }
+    .proof-step h4{
+      margin:0 0 8px;
+      font-family:Georgia,'Times New Roman',serif;
+      font-size:19px;
+      font-weight:500;
+    }
+
+    .algorithm{
+      background:#102a3a;
+      color:#f4f5ee;
+      border-radius:8px;
+      padding:18px 20px;
+      overflow:auto;
+      margin:18px 0;
+    }
+    .algorithm pre{
+      margin:0;
+      padding:0;
+      background:transparent;
+      color:inherit;
+      font-size:13px;
+    }
+
+    .witness-list{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:14px;
+      margin:18px 0;
+    }
+    .witness-list > div{
+      background:#edf2ef;
+      border-radius:6px;
+      padding:14px;
+    }
+    .witness-list strong{display:block;margin-bottom:4px}
+
+    .anchor-bank{position:relative;height:0;overflow:hidden}
+    .xref{font-size:13px;color:var(--muted)}
+    .small-note{font-size:13px;color:var(--muted)}
+
+    table td:first-child{font-weight:600}
+
+    @media(max-width:950px){
+      .family-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .reference-grid.three{grid-template-columns:1fr 1fr}
+      .witness-list{grid-template-columns:1fr}
+    }
+    @media(max-width:800px){
+      .reference-grid,.reference-grid.three{grid-template-columns:1fr}
+      .page-toc ol{columns:1}
+    }
+    @media(max-width:560px){
+      .family-grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+
+<body>
+<header class="site-head">
+  <a class="brand" href="index.html">Branch Mathematics</a>
+  <nav aria-label="Main navigation">
+    <a href="index.html">Corpus</a>
+    <a href="branch-mathematics.html">BM</a>
+    <a href="theorems.html">Theorems</a>
+    <a href="gurf.html">GURF</a>
+    <a href="calculator.html">Calculator</a>
+    <a href="models.html">3D models</a>
+    <a href="book.html">Book</a>
+  </nav>
+</header>
+
+<main>
+<article class="article hero-ref">
+  <p class="eyebrow">Principal development · finite exact sector · 10 September 2026</p>
+  <h1 id="finite-interface-synthesis">Finite interface synthesis</h1>
+
+  <p class="intro">
+    The finite synthesis problem asks for the <strong>coarsest branch-local exact interfaces</strong>
+    that preserve the distinctions already required by receiver tasks and Passports while also preserving
+    declared local continuation and declared Interactions. The construction refines all Branch interfaces
+    simultaneously until every required local and cross-Branch behavior descends exactly.
+  </p>
+
+  <p class="edition-strip">
+    Principal theorem family:
+    <strong>T55-C1 through T55-C7</strong>, with
+    <strong>T55-C7R</strong> the finite relational extension.
+    The ingredients belong to the stable-partition / congruence / finite-fixed-point tradition;
+    historical novelty over general refinement methods is not asserted.
+  </p>
+
+  <div class="page-toc">
+    <h2>On this page</h2>
+    <ol>
+      <li><a href="#objective">Mathematical objective</a></li>
+      <li><a href="#family-map">T55-C theorem family</a></li>
+      <li><a href="#exact-finite-model">Exact finite model</a></li>
+      <li><a href="#successor-signatures">Successor signatures</a></li>
+      <li><a href="#contextual-equivalence">Interaction contextual equivalence</a></li>
+      <li><a href="#t55-c7r">T55-C7R theorem</a></li>
+      <li><a href="#termination-proof">Termination proof</a></li>
+      <li><a href="#exactness-proof">Exactness proof</a></li>
+      <li><a href="#coarsestness-proof">Coarsestness proof</a></li>
+      <li><a href="#deterministic-specialization">Deterministic specialization</a></li>
+      <li><a href="#trace-lifting">Finite trace lifting</a></li>
+      <li><a href="#composition-rule">Composition certificate</a></li>
+      <li><a href="#t55-c6">Minimal receiver repair</a></li>
+      <li><a href="#witnesses">Split witnesses</a></li>
+      <li><a href="#xor-example">XOR Interaction example</a></li>
+      <li><a href="#delayed-example">Delayed-observation example</a></li>
+      <li><a href="#approximate-closure">Approximate relational closure</a></li>
+      <li><a href="#error-propagation">Finite-horizon error propagation</a></li>
+      <li><a href="#limits">Limits of the theorem</a></li>
+      <li><a href="#prior-art">Prior-art position</a></li>
+    </ol>
+  </div>
+
+  <section id="objective">
+    <p class="eyebrow">1 · Why static compression is not enough</p>
+    <h2>Mathematical objective</h2>
+
+    <p>
+      A static task quotient can preserve every task required <em>now</em> and still fail after one
+      local step. Even if every Branch is individually reduced in a way that is stable under its own
+      local dynamics, two or more such reduced Branches can still fail when they enter a declared
+      Interaction.
+    </p>
+
+    <div class="reference-grid three">
+      <div class="panel">
+        <h3>Static task requirement</h3>
+        <p>
+          States merged by a branch interface must agree on every distinction already required by its
+          initial tasks and Passport.
+        </p>
+      </div>
+      <div class="panel">
+        <h3>Local continuation requirement</h3>
+        <p>
+          Equivalent current states must induce the same reduced successor information under every
+          declared local action.
+        </p>
+      </div>
+      <div class="panel">
+        <h3>Interaction requirement</h3>
+        <p>
+          Replacing one Interaction input by an interface-equivalent state must preserve definedness
+          and the receiver output class in every declared context.
+        </p>
+      </div>
+    </div>
+
+    <div class="math-band">
+      \[
+      \boxed{
+      \text{task sufficiency}
+      +
+      \text{local closure}
+      +
+      \text{Interaction descent}
+      \Longrightarrow
+      \text{exact finite interface family}
+      }
+      \]
+    </div>
+
+    <p>
+      The simultaneous-refinement theorem enforces those requirements together and records why each
+      additional split was necessary.
+    </p>
+  </section>
+
+  <section id="family-map">
+    <p class="eyebrow">2 · Connected theorem family</p>
+    <h2>T55-C1 through T55-C7R</h2>
+
+    <p>
+      The edition treats these as one connected development rather than presenting every corollary as
+      an independent discovery.
+    </p>
+
+    <div class="family-grid">
+      <div class="family-card">
+        <strong>T55-C1</strong>
+        <p>Finite trace lifting under exact relational closure.</p>
+      </div>
+      <div class="family-card">
+        <strong>T55-C2</strong>
+        <p>Stable task quotient: the one-Branch, no-Interaction specialization.</p>
+      </div>
+      <div class="family-card">
+        <strong>T55-C3</strong>
+        <p>Hausdorff radius bounds for approximate relational closure.</p>
+      </div>
+      <div class="family-card">
+        <strong>T55-C4</strong>
+        <p>Finite-horizon propagation of one-step approximation error.</p>
+      </div>
+      <div class="family-card">
+        <strong>T55-C5</strong>
+        <p>Sufficient composition rule for product-independent local relations followed by a descending Interaction.</p>
+      </div>
+      <div class="family-card">
+        <strong>T55-C6</strong>
+        <p>Receiver-relative minimal repair when an existing interface must be retained.</p>
+      </div>
+      <div class="family-card">
+        <strong>T55-C7</strong>
+        <p>Deterministic simultaneous refinement.</p>
+      </div>
+      <div class="family-card">
+        <strong>T55-C7R</strong>
+        <p>Finite relational simultaneous refinement, preserving dead ends exactly.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="exact-finite-model">
+    <p class="eyebrow">3 · Supplied finite model</p>
+    <h2>Exact finite model</h2>
+
+    <p>
+      Let \(X_1,\ldots,X_n\) be nonempty finite sets. Branch \(i\) begins with an equivalence
+      \(B_i\) that already encodes every distinction required by its current tasks and Passport.
+    </p>
+
+    <div class="definition">
+      <h3>Interface refinement order</h3>
+      <p>
+        A candidate interface \(E_i\subseteq B_i\) is a refinement of the initial equivalence.
+        Because larger equivalence relations merge more states, the <em>coarsest</em> admissible
+        interface is the largest equivalence relation satisfying all requirements while remaining
+        below \(B_i\).
+      </p>
+    </div>
+
+    <p>
+      Each Branch has finitely many declared local action relations
+    </p>
+
+    <div class="math-band">
+      \[
+      L_{i,a}\subseteq X_i\times X_i.
+      \]
+    </div>
+
+    <p>
+      A partial deterministic action is represented by its graph. An empty successor set is therefore
+      retained as a mathematically different outcome from any nonempty successor set.
+    </p>
+
+    <h3 id="interaction-model">Partial Interactions</h3>
+
+    <p>
+      Every declared Interaction has the form
+    </p>
+
+    <div class="math-band">
+      \[
+      G_b:
+      D_b\subseteq
+      X_{i_1}\times\cdots\times X_{i_m}
+      \longrightarrow
+      X_{r(b)}.
+      \]
+    </div>
+
+    <p>
+      The theorem uses all Cartesian contexts: each input slot can be replaced independently while
+      the other slots are held fixed.
+    </p>
+
+    <div class="limit-box">
+      <h3>Product-context hypothesis</h3>
+      <p>
+        If the application imposes shared-variable aliasing, correlated admissibility, or only a
+        restricted family of reachable contexts, that restricted context family requires its own
+        substitution-closure argument. The theorem’s minimality is relative to the declared product-form
+        obligations.
+      </p>
+    </div>
+
+    <h3 id="undefined-tag">Preserving definedness</h3>
+
+    <p>
+      Introduce an output tag \(\bot\), totalize \(G_b\) to \(\widehat G_b\), and extend the
+      receiver equivalence by a singleton undefined class:
+    </p>
+
+    <div class="math-band">
+      \[
+      \{\bot\}
+      \quad\text{is a separate }E_{r(b)}^\bot\text{-class}.
+      \]
+    </div>
+
+    <p>
+      This prevents a reduced Interaction from silently identifying “undefined” with an ordinary
+      defined output.
+    </p>
+  </section>
+
+  <section id="successor-signatures">
+    <p class="eyebrow">4 · Local exact closure</p>
+    <h2>Successor signatures</h2>
+
+    <p>
+      For a local relation \(L\) and candidate equivalence \(E_i\), define
+    </p>
+
+    <div class="math-band">
+      \[
+      \boxed{
+      S_{L,E_i}(x)
+      =
+      \{[y]_{E_i}:xLy\}
+      }.
+      \]
+    </div>
+
+    <p>
+      Two current states can remain equivalent only if they have exactly the same set of successor
+      equivalence classes. Equality here is exact set equality; overlap is not enough.
+    </p>
+
+    <div class="definition">
+      <h3>Local refinement kernel</h3>
+      <div class="math-band">
+        \[
+        \ker S_{L,E_i}
+        =
+        \{(x,x'):S_{L,E_i}(x)=S_{L,E_i}(x')\}.
+        \]
+      </div>
+      <p>
+        This is an equivalence relation because it is the kernel of a specified signature map.
+      </p>
+    </div>
+
+    <div class="prior-art">
+      <h3>Why collision overlap is not used</h3>
+      <p>
+        A relation defined only by overlapping successor sets need not be transitive. The refinement
+        construction therefore uses equality of successor signatures, not overlap.
+      </p>
+    </div>
+  </section>
+
+  <section id="contextual-equivalence">
+    <p class="eyebrow">5 · Cross-Branch exactness</p>
+    <h2>Interaction contextual equivalence</h2>
+
+    <p>
+      For input slot \(p\) of Interaction \(b\), two candidate states \(u,v\) are contextually
+      equivalent relative to the current receiver equivalence when replacing one by the other never
+      changes the tagged receiver output class:
+    </p>
+
+    <div class="math-band">
+      \[
+      \boxed{
+      u\ C_{b,p}(E_{r(b)})\ v
+      \iff
+      \widehat G_b(c_1,\ldots,u,\ldots,c_m)
+      \ E^\bot_{r(b)}\
+      \widehat G_b(c_1,\ldots,v,\ldots,c_m)
+      }
+      \]
+      for every choice of the other input entries \(c\).
+    </div>
+
+    <p>
+      Because the tagged outputs are compared by equality of receiver classes, each
+      \(C_{b,p}(E_{r(b)})\) is again a kernel equivalence.
+    </p>
+
+    <div class="reference-grid">
+      <div class="panel">
+        <h3>Defined / undefined mismatch</h3>
+        <p>
+          If one fixed context makes \(G_b\) defined at \(u\) and undefined at \(v\), the pair must split.
+        </p>
+      </div>
+      <div class="panel">
+        <h3>Receiver-class mismatch</h3>
+        <p>
+          If both are defined but their outputs lie in different receiver classes in any context, the pair must split.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="t55-c7r">
+    <p class="eyebrow">6 · Principal theorem</p>
+    <h2>T55-C7R — Finite simultaneous refinement theorem</h2>
+
+    <div class="theorem">
+      <h3>Statement <span class="status-tag">proved</span></h3>
+
+      <p>Start with the family \(\mathbf E^0=\mathbf B\), and define recursively</p>
+
+      <div class="math-band">
+        \[
+        \boxed{
+        E_i^{k+1}
+        =
+        E_i^k
+        \cap
+        \bigcap_a
+        \ker S_{L_{i,a},E_i^k}
+        \cap
+        \bigcap_{b,p:i_p=i}
+        C_{b,p}(E_{r(b)}^k)
+        }.
+        \]
+      </div>
+
+      <p>The iteration terminates at a family \(\mathbf E^*\) with all of the following properties:</p>
+
+      <ol>
+        <li>
+          Every task and initial Passport distinction represented by \(B_i\) factors through
+          \(X_i/E_i^*\).
+        </li>
+        <li>
+          Every local relation has an exact reduced successor relation, including exact preservation
+          of dead ends.
+        </li>
+        <li>
+          Every declared Interaction descends to a partial map on the product of reduced interfaces,
+          preserving both definedness and receiver output class.
+        </li>
+        <li>
+          If another equivalence family \(\mathbf H\subseteq\mathbf B\) satisfies the same requirements,
+          then \(H_i\subseteq E_i^*\) for every Branch. Therefore \(\mathbf E^*\) is uniquely coarsest
+          in the declared class.
+        </li>
+        <li>
+          The number of strict-refinement rounds is at most
+          \[
+          \sum_i\left(|X_i|-|X_i/B_i|\right).
+          \]
+        </li>
+      </ol>
+    </div>
+
+    <div class="algorithm">
+<pre>initialize E[i] := B[i]
+
+repeat
+    for each Branch i:
+        keep only pairs equivalent under:
+            1. the current E[i]
+            2. every local successor-signature kernel
+            3. every Interaction contextual-equivalence test
+    replace E by the intersections
+until no Branch partition changes
+
+return E*</pre>
+    </div>
+
+    <p class="small-note">
+      The round bound is a bound on strict partition refinements, not a runtime bound and not a bound
+      on the size of the Interaction context tables.
+    </p>
+  </section>
+
+  <section id="termination-proof">
+    <p class="eyebrow">7 · Proof</p>
+    <h2>Termination and preservation of equivalence structure</h2>
+
+    <div class="proof">
+      <h3>Proof</h3>
+
+      <div class="proof-step">
+        <h4>Step 1 — every update is still an equivalence</h4>
+        <p>
+          Each successor-signature kernel is an equivalence. Each contextual Interaction relation is
+          also an equivalence. Their intersection with \(E_i^k\) is therefore an equivalence relation
+          contained in \(E_i^k\).
+        </p>
+      </div>
+
+      <div class="proof-step">
+        <h4>Step 2 — strict refinement increases class count</h4>
+        <p>
+          A strict decrease of an equivalence relation splits at least one equivalence class, increasing
+          the number of classes by at least one.
+        </p>
+      </div>
+
+      <div class="proof-step">
+        <h4>Step 3 — the total number of possible splits is finite</h4>
+        <p>
+          Initially the total number of classes is
+          \(\sum_i |X_i/B_i|\). It can never exceed \(\sum_i|X_i|\).
+          Hence there can be no more than
+        </p>
+
+        <div class="math-band">
+          \[
+          \sum_i\left(|X_i|-|X_i/B_i|\right)
+          \]
+        </div>
+
+        <p>strict refinement rounds.</p>
+      </div>
+
+      <p>
+        Therefore the descending chain stabilizes after finitely many strict rounds.
+        \(\square\)
+      </p>
+    </div>
+  </section>
+
+  <section id="exactness-proof">
+    <p class="eyebrow">8 · Proof</p>
+    <h2>Exactness at the fixed point</h2>
+
+    <div class="proof">
+      <h3>Task preservation</h3>
+      <p>
+        Because \(E_i^*\subseteq B_i\), no distinction already encoded by the initial task/Passport
+        equivalence is lost by the final interface.
+      </p>
+
+      <h3>Local relational closure</h3>
+      <p>
+        At the fixed point, \(xE_i^*x'\) implies equality of successor-class sets for every local
+        action:
+      </p>
+
+      <div class="math-band">
+        \[
+        S_{L,E_i^*}(x)=S_{L,E_i^*}(x').
+        \]
+      </div>
+
+      <p>
+        Therefore the reduced successor set of an interface class can be defined by
+        \[
+        \overline L[[x]_{E_i^*}]
+        :=
+        S_{L,E_i^*}(x),
+        \]
+        independently of which representative \(x\) is chosen. Empty successor sets remain empty.
+      </p>
+
+      <h3>Interaction descent</h3>
+      <p>
+        Consider two Interaction input tuples
+        \((u_1,\ldots,u_m)\) and \((v_1,\ldots,v_m)\) satisfying
+        \(u_pE_{i_p}^*v_p\) in every slot.
+      </p>
+
+      <p>
+        Replace the slots one at a time. Contextual equivalence gives equality of the tagged receiver
+        class after every single replacement. By transitivity, the original tuple and final tuple have
+        the same tagged receiver class.
+      </p>
+
+      <p>
+        Because \(\bot\) is its own class, one tuple is in the Interaction domain if and only if the
+        other is. When both are defined, their outputs lie in the same receiver class. Thus \(G_b\)
+        descends to a well-defined partial Interaction on reduced interfaces.
+      </p>
+
+      <p>\(\square\)</p>
+    </div>
+  </section>
+
+  <section id="coarsestness-proof">
+    <p class="eyebrow">9 · Proof</p>
+    <h2>Coarsestness</h2>
+
+    <div class="proof">
+      <h3>Competitor family</h3>
+
+      <p>
+        Let \(\mathbf H\subseteq\mathbf B\) be any other family that preserves the same initial tasks,
+        has exact local relational closure, and makes every declared Interaction descend exactly.
+      </p>
+
+      <p>
+        We prove by induction on \(k\) that
+      </p>
+
+      <div class="math-band">
+        \[
+        H_i\subseteq E_i^k
+        \qquad\text{for every }i,k.
+        \]
+      </div>
+
+      <div class="proof-step">
+        <h4>Base case</h4>
+        <p>
+          \(\mathbf H\subseteq\mathbf B=\mathbf E^0\) by assumption.
+        </p>
+      </div>
+
+      <div class="proof-step">
+        <h4>Local-action induction step</h4>
+        <p>
+          Suppose \(H_i\subseteq E_i^k\). If \(xH_ix'\), exact \(H_i\)-closure gives equality of
+          the sets of successor \(H_i\)-classes. Each \(H_i\)-class sits inside one \(E_i^k\)-class,
+          so mapping those successor classes into the coarser \(E_i^k\)-classes yields equal
+          \(E_i^k\)-successor signatures.
+        </p>
+      </div>
+
+      <div class="proof-step">
+        <h4>Interaction induction step</h4>
+        <p>
+          Changing one \(H_i\)-equivalent Interaction input while holding all other inputs fixed gives
+          the same tagged receiver \(H\)-class because the Interaction descends through \(\mathbf H\).
+          That tagged \(H\)-class lies inside one tagged \(E^k\)-class, so the pair passes every
+          contextual equivalence test used to define \(E_i^{k+1}\).
+        </p>
+      </div>
+
+      <p>
+        Hence \(H_i\subseteq E_i^{k+1}\). Induction gives
+        \(\mathbf H\subseteq\mathbf E^*\).
+      </p>
+
+      <p>
+        Because the terminal family \(\mathbf E^*\) itself satisfies the requirements, it is the
+        greatest admissible equivalence family below \(\mathbf B\), equivalently the uniquely coarsest
+        exact interface family in the declared class. \(\square\)
+      </p>
+    </div>
+  </section>
+
+  <section id="deterministic-specialization">
+    <p class="eyebrow">10 · T55-C7</p>
+    <h2>Deterministic specialization</h2>
+
+    <p>
+      For a total deterministic action \(f_{i,a}\), the relational successor signature contains exactly
+      one class:
+    </p>
+
+    <div class="math-band">
+      \[
+      S_{L,E}(x)=\{[f_{i,a}(x)]_E\}.
+      \]
+    </div>
+
+    <p>
+      Therefore the local refinement term reduces to
+    </p>
+
+    <div class="math-band">
+      \[
+      (f_{i,a}\times f_{i,a})^{-1}E.
+      \]
+    </div>
+
+    <p>
+      This is the deterministic simultaneous-refinement theorem T55-C7. For partial deterministic maps,
+      the relational formulation additionally distinguishes the empty successor signature from singleton
+      successor signatures, which is exactly the required availability distinction.
+    </p>
+  </section>
+
+  <section id="trace-lifting">
+    <p class="eyebrow">11 · T55-C1</p>
+    <h2>Finite trace lifting</h2>
+
+    <p>
+      Suppose one relation \(L\) has exact closure through quotient map \(q\). Every finite reduced
+      path beginning at \(q(x)\) can be lifted to a native path beginning at that specific state \(x\).
+    </p>
+
+    <p>
+      At each reduced edge, equality of successor-class sets supplies a concrete successor in the
+      required next class. Repeating the argument from the selected successor gives, for every finite
+      \(m\ge0\),
+    </p>
+
+    <div class="math-band">
+      \[
+      \boxed{
+      q(L^m[x])
+      =
+      \overline L^{\,m}[q(x)]
+      }.
+      \]
+    </div>
+
+    <p>
+      The same finite induction applies to a declared finite word of action labels.
+    </p>
+
+    <div class="limit-box">
+      <h3>What trace lifting does not imply</h3>
+      <p>
+        It does not infer a game strategy from reachable sets, erase action scheduling, guarantee an
+        infinite path, or supply an analytic limit merely because every finite trace lifts.
+      </p>
+    </div>
+  </section>
+
+  <section id="composition-rule">
+    <p class="eyebrow">12 · T55-C5</p>
+    <h2>Sufficient finite composition certificate</h2>
+
+    <p>
+      For product-independent local relations followed by an Interaction that descends through the
+      final interfaces, match each Branch coordinate to the required successor class independently and
+      then apply the descending Interaction.
+    </p>
+
+    <div class="math-band">
+      \[
+      \text{exact local class matching}
+      +
+      \text{Interaction descent}
+      \Longrightarrow
+      \text{exact product-form composition}.
+      \]
+    </div>
+
+    <div class="limit-box">
+      <h3>Correlated transitions are outside this certificate</h3>
+      <p>
+        If local transitions are coupled by a shared joint law or restricted joint transition relation,
+        the joint transition itself requires a closure audit. Independent coordinate certificates do not
+        automatically certify a correlated joint transition.
+      </p>
+    </div>
+  </section>
+
+  <section id="t55-c6">
+    <p class="eyebrow">13 · Receiver-relative repair</p>
+    <h2>T55-C6 — Minimal receiver repair</h2>
+
+    <p>
+      Sometimes an existing branch interface \(R_i\) must be kept, while the only new requirement is
+      a receiver task \(T\) of an Interaction output. Totalize both Interaction applicability and the
+      task so that definedness is itself retained.
+    </p>
+
+    <div class="theorem">
+      <h3>Coarsest branch-local repair</h3>
+
+      <p>For input Branch \(i\), define</p>
+
+      <div class="math-band">
+        \[
+        \boxed{
+        u\equiv_i v
+        \iff
+        R_i(u)=R_i(v)
+        \ \text{and}\
+        \widehat T\!\left(\widehat G(u,c)\right)
+        =
+        \widehat T\!\left(\widehat G(v,c)\right)
+        \quad\forall c
+        }.
+        \]
+      </div>
+
+      <p>
+        This is an intersection of kernels and therefore an equivalence relation.
+        Coordinate-by-coordinate substitution shows that the receiver task of the Interaction factors
+        through the product of these branch quotients.
+      </p>
+
+      <p>
+        Conversely, any branch-local refinement that keeps \(R_i\) and makes the same receiver task
+        factor through the Interaction must identify only pairs that agree in every fixed context.
+        Therefore its equivalence is contained in \(\equiv_i\).
+      </p>
+
+      <p>
+        Hence \(\equiv_i\) is the uniquely coarsest branch-local repair relative to the declared
+        receiver task and context family.
+      </p>
+    </div>
+
+    <p>
+      Enlarging the task family or the context family adds kernel intersections, so the admissible
+      equivalence can only refine.
+    </p>
+
+    <div class="limit-box">
+      <h3>Restricted context families</h3>
+      <p>
+        If only certain correlated contexts are legal, coordinate-by-coordinate substitution must stay
+        inside that declared family. An arbitrary context restriction does not automatically have this
+        closure property.
+      </p>
+    </div>
+  </section>
+
+  <section id="witnesses">
+    <p class="eyebrow">14 · Operational certificate</p>
+    <h2>Why each split happened</h2>
+
+    <p>
+      The finite calculator can store each refinement round and a concrete reason for every split.
+      Those reasons are replayable certificates for the supplied finite model.
+    </p>
+
+    <div class="witness-list">
+      <div>
+        <strong>Successor-signature witness</strong>
+        Two currently equivalent states reach different sets of current interface classes.
+      </div>
+      <div>
+        <strong>Definedness witness</strong>
+        A fixed Interaction context makes one candidate input defined and the other undefined.
+      </div>
+      <div>
+        <strong>Receiver-class witness</strong>
+        A fixed Interaction context produces outputs lying in different current receiver classes.
+      </div>
+    </div>
+
+    <p class="small-note">
+      These are certificates of the supplied finite tables. They are not physical measurements,
+      hardware-cost proofs, or automatically minimal coordinate encodings.
+    </p>
+
+    <p><a href="calculator.html">Open the finite BM interface calculator →</a></p>
+  </section>
+
+  <section id="xor-example">
+    <p class="eyebrow">15 · Interaction example</p>
+    <h2>XOR forces distinctions that local dynamics do not</h2>
+
+    <div class="example-box">
+      <h3>Model</h3>
+
+      <p>
+        Let source Branch \(A=\{0,1\}\) and input Branch \(B=\{0,1\}\) both have identity local
+        evolution and initially constant observations. Let receiver Branch \(C=\{0,1\}\) have the
+        identity task, and define
+      </p>
+
+      <div class="math-band">
+        \[
+        G(a,b)=a\mathbin{\mathrm{xor}}b.
+        \]
+      </div>
+
+      <p>
+        Local dynamics alone allow the constant interfaces on both \(A\) and \(B\).
+      </p>
+
+      <p>
+        But with context \(b=0\),
+        \[
+        G(0,0)=0,\qquad G(1,0)=1,
+        \]
+        so the two \(A\)-states must split at the receiver. Similarly, context \(a=0\) distinguishes
+        the two \(B\)-states.
+      </p>
+
+      <p>
+        The simultaneous refinement therefore makes both source interfaces injective.
+      </p>
+
+      <p>
+        If the receiver task is changed to a constant task and no domain-acceptance distinction is
+        imposed, those splits are no longer required.
+      </p>
+    </div>
+
+    <div class="prior-art">
+      <h3>What this example demonstrates</h3>
+      <p>
+        Independent local stability is not enough for coupled exactness. Receiver requirements carried
+        through an Interaction can force additional Branch distinctions.
+      </p>
+    </div>
+  </section>
+
+  <section id="delayed-example">
+    <p class="eyebrow">16 · Dynamic example</p>
+    <h2>Present task sufficiency can fail after one step</h2>
+
+    <div class="example-box">
+      <h3>Four-state cycle</h3>
+
+      <p>
+        Let
+      </p>
+
+      <div class="math-band">
+        \[
+        X=\{0,1,2,3\},
+        \qquad
+        f=(1,2,3,0),
+        \]
+      </div>
+
+      <p>with present task values</p>
+
+      <div class="math-band">
+        \[
+        T=(0,0,1,1).
+        \]
+      </div>
+
+      <p>
+        The initial task partition is
+        \[
+        \{0,1\}\mid\{2,3\}.
+        \]
+        It is exactly sufficient for the present task.
+      </p>
+
+      <p>
+        Yet \(0\) and \(1\) move into different present-task blocks, as do \(2\) and \(3\).
+        Their successor signatures are therefore different, so the first refinement splits every pair.
+      </p>
+
+      <div class="math-band">
+        \[
+        \{0\}\mid\{1\}\mid\{2\}\mid\{3\}.
+        \]
+      </div>
+
+      <p>
+        Thus exact present task sufficiency did not imply one-step Dynamic Closure.
+      </p>
+    </div>
+  </section>
+
+  <section id="approximate-closure">
+    <p class="eyebrow">17 · T55-C3</p>
+    <h2>Approximate relational closure</h2>
+
+    <p>
+      Let \(Z\) be a metric space and let every \(Q(x)\) be a nonempty compact subset of \(Z\).
+      For one nonempty observation fibre \(R^{-1}(z)\), define the family
+    </p>
+
+    <div class="math-band">
+      \[
+      \mathscr Q_z
+      =
+      \{Q(x):R(x)=z\}.
+      \]
+    </div>
+
+    <p>
+      Let its Hausdorff diameter be
+    </p>
+
+    <div class="math-band">
+      \[
+      \Delta(z)
+      =
+      \sup_{A,B\in\mathscr Q_z}
+      d_H(A,B),
+      \]
+    </div>
+
+    <p>
+      and define the best unrestricted compact-center radius
+    </p>
+
+    <div class="math-band">
+      \[
+      \rho(z)
+      =
+      \inf_{\varnothing\ne C\subseteq Z\ \mathrm{compact}}
+      \sup_{A\in\mathscr Q_z}d_H(A,C).
+      \]
+    </div>
+
+    <div class="theorem">
+      <h3>Radius bounds</h3>
+      <div class="math-band">
+        \[
+        \boxed{
+        \frac12\Delta(z)
+        \le
+        \rho(z)
+        \le
+        \Delta(z)
+        }.
+        \]
+      </div>
+
+      <p>
+        The lower bound follows from the Hausdorff triangle inequality. The upper bound follows by
+        choosing any member of \(\mathscr Q_z\) as the candidate center.
+      </p>
+
+      <p>
+        In particular, \(\rho(z)=0\) if and only if \(\Delta(z)=0\), which is exactly equality of
+        all successor-image sets in that fibre and hence exact relational closure.
+      </p>
+    </div>
+
+    <div class="limit-box">
+      <h3>Approximate equality is not a quotient</h3>
+      <p>
+        No equivalence relation is formed by simply thresholding a distance with \(d\le\varepsilon\);
+        such threshold relations need not be transitive. Empty successor sets are also excluded from
+        this Hausdorff statement unless a separate dead-end convention is supplied.
+      </p>
+    </div>
+  </section>
+
+  <section id="error-propagation">
+    <p class="eyebrow">18 · T55-C4</p>
+    <h2>Finite-horizon error propagation</h2>
+
+    <p>
+      Suppose the reduced set-valued update \(\overline Q\) is \(L\)-Lipschitz in Hausdorff distance:
+    </p>
+
+    <div class="math-band">
+      \[
+      d_H\!\left(\overline Q(z),\overline Q(z')\right)
+      \le
+      L\,d(z,z').
+      \]
+    </div>
+
+    <p>
+      Suppose also that the one-step concrete/reduced mismatch is uniformly bounded by
+    </p>
+
+    <div class="math-band">
+      \[
+      d_H\!\left(Q(x),\overline Q(Rx)\right)
+      \le
+      \varepsilon.
+      \]
+    </div>
+
+    <p>
+      Under the compactness assumptions stated in the edition, the error recurrence satisfies
+    </p>
+
+    <div class="math-band">
+      \[
+      e_{k+1}\le\varepsilon+Le_k.
+      \]
+    </div>
+
+    <p>
+      Starting from \(e_0=0\), induction gives
+    </p>
+
+    <div class="math-band">
+      \[
+      \boxed{
+      e_m
+      \le
+      \varepsilon
+      \sum_{j=0}^{m-1}L^j
+      }.
+      \]
+    </div>
+
+    <div class="limit-box">
+      <h3>Finite-horizon statement only</h3>
+      <p>
+        No infinite-time estimate follows from this formula unless the constants and the native model
+        supply one. The theorem also assumes the relevant current sets, their images, and the unions
+        used in the proof remain nonempty compact sets.
+      </p>
+    </div>
+  </section>
+
+  <section id="limits">
+    <p class="eyebrow">19 · Scope boundary</p>
+    <h2>What finite interface synthesis does not prove</h2>
+
+    <p>
+      The theorem is strong inside its declared finite exact setting, but it does not silently solve
+      problems belonging to other mathematical sectors.
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Not established</th>
+          <th>Why not</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Global Configuration realizability</td>
+          <td>Exact interfaces can preserve all supplied operations while additional global constraints still make the full Configuration unrealizable.</td>
+        </tr>
+        <tr>
+          <td>Continuous or smooth quotient structure</td>
+          <td>The proof is finite and set-theoretic; native topology or smoothness needs separate hypotheses.</td>
+        </tr>
+        <tr>
+          <td>Stochastic reduction</td>
+          <td>Markov closure requires equality of aggregated transition probabilities, not only equality of relational supports.</td>
+        </tr>
+        <tr>
+          <td>Minimal coordinate dimension</td>
+          <td>Coarsest equivalence is not automatically a minimum-dimensional coordinate realization.</td>
+        </tr>
+        <tr>
+          <td>Minimal bit or hardware cost</td>
+          <td>Implementation cost requires its own declared optimization problem.</td>
+        </tr>
+        <tr>
+          <td>Availability of missing distinctions</td>
+          <td>The algorithm can prove a distinction is necessary even when the physical or computational system has no lawful source that can supply it.</td>
+        </tr>
+        <tr>
+          <td>Infinite-time or analytic continuation</td>
+          <td>Finite legal refinement and trace lifting do not extend a native solution through singular endpoints or supply analytic limits.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="prior-art">
+      <h3>Interpretation of “coarsest”</h3>
+      <p>
+        “Coarsest exact interface” means greatest admissible equivalence relation under inclusion.
+        It should not be renamed “cheapest representation” unless a cost model has been defined and
+        optimized.
+      </p>
+    </div>
+  </section>
+
+  <section id="prior-art">
+    <p class="eyebrow">20 · Historical position</p>
+    <h2>Prior-art crosswalk</h2>
+
+    <div class="prior-art">
+      <h3>Established mathematical neighborhood</h3>
+      <p>
+        The finite refinement theorem belongs to the established stable-partition and bisimulation
+        tradition. Its mathematical ingredients include partition refinement, congruence-style
+        compatibility, and finite fixed-point stabilization.
+      </p>
+
+      <p>
+        The BM development packages receiver requirements, partial Interaction domains, exact
+        dead-end preservation, and explicit contextual witnesses into one simultaneous Branch-local
+        interface construction. That integration is part of the BM development, but it is not by
+        itself evidence of historical novelty over general refinement methods.
+      </p>
+
+      <p>
+        The edition specifically identifies the Paige–Tarjan partition-refinement tradition and later
+        abstract-interpretation generalizations as relevant prior art.
+      </p>
+    </div>
+
+    <p>
+      For the theorem-level historical statement and wider crosswalk, see
+      <a href="audit.html">Audit and sources</a>.
+    </p>
+  </section>
+
+  <section id="implementation">
+    <p class="eyebrow">21 · Executable finite model</p>
+    <h2>From proof to calculator</h2>
+
+    <p>
+      The site’s finite BM engine implements the supplied finite construction: it starts from declared
+      initial partitions, refines by local successor signatures and Interaction-context tests, records
+      every round, and stores a replayable reason for each split.
+    </p>
+
+    <div class="reference-grid">
+      <a class="panel" href="calculator.html">
+        <h3>Run the calculator</h3>
+        <p>Enter a finite model, compute the fixed point, and inspect split witnesses.</p>
+      </a>
+      <a class="panel" href="theorems.html#t55">
+        <h3>Read the base relational closure theorem</h3>
+        <p>T55 gives the exact one-representation relational Dynamic Closure criterion used underneath the finite refinement family.</p>
+      </a>
+    </div>
+
+    <div class="limit-box">
+      <h3>Implementation is not the proof</h3>
+      <p>
+        Passing finite test cases supports the implementation. The general finite theorem is established
+        by the mathematical proof above, not by enumerating examples in JavaScript.
+      </p>
+    </div>
+  </section>
+
+  <!-- Compatibility anchors retained for older public links. -->
+  <div class="anchor-bank" aria-hidden="true">
+    <span id="mathematical-objective"></span>
+    <span id="t55-c1"></span>
+    <span id="t55-c2"></span>
+    <span id="t55-c3"></span>
+    <span id="t55-c4"></span>
+    <span id="t55-c5"></span>
+    <span id="t55-c7"></span>
+    <span id="t55-c7r-finite-simultaneous-refinement-theorem"></span>
+    <span id="proof-of-termination-and-equivalence"></span>
+    <span id="proof-of-exactness-at-the-fixed-point"></span>
+    <span id="proof-of-coarsestness"></span>
+    <span id="deterministic-specialization-and-finite-composition"></span>
+    <span id="receiver-relative-minimal-repair-t55-c6"></span>
+    <span id="witnesses-and-an-operational-example"></span>
+    <span id="approximate-relational-closure-t55-c3-and-c4"></span>
+    <span id="limits-of-the-synthesis-theorem"></span>
+  </div>
+</article>
+</main>
+
+<footer>
+  Mathematical edition 2026-09-10 ·
+  <a href="branch-mathematics.html">Branch Mathematics</a> ·
+  <a href="gurf.html">GURF</a> ·
+  <a href="theorems.html">Theorem registry</a> ·
+  <a href="calculator.html">Calculator</a> ·
+  <a href="audit.html">Audit and sources</a>
+</footer>
+</body>
+</html>
