@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Quantum Graceful Degradation | Branch Mathematics</title>
+  <meta name="description" content="A technical Branch Mathematics treatment of quantum graceful degradation: maximal recoverable algebras, damage order, surviving task capability, exact lattices, approximate recovery defects, access geometry, and task downgrading." />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <link rel="canonical" href="https://branch-mathematics-bm.github.io/research/quantum-graceful-degradation/" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Quantum Graceful Degradation" />
+  <meta property="og:description" content="Track which quantum observables remain exactly or approximately recoverable as erasures and noise accumulate." />
+  <meta property="og:url" content="https://branch-mathematics-bm.github.io/research/quantum-graceful-degradation/" />
+  <meta property="og:site_name" content="Branch Mathematics" />
+
+  <meta name="theme-color" content="#07111f" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"TechArticle",
+    "headline":"Quantum Graceful Degradation",
+    "description":"A technical treatment of task-relative quantum degradation in Branch Mathematics.",
+    "mainEntityOfPage":"https://branch-mathematics-bm.github.io/research/quantum-graceful-degradation/",
+    "isPartOf":{
+      "@type":"WebSite",
+      "name":"Branch Mathematics",
+      "url":"https://branch-mathematics-bm.github.io/"
+    }
+  }
+  </script>
+
+  <style>
+    :root{
+      --bg:#07111f;--text:#eef5ff;--muted:#aabbd0;--accent:#7bdcff;--accent2:#b39cff;
+      --green:#7ef0c5;--warn:#ffd98c;--red:#ff9d9d;--max:1160px;--read:860px;
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{
+      margin:0;color:var(--text);
+      background:
+        radial-gradient(circle at 10% -5%,rgba(123,220,255,.11),transparent 28rem),
+        radial-gradient(circle at 90% 4%,rgba(179,156,255,.08),transparent 24rem),
+        linear-gradient(180deg,#06101d,#07111f 45%,#081422);
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height:1.72;
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(calc(100% - 2rem),var(--max));margin-inline:auto}
+    .read{width:min(100%,var(--read));margin-inline:auto}
+    .site-header{position:sticky;top:0;z-index:50;backdrop-filter:blur(18px);background:rgba(7,17,31,.84);border-bottom:1px solid rgba(123,220,255,.12)}
+    .nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .brand{display:flex;align-items:center;gap:.75rem;font-weight:760;white-space:nowrap}
+    .mark{width:34px;height:34px;border-radius:11px;border:1px solid rgba(123,220,255,.5);display:grid;place-items:center;background:linear-gradient(135deg,rgba(123,220,255,.2),rgba(179,156,255,.12))}
+    .navlinks{display:flex;gap:.15rem;flex-wrap:wrap;justify-content:flex-end}
+    .navlinks a{color:var(--muted);padding:.55rem .68rem;border-radius:10px;font-size:.93rem}
+    .navlinks a:hover,.navlinks a[aria-current="page"]{color:var(--text);background:rgba(255,255,255,.05)}
+    .breadcrumbs{padding:1.2rem 0 0;color:#8397af;font-size:.9rem}
+    .hero{padding:4.6rem 0 4rem;border-bottom:1px solid rgba(123,220,255,.1)}
+    .eyebrow{display:inline-flex;padding:.42rem .7rem;border-radius:999px;border:1px solid rgba(123,220,255,.3);background:rgba(123,220,255,.06);color:#c5efff;font-size:.82rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+    h1{font-size:clamp(3rem,7vw,5.6rem);line-height:.96;letter-spacing:-.05em;margin:1rem 0 1.15rem;max-width:14ch}
+    .lead{font-size:clamp(1.08rem,2vw,1.3rem);color:#c4d4e6;max-width:950px}
+    .meta{display:flex;gap:.55rem;flex-wrap:wrap;margin-top:1.2rem}
+    .tag{display:inline-flex;padding:.42rem .66rem;border-radius:999px;font-size:.76rem;font-weight:800;letter-spacing:.06em;border:1px solid rgba(111,151,193,.24);background:rgba(255,255,255,.025)}
+    .cand{border-color:rgba(255,217,140,.25);color:#f7e8c7}.classic{border-color:rgba(179,156,255,.26);color:#ece5ff}
+    .abstract{margin-top:1.7rem;padding:1.3rem 1.4rem;border:1px solid rgba(123,220,255,.22);border-radius:20px;background:linear-gradient(145deg,rgba(123,220,255,.05),rgba(179,156,255,.025))}
+    .abstract p{margin:0;color:#c3d3e4}
+    .article{padding:4.8rem 0 5rem}.article h2{font-size:clamp(2rem,5vw,3.15rem);line-height:1.05;letter-spacing:-.035em;margin:3.3rem 0 1rem}.article h3{font-size:1.35rem;line-height:1.25;margin:2.2rem 0 .7rem}.article p{color:#c4d2e2;font-size:1.035rem;margin:0 0 1.15rem}
+    .formula{margin:1.4rem 0;padding:1.05rem 1.15rem;border-left:3px solid var(--accent);background:rgba(123,220,255,.055);border-radius:0 14px 14px 0;color:#e0f1ff;font-family:"Cambria Math","Times New Roman",serif;font-size:1.08rem;overflow:auto}
+    .theorem{margin:1.7rem 0 2rem;padding:1.35rem;border:1px solid rgba(126,240,197,.24);border-radius:20px;background:linear-gradient(145deg,rgba(126,240,197,.04),rgba(255,255,255,.012))}
+    .theorem strong{color:#e7fff5}.theorem p{color:#cbd9e6}
+    .firewall{margin:1.7rem 0;padding:1.2rem 1.3rem;border-radius:18px;border:1px solid rgba(255,157,157,.2);background:rgba(255,157,157,.035);color:#f1cccc}.firewall strong{color:#ffd6d6}
+    .callout{margin:1.7rem 0;padding:1.2rem 1.3rem;border-radius:18px;border:1px solid rgba(255,217,140,.22);background:rgba(255,217,140,.04);color:#eadfc9}
+    .compare{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.4rem 0 2rem}.box{border:1px solid rgba(111,151,193,.22);border-radius:18px;background:rgba(255,255,255,.02);padding:1.2rem}.box h3{margin-top:0}.box p{font-size:.96rem;margin-bottom:0}
+    .example{margin:1.6rem 0 2rem;padding:1.35rem;border-radius:20px;border:1px solid rgba(179,156,255,.22);background:linear-gradient(145deg,rgba(179,156,255,.04),rgba(255,255,255,.015))}
+    .example h3{margin-top:0;color:#efe8ff}
+    table{width:100%;border-collapse:collapse;margin:1.25rem 0 1.9rem;border:1px solid rgba(111,151,193,.22);background:rgba(255,255,255,.015)}
+    th,td{padding:.82rem;border-bottom:1px solid rgba(111,151,193,.16);text-align:left;vertical-align:top}th{color:#dff7ff;background:rgba(123,220,255,.055);font-size:.92rem}td{color:#c4d2e2;font-size:.94rem}
+    .next{padding:4.5rem 0;border-top:1px solid rgba(123,220,255,.1);background:#050d18}
+    .next-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.6rem}
+    .card{padding:1.2rem;border-radius:20px;border:1px solid rgba(111,151,193,.2);background:rgba(255,255,255,.02);transition:.2s ease}
+    .card:hover{transform:translateY(-2px);border-color:rgba(123,220,255,.42);background:rgba(123,220,255,.04)}
+    .card small{color:var(--accent);font-weight:800;text-transform:uppercase}.card p{color:var(--muted)}
+    footer{padding:3rem 0;border-top:1px solid rgba(255,255,255,.07);background:#040a12;color:#8fa3ba}
+    .footer-grid{display:grid;grid-template-columns:1fr auto;gap:1rem}.footer-links{display:flex;gap:.7rem;flex-wrap:wrap}
+    @media(max-width:900px){.navlinks{display:none}.next-grid{grid-template-columns:1fr}}
+    @media(max-width:620px){.compare,.footer-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+
+<body>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="/"><span class="mark">BM</span><span>Branch Mathematics</span></a>
+    <nav class="navlinks">
+      <a href="/learn/">Learn</a><a href="/research/" aria-current="page">Research</a>
+      <a href="/applications/">Applications</a><a href="/examples/">Examples</a>
+      <a href="/calculator/">Calculator</a><a href="/reference/">Reference</a><a href="/book/">Book</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap breadcrumbs"><a href="/">Home</a> / <a href="/research/">Research</a> / Quantum Graceful Degradation</div>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Quantum degradation</span>
+    <h1>Quantum Graceful Degradation</h1>
+    <p class="lead">A damaged quantum system does not always jump directly from “fully correctable” to “useless.” Different observable algebras can survive at different damage levels, producing a structured ladder of exact and approximate task capability.</p>
+    <div class="meta">
+      <span class="tag cand">Volume II development</span>
+      <span class="tag classic">Uses established operator-algebra quantum error correction</span>
+    </div>
+    <div class="abstract"><strong>Abstract</strong>
+      <p>For a channel N with code projector P and Kraus operators E_a, let 𝔈_N=C*(P E_a†E_b P). The maximal exactly recoverable algebra is A_max(N)=𝔈_N′. Under additional erasure or stronger noise, the recoverable algebra is antitone: more damage cannot enlarge exact capability. A declared task A_req survives exactly as A_req∩A_max. The exact recoverable algebras form a clean ordered structure, but approximate recovery is less canonical: the family of ε-recoverable algebras can be downward closed without possessing one greatest element. This page develops exact degradation order, access-structure changes, task downgrading, approximate commutator defects, physical recovery defects, and why “graceful degradation” should be represented as a capability lattice rather than a binary success/failure flag.</p>
+    </div>
+  </div>
+</section>
+
+<article class="article"><div class="read">
+
+<h2>1. Quantum failure need not be binary</h2>
+<p>A code may lose the ability to recover an arbitrary logical state while still preserving a smaller noncommutative algebra, a commuting set of observables, or one specific receiver task.</p>
+<div class="formula">full-state recovery can fail before all task recovery fails.</div>
+<p>BM calls the resulting ordered loss of capability graceful degradation.</p>
+
+<h2>2. Maximal exactly recoverable algebra</h2>
+<p>Let <strong>P</strong> project onto the code space and let <strong>E<sub>a</sub></strong> be Kraus operators of the noise channel <strong>N</strong>.</p>
+<p>Define the compressed error algebra:</p>
+<div class="formula">𝔈<sub>N</sub>=C*(P E<sub>a</sub>†E<sub>b</sub>P).</div>
+<p>The maximal exactly recoverable algebra is:</p>
+<div class="theorem"><strong>Maximal Exact Recoverable Algebra</strong>
+<div class="formula">A<sub>max</sub>(N)=𝔈<sub>N</sub>′.</div>
+<p>This is established operator-algebra QEC. BM uses it as the exact surviving quantum capability of the channel relative to the code.</p></div>
+
+<h2>3. Why the commutant appears</h2>
+<p>An observable <strong>X</strong> is exactly correctable when it commutes with every compressed error product:</p>
+<div class="formula">[P E<sub>a</sub>†E<sub>b</sub>P,X]=0.</div>
+<p>The set of all such observables is exactly the commutant of the error algebra.</p>
+
+<h2>4. Required task versus maximal surviving capability</h2>
+<p>Let:</p>
+<div class="formula">A<sub>req</sub></div>
+<p>be the algebra required by the receiver.</p>
+<p>The portion that survives exactly after noise is:</p>
+<div class="formula">A<sub>survive</sub>(N)=A<sub>req</sub>∩A<sub>max</sub>(N).</div>
+<p>This separates what the channel can still support from what the receiver actually asked for.</p>
+
+<h2>5. A degradation ladder</h2>
+<p>As damage increases, one can move through several capability levels:</p>
+<table><thead><tr><th>Capability level</th><th>Interpretation</th></tr></thead><tbody>
+<tr><td>Full logical algebra</td><td>Arbitrary logical quantum state recoverable.</td></tr>
+<tr><td>Proper noncommutative subalgebra</td><td>Some genuinely quantum task remains.</td></tr>
+<tr><td>Commutative algebra</td><td>Only jointly measurable classical information remains.</td></tr>
+<tr><td>Scalars</td><td>No nontrivial logical task remains exactly recoverable.</td></tr>
+</tbody></table>
+
+<h2>6. More erasure cannot improve exact capability</h2>
+<p>Suppose erasure pattern <strong>F₂</strong> removes at least every share removed by <strong>F₁</strong>:</p>
+<div class="formula">F₁⊂F₂.</div>
+<div class="theorem"><strong>Antitone Exact Degradation</strong>
+<div class="formula">A<sub>max</sub>(F₂)⊂eq A<sub>max</sub>(F₁).</div>
+<p>Additional erasure cannot enlarge the maximal exactly recoverable algebra.</p></div>
+
+<h2>7. Exact degradation defines a partial order</h2>
+<p>Damage patterns can be ordered by inclusion, while surviving exact capability is ordered by reverse inclusion.</p>
+<div class="formula">more damage ↑ &nbsp; ⇒ &nbsp; exact recoverable algebra ↓.</div>
+<p>This creates a mathematically clean degradation poset.</p>
+
+<h2>8. Exact recoverable algebras form a lattice</h2>
+<p>Within a fixed maximal recoverable algebra, exact task algebras can be combined through standard algebraic meet and generated join operations when they remain within the correctable structure.</p>
+<div class="formula">exact capability landscape = ordered algebraic family.</div>
+<p>This is why exact graceful degradation is comparatively well behaved.</p>
+
+<h2>9. Different tasks fail at different times</h2>
+<p>Two receiver tasks on the same physical code can have different damage thresholds.</p>
+<div class="example"><h3>Task A survives longer than task B</h3>
+<p>Suppose:</p>
+<div class="formula">A<sub>1</sub>⊂A<sub>2</sub>.</div>
+<p>If damage shrinks the maximal surviving algebra to:</p>
+<div class="formula">A<sub>1</sub>⊂A<sub>max</sub> but A<sub>2</sub>⊄A<sub>max</sub>,</div>
+<p>then task <strong>A₁</strong> remains exactly recoverable while the stronger task <strong>A₂</strong> has failed.</p></div>
+
+<h2>10. Task downgrading can preserve usefulness</h2>
+<p>If the original task algebra is no longer fully recoverable, a system can intentionally downgrade to:</p>
+<div class="formula">A<sub>req</sub>′ ⊂ A<sub>req</sub>∩A<sub>max</sub>.</div>
+<p>This is a mathematically lawful reduction of the receiver contract rather than an undocumented failure.</p>
+<div class="callout">Graceful degradation is meaningful only when the downgraded task is explicitly declared. BM does not silently redefine success after damage.</div>
+
+<h2>11. Access geometry changes with degradation</h2>
+<p>As the required task algebra weakens, more physical subsets can become authorized.</p>
+<div class="formula">A₁⊂A₂ ⇒ Auth(A₂)⊂Auth(A₁).</div>
+<p>Thus degradation can be viewed simultaneously as:</p>
+<div class="formula">algebra shrinkage + authorized-family expansion.</div>
+
+<h2>12. Minimal authorized sets can change discontinuously</h2>
+<p>A small reduction in task algebra can remove a no-broadcasting obstruction and permit new disjoint authorized sets.</p>
+<p>For example, degrading from a noncommutative algebra to a commutative algebra can qualitatively change the access hypergraph.</p>
+<div class="firewall"><strong>Firewall:</strong> the geometry of exact quantum redundancy depends on the surviving algebra, not only on the physical share graph.</div>
+
+<h2>13. Erasure distance is task-dependent</h2>
+<p>For task algebra <strong>A</strong>:</p>
+<div class="formula">d<sub>A</sub>=τ(MinAuth(A)).</div>
+<p>If the task weakens, the minimal authorized family can enlarge and the task-relative erasure distance can change.</p>
+<p>There is no single code distance that captures every possible receiver task.</p>
+
+<h2>14. Full-state code distance is one special case</h2>
+<p>Full logical-state protection corresponds to:</p>
+<div class="formula">A=B(H<sub>L</sub>).</div>
+<p>Task-relative degradation generalizes this by allowing:</p>
+<div class="formula">A⊂B(H<sub>L</sub>).</div>
+<p>Different subalgebras can have different exact resilience.</p>
+
+<h2>15. Exact graceful degradation is receiver-relative</h2>
+<p>A channel has one maximal exactly recoverable algebra, but whether that constitutes success depends on the receiver's Passport.</p>
+<div class="compare">
+  <div class="box"><h3>Channel capability</h3><p>What algebra can still be recovered?</p></div>
+  <div class="box"><h3>Receiver requirement</h3><p>Which algebra must be recovered for the task to succeed?</p></div>
+</div>
+
+<h2>16. Approximate degradation is harder</h2>
+<p>At positive tolerance, define a physical recovery defect:</p>
+<div class="formula">δ<sub>A</sub>(N)=optimal CPTP recovery error for algebra A.</div>
+<p>An algebra is ε-recoverable when:</p>
+<div class="formula">δ<sub>A</sub>(N)≤ε.</div>
+<p>The ε-recoverable family is naturally downward closed under task weakening.</p>
+
+<h2>17. But there may be no greatest approximate algebra</h2>
+<p>Two incomparable algebras can each satisfy the same tolerance without their generated union doing so.</p>
+<div class="firewall"><strong>Permanent firewall:</strong> exact existence of A<sub>max</sub> does not imply a unique greatest ε-recoverable algebra.</div>
+<p>Approximate degradation is therefore naturally Pareto-like and partially ordered.</p>
+
+<h2>18. Algebraic commutator defect</h2>
+<p>Let the compressed error operator system be:</p>
+<div class="formula">K=span{P E<sub>a</sub>†E<sub>b</sub>P}.</div>
+<p>For a candidate task algebra, define a normalized commutator defect <strong>κ</strong> measuring how badly its observables fail to commute with <strong>K</strong>.</p>
+<div class="formula">κ≈sup ||[K,X]||.</div>
+
+<h2>19. Distance to the exact commutant</h2>
+<p>Let <strong>η</strong> measure operator-norm distance to the exact commutant <strong>K′</strong>.</p>
+<p>In finite dimension, the project development uses:</p>
+<div class="formula">η≤κ≤2η.</div>
+<p>This places approximate algebraic capability near the exact recoverable structure.</p>
+
+<h2>20. Physical and algebraic defects must stay separate</h2>
+<p>The optimal CPTP recovery defect:</p>
+<div class="formula">δ<sub>A</sub></div>
+<p>is a channel-level physical quantity.</p>
+<p>The commutator defects:</p>
+<div class="formula">κ, η</div>
+<p>are algebraic proximity measures.</p>
+<div class="firewall"><strong>Permanent firewall:</strong> small κ or η does not by itself yield a universal dimension-free bound on physical recovery defect δ.</div>
+
+<h2>21. Perturbation stability of physical recovery</h2>
+<p>For two channels <strong>N</strong> and <strong>M</strong>:</p>
+<div class="formula">|δ<sub>A</sub>(N)-δ<sub>A</sub>(M)|≤||N-M||<sub>⋄</sub>.</div>
+<p>This means small channel perturbations cannot change the optimal task-recovery defect by more than the diamond-norm perturbation size.</p>
+
+<h2>22. Degradation curves</h2>
+<p>For a one-parameter noise family <strong>N<sub>λ</sub></strong>, each task algebra has a recovery curve:</p>
+<div class="formula">λ ↦ δ<sub>A</sub>(N<sub>λ</sub>).</div>
+<p>At fixed tolerance ε, a task transitions from acceptable to unacceptable when this curve crosses ε.</p>
+<div class="formula">δ<sub>A</sub>(N<sub>λ</sub>)=ε.</div>
+
+<h2>23. Several task transitions can coexist</h2>
+<p>Different algebras can fail at different parameter values.</p>
+<table><thead><tr><th>Task algebra</th><th>Possible behavior</th></tr></thead><tbody>
+<tr><td>Full logical algebra</td><td>Fails first.</td></tr>
+<tr><td>Proper quantum subalgebra</td><td>Survives longer.</td></tr>
+<tr><td>Commutative algebra</td><td>Can survive still longer.</td></tr>
+<tr><td>One scalar task</td><td>May survive after broader logical capability is gone.</td></tr>
+</tbody></table>
+
+<h2>24. A capability profile is more informative than one fidelity number</h2>
+<p>One scalar fidelity can hide which tasks remain possible.</p>
+<p>BM instead favors a capability profile:</p>
+<div class="formula">A ↦ δ<sub>A</sub>(N).</div>
+<p>or, in the exact case:</p>
+<div class="formula">N ↦ A<sub>max</sub>(N).</div>
+<p>This makes the surviving observable structure explicit.</p>
+
+<h2>25. Degradation and no-broadcasting</h2>
+<p>When the surviving algebra remains noncommutative, exact authorized sets must continue to satisfy the intersecting-family constraint.</p>
+<p>Once degradation leaves only a commutative algebra, disjoint exact recoveries are no longer forbidden by that argument.</p>
+<div class="formula">algebra type controls access geometry during degradation.</div>
+
+<h2>26. Degradation and semantic carrier size</h2>
+<p>If the surviving contextual operator system shrinks, the minimum carrier dimension lower bound can shrink as well.</p>
+<div class="formula">log₂k ≥ ½log₂ dim(S<sub>survive</sub><sup>ctx</sup>).</div>
+<p>Thus degradation can reduce both what is recoverable and the size of the carrier needed to represent it.</p>
+
+<h2>27. Damage localization</h2>
+<p>Not every erased subsystem damages every task equally.</p>
+<p>A local task can remain intact when damage occurs outside its causal or algebraic support.</p>
+<div class="formula">physical damage location ≠ task damage location.</div>
+<p>Native locality theorems and the task algebra together determine which failures matter.</p>
+
+<h2>28. Graceful degradation in a distributed architecture</h2>
+<p>In a networked quantum system, degradation can involve several interacting changes:</p>
+<table><thead><tr><th>Change</th><th>Effect</th></tr></thead><tbody>
+<tr><td>Erasure</td><td>Shrinks surviving share set.</td></tr>
+<tr><td>Noise growth</td><td>Raises physical recovery defect.</td></tr>
+<tr><td>Task downgrade</td><td>Can restore acceptability.</td></tr>
+<tr><td>Carrier resizing</td><td>Can reduce required representation dimension.</td></tr>
+<tr><td>Access change</td><td>Can alter which coalitions are authorized.</td></tr>
+</tbody></table>
+
+<h2>29. Exact degradation and provenance</h2>
+<p>When capability drops, the system should record why:</p>
+<div class="formula">which damage pattern → which error algebra → which surviving commutant → which task failure.</div>
+<p>This gives a repair trail rather than a black-box “recovery failed” label.</p>
+
+<h2>30. Repair after degradation</h2>
+<p>Possible lawful repairs include:</p>
+<div class="formula">add redundancy → reroute access → change encoding → restrict task algebra → accept approximation → increase carrier size.</div>
+<p>Each repair changes a different part of the Passport and should be recorded explicitly.</p>
+
+<h2>31. A reusable degradation workflow</h2>
+<div class="formula">declare A<sub>req</sub> → compute A<sub>max</sub> → intersect with requirement → build access structure → compute erasure distance → evaluate approximate defect if needed → choose downgrade or repair → record provenance.</div>
+
+<h2>32. What BM contributes here</h2>
+<p>Operator-algebra QEC, commutants, access structures, CPTP recovery, diamond norm, and no-broadcasting are established mathematics.</p>
+<div class="callout">The BM synthesis is to represent quantum failure as a structured loss of receiver-relevant distinctions: exact capability is tracked by the maximal recoverable algebra; damage is ordered by the shrinking algebra; access geometry updates with the surviving task; approximate capability is kept separate from exact capability; and task downgrading is treated as an explicit contract change rather than hidden redefinition.</div>
+
+<h2>33. Open directions</h2>
+<p>The strongest next mathematical target is a dimension-aware stability theory linking algebraic defects κ or η to the physical CPTP recovery defect δ under explicit assumptions. Additional directions include scalable degradation profiles for many-body codes, approximate access lattices, adaptive task downgrading, and distributed repair policies.</p>
+<p>The next natural page is Approximate Quantum Task Recovery and Commutator Defects.</p>
+
+</div></article>
+
+<section class="next"><div class="wrap">
+<span class="eyebrow">Continue</span>
+<h2 style="font-size:clamp(2rem,5vw,3.4rem);line-height:1.04;letter-spacing:-.035em;margin:.7rem 0 .9rem">Related research</h2>
+<div class="next-grid">
+<a class="card" href="/research/approximate-quantum-task-recovery/"><small>Approximation</small><h3>Approximate Quantum Task Recovery</h3><p>Study commutator defect, distance to exact recoverability, physical recovery error, and stability.</p></a>
+<a class="card" href="/research/quantum-task-recovery/"><small>QEC</small><h3>Quantum Task Recovery</h3><p>Return to exact OAQEC, authorized sets, and task-relative erasure distance.</p></a>
+<a class="card" href="/research/quantum-no-broadcasting/"><small>Access geometry</small><h3>No-Broadcasting and Quantum Access</h3><p>Connect degradation level to intersecting authorized families and threshold constraints.</p></a>
+</div>
+</div></section>
+</main>
+
+<footer><div class="wrap footer-grid">
+<div><div class="brand"><span class="mark">BM</span><span>Branch Mathematics</span></div><div>Mathematics of necessary distinctions.</div></div>
+<div class="footer-links"><a href="/learn/">Learn</a><a href="/research/">Research</a><a href="/applications/">Applications</a><a href="/reference/">Reference</a><a href="/book/">Book</a></div>
+</div></footer>
+
+</body>
+</html>
