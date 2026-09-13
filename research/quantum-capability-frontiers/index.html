@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Quantum Capability Frontiers and Approximate Passport Geometry | Branch Mathematics</title>
+  <meta name="description" content="A technical Branch Mathematics treatment of approximate quantum capability frontiers: tolerance-dependent task algebras, Pareto geometry, carrier cost, access resilience, recovery defect, and nonunique maximal approximate Passports." />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <link rel="canonical" href="https://branch-mathematics-bm.github.io/research/quantum-capability-frontiers/" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Quantum Capability Frontiers and Approximate Passport Geometry" />
+  <meta property="og:description" content="Why approximate quantum capability is a frontier rather than a single maximal algebra." />
+  <meta property="og:url" content="https://branch-mathematics-bm.github.io/research/quantum-capability-frontiers/" />
+  <meta property="og:site_name" content="Branch Mathematics" />
+
+  <meta name="theme-color" content="#07111f" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"TechArticle",
+    "headline":"Quantum Capability Frontiers and Approximate Passport Geometry",
+    "description":"A technical treatment of approximate quantum task capability in Branch Mathematics.",
+    "mainEntityOfPage":"https://branch-mathematics-bm.github.io/research/quantum-capability-frontiers/",
+    "isPartOf":{
+      "@type":"WebSite",
+      "name":"Branch Mathematics",
+      "url":"https://branch-mathematics-bm.github.io/"
+    }
+  }
+  </script>
+
+  <style>
+    :root{
+      --bg:#07111f;--text:#eef5ff;--muted:#aabbd0;--accent:#7bdcff;--accent2:#b39cff;
+      --green:#7ef0c5;--warn:#ffd98c;--red:#ff9d9d;--max:1160px;--read:860px;
+    }
+    *{box-sizing:border-box}html{scroll-behavior:smooth}
+    body{
+      margin:0;color:var(--text);
+      background:
+        radial-gradient(circle at 10% -5%,rgba(123,220,255,.11),transparent 28rem),
+        radial-gradient(circle at 90% 4%,rgba(179,156,255,.08),transparent 24rem),
+        linear-gradient(180deg,#06101d,#07111f 45%,#081422);
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height:1.72;
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(calc(100% - 2rem),var(--max));margin-inline:auto}
+    .read{width:min(100%,var(--read));margin-inline:auto}
+    .site-header{position:sticky;top:0;z-index:50;backdrop-filter:blur(18px);background:rgba(7,17,31,.84);border-bottom:1px solid rgba(123,220,255,.12)}
+    .nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .brand{display:flex;align-items:center;gap:.75rem;font-weight:760;white-space:nowrap}
+    .mark{width:34px;height:34px;border-radius:11px;border:1px solid rgba(123,220,255,.5);display:grid;place-items:center;background:linear-gradient(135deg,rgba(123,220,255,.2),rgba(179,156,255,.12))}
+    .navlinks{display:flex;gap:.15rem;flex-wrap:wrap;justify-content:flex-end}
+    .navlinks a{color:var(--muted);padding:.55rem .68rem;border-radius:10px;font-size:.93rem}
+    .navlinks a:hover,.navlinks a[aria-current="page"]{color:var(--text);background:rgba(255,255,255,.05)}
+    .breadcrumbs{padding:1.2rem 0 0;color:#8397af;font-size:.9rem}
+    .hero{padding:4.6rem 0 4rem;border-bottom:1px solid rgba(123,220,255,.1)}
+    .eyebrow{display:inline-flex;padding:.42rem .7rem;border-radius:999px;border:1px solid rgba(123,220,255,.3);background:rgba(123,220,255,.06);color:#c5efff;font-size:.82rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+    h1{font-size:clamp(3rem,7vw,5.6rem);line-height:.96;letter-spacing:-.05em;margin:1rem 0 1.15rem;max-width:14ch}
+    .lead{font-size:clamp(1.08rem,2vw,1.3rem);color:#c4d4e6;max-width:950px}
+    .meta{display:flex;gap:.55rem;flex-wrap:wrap;margin-top:1.2rem}
+    .tag{display:inline-flex;padding:.42rem .66rem;border-radius:999px;font-size:.76rem;font-weight:800;letter-spacing:.06em;border:1px solid rgba(111,151,193,.24);background:rgba(255,255,255,.025)}
+    .cand{border-color:rgba(255,217,140,.25);color:#f7e8c7}.classic{border-color:rgba(179,156,255,.26);color:#ece5ff}
+    .abstract{margin-top:1.7rem;padding:1.3rem 1.4rem;border:1px solid rgba(123,220,255,.22);border-radius:20px;background:linear-gradient(145deg,rgba(123,220,255,.05),rgba(179,156,255,.025))}
+    .abstract p{margin:0;color:#c3d3e4}
+    .article{padding:4.8rem 0 5rem}.article h2{font-size:clamp(2rem,5vw,3.15rem);line-height:1.05;letter-spacing:-.035em;margin:3.3rem 0 1rem}.article h3{font-size:1.35rem;line-height:1.25;margin:2.2rem 0 .7rem}.article p{color:#c4d2e2;font-size:1.035rem;margin:0 0 1.15rem}
+    .formula{margin:1.4rem 0;padding:1.05rem 1.15rem;border-left:3px solid var(--accent);background:rgba(123,220,255,.055);border-radius:0 14px 14px 0;color:#e0f1ff;font-family:"Cambria Math","Times New Roman",serif;font-size:1.08rem;overflow:auto}
+    .theorem{margin:1.7rem 0 2rem;padding:1.35rem;border:1px solid rgba(126,240,197,.24);border-radius:20px;background:linear-gradient(145deg,rgba(126,240,197,.04),rgba(255,255,255,.012))}
+    .theorem strong{color:#e7fff5}.theorem p{color:#cbd9e6}
+    .firewall{margin:1.7rem 0;padding:1.2rem 1.3rem;border-radius:18px;border:1px solid rgba(255,157,157,.2);background:rgba(255,157,157,.035);color:#f1cccc}.firewall strong{color:#ffd6d6}
+    .callout{margin:1.7rem 0;padding:1.2rem 1.3rem;border-radius:18px;border:1px solid rgba(255,217,140,.22);background:rgba(255,217,140,.04);color:#eadfc9}
+    .compare{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.4rem 0 2rem}.box{border:1px solid rgba(111,151,193,.22);border-radius:18px;background:rgba(255,255,255,.02);padding:1.2rem}.box h3{margin-top:0}.box p{font-size:.96rem;margin-bottom:0}
+    table{width:100%;border-collapse:collapse;margin:1.25rem 0 1.9rem;border:1px solid rgba(111,151,193,.22);background:rgba(255,255,255,.015)}
+    th,td{padding:.82rem;border-bottom:1px solid rgba(111,151,193,.16);text-align:left;vertical-align:top}th{color:#dff7ff;background:rgba(123,220,255,.055);font-size:.92rem}td{color:#c4d2e2;font-size:.94rem}
+    .next{padding:4.5rem 0;border-top:1px solid rgba(123,220,255,.1);background:#050d18}
+    .next-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.6rem}
+    .card{padding:1.2rem;border-radius:20px;border:1px solid rgba(111,151,193,.2);background:rgba(255,255,255,.02);transition:.2s ease}
+    .card:hover{transform:translateY(-2px);border-color:rgba(123,220,255,.42);background:rgba(123,220,255,.04)}
+    .card small{color:var(--accent);font-weight:800;text-transform:uppercase}.card p{color:var(--muted)}
+    footer{padding:3rem 0;border-top:1px solid rgba(255,255,255,.07);background:#040a12;color:#8fa3ba}
+    .footer-grid{display:grid;grid-template-columns:1fr auto;gap:1rem}.footer-links{display:flex;gap:.7rem;flex-wrap:wrap}
+    @media(max-width:900px){.navlinks{display:none}.next-grid{grid-template-columns:1fr}}
+    @media(max-width:620px){.compare,.footer-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+
+<body>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="/"><span class="mark">BM</span><span>Branch Mathematics</span></a>
+    <nav class="navlinks">
+      <a href="/learn/">Learn</a><a href="/research/" aria-current="page">Research</a>
+      <a href="/applications/">Applications</a><a href="/examples/">Examples</a>
+      <a href="/calculator/">Calculator</a><a href="/reference/">Reference</a><a href="/book/">Book</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap breadcrumbs"><a href="/">Home</a> / <a href="/research/">Research</a> / Quantum Capability Frontiers</div>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Approximate Passport geometry</span>
+    <h1>Quantum Capability Frontiers and Approximate Passport Geometry</h1>
+    <p class="lead">Exact quantum recovery has a largest recoverable algebra. Approximate recovery generally does not. At positive tolerance, capability becomes a partially ordered frontier of tasks, carrier costs, access structures, and physical recovery errors.</p>
+    <div class="meta">
+      <span class="tag cand">Volume II development</span>
+      <span class="tag classic">Uses established operator algebra, channel norm, and Pareto concepts</span>
+    </div>
+    <div class="abstract"><strong>Abstract</strong>
+      <p>For a quantum channel N and tolerance ε, define Capε(N)={A:δA(N)≤ε}, where δA is the optimal physical CPTP recovery defect for task algebra A. The family is downward closed under task weakening, but need not possess one greatest approximate algebra. Its inclusion-maximal elements form a capability frontier. Different frontier points can trade algebra size, carrier dimension, recovery error, access resilience, locality, and implementation complexity. Increasing ε expands the capability family; perturbing the channel changes each task defect at most by the diamond-norm perturbation. BM uses this geometry to avoid forcing approximate quantum capability into a false single-number or single-algebra summary.</p>
+    </div>
+  </div>
+</section>
+
+<article class="article"><div class="read">
+
+<h2>1. Exact capability has a clean maximum</h2>
+<p>For a finite-dimensional code and channel <strong>N</strong>, exact operator-algebra QEC gives:</p>
+<div class="formula">A<sub>max</sub>(N)=𝔈<sub>N</sub>′.</div>
+<p>Every exactly recoverable task algebra lies inside this maximal algebra.</p>
+<div class="formula">δ<sub>A</sub>(N)=0 ⇔ A⊂A<sub>max</sub>(N).</div>
+<p>This exact sector is ordered cleanly.</p>
+
+<h2>2. Positive tolerance changes the geometry</h2>
+<p>At tolerance <strong>ε&gt;0</strong>, define the approximate capability family:</p>
+<div class="formula">Cap<sub>ε</sub>(N)={A : δ<sub>A</sub>(N)≤ε}.</div>
+<p>Now two task algebras can each be recoverable within tolerance without their generated algebra also being recoverable within the same tolerance.</p>
+<div class="firewall"><strong>Permanent firewall:</strong> exact maximal recoverability does not imply a unique greatest approximate recoverable algebra.</div>
+
+<h2>3. Downward closure</h2>
+<p>If:</p>
+<div class="formula">A₁⊂A₂</div>
+<p>and <strong>A₂</strong> is ε-recoverable, then the same recovery also preserves the weaker task <strong>A₁</strong> within the same tolerance.</p>
+<div class="theorem"><strong>Approximate Capability Downward Closure</strong>
+<div class="formula">A₂∈Cap<sub>ε</sub>(N), A₁⊂A₂ ⇒ A₁∈Cap<sub>ε</sub>(N).</div></div>
+
+<h2>4. Inclusion-maximal approximate tasks</h2>
+<p>Although one greatest algebra may fail to exist, the family can have several inclusion-maximal elements.</p>
+<div class="formula">Front<sub>ε</sub>(N)=Max(Cap<sub>ε</sub>(N),⊂).</div>
+<p>These are task algebras that cannot be strictly enlarged while remaining within the recovery budget.</p>
+
+<h2>5. Why several frontier points can coexist</h2>
+<p>Suppose one approximate task protects one family of observables very well, while another protects a different incompatible family.</p>
+<p>Neither algebra need contain the other.</p>
+<div class="formula">A₁∉A₂, A₂∉A₁, δ<sub>A₁</sub>≤ε, δ<sub>A₂</sub>≤ε.</div>
+<p>The generated algebra:</p>
+<div class="formula">C*(A₁∪A₂)</div>
+<p>can exceed the physical recovery budget.</p>
+
+<h2>6. Approximate capability is naturally an antichain frontier</h2>
+<p>The inclusion-maximal elements of a downward-closed family form an antichain: no frontier element strictly contains another.</p>
+<div class="formula">A,B∈Front<sub>ε</sub>, A≠B ⇒ A⊄B and B⊄A.</div>
+<p>This gives a clean combinatorial picture of nonunique approximate capability.</p>
+
+<h2>7. Tolerance monotonicity</h2>
+<p>If:</p>
+<div class="formula">0≤ε₁≤ε₂,</div>
+<p>then every ε₁-recoverable task is also ε₂-recoverable.</p>
+<div class="formula">Cap<sub>ε₁</sub>(N)⊂Cap<sub>ε₂</sub>(N).</div>
+<p>The capability family expands with tolerance.</p>
+
+<h2>8. The frontier can move discontinuously</h2>
+<p>Even though each fixed task defect can vary continuously under small channel perturbations, the identity of the inclusion-maximal task algebras can change abruptly as ε crosses a threshold.</p>
+<div class="formula">continuous defect curves can induce discrete frontier changes.</div>
+<p>This is a representation transition, not automatically a physical phase transition.</p>
+
+<h2>9. Recovery-error profile</h2>
+<p>Rather than one fidelity number, define:</p>
+<div class="formula">A ↦ δ<sub>A</sub>(N).</div>
+<p>This function records physical recovery quality across the task-algebra poset.</p>
+<p>The ε-capability family is simply its lower level set:</p>
+<div class="formula">Cap<sub>ε</sub>(N)={A:δ<sub>A</sub>(N)≤ε}.</div>
+
+<h2>10. Noise-parameter capability diagrams</h2>
+<p>For a channel family <strong>N<sub>λ</sub></strong>, one can study:</p>
+<div class="formula">(λ,ε) ↦ Cap<sub>ε</sub>(N<sub>λ</sub>).</div>
+<p>Different task algebras can enter or leave the admissible region at different noise strengths.</p>
+<p>This creates a task-relative quantum capability diagram.</p>
+
+<h2>11. Channel perturbation stability</h2>
+<p>For a fixed task algebra <strong>A</strong>:</p>
+<div class="theorem"><strong>Physical Defect Stability</strong>
+<div class="formula">|δ<sub>A</sub>(N)-δ<sub>A</sub>(M)|≤||N-M||<sub>⋄</sub>.</div>
+<p>Thus each task's recovery curve is Lipschitz in channel distance.</p></div>
+
+<h2>12. Capability-family sandwich under channel perturbation</h2>
+<p>If:</p>
+<div class="formula">||N-M||<sub>⋄</sub>≤r,</div>
+<p>then any task recoverable under <strong>N</strong> with margin <strong>ε−r</strong> remains recoverable under <strong>M</strong> at tolerance <strong>ε</strong>.</p>
+<div class="formula">Cap<sub>ε-r</sub>(N)⊂Cap<sub>ε</sub>(M)</div>
+<p>when <strong>ε≥r</strong>. Symmetrically:</p>
+<div class="formula">Cap<sub>ε-r</sub>(M)⊂Cap<sub>ε</sub>(N).</div>
+<p>This is a direct consequence of the defect Lipschitz bound.</p>
+
+<h2>13. Approximate Passport reserve</h2>
+<p>For a task algebra <strong>A</strong> currently satisfying:</p>
+<div class="formula">δ<sub>A</sub>(N)=r<ε,</div>
+<p>define its recovery reserve:</p>
+<div class="formula">Reserve(A)=ε-r.</div>
+<p>This is the channel perturbation budget available before the guaranteed ε-admissibility certificate is exhausted.</p>
+
+<h2>14. Algebra size is only one objective</h2>
+<p>A larger task algebra preserves more logical capability, but it can demand more physical resources.</p>
+<table><thead><tr><th>Objective</th><th>Possible preference</th></tr></thead><tbody>
+<tr><td>Task algebra richness</td><td>Larger</td></tr>
+<tr><td>Recovery defect</td><td>Smaller</td></tr>
+<tr><td>Carrier dimension</td><td>Smaller</td></tr>
+<tr><td>Authorized-set resilience</td><td>Larger/broader</td></tr>
+<tr><td>Recovery circuit complexity</td><td>Smaller</td></tr>
+<tr><td>Locality radius</td><td>Smaller</td></tr>
+</tbody></table>
+<p>These goals can conflict.</p>
+
+<h2>15. Pareto capability geometry</h2>
+<p>Associate to a design a vector such as:</p>
+<div class="formula">J=(task richness, δ, log₂k, resilience cost, implementation cost).</div>
+<p>A design is Pareto-dominated if another design preserves at least as much task capability while being no worse in every declared cost and strictly better in at least one.</p>
+<p>The remaining nondominated designs form a practical capability frontier.</p>
+
+<h2>16. Inclusion frontier and engineering Pareto frontier are distinct</h2>
+<div class="compare">
+  <div class="box"><h3>Inclusion frontier</h3><p>Maximal ε-recoverable task algebras under algebra inclusion.</p></div>
+  <div class="box"><h3>Engineering Pareto frontier</h3><p>Nondominated combinations of task capability, error, carrier size, access resilience, locality, and implementation cost.</p></div>
+</div>
+<p>BM keeps these two frontiers separate.</p>
+
+<h2>17. Carrier-dimension pressure</h2>
+<p>If a contextual task operator system has dimension <strong>d<sub>S</sub></strong>, any exact k-dimensional quantum carrier must satisfy:</p>
+<div class="formula">k²≥d<sub>S</sub>.</div>
+<p>Approximate recovery can sometimes use smaller carriers, but then carrier dimension becomes another axis of the frontier rather than disappearing from the problem.</p>
+
+<h2>18. Access-resilience pressure</h2>
+<p>A task algebra that is richer or more noncommutative can have a more restrictive exact authorized family.</p>
+<p>A weaker task can enlarge authorization:</p>
+<div class="formula">A₁⊂A₂ ⇒ Auth(A₂)⊂Auth(A₁).</div>
+<p>Thus moving down the task lattice can increase distributed resilience.</p>
+
+<h2>19. Noncommutativity changes frontier geometry</h2>
+<p>For genuinely noncommutative exact tasks, authorized families must be intersecting.</p>
+<p>For commutative tasks, disjoint exact recovery can be possible.</p>
+<div class="formula">task algebra type → access-geometry constraint.</div>
+<p>Approximate frontiers can therefore change qualitatively when a design downgrades from noncommutative to commutative capability.</p>
+
+<h2>20. Approximate no-broadcasting as a frontier problem</h2>
+<p>For disjoint regions <strong>S</strong> and <strong>T</strong>, define:</p>
+<div class="formula">(δ<sub>A,S</sub>,δ<sub>A,T</sub>).</div>
+<p>Exact no-broadcasting forbids the point <strong>(0,0)</strong> for a genuinely noncommutative algebra.</p>
+<p>The approximate research problem is to characterize the feasible tradeoff region around that forbidden corner.</p>
+
+<h2>21. Capability frontiers can be context-dependent</h2>
+<p>If the receiver requires correlations with an external reference, the task operator system enlarges.</p>
+<div class="formula">S<sup>local</sup>⊂S<sup>ctx</sup>.</div>
+<p>A task that lies on the frontier under local tests may leave the frontier under the stronger contextual Passport.</p>
+<div class="firewall"><strong>Firewall:</strong> a local approximate-recovery frontier need not survive unchanged when contextual correlation requirements are added.</div>
+
+<h2>22. Horizon-dependent frontiers</h2>
+<p>For dynamical tasks, the Heisenberg-backpropagated task algebra can grow with horizon:</p>
+<div class="formula">A<sub>t</sub>=Φ<sub>t,T</sub><sup>*</sup>(A<sub>T</sub>).</div>
+<p>The approximate capability frontier can therefore depend on time:</p>
+<div class="formula">Front<sub>ε,t</sub>(N).</div>
+<p>A carrier sufficient for a short horizon may leave the frontier at a longer horizon.</p>
+
+<h2>23. Static recovery and dynamic closure are different frontier axes</h2>
+<p>A design can have small static task-recovery defect but large autonomous carrier-dynamics defect:</p>
+<div class="formula">δ<sub>A</sub> small, &nbsp; δ<sub>Q</sub> large.</div>
+<p>Another design can have the reverse tradeoff.</p>
+<div class="firewall"><strong>Permanent firewall:</strong> static approximate task recovery and approximate autonomous quantum closure are distinct objectives.</div>
+
+<h2>24. Algebraic defect adds another axis</h2>
+<p>The commutator defect <strong>κ</strong> and distance-to-commutant <strong>η</strong> can be included in the frontier analysis:</p>
+<div class="formula">η≤κ≤2η.</div>
+<p>But they should not replace the physical defect <strong>δ</strong>.</p>
+<div class="formula">(κ,η,δ) = related but distinct coordinates.</div>
+
+<h2>25. Why BM does not collapse the frontier to one score</h2>
+<p>A weighted scalar objective can be useful once a user declares priorities, but the weights are extra assumptions.</p>
+<div class="formula">score = α·error + β·carrier cost + γ·task loss + ···</div>
+<p>Different weights select different frontier points.</p>
+<div class="callout">BM preserves the nondominated set until the receiver explicitly supplies a preference or cost contract.</div>
+
+<h2>26. Approximate task downgrade</h2>
+<p>If the current algebra <strong>A</strong> exceeds tolerance, one can move to a weaker subalgebra:</p>
+<div class="formula">A′⊂A</div>
+<p>with:</p>
+<div class="formula">δ<sub>A′</sub>(N)≤ε.</div>
+<p>The preferred downgrade need not be unique. Several incomparable subalgebras can lie on the frontier.</p>
+
+<h2>27. Minimal loss downgrade</h2>
+<p>A receiver can define a task-loss functional <strong>L(A′;A)</strong> measuring how much required capability is surrendered when moving from <strong>A</strong> to <strong>A′</strong>.</p>
+<p>Then one can solve:</p>
+<div class="formula">min L(A′;A) &nbsp; subject to &nbsp; δ<sub>A′</sub>(N)≤ε.</div>
+<p>The loss functional is receiver-defined; BM does not supply a universal one.</p>
+
+<h2>28. Robust frontier points</h2>
+<p>Two frontier tasks can have the same present recovery error but different reserves against channel perturbation.</p>
+<div class="formula">Reserve(A)=ε-δ<sub>A</sub>(N).</div>
+<p>A slightly smaller task algebra with more reserve can be preferable in uncertain environments.</p>
+
+<h2>29. Frontiers under erasure patterns</h2>
+<p>For each surviving subset <strong>S</strong>, define:</p>
+<div class="formula">Cap<sub>ε</sub>(S).</div>
+<p>The distributed system then has a family of local capability frontiers indexed by damage pattern or survivor set.</p>
+<p>A global resilient design can require acceptable frontier points across every allowed failure pattern.</p>
+
+<h2>30. Multi-scenario robust capability</h2>
+<p>For an allowed scenario set <strong>Ω</strong>, define the robust capability family:</p>
+<div class="formula">Cap<sub>ε</sub><sup>rob</sup>=∩<sub>ω∈Ω</sub>Cap<sub>ε</sub>(N<sub>ω</sub>).</div>
+<p>This keeps only task algebras recoverable within tolerance in every declared scenario.</p>
+<p>Adding scenarios can only shrink this robust family.</p>
+
+<h2>31. Portable versus deployment-specific quantum Passports</h2>
+<div class="compare">
+  <div class="box"><h3>Deployment-specific</h3><p>Optimized for one channel, one reference context, and one noise model.</p></div>
+  <div class="box"><h3>Portable</h3><p>Must remain admissible across a family of channels, contexts, or damage patterns.</p></div>
+</div>
+<p>Portability usually moves the feasible frontier inward because more scenarios must be satisfied simultaneously.</p>
+
+<h2>32. Computational representation</h2>
+<p>For finite-dimensional explicit models, candidate task algebras can be tested with algebraic criteria and CPTP optimization.</p>
+<p>One practical pipeline is:</p>
+<div class="formula">enumerate or parameterize task families → compute algebraic defect → solve recovery SDP → estimate δ → retain ε-admissible tasks → remove dominated points.</div>
+<p>The difficult step is avoiding combinatorial explosion in the candidate algebra family.</p>
+
+<h2>33. Frontier provenance</h2>
+<p>Each retained design should carry provenance:</p>
+<div class="formula">task algebra → channel/context → carrier → recovery map → defect bound → access structure → robustness reserve.</div>
+<p>This prevents visually similar frontier points from being treated as interchangeable when they arise from different assumptions.</p>
+
+<h2>34. A reusable capability-frontier workflow</h2>
+<div class="formula">declare channel family → declare task-algebra family → compute exact envelope → evaluate δ for candidates → build Cap<sub>ε</sub> → find inclusion-maximal tasks → add carrier/access/locality costs → compute Pareto frontier → select only after receiver priorities are declared.</div>
+
+<h2>35. What BM contributes here</h2>
+<p>Operator algebras, CPTP recovery, Pareto optimization, access structures, and channel norms are established mathematics.</p>
+<div class="callout">The BM synthesis is to treat approximate quantum capability as a receiver-relative geometric frontier rather than forcing it into a nonexistent single maximal algebra. Exact recoverability has a canonical envelope; approximate recoverability generally has a downward-closed family, multiple maximal elements, and additional tradeoffs in carrier size, access resilience, locality, robustness, and dynamics.</div>
+
+<h2>36. Open directions</h2>
+<p>Important next problems include efficient frontier computation, dimension-aware κ/η→δ bounds, approximate no-broadcasting regions, many-body locality constraints on frontier shape, robust frontiers over correlated-noise families, and dynamic frontiers that evolve with causal horizon.</p>
+<p>The next natural page is Quantum Semantic Width versus Entanglement Entropy.</p>
+
+</div></article>
+
+<section class="next"><div class="wrap">
+<span class="eyebrow">Continue</span>
+<h2 style="font-size:clamp(2rem,5vw,3.4rem);line-height:1.04;letter-spacing:-.035em;margin:.7rem 0 .9rem">Related research</h2>
+<div class="next-grid">
+<a class="card" href="/research/quantum-semantic-width-vs-entanglement/"><small>Comparison</small><h3>Quantum Semantic Width vs Entanglement Entropy</h3><p>Separate task-relative carrier complexity from state-dependent entanglement measures.</p></a>
+<a class="card" href="/research/approximate-quantum-task-recovery/"><small>Approximation</small><h3>Approximate Quantum Task Recovery</h3><p>Return to κ, η, physical recovery defect, and the open stability theorem.</p></a>
+<a class="card" href="/research/maximal-recoverable-quantum-passports/"><small>Exact structure</small><h3>Maximal Recoverable Quantum Passports</h3><p>Compare the approximate frontier with the clean exact maximal-algebra envelope.</p></a>
+</div>
+</div></section>
+</main>
+
+<footer><div class="wrap footer-grid">
+<div><div class="brand"><span class="mark">BM</span><span>Branch Mathematics</span></div><div>Mathematics of necessary distinctions.</div></div>
+<div class="footer-links"><a href="/learn/">Learn</a><a href="/research/">Research</a><a href="/applications/">Applications</a><a href="/reference/">Reference</a><a href="/book/">Book</a></div>
+</div></footer>
+</body>
+</html>
