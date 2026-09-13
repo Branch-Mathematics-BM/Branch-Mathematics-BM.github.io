@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Approximate Quantum Task Recovery and Commutator Defects | Branch Mathematics</title>
+  <meta name="description" content="A technical Branch Mathematics treatment of approximate quantum task recovery: compressed error operator systems, commutator defects, distance to exact commutants, physical CPTP recovery error, perturbation stability, and open dimension-aware bounds." />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <link rel="canonical" href="https://branch-mathematics-bm.github.io/research/approximate-quantum-task-recovery/" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Approximate Quantum Task Recovery and Commutator Defects" />
+  <meta property="og:description" content="How algebraic near-correctability, distance to the exact commutant, and physical CPTP recovery error relate—and where the hard gap remains." />
+  <meta property="og:url" content="https://branch-mathematics-bm.github.io/research/approximate-quantum-task-recovery/" />
+  <meta property="og:site_name" content="Branch Mathematics" />
+
+  <meta name="theme-color" content="#07111f" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"TechArticle",
+    "headline":"Approximate Quantum Task Recovery and Commutator Defects",
+    "description":"A technical treatment of approximate task-relative quantum recovery in Branch Mathematics.",
+    "mainEntityOfPage":"https://branch-mathematics-bm.github.io/research/approximate-quantum-task-recovery/",
+    "isPartOf":{
+      "@type":"WebSite",
+      "name":"Branch Mathematics",
+      "url":"https://branch-mathematics-bm.github.io/"
+    }
+  }
+  </script>
+
+  <style>
+    :root{
+      --bg:#07111f;--text:#eef5ff;--muted:#aabbd0;--accent:#7bdcff;--accent2:#b39cff;
+      --green:#7ef0c5;--warn:#ffd98c;--red:#ff9d9d;--max:1160px;--read:860px;
+    }
+    *{box-sizing:border-box}html{scroll-behavior:smooth}
+    body{
+      margin:0;color:var(--text);
+      background:
+        radial-gradient(circle at 10% -5%,rgba(123,220,255,.11),transparent 28rem),
+        radial-gradient(circle at 90% 4%,rgba(179,156,255,.08),transparent 24rem),
+        linear-gradient(180deg,#06101d,#07111f 45%,#081422);
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height:1.72;
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(calc(100% - 2rem),var(--max));margin-inline:auto}
+    .read{width:min(100%,var(--read));margin-inline:auto}
+    .site-header{position:sticky;top:0;z-index:50;backdrop-filter:blur(18px);background:rgba(7,17,31,.84);border-bottom:1px solid rgba(123,220,255,.12)}
+    .nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .brand{display:flex;align-items:center;gap:.75rem;font-weight:760;white-space:nowrap}
+    .mark{width:34px;height:34px;border-radius:11px;border:1px solid rgba(123,220,255,.5);display:grid;place-items:center;background:linear-gradient(135deg,rgba(123,220,255,.2),rgba(179,156,255,.12))}
+    .navlinks{display:flex;gap:.15rem;flex-wrap:wrap;justify-content:flex-end}
+    .navlinks a{color:var(--muted);padding:.55rem .68rem;border-radius:10px;font-size:.93rem}
+    .navlinks a:hover,.navlinks a[aria-current="page"]{color:var(--text);background:rgba(255,255,255,.05)}
+    .breadcrumbs{padding:1.2rem 0 0;color:#8397af;font-size:.9rem}
+    .hero{padding:4.6rem 0 4rem;border-bottom:1px solid rgba(123,220,255,.1)}
+    .eyebrow{display:inline-flex;padding:.42rem .7rem;border-radius:999px;border:1px solid rgba(123,220,255,.3);background:rgba(123,220,255,.06);color:#c5efff;font-size:.82rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+    h1{font-size:clamp(3rem,7vw,5.6rem);line-height:.96;letter-spacing:-.05em;margin:1rem 0 1.15rem;max-width:14ch}
+    .lead{font-size:clamp(1.08rem,2vw,1.3rem);color:#c4d4e6;max-width:950px}
+    .meta{display:flex;gap:.55rem;flex-wrap:wrap;margin-top:1.2rem}
+    .tag{display:inline-flex;padding:.42rem .66rem;border-radius:999px;font-size:.76rem;font-weight:800;letter-spacing:.06em;border:1px solid rgba(111,151,193,.24);background:rgba(255,255,255,.025)}
+    .cand{border-color:rgba(255,217,140,.25);color:#f7e8c7}.classic{border-color:rgba(179,156,255,.26);color:#ece5ff}
+    .abstract{margin-top:1.7rem;padding:1.3rem 1.4rem;border:1px solid rgba(123,220,255,.22);border-radius:20px;background:linear-gradient(145deg,rgba(123,220,255,.05),rgba(179,156,255,.025))}
+    .abstract p{margin:0;color:#c3d3e4}
+    .article{padding:4.8rem 0 5rem}.article h2{font-size:clamp(2rem,5vw,3.15rem);line-height:1.05;letter-spacing:-.035em;margin:3.3rem 0 1rem}.article h3{font-size:1.35rem;line-height:1.25;margin:2.2rem 0 .7rem}.article p{color:#c4d2e2;font-size:1.035rem;margin:0 0 1.15rem}
+    .formula{margin:1.4rem 0;padding:1.05rem 1.15rem;border-left:3px solid var(--accent);background:rgba(123,220,255,.055);border-radius:0 14px 14px 0;color:#e0f1ff;font-family:"Cambria Math","Times New Roman",serif;font-size:1.08rem;overflow:auto}
+    .theorem{margin:1.7rem 0 2rem;padding:1.35rem;border:1px solid rgba(126,240,197,.24);border-radius:20px;background:linear-gradient(145deg,rgba(126,240,197,.04),rgba(255,255,255,.012))}
+    .theorem strong{color:#e7fff5}.theorem p{color:#cbd9e6}
+    .firewall{margin:1.7rem 0;padding:1.2rem 1.3rem;border-radius:18px;border:1px solid rgba(255,157,157,.2);background:rgba(255,157,157,.035);color:#f1cccc}.firewall strong{color:#ffd6d6}
+    .callout{margin:1.7rem 0;padding:1.2rem 1.3rem;border-radius:18px;border:1px solid rgba(255,217,140,.22);background:rgba(255,217,140,.04);color:#eadfc9}
+    .compare{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.4rem 0 2rem}.box{border:1px solid rgba(111,151,193,.22);border-radius:18px;background:rgba(255,255,255,.02);padding:1.2rem}.box h3{margin-top:0}.box p{font-size:.96rem;margin-bottom:0}
+    table{width:100%;border-collapse:collapse;margin:1.25rem 0 1.9rem;border:1px solid rgba(111,151,193,.22);background:rgba(255,255,255,.015)}
+    th,td{padding:.82rem;border-bottom:1px solid rgba(111,151,193,.16);text-align:left;vertical-align:top}th{color:#dff7ff;background:rgba(123,220,255,.055);font-size:.92rem}td{color:#c4d2e2;font-size:.94rem}
+    .next{padding:4.5rem 0;border-top:1px solid rgba(123,220,255,.1);background:#050d18}
+    .next-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.6rem}
+    .card{padding:1.2rem;border-radius:20px;border:1px solid rgba(111,151,193,.2);background:rgba(255,255,255,.02);transition:.2s ease}
+    .card:hover{transform:translateY(-2px);border-color:rgba(123,220,255,.42);background:rgba(123,220,255,.04)}
+    .card small{color:var(--accent);font-weight:800;text-transform:uppercase}.card p{color:var(--muted)}
+    footer{padding:3rem 0;border-top:1px solid rgba(255,255,255,.07);background:#040a12;color:#8fa3ba}
+    .footer-grid{display:grid;grid-template-columns:1fr auto;gap:1rem}.footer-links{display:flex;gap:.7rem;flex-wrap:wrap}
+    @media(max-width:900px){.navlinks{display:none}.next-grid{grid-template-columns:1fr}}
+    @media(max-width:620px){.compare,.footer-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+
+<body>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="/"><span class="mark">BM</span><span>Branch Mathematics</span></a>
+    <nav class="navlinks">
+      <a href="/learn/">Learn</a><a href="/research/" aria-current="page">Research</a>
+      <a href="/applications/">Applications</a><a href="/examples/">Examples</a>
+      <a href="/calculator/">Calculator</a><a href="/reference/">Reference</a><a href="/book/">Book</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap breadcrumbs"><a href="/">Home</a> / <a href="/research/">Research</a> / Approximate Quantum Task Recovery</div>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Approximate quantum recovery</span>
+    <h1>Approximate Quantum Task Recovery and Commutator Defects</h1>
+    <p class="lead">Exact quantum error correction has a clean algebraic criterion. Approximate recovery is harder: being almost in the exact commutant is not the same thing as having a small optimal physical recovery error. The missing bridge is one of the strongest next mathematical targets in the quantum BM program.</p>
+    <div class="meta">
+      <span class="tag cand">Volume II development</span>
+      <span class="tag classic">Uses established operator-algebra QEC and quantum channel norms</span>
+    </div>
+    <div class="abstract"><strong>Abstract</strong>
+      <p>Let K=span{P E_a†E_b P} be the compressed error operator system of a finite-dimensional code and let A be a declared task algebra. Exact correction requires A⊂K′. Approximate correction can be measured algebraically by a commutator defect κ, geometrically by distance η to the exact commutant, and physically by an optimal CPTP recovery defect δ_A(N). In the finite-dimensional algebraic sector the project records η≤κ≤2η, but no universal dimension-free theorem is assumed that turns small κ or η into small physical δ. The physical defect is stable under channel perturbation: |δ_A(N)−δ_A(M)|≤||N−M||⋄. This page develops the exact/approximate separation, capability profiles, tolerance-dependent recovery, and the open dimension-aware stability problem.</p>
+    </div>
+  </div>
+</section>
+
+<article class="article"><div class="read">
+
+<h2>1. Exact recovery gives the reference geometry</h2>
+<p>Let <strong>P</strong> project onto the code space and let <strong>E<sub>a</sub></strong> be Kraus operators of a noise channel <strong>N</strong>.</p>
+<p>Define the compressed error operator system:</p>
+<div class="formula">K=span{P E<sub>a</sub>†E<sub>b</sub>P}.</div>
+<p>For a declared task algebra <strong>A</strong>, exact correctability is characterized by:</p>
+<div class="formula">[K,X]=0 &nbsp; for every X∈A,</div>
+<p>equivalently:</p>
+<div class="formula">A⊂K′.</div>
+
+<h2>2. Approximate recovery asks how far from exact we are</h2>
+<p>If the commutators are small rather than zero, the task is near the exact correctable sector in an algebraic sense.</p>
+<p>But several non-equivalent approximation questions appear immediately:</p>
+<table><thead><tr><th>Question</th><th>Quantity</th></tr></thead><tbody>
+<tr><td>How badly do task observables fail to commute with the error system?</td><td>κ</td></tr>
+<tr><td>How far is the task algebra from the exact commutant?</td><td>η</td></tr>
+<tr><td>How well can a physical CPTP recovery actually restore the task?</td><td>δ<sub>A</sub></td></tr>
+</tbody></table>
+
+<h2>3. A normalized commutator defect</h2>
+<p>One may define an algebraic defect schematically as:</p>
+<div class="formula">κ(A,K)=sup ||[Y,X]||</div>
+<p>over appropriately normalized <strong>Y∈K</strong> and <strong>X∈A</strong>.</p>
+<p>Then:</p>
+<div class="formula">κ=0 ⇔ A⊂K′.</div>
+<p>So <strong>κ</strong> detects exact correctability correctly.</p>
+
+<h2>4. Distance to the exact commutant</h2>
+<p>Let <strong>η</strong> measure the operator-norm distance of the candidate task observables to the exact commutant <strong>K′</strong>.</p>
+<div class="formula">η(A,K)=distance of A to K′.</div>
+<p>The finite-dimensional project development records the comparison:</p>
+<div class="theorem"><strong>Algebraic Defect Comparison</strong>
+<div class="formula">η≤κ≤2η.</div>
+<p>This places commutator smallness and distance-to-commutant on the same scale in the declared finite-dimensional algebraic setting.</p></div>
+
+<h2>5. Why this does not finish approximate QEC</h2>
+<p>A task can be close to the exact commutant while still requiring a nontrivial physical recovery construction.</p>
+<p>The recovery must be completely positive and trace preserving, and it must work on states and correlations rather than only on one linear operator calculation.</p>
+<div class="firewall"><strong>Permanent firewall:</strong> algebraic near-correctability is not the same object as physical near-recoverability.</div>
+
+<h2>6. Physical task-recovery defect</h2>
+<p>Let:</p>
+<div class="formula">δ<sub>A</sub>(N)</div>
+<p>denote the optimal physical recovery error for task algebra <strong>A</strong> under channel <strong>N</strong>, minimized over CPTP recovery maps in the declared norm.</p>
+<p>Then:</p>
+<div class="formula">δ<sub>A</sub>(N)=0</div>
+<p>exactly when the task is physically recoverable under that formulation.</p>
+
+<h2>7. Approximate task authorization</h2>
+<p>A physical subsystem <strong>S</strong> is ε-authorized for <strong>A</strong> when:</p>
+<div class="formula">δ<sub>A,S</sub>≤ε.</div>
+<p>This defines a tolerance-dependent access family:</p>
+<div class="formula">Auth<sub>ε</sub>(A)={S:δ<sub>A,S</sub>≤ε}.</div>
+<p>Unlike exact authorization, different subsets can enter this family at different tolerances.</p>
+
+<h2>8. Capability is now a curve, not a binary label</h2>
+<p>For a fixed task algebra:</p>
+<div class="formula">λ ↦ δ<sub>A</sub>(N<sub>λ</sub>)</div>
+<p>describes recovery quality along a noise parameter <strong>λ</strong>.</p>
+<p>For a fixed channel:</p>
+<div class="formula">A ↦ δ<sub>A</sub>(N)</div>
+<p>describes the channel's task-relative capability profile.</p>
+
+<h2>9. Downward closure under task weakening</h2>
+<p>If a stronger algebra <strong>A₂</strong> is ε-recoverable and:</p>
+<div class="formula">A₁⊂A₂,</div>
+<p>then the weaker algebra <strong>A₁</strong> is also ε-recoverable under the same recovery.</p>
+<div class="formula">A₂ ε-recoverable ⇒ every subalgebra A₁⊂A₂ is ε-recoverable.</div>
+<p>Thus approximate capability is naturally downward closed.</p>
+
+<h2>10. But a greatest approximate algebra need not exist</h2>
+<p>Two incomparable algebras can each be recoverable within tolerance <strong>ε</strong>, while their generated union fails the tolerance.</p>
+<div class="firewall"><strong>Permanent firewall:</strong> there is no general unique greatest ε-recoverable algebra.</div>
+<p>Approximate degradation is therefore more naturally represented as a partially ordered family or Pareto frontier than by one maximal algebra.</p>
+
+<h2>11. Physical defect is perturbation-stable</h2>
+<p>Let <strong>N</strong> and <strong>M</strong> be two channels.</p>
+<div class="theorem"><strong>Channel Perturbation Stability</strong>
+<div class="formula">|δ<sub>A</sub>(N)-δ<sub>A</sub>(M)|≤||N-M||<sub>⋄</sub>.</div>
+<p>Small diamond-norm channel perturbations change the optimal task-recovery defect by at most the perturbation size.</p></div>
+
+<h2>12. Why this bound matters</h2>
+<p>If one already knows a good recovery for a nearby channel, the defect cannot deteriorate arbitrarily under a small channel perturbation.</p>
+<div class="formula">robust recovery quality changes at most Lipschitz-continuously with channel distance.</div>
+<p>This is a physical stability statement, unlike the purely algebraic κ/η comparison.</p>
+
+<h2>13. The central missing bridge</h2>
+<p>The hard question is to connect:</p>
+<div class="formula">small κ or η</div>
+<p>to:</p>
+<div class="formula">small δ<sub>A</sub>.</div>
+<p>Such a theorem must generally depend on explicit assumptions—dimension, algebraic structure, conditioning, spectral separation, or other native data.</p>
+<div class="callout">The strongest next target is a dimension-aware stability theorem of the form “algebraically near the exact commutant ⇒ physically near recoverable,” with constants and hypotheses stated explicitly.</div>
+
+<h2>14. Why a dimension-free theorem is dangerous to assume</h2>
+<p>As Hilbert-space dimension grows, small operator-level defects can interact with increasingly large state and channel spaces.</p>
+<p>Without conditioning or dimension control, one should not assume one universal constant converts κ into δ.</p>
+<div class="firewall"><strong>Firewall:</strong> BM does not currently claim a universal dimension-free κ→δ theorem.</div>
+
+<h2>15. Candidate shape of a future bound</h2>
+<p>A useful theorem might have the schematic form:</p>
+<div class="formula">δ<sub>A</sub>(N) ≤ C(d,A,K,conditioning) · κ</div>
+<p>or perhaps:</p>
+<div class="formula">δ<sub>A</sub>(N) ≤ f(d)η.</div>
+<p>The important issue is not the exact symbolic shape, but proving a valid bound with explicit dependence rather than hiding it.</p>
+
+<h2>16. Approximate graceful degradation</h2>
+<p>At positive tolerance, one can track a family:</p>
+<div class="formula">Cap<sub>ε</sub>(N)={A : δ<sub>A</sub>(N)≤ε}.</div>
+<p>This is the set of tasks still physically recoverable within the declared error budget.</p>
+<p>As noise grows:</p>
+<div class="formula">Cap<sub>ε</sub>(N)</div>
+<p>can lose stronger algebras while retaining weaker ones.</p>
+
+<h2>17. Tolerance sweeps define task phase diagrams</h2>
+<p>For a noise parameter <strong>λ</strong> and tolerance <strong>ε</strong>, one can study:</p>
+<div class="formula">(λ,ε) ↦ Cap<sub>ε</sub>(N<sub>λ</sub>).</div>
+<p>Different task algebras can cross the recovery threshold at different locations.</p>
+<p>This gives a task-relative recovery phase diagram without conflating it with a thermodynamic phase transition.</p>
+
+<h2>18. Approximate access geometry</h2>
+<p>For each subset <strong>S</strong>, define:</p>
+<div class="formula">δ<sub>A,S</sub>.</div>
+<p>Then the family:</p>
+<div class="formula">Auth<sub>ε</sub>(A)</div>
+<p>grows as the tolerance increases.</p>
+<p>The exact intersecting-family theorem for noncommutative tasks constrains the zero-error limit, but positive-error access geometry is richer.</p>
+
+<h2>19. Approximate no-broadcasting tradeoffs</h2>
+<p>Two disjoint regions may each approximately recover some information about a noncommutative task.</p>
+<p>The relevant research object is a tradeoff region:</p>
+<div class="formula">(δ<sub>A,S</sub>,δ<sub>A,T</sub>) &nbsp; with &nbsp; S∩T=∅.</div>
+<p>Exact no-broadcasting forbids both errors from being zero. Sharp task-specific lower bounds away from zero remain a natural target.</p>
+
+<h2>20. Correlation-sensitive recovery</h2>
+<p>A task can require not only local observable expectations but also correlations with a reference system.</p>
+<p>Approximate recovery must therefore specify whether the error norm is tested only on local observables or on extensions preserving contextual correlations.</p>
+<div class="firewall"><strong>Firewall:</strong> small local observable error does not automatically imply small error for every reference correlation.</div>
+
+<h2>21. Carrier dimension and approximate recovery</h2>
+<p>A smaller quantum carrier may increase approximation error even when it remains sufficient for a weaker task.</p>
+<div class="formula">carrier size ↔ recovery defect ↔ task algebra.</div>
+<p>The natural design problem is therefore multi-objective.</p>
+
+<h2>22. Pareto structure</h2>
+<p>A quantum design may trade:</p>
+<table><thead><tr><th>Quantity</th><th>Goal</th></tr></thead><tbody>
+<tr><td>Carrier dimension</td><td>Smaller representation</td></tr>
+<tr><td>Recovery defect δ</td><td>Higher fidelity to the task</td></tr>
+<tr><td>Task algebra size</td><td>More retained capability</td></tr>
+<tr><td>Authorized-set size</td><td>Better distributed resilience</td></tr>
+<tr><td>Implementation complexity</td><td>Simpler physical recovery</td></tr>
+</tbody></table>
+<p>There need not be one scalar optimum without declaring weights or priorities.</p>
+
+<h2>23. Noise-localization effects</h2>
+<p>If a task algebra is supported in one region and the noise acts outside the task's causal support, physical recovery defect can remain small or zero even when global channel distance is large.</p>
+<div class="formula">global noise magnitude ≠ task damage magnitude.</div>
+<p>Native locality and the declared task support determine which perturbations matter.</p>
+
+<h2>24. Time-dependent approximate recovery</h2>
+<p>For a dynamical quantum system, the task algebra itself can evolve in the Heisenberg picture.</p>
+<div class="formula">A<sub>t</sub>=Φ<sub>t</sub><sup>*</sup>(A<sub>final</sub>).</div>
+<p>Approximate recoverability can therefore change with horizon as the backward task support grows.</p>
+<p>This links quantum task recovery to spacetime semantic width.</p>
+
+<h2>25. Approximate dynamic closure</h2>
+<p>If a carrier encoding <strong>E</strong> is used through time, one can measure physical closure defect:</p>
+<div class="formula">δ<sub>Q</sub>=min<sub>Ψ CPTP</sub>||EΦ-ΨE||<sub>⋄</sub>.</div>
+<p>This is distinct from recovery of one static task algebra after a single noise channel.</p>
+<div class="firewall"><strong>Firewall:</strong> approximate static task recovery does not imply approximate autonomous carrier dynamics.</div>
+
+<h2>26. Recovery versus prediction</h2>
+<p>A carrier may predict the declared task accurately without admitting a physical inverse that reconstructs the protected observables on the code.</p>
+<div class="formula">good prediction ≠ physical recovery.</div>
+<p>BM keeps these contracts separate.</p>
+
+<h2>27. Numerical certification</h2>
+<p>In finite-dimensional explicit models, CPTP recovery and closure problems can often be formulated with semidefinite constraints through Choi matrices.</p>
+<p>This provides a computational route for:</p>
+<div class="formula">upper bounds on δ, feasibility tests, and candidate optimal recovery channels.</div>
+<p>Algebraic κ and η can be computed separately and compared empirically to the physical optimum.</p>
+
+<h2>28. A useful research experiment</h2>
+<p>For a family of finite codes and channels, one can compute:</p>
+<div class="formula">(κ,η,δ,d)</div>
+<p>across dimensions and noise strengths, then test whether dimension-dependent inequalities emerge.</p>
+<p>This would not prove a theorem, but it could identify the correct scaling and conditioning variables for one.</p>
+
+<h2>29. Provenance of approximation failure</h2>
+<p>If recovery error exceeds tolerance, the system should distinguish whether the failure came from:</p>
+<div class="formula">large commutator defect, large distance to commutant, CPTP obstruction, insufficient carrier dimension, context/correlation requirement, or dynamic incompatibility.</div>
+<p>Those are mathematically different failure modes.</p>
+
+<h2>30. A reusable approximate-QEC workflow</h2>
+<div class="formula">declare task algebra → form K → compute κ → estimate η → solve/estimate physical δ → test contextual correlations → build Auth<sub>ε</sub> → analyze degradation → inspect dimension and conditioning → record failure provenance.</div>
+
+<h2>31. What BM contributes here</h2>
+<p>Approximate QEC, operator systems, commutants, channel norms, and semidefinite recovery are established mathematics.</p>
+<div class="callout">The BM synthesis is to keep three layers separate—algebraic defect, geometric distance to exact correctability, and physical CPTP recovery error—then place them inside one receiver-relative task structure. This prevents a common collapse where “almost commuting,” “almost correctable,” and “physically recoverable with small error” are treated as synonyms.</div>
+
+<h2>32. The main open theorem</h2>
+<p>The most valuable next mathematical step is a rigorous stability result that converts algebraic defect into physical recovery quality under explicit assumptions.</p>
+<div class="formula">goal: κ or η small + stated hypotheses ⇒ δ<sub>A</sub> quantitatively small.</div>
+<p>The constants should expose their dependence on dimension, algebra structure, conditioning, and the chosen norm.</p>
+
+<h2>33. Open directions</h2>
+<p>Further directions include approximate no-broadcasting inequalities, efficient recovery-defect computation for large many-body systems, local-to-global approximate QEC, adaptive task downgrading, robustness under correlated noise, and semantic-width bounds for approximate quantum carriers.</p>
+<p>The next natural page is Maximal Recoverable Quantum Passports.</p>
+
+</div></article>
+
+<section class="next"><div class="wrap">
+<span class="eyebrow">Continue</span>
+<h2 style="font-size:clamp(2rem,5vw,3.4rem);line-height:1.04;letter-spacing:-.035em;margin:.7rem 0 .9rem">Related research</h2>
+<div class="next-grid">
+<a class="card" href="/research/maximal-recoverable-quantum-passports/"><small>Exact structure</small><h3>Maximal Recoverable Quantum Passports</h3><p>Develop the maximal exact task algebra, degradation order, and receiver-relative surviving capability.</p></a>
+<a class="card" href="/research/quantum-graceful-degradation/"><small>Degradation</small><h3>Quantum Graceful Degradation</h3><p>Return to exact capability lattices, task downgrading, and access-structure changes.</p></a>
+<a class="card" href="/research/quantum-task-recovery/"><small>QEC</small><h3>Quantum Task Recovery</h3><p>Review the exact OAQEC criterion, authorized sets, and task-relative erasure distance.</p></a>
+</div>
+</div></section>
+</main>
+
+<footer><div class="wrap footer-grid">
+<div><div class="brand"><span class="mark">BM</span><span>Branch Mathematics</span></div><div>Mathematics of necessary distinctions.</div></div>
+<div class="footer-links"><a href="/learn/">Learn</a><a href="/research/">Research</a><a href="/applications/">Applications</a><a href="/reference/">Reference</a><a href="/book/">Book</a></div>
+</div></footer>
+</body>
+</html>
