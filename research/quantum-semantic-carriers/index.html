@@ -1,0 +1,1307 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Quantum Semantic Carriers | Branch Mathematics</title>
+  <meta name="description" content="A technical Branch Mathematics treatment of quantum semantic carriers: task-relative observables, Heisenberg factorization, operator systems, carrier dimension bounds, local collars, access geometry, correlations, and physical CPTP realization." />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <link rel="canonical" href="https://branch-mathematics-bm.github.io/research/quantum-semantic-carriers/" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Quantum Semantic Carriers" />
+  <meta property="og:description" content="Task-relative observable preservation, operator-system carriers, dimensional lower bounds, local quantum collars, and physical realization." />
+  <meta property="og:url" content="https://branch-mathematics-bm.github.io/research/quantum-semantic-carriers/" />
+  <meta property="og:site_name" content="Branch Mathematics" />
+
+  <meta name="theme-color" content="#07111f" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"TechArticle",
+    "headline":"Quantum Semantic Carriers",
+    "description":"A technical treatment of task-relative quantum representation in Branch Mathematics.",
+    "mainEntityOfPage":"https://branch-mathematics-bm.github.io/research/quantum-semantic-carriers/",
+    "isPartOf":{
+      "@type":"WebSite",
+      "name":"Branch Mathematics",
+      "url":"https://branch-mathematics-bm.github.io/"
+    }
+  }
+  </script>
+
+  <style>
+    :root{
+      --bg:#07111f;
+      --text:#eef5ff;
+      --muted:#aabbd0;
+      --accent:#7bdcff;
+      --accent2:#b39cff;
+      --green:#7ef0c5;
+      --warn:#ffd98c;
+      --red:#ff9d9d;
+      --max:1160px;
+      --read:860px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 10% -5%,rgba(123,220,255,.11),transparent 28rem),
+        radial-gradient(circle at 90% 4%,rgba(179,156,255,.08),transparent 24rem),
+        linear-gradient(180deg,#06101d,#07111f 45%,#081422);
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height:1.72;
+    }
+
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(calc(100% - 2rem),var(--max));margin-inline:auto}
+    .read{width:min(100%,var(--read));margin-inline:auto}
+
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter:blur(18px);
+      background:rgba(7,17,31,.84);
+      border-bottom:1px solid rgba(123,220,255,.12);
+    }
+
+    .nav{
+      min-height:72px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:.75rem;
+      font-weight:760;
+      white-space:nowrap;
+    }
+
+    .mark{
+      width:34px;
+      height:34px;
+      border-radius:11px;
+      border:1px solid rgba(123,220,255,.5);
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg,rgba(123,220,255,.2),rgba(179,156,255,.12));
+    }
+
+    .navlinks{display:flex;gap:.15rem;flex-wrap:wrap;justify-content:flex-end}
+    .navlinks a{
+      color:var(--muted);
+      padding:.55rem .68rem;
+      border-radius:10px;
+      font-size:.93rem;
+    }
+
+    .navlinks a:hover,.navlinks a[aria-current="page"]{
+      color:var(--text);
+      background:rgba(255,255,255,.05);
+    }
+
+    .breadcrumbs{
+      padding:1.2rem 0 0;
+      color:#8397af;
+      font-size:.9rem;
+    }
+
+    .hero{
+      padding:4.6rem 0 4rem;
+      border-bottom:1px solid rgba(123,220,255,.1);
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      padding:.42rem .7rem;
+      border-radius:999px;
+      border:1px solid rgba(123,220,255,.3);
+      background:rgba(123,220,255,.06);
+      color:#c5efff;
+      font-size:.82rem;
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    h1{
+      font-size:clamp(3rem,7vw,5.6rem);
+      line-height:.96;
+      letter-spacing:-.05em;
+      margin:1rem 0 1.15rem;
+      max-width:14ch;
+    }
+
+    .hero .lead{
+      font-size:clamp(1.08rem,2vw,1.3rem);
+      color:#c4d4e6;
+      max-width:950px;
+      margin:0 0 1.5rem;
+    }
+
+    .meta{
+      display:flex;
+      gap:.55rem;
+      flex-wrap:wrap;
+      margin-top:1.2rem;
+    }
+
+    .tag{
+      display:inline-flex;
+      padding:.42rem .66rem;
+      border-radius:999px;
+      font-size:.76rem;
+      font-weight:800;
+      letter-spacing:.06em;
+      border:1px solid rgba(111,151,193,.24);
+      background:rgba(255,255,255,.025);
+      color:#d8e7f7;
+    }
+
+    .tag.cand{
+      border-color:rgba(255,217,140,.25);
+      background:rgba(255,217,140,.035);
+      color:#f7e8c7;
+    }
+
+    .tag.classic{
+      border-color:rgba(179,156,255,.26);
+      background:rgba(179,156,255,.04);
+      color:#ece5ff;
+    }
+
+    .abstract{
+      margin-top:1.7rem;
+      padding:1.3rem 1.4rem;
+      border:1px solid rgba(123,220,255,.22);
+      border-radius:20px;
+      background:linear-gradient(145deg,rgba(123,220,255,.05),rgba(179,156,255,.025));
+    }
+
+    .abstract strong{display:block;margin-bottom:.35rem;color:#def6ff}
+    .abstract p{margin:0;color:#c3d3e4}
+
+    .article{padding:4.8rem 0 5rem}
+
+    .article h2{
+      font-size:clamp(2rem,5vw,3.15rem);
+      line-height:1.05;
+      letter-spacing:-.035em;
+      margin:3.3rem 0 1rem;
+    }
+
+    .article h3{
+      font-size:1.35rem;
+      line-height:1.25;
+      margin:2.2rem 0 .7rem;
+    }
+
+    .article p{
+      color:#c4d2e2;
+      font-size:1.035rem;
+      margin:0 0 1.15rem;
+    }
+
+    .formula{
+      margin:1.4rem 0;
+      padding:1.05rem 1.15rem;
+      border-left:3px solid var(--accent);
+      background:rgba(123,220,255,.055);
+      border-radius:0 14px 14px 0;
+      color:#e0f1ff;
+      font-family:"Cambria Math","Times New Roman",serif;
+      font-size:1.08rem;
+      overflow:auto;
+    }
+
+    .theorem{
+      margin:1.7rem 0 2rem;
+      padding:1.35rem;
+      border:1px solid rgba(126,240,197,.24);
+      border-radius:20px;
+      background:linear-gradient(145deg,rgba(126,240,197,.04),rgba(255,255,255,.012));
+    }
+
+    .theorem .head{
+      display:flex;
+      align-items:center;
+      gap:.55rem;
+      flex-wrap:wrap;
+      margin-bottom:.55rem;
+    }
+
+    .theorem .head strong{
+      font-size:1.08rem;
+      color:#e7fff5;
+    }
+
+    .theorem .mini{
+      padding:.25rem .5rem;
+      border-radius:999px;
+      border:1px solid rgba(126,240,197,.28);
+      color:#c7f9e7;
+      font-size:.72rem;
+      font-weight:800;
+      letter-spacing:.06em;
+    }
+
+    .theorem p{margin:.45rem 0;color:#cbd9e6}
+
+    .firewall{
+      margin:1.7rem 0;
+      padding:1.2rem 1.3rem;
+      border-radius:18px;
+      border:1px solid rgba(255,157,157,.2);
+      background:rgba(255,157,157,.035);
+      color:#f1cccc;
+    }
+
+    .firewall strong{color:#ffd6d6}
+
+    .callout{
+      margin:1.7rem 0;
+      padding:1.2rem 1.3rem;
+      border-radius:18px;
+      border:1px solid rgba(255,217,140,.22);
+      background:rgba(255,217,140,.04);
+      color:#eadfc9;
+    }
+
+    .compare{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:1rem;
+      margin:1.4rem 0 2rem;
+    }
+
+    .compare .box{
+      border:1px solid rgba(111,151,193,.22);
+      border-radius:18px;
+      background:rgba(255,255,255,.02);
+      padding:1.2rem;
+    }
+
+    .compare h3{margin-top:0}
+    .compare p{font-size:.96rem;margin-bottom:0}
+
+    .example{
+      margin:1.6rem 0 2rem;
+      padding:1.35rem;
+      border-radius:20px;
+      border:1px solid rgba(179,156,255,.22);
+      background:linear-gradient(145deg,rgba(179,156,255,.04),rgba(255,255,255,.015));
+    }
+
+    .example h3{margin-top:0;color:#efe8ff}
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin:1.25rem 0 1.9rem;
+      border:1px solid rgba(111,151,193,.22);
+      background:rgba(255,255,255,.015);
+    }
+
+    th,td{
+      padding:.82rem;
+      border-bottom:1px solid rgba(111,151,193,.16);
+      text-align:left;
+      vertical-align:top;
+    }
+
+    th{
+      color:#dff7ff;
+      background:rgba(123,220,255,.055);
+      font-size:.92rem;
+    }
+
+    td{
+      color:#c4d2e2;
+      font-size:.94rem;
+    }
+
+    .next{
+      padding:4.5rem 0;
+      border-top:1px solid rgba(123,220,255,.1);
+      background:#050d18;
+    }
+
+    .next-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:1rem;
+      margin-top:1.6rem;
+    }
+
+    .card{
+      min-height:100%;
+      padding:1.2rem;
+      border-radius:20px;
+      border:1px solid rgba(111,151,193,.2);
+      background:rgba(255,255,255,.02);
+      transition:.2s ease;
+    }
+
+    .card:hover{
+      transform:translateY(-2px);
+      border-color:rgba(123,220,255,.42);
+      background:rgba(123,220,255,.04);
+    }
+
+    .card small{
+      color:var(--accent);
+      font-size:.75rem;
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .card h3{margin:.5rem 0 .45rem}
+    .card p{color:var(--muted);font-size:.93rem;margin:0}
+
+    footer{
+      padding:3rem 0;
+      border-top:1px solid rgba(255,255,255,.07);
+      background:#040a12;
+      color:#8fa3ba;
+    }
+
+    .footer-grid{
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:1rem;
+      align-items:end;
+    }
+
+    .footer-links{
+      display:flex;
+      gap:.7rem;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    @media(max-width:900px){
+      .navlinks{display:none}
+      .next-grid{grid-template-columns:1fr}
+    }
+
+    @media(max-width:620px){
+      .hero{padding-top:3rem}
+      .compare{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr}
+      .footer-links{justify-content:flex-start}
+      th,td{font-size:.87rem}
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="/" aria-label="Branch Mathematics home">
+      <span class="mark">BM</span>
+      <span>Branch Mathematics</span>
+    </a>
+
+    <nav class="navlinks" aria-label="Primary navigation">
+      <a href="/learn/">Learn</a>
+      <a href="/research/" aria-current="page">Research</a>
+      <a href="/applications/">Applications</a>
+      <a href="/examples/">Examples</a>
+      <a href="/calculator/">Calculator</a>
+      <a href="/reference/">Reference</a>
+      <a href="/book/">Book</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <div class="wrap breadcrumbs">
+    <a href="/">Home</a> / <a href="/research/">Research</a> / Quantum Semantic Carriers
+  </div>
+
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Quantum systems</span>
+      <h1>Quantum Semantic Carriers</h1>
+
+      <p class="lead">
+        A quantum representation need not preserve the full state when the receiver only requires a declared family of observables or correlations. The carrier must preserve exactly the quantum structure needed by that task—and it must do so through physically admissible quantum channels.
+      </p>
+
+      <div class="meta">
+        <span class="tag cand">Volume II development</span>
+        <span class="tag classic">Uses classical quantum information, operator systems, and QEC</span>
+      </div>
+
+      <div class="abstract">
+        <strong>Abstract</strong>
+        <p>
+          A quantum semantic carrier is a task-relative quantum representation whose Heisenberg adjoint preserves the declared observable system and required correlations. If a task operator system S_A^ctx must factor through a k-dimensional quantum carrier, then the carrier operator space has dimension at most k², giving the lower bound log₂k ≥ ½log₂dim(S_A^ctx). Exact locality can reduce the required operator system to a backward circuit collar, while Lieb–Robinson-type estimates can support approximate collars under native assumptions. Abstract operator recovery is not enough: physical closure and recovery require completely positive trace-preserving channels. This page develops exact carriers, contextual operator systems, dimensional bounds, local quantum collars, correlation preservation, access structure, and the firewall between task-relative quantum width and entanglement entropy.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <article class="article">
+    <div class="read">
+
+      <h2>1. What must a quantum carrier preserve?</h2>
+
+      <p>
+        Let the native quantum system have Hilbert space:
+      </p>
+
+      <div class="formula">
+        H.
+      </div>
+
+      <p>
+        A receiver may not need arbitrary state reconstruction. It may need expectation values of a declared family of observables:
+      </p>
+
+      <div class="formula">
+        X∈S,
+      </div>
+
+      <p>
+        where <strong>S</strong> is an operator system or task algebra selected by the Passport.
+      </p>
+
+      <p>
+        The representation problem becomes:
+      </p>
+
+      <div class="formula">
+        preserve the declared observable response,
+        not automatically the full density operator.
+      </div>
+
+      <h2>2. Schrödinger and Heisenberg views</h2>
+
+      <p>
+        Let:
+      </p>
+
+      <div class="formula">
+        E:B(H)→B(K)
+      </div>
+
+      <p>
+        denote a quantum channel from the native system to a carrier Hilbert space <strong>K</strong>.
+      </p>
+
+      <p>
+        In the Schrödinger picture, <strong>E</strong> acts on states. In the Heisenberg picture, its adjoint:
+      </p>
+
+      <div class="formula">
+        E<sup>*</sup>:B(K)→B(H)
+      </div>
+
+      <p>
+        acts on observables.
+      </p>
+
+      <p>
+        Exact task sufficiency asks whether each required native observable can be represented through the carrier adjoint.
+      </p>
+
+      <h2>3. Heisenberg factorization</h2>
+
+      <div class="theorem">
+        <div class="head">
+          <strong>Task Observable Factorization</strong>
+          <span class="mini">Quantum BM placement</span>
+        </div>
+
+        <p>
+          For every declared task observable <strong>X∈S</strong>, exact carrier sufficiency requires a carrier observable <strong>Y<sub>X</sub>∈B(K)</strong> such that:
+        </p>
+
+        <div class="formula">
+          E<sup>*</sup>(Y<sub>X</sub>)=X.
+        </div>
+
+        <p>
+          Equivalently:
+        </p>
+
+        <div class="formula">
+          S⊆im(E<sup>*</sup>).
+        </div>
+      </div>
+
+      <p>
+        Then every carrier state <strong>E(ρ)</strong> contains enough information to reproduce the expectation of every task observable in <strong>S</strong>.
+      </p>
+
+      <h2>4. Full-state recovery is stronger</h2>
+
+      <p>
+        If <strong>S=B(H)</strong>, the task asks for the entire observable algebra and therefore full quantum information.
+      </p>
+
+      <p>
+        If <strong>S</strong> is a proper operator subsystem, the task can be strictly weaker.
+      </p>
+
+      <div class="compare">
+        <div class="box">
+          <h3>Full-state carrier</h3>
+          <p>
+            Must preserve all observables of the logical system.
+          </p>
+        </div>
+
+        <div class="box">
+          <h3>Task-relative carrier</h3>
+          <p>
+            Must preserve only the declared observable system and any required contextual correlations.
+          </p>
+        </div>
+      </div>
+
+      <h2>5. Why correlations must be declared explicitly</h2>
+
+      <p>
+        Preserving local expectation values does not automatically preserve every joint correlation with another subsystem.
+      </p>
+
+      <p>
+        If the receiver task depends on observables:
+      </p>
+
+      <div class="formula">
+        X<sub>A</sub>⊗Z<sub>C</sub>,
+      </div>
+
+      <p>
+        then the Passport must include the relevant joint operator system, not merely the local span of <strong>X<sub>A</sub></strong>.
+      </p>
+
+      <div class="firewall">
+        <strong>Permanent firewall:</strong> local quantum sufficiency does not imply joint continuation sufficiency.
+      </div>
+
+      <h2>6. Contextual operator system</h2>
+
+      <p>
+        Let:
+      </p>
+
+      <div class="formula">
+        S<sub>A</sub><sup>ctx</sup>
+      </div>
+
+      <p>
+        denote the linear operator system generated by every observable on subsystem <strong>A</strong> whose expectation or correlation can affect an allowed receiver context.
+      </p>
+
+      <p>
+        This is the quantum analogue of a contextual semantic profile.
+      </p>
+
+      <div class="formula">
+        more allowed contexts
+        ⇒
+        potentially larger S<sub>A</sub><sup>ctx</sup>.
+      </div>
+
+      <h2>7. Carrier dimension lower bound</h2>
+
+      <p>
+        Suppose the carrier Hilbert space has dimension:
+      </p>
+
+      <div class="formula">
+        dim(K)=k.
+      </div>
+
+      <p>
+        Then:
+      </p>
+
+      <div class="formula">
+        dim B(K)=k².
+      </div>
+
+      <div class="theorem">
+        <div class="head">
+          <strong>Contextual Operator-System Dimension Bound</strong>
+          <span class="mini">Volume II</span>
+        </div>
+
+        <p>
+          If the task operator system factors through the Heisenberg image of a k-dimensional carrier, then:
+        </p>
+
+        <div class="formula">
+          dim(S<sub>A</sub><sup>ctx</sup>)≤k².
+        </div>
+
+        <p>
+          Hence:
+        </p>
+
+        <div class="formula">
+          log₂k
+          ≥
+          ½ log₂ dim(S<sub>A</sub><sup>ctx</sup>).
+        </div>
+      </div>
+
+      <p>
+        This is a structural lower bound on exact carrier size.
+      </p>
+
+      <h2>8. The bound is not always tight</h2>
+
+      <p>
+        The dimension inequality only says the carrier operator space is large enough linearly.
+      </p>
+
+      <p>
+        It does not guarantee:
+      </p>
+
+      <p>
+        complete positivity, correct multiplicative structure, preservation of joint correlations, locality, or existence of a suitable physical encoding.
+      </p>
+
+      <div class="firewall">
+        <strong>Firewall:</strong> operator-space dimension sufficiency is not physical carrier sufficiency.
+      </div>
+
+      <h2>9. Physical carrier maps must be CPTP</h2>
+
+      <p>
+        A physically admissible state encoding must be a completely positive trace-preserving map.
+      </p>
+
+      <div class="formula">
+        E CPTP.
+      </div>
+
+      <p>
+        This restriction matters because abstract linear factorizations can exist even when no quantum channel realizes them.
+      </p>
+
+      <div class="firewall">
+        <strong>Permanent firewall:</strong> algebraic or operator recovery does not imply CPTP recovery.
+      </div>
+
+      <h2>10. Quantum dynamic closure</h2>
+
+      <p>
+        Let:
+      </p>
+
+      <div class="formula">
+        Φ
+      </div>
+
+      <p>
+        be the native quantum channel and:
+      </p>
+
+      <div class="formula">
+        E
+      </div>
+
+      <p>
+        the carrier encoding.
+      </p>
+
+      <p>
+        Exact physical closure asks whether there is a CPTP carrier evolution:
+      </p>
+
+      <div class="formula">
+        Ψ
+      </div>
+
+      <p>
+        satisfying:
+      </p>
+
+      <div class="formula">
+        ΨE=EΦ.
+      </div>
+
+      <p>
+        This is the quantum analogue of exact dynamic closure with the added requirement of complete positivity and trace preservation.
+      </p>
+
+      <h2>11. Choi feasibility in finite dimension</h2>
+
+      <p>
+        In finite-dimensional quantum systems, existence of <strong>Ψ</strong> can be written as a semidefinite feasibility problem in the Choi matrix of the candidate channel.
+      </p>
+
+      <p>
+        The constraints are:
+      </p>
+
+      <div class="formula">
+        J(Ψ)≥0,
+        &nbsp;
+        Tr<sub>out</sub>J(Ψ)=I,
+        &nbsp;
+        ΨE=EΦ.
+      </div>
+
+      <p>
+        Thus exact physical closure is algorithmically checkable in finite explicit models through standard semidefinite machinery.
+      </p>
+
+      <h2>12. Range invariance is not enough</h2>
+
+      <p>
+        It is tempting to ask only whether:
+      </p>
+
+      <div class="formula">
+        EΦ(ρ)
+      </div>
+
+      <p>
+        lies in the carrier state range whenever <strong>E(ρ)</strong> does.
+      </p>
+
+      <p>
+        But setwise range invariance does not guarantee a linear CPTP update on the entire carrier state space.
+      </p>
+
+      <div class="firewall">
+        <strong>Firewall:</strong> range invariance is weaker than CPTP dynamic closure.
+      </div>
+
+      <h2>13. CPTP right inverse as a sufficient special case</h2>
+
+      <p>
+        If the encoding <strong>E</strong> admits a CPTP right inverse <strong>R</strong> on the relevant carrier range:
+      </p>
+
+      <div class="formula">
+        ER = id,
+      </div>
+
+      <p>
+        then:
+      </p>
+
+      <div class="formula">
+        Ψ=EΦR
+      </div>
+
+      <p>
+        is a sufficient construction for a physical carrier evolution on that range.
+      </p>
+
+      <p>
+        This is a useful special case, not a necessary condition in general.
+      </p>
+
+      <h2>14. Approximate physical closure</h2>
+
+      <p>
+        When exact closure fails, define the physical closure defect:
+      </p>
+
+      <div class="formula">
+        δ<sub>Q</sub>
+        =
+        min<sub>Ψ CPTP</sub>
+        ||EΦ-ΨE||<sub>⋄</sub>.
+      </div>
+
+      <p>
+        In finite dimension, the feasible CPTP set is compact and the objective continuous, so the minimum is attained.
+      </p>
+
+      <p>
+        This defect is a physical channel-level quantity, distinct from an algebraic commutator defect.
+      </p>
+
+      <h2>15. Local quantum task support</h2>
+
+      <p>
+        Let the declared task observables be supported on region <strong>A</strong> of a many-body quantum system.
+      </p>
+
+      <p>
+        Under local dynamics, only a backward causal collar can influence them within a finite horizon.
+      </p>
+
+      <div class="formula">
+        task support at final time
+        →
+        backward Heisenberg support at initial time.
+      </div>
+
+      <p>
+        The relevant carrier therefore need not preserve observables outside that collar when the native dynamics prove they cannot affect the task.
+      </p>
+
+      <h2>16. Exact local circuit collar</h2>
+
+      <p>
+        In a bounded-depth local quantum circuit, Heisenberg evolution of a local observable expands support only through gates in its exact backward light cone.
+      </p>
+
+      <div class="theorem">
+        <div class="head">
+          <strong>Exact Quantum Collar Principle</strong>
+          <span class="mini">Classical circuit locality + BM placement</span>
+        </div>
+
+        <p>
+          For a local task observable after bounded-depth local circuit evolution, degrees of freedom outside its exact backward circuit cone do not affect that task.
+        </p>
+      </div>
+
+      <p>
+        BM uses this to restrict the contextual operator system before sizing a carrier.
+      </p>
+
+      <h2>17. Approximate quantum collar</h2>
+
+      <p>
+        For local Hamiltonian evolution, exact support spreads immediately in many formulations, but Lieb–Robinson-type bounds can suppress influence outside an effective cone.
+      </p>
+
+      <div class="formula">
+        ||[A(t),B]||
+        ≲
+        C e<sup>−μ(d−vt)</sup>.
+      </div>
+
+      <p>
+        Under the native theorem's assumptions, one may choose a tolerance-dependent collar:
+      </p>
+
+      <div class="formula">
+        d
+        ≳
+        vt
+        +
+        μ<sup>−1</sup>log(C/ε).
+      </div>
+
+      <p>
+        The resulting quantum carrier is approximate and horizon-dependent.
+      </p>
+
+      <h2>18. Locality can reduce carrier size dramatically</h2>
+
+      <p>
+        If the native system has <strong>N</strong> qubits but the task-active collar contains only <strong>m</strong> qubits, then the relevant task operator system lives inside:
+      </p>
+
+      <div class="formula">
+        B((C²)<sup>⊗m</sup>)
+      </div>
+
+      <p>
+        rather than the full <strong>2<sup>N</sup></strong>-dimensional Hilbert space.
+      </p>
+
+      <p>
+        The task-relative carrier burden can therefore be controlled by the active collar rather than total system size.
+      </p>
+
+      <h2>19. Correlation closure can enlarge the collar</h2>
+
+      <p>
+        A receiver may ask not only for local observables on <strong>A</strong> but also correlations with a reference, environment, or neighboring subsystem.
+      </p>
+
+      <p>
+        Then the contextual operator system can grow beyond the naively local span.
+      </p>
+
+      <div class="formula">
+        local task support
+        +
+        required correlations
+        =
+        larger contextual quantum Passport.
+      </div>
+
+      <p>
+        This is why the allowed context must be part of the carrier specification.
+      </p>
+
+      <h2>20. Access structures</h2>
+
+      <p>
+        In a distributed quantum system, let a subset <strong>S</strong> of physical subsystems be authorized if it can recover the declared task algebra or operator system.
+      </p>
+
+      <div class="formula">
+        Auth
+        =
+        {S : declared quantum task recoverable from S}.
+      </div>
+
+      <p>
+        This is the quantum access structure induced by the Passport.
+      </p>
+
+      <p>
+        It can be much weaker than requiring full logical-state recovery.
+      </p>
+
+      <h2>21. Task-relative quantum error correction</h2>
+
+      <p>
+        Suppose a code projector is <strong>P</strong> and error operators are <strong>E<sub>a</sub></strong>.
+      </p>
+
+      <p>
+        An operator algebra <strong>A</strong> is exactly correctable when:
+      </p>
+
+      <div class="formula">
+        [P E<sub>a</sub>†E<sub>b</sub>P, X]=0
+        &nbsp;
+        for all X∈A.
+      </div>
+
+      <p>
+        This is established operator-algebra quantum error correction.
+      </p>
+
+      <p>
+        BM uses it to define which task observables survive a given erasure or noise pattern.
+      </p>
+
+      <h2>22. A simple task-relative example</h2>
+
+      <div class="example">
+        <h3>Preserve logical Z, not the full qubit</h3>
+
+        <p>
+          A two-qubit repetition encoding:
+        </p>
+
+        <div class="formula">
+          |0<sub>L</sub>⟩=|00⟩,
+          &nbsp;
+          |1<sub>L</sub>⟩=|11⟩
+        </div>
+
+        <p>
+          can preserve the logical classical <strong>Z</strong> observable under loss of one qubit, because either remaining qubit still distinguishes the code basis states.
+        </p>
+
+        <p>
+          It does not preserve an arbitrary logical qubit under one erasure.
+        </p>
+
+        <div class="formula">
+          task-relative recovery
+          can succeed
+          while full quantum-state recovery fails.
+        </div>
+      </div>
+
+      <h2>23. Quantum no-broadcasting changes the distributed geometry</h2>
+
+      <p>
+        Classical task information can often be duplicated freely.
+      </p>
+
+      <p>
+        A noncommutative quantum algebra cannot generally be broadcast into two disjoint exact carriers.
+      </p>
+
+      <div class="theorem">
+        <div class="head">
+          <strong>No-Broadcast Access Constraint</strong>
+          <span class="mini">Classical theorem + BM placement</span>
+        </div>
+
+        <p>
+          If two disjoint subsystems both exactly recover the same finite-dimensional C*-algebra, then that recoverable algebra must be commutative.
+        </p>
+      </div>
+
+      <p>
+        Thus a genuinely quantum noncommutative task induces an intersecting geometry of authorized sets.
+      </p>
+
+      <div class="firewall">
+        <strong>Firewall:</strong> classical route redundancy cannot be imported unchanged into quantum carriers.
+      </div>
+
+      <h2>24. Threshold consequence</h2>
+
+      <p>
+        For a symmetric threshold access structure with <strong>m</strong> shares and threshold <strong>k</strong>, if every <strong>k</strong>-subset exactly recovers a genuinely noncommutative task algebra, disjoint authorized sets must be impossible.
+      </p>
+
+      <p>
+        Therefore:
+      </p>
+
+      <div class="formula">
+        2k&gt;m.
+      </div>
+
+      <p>
+        This is the familiar no-cloning/no-broadcasting geometry expressed at the task-algebra level.
+      </p>
+
+      <h2>25. Quantum semantic width is not entanglement entropy</h2>
+
+      <p>
+        Entanglement entropy measures a state-dependent bipartite quantum correlation quantity.
+      </p>
+
+      <p>
+        Quantum semantic width measures task-relative carrier burden under a declared observable system, context, tolerance, and physical realization class.
+      </p>
+
+      <div class="firewall">
+        <strong>Permanent firewall:</strong> entanglement entropy and quantum semantic width are different quantities.
+      </div>
+
+      <p>
+        They can correlate in special theorems, but neither should be substituted for the other generically.
+      </p>
+
+      <h2>26. Exact carrier size and approximate carrier size</h2>
+
+      <div class="compare">
+        <div class="box">
+          <h3>Exact carrier</h3>
+          <p>
+            Must reproduce the declared task observables and correlations exactly.
+          </p>
+        </div>
+
+        <div class="box">
+          <h3>Approximate carrier</h3>
+          <p>
+            May approximate them within a declared norm and tolerance, but must still satisfy CPTP physicality and causal compatibility.
+          </p>
+        </div>
+      </div>
+
+      <h2>27. Approximate algebraic versus physical defect</h2>
+
+      <p>
+        In approximate operator-algebra recovery, one can measure how far task observables fail to commute with the compressed error operator system.
+      </p>
+
+      <p>
+        Let:
+      </p>
+
+      <div class="formula">
+        K
+        =
+        span{P E<sub>a</sub>†E<sub>b</sub>P}.
+      </div>
+
+      <p>
+        An algebraic commutator defect:
+      </p>
+
+      <div class="formula">
+        κ
+      </div>
+
+      <p>
+        can be compared with distance:
+      </p>
+
+      <div class="formula">
+        η
+      </div>
+
+      <p>
+        to the exact commutant, with finite-dimensional bounds of the form:
+      </p>
+
+      <div class="formula">
+        η≤κ≤2η.
+      </div>
+
+      <p>
+        But neither quantity is automatically the optimal physical recovery error.
+      </p>
+
+      <div class="firewall">
+        <strong>Permanent firewall:</strong> approximate algebraic closeness and optimal CPTP recovery defect are distinct.
+      </div>
+
+      <h2>28. Perturbation stability of physical recovery defect</h2>
+
+      <p>
+        Let:
+      </p>
+
+      <div class="formula">
+        δ<sub>A</sub>(N)
+      </div>
+
+      <p>
+        denote the optimal physical recovery defect for task algebra <strong>A</strong> under channel <strong>N</strong>.
+      </p>
+
+      <p>
+        Under the declared diamond-norm formulation:
+      </p>
+
+      <div class="formula">
+        |δ<sub>A</sub>(N)-δ<sub>A</sub>(M)|
+        ≤
+        ||N-M||<sub>⋄</sub>.
+      </div>
+
+      <p>
+        This gives a robust continuity statement for approximate task recovery.
+      </p>
+
+      <h2>29. No unique greatest approximate task algebra in general</h2>
+
+      <p>
+        Exact recoverable algebras have a clean lattice structure.
+      </p>
+
+      <p>
+        At positive tolerance, two different approximate task algebras can each be admissible without one containing the other.
+      </p>
+
+      <div class="formula">
+        approximate capability family
+        can be downward closed
+        without a unique greatest element.
+      </div>
+
+      <p>
+        Approximate quantum degradation is therefore naturally multi-objective and partially ordered.
+      </p>
+
+      <h2>30. A reusable quantum-carrier workflow</h2>
+
+      <p>
+        A practical BM analysis proceeds as:
+      </p>
+
+      <div class="formula">
+        declare task observables
+        →
+        close under required contexts/correlations
+        →
+        identify task-active causal collar
+        →
+        bound operator-system dimension
+        →
+        test CPTP encoding
+        →
+        test dynamic closure/recovery
+        →
+        analyze access geometry
+        →
+        quantify approximation and robustness.
+      </div>
+
+      <h2>31. What BM contributes here</h2>
+
+      <p>
+        Operator systems, C*-algebras, quantum channels, OAQEC, no-broadcasting, Lieb–Robinson bounds, and semidefinite channel tests are established quantum mathematics.
+      </p>
+
+      <p>
+        The BM synthesis is:
+      </p>
+
+      <div class="callout">
+        define the quantum representation by the receiver's required observable system and contexts; separate full-state recovery from task recovery; derive carrier lower bounds from contextual operator dimension; restrict carriers using native locality; preserve CPTP physicality; and connect recovery, access geometry, and graceful degradation inside one Passport structure.
+      </div>
+
+      <h2>32. Open directions</h2>
+
+      <p>
+        Major open directions include tight carrier-dimension bounds beyond linear dimension counting, context-dependent correlation closure, dimension-aware conversion from algebraic defect to physical recovery error, approximate no-broadcasting tradeoffs, local many-body carrier scaling, and scalable synthesis of minimal physically admissible quantum carriers.
+      </p>
+
+      <p>
+        The next natural research page is Quantum Error Correction for Observables Instead of Full States.
+      </p>
+
+    </div>
+  </article>
+
+  <section class="next">
+    <div class="wrap">
+      <span class="eyebrow">Continue</span>
+
+      <h2 style="font-size:clamp(2rem,5vw,3.4rem);line-height:1.04;letter-spacing:-.035em;margin:.7rem 0 .9rem">
+        Related research
+      </h2>
+
+      <div class="next-grid">
+        <a class="card" href="/research/quantum-task-recovery/">
+          <small>Quantum error correction</small>
+          <h3>Quantum Task Recovery</h3>
+          <p>Develop authorized sets, erasure distance, operator-algebra correction, and task-specific protection in detail.</p>
+        </a>
+
+        <a class="card" href="/research/quantum-no-broadcasting/">
+          <small>Access geometry</small>
+          <h3>No-Broadcasting and Quantum Access</h3>
+          <p>Study intersecting authorized families, threshold constraints, and distributed quantum task geometry.</p>
+        </a>
+
+        <a class="card" href="/research/many-body-semantic-locality/">
+          <small>Many-body</small>
+          <h3>Many-Body Semantic Locality</h3>
+          <p>Return to task collars, clusters, weak coupling, and semantic area-law scaling.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div>
+      <div class="brand" style="margin-bottom:.5rem">
+        <span class="mark">BM</span>
+        <span>Branch Mathematics</span>
+      </div>
+      <div>Mathematics of necessary distinctions.</div>
+    </div>
+
+    <div class="footer-links">
+      <a href="/learn/">Learn</a>
+      <a href="/research/">Research</a>
+      <a href="/applications/">Applications</a>
+      <a href="/reference/">Reference</a>
+      <a href="/book/">Book</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
