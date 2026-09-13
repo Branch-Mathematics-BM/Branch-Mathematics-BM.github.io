@@ -1,0 +1,937 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Recovery After Compression | Branch Mathematics</title>
+  <meta name="description" content="Learn when a distinction lost during compression can and cannot be recovered. Branch Mathematics separates deterministic memory, later observation, context revelation, reacquisition, path lifting, and task-relative recovery." />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <link rel="canonical" href="https://branch-mathematics-bm.github.io/learn/recovery-after-compression/" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Recovery After Compression" />
+  <meta property="og:description" content="What happens after a representation discards a distinction—and when can that distinction become available again?" />
+  <meta property="og:url" content="https://branch-mathematics-bm.github.io/learn/recovery-after-compression/" />
+  <meta property="og:site_name" content="Branch Mathematics" />
+
+  <meta name="theme-color" content="#07111f" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"Recovery After Compression",
+    "description":"An introduction to recovery and reacquisition in Branch Mathematics, including deterministic memory limits, external observation, path lifting, causal cuts, and task-relative recovery.",
+    "mainEntityOfPage":"https://branch-mathematics-bm.github.io/learn/recovery-after-compression/",
+    "isPartOf":{
+      "@type":"WebSite",
+      "name":"Branch Mathematics",
+      "url":"https://branch-mathematics-bm.github.io/"
+    }
+  }
+  </script>
+
+  <style>
+    :root{
+      --bg:#07111f;
+      --text:#eef5ff;
+      --muted:#aabbd0;
+      --line:#27415e;
+      --accent:#7bdcff;
+      --accent2:#b39cff;
+      --green:#7ef0c5;
+      --warn:#ffd98c;
+      --max:1120px;
+      --read:820px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 12% -5%,rgba(123,220,255,.12),transparent 28rem),
+        radial-gradient(circle at 88% 4%,rgba(179,156,255,.09),transparent 24rem),
+        linear-gradient(180deg,#06101d,#07111f 45%,#081422);
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height:1.7;
+    }
+
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(calc(100% - 2rem),var(--max));margin-inline:auto}
+    .read{width:min(100%,var(--read));margin-inline:auto}
+
+    .site-header{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:blur(18px);
+      background:rgba(7,17,31,.84);
+      border-bottom:1px solid rgba(123,220,255,.12);
+    }
+
+    .nav{
+      min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:1rem;
+    }
+
+    .brand{
+      display:flex;align-items:center;gap:.75rem;font-weight:760;white-space:nowrap;
+    }
+
+    .mark{
+      width:34px;height:34px;border-radius:11px;
+      border:1px solid rgba(123,220,255,.5);
+      display:grid;place-items:center;
+      background:linear-gradient(135deg,rgba(123,220,255,.2),rgba(179,156,255,.12));
+    }
+
+    .navlinks{display:flex;gap:.15rem;flex-wrap:wrap;justify-content:flex-end}
+    .navlinks a{
+      color:var(--muted);padding:.55rem .68rem;border-radius:10px;font-size:.93rem;
+    }
+    .navlinks a:hover,.navlinks a[aria-current="page"]{
+      color:var(--text);background:rgba(255,255,255,.05);
+    }
+
+    .breadcrumbs{padding:1.2rem 0 0;color:#8397af;font-size:.9rem}
+
+    .hero{
+      padding:4.2rem 0 4rem;
+      border-bottom:1px solid rgba(123,220,255,.1);
+    }
+
+    .eyebrow{
+      display:inline-flex;padding:.42rem .7rem;border-radius:999px;
+      border:1px solid rgba(123,220,255,.3);
+      background:rgba(123,220,255,.06);
+      color:#c5efff;
+      font-size:.82rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+    }
+
+    h1{
+      font-size:clamp(3rem,8vw,6rem);
+      line-height:.94;letter-spacing:-.055em;
+      margin:1rem 0 1.1rem;max-width:12ch;
+    }
+
+    .hero .lead{
+      font-size:clamp(1.08rem,2vw,1.34rem);
+      color:#c4d4e6;max-width:900px;margin:0 0 1.4rem;
+    }
+
+    .summary{
+      margin-top:1.6rem;padding:1.25rem 1.35rem;
+      border:1px solid rgba(123,220,255,.24);
+      border-radius:18px;
+      background:linear-gradient(145deg,rgba(123,220,255,.055),rgba(179,156,255,.03));
+    }
+
+    .article{padding:4.8rem 0 5rem}
+
+    .article h2{
+      font-size:clamp(2rem,5vw,3.2rem);
+      line-height:1.05;letter-spacing:-.035em;
+      margin:3.2rem 0 1rem;
+    }
+
+    .article h3{
+      font-size:1.35rem;line-height:1.25;margin:2rem 0 .7rem;
+    }
+
+    .article p{
+      color:#c4d2e2;font-size:1.04rem;margin:0 0 1.15rem;
+    }
+
+    .formula{
+      margin:1.4rem 0;padding:1rem 1.1rem;
+      border-left:3px solid var(--accent);
+      background:rgba(123,220,255,.055);
+      border-radius:0 14px 14px 0;
+      color:#e0f1ff;
+      font-family:"Cambria Math","Times New Roman",serif;
+      font-size:1.08rem;overflow:auto;
+    }
+
+    .quote{
+      margin:2rem 0;padding:1.4rem 1.5rem;
+      border:1px solid rgba(179,156,255,.24);
+      border-radius:18px;background:rgba(179,156,255,.045);
+      font-size:1.14rem;color:#e4e4ff;
+    }
+
+    .compare{
+      display:grid;grid-template-columns:1fr 1fr;
+      gap:1rem;margin:1.4rem 0 2rem;
+    }
+
+    .compare .box{
+      border:1px solid rgba(111,151,193,.22);
+      border-radius:18px;background:rgba(255,255,255,.02);
+      padding:1.2rem;
+    }
+
+    .compare h3{margin-top:0}
+    .compare p{font-size:.97rem;margin-bottom:0}
+
+    .example{
+      margin:1.5rem 0 2rem;padding:1.4rem;
+      border-radius:20px;border:1px solid rgba(126,240,197,.22);
+      background:linear-gradient(145deg,rgba(126,240,197,.045),rgba(255,255,255,.015));
+    }
+
+    .example h3{margin-top:0;color:#dffcef}
+
+    .callout{
+      margin:2rem 0;padding:1.2rem 1.3rem;
+      border-radius:18px;border:1px solid rgba(255,217,140,.22);
+      background:rgba(255,217,140,.04);color:#eadfc9;
+    }
+
+    .steps{
+      display:grid;gap:.8rem;margin:1.4rem 0 2rem;
+    }
+
+    .step{
+      display:grid;grid-template-columns:42px 1fr;gap:.8rem;align-items:start;
+      padding:1rem;border:1px solid rgba(111,151,193,.2);
+      border-radius:16px;background:rgba(255,255,255,.02);
+    }
+
+    .step .num{
+      width:34px;height:34px;border-radius:10px;
+      display:grid;place-items:center;
+      border:1px solid rgba(123,220,255,.28);
+      color:var(--accent);background:rgba(123,220,255,.06);font-weight:800;
+    }
+
+    .step strong{display:block;margin-bottom:.25rem}
+    .step span{color:var(--muted);font-size:.94rem}
+
+    table{
+      width:100%;border-collapse:collapse;margin:1.2rem 0 1.8rem;
+      border:1px solid rgba(111,151,193,.22);
+      background:rgba(255,255,255,.015);
+    }
+
+    th,td{
+      padding:.8rem;border-bottom:1px solid rgba(111,151,193,.16);
+      text-align:left;vertical-align:top;
+    }
+
+    th{
+      color:#dff7ff;background:rgba(123,220,255,.055);font-size:.92rem;
+    }
+
+    td{color:#c4d2e2;font-size:.95rem}
+
+    .timeline{
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:.7rem;
+      margin:1.4rem 0 2rem;
+    }
+
+    .time{
+      border:1px solid rgba(111,151,193,.2);
+      border-radius:16px;
+      padding:1rem .7rem;
+      text-align:center;
+      background:rgba(255,255,255,.02);
+      position:relative;
+    }
+
+    .time:not(:last-child):after{
+      content:"→";
+      position:absolute;
+      right:-.55rem;
+      top:50%;
+      transform:translateY(-50%);
+      color:var(--accent);
+      z-index:2;
+    }
+
+    .time strong{display:block;margin-bottom:.25rem}
+    .time span{color:var(--muted);font-size:.88rem}
+
+    .next{
+      padding:4.5rem 0;
+      border-top:1px solid rgba(123,220,255,.1);
+      background:#050d18;
+    }
+
+    .next-grid{
+      display:grid;grid-template-columns:repeat(3,1fr);
+      gap:1rem;margin-top:1.6rem;
+    }
+
+    .card{
+      min-height:100%;padding:1.2rem;border-radius:20px;
+      border:1px solid rgba(111,151,193,.2);
+      background:rgba(255,255,255,.02);transition:.2s ease;
+    }
+
+    .card:hover{
+      transform:translateY(-2px);
+      border-color:rgba(123,220,255,.42);
+      background:rgba(123,220,255,.04);
+    }
+
+    .card small{
+      color:var(--accent);font-size:.75rem;font-weight:800;
+      letter-spacing:.08em;text-transform:uppercase;
+    }
+
+    .card h3{margin:.5rem 0 .45rem}
+    .card p{color:var(--muted);font-size:.93rem;margin:0}
+
+    footer{
+      padding:3rem 0;border-top:1px solid rgba(255,255,255,.07);
+      background:#040a12;color:#8fa3ba;
+    }
+
+    .footer-grid{
+      display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:end;
+    }
+
+    .footer-links{display:flex;gap:.7rem;flex-wrap:wrap;justify-content:flex-end}
+
+    @media(max-width:900px){
+      .navlinks{display:none}
+      .timeline{grid-template-columns:1fr}
+      .time:not(:last-child):after{display:none}
+      .next-grid{grid-template-columns:1fr}
+    }
+
+    @media(max-width:620px){
+      .hero{padding-top:3rem}
+      .compare{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr}
+      .footer-links{justify-content:flex-start}
+      th,td{font-size:.88rem}
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="/" aria-label="Branch Mathematics home">
+      <span class="mark">BM</span>
+      <span>Branch Mathematics</span>
+    </a>
+
+    <nav class="navlinks" aria-label="Primary navigation">
+      <a href="/learn/" aria-current="page">Learn</a>
+      <a href="/research/">Research</a>
+      <a href="/applications/">Applications</a>
+      <a href="/examples/">Examples</a>
+      <a href="/calculator/">Calculator</a>
+      <a href="/reference/">Reference</a>
+      <a href="/book/">Book</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <div class="wrap breadcrumbs">
+    <a href="/">Home</a> / <a href="/learn/">Learn</a> / Recovery After Compression
+  </div>
+
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Recovery</span>
+      <h1>Recovery After Compression</h1>
+
+      <p class="lead">
+        Once a representation merges two native states, can the missing distinction ever come back? Branch Mathematics separates what deterministic memory can preserve, what later observations can reacquire, and what is permanently unavailable relative to the declared sources.
+      </p>
+
+      <div class="summary">
+        <strong>Short version:</strong>
+        deterministic computation cannot recreate a distinction that its current state no longer contains. A discarded distinction can become available again only if some later source supplies new distinguishing information.
+      </div>
+    </div>
+  </section>
+
+  <article class="article">
+    <div class="read">
+
+      <h2>Compression changes what the system can know</h2>
+
+      <p>
+        Suppose two native states <strong>x</strong> and <strong>x′</strong> are mapped to the same reduced state:
+      </p>
+
+      <div class="formula">
+        R(x) = R(x′)
+      </div>
+
+      <p>
+        Any later deterministic computation that depends only on <strong>R(x)</strong> must treat those two cases identically, because it receives exactly the same input in both cases.
+      </p>
+
+      <div class="quote">
+        Once two states become identical inside the retained representation, deterministic processing of that representation alone cannot tell them apart again.
+      </div>
+
+      <h2>The basic no-recreation principle</h2>
+
+      <p>
+        Let <strong>M</strong> be retained memory derived only from the current representation. If:
+      </p>
+
+      <div class="formula">
+        R(x)=R(x′)
+      </div>
+
+      <p>
+        then every deterministic update of that retained state must remain identical for the two cases until some external distinction enters.
+      </p>
+
+      <p>
+        This is not a thermodynamic claim and not a universal physical information law. It is a statement about distinguishability under deterministic maps.
+      </p>
+
+      <div class="callout">
+        BM firewall: deterministic memory cannot recreate a distinction that the retained state has already merged.
+      </div>
+
+      <h2>Three different notions of memory</h2>
+
+      <p>
+        BM keeps several forms of memory separate because they have different mathematical power.
+      </p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="num">1</div>
+          <div>
+            <strong>Latent native memory</strong>
+            <span>The system secretly retains distinctions not visible in the coarse output.</span>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="num">2</div>
+          <div>
+            <strong>Autonomous coarse memory</strong>
+            <span>The system stores only variables generated from its already-compressed state.</span>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="num">3</div>
+          <div>
+            <strong>Observation or history memory</strong>
+            <span>The system stores distinctions supplied by earlier measurements or external inputs.</span>
+          </div>
+        </div>
+      </div>
+
+      <p>
+        The first can preserve hidden distinctions. The second cannot recreate them after loss. The third can contain distinctions because observations supplied them before or after the compression event.
+      </p>
+
+      <h2>A simple example</h2>
+
+      <div class="example">
+        <h3>Two native states become one coarse state</h3>
+
+        <p>
+          Suppose:
+        </p>
+
+        <div class="formula">
+          R(a)=R(b)=q
+        </div>
+
+        <p>
+          The coarse system now stores only <strong>q</strong>.
+        </p>
+
+        <p>
+          Any deterministic function <strong>F</strong> of that stored state satisfies:
+        </p>
+
+        <div class="formula">
+          F(R(a)) = F(q) = F(R(b))
+        </div>
+
+        <p>
+          So no later deterministic transformation of <strong>q</strong> alone can answer the question “was the original state a or b?”
+        </p>
+      </div>
+
+      <h2>What can make the distinction return?</h2>
+
+      <p>
+        A distinction can become available again if a later source produces different observations for the formerly merged possibilities.
+      </p>
+
+      <p>
+        Suppose at a later time the system receives an observation:
+      </p>
+
+      <div class="formula">
+        O(x)
+      </div>
+
+      <p>
+        If:
+      </p>
+
+      <div class="formula">
+        O(a) ≠ O(b)
+      </div>
+
+      <p>
+        then the new observation reacquires the distinction.
+      </p>
+
+      <div class="compare">
+        <div class="box">
+          <h3>No new observation</h3>
+          <p>
+            The distinction remains unavailable because every deterministic update starts from the same retained state.
+          </p>
+        </div>
+
+        <div class="box">
+          <h3>New distinguishing observation</h3>
+          <p>
+            The distinction can re-enter the retained state because the system receives genuinely different new data.</p>
+        </div>
+      </div>
+
+      <h2>The causal transition condition</h2>
+
+      <p>
+        Let <strong>E<sub>t</sub></strong> describe which native states are still identified by the retained state at time <strong>t</strong>. Let <strong>O<sub>t+1</sub></strong> be the new observation.
+      </p>
+
+      <p>
+        A lawful next retained equivalence must satisfy:
+      </p>
+
+      <div class="formula">
+        E<sub>t</sub> ∩ ker(O<sub>t+1</sub>) ⊆ E<sub>t+1</sub>
+      </div>
+
+      <p>
+        In plain language: if two states were already merged and the new observation still cannot distinguish them, the next retained state cannot legitimately separate them.
+      </p>
+
+      <div class="quote">
+        New distinctions require new distinguishing provenance.
+      </div>
+
+      <h2>Reacquisition is not the same as recovery from memory</h2>
+
+      <p>
+        The words can sound similar, but BM separates them carefully.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Mechanism</th>
+            <th>What happens</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Retention</td>
+            <td>The distinction was never discarded.</td>
+          </tr>
+          <tr>
+            <td>Latent memory</td>
+            <td>The distinction survives internally even if not visible at the output.</td>
+          </tr>
+          <tr>
+            <td>Reacquisition</td>
+            <td>A later external observation supplies the distinction again.</td>
+          </tr>
+          <tr>
+            <td>Impossible recreation</td>
+            <td>No retained variable or later observation distinguishes the merged cases.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Keep or reacquire?</h2>
+
+      <p>
+        If a distinction matters now, then becomes irrelevant for a while, then matters again later, the system has a design choice.
+      </p>
+
+      <div class="timeline">
+        <div class="time">
+          <strong>Needed</strong>
+          <span>distinction is live</span>
+        </div>
+        <div class="time">
+          <strong>Gap</strong>
+          <span>temporarily not needed</span>
+        </div>
+        <div class="time">
+          <strong>Choice</strong>
+          <span>keep or discard</span>
+        </div>
+        <div class="time">
+          <strong>Reacquire?</strong>
+          <span>new observation may restore it</span>
+        </div>
+        <div class="time">
+          <strong>Needed again</strong>
+          <span>future deadline</span>
+        </div>
+      </div>
+
+      <p>
+        If holding the distinction through the gap costs <strong>H</strong>, while reacquiring it later costs <strong>R</strong>, then under additive independent assumptions the local choice is:
+      </p>
+
+      <div class="formula">
+        keep if H ≤ R
+      </div>
+
+      <p>
+        But multiple distinctions can interact nonlinearly through shared state or graph-coloring constraints, so the many-distinction problem need not decompose into independent choices.
+      </p>
+
+      <h2>Why many distinctions can couple</h2>
+
+      <p>
+        Two distinctions may each be cheap to discard separately, while discarding both forces a more expensive representation later.
+      </p>
+
+      <p>
+        This is one reason the correct state variable for exact causal scheduling is often the retained partition:
+      </p>
+
+      <div class="formula">
+        Π<sub>t</sub> = X / E<sub>t</sub>
+      </div>
+
+      <p>
+        rather than a collection of independent yes/no flags.
+      </p>
+
+      <h2>Path lifting: can a coarse history come from one native history?</h2>
+
+      <p>
+        Recovery also has a trajectory-level form.
+      </p>
+
+      <p>
+        Suppose the coarse system records a path:
+      </p>
+
+      <div class="formula">
+        π = (q₀,q₁,…,q<sub>k</sub>)
+      </div>
+
+      <p>
+        BM asks whether there exists a single native initial state whose evolution produces that entire coarse history.
+      </p>
+
+      <div class="formula">
+        C(π)
+        =
+        ⋂<sub>j=0</sub><sup>k</sup>
+        Φ<sup>-j</sup>(R<sup>-1</sup>(q<sub>j</sub>))
+      </div>
+
+      <p>
+        The path is realizable exactly when:
+      </p>
+
+      <div class="formula">
+        C(π) ≠ ∅
+      </div>
+
+      <p>
+        This blocks a subtle error: using one native witness for the first part of the path and a different native witness for a later part.
+      </p>
+
+      <div class="callout">
+        BM firewall: compatible coarse states at each time do not guarantee that one native trajectory realizes the entire coarse history.
+      </div>
+
+      <h2>No witness switching</h2>
+
+      <p>
+        If a coarse path is supposed to represent one evolving native system, the underlying witness must remain consistent across time.
+      </p>
+
+      <p>
+        A sequence of separately possible coarse transitions can still fail to correspond to any single native trajectory.
+      </p>
+
+      <p>
+        This is important in reduced models, hidden-state systems, PDE histories, and any architecture where future validity depends on one coherent underlying state.
+      </p>
+
+      <h2>Finite hidden memory versus finite sliding-window memory</h2>
+
+      <p>
+        A system may admit an exact finite hidden-state realization even when no fixed-length recent observation window is sufficient.
+      </p>
+
+      <p>
+        The hidden state can summarize arbitrarily old history in a finite latent variable, while a raw sliding window may need unbounded length.
+      </p>
+
+      <div class="callout">
+        BM firewall: finite hidden-state memory does not imply finite sliding-window memory.
+      </div>
+
+      <h2>Pre-revelation storage</h2>
+
+      <p>
+        Sometimes future context will reveal which task matters, but that context arrives only after the system must decide what to store.
+      </p>
+
+      <p>
+        Then the storage must preserve every distinction that could matter under any future allowed context.
+      </p>
+
+      <div class="formula">
+        ker(S) ⊆ E<sub>Y</sub>
+      </div>
+
+      <p>
+        Conceptually, pre-revelation storage must be fine enough for the whole family of possible later tasks.
+      </p>
+
+      <h2>Context revelation does not restore discarded distinctions</h2>
+
+      <p>
+        Learning which question will be asked is not the same as learning the answer.
+      </p>
+
+      <p>
+        If two states were merged before the context was revealed, and the new context tells the system only which task to perform, that context alone does not recreate the missing state distinction.
+      </p>
+
+      <div class="formula">
+        task identity ≠ state identity
+      </div>
+
+      <div class="callout">
+        BM firewall: context revelation does not automatically recover distinctions discarded before the revelation.
+      </div>
+
+      <h2>Recovery across a causal cut</h2>
+
+      <p>
+        Suppose information crosses a cut at time <strong>t</strong>. If a future task depends on a distinction and no later observation can distinguish the relevant states, then the cut must preserve that distinction now.
+      </p>
+
+      <div class="formula">
+        no later distinguishing source ⇒ distinction must cross the cut
+      </div>
+
+      <p>
+        This gives BM's Last-Chance viewpoint: some distinctions have a final moment at which they can still be retained before they become unrecoverable relative to the declared architecture.
+      </p>
+
+      <h2>Approximate reacquisition</h2>
+
+      <p>
+        At positive tolerance, reacquisition does not require perfect identification. It requires enough margin to restore the task distinction robustly.
+      </p>
+
+      <p>
+        If a sensor's nominal separation margin is <strong>m</strong> and sensor uncertainty is <strong>ν</strong>, a robust reacquisition condition takes the form:
+      </p>
+
+      <div class="formula">
+        m - 2ν &gt; threshold
+      </div>
+
+      <p>
+        A later measurement may therefore reset accumulated model uncertainty if it supplies a sufficiently strong new observation.
+      </p>
+
+      <h2>Reacquisition can sometimes be better than retention</h2>
+
+      <p>
+        Approximate models accumulate propagation error. If the system can take a fresh, accurate observation later, discarding and reacquiring a distinction can sometimes be better than carrying a noisy approximation for a long interval.
+      </p>
+
+      <div class="compare">
+        <div class="box">
+          <h3>Retain</h3>
+          <p>
+            Keep the distinction continuously, but allow modeling or propagation error to accumulate.
+          </p>
+        </div>
+
+        <div class="box">
+          <h3>Reacquire</h3>
+          <p>
+            Drop the distinction and later reset it using a fresh sufficiently accurate observation.
+          </p>
+        </div>
+      </div>
+
+      <p>
+        So “never discard anything” is not generally the optimal architecture.
+      </p>
+
+      <h2>Recovery in quantum systems</h2>
+
+      <p>
+        The same receiver-relative idea appears in quantum information, but the physical rules are different.
+      </p>
+
+      <p>
+        A noise process can destroy full-state recoverability while leaving a smaller observable algebra exactly recoverable.
+      </p>
+
+      <p>
+        BM therefore asks what task algebra survives, not merely whether the entire state can be reconstructed.
+      </p>
+
+      <div class="formula">
+        full-state failure does not imply failure of every weaker quantum task
+      </div>
+
+      <p>
+        But quantum recovery must still be realized by an admissible physical channel such as a CPTP map. Algebraic recoverability and physical recoverability remain distinct tests.
+      </p>
+
+      <h2>Recovery in PDE and distributed systems</h2>
+
+      <p>
+        In PDEs, a discarded interior distinction may become visible later through a boundary observation if the dynamics transport it to the measured region.
+      </p>
+
+      <p>
+        In distributed networks, a distinction lost on one route may still be available through another route if that route retained an independent witness.
+      </p>
+
+      <p>
+        Recovery therefore depends on provenance:
+      </p>
+
+      <div class="formula">
+        where did the distinguishing evidence survive, and when can it reach the receiver?
+      </div>
+
+      <h2>The BM recovery test</h2>
+
+      <p>
+        When asking whether a lost distinction can return, BM checks:
+      </p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="num">1</div>
+          <div>
+            <strong>Was it truly discarded?</strong>
+            <span>Or does latent state still retain it?</span>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="num">2</div>
+          <div>
+            <strong>What new sources arrive later?</strong>
+            <span>Measurements, context, peer messages, routes, or environmental observations.</span>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="num">3</div>
+          <div>
+            <strong>Do those sources actually distinguish the merged cases?</strong>
+            <span>If not, no deterministic update can separate them.</span>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="num">4</div>
+          <div>
+            <strong>Does the distinction arrive before the deadline?</strong>
+            <span>Eventual observability is not enough for a time-constrained task.</span>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="num">5</div>
+          <div>
+            <strong>Is the reacquired distinction robust enough?</strong>
+            <span>Approximate recovery must survive declared uncertainty and tolerance.</span>
+          </div>
+        </div>
+      </div>
+
+      <h2>The key idea</h2>
+
+      <div class="quote">
+        A distinction can be retained, hidden, or reacquired—but it cannot be conjured from a deterministic state that no longer contains it.
+      </div>
+
+      <p>
+        This principle connects BM's work on causal memory, interface design, retention versus reacquisition, distributed cuts, path lifting, and task-relative recovery.
+      </p>
+
+    </div>
+  </article>
+
+  <section class="next">
+    <div class="wrap">
+      <span class="eyebrow">Next</span>
+      <h2 style="font-size:clamp(2rem,5vw,3.4rem);line-height:1.04;letter-spacing:-.035em;margin:.7rem 0 .9rem">
+        Continue the path
+      </h2>
+
+      <div class="next-grid">
+        <a class="card" href="/learn/bm-structure/">
+          <small>Core structure</small>
+          <h3>Branches, Leaves, Trees, Passports and Roots</h3>
+          <p>Learn the formal organizational roles used to carry a BM problem through multiple mathematical branches.</p>
+        </a>
+
+        <a class="card" href="/research/reacquisition/">
+          <small>Technical article</small>
+          <h3>Retention and Reacquisition</h3>
+          <p>Move into the exact scheduling, causal partition, and keep-versus-reacquire mathematics.</p>
+        </a>
+
+        <a class="card" href="/research/hankel-task-memory/">
+          <small>Dynamical systems</small>
+          <h3>Hankel Operators and Task-Specific Memory</h3>
+          <p>See how past distinctions are compressed according to the future responses they can still change.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div>
+      <div class="brand" style="margin-bottom:.5rem">
+        <span class="mark">BM</span>
+        <span>Branch Mathematics</span>
+      </div>
+      <div>Mathematics of necessary distinctions.</div>
+    </div>
+
+    <div class="footer-links">
+      <a href="/learn/">Learn</a>
+      <a href="/research/">Research</a>
+      <a href="/reference/">Reference</a>
+      <a href="/book/">Book</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
