@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>No-Broadcasting and Quantum Access Geometry | Branch Mathematics</title>
+  <meta name="description" content="A technical Branch Mathematics treatment of no-broadcasting and quantum access geometry: authorized sets, intersecting families, threshold constraints, minimal authorized sets, erasure hitting numbers, task algebras, and distributed quantum recovery." />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <link rel="canonical" href="https://branch-mathematics-bm.github.io/research/quantum-no-broadcasting/" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="No-Broadcasting and Quantum Access Geometry" />
+  <meta property="og:description" content="Why distributed recovery of genuinely quantum tasks forces intersecting authorized families and changes the geometry of redundancy." />
+  <meta property="og:url" content="https://branch-mathematics-bm.github.io/research/quantum-no-broadcasting/" />
+  <meta property="og:site_name" content="Branch Mathematics" />
+
+  <meta name="theme-color" content="#07111f" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"TechArticle",
+    "headline":"No-Broadcasting and Quantum Access Geometry",
+    "description":"A technical treatment of task-relative quantum access structures in Branch Mathematics.",
+    "mainEntityOfPage":"https://branch-mathematics-bm.github.io/research/quantum-no-broadcasting/",
+    "isPartOf":{
+      "@type":"WebSite",
+      "name":"Branch Mathematics",
+      "url":"https://branch-mathematics-bm.github.io/"
+    }
+  }
+  </script>
+
+  <style>
+    :root{
+      --bg:#07111f;--text:#eef5ff;--muted:#aabbd0;--accent:#7bdcff;--accent2:#b39cff;
+      --green:#7ef0c5;--warn:#ffd98c;--red:#ff9d9d;--max:1160px;--read:860px;
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{
+      margin:0;color:var(--text);
+      background:
+        radial-gradient(circle at 10% -5%,rgba(123,220,255,.11),transparent 28rem),
+        radial-gradient(circle at 90% 4%,rgba(179,156,255,.08),transparent 24rem),
+        linear-gradient(180deg,#06101d,#07111f 45%,#081422);
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height:1.72;
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(calc(100% - 2rem),var(--max));margin-inline:auto}
+    .read{width:min(100%,var(--read));margin-inline:auto}
+    .site-header{position:sticky;top:0;z-index:50;backdrop-filter:blur(18px);background:rgba(7,17,31,.84);border-bottom:1px solid rgba(123,220,255,.12)}
+    .nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .brand{display:flex;align-items:center;gap:.75rem;font-weight:760;white-space:nowrap}
+    .mark{width:34px;height:34px;border-radius:11px;border:1px solid rgba(123,220,255,.5);display:grid;place-items:center;background:linear-gradient(135deg,rgba(123,220,255,.2),rgba(179,156,255,.12))}
+    .navlinks{display:flex;gap:.15rem;flex-wrap:wrap;justify-content:flex-end}
+    .navlinks a{color:var(--muted);padding:.55rem .68rem;border-radius:10px;font-size:.93rem}
+    .navlinks a:hover,.navlinks a[aria-current="page"]{color:var(--text);background:rgba(255,255,255,.05)}
+    .breadcrumbs{padding:1.2rem 0 0;color:#8397af;font-size:.9rem}
+    .hero{padding:4.6rem 0 4rem;border-bottom:1px solid rgba(123,220,255,.1)}
+    .eyebrow{display:inline-flex;padding:.42rem .7rem;border-radius:999px;border:1px solid rgba(123,220,255,.3);background:rgba(123,220,255,.06);color:#c5efff;font-size:.82rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+    h1{font-size:clamp(3rem,7vw,5.6rem);line-height:.96;letter-spacing:-.05em;margin:1rem 0 1.15rem;max-width:14ch}
+    .lead{font-size:clamp(1.08rem,2vw,1.3rem);color:#c4d4e6;max-width:950px}
+    .meta{display:flex;gap:.55rem;flex-wrap:wrap;margin-top:1.2rem}
+    .tag{display:inline-flex;padding:.42rem .66rem;border-radius:999px;font-size:.76rem;font-weight:800;letter-spacing:.06em;border:1px solid rgba(111,151,193,.24);background:rgba(255,255,255,.025)}
+    .cand{border-color:rgba(255,217,140,.25);color:#f7e8c7}.classic{border-color:rgba(179,156,255,.26);color:#ece5ff}
+    .abstract{margin-top:1.7rem;padding:1.3rem 1.4rem;border:1px solid rgba(123,220,255,.22);border-radius:20px;background:linear-gradient(145deg,rgba(123,220,255,.05),rgba(179,156,255,.025))}
+    .abstract p{margin:0;color:#c3d3e4}
+    .article{padding:4.8rem 0 5rem}.article h2{font-size:clamp(2rem,5vw,3.15rem);line-height:1.05;letter-spacing:-.035em;margin:3.3rem 0 1rem}.article h3{font-size:1.35rem;line-height:1.25;margin:2.2rem 0 .7rem}.article p{color:#c4d2e2;font-size:1.035rem;margin:0 0 1.15rem}
+    .formula{margin:1.4rem 0;padding:1.05rem 1.15rem;border-left:3px solid var(--accent);background:rgba(123,220,255,.055);border-radius:0 14px 14px 0;color:#e0f1ff;font-family:"Cambria Math","Times New Roman",serif;font-size:1.08rem;overflow:auto}
+    .theorem{margin:1.7rem 0 2rem;padding:1.35rem;border:1px solid rgba(126,240,197,.24);border-radius:20px;background:linear-gradient(145deg,rgba(126,240,197,.04),rgba(255,255,255,.012))}
+    .theorem strong{color:#e7fff5}.theorem p{color:#cbd9e6}
+    .firewall{margin:1.7rem 0;padding:1.2rem 1.3rem;border-radius:18px;border:1px solid rgba(255,157,157,.2);background:rgba(255,157,157,.035);color:#f1cccc}.firewall strong{color:#ffd6d6}
+    .callout{margin:1.7rem 0;padding:1.2rem 1.3rem;border-radius:18px;border:1px solid rgba(255,217,140,.22);background:rgba(255,217,140,.04);color:#eadfc9}
+    .compare{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.4rem 0 2rem}.box{border:1px solid rgba(111,151,193,.22);border-radius:18px;background:rgba(255,255,255,.02);padding:1.2rem}.box h3{margin-top:0}.box p{font-size:.96rem;margin-bottom:0}
+    .example{margin:1.6rem 0 2rem;padding:1.35rem;border-radius:20px;border:1px solid rgba(179,156,255,.22);background:linear-gradient(145deg,rgba(179,156,255,.04),rgba(255,255,255,.015))}
+    .example h3{margin-top:0;color:#efe8ff}
+    table{width:100%;border-collapse:collapse;margin:1.25rem 0 1.9rem;border:1px solid rgba(111,151,193,.22);background:rgba(255,255,255,.015)}
+    th,td{padding:.82rem;border-bottom:1px solid rgba(111,151,193,.16);text-align:left;vertical-align:top}th{color:#dff7ff;background:rgba(123,220,255,.055);font-size:.92rem}td{color:#c4d2e2;font-size:.94rem}
+    .next{padding:4.5rem 0;border-top:1px solid rgba(123,220,255,.1);background:#050d18}
+    .next-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.6rem}
+    .card{padding:1.2rem;border-radius:20px;border:1px solid rgba(111,151,193,.2);background:rgba(255,255,255,.02);transition:.2s ease}
+    .card:hover{transform:translateY(-2px);border-color:rgba(123,220,255,.42);background:rgba(123,220,255,.04)}
+    .card small{color:var(--accent);font-weight:800;text-transform:uppercase}.card p{color:var(--muted)}
+    footer{padding:3rem 0;border-top:1px solid rgba(255,255,255,.07);background:#040a12;color:#8fa3ba}
+    .footer-grid{display:grid;grid-template-columns:1fr auto;gap:1rem}.footer-links{display:flex;gap:.7rem;flex-wrap:wrap}
+    @media(max-width:900px){.navlinks{display:none}.next-grid{grid-template-columns:1fr}}
+    @media(max-width:620px){.compare,.footer-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+
+<body>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="/"><span class="mark">BM</span><span>Branch Mathematics</span></a>
+    <nav class="navlinks">
+      <a href="/learn/">Learn</a><a href="/research/" aria-current="page">Research</a>
+      <a href="/applications/">Applications</a><a href="/examples/">Examples</a>
+      <a href="/calculator/">Calculator</a><a href="/reference/">Reference</a><a href="/book/">Book</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap breadcrumbs"><a href="/">Home</a> / <a href="/research/">Research</a> / No-Broadcasting and Quantum Access</div>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Quantum access geometry</span>
+    <h1>No-Broadcasting and Quantum Access Geometry</h1>
+    <p class="lead">Classical information can often be copied onto several independent routes. A genuinely quantum noncommutative task cannot. No-broadcasting therefore forces a distinctive geometry on which subsets of a distributed quantum system may simultaneously be authorized.</p>
+    <div class="meta">
+      <span class="tag cand">Volume II development</span>
+      <span class="tag classic">Uses established no-broadcasting and operator-algebra results</span>
+    </div>
+    <div class="abstract"><strong>Abstract</strong>
+      <p>For a distributed quantum encoding, let Auth(A) be the subsets that can exactly recover a declared task algebra A. If two disjoint subsets both exactly recover the same finite-dimensional C*-algebra, that algebra must be commutative. Hence every exact authorized family for a genuinely noncommutative task is intersecting: no two authorized sets are disjoint. In a symmetric k-of-m threshold structure this forces 2k&gt;m. Minimal authorized sets determine the access hypergraph, while the task-relative erasure distance is the hitting number of that family. This page develops the distinction between classical redundancy and quantum access, exact access geometry, threshold consequences, graceful task weakening, and approximate questions that remain open.</p>
+    </div>
+  </div>
+</section>
+
+<article class="article"><div class="read">
+
+<h2>1. Distributed recovery is not the same as copying</h2>
+<p>Suppose a logical quantum task is encoded into physical subsystems:</p>
+<div class="formula">1,2,…,m.</div>
+<p>A subset <strong>S</strong> may be able to recover the declared task algebra even when other subsets cannot.</p>
+<p>This creates an access structure:</p>
+<div class="formula">Auth(A)={S⊆[m] : A is exactly recoverable from S}.</div>
+<p>The geometry of this family depends on whether <strong>A</strong> is commutative or genuinely noncommutative.</p>
+
+<h2>2. Commutative and noncommutative tasks behave differently</h2>
+<div class="compare">
+  <div class="box"><h3>Commutative task</h3><p>Represents jointly measurable classical information. Exact copies can, in principle, exist on disjoint subsystems.</p></div>
+  <div class="box"><h3>Noncommutative task</h3><p>Contains genuinely quantum observable structure. Exact recovery on disjoint regions is constrained by no-broadcasting.</p></div>
+</div>
+
+<h2>3. Exact no-broadcasting constraint</h2>
+<div class="theorem"><strong>Disjoint Exact Recovery Implies Commutativity</strong>
+<p>If two disjoint subsystems both admit exact recovery of the same finite-dimensional C*-algebra <strong>A</strong>, then <strong>A</strong> must be commutative.</p>
+</div>
+<p>This is the central structural fact behind BM quantum access geometry.</p>
+
+<h2>4. Intersecting authorized families</h2>
+<p>Suppose <strong>A</strong> is genuinely noncommutative. Then two authorized sets cannot be disjoint.</p>
+<div class="formula">S,T∈Auth(A) &nbsp;⇒&nbsp; S∩T≠∅.</div>
+<div class="theorem"><strong>Quantum Access Intersection Principle</strong>
+<p>The exact authorized family of a genuinely noncommutative task algebra is an intersecting family.</p></div>
+
+<h2>5. Why this differs from classical routing</h2>
+<p>In a classical network, one can often duplicate the same task bit onto two separate routes for resilience.</p>
+<p>For a genuinely quantum task, two disjoint routes cannot both hold exact independently recoverable copies of the same noncommutative algebra.</p>
+<div class="firewall"><strong>Permanent firewall:</strong> classical redundancy logic cannot be imported unchanged into quantum access structures.</div>
+
+<h2>6. Symmetric threshold structures</h2>
+<p>Consider a symmetric threshold design with <strong>m</strong> physical shares. Every subset of size at least <strong>k</strong> is authorized.</p>
+<p>If:</p>
+<div class="formula">2k≤m,</div>
+<p>then two disjoint <strong>k</strong>-subsets exist.</p>
+<p>That would give two disjoint exact recoveries of the same task algebra.</p>
+<div class="theorem"><strong>Threshold Constraint for Genuine Quantum Tasks</strong>
+<p>For a symmetric threshold access structure carrying an exactly recoverable noncommutative task algebra,</p>
+<div class="formula">2k&gt;m.</div></div>
+
+<h2>7. The threshold rule is task-relative</h2>
+<p>If the declared task is only a commutative algebra, disjoint authorized sets are not forbidden by the same no-broadcasting argument.</p>
+<div class="formula">same physical encoding + weaker task ⇒ potentially different access geometry.</div>
+<p>Thus the threshold restriction belongs to the task algebra, not merely to the code hardware.</p>
+
+<h2>8. Minimal authorized sets</h2>
+<p>An authorized family is upward closed: if <strong>S</strong> can recover the task, then any superset can discard extras and use <strong>S</strong>'s recovery.</p>
+<div class="formula">S∈Auth(A), S⊂T ⇒ T∈Auth(A).</div>
+<p>The essential combinatorial data therefore lie in:</p>
+<div class="formula">MinAuth(A)=minimal authorized subsets.</div>
+
+<h2>9. Access hypergraph</h2>
+<p>The family <strong>MinAuth(A)</strong> can be viewed as a hypergraph on the physical shares.</p>
+<p>For a genuinely quantum task, its hyperedges must be pairwise intersecting.</p>
+<div class="formula">E,F∈MinAuth(A) ⇒ E∩F≠∅.</div>
+<p>This gives a direct combinatorial signature of exact noncommutative recoverability.</p>
+
+<h2>10. Erasure distance as a hitting number</h2>
+<p>An erasure set <strong>F</strong> defeats the task exactly when every minimal authorized set loses at least one member.</p>
+<p>Thus <strong>F</strong> must hit every hyperedge in <strong>MinAuth(A)</strong>.</p>
+<div class="theorem"><strong>Task-Relative Erasure Distance</strong>
+<div class="formula">d<sub>A</sub>=τ(MinAuth(A)),</div>
+<p>where <strong>τ</strong> is the minimum hitting-set size.</p></div>
+
+<h2>11. Why the hitting-set formulation is useful</h2>
+<p>It separates two questions:</p>
+<table><thead><tr><th>Question</th><th>Object</th></tr></thead><tbody>
+<tr><td>Which subsets can recover the task?</td><td>Authorized hypergraph</td></tr>
+<tr><td>What is the smallest erasure that defeats every recovery route?</td><td>Hitting number</td></tr>
+</tbody></table>
+<p>The second is a purely combinatorial property once the exact access structure is known.</p>
+
+<h2>12. Example: three shares</h2>
+<div class="example"><h3>Three-share intersecting family</h3>
+<p>Let the minimal authorized sets be:</p>
+<div class="formula">{1,2}, {1,3}, {2,3}.</div>
+<p>Every pair intersects. No two authorized 2-subsets are disjoint.</p>
+<p>The minimum hitting-set size is:</p>
+<div class="formula">τ=2.</div>
+<p>So two erasures are needed to intersect all minimal authorized sets, while any one surviving pair remains authorized.</p></div>
+
+<h2>13. Example: a forbidden genuinely quantum threshold</h2>
+<div class="example"><h3>2-of-4 exact quantum task</h3>
+<p>A symmetric 2-of-4 access structure would authorize:</p>
+<div class="formula">{1,2} and {3,4}.</div>
+<p>These sets are disjoint.</p>
+<p>Therefore a genuinely noncommutative task algebra cannot have exact recovery from every 2-subset of 4 shares.</p>
+<div class="formula">2k=4=m ⇒ violates 2k&gt;m.</div></div>
+
+<h2>14. Classical task on the same shares can be different</h2>
+<p>If the receiver only needs one classical logical bit represented by a commuting observable algebra, two disjoint authorized groups can be possible.</p>
+<p>This gives a sharp BM distinction:</p>
+<div class="formula">physical shares do not determine access geometry alone; the Passport does.</div>
+
+<h2>15. Full-state access is one special Passport</h2>
+<p>Full-state quantum recovery corresponds to the full logical algebra:</p>
+<div class="formula">A=B(H<sub>L</sub>).</div>
+<p>Task-relative access allows a proper subalgebra:</p>
+<div class="formula">A⊂B(H<sub>L</sub>).</div>
+<p>Different subalgebras can induce different minimal authorized sets and different erasure distances.</p>
+
+<h2>16. Access structure under task weakening</h2>
+<p>If:</p>
+<div class="formula">A<sub>1</sub>⊂A<sub>2</sub>,</div>
+<p>then every set authorized for the stronger task <strong>A₂</strong> is also authorized for the weaker task <strong>A₁</strong>.</p>
+<div class="formula">Auth(A<sub>2</sub>)⊂Auth(A<sub>1</sub>).</div>
+<p>Weakening the task can only enlarge the exact authorized family.</p>
+
+<h2>17. Graceful degradation as access expansion</h2>
+<p>As noise or erasure increases, the strongest recoverable algebra can shrink.</p>
+<p>At the same time, if the receiver accepts a weaker task algebra, more subsets may remain authorized.</p>
+<div class="formula">damage ↑ ⇒ maximal exact task algebra ↓</div>
+<div class="formula">task requirement ↓ ⇒ authorized family ↑</div>
+<p>This is one way to describe graceful degradation geometrically.</p>
+
+<h2>18. Maximal recoverable algebra and access geometry</h2>
+<p>For a specific noise or erasure pattern <strong>F</strong>, let:</p>
+<div class="formula">A<sub>max</sub>(F)</div>
+<p>be the maximal exactly recoverable algebra on the surviving shares.</p>
+<p>A declared task <strong>A<sub>req</sub></strong> survives exactly when:</p>
+<div class="formula">A<sub>req</sub>⊂A<sub>max</sub>(F).</div>
+<p>This turns each damage pattern into a point in a partially ordered capability landscape.</p>
+
+<h2>19. More erasure gives less exact capability</h2>
+<p>If <strong>F₁⊂F₂</strong>, then the second pattern erases at least as much as the first.</p>
+<div class="formula">A<sub>max</sub>(F₂)⊂eq A<sub>max</sub>(F₁).</div>
+<p>Exact capability is antitone under erasure.</p>
+
+<h2>20. Quantum access and secret-sharing language</h2>
+<p>Authorized and unauthorized sets are standard language in secret sharing and quantum coding.</p>
+<p>BM does not claim these notions as new. The BM placement is receiver-relative:</p>
+<div class="formula">authorized for which declared observable algebra?</div>
+<p>The same physical shares can support different access structures for different Passports.</p>
+
+<h2>21. Correlations can alter authorization</h2>
+<p>A subset may reproduce all local task observables yet fail to preserve the declared joint correlations with a reference or external subsystem.</p>
+<div class="firewall"><strong>Permanent firewall:</strong> local observable recovery does not imply recovery of every contextual correlation.</div>
+<p>The access structure must therefore be built from the full contextual operator system required by the task.</p>
+
+<h2>22. Quantum access is not ordinary route redundancy</h2>
+<div class="compare">
+  <div class="box"><h3>Classical network</h3><p>The same payload can often be duplicated onto disjoint routes to improve resilience.</p></div>
+  <div class="box"><h3>Quantum noncommutative task</h3><p>Exact independently recoverable copies on disjoint routes are forbidden by no-broadcasting.</p></div>
+</div>
+<p>Quantum resilience must instead use encoded correlations spread across overlapping or jointly authorized share sets.</p>
+
+<h2>23. Approximate access structures</h2>
+<p>At positive tolerance, a subset can be approximately authorized when some CPTP recovery achieves task error at most <strong>ε</strong>.</p>
+<div class="formula">Auth<sub>ε</sub>(A)={S : δ<sub>A,S</sub>≤ε}.</div>
+<p>This family can change continuously or discretely as tolerance varies.</p>
+<div class="firewall"><strong>Firewall:</strong> exact no-broadcasting geometry does not automatically provide a complete theorem for approximate disjoint recovery.</div>
+
+<h2>24. Approximate disjoint recovery tradeoffs</h2>
+<p>Two disjoint subsystems can each carry imperfect information about a quantum task without violating exact no-broadcasting.</p>
+<p>The research problem is to quantify the joint tradeoff:</p>
+<div class="formula">δ<sub>A,S</sub>, δ<sub>A,T</sub> &nbsp; with &nbsp; S∩T=∅.</div>
+<p>For noncommutative tasks, both errors cannot generically be driven to zero simultaneously, but the sharp task-relative tradeoff depends on the algebra and physical model.</p>
+
+<h2>25. Approximate authorized families need not have one clean threshold</h2>
+<p>Different subsets can have different recovery errors:</p>
+<div class="formula">δ<sub>A,S</sub>≠δ<sub>A,T</sub>.</div>
+<p>As ε increases, authorized sets can enter at different tolerances.</p>
+<p>The resulting access geometry can therefore have several transition scales rather than one exact threshold.</p>
+
+<h2>26. Access geometry and semantic width</h2>
+<p>Each authorized subset must support a carrier large enough to represent the declared task algebra physically.</p>
+<p>Thus access structure and carrier width are linked but distinct:</p>
+<div class="formula">who can recover? &nbsp; ≠ &nbsp; how large a carrier is required?</div>
+<p>A subset may be authorized but only with a large carrier, while another subset may support a more efficient realization.</p>
+
+<h2>27. Access geometry and locality</h2>
+<p>In many-body systems, only shares inside a task-active causal collar may be capable of influencing the required observables within the deadline.</p>
+<p>Native locality can therefore restrict the candidate authorized family before QEC structure is even tested.</p>
+<div class="formula">causal eligibility → quantum authorization.</div>
+
+<h2>28. A practical exact-access workflow</h2>
+<div class="formula">declare task algebra → include contextual correlations → test each surviving subset with OAQEC → build Auth(A) → reduce to MinAuth(A) → verify intersection constraints → compute hitting number → analyze graceful degradation.</div>
+
+<h2>29. What BM contributes here</h2>
+<p>No-broadcasting, operator-algebra QEC, access structures, threshold codes, and hitting-set combinatorics are established mathematics.</p>
+<div class="callout">The BM synthesis is to make access geometry explicitly task-relative: the authorized hypergraph belongs to a declared operator algebra and context; noncommutativity determines whether exact disjoint recovery is possible; erasure distance is read from the minimal authorized family; and graceful degradation is represented by changes in the surviving algebra and its access geometry.</div>
+
+<h2>30. Open directions</h2>
+<p>Important open problems include sharp approximate no-broadcasting tradeoffs for task algebras, efficient computation of approximate authorized families, access geometry under spatial locality, dimension-aware carrier bounds for minimal authorized sets, and adaptive task downgrading when the strongest algebra is no longer recoverable.</p>
+<p>The next natural page is Quantum Graceful Degradation.</p>
+
+</div></article>
+
+<section class="next"><div class="wrap">
+<span class="eyebrow">Continue</span>
+<h2 style="font-size:clamp(2rem,5vw,3.4rem);line-height:1.04;letter-spacing:-.035em;margin:.7rem 0 .9rem">Related research</h2>
+<div class="next-grid">
+<a class="card" href="/research/quantum-graceful-degradation/"><small>Degradation</small><h3>Quantum Graceful Degradation</h3><p>Track maximal recoverable algebras as erasures and noise accumulate.</p></a>
+<a class="card" href="/research/quantum-task-recovery/"><small>QEC</small><h3>Quantum Task Recovery</h3><p>Return to OAQEC, authorized sets, task-relative distance, and physical recovery.</p></a>
+<a class="card" href="/research/quantum-semantic-carriers/"><small>Carriers</small><h3>Quantum Semantic Carriers</h3><p>Connect access geometry to carrier size, contextual observables, locality, and CPTP realization.</p></a>
+</div>
+</div></section>
+</main>
+
+<footer><div class="wrap footer-grid">
+<div><div class="brand"><span class="mark">BM</span><span>Branch Mathematics</span></div><div>Mathematics of necessary distinctions.</div></div>
+<div class="footer-links"><a href="/learn/">Learn</a><a href="/research/">Research</a><a href="/applications/">Applications</a><a href="/reference/">Reference</a><a href="/book/">Book</a></div>
+</div></footer>
+</body></html>
