@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Maximal Recoverable Quantum Passports | Branch Mathematics</title>
+  <meta name="description" content="A technical Branch Mathematics treatment of maximal recoverable quantum Passports: exact surviving algebras, compressed error algebras, commutants, receiver-required tasks, degradation order, access geometry, and graceful capability loss." />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <link rel="canonical" href="https://branch-mathematics-bm.github.io/research/maximal-recoverable-quantum-passports/" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Maximal Recoverable Quantum Passports" />
+  <meta property="og:description" content="The exact surviving quantum task structure of a noisy channel, expressed as the maximal recoverable algebra and its receiver-relative intersections." />
+  <meta property="og:url" content="https://branch-mathematics-bm.github.io/research/maximal-recoverable-quantum-passports/" />
+  <meta property="og:site_name" content="Branch Mathematics" />
+
+  <meta name="theme-color" content="#07111f" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"TechArticle",
+    "headline":"Maximal Recoverable Quantum Passports",
+    "description":"A technical treatment of exact task-relative quantum capability in Branch Mathematics.",
+    "mainEntityOfPage":"https://branch-mathematics-bm.github.io/research/maximal-recoverable-quantum-passports/",
+    "isPartOf":{
+      "@type":"WebSite",
+      "name":"Branch Mathematics",
+      "url":"https://branch-mathematics-bm.github.io/"
+    }
+  }
+  </script>
+
+  <style>
+    :root{
+      --bg:#07111f;--text:#eef5ff;--muted:#aabbd0;--accent:#7bdcff;--accent2:#b39cff;
+      --green:#7ef0c5;--warn:#ffd98c;--red:#ff9d9d;--max:1160px;--read:860px;
+    }
+    *{box-sizing:border-box}html{scroll-behavior:smooth}
+    body{
+      margin:0;color:var(--text);
+      background:
+        radial-gradient(circle at 10% -5%,rgba(123,220,255,.11),transparent 28rem),
+        radial-gradient(circle at 90% 4%,rgba(179,156,255,.08),transparent 24rem),
+        linear-gradient(180deg,#06101d,#07111f 45%,#081422);
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height:1.72;
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(calc(100% - 2rem),var(--max));margin-inline:auto}
+    .read{width:min(100%,var(--read));margin-inline:auto}
+    .site-header{position:sticky;top:0;z-index:50;backdrop-filter:blur(18px);background:rgba(7,17,31,.84);border-bottom:1px solid rgba(123,220,255,.12)}
+    .nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .brand{display:flex;align-items:center;gap:.75rem;font-weight:760;white-space:nowrap}
+    .mark{width:34px;height:34px;border-radius:11px;border:1px solid rgba(123,220,255,.5);display:grid;place-items:center;background:linear-gradient(135deg,rgba(123,220,255,.2),rgba(179,156,255,.12))}
+    .navlinks{display:flex;gap:.15rem;flex-wrap:wrap;justify-content:flex-end}
+    .navlinks a{color:var(--muted);padding:.55rem .68rem;border-radius:10px;font-size:.93rem}
+    .navlinks a:hover,.navlinks a[aria-current="page"]{color:var(--text);background:rgba(255,255,255,.05)}
+    .breadcrumbs{padding:1.2rem 0 0;color:#8397af;font-size:.9rem}
+    .hero{padding:4.6rem 0 4rem;border-bottom:1px solid rgba(123,220,255,.1)}
+    .eyebrow{display:inline-flex;padding:.42rem .7rem;border-radius:999px;border:1px solid rgba(123,220,255,.3);background:rgba(123,220,255,.06);color:#c5efff;font-size:.82rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+    h1{font-size:clamp(3rem,7vw,5.6rem);line-height:.96;letter-spacing:-.05em;margin:1rem 0 1.15rem;max-width:14ch}
+    .lead{font-size:clamp(1.08rem,2vw,1.3rem);color:#c4d4e6;max-width:950px}
+    .meta{display:flex;gap:.55rem;flex-wrap:wrap;margin-top:1.2rem}
+    .tag{display:inline-flex;padding:.42rem .66rem;border-radius:999px;font-size:.76rem;font-weight:800;letter-spacing:.06em;border:1px solid rgba(111,151,193,.24);background:rgba(255,255,255,.025)}
+    .cand{border-color:rgba(255,217,140,.25);color:#f7e8c7}.classic{border-color:rgba(179,156,255,.26);color:#ece5ff}
+    .abstract{margin-top:1.7rem;padding:1.3rem 1.4rem;border:1px solid rgba(123,220,255,.22);border-radius:20px;background:linear-gradient(145deg,rgba(123,220,255,.05),rgba(179,156,255,.025))}
+    .abstract p{margin:0;color:#c3d3e4}
+    .article{padding:4.8rem 0 5rem}.article h2{font-size:clamp(2rem,5vw,3.15rem);line-height:1.05;letter-spacing:-.035em;margin:3.3rem 0 1rem}.article h3{font-size:1.35rem;line-height:1.25;margin:2.2rem 0 .7rem}.article p{color:#c4d2e2;font-size:1.035rem;margin:0 0 1.15rem}
+    .formula{margin:1.4rem 0;padding:1.05rem 1.15rem;border-left:3px solid var(--accent);background:rgba(123,220,255,.055);border-radius:0 14px 14px 0;color:#e0f1ff;font-family:"Cambria Math","Times New Roman",serif;font-size:1.08rem;overflow:auto}
+    .theorem{margin:1.7rem 0 2rem;padding:1.35rem;border:1px solid rgba(126,240,197,.24);border-radius:20px;background:linear-gradient(145deg,rgba(126,240,197,.04),rgba(255,255,255,.012))}
+    .theorem strong{color:#e7fff5}.theorem p{color:#cbd9e6}
+    .firewall{margin:1.7rem 0;padding:1.2rem 1.3rem;border-radius:18px;border:1px solid rgba(255,157,157,.2);background:rgba(255,157,157,.035);color:#f1cccc}.firewall strong{color:#ffd6d6}
+    .callout{margin:1.7rem 0;padding:1.2rem 1.3rem;border-radius:18px;border:1px solid rgba(255,217,140,.22);background:rgba(255,217,140,.04);color:#eadfc9}
+    .compare{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.4rem 0 2rem}.box{border:1px solid rgba(111,151,193,.22);border-radius:18px;background:rgba(255,255,255,.02);padding:1.2rem}.box h3{margin-top:0}.box p{font-size:.96rem;margin-bottom:0}
+    table{width:100%;border-collapse:collapse;margin:1.25rem 0 1.9rem;border:1px solid rgba(111,151,193,.22);background:rgba(255,255,255,.015)}
+    th,td{padding:.82rem;border-bottom:1px solid rgba(111,151,193,.16);text-align:left;vertical-align:top}th{color:#dff7ff;background:rgba(123,220,255,.055);font-size:.92rem}td{color:#c4d2e2;font-size:.94rem}
+    .next{padding:4.5rem 0;border-top:1px solid rgba(123,220,255,.1);background:#050d18}
+    .next-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.6rem}
+    .card{padding:1.2rem;border-radius:20px;border:1px solid rgba(111,151,193,.2);background:rgba(255,255,255,.02);transition:.2s ease}
+    .card:hover{transform:translateY(-2px);border-color:rgba(123,220,255,.42);background:rgba(123,220,255,.04)}
+    .card small{color:var(--accent);font-weight:800;text-transform:uppercase}.card p{color:var(--muted)}
+    footer{padding:3rem 0;border-top:1px solid rgba(255,255,255,.07);background:#040a12;color:#8fa3ba}
+    .footer-grid{display:grid;grid-template-columns:1fr auto;gap:1rem}.footer-links{display:flex;gap:.7rem;flex-wrap:wrap}
+    @media(max-width:900px){.navlinks{display:none}.next-grid{grid-template-columns:1fr}}
+    @media(max-width:620px){.compare,.footer-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+
+<body>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="/"><span class="mark">BM</span><span>Branch Mathematics</span></a>
+    <nav class="navlinks">
+      <a href="/learn/">Learn</a><a href="/research/" aria-current="page">Research</a>
+      <a href="/applications/">Applications</a><a href="/examples/">Examples</a>
+      <a href="/calculator/">Calculator</a><a href="/reference/">Reference</a><a href="/book/">Book</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap breadcrumbs"><a href="/">Home</a> / <a href="/research/">Research</a> / Maximal Recoverable Quantum Passports</div>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Exact quantum capability</span>
+    <h1>Maximal Recoverable Quantum Passports</h1>
+    <p class="lead">For a fixed quantum channel and code, there is a largest exact observable algebra that survives the noise. A receiver Passport selects a required subalgebra inside that capability. The gap between the two tells you exactly what survives, what fails, and what can be downgraded without ambiguity.</p>
+    <div class="meta">
+      <span class="tag cand">Volume II development</span>
+      <span class="tag classic">Uses established operator-algebra quantum error correction</span>
+    </div>
+    <div class="abstract"><strong>Abstract</strong>
+      <p>Let P be the code projector and {E_a} Kraus operators of a finite-dimensional channel N. The compressed error algebra 𝔈_N=C*(P E_a†E_b P) determines the maximal exactly recoverable algebra A_max(N)=𝔈_N′. A receiver requiring task algebra A_req succeeds exactly when A_req⊂A_max(N); the exact surviving requested capability is A_req∩A_max(N). Under additional erasure, A_max is antitone, yielding an exact degradation order. BM interprets A_max as the channel's maximal recoverable quantum Passport and keeps it distinct from one receiver's chosen Passport, approximate recoverability, and implementation cost.</p>
+    </div>
+  </div>
+</section>
+
+<article class="article"><div class="read">
+
+<h2>1. Channel capability and receiver demand are different</h2>
+<p>A noisy quantum system has a physical capability determined by its code and channel. A receiver has a task requirement determined by the Passport.</p>
+<div class="compare">
+  <div class="box"><h3>Channel capability</h3><p>The largest observable algebra that can be exactly recovered.</p></div>
+  <div class="box"><h3>Receiver demand</h3><p>The observable algebra the current task actually requires.</p></div>
+</div>
+<p>BM keeps these objects separate.</p>
+
+<h2>2. The compressed error algebra</h2>
+<p>Let <strong>P</strong> be the code projector and <strong>E<sub>a</sub></strong> Kraus operators of the channel <strong>N</strong>.</p>
+<p>Define:</p>
+<div class="formula">𝔈<sub>N</sub>=C*(P E<sub>a</sub>†E<sub>b</sub>P).</div>
+<p>This algebra records how the noise acts inside the code through the compressed error products.</p>
+
+<h2>3. Maximal exactly recoverable algebra</h2>
+<div class="theorem"><strong>Exact Maximal Recoverable Algebra</strong>
+<div class="formula">A<sub>max</sub>(N)=𝔈<sub>N</sub>′.</div>
+<p>The maximal exactly recoverable observable algebra is the commutant of the compressed error algebra.</p></div>
+<p>This is established operator-algebra QEC. BM uses it as the exact quantum capability object for the channel.</p>
+
+<h2>4. Why it is maximal</h2>
+<p>Every exactly correctable observable must commute with every element of the compressed error algebra.</p>
+<p>Therefore any exactly correctable task algebra <strong>A</strong> satisfies:</p>
+<div class="formula">A⊂A<sub>max</sub>(N).</div>
+<p>No larger exact task algebra can exist outside that commutant.</p>
+
+<h2>5. A maximal recoverable Passport</h2>
+<p>BM interprets:</p>
+<div class="formula">A<sub>max</sub>(N)</div>
+<p>as the maximal exact quantum Passport supported by the code and channel.</p>
+<p>It is not a chosen receiver task. It is the envelope of all exact task algebras physically available under that noise model.</p>
+
+<h2>6. Receiver-required Passport</h2>
+<p>Let the receiver require:</p>
+<div class="formula">A<sub>req</sub>.</div>
+<p>Exact success requires:</p>
+<div class="formula">A<sub>req</sub>⊂A<sub>max</sub>(N).</div>
+<p>If this inclusion fails, some required observable is not exactly recoverable.</p>
+
+<h2>7. Surviving requested capability</h2>
+<p>Even when the full required algebra fails, part of it can remain exactly recoverable.</p>
+<div class="formula">A<sub>survive</sub>=A<sub>req</sub>∩A<sub>max</sub>(N).</div>
+<p>This is the exact portion of the requested Passport that survives the channel.</p>
+
+<h2>8. Failure is therefore structured</h2>
+<p>Rather than saying only “recovery failed,” one can state:</p>
+<div class="formula">required algebra − surviving intersection = exact lost capability.</div>
+<p>This identifies which distinctions have failed rather than collapsing everything to one binary label.</p>
+
+<h2>9. Full-state recovery is one endpoint</h2>
+<p>Full logical-state recovery corresponds to:</p>
+<div class="formula">A<sub>req</sub>=B(H<sub>L</sub>).</div>
+<p>If:</p>
+<div class="formula">A<sub>max</sub>(N)=B(H<sub>L</sub>),</div>
+<p>the full logical system is exactly recoverable.</p>
+<p>If <strong>A<sub>max</sub></strong> is smaller, only a restricted task family survives.</p>
+
+<h2>10. Proper noncommutative capability</h2>
+<p>The maximal recoverable algebra can be a proper noncommutative subalgebra.</p>
+<p>Then full-state QEC has failed, but genuinely quantum task recovery remains possible.</p>
+<div class="firewall"><strong>Firewall:</strong> “not full-state recoverable” does not mean “only classical information survives.”</div>
+
+<h2>11. Commutative surviving capability</h2>
+<p>If the maximal surviving algebra is commutative, the remaining exact task content is jointly measurable classical information.</p>
+<div class="formula">A<sub>max</sub> commutative ⇒ exact surviving task is classical in algebraic type.</div>
+<p>This changes the access geometry because no-broadcasting constraints no longer apply in the same way.</p>
+
+<h2>12. Scalar endpoint</h2>
+<p>If:</p>
+<div class="formula">A<sub>max</sub>=C·I,</div>
+<p>then no nontrivial logical observable remains exactly recoverable.</p>
+<p>The channel has reached the trivial exact capability endpoint for that code.</p>
+
+<h2>13. Damage order</h2>
+<p>For erasure patterns <strong>F₁⊂F₂</strong>, the second removes at least as much physical support as the first.</p>
+<div class="theorem"><strong>Antitone Degradation</strong>
+<div class="formula">A<sub>max</sub>(F₂)⊂eq A<sub>max</sub>(F₁).</div>
+<p>More erasure cannot increase exact recoverable capability.</p></div>
+
+<h2>14. Exact degradation chain</h2>
+<p>Along a nested sequence of damage patterns:</p>
+<div class="formula">F₀⊂F₁⊂···⊂F<sub>r</sub>,</div>
+<p>one obtains:</p>
+<div class="formula">A<sub>max</sub>(F₀)⊃eqA<sub>max</sub>(F₁)⊃eq···⊃eqA<sub>max</sub>(F<sub>r</sub>).</div>
+<p>This is a clean exact capability chain.</p>
+
+<h2>15. Damage patterns need not be totally ordered</h2>
+<p>Two erasure patterns can be incomparable by inclusion.</p>
+<p>Their maximal recoverable algebras can also be incomparable.</p>
+<div class="formula">exact degradation is naturally a partial order, not always one line.</div>
+
+<h2>16. Task success across a damage poset</h2>
+<p>For a fixed receiver task <strong>A<sub>req</sub></strong>, define the successful damage patterns:</p>
+<div class="formula">Good(A<sub>req</sub>)={F : A<sub>req</sub>⊂A<sub>max</sub>(F)}.</div>
+<p>This family is downward closed in damage: if a task survives a larger erasure, it also survives every smaller nested erasure.</p>
+
+<h2>17. Authorized sets from maximal Passports</h2>
+<p>A surviving subset <strong>S</strong> is authorized for task <strong>A</strong> exactly when:</p>
+<div class="formula">A⊂A<sub>max</sub>(S).</div>
+<p>Thus access geometry can be read directly from the maximal recoverable Passport of each surviving subsystem.</p>
+
+<h2>18. Minimal authorized sets</h2>
+<p>The minimal subsets satisfying:</p>
+<div class="formula">A⊂A<sub>max</sub>(S)</div>
+<p>form <strong>MinAuth(A)</strong>.</p>
+<p>These determine the task-relative erasure hitting number:</p>
+<div class="formula">d<sub>A</sub>=τ(MinAuth(A)).</div>
+
+<h2>19. No-broadcasting from maximal Passports</h2>
+<p>If <strong>A</strong> is noncommutative and two disjoint subsets both have maximal recoverable algebras containing <strong>A</strong>, then both disjoint subsets recover the same genuine quantum task.</p>
+<p>No-broadcasting forbids this exact configuration.</p>
+<div class="formula">A noncommutative ⇒ exact authorized family must be intersecting.</div>
+
+<h2>20. Maximal Passport and task downgrading</h2>
+<p>If the original requirement fails, one lawful response is to replace it with a weaker algebra:</p>
+<div class="formula">A<sub>req</sub>′⊂A<sub>req</sub>∩A<sub>max</sub>.</div>
+<p>This is an explicit contract change.</p>
+<div class="callout">BM treats task downgrading as a declared Passport revision, not as a silent reinterpretation of failure.</div>
+
+<h2>21. Exact recoverable algebras form a structured family</h2>
+<p>Every exactly recoverable task algebra lies inside <strong>A<sub>max</sub></strong>.</p>
+<p>Thus exact task capabilities inherit a clean inclusion structure.</p>
+<div class="formula">A exact-recoverable ⇔ A⊂A<sub>max</sub>.</div>
+<p>This makes exact capability synthesis comparatively simple once <strong>A<sub>max</sub></strong> is known.</p>
+
+<h2>22. Approximate Passports are different</h2>
+<p>At positive tolerance, define:</p>
+<div class="formula">Cap<sub>ε</sub>(N)={A : δ<sub>A</sub>(N)≤ε}.</div>
+<p>This family is downward closed, but it need not have one unique greatest element.</p>
+<div class="firewall"><strong>Permanent firewall:</strong> the exact maximal-Passport theorem does not automatically extend to a unique maximal approximate Passport.</div>
+
+<h2>23. Why approximate maximality can fail</h2>
+<p>Two different task algebras can each be recoverable within tolerance ε while the algebra generated by both exceeds the error budget.</p>
+<div class="formula">A₁,A₂∈Cap<sub>ε</sub> does not imply C*(A₁∪A₂)∈Cap<sub>ε</sub>.</div>
+<p>Approximate capability can therefore be genuinely multi-objective.</p>
+
+<h2>24. Capability frontiers</h2>
+<p>Instead of one approximate maximal algebra, one can study maximal elements of:</p>
+<div class="formula">Cap<sub>ε</sub>(N)</div>
+<p>under inclusion.</p>
+<p>Several incomparable maximal elements may coexist.</p>
+<p>This produces a quantum capability frontier rather than one exact envelope.</p>
+
+<h2>25. Maximal Passport and carrier dimension</h2>
+<p>Once the surviving contextual operator system is identified, any exact carrier must have enough operator-space dimension to represent it.</p>
+<div class="formula">log₂k ≥ ½log₂ dim(S<sub>survive</sub><sup>ctx</sup>).</div>
+<p>As damage shrinks the recoverable Passport, minimum carrier requirements can shrink as well.</p>
+
+<h2>26. Maximal Passport and locality</h2>
+<p>If native dynamics prove that certain remote degrees of freedom cannot affect the task before the deadline, they need not enter the contextual operator system.</p>
+<p>Thus:</p>
+<div class="formula">native locality → smaller task operator system → potentially smaller recoverable Passport burden.</div>
+<p>This links many-body locality to exact quantum capability.</p>
+
+<h2>27. Maximal Passport and spacetime evolution</h2>
+<p>A future task can be pulled backward in the Heisenberg picture:</p>
+<div class="formula">A<sub>t</sub>=Φ<sub>t,T</sub><sup>*</sup>(A<sub>T</sub>).</div>
+<p>The relevant recoverable Passport at time <strong>t</strong> is therefore the intersection of the channel's current exact capability with the future task algebra transported back to <strong>t</strong>.</p>
+<div class="formula">A<sub>needed,t</sub>∩A<sub>max,t</sub>.</div>
+
+<h2>28. Dynamic recovery and static recoverability differ</h2>
+<p>A task algebra can be statically recoverable after one noise event while a compressed carrier still fails to admit an autonomous CPTP evolution through time.</p>
+<div class="firewall"><strong>Permanent firewall:</strong> static exact task recoverability does not imply exact quantum dynamic closure.</div>
+
+<h2>29. Provenance from noise to lost task</h2>
+<p>A useful audit trail is:</p>
+<div class="formula">noise model → Kraus family → compressed error algebra → commutant → maximal Passport → receiver intersection → surviving task.</div>
+<p>This exposes exactly where capability was lost.</p>
+
+<h2>30. Comparing two channels</h2>
+<p>For channels <strong>N</strong> and <strong>M</strong>, exact capability comparison can be made by inclusion:</p>
+<div class="formula">A<sub>max</sub>(N)⊂A<sub>max</sub>(M).</div>
+<p>If so, every exact task recoverable under <strong>N</strong> is also recoverable under <strong>M</strong>.</p>
+<p>If neither inclusion holds, the channels support different incomparable task families.</p>
+
+<h2>31. Channel ordering is receiver-sensitive</h2>
+<p>Even if two channels have incomparable maximal recoverable algebras, one receiver may prefer one channel because its required algebra lies inside that channel's capability.</p>
+<div class="formula">channel superiority can depend on A<sub>req</sub>.</div>
+<p>This is a direct example of BM's receiver-relative comparison principle.</p>
+
+<h2>32. A reusable exact-capability workflow</h2>
+<div class="formula">choose code → specify channel → form 𝔈<sub>N</sub> → compute A<sub>max</sub>=𝔈<sub>N</sub>′ → compare with A<sub>req</sub> → derive authorized sets → compute task distance → record surviving intersection → decide downgrade or repair.</div>
+
+<h2>33. What BM contributes here</h2>
+<p>The maximal recoverable algebra, commutant construction, OAQEC, access structures, and no-broadcasting are established quantum mathematics.</p>
+<div class="callout">The BM synthesis is to interpret the maximal exact recoverable algebra as the channel's maximal quantum Passport, keep it distinct from one receiver's required Passport, use intersections to express surviving capability, connect damage order to access geometry, and preserve exact/approximate separation rather than inventing a nonexistent unique approximate maximal Passport.</div>
+
+<h2>34. Open directions</h2>
+<p>Important next problems include efficient maximal-Passport computation for structured many-body channels, local-to-global capability synthesis, approximate capability frontiers, dimension-aware conversion from algebraic defect to physical recovery defect, and dynamic versions in which the maximal recoverable Passport evolves through spacetime.</p>
+<p>The next natural page is Quantum Capability Frontiers and Approximate Passport Geometry.</p>
+
+</div></article>
+
+<section class="next"><div class="wrap">
+<span class="eyebrow">Continue</span>
+<h2 style="font-size:clamp(2rem,5vw,3.4rem);line-height:1.04;letter-spacing:-.035em;margin:.7rem 0 .9rem">Related research</h2>
+<div class="next-grid">
+<a class="card" href="/research/quantum-capability-frontiers/"><small>Approximate geometry</small><h3>Quantum Capability Frontiers</h3><p>Study incomparable approximate task algebras, tolerance-dependent maximal elements, and Pareto structure.</p></a>
+<a class="card" href="/research/quantum-graceful-degradation/"><small>Degradation</small><h3>Quantum Graceful Degradation</h3><p>Track how maximal exact capability shrinks as noise and erasure increase.</p></a>
+<a class="card" href="/research/approximate-quantum-task-recovery/"><small>Approximation</small><h3>Approximate Quantum Task Recovery</h3><p>Connect exact maximal Passports to commutator defects and physical CPTP recovery error.</p></a>
+</div>
+</div></section>
+</main>
+
+<footer><div class="wrap footer-grid">
+<div><div class="brand"><span class="mark">BM</span><span>Branch Mathematics</span></div><div>Mathematics of necessary distinctions.</div></div>
+<div class="footer-links"><a href="/learn/">Learn</a><a href="/research/">Research</a><a href="/applications/">Applications</a><a href="/reference/">Reference</a><a href="/book/">Book</a></div>
+</div></footer>
+</body>
+</html>
