@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Quantum Error Correction for Observables Instead of Full States | Branch Mathematics</title>
+  <meta name="description" content="A technical Branch Mathematics treatment of task-relative quantum error correction: correctable observables and algebras, authorized sets, erasure distance, OAQEC criteria, graceful degradation, and physical recovery." />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <link rel="canonical" href="https://branch-mathematics-bm.github.io/research/quantum-task-recovery/" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Quantum Error Correction for Observables Instead of Full States" />
+  <meta property="og:description" content="Task-relative quantum recovery, correctable algebras, erasure distance, authorized sets, and graceful degradation." />
+  <meta property="og:url" content="https://branch-mathematics-bm.github.io/research/quantum-task-recovery/" />
+  <meta property="og:site_name" content="Branch Mathematics" />
+
+  <meta name="theme-color" content="#07111f" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"TechArticle",
+    "headline":"Quantum Error Correction for Observables Instead of Full States",
+    "description":"A technical treatment of task-relative quantum error correction in Branch Mathematics.",
+    "mainEntityOfPage":"https://branch-mathematics-bm.github.io/research/quantum-task-recovery/",
+    "isPartOf":{
+      "@type":"WebSite",
+      "name":"Branch Mathematics",
+      "url":"https://branch-mathematics-bm.github.io/"
+    }
+  }
+  </script>
+
+  <style>
+    :root{
+      --bg:#07111f;--text:#eef5ff;--muted:#aabbd0;--accent:#7bdcff;--accent2:#b39cff;
+      --green:#7ef0c5;--warn:#ffd98c;--red:#ff9d9d;--max:1160px;--read:860px;
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{
+      margin:0;color:var(--text);
+      background:
+        radial-gradient(circle at 10% -5%,rgba(123,220,255,.11),transparent 28rem),
+        radial-gradient(circle at 90% 4%,rgba(179,156,255,.08),transparent 24rem),
+        linear-gradient(180deg,#06101d,#07111f 45%,#081422);
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height:1.72;
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(calc(100% - 2rem),var(--max));margin-inline:auto}
+    .read{width:min(100%,var(--read));margin-inline:auto}
+    .site-header{position:sticky;top:0;z-index:50;backdrop-filter:blur(18px);background:rgba(7,17,31,.84);border-bottom:1px solid rgba(123,220,255,.12)}
+    .nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .brand{display:flex;align-items:center;gap:.75rem;font-weight:760;white-space:nowrap}
+    .mark{width:34px;height:34px;border-radius:11px;border:1px solid rgba(123,220,255,.5);display:grid;place-items:center;background:linear-gradient(135deg,rgba(123,220,255,.2),rgba(179,156,255,.12))}
+    .navlinks{display:flex;gap:.15rem;flex-wrap:wrap;justify-content:flex-end}
+    .navlinks a{color:var(--muted);padding:.55rem .68rem;border-radius:10px;font-size:.93rem}
+    .navlinks a:hover,.navlinks a[aria-current="page"]{color:var(--text);background:rgba(255,255,255,.05)}
+    .breadcrumbs{padding:1.2rem 0 0;color:#8397af;font-size:.9rem}
+    .hero{padding:4.6rem 0 4rem;border-bottom:1px solid rgba(123,220,255,.1)}
+    .eyebrow{display:inline-flex;padding:.42rem .7rem;border-radius:999px;border:1px solid rgba(123,220,255,.3);background:rgba(123,220,255,.06);color:#c5efff;font-size:.82rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+    h1{font-size:clamp(3rem,7vw,5.6rem);line-height:.96;letter-spacing:-.05em;margin:1rem 0 1.15rem;max-width:14ch}
+    .lead{font-size:clamp(1.08rem,2vw,1.3rem);color:#c4d4e6;max-width:950px}
+    .meta{display:flex;gap:.55rem;flex-wrap:wrap;margin-top:1.2rem}
+    .tag{display:inline-flex;padding:.42rem .66rem;border-radius:999px;font-size:.76rem;font-weight:800;letter-spacing:.06em;border:1px solid rgba(111,151,193,.24);background:rgba(255,255,255,.025)}
+    .cand{border-color:rgba(255,217,140,.25);color:#f7e8c7}.classic{border-color:rgba(179,156,255,.26);color:#ece5ff}
+    .abstract{margin-top:1.7rem;padding:1.3rem 1.4rem;border:1px solid rgba(123,220,255,.22);border-radius:20px;background:linear-gradient(145deg,rgba(123,220,255,.05),rgba(179,156,255,.025))}
+    .abstract p{margin:0;color:#c3d3e4}
+    .article{padding:4.8rem 0 5rem}.article h2{font-size:clamp(2rem,5vw,3.15rem);line-height:1.05;letter-spacing:-.035em;margin:3.3rem 0 1rem}.article h3{font-size:1.35rem;line-height:1.25;margin:2.2rem 0 .7rem}.article p{color:#c4d2e2;font-size:1.035rem;margin:0 0 1.15rem}
+    .formula{margin:1.4rem 0;padding:1.05rem 1.15rem;border-left:3px solid var(--accent);background:rgba(123,220,255,.055);border-radius:0 14px 14px 0;color:#e0f1ff;font-family:"Cambria Math","Times New Roman",serif;font-size:1.08rem;overflow:auto}
+    .theorem{margin:1.7rem 0 2rem;padding:1.35rem;border:1px solid rgba(126,240,197,.24);border-radius:20px;background:linear-gradient(145deg,rgba(126,240,197,.04),rgba(255,255,255,.012))}
+    .theorem strong{color:#e7fff5}.theorem p{color:#cbd9e6}
+    .firewall{margin:1.7rem 0;padding:1.2rem 1.3rem;border-radius:18px;border:1px solid rgba(255,157,157,.2);background:rgba(255,157,157,.035);color:#f1cccc}.firewall strong{color:#ffd6d6}
+    .callout{margin:1.7rem 0;padding:1.2rem 1.3rem;border-radius:18px;border:1px solid rgba(255,217,140,.22);background:rgba(255,217,140,.04);color:#eadfc9}
+    .compare{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.4rem 0 2rem}.box{border:1px solid rgba(111,151,193,.22);border-radius:18px;background:rgba(255,255,255,.02);padding:1.2rem}.box h3{margin-top:0}.box p{font-size:.96rem;margin-bottom:0}
+    .example{margin:1.6rem 0 2rem;padding:1.35rem;border-radius:20px;border:1px solid rgba(179,156,255,.22);background:linear-gradient(145deg,rgba(179,156,255,.04),rgba(255,255,255,.015))}
+    .example h3{margin-top:0;color:#efe8ff}
+    table{width:100%;border-collapse:collapse;margin:1.25rem 0 1.9rem;border:1px solid rgba(111,151,193,.22);background:rgba(255,255,255,.015)}
+    th,td{padding:.82rem;border-bottom:1px solid rgba(111,151,193,.16);text-align:left;vertical-align:top}th{color:#dff7ff;background:rgba(123,220,255,.055);font-size:.92rem}td{color:#c4d2e2;font-size:.94rem}
+    .next{padding:4.5rem 0;border-top:1px solid rgba(123,220,255,.1);background:#050d18}
+    .next-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.6rem}
+    .card{padding:1.2rem;border-radius:20px;border:1px solid rgba(111,151,193,.2);background:rgba(255,255,255,.02);transition:.2s ease}
+    .card:hover{transform:translateY(-2px);border-color:rgba(123,220,255,.42);background:rgba(123,220,255,.04)}
+    .card small{color:var(--accent);font-weight:800;text-transform:uppercase}.card p{color:var(--muted)}
+    footer{padding:3rem 0;border-top:1px solid rgba(255,255,255,.07);background:#040a12;color:#8fa3ba}
+    .footer-grid{display:grid;grid-template-columns:1fr auto;gap:1rem}.footer-links{display:flex;gap:.7rem;flex-wrap:wrap}
+    @media(max-width:900px){.navlinks{display:none}.next-grid{grid-template-columns:1fr}}
+    @media(max-width:620px){.compare,.footer-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+
+<body>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="/"><span class="mark">BM</span><span>Branch Mathematics</span></a>
+    <nav class="navlinks">
+      <a href="/learn/">Learn</a><a href="/research/" aria-current="page">Research</a>
+      <a href="/applications/">Applications</a><a href="/examples/">Examples</a>
+      <a href="/calculator/">Calculator</a><a href="/reference/">Reference</a><a href="/book/">Book</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap breadcrumbs"><a href="/">Home</a> / <a href="/research/">Research</a> / Quantum Task Recovery</div>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Quantum error correction</span>
+    <h1>Quantum Error Correction for Observables Instead of Full States</h1>
+    <p class="lead">A quantum code can fail to preserve an arbitrary logical state while still preserving exactly the observable algebra the receiver actually needs. Task-relative QEC treats that weaker requirement as a first-class mathematical object.</p>
+    <div class="meta">
+      <span class="tag cand">Volume II development</span>
+      <span class="tag classic">Uses established OAQEC and quantum information theory</span>
+    </div>
+    <div class="abstract"><strong>Abstract</strong>
+      <p>Let P project onto a code space and let {E_a} describe a noise channel. For a declared task algebra A, exact operator-algebra quantum error correction is characterized by [P E_a†E_b P,X]=0 for every X∈A. Branch Mathematics uses this established criterion to define task-relative authorized sets, erasure distance, access geometry, and graceful degradation. A subset of physical shares is authorized when some CPTP recovery fixes the declared task algebra, even if full-state recovery fails. This page develops exact task correction, erasure distance, the two-qubit repetition example, authorized-set geometry, antitone degradation under erasure, and the separation between algebraic and physical approximate recovery.</p>
+    </div>
+  </div>
+</section>
+
+<article class="article"><div class="read">
+
+<h2>1. Full-state correction can be more than the task requires</h2>
+<p>Standard quantum error correction is often presented as preserving an arbitrary logical state in a code subspace. That is the strongest natural task.</p>
+<p>But a receiver may only need a smaller observable algebra:</p>
+<div class="formula">A ⊂ B(H<sub>code</sub>).</div>
+<p>Examples include one classical logical bit, a commuting family of measurements, or a restricted noncommutative subsystem.</p>
+<div class="formula">task-relative correction = preserve A, not automatically all of B(H<sub>code</sub>).</div>
+
+<h2>2. Exact correctability criterion</h2>
+<p>Let <strong>P</strong> be the code projector and let <strong>E<sub>a</sub></strong> be Kraus operators for the noise.</p>
+<div class="theorem"><strong>Operator-Algebra QEC Criterion</strong>
+<p>A finite-dimensional task algebra <strong>A</strong> is exactly correctable when</p>
+<div class="formula">[P E<sub>a</sub>†E<sub>b</sub>P, X]=0 &nbsp; for all X∈A and all a,b.</div>
+<p>This is established operator-algebra quantum error correction, used by BM as a native quantum theorem.</p></div>
+
+<h2>3. Full-state QEC is the special case A=B(Hcode)</h2>
+<p>If the task algebra is the full logical algebra, the criterion reduces to the ordinary Knill–Laflamme structure.</p>
+<div class="compare"><div class="box"><h3>Full logical algebra</h3><p>Preserve arbitrary logical superpositions, coherences, and observables.</p></div><div class="box"><h3>Task algebra</h3><p>Preserve only the observable structure explicitly required by the Passport.</p></div></div>
+
+<h2>4. Authorized subsets</h2>
+<p>Suppose a logical encoding is distributed across physical subsystems indexed by:</p>
+<div class="formula">{1,…,m}.</div>
+<p>A subset <strong>S</strong> is authorized for task algebra <strong>A</strong> when there exists a CPTP recovery acting on <strong>S</strong> that restores every observable in <strong>A</strong>.</p>
+<div class="formula">Auth(A)={S : A is exactly recoverable from S}.</div>
+<p>This can be strictly larger than the authorized family for full-state recovery.</p>
+
+<h2>5. Upward closure</h2>
+<p>If a set <strong>S</strong> is authorized and <strong>S⊂T</strong>, then <strong>T</strong> is also authorized: the larger set can discard its extra systems and run the recovery available on <strong>S</strong>.</p>
+<div class="formula">S∈Auth(A), S⊂T ⇒ T∈Auth(A).</div>
+<p>Thus exact task authorization is naturally upward closed.</p>
+
+<h2>6. Task-relative erasure distance</h2>
+<p>Define:</p>
+<div class="formula">d<sub>A</sub>=min{|F| : F<sup>c</sup>∉Auth(A)}.</div>
+<p>This is the smallest erasure size whose complement can no longer recover the declared task algebra.</p>
+<div class="callout">Task-relative erasure distance can exceed or differ from what one would infer by asking for full logical-state recovery.</div>
+
+<h2>7. Two-qubit repetition code</h2>
+<div class="example"><h3>Logical Z survives one erasure</h3>
+<p>Encode:</p>
+<div class="formula">|0<sub>L</sub>⟩=|00⟩, &nbsp; |1<sub>L</sub>⟩=|11⟩.</div>
+<p>If one physical qubit is erased, the remaining qubit still distinguishes the two code-basis states. Therefore the logical <strong>Z</strong> observable remains recoverable from either single qubit.</p>
+<p>But an arbitrary logical superposition:</p>
+<div class="formula">α|0<sub>L</sub>⟩+β|1<sub>L</sub>⟩</div>
+<p>does not survive one erasure as a recoverable full qubit.</p>
+<div class="formula">logical Z recoverable &nbsp; but &nbsp; full qubit not recoverable.</div></div>
+
+<h2>8. Why this matters</h2>
+<p>The code is not simply “good” or “bad.” Its capability depends on the declared task.</p>
+<table><thead><tr><th>Task</th><th>One-qubit erasure</th></tr></thead><tbody>
+<tr><td>Logical Z</td><td>Recoverable</td></tr>
+<tr><td>Classical code-basis bit</td><td>Recoverable</td></tr>
+<tr><td>Full logical qubit</td><td>Not recoverable</td></tr>
+<tr><td>Logical X coherence</td><td>Not recoverable</td></tr>
+</tbody></table>
+
+<h2>9. Minimal authorized sets</h2>
+<p>The most informative part of an access structure is often the family of minimal authorized sets:</p>
+<div class="formula">MinAuth(A).</div>
+<p>Every authorized set contains at least one minimal authorized set.</p>
+<p>These sets describe the smallest physical coalitions capable of restoring the task.</p>
+
+<h2>10. Erasure distance as a hitting number</h2>
+<p>An erasure set <strong>F</strong> destroys recovery exactly when it intersects every minimal authorized set.</p>
+<div class="theorem"><strong>Hitting-Set Form of Erasure Distance</strong>
+<p>For the exact task access structure,</p>
+<div class="formula">d<sub>A</sub> = τ(MinAuth(A)),</div>
+<p>where <strong>τ</strong> is the minimum hitting-set size.</p></div>
+<p>This turns task-relative erasure tolerance into a finite combinatorial invariant of the authorized hypergraph.</p>
+
+<h2>11. No-broadcasting constrains noncommutative tasks</h2>
+<p>If two disjoint subsets can each exactly recover the same genuinely noncommutative task algebra, one could effectively broadcast that algebra.</p>
+<div class="theorem"><strong>Disjoint-Recovery Constraint</strong>
+<p>Two disjoint exact recoveries of the same finite-dimensional C*-algebra force the recoverable algebra to be commutative.</p></div>
+<p>This is a classical no-broadcasting consequence placed into BM access geometry.</p>
+
+<h2>12. Threshold access structures</h2>
+<p>Suppose every subset of size at least <strong>k</strong> is authorized for the same genuinely quantum task, among <strong>m</strong> shares.</p>
+<p>To prevent two disjoint authorized subsets:</p>
+<div class="formula">2k&gt;m.</div>
+<p>This is the task-algebra version of the familiar quantum threshold constraint.</p>
+
+<h2>13. Maximal exactly recoverable algebra</h2>
+<p>Let:</p>
+<div class="formula">E = C*(P E<sub>a</sub>†E<sub>b</sub>P)</div>
+<p>be the C*-algebra generated by the compressed error products.</p>
+<p>Then the maximal exactly recoverable algebra is:</p>
+<div class="formula">A<sub>max</sub>(N)=E′,</div>
+<p>the commutant of the error algebra.</p>
+<div class="callout">This is established operator-algebra structure. BM uses it as the exact surviving quantum Passport after a noise or erasure pattern.</div>
+
+<h2>14. Required task versus surviving task</h2>
+<p>Let <strong>A<sub>req</sub></strong> be the task algebra required by the receiver, and let <strong>A<sub>max</sub>(F)</strong> be the maximal algebra surviving erasure pattern <strong>F</strong>.</p>
+<p>The exactly surviving required capability is:</p>
+<div class="formula">A<sub>survive</sub>(F)=A<sub>req</sub>∩A<sub>max</sub>(F).</div>
+<p>This gives a precise algebraic notion of graceful degradation.</p>
+
+<h2>15. More erasure cannot increase exact capability</h2>
+<p>If erasure pattern <strong>F₂</strong> removes at least as much as <strong>F₁</strong>, then the exactly recoverable algebra cannot become larger.</p>
+<div class="formula">F₁⊂F₂ ⇒ A<sub>max</sub>(F₂) ⊂eq A<sub>max</sub>(F₁).</div>
+<p>This antitone structure gives an exact degradation partial order.</p>
+
+<h2>16. Exact recoverable algebras form a lattice</h2>
+<p>For a fixed finite-dimensional noise channel, exact recoverable observable algebras inherit lattice structure from subalgebras inside the maximal recoverable algebra.</p>
+<p>This makes the exact capability landscape comparatively clean.</p>
+<div class="formula">exact task capability: ordered, composable, algebraic.</div>
+
+<h2>17. Approximate recovery is less canonical</h2>
+<p>At positive tolerance, several incomparable task algebras can each be approximately recoverable without one containing the other.</p>
+<div class="formula">approximate capability can be downward closed without a unique greatest algebra.</div>
+<div class="firewall"><strong>Firewall:</strong> the exact maximal-algebra theorem does not automatically extend to a unique maximal approximate algebra.</div>
+
+<h2>18. Algebraic commutator defect</h2>
+<p>Define the compressed error operator system:</p>
+<div class="formula">K = span{P E<sub>a</sub>†E<sub>b</sub>P}.</div>
+<p>For a candidate task algebra <strong>A</strong>, an approximate algebraic defect can be based on commutators with <strong>K</strong>.</p>
+<div class="formula">κ = sup ||[K,X]||</div>
+<p>over appropriately normalized <strong>K</strong> and <strong>X</strong>.</p>
+
+<h2>19. Distance to the exact commutant</h2>
+<p>Let <strong>η</strong> measure operator-norm distance of the candidate task observables to the exact commutant <strong>K′</strong>. In finite dimension, the project development uses the comparison:</p>
+<div class="formula">η≤κ≤2η.</div>
+<p>This is an algebraic stability statement.</p>
+
+<h2>20. Physical recovery defect is different</h2>
+<p>The receiver ultimately needs a physical recovery channel. Define:</p>
+<div class="formula">δ<sub>A</sub>(N)=optimal CPTP recovery error for task algebra A.</div>
+<p>This is not identical to <strong>κ</strong> or <strong>η</strong>.</p>
+<div class="firewall"><strong>Permanent firewall:</strong> approximate algebraic closeness does not by itself determine optimal physical recovery error.</div>
+
+<h2>21. Perturbation stability</h2>
+<p>For channels <strong>N</strong> and <strong>M</strong>, the physical task-recovery defect satisfies the Lipschitz bound:</p>
+<div class="formula">|δ<sub>A</sub>(N)-δ<sub>A</sub>(M)| ≤ ||N-M||<sub>⋄</sub>.</div>
+<p>Thus small diamond-norm channel perturbations cannot change the optimal task-recovery defect by more than the perturbation size.</p>
+
+<h2>22. Task recovery and semantic carriers</h2>
+<p>A carrier or surviving subsystem is sufficient only if the declared task algebra factors through it physically.</p>
+<div class="formula">task algebra → carrier → CPTP recovery → receiver.</div>
+<p>This ties quantum semantic carriers directly to task-relative QEC.</p>
+
+<h2>23. Authorized geometry under erasure</h2>
+<p>For each erasure pattern <strong>F</strong>, define the surviving subsystem <strong>F<sup>c</sup></strong>. The family:</p>
+<div class="formula">Auth(A)={F<sup>c</sup> : A recoverable after erasing F}</div>
+<p>encodes the full exact access geometry of the task.</p>
+<p>Minimal authorized sets reveal the essential physical coalitions. Minimal hitting sets reveal the smallest erasures that defeat the task.</p>
+
+<h2>24. Task-specific protection can save resources</h2>
+<p>If the receiver only needs a commuting algebra, fewer shares or weaker redundancy may suffice than for a fully noncommutative logical system.</p>
+<div class="formula">weaker quantum task ⇒ potentially larger authorized family.</div>
+<p>This is one of the main practical motivations for task-relative QEC.</p>
+
+<h2>25. But weaker task does not mean classical task</h2>
+<p>A proper task algebra can still be noncommutative.</p>
+<p>Such a task remains genuinely quantum and remains subject to no-broadcasting and nonclassical access constraints.</p>
+<div class="firewall"><strong>Firewall:</strong> “not full-state” does not mean “classical.”</div>
+
+<h2>26. Graceful degradation</h2>
+<p>Instead of classifying a noisy code as simply correctable or uncorrectable, one can track which task algebras survive as damage increases.</p>
+<table><thead><tr><th>Damage level</th><th>Possible surviving capability</th></tr></thead><tbody>
+<tr><td>Low</td><td>Full logical algebra</td></tr>
+<tr><td>Moderate</td><td>Proper noncommutative subalgebra</td></tr>
+<tr><td>Higher</td><td>Commutative observable algebra</td></tr>
+<tr><td>Severe</td><td>Only scalars</td></tr>
+</tbody></table>
+<p>This yields a structured degradation ladder instead of a binary failure label.</p>
+
+<h2>27. Exact task distance versus code distance</h2>
+<p>Standard code distance is tied to preserving the full logical system. Task-relative erasure distance is tied to preserving one declared algebra.</p>
+<div class="formula">d<sub>A</sub> can differ from full-code erasure distance.</div>
+<p>Different tasks on the same physical code can therefore have different effective distances.</p>
+
+<h2>28. A reusable analysis workflow</h2>
+<div class="formula">declare task algebra → compute compressed error products → test commutant criterion → derive A<sub>max</sub> → build authorized sets → compute erasure distance → analyze approximate defect → test CPTP recovery.</div>
+
+<h2>29. What BM contributes here</h2>
+<p>Knill–Laflamme theory, operator-algebra QEC, C*-algebras, no-broadcasting, access structures, and CPTP recovery are established quantum mathematics.</p>
+<div class="callout">The BM synthesis is to treat the receiver's observable algebra as the Passport, distinguish task recovery from full-state recovery, organize erasure tolerance through authorized sets and hitting numbers, track maximal surviving algebras under damage, and connect exact algebraic degradation to approximate physical recovery without conflating them.</div>
+
+<h2>30. Open directions</h2>
+<p>Important open problems include tight dimension-aware bounds from algebraic commutator defect to physical CPTP recovery defect, approximate access-structure geometry, efficient computation of task-relative authorized families for large codes, adaptive task downgrading under noise, and many-body locality bounds for task-specific QEC.</p>
+<p>The next natural page is No-Broadcasting and Quantum Access Geometry.</p>
+
+</div></article>
+
+<section class="next"><div class="wrap">
+<span class="eyebrow">Continue</span>
+<h2 style="font-size:clamp(2rem,5vw,3.4rem);line-height:1.04;letter-spacing:-.035em;margin:.7rem 0 .9rem">Related research</h2>
+<div class="next-grid">
+<a class="card" href="/research/quantum-no-broadcasting/"><small>Access geometry</small><h3>No-Broadcasting and Quantum Access</h3><p>Study intersecting authorized families, threshold constraints, and why quantum redundancy differs from classical routing.</p></a>
+<a class="card" href="/research/quantum-graceful-degradation/"><small>Degradation</small><h3>Quantum Graceful Degradation</h3><p>Track maximal recoverable algebras, damage ordering, and surviving task capability.</p></a>
+<a class="card" href="/research/quantum-semantic-carriers/"><small>Carriers</small><h3>Quantum Semantic Carriers</h3><p>Return to task operator systems, carrier dimension bounds, locality, and physical encoding.</p></a>
+</div>
+</div></section>
+</main>
+
+<footer><div class="wrap footer-grid">
+<div><div class="brand"><span class="mark">BM</span><span>Branch Mathematics</span></div><div>Mathematics of necessary distinctions.</div></div>
+<div class="footer-links"><a href="/learn/">Learn</a><a href="/research/">Research</a><a href="/applications/">Applications</a><a href="/reference/">Reference</a><a href="/book/">Book</a></div>
+</div></footer>
+</body></html>
