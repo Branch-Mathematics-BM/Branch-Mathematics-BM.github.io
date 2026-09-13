@@ -1,0 +1,1292 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Dynamic Closure: When Does a Reduced State Evolve Autonomously? | Branch Mathematics</title>
+  <meta name="description" content="A technical Branch Mathematics treatment of dynamic closure: exact quotient criteria, successor fibres, approximate closure defect, temporal horizons, memory, path lifting, partial maps, and realization." />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <link rel="canonical" href="https://branch-mathematics-bm.github.io/research/dynamic-closure/" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Dynamic Closure: When Does a Reduced State Evolve Autonomously?" />
+  <meta property="og:description" content="Exact and approximate closure, successor fibres, memory, path lifting, temporal horizons, and realization." />
+  <meta property="og:url" content="https://branch-mathematics-bm.github.io/research/dynamic-closure/" />
+  <meta property="og:site_name" content="Branch Mathematics" />
+
+  <meta name="theme-color" content="#07111f" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"TechArticle",
+    "headline":"Dynamic Closure: When Does a Reduced State Evolve Autonomously?",
+    "description":"A technical treatment of dynamic closure in Branch Mathematics.",
+    "mainEntityOfPage":"https://branch-mathematics-bm.github.io/research/dynamic-closure/",
+    "isPartOf":{
+      "@type":"WebSite",
+      "name":"Branch Mathematics",
+      "url":"https://branch-mathematics-bm.github.io/"
+    }
+  }
+  </script>
+
+  <style>
+    :root{
+      --bg:#07111f;
+      --text:#eef5ff;
+      --muted:#aabbd0;
+      --line:#27415e;
+      --accent:#7bdcff;
+      --accent2:#b39cff;
+      --green:#7ef0c5;
+      --warn:#ffd98c;
+      --red:#ff9d9d;
+      --max:1160px;
+      --read:860px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 10% -5%,rgba(123,220,255,.11),transparent 28rem),
+        radial-gradient(circle at 90% 4%,rgba(179,156,255,.08),transparent 24rem),
+        linear-gradient(180deg,#06101d,#07111f 45%,#081422);
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height:1.72;
+    }
+
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(calc(100% - 2rem),var(--max));margin-inline:auto}
+    .read{width:min(100%,var(--read));margin-inline:auto}
+
+    .site-header{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:blur(18px);
+      background:rgba(7,17,31,.84);
+      border-bottom:1px solid rgba(123,220,255,.12);
+    }
+
+    .nav{
+      min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:1rem;
+    }
+
+    .brand{
+      display:flex;align-items:center;gap:.75rem;font-weight:760;white-space:nowrap;
+    }
+
+    .mark{
+      width:34px;height:34px;border-radius:11px;
+      border:1px solid rgba(123,220,255,.5);
+      display:grid;place-items:center;
+      background:linear-gradient(135deg,rgba(123,220,255,.2),rgba(179,156,255,.12));
+    }
+
+    .navlinks{display:flex;gap:.15rem;flex-wrap:wrap;justify-content:flex-end}
+    .navlinks a{
+      color:var(--muted);padding:.55rem .68rem;border-radius:10px;font-size:.93rem;
+    }
+    .navlinks a:hover,.navlinks a[aria-current="page"]{
+      color:var(--text);background:rgba(255,255,255,.05);
+    }
+
+    .breadcrumbs{padding:1.2rem 0 0;color:#8397af;font-size:.9rem}
+
+    .hero{
+      padding:4.6rem 0 4rem;
+      border-bottom:1px solid rgba(123,220,255,.1);
+    }
+
+    .eyebrow{
+      display:inline-flex;padding:.42rem .7rem;border-radius:999px;
+      border:1px solid rgba(123,220,255,.3);
+      background:rgba(123,220,255,.06);
+      color:#c5efff;
+      font-size:.82rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+    }
+
+    h1{
+      font-size:clamp(3rem,7vw,5.7rem);
+      line-height:.96;letter-spacing:-.05em;
+      margin:1rem 0 1.15rem;max-width:13ch;
+    }
+
+    .hero .lead{
+      font-size:clamp(1.08rem,2vw,1.3rem);
+      color:#c4d4e6;max-width:940px;margin:0 0 1.5rem;
+    }
+
+    .meta{
+      display:flex;gap:.55rem;flex-wrap:wrap;margin-top:1.2rem;
+    }
+
+    .tag{
+      display:inline-flex;
+      padding:.42rem .66rem;
+      border-radius:999px;
+      font-size:.76rem;
+      font-weight:800;
+      letter-spacing:.06em;
+      border:1px solid rgba(111,151,193,.24);
+      background:rgba(255,255,255,.025);
+      color:#d8e7f7;
+    }
+
+    .tag.canon{
+      border-color:rgba(126,240,197,.28);
+      background:rgba(126,240,197,.045);
+      color:#dffcef;
+    }
+
+    .tag.classic{
+      border-color:rgba(179,156,255,.26);
+      background:rgba(179,156,255,.04);
+      color:#ece5ff;
+    }
+
+    .abstract{
+      margin-top:1.7rem;
+      padding:1.3rem 1.4rem;
+      border:1px solid rgba(123,220,255,.22);
+      border-radius:20px;
+      background:linear-gradient(145deg,rgba(123,220,255,.05),rgba(179,156,255,.025));
+    }
+
+    .abstract strong{display:block;margin-bottom:.35rem;color:#def6ff}
+    .abstract p{margin:0;color:#c3d3e4}
+
+    .article{padding:4.8rem 0 5rem}
+
+    .article h2{
+      font-size:clamp(2rem,5vw,3.15rem);
+      line-height:1.05;letter-spacing:-.035em;
+      margin:3.3rem 0 1rem;
+    }
+
+    .article h3{
+      font-size:1.35rem;line-height:1.25;margin:2.2rem 0 .7rem;
+    }
+
+    .article p{
+      color:#c4d2e2;font-size:1.035rem;margin:0 0 1.15rem;
+    }
+
+    .formula{
+      margin:1.4rem 0;padding:1.05rem 1.15rem;
+      border-left:3px solid var(--accent);
+      background:rgba(123,220,255,.055);
+      border-radius:0 14px 14px 0;
+      color:#e0f1ff;
+      font-family:"Cambria Math","Times New Roman",serif;
+      font-size:1.08rem;overflow:auto;
+      white-space:normal;
+    }
+
+    .theorem{
+      margin:1.7rem 0 2rem;
+      padding:1.35rem;
+      border:1px solid rgba(126,240,197,.24);
+      border-radius:20px;
+      background:linear-gradient(145deg,rgba(126,240,197,.04),rgba(255,255,255,.012));
+    }
+
+    .theorem .head{
+      display:flex;align-items:center;gap:.55rem;flex-wrap:wrap;margin-bottom:.55rem;
+    }
+
+    .theorem .head strong{font-size:1.08rem;color:#e7fff5}
+    .theorem .mini{
+      padding:.25rem .5rem;border-radius:999px;
+      border:1px solid rgba(126,240,197,.28);
+      color:#c7f9e7;font-size:.72rem;font-weight:800;letter-spacing:.06em;
+    }
+
+    .theorem p{margin:.45rem 0;color:#cbd9e6}
+
+    .proof{
+      margin:.9rem 0 0;
+      padding-top:.9rem;
+      border-top:1px dashed rgba(126,240,197,.2);
+    }
+
+    .proof strong{color:#dffcef}
+    .proof p{font-size:.98rem}
+
+    .firewall{
+      margin:1.7rem 0;
+      padding:1.2rem 1.3rem;
+      border-radius:18px;
+      border:1px solid rgba(255,157,157,.2);
+      background:rgba(255,157,157,.035);
+      color:#f1cccc;
+    }
+
+    .firewall strong{color:#ffd6d6}
+
+    .callout{
+      margin:1.7rem 0;
+      padding:1.2rem 1.3rem;
+      border-radius:18px;
+      border:1px solid rgba(255,217,140,.22);
+      background:rgba(255,217,140,.04);
+      color:#eadfc9;
+    }
+
+    .compare{
+      display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.4rem 0 2rem;
+    }
+
+    .compare .box{
+      border:1px solid rgba(111,151,193,.22);
+      border-radius:18px;background:rgba(255,255,255,.02);
+      padding:1.2rem;
+    }
+
+    .compare h3{margin-top:0}
+    .compare p{font-size:.96rem;margin-bottom:0}
+
+    .example{
+      margin:1.6rem 0 2rem;
+      padding:1.35rem;
+      border-radius:20px;
+      border:1px solid rgba(179,156,255,.22);
+      background:linear-gradient(145deg,rgba(179,156,255,.04),rgba(255,255,255,.015));
+    }
+
+    .example h3{margin-top:0;color:#efe8ff}
+
+    table{
+      width:100%;border-collapse:collapse;margin:1.25rem 0 1.9rem;
+      border:1px solid rgba(111,151,193,.22);
+      background:rgba(255,255,255,.015);
+    }
+
+    th,td{
+      padding:.82rem;border-bottom:1px solid rgba(111,151,193,.16);
+      text-align:left;vertical-align:top;
+    }
+
+    th{
+      color:#dff7ff;background:rgba(123,220,255,.055);font-size:.92rem;
+    }
+
+    td{color:#c4d2e2;font-size:.94rem}
+
+    .next{
+      padding:4.5rem 0;
+      border-top:1px solid rgba(123,220,255,.1);
+      background:#050d18;
+    }
+
+    .next-grid{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.6rem;
+    }
+
+    .card{
+      min-height:100%;padding:1.2rem;border-radius:20px;
+      border:1px solid rgba(111,151,193,.2);
+      background:rgba(255,255,255,.02);transition:.2s ease;
+    }
+
+    .card:hover{
+      transform:translateY(-2px);
+      border-color:rgba(123,220,255,.42);
+      background:rgba(123,220,255,.04);
+    }
+
+    .card small{
+      color:var(--accent);font-size:.75rem;font-weight:800;
+      letter-spacing:.08em;text-transform:uppercase;
+    }
+
+    .card h3{margin:.5rem 0 .45rem}
+    .card p{color:var(--muted);font-size:.93rem;margin:0}
+
+    footer{
+      padding:3rem 0;border-top:1px solid rgba(255,255,255,.07);
+      background:#040a12;color:#8fa3ba;
+    }
+
+    .footer-grid{
+      display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:end;
+    }
+
+    .footer-links{display:flex;gap:.7rem;flex-wrap:wrap;justify-content:flex-end}
+
+    @media(max-width:900px){
+      .navlinks{display:none}
+      .next-grid{grid-template-columns:1fr}
+    }
+
+    @media(max-width:620px){
+      .hero{padding-top:3rem}
+      .compare{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr}
+      .footer-links{justify-content:flex-start}
+      th,td{font-size:.87rem}
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="/" aria-label="Branch Mathematics home">
+      <span class="mark">BM</span>
+      <span>Branch Mathematics</span>
+    </a>
+
+    <nav class="navlinks" aria-label="Primary navigation">
+      <a href="/learn/">Learn</a>
+      <a href="/research/" aria-current="page">Research</a>
+      <a href="/applications/">Applications</a>
+      <a href="/examples/">Examples</a>
+      <a href="/calculator/">Calculator</a>
+      <a href="/reference/">Reference</a>
+      <a href="/book/">Book</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <div class="wrap breadcrumbs">
+    <a href="/">Home</a> / <a href="/research/">Research</a> / Dynamic Closure
+  </div>
+
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Dynamical systems</span>
+      <h1>Dynamic Closure: When Does a Reduced State Evolve Autonomously?</h1>
+
+      <p class="lead">
+        A representation can be exactly sufficient for a task at the current instant and still fail to define an autonomous reduced dynamical system. Dynamic closure identifies the missing condition.
+      </p>
+
+      <div class="meta">
+        <span class="tag canon">Foundation result</span>
+        <span class="tag classic">Uses classical quotient/factorization ideas</span>
+      </div>
+
+      <div class="abstract">
+        <strong>Abstract</strong>
+        <p>
+          Let a native system evolve by a map Φ on a state space X, and let R:X→Q be a reduced representation. Exact dynamic closure asks whether there exists a reduced update F:Q→Q satisfying RΦ=FR. The criterion is kernel invariance: ker(R)⊆ker(RΦ). This page develops the exact theorem, successor-fibre formulation, approximate one-step defect, temporal horizon refinements, partial-map domain issues, path lifting, memory, and the separation between abstract quotient closure and admissible realization.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <article class="article">
+    <div class="read">
+
+      <h2>1. Problem statement</h2>
+
+      <p>
+        Let <strong>X</strong> be a native state space and let:
+      </p>
+
+      <div class="formula">
+        Φ : X → X
+      </div>
+
+      <p>
+        describe one step of deterministic evolution. Let:
+      </p>
+
+      <div class="formula">
+        R : X → Q
+      </div>
+
+      <p>
+        be a reduced representation.
+      </p>
+
+      <p>
+        The question is whether the reduced state <strong>q=R(x)</strong> contains enough information to determine its own next reduced state without returning to the full native state.
+      </p>
+
+      <p>
+        Formally, does there exist:
+      </p>
+
+      <div class="formula">
+        F : Q → Q
+      </div>
+
+      <p>
+        such that:
+      </p>
+
+      <div class="formula">
+        RΦ = FR ?
+      </div>
+
+      <p>
+        If so, the reduced representation is exactly dynamically closed under the declared evolution.
+      </p>
+
+      <h2>2. Exact closure criterion</h2>
+
+      <div class="theorem">
+        <div class="head">
+          <strong>Exact Dynamic Closure Criterion</strong>
+          <span class="mini">Canonical foundation</span>
+        </div>
+
+        <p>
+          A reduced update <strong>F</strong> satisfying <strong>RΦ=FR</strong> exists if and only if:
+        </p>
+
+        <div class="formula">
+          ker(R) ⊆ ker(RΦ).
+        </div>
+
+        <div class="proof">
+          <strong>Proof sketch.</strong>
+          <p>
+            If <strong>RΦ=FR</strong> and <strong>R(x)=R(x′)</strong>, then:
+          </p>
+          <div class="formula">
+            RΦ(x)=F(R(x))=F(R(x′))=RΦ(x′),
+          </div>
+          <p>
+            so <strong>(x,x′)∈ker(RΦ)</strong>.
+          </p>
+          <p>
+            Conversely, if <strong>ker(R)⊆ker(RΦ)</strong>, define:
+          </p>
+          <div class="formula">
+            F(R(x)) := RΦ(x).
+          </div>
+          <p>
+            The kernel condition guarantees this is well-defined on each fibre of <strong>R</strong>.
+          </p>
+        </div>
+      </div>
+
+      <p>
+        This is the central exact statement: a quotient can evolve autonomously exactly when the native dynamics respect the equivalence relation induced by the representation.
+      </p>
+
+      <h2>3. Static task sufficiency is weaker</h2>
+
+      <p>
+        Suppose a current task is:
+      </p>
+
+      <div class="formula">
+        T:X→Y.
+      </div>
+
+      <p>
+        Static sufficiency asks for:
+      </p>
+
+      <div class="formula">
+        T = T̄R
+        ⇔
+        ker(R) ⊆ ker(T).
+      </div>
+
+      <p>
+        Dynamic closure instead asks:
+      </p>
+
+      <div class="formula">
+        ker(R) ⊆ ker(RΦ).
+      </div>
+
+      <div class="compare">
+        <div class="box">
+          <h3>Static sufficiency</h3>
+          <p>
+            States merged by R must be indistinguishable to the current task.
+          </p>
+        </div>
+
+        <div class="box">
+          <h3>Dynamic closure</h3>
+          <p>
+            States merged by R must have the same next reduced state.
+          </p>
+        </div>
+      </div>
+
+      <div class="firewall">
+        <strong>Permanent firewall:</strong> static sufficiency does not imply dynamic closure.
+      </div>
+
+      <h2>4. Minimal counterexample</h2>
+
+      <div class="example">
+        <h3>A four-state failure</h3>
+
+        <p>
+          Let:
+        </p>
+
+        <div class="formula">
+          X={a,b,c,d}
+        </div>
+
+        <p>
+          and define the representation:
+        </p>
+
+        <div class="formula">
+          R(a)=R(b)=0, &nbsp; R(c)=R(d)=1.
+        </div>
+
+        <p>
+          Define the dynamics:
+        </p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>x</th>
+              <th>Φ(x)</th>
+              <th>R(Φ(x))</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>a</td><td>c</td><td>1</td></tr>
+            <tr><td>b</td><td>a</td><td>0</td></tr>
+            <tr><td>c</td><td>c</td><td>1</td></tr>
+            <tr><td>d</td><td>d</td><td>1</td></tr>
+          </tbody>
+        </table>
+
+        <p>
+          Since <strong>R(a)=R(b)=0</strong> but:
+        </p>
+
+        <div class="formula">
+          RΦ(a)=1 ≠ 0=RΦ(b),
+        </div>
+
+        <p>
+          the reduced state 0 has no unique successor. Exact dynamic closure fails.
+        </p>
+      </div>
+
+      <h2>5. Successor fibres</h2>
+
+      <p>
+        The failure can be expressed directly in the reduced space.
+      </p>
+
+      <p>
+        For each reduced state <strong>q</strong>, define the successor fibre:
+      </p>
+
+      <div class="formula">
+        S<sub>R</sub>(q)
+        =
+        {R(Φx):R(x)=q}.
+      </div>
+
+      <div class="theorem">
+        <div class="head">
+          <strong>Successor-Fibre Characterization</strong>
+          <span class="mini">Canonical foundation</span>
+        </div>
+        <p>
+          Exact dynamic closure holds if and only if every successor fibre is a singleton:
+        </p>
+        <div class="formula">
+          |S<sub>R</sub>(q)|=1
+          &nbsp; for every q∈im(R).
+        </div>
+      </div>
+
+      <p>
+        This formulation is useful because it has a direct approximate analogue.
+      </p>
+
+      <h2>6. Approximate one-step closure</h2>
+
+      <p>
+        Suppose the reduced space <strong>Q</strong> carries a metric <strong>d</strong>. If a successor fibre is not a singleton, the reduced state has intrinsic one-step ambiguity.
+      </p>
+
+      <p>
+        Define the maximal successor-fibre diameter:
+      </p>
+
+      <div class="formula">
+        α(R)
+        =
+        sup<sub>q</sub>
+        diam S<sub>R</sub>(q).
+      </div>
+
+      <p>
+        Define the best worst-case one-step prediction radius:
+      </p>
+
+      <div class="formula">
+        δ<sub>1</sub><sup>*</sup>
+        =
+        sup<sub>q</sub>
+        rad S<sub>R</sub>(q).
+      </div>
+
+      <div class="theorem">
+        <div class="head">
+          <strong>One-Step Diameter–Radius Bounds</strong>
+          <span class="mini">Canonical foundation</span>
+        </div>
+
+        <div class="formula">
+          α(R)/2
+          ≤
+          δ<sub>1</sub><sup>*</sup>
+          ≤
+          α(R).
+        </div>
+
+        <p>
+          Exact closure is the zero-defect case.
+        </p>
+      </div>
+
+      <p>
+        A selector from each successor fibre produces an autonomous predictor, but that predictor need not be the reduction of any native trajectory.
+      </p>
+
+      <div class="firewall">
+        <strong>Permanent firewall:</strong> an autonomous coarse predictor is not automatically native-liftable.
+      </div>
+
+      <h2>7. Multi-step propagation of ambiguity</h2>
+
+      <p>
+        One-step ambiguity can amplify or contract over time.
+      </p>
+
+      <p>
+        Suppose a Hausdorff propagation modulus <strong>h<sub>R</sub></strong> controls how uncertainty sets evolve through the reduced dynamics. Then a continuation bound can take the form:
+      </p>
+
+      <div class="formula">
+        α<sub>k+1</sub>
+        ≤
+        α<sub>1</sub> + h<sub>R</sub>(α<sub>k</sub>).
+      </div>
+
+      <p>
+        The important point is structural rather than formula-specific: small one-step defect alone does not guarantee small long-horizon defect.
+      </p>
+
+      <div class="firewall">
+        <strong>Permanent firewall:</strong> small local closure defect does not imply small global trajectory error without stability or conditioning assumptions.
+      </div>
+
+      <h2>8. Temporal task equivalences</h2>
+
+      <p>
+        A task can be lifted from one time to a horizon.
+      </p>
+
+      <p>
+        For a task <strong>T</strong>, define:
+      </p>
+
+      <div class="formula">
+        β<sub>h</sub>(x)
+        =
+        (Tx,TΦx,…,TΦ<sup>h</sup>x).
+      </div>
+
+      <p>
+        Let:
+      </p>
+
+      <div class="formula">
+        E<sub>h</sub>=ker(β<sub>h</sub>).
+      </div>
+
+      <p>
+        Then:
+      </p>
+
+      <div class="formula">
+        E<sub>h+1</sub> ⊆ E<sub>h</sub>.
+      </div>
+
+      <p>
+        A longer horizon can reveal distinctions that are invisible at short horizon.
+      </p>
+
+      <div class="theorem">
+        <div class="head">
+          <strong>Countdown Descent</strong>
+          <span class="mini">Canonical foundation</span>
+        </div>
+
+        <p>
+          The horizon quotients admit a natural countdown map:
+        </p>
+
+        <div class="formula">
+          F<sub>h</sub>:X/E<sub>h</sub>→X/E<sub>h-1</sub>,
+          &nbsp;
+          [x]↦[Φx].
+        </div>
+
+        <p>
+          The map is well-defined because equality of horizon-h task profiles implies equality of the remaining horizon-(h−1) profiles after one step.
+        </p>
+      </div>
+
+      <h2>9. Capacity-time cost</h2>
+
+      <p>
+        In finite exact systems, define:
+      </p>
+
+      <div class="formula">
+        c<sub>h</sub>=log₂|X/E<sub>h</sub>|.
+      </div>
+
+      <p>
+        The total horizon-specific capacity is:
+      </p>
+
+      <div class="formula">
+        R<sub>H</sub>
+        =
+        Σ<sub>h=0</sub><sup>H</sup> c<sub>h</sub>.
+      </div>
+
+      <p>
+        If one instead uses the full horizon-H representation at every time, the surcharge is:
+      </p>
+
+      <div class="formula">
+        Γ<sub>H</sub><sup>time</sup>
+        =
+        (H+1)c<sub>H</sub>
+        -
+        Σ<sub>h=0</sub><sup>H</sup>c<sub>h</sub>.
+      </div>
+
+      <p>
+        Writing:
+      </p>
+
+      <div class="formula">
+        Δ<sub>j</sub>=c<sub>j</sub>-c<sub>j-1</sub>,
+      </div>
+
+      <p>
+        gives:
+      </p>
+
+      <div class="formula">
+        Γ<sub>H</sub><sup>time</sup>
+        =
+        Σ<sub>j=1</sub><sup>H</sup> jΔ<sub>j</sub>.
+      </div>
+
+      <p>
+        Distinctions that become relevant only far in the future are expensive to carry prematurely.
+      </p>
+
+      <h2>10. Finite distinguishability depth</h2>
+
+      <p>
+        In a deterministic finite system with <strong>N</strong> native states, the horizon-equivalence chain can strictly refine only finitely many times.
+      </p>
+
+      <p>
+        Therefore there is a finite horizon after which no new exact task distinctions appear.
+      </p>
+
+      <div class="formula">
+        E<sub>N-p</sub>=E<sub>∞</sub>
+      </div>
+
+      <p>
+        for the appropriate initial number of classes <strong>p</strong>.
+      </p>
+
+      <p>
+        This gives a finite exact distinguishability depth in the finite deterministic sector.
+      </p>
+
+      <h2>11. Partial maps require domain saturation</h2>
+
+      <p>
+        If the native evolution is partial:
+      </p>
+
+      <div class="formula">
+        Φ:D⊆X→X,
+      </div>
+
+      <p>
+        then a quotient class must not mix states where the update is defined with states where it is undefined, unless the reduced semantics explicitly allow that distinction.
+      </p>
+
+      <p>
+        The domain must therefore be saturated under the representation equivalence:
+      </p>
+
+      <div class="formula">
+        x∈D and R(x)=R(x′) ⇒ x′∈D.
+      </div>
+
+      <p>
+        Only then does the quotient inherit a well-defined partial update in the obvious way.
+      </p>
+
+      <h2>12. Path lifting</h2>
+
+      <p>
+        Dynamic closure concerns one-step reduced evolution. A separate question asks whether an entire coarse path corresponds to one native trajectory.
+      </p>
+
+      <p>
+        For a coarse path:
+      </p>
+
+      <div class="formula">
+        π=(q₀,q₁,…,q<sub>k</sub>),
+      </div>
+
+      <p>
+        define the completion fibre:
+      </p>
+
+      <div class="formula">
+        C(π)
+        =
+        ⋂<sub>j=0</sub><sup>k</sup>
+        Φ<sup>-j</sup>(R<sup>-1</sup>(q<sub>j</sub>)).
+      </div>
+
+      <div class="theorem">
+        <div class="head">
+          <strong>Finite Path Realizability</strong>
+          <span class="mini">Canonical foundation</span>
+        </div>
+
+        <p>
+          The coarse path is realizable by one native initial state if and only if:
+        </p>
+
+        <div class="formula">
+          C(π)≠∅.
+        </div>
+      </div>
+
+      <p>
+        This prevents witness switching.
+      </p>
+
+      <div class="firewall">
+        <strong>Permanent firewall:</strong> a sequence of individually possible coarse transitions need not be realized by one native trajectory.
+      </div>
+
+      <h2>13. Current completion and continuation</h2>
+
+      <p>
+        Let:
+      </p>
+
+      <div class="formula">
+        B(π)=Φ<sup>k</sup>C(π)
+      </div>
+
+      <p>
+        be the set of native states still compatible with the entire coarse history at the current time.
+      </p>
+
+      <p>
+        Extending the history by a new coarse state <strong>q′</strong> gives:
+      </p>
+
+      <div class="formula">
+        B(πq′)
+        =
+        Φ(B(π))∩R<sup>-1</sup>(q′).
+      </div>
+
+      <p>
+        This recursion is important because the admissible continuation set depends on the whole history through <strong>B(π)</strong>, not merely the final coarse label.
+      </p>
+
+      <h2>14. Infinite path lifting needs compactness</h2>
+
+      <p>
+        Finite consistency does not automatically produce an infinite native trajectory.
+      </p>
+
+      <p>
+        A standard sufficient route uses nested nonempty closed completion sets inside a compact space.
+      </p>
+
+      <div class="formula">
+        C(π₀) ⊇ C(π₁) ⊇ C(π₂) ⊇ ···
+      </div>
+
+      <p>
+        If each is nonempty and closed in a compact native space, then the intersection remains nonempty.
+      </p>
+
+      <p>
+        The compactness requirement is a classical topological ingredient; BM uses it to control infinite path realization.
+      </p>
+
+      <h2>15. Memory when closure fails</h2>
+
+      <p>
+        If <strong>R</strong> is not dynamically closed, one response is to augment the reduced state with memory.
+      </p>
+
+      <p>
+        But several memory notions must be kept separate.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Memory type</th>
+            <th>What it can contain</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Latent native memory</td>
+            <td>Distinctions preserved from the original native state.</td>
+          </tr>
+          <tr>
+            <td>Autonomous coarse memory</td>
+            <td>Only distinctions computable from the already-reduced state.</td>
+          </tr>
+          <tr>
+            <td>Observation-derived memory</td>
+            <td>Distinctions supplied by measurement history.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        Autonomous memory cannot recreate a distinction already destroyed by the coarse representation.
+      </p>
+
+      <div class="firewall">
+        <strong>Permanent firewall:</strong> finite hidden-state memory does not imply finite sliding-window memory.
+      </div>
+
+      <h2>16. Minimum latent memory in finite systems</h2>
+
+      <p>
+        In a finite deterministic system, define <strong>n<sub>R</sub>(q)</strong> as the number of native states inside a coarse fibre that must remain distinct to achieve exact closure under an augmented latent state.
+      </p>
+
+      <p>
+        Then the minimum latent memory alphabet size is:
+      </p>
+
+      <div class="formula">
+        |A|<sub>min</sub>
+        =
+        max<sub>q</sub> n<sub>R</sub>(q).
+      </div>
+
+      <p>
+        This is a fibrewise exact statement: the latent state need only distinguish the worst coarse fibre.
+      </p>
+
+      <h2>17. Linear closure</h2>
+
+      <p>
+        For a linear native system:
+      </p>
+
+      <div class="formula">
+        x<sub>t+1</sub>=Ax<sub>t</sub>
+      </div>
+
+      <p>
+        and linear representation:
+      </p>
+
+      <div class="formula">
+        q=Rx,
+      </div>
+
+      <p>
+        exact closure requires:
+      </p>
+
+      <div class="formula">
+        RA = FR
+      </div>
+
+      <p>
+        for some reduced matrix <strong>F</strong>.
+      </p>
+
+      <p>
+        Equivalently:
+      </p>
+
+      <div class="formula">
+        ker(R) is A-invariant modulo R.
+      </div>
+
+      <p>
+        Or, in dual form for task subspaces:
+      </p>
+
+      <div class="formula">
+        AᵀU<sub>h-1</sub> ⊆ U<sub>h</sub>.
+      </div>
+
+      <p>
+        These are classical linear-algebraic invariance statements placed inside the BM temporal-distinction architecture.
+      </p>
+
+      <h2>18. Approximate linear horizon error</h2>
+
+      <p>
+        For a linear task matrix <strong>C</strong>, the finite-horizon observability block is:
+      </p>
+
+      <div class="formula">
+        O<sub>h</sub>
+        =
+        [ C ; CA ; ··· ; CA<sup>h</sup> ].
+      </div>
+
+      <p>
+        A free rank-<strong>d</strong> approximation has optimal spectral error:
+      </p>
+
+      <div class="formula">
+        E<sub>h</sub><sup>free</sup>(d)
+        =
+        σ<sub>d+1</sub>(O<sub>h</sub>).
+      </div>
+
+      <p>
+        But independently optimal rank-<strong>d</strong> subspaces at adjacent horizons need not be dynamically compatible.
+      </p>
+
+      <p>
+        A compatibility defect can be measured by:
+      </p>
+
+      <div class="formula">
+        δ<sub>h</sub>
+        =
+        ||R<sub>h-1</sub>A(I-P<sub>h</sub>)||.
+      </div>
+
+      <p>
+        Error can then satisfy a recurrence:
+      </p>
+
+      <div class="formula">
+        e<sub>t+1</sub>
+        ≤
+        L<sub>H-t</sub>e<sub>t</sub>
+        +
+        δ<sub>H-t</sub>.
+      </div>
+
+      <div class="firewall">
+        <strong>Permanent firewall:</strong> independently optimal stagewise reductions need not form a compatible reduced dynamics.
+      </div>
+
+      <h2>19. Exact quotient versus admissible realization</h2>
+
+      <p>
+        Even when the exact quotient dynamics exist, the quotient may fail to admit the desired implementation.
+      </p>
+
+      <p>
+        A set-theoretic quotient can be:
+      </p>
+
+      <p>
+        non-Euclidean, non-smooth, nonlocal, physically inadmissible, or incompatible with a required product architecture.
+      </p>
+
+      <div class="formula">
+        exact dynamic quotient
+        ≠
+        guaranteed continuous/smooth/local/physical realization
+      </div>
+
+      <div class="firewall">
+        <strong>Permanent firewall:</strong> exact quotient does not imply admissible realization.
+      </div>
+
+      <h2>20. Continuous Euclidean dimension obstruction</h2>
+
+      <p>
+        BM's closure-price analysis includes a strong topological obstruction in continuous Euclidean reduction.
+      </p>
+
+      <p>
+        For a suitable exact sampled-closure problem on an <strong>n</strong>-dimensional native domain, a continuous Euclidean representation into dimension <strong>d&lt;n</strong> can have unavoidable unit normalized error:
+      </p>
+
+      <div class="formula">
+        E<sub>current,d</sub><sup>closed,cont</sup>=1.
+      </div>
+
+      <p>
+        A trajectory lower bound similarly takes the form:
+      </p>
+
+      <div class="formula">
+        E<sub>p,T,d</sub><sup>closed,cont</sup>
+        ≥
+        ||1||<sub>Lᵖ</sub>.
+      </div>
+
+      <p>
+        The point is not that every low-dimensional reduction fails. It is that exact closure, continuity, and low Euclidean dimension can be mutually incompatible under explicit hypotheses.
+      </p>
+
+      <h2>21. What dynamic closure does not say</h2>
+
+      <p>
+        Dynamic closure does not claim:
+      </p>
+
+      <p>
+        that every useful reduced model must be exact; that every task requires full-state closure; that a selector-based predictor is physically realizable; that a small one-step defect stays small indefinitely; or that the reduced state must reproduce every native detail.
+      </p>
+
+      <div class="callout">
+        Dynamic closure is a contract-relative exactness condition. It is not a universal demand that every reduced model reproduce full native dynamics.
+      </div>
+
+      <h2>22. Why BM keeps closure central</h2>
+
+      <p>
+        Dynamic closure is one of the clearest places where necessary distinctions become mathematically visible.
+      </p>
+
+      <p>
+        If two native states are merged and then demand different reduced futures, the reduction has erased a distinction before its final use.
+      </p>
+
+      <p>
+        The repair options are explicit:
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Repair</th>
+            <th>Meaning</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Refine R</td>
+            <td>Keep more native distinctions.</td>
+          </tr>
+          <tr>
+            <td>Add memory</td>
+            <td>Carry distinctions in an augmented latent state.</td>
+          </tr>
+          <tr>
+            <td>Add observations/context</td>
+            <td>Reacquire distinctions from a later source.</td>
+          </tr>
+          <tr>
+            <td>Relax exactness</td>
+            <td>Accept controlled successor ambiguity.</td>
+          </tr>
+          <tr>
+            <td>Change the Passport</td>
+            <td>Require less only when the receiver contract genuinely permits it.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>23. Research directions</h2>
+
+      <p>
+        The exact criterion is simple. The difficult research begins when several additional requirements are imposed simultaneously:
+      </p>
+
+      <p>
+        nonlinear realization, positive-tolerance optimality, locality, causal timing, stochastic laws, PDE regularity, quantum physical admissibility, coupled interfaces, and robustness under perturbation.
+      </p>
+
+      <p>
+        Those extensions lead into semantic width, causal memory, PDE port reduction, distributed cuts, spacetime width, structured repair, and task-relative quantum recovery.
+      </p>
+
+    </div>
+  </article>
+
+  <section class="next">
+    <div class="wrap">
+      <span class="eyebrow">Continue</span>
+      <h2 style="font-size:clamp(2rem,5vw,3.4rem);line-height:1.04;letter-spacing:-.035em;margin:.7rem 0 .9rem">
+        Related research
+      </h2>
+
+      <div class="next-grid">
+        <a class="card" href="/research/exact-vs-approximate-model-reduction/">
+          <small>Approximation</small>
+          <h3>Exact vs Approximate Model Reduction</h3>
+          <p>Move from exact kernel invariance into positive-tolerance geometry, error propagation, and robustness.</p>
+        </a>
+
+        <a class="card" href="/research/hankel-task-memory/">
+          <small>Memory</small>
+          <h3>Hankel Operators and Task-Specific Memory</h3>
+          <p>Study past histories through the future responses they can still change.</p>
+        </a>
+
+        <a class="card" href="/examples/static-vs-dynamic-closure/">
+          <small>Worked example</small>
+          <h3>Static Sufficiency vs Dynamic Closure</h3>
+          <p>Walk through a complete finite-state calculation and failure certificate.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div>
+      <div class="brand" style="margin-bottom:.5rem">
+        <span class="mark">BM</span>
+        <span>Branch Mathematics</span>
+      </div>
+      <div>Mathematics of necessary distinctions.</div>
+    </div>
+
+    <div class="footer-links">
+      <a href="/learn/">Learn</a>
+      <a href="/research/">Research</a>
+      <a href="/applications/">Applications</a>
+      <a href="/reference/">Reference</a>
+      <a href="/book/">Book</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
