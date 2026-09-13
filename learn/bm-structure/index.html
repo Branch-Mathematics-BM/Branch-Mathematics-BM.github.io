@@ -1,0 +1,1003 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Branches, Leaves, Trees, Passports and Roots | Branch Mathematics</title>
+  <meta name="description" content="Learn the core organizational roles of Branch Mathematics: Branches, Interactions, Leaves, Trees, Passports, Responses, and Roots. See how one problem is carried through multiple mathematical sectors without erasing their native structure." />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <link rel="canonical" href="https://branch-mathematics-bm.github.io/learn/bm-structure/" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Branches, Leaves, Trees, Passports and Roots" />
+  <meta property="og:description" content="The core organizational structure of Branch Mathematics, explained without assuming prior BM terminology." />
+  <meta property="og:url" content="https://branch-mathematics-bm.github.io/learn/bm-structure/" />
+  <meta property="og:site_name" content="Branch Mathematics" />
+
+  <meta name="theme-color" content="#07111f" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"Branches, Leaves, Trees, Passports and Roots",
+    "description":"An introduction to the core organizational roles of Branch Mathematics: Branches, Interactions, Leaves, Trees, Passports, Responses, and Roots.",
+    "mainEntityOfPage":"https://branch-mathematics-bm.github.io/learn/bm-structure/",
+    "isPartOf":{
+      "@type":"WebSite",
+      "name":"Branch Mathematics",
+      "url":"https://branch-mathematics-bm.github.io/"
+    }
+  }
+  </script>
+
+  <style>
+    :root{
+      --bg:#07111f;
+      --text:#eef5ff;
+      --muted:#aabbd0;
+      --line:#27415e;
+      --accent:#7bdcff;
+      --accent2:#b39cff;
+      --green:#7ef0c5;
+      --warn:#ffd98c;
+      --max:1120px;
+      --read:820px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 12% -5%,rgba(123,220,255,.12),transparent 28rem),
+        radial-gradient(circle at 88% 4%,rgba(179,156,255,.09),transparent 24rem),
+        linear-gradient(180deg,#06101d,#07111f 45%,#081422);
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height:1.7;
+    }
+
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(calc(100% - 2rem),var(--max));margin-inline:auto}
+    .read{width:min(100%,var(--read));margin-inline:auto}
+
+    .site-header{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:blur(18px);
+      background:rgba(7,17,31,.84);
+      border-bottom:1px solid rgba(123,220,255,.12);
+    }
+
+    .nav{
+      min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:1rem;
+    }
+
+    .brand{
+      display:flex;align-items:center;gap:.75rem;font-weight:760;white-space:nowrap;
+    }
+
+    .mark{
+      width:34px;height:34px;border-radius:11px;
+      border:1px solid rgba(123,220,255,.5);
+      display:grid;place-items:center;
+      background:linear-gradient(135deg,rgba(123,220,255,.2),rgba(179,156,255,.12));
+    }
+
+    .navlinks{display:flex;gap:.15rem;flex-wrap:wrap;justify-content:flex-end}
+    .navlinks a{
+      color:var(--muted);padding:.55rem .68rem;border-radius:10px;font-size:.93rem;
+    }
+    .navlinks a:hover,.navlinks a[aria-current="page"]{
+      color:var(--text);background:rgba(255,255,255,.05);
+    }
+
+    .breadcrumbs{padding:1.2rem 0 0;color:#8397af;font-size:.9rem}
+
+    .hero{
+      padding:4.2rem 0 4rem;
+      border-bottom:1px solid rgba(123,220,255,.1);
+    }
+
+    .eyebrow{
+      display:inline-flex;padding:.42rem .7rem;border-radius:999px;
+      border:1px solid rgba(123,220,255,.3);
+      background:rgba(123,220,255,.06);
+      color:#c5efff;
+      font-size:.82rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+    }
+
+    h1{
+      font-size:clamp(3rem,8vw,6rem);
+      line-height:.94;letter-spacing:-.055em;
+      margin:1rem 0 1.1rem;max-width:12ch;
+    }
+
+    .hero .lead{
+      font-size:clamp(1.08rem,2vw,1.34rem);
+      color:#c4d4e6;max-width:900px;margin:0 0 1.4rem;
+    }
+
+    .summary{
+      margin-top:1.6rem;padding:1.25rem 1.35rem;
+      border:1px solid rgba(123,220,255,.24);
+      border-radius:18px;
+      background:linear-gradient(145deg,rgba(123,220,255,.055),rgba(179,156,255,.03));
+    }
+
+    .article{padding:4.8rem 0 5rem}
+
+    .article h2{
+      font-size:clamp(2rem,5vw,3.2rem);
+      line-height:1.05;letter-spacing:-.035em;
+      margin:3.2rem 0 1rem;
+    }
+
+    .article h3{
+      font-size:1.35rem;line-height:1.25;margin:2rem 0 .7rem;
+    }
+
+    .article p{
+      color:#c4d2e2;font-size:1.04rem;margin:0 0 1.15rem;
+    }
+
+    .formula{
+      margin:1.4rem 0;padding:1rem 1.1rem;
+      border-left:3px solid var(--accent);
+      background:rgba(123,220,255,.055);
+      border-radius:0 14px 14px 0;
+      color:#e0f1ff;
+      font-family:"Cambria Math","Times New Roman",serif;
+      font-size:1.08rem;overflow:auto;
+    }
+
+    .quote{
+      margin:2rem 0;padding:1.4rem 1.5rem;
+      border:1px solid rgba(179,156,255,.24);
+      border-radius:18px;background:rgba(179,156,255,.045);
+      font-size:1.14rem;color:#e4e4ff;
+    }
+
+    .callout{
+      margin:2rem 0;padding:1.2rem 1.3rem;
+      border-radius:18px;border:1px solid rgba(255,217,140,.22);
+      background:rgba(255,217,140,.04);color:#eadfc9;
+    }
+
+    .role-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:1rem;
+      margin:1.5rem 0 2rem;
+    }
+
+    .role{
+      border:1px solid rgba(111,151,193,.22);
+      border-radius:20px;
+      padding:1.2rem;
+      background:rgba(255,255,255,.02);
+    }
+
+    .role .tag{
+      display:inline-flex;
+      padding:.32rem .55rem;
+      border-radius:999px;
+      color:var(--accent);
+      background:rgba(123,220,255,.06);
+      border:1px solid rgba(123,220,255,.2);
+      font-size:.74rem;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+
+    .role h3{margin:.65rem 0 .45rem}
+    .role p{font-size:.97rem;margin-bottom:0}
+
+    .tree{
+      margin:1.8rem 0 2rem;
+      padding:1.3rem;
+      border:1px solid rgba(123,220,255,.22);
+      border-radius:22px;
+      background:linear-gradient(145deg,rgba(123,220,255,.045),rgba(179,156,255,.03));
+    }
+
+    .tree-row{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:.8rem;
+      margin:.8rem 0;
+    }
+
+    .node{
+      border:1px solid rgba(111,151,193,.22);
+      border-radius:15px;
+      padding:.9rem;
+      text-align:center;
+      background:#081523;
+      font-weight:720;
+    }
+
+    .node strong{display:block;color:var(--accent);margin-bottom:.25rem}
+    .node span{color:var(--muted);font-size:.88rem;font-weight:500}
+
+    .center{max-width:280px;margin-inline:auto}
+    .linkline{text-align:center;color:var(--accent);font-weight:900;font-size:1.2rem}
+
+    .compare{
+      display:grid;grid-template-columns:1fr 1fr;
+      gap:1rem;margin:1.4rem 0 2rem;
+    }
+
+    .compare .box{
+      border:1px solid rgba(111,151,193,.22);
+      border-radius:18px;background:rgba(255,255,255,.02);
+      padding:1.2rem;
+    }
+
+    .compare h3{margin-top:0}
+    .compare p{font-size:.97rem;margin-bottom:0}
+
+    .steps{
+      display:grid;gap:.8rem;margin:1.4rem 0 2rem;
+    }
+
+    .step{
+      display:grid;grid-template-columns:42px 1fr;gap:.8rem;align-items:start;
+      padding:1rem;border:1px solid rgba(111,151,193,.2);
+      border-radius:16px;background:rgba(255,255,255,.02);
+    }
+
+    .step .num{
+      width:34px;height:34px;border-radius:10px;
+      display:grid;place-items:center;
+      border:1px solid rgba(123,220,255,.28);
+      color:var(--accent);background:rgba(123,220,255,.06);font-weight:800;
+    }
+
+    .step strong{display:block;margin-bottom:.25rem}
+    .step span{color:var(--muted);font-size:.94rem}
+
+    table{
+      width:100%;border-collapse:collapse;margin:1.2rem 0 1.8rem;
+      border:1px solid rgba(111,151,193,.22);
+      background:rgba(255,255,255,.015);
+    }
+
+    th,td{
+      padding:.8rem;border-bottom:1px solid rgba(111,151,193,.16);
+      text-align:left;vertical-align:top;
+    }
+
+    th{
+      color:#dff7ff;background:rgba(123,220,255,.055);font-size:.92rem;
+    }
+
+    td{color:#c4d2e2;font-size:.95rem}
+
+    .next{
+      padding:4.5rem 0;
+      border-top:1px solid rgba(123,220,255,.1);
+      background:#050d18;
+    }
+
+    .next-grid{
+      display:grid;grid-template-columns:repeat(3,1fr);
+      gap:1rem;margin-top:1.6rem;
+    }
+
+    .card{
+      min-height:100%;padding:1.2rem;border-radius:20px;
+      border:1px solid rgba(111,151,193,.2);
+      background:rgba(255,255,255,.02);transition:.2s ease;
+    }
+
+    .card:hover{
+      transform:translateY(-2px);
+      border-color:rgba(123,220,255,.42);
+      background:rgba(123,220,255,.04);
+    }
+
+    .card small{
+      color:var(--accent);font-size:.75rem;font-weight:800;
+      letter-spacing:.08em;text-transform:uppercase;
+    }
+
+    .card h3{margin:.5rem 0 .45rem}
+    .card p{color:var(--muted);font-size:.93rem;margin:0}
+
+    footer{
+      padding:3rem 0;border-top:1px solid rgba(255,255,255,.07);
+      background:#040a12;color:#8fa3ba;
+    }
+
+    .footer-grid{
+      display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:end;
+    }
+
+    .footer-links{display:flex;gap:.7rem;flex-wrap:wrap;justify-content:flex-end}
+
+    @media(max-width:900px){
+      .navlinks{display:none}
+      .tree-row{grid-template-columns:1fr}
+      .role-grid{grid-template-columns:1fr}
+      .next-grid{grid-template-columns:1fr}
+    }
+
+    @media(max-width:620px){
+      .hero{padding-top:3rem}
+      .compare{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr}
+      .footer-links{justify-content:flex-start}
+      th,td{font-size:.88rem}
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="/" aria-label="Branch Mathematics home">
+      <span class="mark">BM</span>
+      <span>Branch Mathematics</span>
+    </a>
+
+    <nav class="navlinks" aria-label="Primary navigation">
+      <a href="/learn/" aria-current="page">Learn</a>
+      <a href="/research/">Research</a>
+      <a href="/applications/">Applications</a>
+      <a href="/examples/">Examples</a>
+      <a href="/calculator/">Calculator</a>
+      <a href="/reference/">Reference</a>
+      <a href="/book/">Book</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <div class="wrap breadcrumbs">
+    <a href="/">Home</a> / <a href="/learn/">Learn</a> / BM Structure
+  </div>
+
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Architecture</span>
+      <h1>Branches, Leaves, Trees, Passports and Roots</h1>
+
+      <p class="lead">
+        Branch Mathematics carries one problem through multiple mathematical branches without erasing their native structure. Branches do the mathematics, Interactions connect lawful outputs, Leaves record results, the Tree assembles the problem state, Passports declare receiver obligations, and Roots are receiver-facing exports.
+      </p>
+
+      <div class="summary">
+        <strong>Short version:</strong>
+        these are organizational roles, not replacements for algebra, topology, PDEs, probability, geometry, operator theory, or any other native mathematics used inside a Branch.
+      </div>
+    </div>
+  </section>
+
+  <article class="article">
+    <div class="read">
+
+      <h2>Why BM needs an architecture at all</h2>
+
+      <p>
+        Many serious problems require more than one mathematical viewpoint. A PDE may need functional analysis, a boundary interface may need operator theory, a network coupling may need graph structure, and the final receiver may impose a different task geometry.
+      </p>
+
+      <p>
+        The challenge is not merely to use several mathematical fields. It is to connect them without silently identifying structures that are not actually equivalent.
+      </p>
+
+      <div class="quote">
+        Branch Mathematics keeps each mathematical sector native until a lawful interaction earns the connection.
+      </div>
+
+      <h2>The basic picture</h2>
+
+      <div class="tree">
+        <div class="node center">
+          <strong>Problem + Passport</strong>
+          <span>What is being solved, for whom, under what obligations?</span>
+        </div>
+
+        <div class="linkline">↓</div>
+
+        <div class="tree-row">
+          <div class="node">
+            <strong>Branch A</strong>
+            <span>native mathematics</span>
+          </div>
+          <div class="node">
+            <strong>Branch B</strong>
+            <span>native mathematics</span>
+          </div>
+          <div class="node">
+            <strong>Branch C</strong>
+            <span>native mathematics</span>
+          </div>
+        </div>
+
+        <div class="linkline">↓ lawful Interactions ↓</div>
+
+        <div class="tree-row">
+          <div class="node">
+            <strong>Leaf</strong>
+            <span>branch result</span>
+          </div>
+          <div class="node">
+            <strong>Leaf</strong>
+            <span>branch result</span>
+          </div>
+          <div class="node">
+            <strong>Leaf</strong>
+            <span>branch result</span>
+          </div>
+        </div>
+
+        <div class="linkline">↓</div>
+
+        <div class="node center">
+          <strong>Tree</strong>
+          <span>assembled state of the problem</span>
+        </div>
+
+        <div class="linkline">↓ Response ↓</div>
+
+        <div class="node center">
+          <strong>Root</strong>
+          <span>receiver-facing accepted export</span>
+        </div>
+      </div>
+
+      <h2>Branch</h2>
+
+      <div class="role">
+        <span class="tag">Core role</span>
+        <h3>A Branch is a lawful mathematical focus.</h3>
+        <p>
+          A Branch carries part of the problem in its native mathematics. It may use its own state space, laws, topology, operators, admissibility conditions, approximations, and proof techniques.
+        </p>
+      </div>
+
+      <p>
+        A Branch is not required to look like another Branch.
+      </p>
+
+      <p>
+        For example, one Branch may be a finite graph problem while another is an infinite-dimensional PDE problem. BM does not force both into the same vocabulary simply to make the framework visually uniform.
+      </p>
+
+      <div class="formula">
+        preserve native structure first; connect branches only through declared lawful relations
+      </div>
+
+      <h2>When should a problem split into distinct Branches?</h2>
+
+      <p>
+        A split should be mathematically compelled, not decorative.
+      </p>
+
+      <p>
+        In the current BM criterion, a compelled split occurs when there is no admissible embedding into one shared structure that preserves the laws and distinctions required by the problem.
+      </p>
+
+      <div class="formula">
+        no admissible common embedding preserving required laws/distinctions ⇒ distinct Branches
+      </div>
+
+      <p>
+        Simply placing two objects into a disjoint union does not solve the problem. The shared structure must preserve the actual mathematics that matters.
+      </p>
+
+      <h2>Interaction</h2>
+
+      <div class="role">
+        <span class="tag">Core role</span>
+        <h3>An Interaction is a lawful connection between Branch outputs or obligations.</h3>
+        <p>
+          Interactions determine when a result from one Branch may constrain, feed, alter, test, or combine with another Branch.
+        </p>
+      </div>
+
+      <p>
+        An Interaction does not automatically inherit every law from either Branch.
+      </p>
+
+      <div class="callout">
+        BM firewall: interacting mathematical sectors do not automatically inherit one another's laws.
+      </div>
+
+      <p>
+        The Interaction must state what is actually transported across the connection.
+      </p>
+
+      <h2>Leaf</h2>
+
+      <div class="role">
+        <span class="tag">Core role</span>
+        <h3>A Leaf is a Branch result available to the larger problem.</h3>
+        <p>
+          A Leaf can be a theorem, invariant, obstruction, bound, quotient, profile, repair certificate, operator relation, or another lawful output produced inside a Branch.
+        </p>
+      </div>
+
+      <p>
+        The important point is provenance: a Leaf should remain tied to the Branch and assumptions that produced it.
+      </p>
+
+      <div class="quote">
+        A Leaf carries a result outward without pretending the rest of the Tree automatically inherits the entire native Branch.
+      </div>
+
+      <h2>Tree</h2>
+
+      <div class="role">
+        <span class="tag">Core role</span>
+        <h3>The Tree is the assembled mathematical state of the problem.</h3>
+        <p>
+          It records the active Branches, their Leaves, lawful Interactions, unresolved conflicts, receiver obligations, and the current state of the overall problem.
+        </p>
+      </div>
+
+      <p>
+        The Tree is not one giant equation. It is the organized total state after respecting the distinctions between Branches.
+      </p>
+
+      <p>
+        A Tree can contain:
+      </p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="num">1</div>
+          <div>
+            <strong>Compatible results</strong>
+            <span>Leaves that lawfully combine or reinforce one another.</span>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="num">2</div>
+          <div>
+            <strong>Certified obstructions</strong>
+            <span>Places where assumptions, realizations, or Branch outputs cannot be reconciled under the current contract.</span>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="num">3</div>
+          <div>
+            <strong>Open obligations</strong>
+            <span>Requirements that remain unresolved before the receiver can accept an export.</span>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="num">4</div>
+          <div>
+            <strong>Provenance</strong>
+            <span>Where each result came from and what assumptions support it.</span>
+          </div>
+        </div>
+      </div>
+
+      <h2>Passport</h2>
+
+      <div class="role">
+        <span class="tag">Receiver contract</span>
+        <h3>A Passport declares what the receiver requires.</h3>
+        <p>
+          A Passport can specify tasks, contexts, tolerances, horizons, admissible continuations, interface obligations, realization requirements, and acceptance conditions.
+        </p>
+      </div>
+
+      <p>
+        The Passport is what makes BM's notion of necessary distinction precise.
+      </p>
+
+      <p>
+        A distinction matters when removing it would violate some declared obligation in the Passport.
+      </p>
+
+      <div class="formula">
+        Passport changes ⇒ required distinctions may change
+      </div>
+
+      <h2>Why Passport comes before Root</h2>
+
+      <p>
+        A Root is not simply whatever output the Tree happens to produce.
+      </p>
+
+      <p>
+        The receiver must declare what counts as acceptable before an export can be certified against it.
+      </p>
+
+      <div class="formula">
+        receiver obligations → acceptance test → Root
+      </div>
+
+      <p>
+        This is why BM treats Root as receiver-facing rather than foundational.
+      </p>
+
+      <h2>Response</h2>
+
+      <div class="role">
+        <span class="tag">Receiver-facing map</span>
+        <h3>A Response is what the assembled system presents to the declared receiver.</h3>
+        <p>
+          It may be exact or approximate, static or dynamic, deterministic or stochastic, algebraic or physical, depending on the Branches and Passport involved.
+        </p>
+      </div>
+
+      <p>
+        The Response is judged relative to the Passport. It is not automatically a Root.
+      </p>
+
+      <h2>Root</h2>
+
+      <div class="role">
+        <span class="tag">Accepted export</span>
+        <h3>A Root is a receiver-facing export that satisfies the declared acceptance conditions.</h3>
+        <p>
+          Root is therefore an endpoint of a lawful BM workflow, not the primitive object from which the entire mathematics grows.
+        </p>
+      </div>
+
+      <div class="formula">
+        Tree → Response → receiver acceptance → Root
+      </div>
+
+      <p>
+        A different receiver can accept a different Root from the same underlying Tree because the Passport can differ.
+      </p>
+
+      <h2>Root does not mean “fundamental truth”</h2>
+
+      <p>
+        The word is project-defined. It should not be imported from graph theory, algebraic geometry, polynomial roots, or ordinary tree terminology.
+      </p>
+
+      <p>
+        In BM, a Root is simply the accepted receiver-facing export under the declared Passport.
+      </p>
+
+      <div class="callout">
+        BM terminology is project-defined. Do not silently import standard meanings when a BM definition is explicitly declared.
+      </div>
+
+      <h2>How the roles work together</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Role</th>
+            <th>Main question</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Branch</td>
+            <td>What native mathematics governs this part of the problem?</td>
+          </tr>
+          <tr>
+            <td>Interaction</td>
+            <td>How may outputs or obligations from distinct Branches lawfully connect?</td>
+          </tr>
+          <tr>
+            <td>Leaf</td>
+            <td>What result has this Branch produced?</td>
+          </tr>
+          <tr>
+            <td>Tree</td>
+            <td>What is the assembled mathematical state of the whole problem?</td>
+          </tr>
+          <tr>
+            <td>Passport</td>
+            <td>What must the receiver be able to do or accept?</td>
+          </tr>
+          <tr>
+            <td>Response</td>
+            <td>What does the assembled system present to that receiver?</td>
+          </tr>
+          <tr>
+            <td>Root</td>
+            <td>What receiver-facing export has passed the declared acceptance conditions?</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>A simple worked architecture</h2>
+
+      <p>
+        Suppose the problem is a PDE-controlled network with a receiver that needs one scalar output within a tolerance.
+      </p>
+
+      <p>
+        One possible BM decomposition is:
+      </p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="num">1</div>
+          <div>
+            <strong>PDE Branch</strong>
+            <span>Analyze the field evolution and derive a boundary response operator.</span>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="num">2</div>
+          <div>
+            <strong>Network Branch</strong>
+            <span>Analyze how boundary outputs couple into the finite network.</span>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="num">3</div>
+          <div>
+            <strong>Approximation Branch</strong>
+            <span>Determine whether a reduced interface satisfies the allowed error tolerance.</span>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="num">4</div>
+          <div>
+            <strong>Leaves</strong>
+            <span>Export the PDE port operator, network constraint, and approximation certificate.</span>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="num">5</div>
+          <div>
+            <strong>Interactions</strong>
+            <span>Check that the reduced port still preserves the coupling distinctions required by the network.</span>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="num">6</div>
+          <div>
+            <strong>Tree</strong>
+            <span>Assemble the compatible results and any remaining obstruction.</span>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="num">7</div>
+          <div>
+            <strong>Passport and Root</strong>
+            <span>Test the final response against the receiver's task and tolerance, then export the accepted Root.</span>
+          </div>
+        </div>
+      </div>
+
+      <h2>What happens when Branches disagree?</h2>
+
+      <p>
+        BM does not require disagreement to be hidden or averaged away.
+      </p>
+
+      <p>
+        If two Branch obligations cannot be simultaneously realized under the current contract, the Tree should preserve the collision as an obstruction.
+      </p>
+
+      <div class="formula">
+        incompatible obligations → Certified Obstruction, not silent collapse
+      </div>
+
+      <p>
+        Repair can then alter the representation, contract, interface, realization, or another admissible part of the architecture.
+      </p>
+
+      <h2>Pairwise compatibility is not enough</h2>
+
+      <p>
+        Multiple Branches can be pairwise compatible while still lacking one global realization that satisfies them all simultaneously.
+      </p>
+
+      <div class="callout">
+        BM firewall: pairwise local compatibility does not imply global realizability.
+      </div>
+
+      <p>
+        This matters whenever the Tree glues together several local sectors, interfaces, or constraints.
+      </p>
+
+      <h2>Branches are not departments</h2>
+
+      <p>
+        A Branch is not just a label like “topology Branch” or “PDE Branch.” A useful Branch must be mathematically motivated by the actual structure of the problem.
+      </p>
+
+      <p>
+        Arbitrary subdivision adds bureaucracy without mathematical value.
+      </p>
+
+      <div class="quote">
+        Branches exist because the problem requires distinct lawful mathematical structure, not because BM wants more boxes in a diagram.
+      </div>
+
+      <h2>Leaves are not conclusions without scope</h2>
+
+      <p>
+        A Leaf should carry the assumptions and scope under which it is valid.
+      </p>
+
+      <p>
+        A local PDE estimate does not automatically become a global theorem about the full Tree. A quantum algebraic relation does not automatically become a physically realizable channel. A finite-state result does not automatically extend to an infinite-dimensional sector.
+      </p>
+
+      <div class="formula">
+        Leaf provenance must survive export
+      </div>
+
+      <h2>The Tree is not automatic unification</h2>
+
+      <p>
+        BM does not assume that every Branch ultimately collapses into one common mathematics.
+      </p>
+
+      <p>
+        A Tree can legitimately contain several distinct structures connected only where lawful interactions have been established.
+      </p>
+
+      <div class="compare">
+        <div class="box">
+          <h3>Unification by assumption</h3>
+          <p>
+            Force every sector into one representation first and resolve mismatches afterward.
+          </p>
+        </div>
+
+        <div class="box">
+          <h3>BM assembly</h3>
+          <p>
+            Preserve native sectors first and admit only the cross-sector identifications that can be justified.
+          </p>
+        </div>
+      </div>
+
+      <h2>How this connects to the BM pipeline</h2>
+
+      <p>
+        The organizational roles sit inside the larger foundation:
+      </p>
+
+      <div class="formula">
+        Specify → Distinguish → Descend → Synthesize → Realize → Quantify
+      </div>
+
+      <p>
+        A more expanded view is:
+      </p>
+
+      <div class="formula">
+        native problem → Passport → required distinctions → Branches → lawful Interactions → Leaves → Tree → Response → Root
+      </div>
+
+      <p>
+        The exact order can vary by problem, but the discipline remains: native mathematics, receiver obligations, distinction preservation, lawful interaction, realization, and provenance must stay visible.
+      </p>
+
+      <h2>Status discipline</h2>
+
+      <p>
+        The public site should also tell readers whether a result is part of the canonical foundation, an internally verified development, an imported classical result, a candidate, a firewall, or an open problem.
+      </p>
+
+      <p>
+        BM uses explicit status labels so organizational language does not accidentally make every statement look equally established.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Tag</th>
+            <th>Meaning</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>SC</td>
+            <td>Source-certified in the canonical material</td>
+          </tr>
+          <tr>
+            <td>RP / CH-V</td>
+            <td>Internally proved or hardened during review</td>
+          </tr>
+          <tr>
+            <td>CH-C</td>
+            <td>Candidate development</td>
+          </tr>
+          <tr>
+            <td>CI</td>
+            <td>Classical/imported mathematics</td>
+          </tr>
+          <tr>
+            <td>BM-SYN</td>
+            <td>BM synthesis or placement of established ingredients</td>
+          </tr>
+          <tr>
+            <td>FW</td>
+            <td>Firewall or counterexample</td>
+          </tr>
+          <tr>
+            <td>OPEN</td>
+            <td>Open problem</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>The key idea</h2>
+
+      <div class="quote">
+        Branch Mathematics is not a vocabulary pasted over existing mathematics. Its roles exist to preserve native mathematical sectors, control their interactions, track provenance, and determine what can lawfully reach a receiver.
+      </div>
+
+      <p>
+        Once these roles are clear, the reference section and the long-form Book become much easier to read.
+      </p>
+
+    </div>
+  </article>
+
+  <section class="next">
+    <div class="wrap">
+      <span class="eyebrow">Next</span>
+      <h2 style="font-size:clamp(2rem,5vw,3.4rem);line-height:1.04;letter-spacing:-.035em;margin:.7rem 0 .9rem">
+        Continue the path
+      </h2>
+
+      <div class="next-grid">
+        <a class="card" href="/learn/bm-vs-model-reduction/">
+          <small>Comparison</small>
+          <h3>BM vs Model Reduction</h3>
+          <p>See where Branch Mathematics overlaps with established reduction methods and where its distinction architecture asks a different question.</p>
+        </a>
+
+        <a class="card" href="/learn/related-mathematics/">
+          <small>Context</small>
+          <h3>Related Mathematics</h3>
+          <p>Place BM beside category theory, control, systems theory, quotient methods, information theory, and other relevant areas without conflating them.</p>
+        </a>
+
+        <a class="card" href="/reference/">
+          <small>Formal reference</small>
+          <h3>Open the BM Reference</h3>
+          <p>Move from the introductory roles into definitions, theorem statements, equations, Passports, Roots, and registries.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div>
+      <div class="brand" style="margin-bottom:.5rem">
+        <span class="mark">BM</span>
+        <span>Branch Mathematics</span>
+      </div>
+      <div>Mathematics of necessary distinctions.</div>
+    </div>
+
+    <div class="footer-links">
+      <a href="/learn/">Learn</a>
+      <a href="/research/">Research</a>
+      <a href="/reference/">Reference</a>
+      <a href="/book/">Book</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
