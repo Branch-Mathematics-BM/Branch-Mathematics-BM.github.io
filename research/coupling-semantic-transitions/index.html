@@ -1,0 +1,1224 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Coupling Strength and Semantic Phase Transitions | Branch Mathematics</title>
+  <meta name="description" content="A technical Branch Mathematics treatment of coupling-driven semantic transitions: exact distinction splitting, tolerance-dependent thresholds, perturbation bounds, many-body locality, interface activation, and task-specific phase structure." />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <link rel="canonical" href="https://branch-mathematics-bm.github.io/research/coupling-semantic-transitions/" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Coupling Strength and Semantic Phase Transitions" />
+  <meta property="og:description" content="How weak coupling creates new task-relevant distinctions and why exact and approximate semantic structure can change at different thresholds." />
+  <meta property="og:url" content="https://branch-mathematics-bm.github.io/research/coupling-semantic-transitions/" />
+  <meta property="og:site_name" content="Branch Mathematics" />
+
+  <meta name="theme-color" content="#07111f" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"TechArticle",
+    "headline":"Coupling Strength and Semantic Phase Transitions",
+    "description":"A technical treatment of task-relative distinction changes under coupling in Branch Mathematics.",
+    "mainEntityOfPage":"https://branch-mathematics-bm.github.io/research/coupling-semantic-transitions/",
+    "isPartOf":{
+      "@type":"WebSite",
+      "name":"Branch Mathematics",
+      "url":"https://branch-mathematics-bm.github.io/"
+    }
+  }
+  </script>
+
+  <style>
+    :root{
+      --bg:#07111f;
+      --text:#eef5ff;
+      --muted:#aabbd0;
+      --accent:#7bdcff;
+      --accent2:#b39cff;
+      --green:#7ef0c5;
+      --warn:#ffd98c;
+      --red:#ff9d9d;
+      --max:1160px;
+      --read:860px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 10% -5%,rgba(123,220,255,.11),transparent 28rem),
+        radial-gradient(circle at 90% 4%,rgba(179,156,255,.08),transparent 24rem),
+        linear-gradient(180deg,#06101d,#07111f 45%,#081422);
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height:1.72;
+    }
+
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(calc(100% - 2rem),var(--max));margin-inline:auto}
+    .read{width:min(100%,var(--read));margin-inline:auto}
+
+    .site-header{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:blur(18px);
+      background:rgba(7,17,31,.84);
+      border-bottom:1px solid rgba(123,220,255,.12);
+    }
+
+    .nav{
+      min-height:72px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:.75rem;
+      font-weight:760;
+      white-space:nowrap;
+    }
+
+    .mark{
+      width:34px;height:34px;border-radius:11px;
+      border:1px solid rgba(123,220,255,.5);
+      display:grid;place-items:center;
+      background:linear-gradient(135deg,rgba(123,220,255,.2),rgba(179,156,255,.12));
+    }
+
+    .navlinks{display:flex;gap:.15rem;flex-wrap:wrap;justify-content:flex-end}
+    .navlinks a{
+      color:var(--muted);
+      padding:.55rem .68rem;
+      border-radius:10px;
+      font-size:.93rem;
+    }
+
+    .navlinks a:hover,.navlinks a[aria-current="page"]{
+      color:var(--text);
+      background:rgba(255,255,255,.05);
+    }
+
+    .breadcrumbs{
+      padding:1.2rem 0 0;
+      color:#8397af;
+      font-size:.9rem;
+    }
+
+    .hero{
+      padding:4.6rem 0 4rem;
+      border-bottom:1px solid rgba(123,220,255,.1);
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      padding:.42rem .7rem;
+      border-radius:999px;
+      border:1px solid rgba(123,220,255,.3);
+      background:rgba(123,220,255,.06);
+      color:#c5efff;
+      font-size:.82rem;
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    h1{
+      font-size:clamp(3rem,7vw,5.6rem);
+      line-height:.96;
+      letter-spacing:-.05em;
+      margin:1rem 0 1.15rem;
+      max-width:14ch;
+    }
+
+    .hero .lead{
+      font-size:clamp(1.08rem,2vw,1.3rem);
+      color:#c4d4e6;
+      max-width:950px;
+      margin:0 0 1.5rem;
+    }
+
+    .meta{
+      display:flex;
+      gap:.55rem;
+      flex-wrap:wrap;
+      margin-top:1.2rem;
+    }
+
+    .tag{
+      display:inline-flex;
+      padding:.42rem .66rem;
+      border-radius:999px;
+      font-size:.76rem;
+      font-weight:800;
+      letter-spacing:.06em;
+      border:1px solid rgba(111,151,193,.24);
+      background:rgba(255,255,255,.025);
+      color:#d8e7f7;
+    }
+
+    .tag.cand{
+      border-color:rgba(255,217,140,.25);
+      background:rgba(255,217,140,.035);
+      color:#f7e8c7;
+    }
+
+    .tag.classic{
+      border-color:rgba(179,156,255,.26);
+      background:rgba(179,156,255,.04);
+      color:#ece5ff;
+    }
+
+    .abstract{
+      margin-top:1.7rem;
+      padding:1.3rem 1.4rem;
+      border:1px solid rgba(123,220,255,.22);
+      border-radius:20px;
+      background:linear-gradient(145deg,rgba(123,220,255,.05),rgba(179,156,255,.025));
+    }
+
+    .abstract strong{display:block;margin-bottom:.35rem;color:#def6ff}
+    .abstract p{margin:0;color:#c3d3e4}
+
+    .article{padding:4.8rem 0 5rem}
+
+    .article h2{
+      font-size:clamp(2rem,5vw,3.15rem);
+      line-height:1.05;
+      letter-spacing:-.035em;
+      margin:3.3rem 0 1rem;
+    }
+
+    .article h3{
+      font-size:1.35rem;
+      line-height:1.25;
+      margin:2.2rem 0 .7rem;
+    }
+
+    .article p{
+      color:#c4d2e2;
+      font-size:1.035rem;
+      margin:0 0 1.15rem;
+    }
+
+    .formula{
+      margin:1.4rem 0;
+      padding:1.05rem 1.15rem;
+      border-left:3px solid var(--accent);
+      background:rgba(123,220,255,.055);
+      border-radius:0 14px 14px 0;
+      color:#e0f1ff;
+      font-family:"Cambria Math","Times New Roman",serif;
+      font-size:1.08rem;
+      overflow:auto;
+    }
+
+    .theorem{
+      margin:1.7rem 0 2rem;
+      padding:1.35rem;
+      border:1px solid rgba(126,240,197,.24);
+      border-radius:20px;
+      background:linear-gradient(145deg,rgba(126,240,197,.04),rgba(255,255,255,.012));
+    }
+
+    .theorem .head{
+      display:flex;
+      align-items:center;
+      gap:.55rem;
+      flex-wrap:wrap;
+      margin-bottom:.55rem;
+    }
+
+    .theorem .head strong{
+      font-size:1.08rem;
+      color:#e7fff5;
+    }
+
+    .theorem .mini{
+      padding:.25rem .5rem;
+      border-radius:999px;
+      border:1px solid rgba(126,240,197,.28);
+      color:#c7f9e7;
+      font-size:.72rem;
+      font-weight:800;
+      letter-spacing:.06em;
+    }
+
+    .theorem p{margin:.45rem 0;color:#cbd9e6}
+
+    .firewall{
+      margin:1.7rem 0;
+      padding:1.2rem 1.3rem;
+      border-radius:18px;
+      border:1px solid rgba(255,157,157,.2);
+      background:rgba(255,157,157,.035);
+      color:#f1cccc;
+    }
+
+    .firewall strong{color:#ffd6d6}
+
+    .callout{
+      margin:1.7rem 0;
+      padding:1.2rem 1.3rem;
+      border-radius:18px;
+      border:1px solid rgba(255,217,140,.22);
+      background:rgba(255,217,140,.04);
+      color:#eadfc9;
+    }
+
+    .compare{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:1rem;
+      margin:1.4rem 0 2rem;
+    }
+
+    .compare .box{
+      border:1px solid rgba(111,151,193,.22);
+      border-radius:18px;
+      background:rgba(255,255,255,.02);
+      padding:1.2rem;
+    }
+
+    .compare h3{margin-top:0}
+    .compare p{font-size:.96rem;margin-bottom:0}
+
+    .example{
+      margin:1.6rem 0 2rem;
+      padding:1.35rem;
+      border-radius:20px;
+      border:1px solid rgba(179,156,255,.22);
+      background:linear-gradient(145deg,rgba(179,156,255,.04),rgba(255,255,255,.015));
+    }
+
+    .example h3{margin-top:0;color:#efe8ff}
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin:1.25rem 0 1.9rem;
+      border:1px solid rgba(111,151,193,.22);
+      background:rgba(255,255,255,.015);
+    }
+
+    th,td{
+      padding:.82rem;
+      border-bottom:1px solid rgba(111,151,193,.16);
+      text-align:left;
+      vertical-align:top;
+    }
+
+    th{
+      color:#dff7ff;
+      background:rgba(123,220,255,.055);
+      font-size:.92rem;
+    }
+
+    td{color:#c4d2e2;font-size:.94rem}
+
+    .next{
+      padding:4.5rem 0;
+      border-top:1px solid rgba(123,220,255,.1);
+      background:#050d18;
+    }
+
+    .next-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:1rem;
+      margin-top:1.6rem;
+    }
+
+    .card{
+      min-height:100%;
+      padding:1.2rem;
+      border-radius:20px;
+      border:1px solid rgba(111,151,193,.2);
+      background:rgba(255,255,255,.02);
+      transition:.2s ease;
+    }
+
+    .card:hover{
+      transform:translateY(-2px);
+      border-color:rgba(123,220,255,.42);
+      background:rgba(123,220,255,.04);
+    }
+
+    .card small{
+      color:var(--accent);
+      font-size:.75rem;
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .card h3{margin:.5rem 0 .45rem}
+    .card p{color:var(--muted);font-size:.93rem;margin:0}
+
+    footer{
+      padding:3rem 0;
+      border-top:1px solid rgba(255,255,255,.07);
+      background:#040a12;
+      color:#8fa3ba;
+    }
+
+    .footer-grid{
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:1rem;
+      align-items:end;
+    }
+
+    .footer-links{
+      display:flex;
+      gap:.7rem;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    @media(max-width:900px){
+      .navlinks{display:none}
+      .next-grid{grid-template-columns:1fr}
+    }
+
+    @media(max-width:620px){
+      .hero{padding-top:3rem}
+      .compare{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr}
+      .footer-links{justify-content:flex-start}
+      th,td{font-size:.87rem}
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="/" aria-label="Branch Mathematics home">
+      <span class="mark">BM</span>
+      <span>Branch Mathematics</span>
+    </a>
+
+    <nav class="navlinks" aria-label="Primary navigation">
+      <a href="/learn/">Learn</a>
+      <a href="/research/" aria-current="page">Research</a>
+      <a href="/applications/">Applications</a>
+      <a href="/examples/">Examples</a>
+      <a href="/calculator/">Calculator</a>
+      <a href="/reference/">Reference</a>
+      <a href="/book/">Book</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <div class="wrap breadcrumbs">
+    <a href="/">Home</a> / <a href="/research/">Research</a> / Coupling and Semantic Transitions
+  </div>
+
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Coupling</span>
+      <h1>Coupling Strength and Semantic Phase Transitions</h1>
+
+      <p class="lead">
+        A distinction can be irrelevant when subsystems are uncoupled and become necessary as soon as an interaction is switched on. Exact semantic structure can split at arbitrarily weak coupling, while positive-tolerance structure often changes only after a finite task-relative threshold is crossed.
+      </p>
+
+      <div class="meta">
+        <span class="tag cand">Volume II development</span>
+        <span class="tag classic">Uses classical perturbation and many-body locality mathematics</span>
+      </div>
+
+      <div class="abstract">
+        <strong>Abstract</strong>
+        <p>
+          Let a family of systems depend on coupling strength λ and let Dλ denote the receiver-relative behavioral pseudometric. Exact equivalence can change discontinuously at λ=0: two states that are identical to the task when decoupled can become distinct for every nonzero λ. Approximate semantic width behaves more stably. If the task response changes by at most δ under coupling, then the induced behavioral metric shifts by at most 2δ and the covering numbers obey a tolerance-shift sandwich. If the first nonzero task distinction appears at perturbative order m, the approximate semantic transition scale is of order (ε/||V_m||)^(1/m). This page develops exact splitting, approximate thresholds, locality growth, interface activation, and task-relative phase structure.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <article class="article">
+    <div class="read">
+
+      <h2>1. Coupling can create distinctions</h2>
+
+      <p>
+        Consider two subsystems that are independent at:
+      </p>
+
+      <div class="formula">
+        λ=0.
+      </div>
+
+      <p>
+        A receiver may then be unable to distinguish two states of subsystem A because subsystem B never reacts differently to them.
+      </p>
+
+      <p>
+        Turn on a coupling:
+      </p>
+
+      <div class="formula">
+        λV.
+      </div>
+
+      <p>
+        The same two states may now produce different downstream responses.
+      </p>
+
+      <div class="formula">
+        coupling can convert a previously irrelevant difference into a task-relevant distinction.
+      </div>
+
+      <h2>2. Exact semantic equivalence depends on coupling</h2>
+
+      <p>
+        Let:
+      </p>
+
+      <div class="formula">
+        B<sub>λ</sub>(x,c)
+      </div>
+
+      <p>
+        denote the receiver response of state <strong>x</strong> in context <strong>c</strong> at coupling strength <strong>λ</strong>.
+      </p>
+
+      <p>
+        Define exact equivalence:
+      </p>
+
+      <div class="formula">
+        x E<sub>λ</sub> x′
+        ⇔
+        B<sub>λ</sub>(x,c)=B<sub>λ</sub>(x′,c)
+        for all allowed c.
+      </div>
+
+      <p>
+        The partition induced by <strong>E<sub>λ</sub></strong> can refine when the interaction exposes new distinctions.
+      </p>
+
+      <h2>3. Exact splitting can occur immediately</h2>
+
+      <div class="example">
+        <h3>First-order activation</h3>
+
+        <p>
+          Suppose:
+        </p>
+
+        <div class="formula">
+          B<sub>λ</sub>(x)-B<sub>λ</sub>(x′)
+          =
+          λv + O(λ²)
+        </div>
+
+        <p>
+          with:
+        </p>
+
+        <div class="formula">
+          v≠0.
+        </div>
+
+        <p>
+          At <strong>λ=0</strong>, the two states are exactly equivalent.
+        </p>
+
+        <p>
+          For every sufficiently small nonzero <strong>λ</strong>, their responses differ.
+        </p>
+
+        <div class="formula">
+          E<sub>0</sub> can be strictly coarser than E<sub>λ</sub> for every λ≠0.
+        </div>
+      </div>
+
+      <div class="callout">
+        Exact semantic structure need not vary continuously with physical coupling strength.
+      </div>
+
+      <h2>4. Exact width can jump</h2>
+
+      <p>
+        If one exact equivalence class splits into two when <strong>λ</strong> becomes nonzero, exact width changes discretely.
+      </p>
+
+      <div class="formula">
+        w<sub>λ</sub>(0)
+        =
+        log₂|X/E<sub>λ</sub>|.
+      </div>
+
+      <p>
+        Even an arbitrarily weak interaction can therefore increase exact task width.
+      </p>
+
+      <div class="firewall">
+        <strong>Firewall:</strong> weak physical coupling does not imply weak exact semantic change.
+      </div>
+
+      <h2>5. Approximate structure is tolerance-dependent</h2>
+
+      <p>
+        At positive tolerance <strong>ε</strong>, a newly created distinction matters only after its task effect becomes large enough.
+      </p>
+
+      <div class="formula">
+        D<sub>λ</sub>(x,x′)
+        =
+        sup<sub>c</sub>
+        d(B<sub>λ</sub>(x,c),B<sub>λ</sub>(x′,c)).
+      </div>
+
+      <p>
+        If:
+      </p>
+
+      <div class="formula">
+        D<sub>λ</sub>(x,x′) ≤ ε,
+      </div>
+
+      <p>
+        the two states may still occupy the same approximate semantic cell.
+      </p>
+
+      <h2>6. First-order approximate transition</h2>
+
+      <p>
+        In the first-order case:
+      </p>
+
+      <div class="formula">
+        D<sub>λ</sub>(x,x′)
+        ≈
+        |λ| ||v||.
+      </div>
+
+      <p>
+        The distinction becomes visible at tolerance <strong>ε</strong> near:
+      </p>
+
+      <div class="formula">
+        |λ| ≈ ε/||v||.
+      </div>
+
+      <p>
+        Exact and approximate transitions therefore occur at different coupling scales.
+      </p>
+
+      <div class="compare">
+        <div class="box">
+          <h3>Exact</h3>
+          <p>
+            Any nonzero response difference can split an exact equivalence class.
+          </p>
+        </div>
+
+        <div class="box">
+          <h3>Approximate</h3>
+          <p>
+            The split matters only after it exceeds the declared tolerance geometry.
+          </p>
+        </div>
+      </div>
+
+      <h2>7. Higher-order distinction activation</h2>
+
+      <p>
+        Sometimes the first several perturbative orders vanish.
+      </p>
+
+      <p>
+        Suppose the first nonzero receiver-visible difference occurs at order <strong>m</strong>:
+      </p>
+
+      <div class="formula">
+        B<sub>λ</sub>(x)-B<sub>λ</sub>(x′)
+        =
+        λ<sup>m</sup>V<sub>m</sub>
+        +
+        O(λ<sup>m+1</sup>).
+      </div>
+
+      <p>
+        Then the positive-tolerance transition scale is:
+      </p>
+
+      <div class="formula">
+        λ<sub>c</sub>(ε)
+        ~
+        (ε/||V<sub>m</sub>||)<sup>1/m</sup>.
+      </div>
+
+      <p>
+        This is the BM semantic phase-transition scaling under the stated perturbative assumptions.
+      </p>
+
+      <h2>8. What “semantic phase transition” means here</h2>
+
+      <p>
+        The phrase does not mean a thermodynamic phase transition unless the native system independently has one.
+      </p>
+
+      <p>
+        It means that the task-relative distinction structure changes qualitatively as a parameter varies.
+      </p>
+
+      <div class="formula">
+        coupling parameter
+        →
+        response geometry
+        →
+        quotient or covering structure
+        →
+        semantic width.
+      </div>
+
+      <div class="firewall">
+        <strong>Firewall:</strong> semantic phase transition is a task-relative representation transition, not automatically a physical thermodynamic phase transition.
+      </div>
+
+      <h2>9. Perturbation of the behavioral metric</h2>
+
+      <p>
+        Suppose coupling changes every response profile by at most <strong>δ</strong> in the declared metric:
+      </p>
+
+      <div class="formula">
+        sup<sub>x,c</sub>
+        d(
+          B<sub>λ</sub>(x,c),
+          B<sub>0</sub>(x,c)
+        )
+        ≤
+        δ.
+      </div>
+
+      <div class="theorem">
+        <div class="head">
+          <strong>Behavioral Metric Stability</strong>
+          <span class="mini">Volume II</span>
+        </div>
+
+        <p>
+          Then:
+        </p>
+
+        <div class="formula">
+          |D<sub>λ</sub>(x,x′)-D<sub>0</sub>(x,x′)|
+          ≤
+          2δ
+        </div>
+
+        <p>
+          for every pair of states.
+        </p>
+      </div>
+
+      <p>
+        The factor two comes from perturbing both members of the pair.
+      </p>
+
+      <h2>10. Covering-number stability</h2>
+
+      <div class="theorem">
+        <div class="head">
+          <strong>Tolerance-Shift Cover Sandwich</strong>
+          <span class="mini">Volume II</span>
+        </div>
+
+        <p>
+          Under the corresponding profile perturbation bound:
+        </p>
+
+        <div class="formula">
+          N<sub>0</sub>(ε+δ)
+          ≤
+          N<sub>λ</sub>(ε)
+          ≤
+          N<sub>0</sub>(ε-δ),
+        </div>
+
+        <p>
+          whenever the shifted tolerances remain in the valid range.
+        </p>
+      </div>
+
+      <p>
+        Thus positive-tolerance semantic width cannot change arbitrarily under uniformly small response perturbations.
+      </p>
+
+      <h2>11. Width plateaus and jumps</h2>
+
+      <p>
+        Because covering numbers are integer-valued, approximate width can remain constant over a range of <strong>λ</strong>, then jump when enough pairwise or higher-order incompatibilities cross the tolerance threshold.
+      </p>
+
+      <div class="formula">
+        w<sub>λ</sub>(ε)
+        =
+        log₂N<sub>λ</sub>(ε).
+      </div>
+
+      <p>
+        This creates task-specific plateaus separated by semantic transition points.
+      </p>
+
+      <h2>12. Multiple transitions can occur</h2>
+
+      <p>
+        A many-state system need not have one transition scale.
+      </p>
+
+      <p>
+        Different state pairs or contextual modes can become distinguishable at different orders and coupling strengths.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Possible transition</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>First-order route</td>
+            <td>Activates near λ≈ε/||V₁||</td>
+          </tr>
+          <tr>
+            <td>Second-order route</td>
+            <td>Activates near λ≈(ε/||V₂||)<sup>1/2</sup></td>
+          </tr>
+          <tr>
+            <td>Longer causal path</td>
+            <td>Can activate only after sufficient time or repeated interaction</td>
+          </tr>
+          <tr>
+            <td>New context</td>
+            <td>Can reveal a distinction invisible in the original deployment</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>13. Coupling can activate an interface obligation</h2>
+
+      <p>
+        Two subsystems may require no communication when decoupled.
+      </p>
+
+      <p>
+        Once coupling is present, a boundary or network interface may need to preserve distinctions that were previously irrelevant.
+      </p>
+
+      <div class="formula">
+        λ=0:
+        interface width may collapse
+        <br>
+        λ≠0:
+        coupling-sensitive distinctions may need export.
+      </div>
+
+      <p>
+        This links semantic phase transitions directly to PDE ports and distributed cuts.
+      </p>
+
+      <h2>14. Coupling-before-task compression</h2>
+
+      <p>
+        If a local variable affects a neighbor through:
+      </p>
+
+      <div class="formula">
+        Λ<sub>λ</sub>,
+      </div>
+
+      <p>
+        then a task-only compression must be checked after including the coupling obligation.
+      </p>
+
+      <div class="formula">
+        exact local equivalence
+        governed by
+        ker(Λ<sub>λ</sub>) ∩ ker(L).
+      </div>
+
+      <p>
+        As <strong>λ</strong> changes, the coupling kernel can change and force a different interface quotient.
+      </p>
+
+      <h2>15. Weak coupling does not imply local reduction remains valid</h2>
+
+      <p>
+        Suppose a local quotient is exact at <strong>λ=0</strong>.
+      </p>
+
+      <p>
+        It remains exact for nonzero <strong>λ</strong> only if the new coupling does not separate any states merged by that quotient.
+      </p>
+
+      <div class="firewall">
+        <strong>Permanent firewall:</strong> exact local closure at zero coupling does not imply exact coupled closure for arbitrarily small nonzero coupling.
+      </div>
+
+      <h2>16. Approximate local reduction can remain valid for a range</h2>
+
+      <p>
+        Positive tolerance changes the conclusion.
+      </p>
+
+      <p>
+        A zero-coupling quotient can remain approximately admissible while:
+      </p>
+
+      <div class="formula">
+        sup task effect of coupling ≤ ε reserve.
+      </div>
+
+      <p>
+        This creates a finite robustness interval in coupling strength.
+      </p>
+
+      <h2>17. Semantic reserve against coupling</h2>
+
+      <p>
+        If a current approximate cell has radius <strong>r</strong> under tolerance <strong>ε</strong>, then:
+      </p>
+
+      <div class="formula">
+        reserve = ε-r.
+      </div>
+
+      <p>
+        Coupling perturbations can consume this reserve.
+      </p>
+
+      <p>
+        A representation with larger width but larger reserve may survive a wider coupling range.
+      </p>
+
+      <div class="formula">
+        minimal width
+        and
+        maximal coupling robustness
+        need not coincide.
+      </div>
+
+      <h2>18. Many-body locality</h2>
+
+      <p>
+        In many-body systems, coupling is often local.
+      </p>
+
+      <p>
+        A receiver task supported in one region need not immediately depend on the entire system.
+      </p>
+
+      <p>
+        Exact circuit light cones or approximate Lieb–Robinson-type cones can restrict the region in which coupling can create task-visible distinctions over finite time.
+      </p>
+
+      <div class="callout">
+        The locality bound is supplied by the native model. BM uses it to delimit the region where coupling can affect the declared task.
+      </div>
+
+      <h2>19. Coupling depth and semantic growth</h2>
+
+      <p>
+        A distinction can require several interaction steps before reaching the receiver.
+      </p>
+
+      <p>
+        This introduces a combined order in coupling strength and causal depth.
+      </p>
+
+      <div class="formula">
+        task effect
+        may scale like
+        λ<sup>m</sup>
+        because the distinction must traverse m effective coupling events.
+      </div>
+
+      <p>
+        Such structure naturally produces multiple semantic activation scales.
+      </p>
+
+      <h2>20. Exact versus approximate many-body collars</h2>
+
+      <div class="compare">
+        <div class="box">
+          <h3>Exact collar</h3>
+          <p>
+            In bounded-depth local circuits, sites outside the backward light cone have exactly zero influence on the task.
+          </p>
+        </div>
+
+        <div class="box">
+          <h3>Approximate collar</h3>
+          <p>
+            In continuous local dynamics, influence outside a causal region may be exponentially or otherwise strongly suppressed rather than exactly zero.
+          </p>
+        </div>
+      </div>
+
+      <p>
+        The approximate collar radius can therefore depend on the tolerance.
+      </p>
+
+      <h2>21. Coupling can both increase and decrease semantic width</h2>
+
+      <p>
+        Coupling often exposes new distinctions, but it can also collapse them.
+      </p>
+
+      <p>
+        For example, strong synchronization, contraction, or dissipative locking can drive formerly distinct states toward the same receiver-visible behavior.
+      </p>
+
+      <div class="formula">
+        semantic width need not be monotone in coupling strength.
+      </div>
+
+      <p>
+        Monotonicity must be proved from the native system, not assumed.
+      </p>
+
+      <div class="firewall">
+        <strong>Firewall:</strong> stronger coupling does not universally imply larger semantic width.
+      </div>
+
+      <h2>22. Nonmonotone semantic diagrams</h2>
+
+      <p>
+        A parameter sweep can therefore contain:
+      </p>
+
+      <p>
+        exact class splitting, approximate width plateaus, new transitions, mergers caused by synchronization, and realization changes caused by topology or locality.
+      </p>
+
+      <p>
+        The appropriate object is a task-relative semantic phase diagram:
+      </p>
+
+      <div class="formula">
+        (λ,ε,H,C)
+        ↦
+        distinction structure.
+      </div>
+
+      <p>
+        Here <strong>H</strong> is horizon and <strong>C</strong> denotes allowed context.
+      </p>
+
+      <h2>23. Context changes the transition scale</h2>
+
+      <p>
+        A deployment with few contexts may hide coupling-sensitive distinctions.
+      </p>
+
+      <p>
+        A portable Passport with more environments can expose them earlier.
+      </p>
+
+      <div class="formula">
+        C₁⊂C₂
+        ⇒
+        D<sub>C₁</sub>(x,x′)
+        ≤
+        D<sub>C₂</sub>(x,x′).
+      </div>
+
+      <p>
+        Portable semantic phase transitions can therefore occur at weaker coupling than deployment-specific ones.
+      </p>
+
+      <h2>24. Horizon changes the transition scale</h2>
+
+      <p>
+        A weak coupling effect may be invisible at one time step but accumulate across a longer horizon.
+      </p>
+
+      <div class="formula">
+        D<sub>H</sub>(x,x′)
+        =
+        max<sub>0≤t≤H</sub>
+        d(TΦ<sub>λ</sub><sup>t</sup>x,TΦ<sub>λ</sub><sup>t</sup>x′).
+      </div>
+
+      <p>
+        Increasing <strong>H</strong> can therefore activate distinctions at smaller coupling strengths.
+      </p>
+
+      <h2>25. Dynamic compatibility near a transition</h2>
+
+      <p>
+        Near a semantic transition, a previously valid reduced state can cease to be dynamically closed.
+      </p>
+
+      <p>
+        Two states that were once merged can acquire different reduced successors after coupling is introduced.
+      </p>
+
+      <div class="formula">
+        coupling-induced distinction
+        can appear first as a dynamic-closure failure.
+      </div>
+
+      <p>
+        This connects the coupling program directly to the foundation's closure criterion.
+      </p>
+
+      <h2>26. Repair options after a transition</h2>
+
+      <p>
+        When coupling activates a missing distinction, BM has several lawful repair routes:
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Repair</th>
+            <th>Meaning</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Refine the representation</td>
+            <td>Preserve the newly relevant distinction.</td>
+          </tr>
+          <tr>
+            <td>Add contextual sensing</td>
+            <td>Reacquire the distinction later if causality allows.</td>
+          </tr>
+          <tr>
+            <td>Increase interface width</td>
+            <td>Export more coupling-relevant structure.</td>
+          </tr>
+          <tr>
+            <td>Use memory</td>
+            <td>Carry the distinction across the vulnerable interval.</td>
+          </tr>
+          <tr>
+            <td>Relax tolerance</td>
+            <td>Accept the difference only when the Passport permits it.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>27. A reusable coupling-analysis workflow</h2>
+
+      <p>
+        A practical BM analysis proceeds as:
+      </p>
+
+      <div class="formula">
+        choose coupling parameter
+        →
+        define receiver profile
+        →
+        compute exact equivalence at λ=0
+        →
+        identify first nonzero distinction order
+        →
+        estimate positive-tolerance threshold
+        →
+        test dynamic/interface closure
+        →
+        measure robustness reserve.
+      </div>
+
+      <h2>28. What BM contributes here</h2>
+
+      <p>
+        Perturbation theory, local interactions, spectral estimates, response theory, and many-body locality are established mathematics.
+      </p>
+
+      <p>
+        The BM synthesis is to ask how those native changes alter the receiver's distinction geometry.
+      </p>
+
+      <div class="callout">
+        BM separates physical coupling strength from exact semantic change, positive-tolerance semantic change, interface activation, dynamic closure failure, and realization cost. Those are related but not identical transitions.
+      </div>
+
+      <h2>29. Open directions</h2>
+
+      <p>
+        Important open problems include nonlinear transition thresholds, nonperturbative semantic phase diagrams, stochastic coupling, many-body scaling, topology-changing realizations, adaptive interfaces that refine only after a transition, and rigorous links between semantic width transitions and native physical phase transitions where such links genuinely exist.
+      </p>
+
+      <p>
+        The next natural research page is Many-Body Semantic Locality and Clusters.
+      </p>
+
+    </div>
+  </article>
+
+  <section class="next">
+    <div class="wrap">
+      <span class="eyebrow">Continue</span>
+      <h2 style="font-size:clamp(2rem,5vw,3.4rem);line-height:1.04;letter-spacing:-.035em;margin:.7rem 0 .9rem">
+        Related research
+      </h2>
+
+      <div class="next-grid">
+        <a class="card" href="/research/many-body-semantic-locality/">
+          <small>Many-body</small>
+          <h3>Many-Body Semantic Locality</h3>
+          <p>Study task-specific collars, clusters, locality scaling, and semantic area-law behavior.</p>
+        </a>
+
+        <a class="card" href="/research/spacetime-semantic-width/">
+          <small>Causality</small>
+          <h3>Spacetime Semantic Width</h3>
+          <p>Return to residual states, causal cuts, keep-or-reacquire scheduling, and task light cones.</p>
+        </a>
+
+        <a class="card" href="/research/robustness/">
+          <small>Robustness</small>
+          <h3>Robustness and Reserve</h3>
+          <p>Measure how far a current representation is from failing as coupling, noise, or model parameters change.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div>
+      <div class="brand" style="margin-bottom:.5rem">
+        <span class="mark">BM</span>
+        <span>Branch Mathematics</span>
+      </div>
+      <div>Mathematics of necessary distinctions.</div>
+    </div>
+
+    <div class="footer-links">
+      <a href="/learn/">Learn</a>
+      <a href="/research/">Research</a>
+      <a href="/applications/">Applications</a>
+      <a href="/reference/">Reference</a>
+      <a href="/book/">Book</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
