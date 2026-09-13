@@ -1,0 +1,926 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Semantic Width Explained | Branch Mathematics</title>
+  <meta name="description" content="Semantic width measures how many task-distinct behaviors a system must preserve at a declared tolerance. Learn exact and approximate semantic width, graph and covering formulations, dynamic width, and why raw state dimension is not the same as task complexity." />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <link rel="canonical" href="https://branch-mathematics-bm.github.io/learn/semantic-width/" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Semantic Width Explained" />
+  <meta property="og:description" content="Measure task-specific complexity by counting receiver-distinct behaviors rather than raw native states." />
+  <meta property="og:url" content="https://branch-mathematics-bm.github.io/learn/semantic-width/" />
+  <meta property="og:site_name" content="Branch Mathematics" />
+
+  <meta name="theme-color" content="#07111f" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"Semantic Width Explained",
+    "description":"An introduction to semantic width in Branch Mathematics, including exact partitions, approximate coverings, graph coloring, dynamic horizons, and infinite-dimensional systems.",
+    "mainEntityOfPage":"https://branch-mathematics-bm.github.io/learn/semantic-width/",
+    "isPartOf":{
+      "@type":"WebSite",
+      "name":"Branch Mathematics",
+      "url":"https://branch-mathematics-bm.github.io/"
+    }
+  }
+  </script>
+
+  <style>
+    :root{
+      --bg:#07111f;
+      --text:#eef5ff;
+      --muted:#aabbd0;
+      --line:#27415e;
+      --accent:#7bdcff;
+      --accent2:#b39cff;
+      --green:#7ef0c5;
+      --warn:#ffd98c;
+      --max:1120px;
+      --read:820px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 12% -5%,rgba(123,220,255,.12),transparent 28rem),
+        radial-gradient(circle at 88% 4%,rgba(179,156,255,.09),transparent 24rem),
+        linear-gradient(180deg,#06101d,#07111f 45%,#081422);
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height:1.7;
+    }
+
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(calc(100% - 2rem),var(--max));margin-inline:auto}
+    .read{width:min(100%,var(--read));margin-inline:auto}
+
+    .site-header{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:blur(18px);
+      background:rgba(7,17,31,.84);
+      border-bottom:1px solid rgba(123,220,255,.12);
+    }
+
+    .nav{
+      min-height:72px;
+      display:flex;align-items:center;justify-content:space-between;gap:1rem;
+    }
+
+    .brand{
+      display:flex;align-items:center;gap:.75rem;font-weight:760;white-space:nowrap;
+    }
+
+    .mark{
+      width:34px;height:34px;border-radius:11px;
+      border:1px solid rgba(123,220,255,.5);
+      display:grid;place-items:center;
+      background:linear-gradient(135deg,rgba(123,220,255,.2),rgba(179,156,255,.12));
+    }
+
+    .navlinks{display:flex;gap:.15rem;flex-wrap:wrap;justify-content:flex-end}
+    .navlinks a{
+      color:var(--muted);padding:.55rem .68rem;border-radius:10px;font-size:.93rem;
+    }
+    .navlinks a:hover,.navlinks a[aria-current="page"]{
+      color:var(--text);background:rgba(255,255,255,.05);
+    }
+
+    .breadcrumbs{
+      padding:1.2rem 0 0;
+      color:#8397af;
+      font-size:.9rem;
+    }
+
+    .hero{
+      padding:4.2rem 0 4rem;
+      border-bottom:1px solid rgba(123,220,255,.1);
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      padding:.42rem .7rem;
+      border-radius:999px;
+      border:1px solid rgba(123,220,255,.3);
+      background:rgba(123,220,255,.06);
+      color:#c5efff;
+      font-size:.82rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+    }
+
+    h1{
+      font-size:clamp(3rem,8vw,6rem);
+      line-height:.94;
+      letter-spacing:-.055em;
+      margin:1rem 0 1.1rem;
+      max-width:11ch;
+    }
+
+    .hero .lead{
+      font-size:clamp(1.08rem,2vw,1.34rem);
+      color:#c4d4e6;
+      max-width:850px;
+      margin:0 0 1.4rem;
+    }
+
+    .summary{
+      margin-top:1.6rem;
+      padding:1.25rem 1.35rem;
+      border:1px solid rgba(123,220,255,.24);
+      border-radius:18px;
+      background:linear-gradient(145deg,rgba(123,220,255,.055),rgba(179,156,255,.03));
+    }
+
+    .article{padding:4.8rem 0 5rem}
+
+    .article h2{
+      font-size:clamp(2rem,5vw,3.2rem);
+      line-height:1.05;
+      letter-spacing:-.035em;
+      margin:3.2rem 0 1rem;
+    }
+
+    .article h3{
+      font-size:1.35rem;
+      line-height:1.25;
+      margin:2rem 0 .7rem;
+    }
+
+    .article p{
+      color:#c4d2e2;
+      font-size:1.04rem;
+      margin:0 0 1.15rem;
+    }
+
+    .formula{
+      margin:1.4rem 0;
+      padding:1rem 1.1rem;
+      border-left:3px solid var(--accent);
+      background:rgba(123,220,255,.055);
+      border-radius:0 14px 14px 0;
+      color:#e0f1ff;
+      font-family:"Cambria Math","Times New Roman",serif;
+      font-size:1.08rem;
+      overflow:auto;
+    }
+
+    .quote{
+      margin:2rem 0;
+      padding:1.4rem 1.5rem;
+      border:1px solid rgba(179,156,255,.24);
+      border-radius:18px;
+      background:rgba(179,156,255,.045);
+      font-size:1.14rem;
+      color:#e4e4ff;
+    }
+
+    .compare{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:1rem;
+      margin:1.4rem 0 2rem;
+    }
+
+    .compare .box{
+      border:1px solid rgba(111,151,193,.22);
+      border-radius:18px;
+      background:rgba(255,255,255,.02);
+      padding:1.2rem;
+    }
+
+    .compare h3{margin-top:0}
+    .compare p{font-size:.97rem;margin-bottom:0}
+
+    .example{
+      margin:1.5rem 0 2rem;
+      padding:1.4rem;
+      border-radius:20px;
+      border:1px solid rgba(126,240,197,.22);
+      background:linear-gradient(145deg,rgba(126,240,197,.045),rgba(255,255,255,.015));
+    }
+
+    .example h3{margin-top:0;color:#dffcef}
+
+    .bars{
+      display:grid;
+      gap:.8rem;
+      margin:1.4rem 0 2rem;
+    }
+
+    .bar{
+      border:1px solid rgba(111,151,193,.2);
+      border-radius:16px;
+      padding:1rem;
+      background:rgba(255,255,255,.02);
+    }
+
+    .bar strong{display:block;margin-bottom:.35rem}
+    .barline{
+      height:12px;border-radius:999px;
+      background:#0a1524;
+      border:1px solid rgba(111,151,193,.16);
+      overflow:hidden;
+    }
+    .fill{
+      height:100%;
+      border-radius:999px;
+      background:linear-gradient(90deg,var(--accent),var(--accent2));
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin:1.2rem 0 1.8rem;
+      border:1px solid rgba(111,151,193,.22);
+      background:rgba(255,255,255,.015);
+    }
+
+    th,td{
+      padding:.8rem;
+      border-bottom:1px solid rgba(111,151,193,.16);
+      text-align:left;
+      vertical-align:top;
+    }
+
+    th{
+      color:#dff7ff;
+      background:rgba(123,220,255,.055);
+      font-size:.92rem;
+    }
+
+    td{color:#c4d2e2;font-size:.95rem}
+
+    .callout{
+      margin:2rem 0;
+      padding:1.2rem 1.3rem;
+      border-radius:18px;
+      border:1px solid rgba(255,217,140,.22);
+      background:rgba(255,217,140,.04);
+      color:#eadfc9;
+    }
+
+    .next{
+      padding:4.5rem 0;
+      border-top:1px solid rgba(123,220,255,.1);
+      background:#050d18;
+    }
+
+    .next-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:1rem;
+      margin-top:1.6rem;
+    }
+
+    .card{
+      min-height:100%;
+      padding:1.2rem;
+      border-radius:20px;
+      border:1px solid rgba(111,151,193,.2);
+      background:rgba(255,255,255,.02);
+      transition:.2s ease;
+    }
+
+    .card:hover{
+      transform:translateY(-2px);
+      border-color:rgba(123,220,255,.42);
+      background:rgba(123,220,255,.04);
+    }
+
+    .card small{
+      color:var(--accent);
+      font-size:.75rem;
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .card h3{margin:.5rem 0 .45rem}
+    .card p{color:var(--muted);font-size:.93rem;margin:0}
+
+    footer{
+      padding:3rem 0;
+      border-top:1px solid rgba(255,255,255,.07);
+      background:#040a12;
+      color:#8fa3ba;
+    }
+
+    .footer-grid{
+      display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:end;
+    }
+
+    .footer-links{display:flex;gap:.7rem;flex-wrap:wrap;justify-content:flex-end}
+
+    @media(max-width:900px){
+      .navlinks{display:none}
+      .next-grid{grid-template-columns:1fr}
+    }
+
+    @media(max-width:620px){
+      .hero{padding-top:3rem}
+      .compare{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr}
+      .footer-links{justify-content:flex-start}
+      th,td{font-size:.88rem}
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="/" aria-label="Branch Mathematics home">
+      <span class="mark">BM</span>
+      <span>Branch Mathematics</span>
+    </a>
+
+    <nav class="navlinks" aria-label="Primary navigation">
+      <a href="/learn/" aria-current="page">Learn</a>
+      <a href="/research/">Research</a>
+      <a href="/applications/">Applications</a>
+      <a href="/examples/">Examples</a>
+      <a href="/calculator/">Calculator</a>
+      <a href="/reference/">Reference</a>
+      <a href="/book/">Book</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <div class="wrap breadcrumbs">
+    <a href="/">Home</a> / <a href="/learn/">Learn</a> / Semantic Width Explained
+  </div>
+
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Complexity</span>
+      <h1>Semantic Width Explained</h1>
+
+      <p class="lead">
+        Semantic width measures how much distinction a system must preserve for a declared receiver and tolerance. It is task-specific complexity, not simply native state size.
+      </p>
+
+      <div class="summary">
+        <strong>Short version:</strong>
+        two native states count as different only when the declared task, context, dynamics, or receiver still needs to tell them apart.
+      </div>
+    </div>
+  </section>
+
+  <article class="article">
+    <div class="read">
+
+      <h2>Why raw dimension is not enough</h2>
+
+      <p>
+        A system can have a huge state space while a receiver cares about only one bit of behavior. Another receiver may require nearly the full state.
+      </p>
+
+      <p>
+        Raw dimension therefore answers a different question from task-specific complexity.
+      </p>
+
+      <div class="quote">
+        Semantic width asks how many receiver-distinct behaviors must survive, not how many native coordinates the system originally had.
+      </div>
+
+      <h2>Exact semantic width</h2>
+
+      <p>
+        Start with a finite native state space <strong>X</strong> and an exact task equivalence <strong>E</strong>. Two states are equivalent when the declared response treats them identically.
+      </p>
+
+      <p>
+        The exact quotient is:
+      </p>
+
+      <div class="formula">
+        X / E
+      </div>
+
+      <p>
+        If the quotient has <strong>N</strong> classes, then a natural exact width is:
+      </p>
+
+      <div class="formula">
+        w(0) = log₂ |X / E|
+      </div>
+
+      <p>
+        This is not Shannon entropy. It is a log-cardinality measure of how many exact receiver-distinct classes must remain available.
+      </p>
+
+      <div class="callout">
+        BM firewall: log-cardinality is not automatically thermodynamic information, Shannon entropy, or Landauer cost.
+      </div>
+
+      <h2>A simple parity example</h2>
+
+      <div class="example">
+        <h3>Many native states, one semantic bit</h3>
+
+        <p>
+          Suppose the native state is an <strong>n</strong>-bit string:
+        </p>
+
+        <div class="formula">
+          x ∈ {0,1}<sup>n</sup>
+        </div>
+
+        <p>
+          The native state space has:
+        </p>
+
+        <div class="formula">
+          2<sup>n</sup> states
+        </div>
+
+        <p>
+          But the receiver asks only for parity:
+        </p>
+
+        <div class="formula">
+          T(x) = x₁ ⊕ x₂ ⊕ ··· ⊕ xₙ
+        </div>
+
+        <p>
+          There are only two task-distinct response classes: even parity and odd parity.
+        </p>
+
+        <div class="formula">
+          |X / E<sub>T</sub>| = 2
+        </div>
+
+        <p>
+          Therefore:
+        </p>
+
+        <div class="formula">
+          w(0) = log₂ 2 = 1 bit
+        </div>
+
+        <p>
+          Native state size grows with <strong>n</strong>. Exact task width stays at one bit.
+        </p>
+      </div>
+
+      <h2>But locality can make the implementation wider</h2>
+
+      <p>
+        The parity example also shows an important distinction between centralized semantic complexity and distributed realization cost.
+      </p>
+
+      <p>
+        If all bits are already aggregated centrally, parity is one bit. If <strong>n</strong> separate sources must send enough information across separate cuts before aggregation, the distributed architecture may require much more total communication.
+      </p>
+
+      <div class="formula">
+        centralized semantic width ≠ distributed realization width
+      </div>
+
+      <p>
+        BM calls this kind of gap a locality or realization surcharge.
+      </p>
+
+      <h2>Approximate semantic width</h2>
+
+      <p>
+        Exact equality is often too strict. Suppose the receiver tolerates error <strong>ε</strong>.
+      </p>
+
+      <p>
+        Instead of asking how many exact response classes exist, we ask how many response representatives are needed so that every admissible response lies within tolerance <strong>ε</strong> of one of them.
+      </p>
+
+      <div class="formula">
+        N(ε) = covering number of the receiver-visible profile set
+      </div>
+
+      <div class="formula">
+        w(ε) = log₂ N(ε)
+      </div>
+
+      <p>
+        As tolerance grows, fewer distinct representatives may be needed.
+      </p>
+
+      <div class="bars">
+        <div class="bar">
+          <strong>Small tolerance</strong>
+          <div class="barline"><div class="fill" style="width:92%"></div></div>
+        </div>
+        <div class="bar">
+          <strong>Moderate tolerance</strong>
+          <div class="barline"><div class="fill" style="width:58%"></div></div>
+        </div>
+        <div class="bar">
+          <strong>Large tolerance</strong>
+          <div class="barline"><div class="fill" style="width:28%"></div></div>
+        </div>
+      </div>
+
+      <p>
+        The picture is conceptual: tolerance trades representation width against approximation error.
+      </p>
+
+      <h2>Behavioral distance</h2>
+
+      <p>
+        To define approximate distinction, BM compares states through their declared receiver-visible behaviors.
+      </p>
+
+      <p>
+        For a family of responses <strong>B<sub>j</sub></strong> with output metrics <strong>d<sub>j</sub></strong>, one behavioral pseudometric is:
+      </p>
+
+      <div class="formula">
+        D<sub>P</sub>(x,x′) = max<sub>j</sub> d<sub>j</sub>(B<sub>j</sub>(x), B<sub>j</sub>(x′))
+      </div>
+
+      <p>
+        Native states can be far apart in their original geometry and still be semantically close if the receiver sees almost the same behavior.
+      </p>
+
+      <p>
+        Conversely, two states that are close natively can be semantically far apart if a sensitive task amplifies their difference.
+      </p>
+
+      <h2>Finite systems and graph coloring</h2>
+
+      <p>
+        In finite exact or thresholded problems, semantic width can become a graph-coloring problem.
+      </p>
+
+      <p>
+        Build a graph whose vertices are native states and connect two vertices whenever they are too different to share one representation cell.
+      </p>
+
+      <div class="formula">
+        {x,x′} is an edge when D(x,x′) &gt; ε
+      </div>
+
+      <p>
+        Then an admissible representation corresponds to coloring incompatible states differently.
+      </p>
+
+      <div class="formula">
+        N(ε) = χ(G<sub>ε</sub>)
+      </div>
+
+      <div class="formula">
+        w(ε) = log₂ χ(G<sub>ε</sub>)
+      </div>
+
+      <p>
+        In scalar-output radius semantics, the threshold can shift to <strong>2ε</strong>; the precise graph rule depends on the declared cell-radius semantics.
+      </p>
+
+      <div class="callout">
+        This matters because approximate representation can be combinatorially hard even when the underlying state description is simple.
+      </div>
+
+      <h2>Not every metric behaves like a tree</h2>
+
+      <p>
+        If the behavioral distance is ultrametric, tolerance classes are naturally nested. In that special case, threshold partitions behave canonically across scales.
+      </p>
+
+      <p>
+        In general metrics, threshold neighborhoods need not form a partition. That is why graph coloring or covering geometry is needed instead of simply declaring “states within ε are equivalent.”
+      </p>
+
+      <div class="formula">
+        ordinary metric thresholding need not be transitive
+      </div>
+
+      <h2>Dynamic semantic width</h2>
+
+      <p>
+        A distinction may be invisible now and become important later. Dynamic semantic width therefore compares entire finite-horizon task histories.
+      </p>
+
+      <div class="formula">
+        D<sub>h</sub>(x,x′) = max<sub>0≤j≤h</sub> d(TΦ<sup>j</sup>x, TΦ<sup>j</sup>x′)
+      </div>
+
+      <p>
+        As the horizon grows, the receiver can potentially distinguish more states.
+      </p>
+
+      <div class="formula">
+        longer horizon ⇒ at least as many required distinctions
+      </div>
+
+      <p>
+        In exact finite systems, the horizon equivalences form a nested chain:
+      </p>
+
+      <div class="formula">
+        E<sub>h+1</sub> ⊆ E<sub>h</sub>
+      </div>
+
+      <h2>Semantic width can grow with time</h2>
+
+      <p>
+        Suppose two states produce the same task output for the first five steps and then diverge on step six. A short-horizon model may lawfully merge them. A longer-horizon model may not.
+      </p>
+
+      <p>
+        This creates a time-dependent complexity profile:
+      </p>
+
+      <div class="formula">
+        h ↦ w<sub>h</sub>(ε)
+      </div>
+
+      <p>
+        BM uses this to study distinction latency, memory, causal scheduling, and spacetime semantic width.
+      </p>
+
+      <h2>Infinite-dimensional systems</h2>
+
+      <p>
+        Semantic width becomes especially useful when native state dimension is infinite.
+      </p>
+
+      <p>
+        Consider a PDE state <strong>u</strong> and a finite-horizon receiver-visible profile:
+      </p>
+
+      <div class="formula">
+        P<sub>τ,H</sub>(u) = (TΦ<sub>t</sub>u)<sub>t∈[τ,τ+H]</sub>
+      </div>
+
+      <p>
+        The approximate semantic width is:
+      </p>
+
+      <div class="formula">
+        w<sub>τ,H</sub>(ε) = log₂ N(P<sub>τ,H</sub>(K), ε)
+      </div>
+
+      <p>
+        If the profile set is relatively compact in the declared profile metric, then the covering number is finite at every positive tolerance.
+      </p>
+
+      <div class="quote">
+        Infinite native dimension does not imply infinite approximate semantic width.
+      </div>
+
+      <h2>Heat equation intuition</h2>
+
+      <p>
+        Positive-time heat evolution smooths high-frequency structure. For suitable bounded initial sets and receiver norms, this can make the visible profile family compact at positive time.
+      </p>
+
+      <p>
+        That gives finite positive-tolerance semantic width even though the underlying PDE state space is infinite-dimensional.
+      </p>
+
+      <p>
+        The full unsmoothed unit ball at time zero can still have infinite covering number at small tolerance.
+      </p>
+
+      <div class="formula">
+        t = 0: width may be infinite<br>
+        t &gt; 0: width may become finite
+      </div>
+
+      <p>
+        This is a semantic compression effect caused by the dynamics and the declared observation—not a statement that the PDE has become finite-dimensional.
+      </p>
+
+      <h2>Wave-like systems can behave differently</h2>
+
+      <p>
+        Conservative or weakly smoothing dynamics may preserve high-frequency distinctions rather than suppressing them.
+      </p>
+
+      <p>
+        Therefore, the heat-equation conclusion cannot simply be transferred to a wave equation or other conservative system.
+      </p>
+
+      <div class="callout">
+        BM firewall: smoothing in one dynamical sector does not imply compressibility in another.
+      </div>
+
+      <h2>Semantic width is receiver-relative</h2>
+
+      <p>
+        The same native system can have radically different semantic widths under different Passports.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Receiver task</th>
+            <th>Possible semantic burden</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Parity only</td>
+            <td>One bit in the centralized exact finite example</td>
+          </tr>
+          <tr>
+            <td>Count of ones</td>
+            <td>About log₂(n+1) bits</td>
+          </tr>
+          <tr>
+            <td>Full reconstruction</td>
+            <td>n bits for an n-bit state</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        There is therefore no single semantic width of a system independent of receiver, task, context, horizon, and tolerance.
+      </p>
+
+      <h2>Width versus construction complexity</h2>
+
+      <p>
+        A small semantic interface does not automatically mean it is easy to discover.
+      </p>
+
+      <p>
+        The minimal quotient may be tiny while deciding which native states belong to the same contextual class is computationally hard.
+      </p>
+
+      <div class="formula">
+        representation width ≠ complexity of constructing the representation
+      </div>
+
+      <p>
+        BM keeps those notions separate.
+      </p>
+
+      <h2>Width versus realization</h2>
+
+      <p>
+        A low-width abstract quotient may also fail to admit the implementation class the system requires.
+      </p>
+
+      <p>
+        For example, a quotient may exist as a set but fail to admit a smooth Euclidean realization of the desired dimension. A quantum task quotient may exist algebraically but fail to admit the required CPTP physical channel without extra structure.
+      </p>
+
+      <div class="formula">
+        semantic compression ≠ automatic admissible implementation
+      </div>
+
+      <h2>Why BM uses the word “semantic”</h2>
+
+      <p>
+        The word is meant in a precise task-relative sense: width is measured after asking what differences change the declared response.
+      </p>
+
+      <p>
+        It is not intended to mean linguistic meaning or subjective interpretation.
+      </p>
+
+      <div class="quote">
+        Semantic width is the width of distinctions that still matter to the declared mathematics of the receiver.
+      </div>
+
+      <h2>What semantic width is good for</h2>
+
+      <p>
+        The concept becomes useful whenever the full native description is larger than the distinctions the receiver actually needs.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Area</th>
+            <th>Semantic-width question</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Model reduction</td>
+            <td>How many task-distinct reduced states are truly necessary?</td>
+          </tr>
+          <tr>
+            <td>PDEs</td>
+            <td>How complex is the receiver-visible profile family at tolerance ε?</td>
+          </tr>
+          <tr>
+            <td>Networks</td>
+            <td>How much distinction must cross a cut?</td>
+          </tr>
+          <tr>
+            <td>Control</td>
+            <td>How much state must remain observable for the declared control task?</td>
+          </tr>
+          <tr>
+            <td>Quantum systems</td>
+            <td>How large a carrier is required for the declared operator system or algebra?</td>
+          </tr>
+          <tr>
+            <td>Distributed systems</td>
+            <td>How much semantic content exists centrally, and what locality surcharge appears when it must be realized?</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>The main distinction</h2>
+
+      <div class="compare">
+        <div class="box">
+          <h3>Native complexity</h3>
+          <p>
+            How large, high-dimensional, detailed, or difficult is the underlying system description?
+          </p>
+        </div>
+
+        <div class="box">
+          <h3>Semantic complexity</h3>
+          <p>
+            How many distinctions must remain visible for the declared response, context, horizon, and tolerance?
+          </p>
+        </div>
+      </div>
+
+      <p>
+        Branch Mathematics needs both. It does not replace native complexity with semantic complexity; it distinguishes them.
+      </p>
+
+      <h2>Where this leads</h2>
+
+      <p>
+        Once width is task-relative, a new set of questions becomes natural:
+      </p>
+
+      <p>
+        How does width change under dynamics? How much extra width is caused by locality? How does tolerance change the required representation? When does coupling create new distinctions? How much width must cross an interface? How much of it can be recovered later?
+      </p>
+
+      <p>
+        Those questions lead into approximate model reduction, PDE semantic width, distributed cuts, spacetime width, many-body locality, and quantum carriers.
+      </p>
+
+    </div>
+  </article>
+
+  <section class="next">
+    <div class="wrap">
+      <span class="eyebrow">Next</span>
+      <h2 style="font-size:clamp(2rem,5vw,3.4rem);line-height:1.04;letter-spacing:-.035em;margin:.7rem 0 .9rem">
+        Continue the path
+      </h2>
+
+      <div class="next-grid">
+        <a class="card" href="/research/infinite-dimensional-pde-reduction/">
+          <small>Flagship research</small>
+          <h3>Can an Infinite-Dimensional PDE Have a Finite Reduced Interface?</h3>
+          <p>Apply semantic width to compact receiver-visible PDE profiles.</p>
+        </a>
+
+        <a class="card" href="/research/exact-vs-approximate-model-reduction/">
+          <small>Model reduction</small>
+          <h3>Exact vs Approximate Model Reduction</h3>
+          <p>See how exact quotient structure changes when positive tolerance is allowed.</p>
+        </a>
+
+        <a class="card" href="/examples/distributed-parity/">
+          <small>Worked example</small>
+          <h3>Distributed Parity</h3>
+          <p>See why one bit of centralized semantic content can require much more distributed communication.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div>
+      <div class="brand" style="margin-bottom:.5rem">
+        <span class="mark">BM</span>
+        <span>Branch Mathematics</span>
+      </div>
+      <div>Mathematics of necessary distinctions.</div>
+    </div>
+
+    <div class="footer-links">
+      <a href="/learn/">Learn</a>
+      <a href="/research/">Research</a>
+      <a href="/reference/">Reference</a>
+      <a href="/book/">Book</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
