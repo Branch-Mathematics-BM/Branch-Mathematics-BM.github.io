@@ -1,0 +1,954 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>PDE Port Reduction: Minimal Boundary Interfaces | Branch Mathematics</title>
+  <meta name="description" content="A technical Branch Mathematics treatment of PDE port reduction: coupling-before-task compression, boundary operators, deployment-specific transfer maps, portable interfaces, task-filtered reduction, Galerkin error bounds, time-dependent ports, and global compatibility." />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <link rel="canonical" href="https://branch-mathematics-bm.github.io/research/pde-port-reduction/" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="PDE Port Reduction: Minimal Boundary Interfaces" />
+  <meta property="og:description" content="How much boundary information must a PDE subsystem export to remain correct for coupling and downstream tasks?" />
+  <meta property="og:url" content="https://branch-mathematics-bm.github.io/research/pde-port-reduction/" />
+  <meta property="og:site_name" content="Branch Mathematics" />
+
+  <meta name="theme-color" content="#07111f" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"TechArticle",
+    "headline":"PDE Port Reduction: Minimal Boundary Interfaces",
+    "description":"A technical treatment of PDE boundary-interface reduction in Branch Mathematics.",
+    "mainEntityOfPage":"https://branch-mathematics-bm.github.io/research/pde-port-reduction/",
+    "isPartOf":{
+      "@type":"WebSite",
+      "name":"Branch Mathematics",
+      "url":"https://branch-mathematics-bm.github.io/"
+    }
+  }
+  </script>
+
+  <style>
+    :root{
+      --bg:#07111f;
+      --text:#eef5ff;
+      --muted:#aabbd0;
+      --line:#27415e;
+      --accent:#7bdcff;
+      --accent2:#b39cff;
+      --green:#7ef0c5;
+      --warn:#ffd98c;
+      --red:#ff9d9d;
+      --max:1160px;
+      --read:860px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;color:var(--text);
+      background:
+        radial-gradient(circle at 10% -5%,rgba(123,220,255,.11),transparent 28rem),
+        radial-gradient(circle at 90% 4%,rgba(179,156,255,.08),transparent 24rem),
+        linear-gradient(180deg,#06101d,#07111f 45%,#081422);
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height:1.72;
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(calc(100% - 2rem),var(--max));margin-inline:auto}
+    .read{width:min(100%,var(--read));margin-inline:auto}
+
+    .site-header{
+      position:sticky;top:0;z-index:50;backdrop-filter:blur(18px);
+      background:rgba(7,17,31,.84);border-bottom:1px solid rgba(123,220,255,.12);
+    }
+    .nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .brand{display:flex;align-items:center;gap:.75rem;font-weight:760;white-space:nowrap}
+    .mark{
+      width:34px;height:34px;border-radius:11px;border:1px solid rgba(123,220,255,.5);
+      display:grid;place-items:center;background:linear-gradient(135deg,rgba(123,220,255,.2),rgba(179,156,255,.12));
+    }
+    .navlinks{display:flex;gap:.15rem;flex-wrap:wrap;justify-content:flex-end}
+    .navlinks a{color:var(--muted);padding:.55rem .68rem;border-radius:10px;font-size:.93rem}
+    .navlinks a:hover,.navlinks a[aria-current="page"]{color:var(--text);background:rgba(255,255,255,.05)}
+
+    .breadcrumbs{padding:1.2rem 0 0;color:#8397af;font-size:.9rem}
+    .hero{padding:4.6rem 0 4rem;border-bottom:1px solid rgba(123,220,255,.1)}
+    .eyebrow{
+      display:inline-flex;padding:.42rem .7rem;border-radius:999px;
+      border:1px solid rgba(123,220,255,.3);background:rgba(123,220,255,.06);
+      color:#c5efff;font-size:.82rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+    }
+    h1{
+      font-size:clamp(3rem,7vw,5.6rem);line-height:.96;letter-spacing:-.05em;
+      margin:1rem 0 1.15rem;max-width:14ch;
+    }
+    .hero .lead{font-size:clamp(1.08rem,2vw,1.3rem);color:#c4d4e6;max-width:950px;margin:0 0 1.5rem}
+    .meta{display:flex;gap:.55rem;flex-wrap:wrap;margin-top:1.2rem}
+    .tag{
+      display:inline-flex;padding:.42rem .66rem;border-radius:999px;font-size:.76rem;font-weight:800;
+      letter-spacing:.06em;border:1px solid rgba(111,151,193,.24);background:rgba(255,255,255,.025);color:#d8e7f7;
+    }
+    .tag.cand{border-color:rgba(255,217,140,.25);background:rgba(255,217,140,.035);color:#f7e8c7}
+    .tag.classic{border-color:rgba(179,156,255,.26);background:rgba(179,156,255,.04);color:#ece5ff}
+
+    .abstract{
+      margin-top:1.7rem;padding:1.3rem 1.4rem;border:1px solid rgba(123,220,255,.22);
+      border-radius:20px;background:linear-gradient(145deg,rgba(123,220,255,.05),rgba(179,156,255,.025));
+    }
+    .abstract strong{display:block;margin-bottom:.35rem;color:#def6ff}
+    .abstract p{margin:0;color:#c3d3e4}
+
+    .article{padding:4.8rem 0 5rem}
+    .article h2{font-size:clamp(2rem,5vw,3.15rem);line-height:1.05;letter-spacing:-.035em;margin:3.3rem 0 1rem}
+    .article h3{font-size:1.35rem;line-height:1.25;margin:2.2rem 0 .7rem}
+    .article p{color:#c4d2e2;font-size:1.035rem;margin:0 0 1.15rem}
+
+    .formula{
+      margin:1.4rem 0;padding:1.05rem 1.15rem;border-left:3px solid var(--accent);
+      background:rgba(123,220,255,.055);border-radius:0 14px 14px 0;color:#e0f1ff;
+      font-family:"Cambria Math","Times New Roman",serif;font-size:1.08rem;overflow:auto;
+    }
+
+    .theorem{
+      margin:1.7rem 0 2rem;padding:1.35rem;border:1px solid rgba(126,240,197,.24);
+      border-radius:20px;background:linear-gradient(145deg,rgba(126,240,197,.04),rgba(255,255,255,.012));
+    }
+    .theorem .head{display:flex;align-items:center;gap:.55rem;flex-wrap:wrap;margin-bottom:.55rem}
+    .theorem .head strong{font-size:1.08rem;color:#e7fff5}
+    .theorem .mini{
+      padding:.25rem .5rem;border-radius:999px;border:1px solid rgba(126,240,197,.28);
+      color:#c7f9e7;font-size:.72rem;font-weight:800;letter-spacing:.06em;
+    }
+    .theorem p{margin:.45rem 0;color:#cbd9e6}
+
+    .firewall{
+      margin:1.7rem 0;padding:1.2rem 1.3rem;border-radius:18px;
+      border:1px solid rgba(255,157,157,.2);background:rgba(255,157,157,.035);color:#f1cccc;
+    }
+    .firewall strong{color:#ffd6d6}
+
+    .callout{
+      margin:1.7rem 0;padding:1.2rem 1.3rem;border-radius:18px;
+      border:1px solid rgba(255,217,140,.22);background:rgba(255,217,140,.04);color:#eadfc9;
+    }
+
+    .compare{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.4rem 0 2rem}
+    .compare .box{border:1px solid rgba(111,151,193,.22);border-radius:18px;background:rgba(255,255,255,.02);padding:1.2rem}
+    .compare h3{margin-top:0}.compare p{font-size:.96rem;margin-bottom:0}
+
+    .example{
+      margin:1.6rem 0 2rem;padding:1.35rem;border-radius:20px;
+      border:1px solid rgba(179,156,255,.22);
+      background:linear-gradient(145deg,rgba(179,156,255,.04),rgba(255,255,255,.015));
+    }
+    .example h3{margin-top:0;color:#efe8ff}
+
+    table{
+      width:100%;border-collapse:collapse;margin:1.25rem 0 1.9rem;
+      border:1px solid rgba(111,151,193,.22);background:rgba(255,255,255,.015);
+    }
+    th,td{padding:.82rem;border-bottom:1px solid rgba(111,151,193,.16);text-align:left;vertical-align:top}
+    th{color:#dff7ff;background:rgba(123,220,255,.055);font-size:.92rem}
+    td{color:#c4d2e2;font-size:.94rem}
+
+    .pipeline{
+      display:grid;grid-template-columns:repeat(5,1fr);gap:.7rem;margin:1.5rem 0 2rem;
+    }
+    .pipe{
+      border:1px solid rgba(111,151,193,.2);border-radius:16px;padding:.9rem .65rem;
+      text-align:center;background:rgba(255,255,255,.02);font-weight:720;position:relative;
+    }
+    .pipe:not(:last-child):after{
+      content:"→";position:absolute;right:-.55rem;top:50%;transform:translateY(-50%);color:var(--accent);z-index:2;
+    }
+
+    .next{padding:4.5rem 0;border-top:1px solid rgba(123,220,255,.1);background:#050d18}
+    .next-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.6rem}
+    .card{
+      min-height:100%;padding:1.2rem;border-radius:20px;border:1px solid rgba(111,151,193,.2);
+      background:rgba(255,255,255,.02);transition:.2s ease;
+    }
+    .card:hover{transform:translateY(-2px);border-color:rgba(123,220,255,.42);background:rgba(123,220,255,.04)}
+    .card small{color:var(--accent);font-size:.75rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+    .card h3{margin:.5rem 0 .45rem}.card p{color:var(--muted);font-size:.93rem;margin:0}
+
+    footer{padding:3rem 0;border-top:1px solid rgba(255,255,255,.07);background:#040a12;color:#8fa3ba}
+    .footer-grid{display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:end}
+    .footer-links{display:flex;gap:.7rem;flex-wrap:wrap;justify-content:flex-end}
+
+    @media(max-width:900px){
+      .navlinks{display:none}.pipeline{grid-template-columns:1fr}.pipe:not(:last-child):after{display:none}.next-grid{grid-template-columns:1fr}
+    }
+    @media(max-width:620px){
+      .hero{padding-top:3rem}.compare{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}
+      .footer-links{justify-content:flex-start}th,td{font-size:.87rem}
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="/" aria-label="Branch Mathematics home">
+      <span class="mark">BM</span>
+      <span>Branch Mathematics</span>
+    </a>
+    <nav class="navlinks" aria-label="Primary navigation">
+      <a href="/learn/">Learn</a>
+      <a href="/research/" aria-current="page">Research</a>
+      <a href="/applications/">Applications</a>
+      <a href="/examples/">Examples</a>
+      <a href="/calculator/">Calculator</a>
+      <a href="/reference/">Reference</a>
+      <a href="/book/">Book</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <div class="wrap breadcrumbs">
+    <a href="/">Home</a> / <a href="/research/">Research</a> / PDE Port Reduction
+  </div>
+
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">PDE interfaces</span>
+      <h1>PDE Port Reduction: Minimal Boundary Interfaces</h1>
+
+      <p class="lead">
+        A PDE subsystem rarely needs to expose its entire field to the rest of a coupled problem. The correct port is the smallest boundary representation that still preserves every distinction required by coupling, downstream tasks, allowed contexts, and the chosen realization class.
+      </p>
+
+      <div class="meta">
+        <span class="tag cand">Volume II development</span>
+        <span class="tag classic">Uses classical PDE, variational, and operator theory</span>
+      </div>
+
+      <div class="abstract">
+        <strong>Abstract</strong>
+        <p>
+          PDE port reduction studies task-specific compression at subsystem boundaries. The main BM distinction is coupling-before-task compression: if a boundary variable influences a neighboring subsystem through a coupling operator Λ and a final receiver through a task operator L, then the exact port equivalence is governed by ker(Λ)∩ker(L), not ker(L) alone. For a fixed deployment, the complete transfer G=CS⁻¹B can define a smaller exact quotient through ker(G). Portable ports require contextual profiles across all allowed environments. Approximate ports use profile covering numbers; Galerkin and reduced-basis methods provide native realizations with task-error certification.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <article class="article">
+    <div class="read">
+
+      <h2>1. What is a PDE port?</h2>
+
+      <p>
+        Consider a PDE posed on a subdomain <strong>Ω<sub>i</sub></strong> inside a larger coupled problem.
+      </p>
+
+      <p>
+        The interior state may be infinite-dimensional, but communication with the rest of the system occurs through boundary data:
+      </p>
+
+      <div class="formula">
+        g<sub>i</sub> ∈ Γ<sub>i</sub>,
+      </div>
+
+      <p>
+        where <strong>Γ<sub>i</sub></strong> is an appropriate trace, flux, or interface space.
+      </p>
+
+      <p>
+        A port is a representation:
+      </p>
+
+      <div class="formula">
+        R<sub>i</sub>:Γ<sub>i</sub>→Q<sub>i</sub>
+      </div>
+
+      <p>
+        intended to preserve the boundary distinctions the rest of the coupled problem still needs.
+      </p>
+
+      <h2>2. Why task-only compression can fail</h2>
+
+      <p>
+        Suppose the final receiver only cares about:
+      </p>
+
+      <div class="formula">
+        Lg.
+      </div>
+
+      <p>
+        It is tempting to quotient the boundary by <strong>ker(L)</strong>.
+      </p>
+
+      <p>
+        But the boundary variable may first enter a neighboring subsystem through a coupling operator:
+      </p>
+
+      <div class="formula">
+        Λg.
+      </div>
+
+      <p>
+        Two traces can have the same final task value while producing different coupled dynamics.
+      </p>
+
+      <div class="firewall">
+        <strong>Permanent firewall:</strong> task-only boundary sufficiency does not imply coupled-system sufficiency.
+      </div>
+
+      <h2>3. Coupling-before-task equivalence</h2>
+
+      <div class="theorem">
+        <div class="head">
+          <strong>Exact Port Equivalence</strong>
+          <span class="mini">Volume II placement</span>
+        </div>
+
+        <p>
+          If the declared boundary obligations are the coupling response <strong>Λg</strong> and task response <strong>Lg</strong>, then two boundary states are exactly equivalent when their difference lies in:
+        </p>
+
+        <div class="formula">
+          ker(Λ) ∩ ker(L).
+        </div>
+      </div>
+
+      <p>
+        Equivalently, the exact port can be represented by the joint map:
+      </p>
+
+      <div class="formula">
+        g ↦ (Λg,Lg).
+      </div>
+
+      <p>
+        This is the simplest version of the BM rule:
+      </p>
+
+      <div class="formula">
+        coupling obligations before task-only compression.
+      </div>
+
+      <h2>4. A simple example</h2>
+
+      <div class="example">
+        <h3>Same scalar output, different neighbor forcing</h3>
+
+        <p>
+          Suppose two traces <strong>g₁</strong> and <strong>g₂</strong> satisfy:
+        </p>
+
+        <div class="formula">
+          Lg₁ = Lg₂,
+        </div>
+
+        <p>
+          but:
+        </p>
+
+        <div class="formula">
+          Λg₁ ≠ Λg₂.
+        </div>
+
+        <p>
+          A task-only port would merge them. The neighboring subsystem would then receive an ambiguous coupling state.
+        </p>
+
+        <p>
+          The correct exact port must keep them separate.
+        </p>
+      </div>
+
+      <h2>5. Fixed deployment can permit a smaller quotient</h2>
+
+      <p>
+        Suppose the PDE subproblem is represented abstractly by:
+      </p>
+
+      <div class="formula">
+        S u = B a,
+      </div>
+
+      <p>
+        where <strong>a</strong> is boundary or interface input, <strong>S</strong> is the native PDE operator, and the final receiver observes:
+      </p>
+
+      <div class="formula">
+        y = C u.
+      </div>
+
+      <p>
+        When <strong>S</strong> is invertible on the declared admissible sector:
+      </p>
+
+      <div class="formula">
+        u = S<sup>-1</sup>B a,
+      </div>
+
+      <p>
+        so the complete deployment-specific input-to-task transfer is:
+      </p>
+
+      <div class="formula">
+        G = C S<sup>-1</sup>B.
+      </div>
+
+      <div class="theorem">
+        <div class="head">
+          <strong>Deployment-Specific Exact Quotient</strong>
+          <span class="mini">Volume II</span>
+        </div>
+
+        <p>
+          For the fixed deployment represented by <strong>G</strong>, the exact task quotient is controlled by:
+        </p>
+
+        <div class="formula">
+          ker(G).
+        </div>
+      </div>
+
+      <p>
+        Two boundary inputs can therefore be merged if the full declared deployment maps them to the same receiver response—even when they differ internally.
+      </p>
+
+      <h2>6. Deployment-specific and portable ports are different</h2>
+
+      <div class="compare">
+        <div class="box">
+          <h3>Deployment-specific port</h3>
+          <p>
+            Optimized for one fixed downstream PDE, boundary condition, coupling law, or receiver.
+          </p>
+        </div>
+
+        <div class="box">
+          <h3>Portable port</h3>
+          <p>
+            Must remain sufficient across every context allowed by the Passport.
+          </p>
+        </div>
+      </div>
+
+      <p>
+        Portability can require strictly more boundary distinctions.
+      </p>
+
+      <h2>7. Contextual port profiles</h2>
+
+      <p>
+        Let <strong>c∈C</strong> denote an allowed external context, such as a neighboring subsystem, boundary condition, load, parameter regime, or receiver configuration.
+      </p>
+
+      <p>
+        Define the contextual port response:
+      </p>
+
+      <div class="formula">
+        P(g)(c)=B(g,c).
+      </div>
+
+      <p>
+        Then:
+      </p>
+
+      <div class="formula">
+        g∼g′
+        ⇔
+        P(g)=P(g′)
+      </div>
+
+      <p>
+        is the coarsest exact portable equivalence for that declared context family.
+      </p>
+
+      <h2>8. More contexts can only refine exact equivalence</h2>
+
+      <p>
+        For a context set <strong>U</strong>, define:
+      </p>
+
+      <div class="formula">
+        g E<sub>U</sub> g′
+        ⇔
+        B(g,c)=B(g′,c)
+        for all c∈U.
+      </div>
+
+      <p>
+        Then:
+      </p>
+
+      <div class="formula">
+        E<sub>U∪V</sub>
+        =
+        E<sub>U</sub> ∩ E<sub>V</sub>.
+      </div>
+
+      <p>
+        Adding allowed environments can only preserve or increase the required exact distinction structure.
+      </p>
+
+      <h2>9. Approximate port width</h2>
+
+      <p>
+        At tolerance <strong>ε&gt;0</strong>, define the contextual profile distance:
+      </p>
+
+      <div class="formula">
+        D(g,g′)
+        =
+        sup<sub>c∈C</sub>
+        d(B(g,c),B(g′,c)).
+      </div>
+
+      <p>
+        The approximate port width is:
+      </p>
+
+      <div class="formula">
+        w<sub>port</sub>(ε)
+        =
+        log₂
+        𝒩(P(G),d<sub>∞</sub>,ε).
+      </div>
+
+      <p>
+        A finite positive-tolerance portable port exists exactly when the relevant profile family is totally bounded; in a complete profile space, equivalently when it is relatively compact.
+      </p>
+
+      <h2>10. Why the full trace space can be much larger than the task port</h2>
+
+      <p>
+        The boundary trace space can be infinite-dimensional while the receiver-visible transfer is compact or effectively low-rank.
+      </p>
+
+      <div class="formula">
+        trace complexity
+        ≠
+        task-filtered port complexity.
+      </div>
+
+      <p>
+        This is the PDE-interface version of semantic width.
+      </p>
+
+      <h2>11. Dirichlet-to-Neumann viewpoint</h2>
+
+      <p>
+        Boundary operators such as a Dirichlet-to-Neumann map can summarize the interior PDE response at the boundary.
+      </p>
+
+      <p>
+        If:
+      </p>
+
+      <div class="formula">
+        Λ<sub>DtN</sub>:g↦∂<sub>n</sub>u|<sub>∂Ω</sub>,
+      </div>
+
+      <p>
+        then the boundary operator itself can act as the native interaction object between subdomains.
+      </p>
+
+      <p>
+        BM does not claim the DtN construction as new. The BM question is:
+      </p>
+
+      <div class="formula">
+        which distinctions of the DtN response must remain visible to the declared downstream contexts and tasks?
+      </div>
+
+      <h2>12. Port reduction through task filtering</h2>
+
+      <p>
+        Suppose the full boundary transfer is:
+      </p>
+
+      <div class="formula">
+        T:W→U,
+      </div>
+
+      <p>
+        while the receiver only observes:
+      </p>
+
+      <div class="formula">
+        C:U→Y.
+      </div>
+
+      <p>
+        Then the relevant receiver transfer is:
+      </p>
+
+      <div class="formula">
+        CT.
+      </div>
+
+      <p>
+        The port may therefore be reduced according to the task-filtered transfer rather than the full boundary output space.
+      </p>
+
+      <div class="callout">
+        The correct object is not automatically “the smallest approximation of the full trace.” It is the smallest admissible representation of the boundary behavior the declared downstream system can still use.
+      </div>
+
+      <h2>13. Galerkin realization</h2>
+
+      <p>
+        Once a port target has been identified, standard numerical methods can realize it.
+      </p>
+
+      <p>
+        Let a variational problem have continuity constant <strong>M</strong> and coercivity constant <strong>α&gt;0</strong>. For a Galerkin approximation <strong>u<sub>n</sub></strong>:
+      </p>
+
+      <div class="formula">
+        ||u-u<sub>n</sub>||<sub>V</sub>
+        ≤
+        (M/α)
+        inf<sub>v∈V<sub>n</sub></sub>
+        ||u-v||<sub>V</sub>.
+      </div>
+
+      <p>
+        If the receiver task is <strong>C u</strong>, then:
+      </p>
+
+      <div class="formula">
+        ||C(u-u<sub>n</sub>)||
+        ≤
+        ||C|| (M/α)
+        inf<sub>v∈V<sub>n</sub></sub>
+        ||u-v||<sub>V</sub>.
+      </div>
+
+      <p>
+        This gives a task-specific error certificate for the realized port.
+      </p>
+
+      <h2>14. Semantic width is not reduced-basis dimension</h2>
+
+      <p>
+        A small covering number does not imply an equally small linear reduced space.
+      </p>
+
+      <div class="firewall">
+        <strong>Firewall:</strong> small semantic port width does not automatically imply small linear port dimension.
+      </div>
+
+      <p>
+        Nonlinear or topologically nontrivial response sets can have efficient covers without comparably efficient linear realizations.
+      </p>
+
+      <h2>15. Time-dependent ports</h2>
+
+      <p>
+        For evolutionary PDEs, a port may need to summarize history.
+      </p>
+
+      <p>
+        Let <strong>R<sub>t</sub></strong> map past boundary inputs into the current native state, and let <strong>O<sub>t,T</sub><sup>P</sup></strong> map that state into future receiver-visible behavior.
+      </p>
+
+      <p>
+        The task Hankel operator is:
+      </p>
+
+      <div class="formula">
+        H<sub>t</sub><sup>P</sup>
+        =
+        O<sub>t,T</sub><sup>P</sup>
+        R<sub>t</sub>.
+      </div>
+
+      <p>
+        Histories in the same kernel class of this operator are exactly indistinguishable to the declared future task.
+      </p>
+
+      <h2>16. Finite positive-tolerance history ports</h2>
+
+      <p>
+        On a bounded history-input set, finite positive-tolerance port width occurs when the task-Hankel image is relatively compact.
+      </p>
+
+      <div class="formula">
+        finite ε-width
+        ⇔
+        relative compactness of the task-Hankel image
+      </div>
+
+      <p>
+        in the declared complete profile metric.
+      </p>
+
+      <h2>17. Transport creates deadline-pruned ports</h2>
+
+      <p>
+        Not every finite port arises through smoothing.
+      </p>
+
+      <p>
+        In transport problems, finite propagation speed and a finite receiver deadline can prune irrelevant history.
+      </p>
+
+      <div class="formula">
+        if a disturbance cannot reach the receiver before the deadline,
+        it need not remain distinguished for that Passport.
+      </div>
+
+      <p>
+        This is a causal rather than dissipative reduction mechanism.
+      </p>
+
+      <h2>18. Domain decomposition</h2>
+
+      <p>
+        Suppose a domain is divided into subdomains:
+      </p>
+
+      <div class="formula">
+        Ω = Ω₁ ∪ ··· ∪ Ω<sub>m</sub>.
+      </div>
+
+      <p>
+        Each subdomain exposes a port <strong>q<sub>i</sub></strong>.
+      </p>
+
+      <div class="pipeline">
+        <div class="pipe">Local PDE</div>
+        <div class="pipe">Boundary trace</div>
+        <div class="pipe">Reduced port</div>
+        <div class="pipe">Global coupling</div>
+        <div class="pipe">Receiver task</div>
+      </div>
+
+      <p>
+        Local port validity is necessary but not sufficient.
+      </p>
+
+      <h2>19. Global interface compatibility</h2>
+
+      <p>
+        The local reduced states must admit at least one globally compatible collection of traces or fields.
+      </p>
+
+      <div class="firewall">
+        <strong>Permanent firewall:</strong> pairwise local compatibility does not imply global realizability.
+      </div>
+
+      <p>
+        This includes continuity, flux balance, constitutive matching, global constraints, and any other transmission laws required by the native PDE problem.
+      </p>
+
+      <h2>20. Portable ports can have a locality surcharge</h2>
+
+      <p>
+        A centralized observer may need fewer distinctions than separate subdomains must preserve locally before coupling.
+      </p>
+
+      <div class="formula">
+        distributed port width
+        ≥
+        centralized task width.
+      </div>
+
+      <p>
+        The gap is an architectural price of locality.
+      </p>
+
+      <h2>21. Robust port reduction</h2>
+
+      <p>
+        A port that barely meets tolerance can fail under coefficient perturbations, mesh error, uncertain boundary conditions, or coupling variation.
+      </p>
+
+      <p>
+        Robust reduction must account for:
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Quantity</th>
+            <th>Role</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Profile radius</td>
+            <td>Current task error within a port cell.</td>
+          </tr>
+          <tr>
+            <td>Decoder sensitivity</td>
+            <td>Amplification from encoded error to reconstructed response.</td>
+          </tr>
+          <tr>
+            <td>Coupling gain</td>
+            <td>Amplification through neighboring subdomains.</td>
+          </tr>
+          <tr>
+            <td>Tolerance reserve</td>
+            <td>Remaining margin before receiver failure.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="formula">
+        reserve = ε - current worst-case task radius.
+      </div>
+
+      <h2>22. Why port reduction is not just compression</h2>
+
+      <p>
+        A port sits between mathematical sectors.
+      </p>
+
+      <p>
+        It must preserve enough structure for:
+      </p>
+
+      <p>
+        coupling, future dynamics, task evaluation, global gluing, numerical realization, and robustness.
+      </p>
+
+      <div class="formula">
+        port design
+        =
+        compression under cross-subsystem obligations.
+      </div>
+
+      <h2>23. A reusable exact port workflow</h2>
+
+      <p>
+        For an exact PDE interface:
+      </p>
+
+      <div class="formula">
+        identify trace space
+        →
+        identify coupling map
+        →
+        identify task map
+        →
+        form joint equivalence
+        →
+        test global realizability
+        →
+        construct native realization.
+      </div>
+
+      <p>
+        For one fixed deployment, this may collapse to the kernel of the full transfer <strong>G</strong>.
+      </p>
+
+      <h2>24. A reusable approximate port workflow</h2>
+
+      <p>
+        For positive tolerance:
+      </p>
+
+      <div class="formula">
+        profile map
+        →
+        contextual metric
+        →
+        covering number
+        →
+        candidate reduced basis or nonlinear representation
+        →
+        task-error certificate
+        →
+        robustness reserve.
+      </div>
+
+      <p>
+        This separates semantic complexity from the numerical method used to realize it.
+      </p>
+
+      <h2>25. What BM contributes here</h2>
+
+      <p>
+        Boundary operators, reduced bases, Galerkin methods, domain decomposition, DtN maps, and compactness are established mathematics.
+      </p>
+
+      <p>
+        The BM contribution is the synthesis:
+      </p>
+
+      <div class="callout">
+        preserve coupling distinctions before task-only compression; distinguish deployment-specific from portable ports; measure receiver-profile width rather than raw trace dimension; separate abstract port sufficiency from native realization; and preserve global compatibility and provenance.
+      </div>
+
+      <h2>26. Open directions</h2>
+
+      <p>
+        Important next problems include minimal nonlinear portable ports, scalable certification across many contexts, robust port synthesis under uncertain coefficients, time-dependent port scheduling, mixed hyperbolic-parabolic interfaces, and hierarchical domain-decomposition surcharges.
+      </p>
+
+      <p>
+        The next research page should move from continuum ports to networks: Distributed Semantic Cuts.
+      </p>
+
+    </div>
+  </article>
+
+  <section class="next">
+    <div class="wrap">
+      <span class="eyebrow">Continue</span>
+      <h2 style="font-size:clamp(2rem,5vw,3.4rem);line-height:1.04;letter-spacing:-.035em;margin:.7rem 0 .9rem">
+        Related research
+      </h2>
+
+      <div class="next-grid">
+        <a class="card" href="/research/distributed-semantic-cuts/">
+          <small>Networks</small>
+          <h3>Distributed Semantic Cuts</h3>
+          <p>Translate the same interface question into communication across graph cuts, routes, and resilient distributed systems.</p>
+        </a>
+
+        <a class="card" href="/research/infinite-dimensional-pde-reduction/">
+          <small>Continuum width</small>
+          <h3>Infinite-Dimensional PDE Reduction</h3>
+          <p>Return to compact receiver profiles, heat smoothing, wave limitations, and spectral width.</p>
+        </a>
+
+        <a class="card" href="/examples/pde-port/">
+          <small>Worked example</small>
+          <h3>PDE Port Example</h3>
+          <p>Walk through a boundary coupling problem from native trace to exact and approximate receiver-facing port.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div>
+      <div class="brand" style="margin-bottom:.5rem">
+        <span class="mark">BM</span>
+        <span>Branch Mathematics</span>
+      </div>
+      <div>Mathematics of necessary distinctions.</div>
+    </div>
+
+    <div class="footer-links">
+      <a href="/learn/">Learn</a>
+      <a href="/research/">Research</a>
+      <a href="/applications/">Applications</a>
+      <a href="/reference/">Reference</a>
+      <a href="/book/">Book</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
