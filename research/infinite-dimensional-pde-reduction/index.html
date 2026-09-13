@@ -1,0 +1,989 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Can an Infinite-Dimensional PDE Have a Finite Reduced Interface? | Branch Mathematics</title>
+  <meta name="description" content="A technical Branch Mathematics treatment of infinite-dimensional PDE reduction: compact receiver profiles, positive-tolerance semantic width, heat smoothing, wave limitations, spectral scaling, boundary operators, ports, task filtering, and realization." />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <link rel="canonical" href="https://branch-mathematics-bm.github.io/research/infinite-dimensional-pde-reduction/" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Can an Infinite-Dimensional PDE Have a Finite Reduced Interface?" />
+  <meta property="og:description" content="Compact receiver profiles, positive-time smoothing, spectral width, boundary operators, and task-specific PDE interfaces." />
+  <meta property="og:url" content="https://branch-mathematics-bm.github.io/research/infinite-dimensional-pde-reduction/" />
+  <meta property="og:site_name" content="Branch Mathematics" />
+
+  <meta name="theme-color" content="#07111f" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"TechArticle",
+    "headline":"Can an Infinite-Dimensional PDE Have a Finite Reduced Interface?",
+    "description":"A technical treatment of task-specific PDE reduction and semantic width in Branch Mathematics.",
+    "mainEntityOfPage":"https://branch-mathematics-bm.github.io/research/infinite-dimensional-pde-reduction/",
+    "isPartOf":{
+      "@type":"WebSite",
+      "name":"Branch Mathematics",
+      "url":"https://branch-mathematics-bm.github.io/"
+    }
+  }
+  </script>
+
+  <style>
+    :root{
+      --bg:#07111f;
+      --text:#eef5ff;
+      --muted:#aabbd0;
+      --line:#27415e;
+      --accent:#7bdcff;
+      --accent2:#b39cff;
+      --green:#7ef0c5;
+      --warn:#ffd98c;
+      --red:#ff9d9d;
+      --max:1160px;
+      --read:860px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;color:var(--text);
+      background:
+        radial-gradient(circle at 10% -5%,rgba(123,220,255,.11),transparent 28rem),
+        radial-gradient(circle at 90% 4%,rgba(179,156,255,.08),transparent 24rem),
+        linear-gradient(180deg,#06101d,#07111f 45%,#081422);
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height:1.72;
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(calc(100% - 2rem),var(--max));margin-inline:auto}
+    .read{width:min(100%,var(--read));margin-inline:auto}
+    .site-header{
+      position:sticky;top:0;z-index:50;backdrop-filter:blur(18px);
+      background:rgba(7,17,31,.84);border-bottom:1px solid rgba(123,220,255,.12);
+    }
+    .nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .brand{display:flex;align-items:center;gap:.75rem;font-weight:760;white-space:nowrap}
+    .mark{
+      width:34px;height:34px;border-radius:11px;border:1px solid rgba(123,220,255,.5);
+      display:grid;place-items:center;background:linear-gradient(135deg,rgba(123,220,255,.2),rgba(179,156,255,.12));
+    }
+    .navlinks{display:flex;gap:.15rem;flex-wrap:wrap;justify-content:flex-end}
+    .navlinks a{color:var(--muted);padding:.55rem .68rem;border-radius:10px;font-size:.93rem}
+    .navlinks a:hover,.navlinks a[aria-current="page"]{color:var(--text);background:rgba(255,255,255,.05)}
+
+    .breadcrumbs{padding:1.2rem 0 0;color:#8397af;font-size:.9rem}
+    .hero{padding:4.6rem 0 4rem;border-bottom:1px solid rgba(123,220,255,.1)}
+    .eyebrow{
+      display:inline-flex;padding:.42rem .7rem;border-radius:999px;
+      border:1px solid rgba(123,220,255,.3);background:rgba(123,220,255,.06);
+      color:#c5efff;font-size:.82rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+    }
+    h1{
+      font-size:clamp(3rem,7vw,5.6rem);line-height:.96;letter-spacing:-.05em;
+      margin:1rem 0 1.15rem;max-width:14ch;
+    }
+    .hero .lead{font-size:clamp(1.08rem,2vw,1.3rem);color:#c4d4e6;max-width:950px;margin:0 0 1.5rem}
+    .meta{display:flex;gap:.55rem;flex-wrap:wrap;margin-top:1.2rem}
+    .tag{
+      display:inline-flex;padding:.42rem .66rem;border-radius:999px;font-size:.76rem;font-weight:800;
+      letter-spacing:.06em;border:1px solid rgba(111,151,193,.24);background:rgba(255,255,255,.025);color:#d8e7f7;
+    }
+    .tag.cand{border-color:rgba(255,217,140,.25);background:rgba(255,217,140,.035);color:#f7e8c7}
+    .tag.classic{border-color:rgba(179,156,255,.26);background:rgba(179,156,255,.04);color:#ece5ff}
+
+    .abstract{
+      margin-top:1.7rem;padding:1.3rem 1.4rem;border:1px solid rgba(123,220,255,.22);
+      border-radius:20px;background:linear-gradient(145deg,rgba(123,220,255,.05),rgba(179,156,255,.025));
+    }
+    .abstract strong{display:block;margin-bottom:.35rem;color:#def6ff}
+    .abstract p{margin:0;color:#c3d3e4}
+
+    .article{padding:4.8rem 0 5rem}
+    .article h2{font-size:clamp(2rem,5vw,3.15rem);line-height:1.05;letter-spacing:-.035em;margin:3.3rem 0 1rem}
+    .article h3{font-size:1.35rem;line-height:1.25;margin:2.2rem 0 .7rem}
+    .article p{color:#c4d2e2;font-size:1.035rem;margin:0 0 1.15rem}
+    .formula{
+      margin:1.4rem 0;padding:1.05rem 1.15rem;border-left:3px solid var(--accent);
+      background:rgba(123,220,255,.055);border-radius:0 14px 14px 0;color:#e0f1ff;
+      font-family:"Cambria Math","Times New Roman",serif;font-size:1.08rem;overflow:auto;
+    }
+    .theorem{
+      margin:1.7rem 0 2rem;padding:1.35rem;border:1px solid rgba(126,240,197,.24);
+      border-radius:20px;background:linear-gradient(145deg,rgba(126,240,197,.04),rgba(255,255,255,.012));
+    }
+    .theorem .head{display:flex;align-items:center;gap:.55rem;flex-wrap:wrap;margin-bottom:.55rem}
+    .theorem .head strong{font-size:1.08rem;color:#e7fff5}
+    .theorem .mini{
+      padding:.25rem .5rem;border-radius:999px;border:1px solid rgba(126,240,197,.28);
+      color:#c7f9e7;font-size:.72rem;font-weight:800;letter-spacing:.06em;
+    }
+    .theorem p{margin:.45rem 0;color:#cbd9e6}
+    .firewall{
+      margin:1.7rem 0;padding:1.2rem 1.3rem;border-radius:18px;
+      border:1px solid rgba(255,157,157,.2);background:rgba(255,157,157,.035);color:#f1cccc;
+    }
+    .firewall strong{color:#ffd6d6}
+    .callout{
+      margin:1.7rem 0;padding:1.2rem 1.3rem;border-radius:18px;
+      border:1px solid rgba(255,217,140,.22);background:rgba(255,217,140,.04);color:#eadfc9;
+    }
+    .compare{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.4rem 0 2rem}
+    .compare .box{border:1px solid rgba(111,151,193,.22);border-radius:18px;background:rgba(255,255,255,.02);padding:1.2rem}
+    .compare h3{margin-top:0}.compare p{font-size:.96rem;margin-bottom:0}
+    .example{
+      margin:1.6rem 0 2rem;padding:1.35rem;border-radius:20px;
+      border:1px solid rgba(179,156,255,.22);
+      background:linear-gradient(145deg,rgba(179,156,255,.04),rgba(255,255,255,.015));
+    }
+    .example h3{margin-top:0;color:#efe8ff}
+    table{
+      width:100%;border-collapse:collapse;margin:1.25rem 0 1.9rem;
+      border:1px solid rgba(111,151,193,.22);background:rgba(255,255,255,.015);
+    }
+    th,td{padding:.82rem;border-bottom:1px solid rgba(111,151,193,.16);text-align:left;vertical-align:top}
+    th{color:#dff7ff;background:rgba(123,220,255,.055);font-size:.92rem}
+    td{color:#c4d2e2;font-size:.94rem}
+    .next{padding:4.5rem 0;border-top:1px solid rgba(123,220,255,.1);background:#050d18}
+    .next-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.6rem}
+    .card{
+      min-height:100%;padding:1.2rem;border-radius:20px;border:1px solid rgba(111,151,193,.2);
+      background:rgba(255,255,255,.02);transition:.2s ease;
+    }
+    .card:hover{transform:translateY(-2px);border-color:rgba(123,220,255,.42);background:rgba(123,220,255,.04)}
+    .card small{color:var(--accent);font-size:.75rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+    .card h3{margin:.5rem 0 .45rem}.card p{color:var(--muted);font-size:.93rem;margin:0}
+    footer{padding:3rem 0;border-top:1px solid rgba(255,255,255,.07);background:#040a12;color:#8fa3ba}
+    .footer-grid{display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:end}
+    .footer-links{display:flex;gap:.7rem;flex-wrap:wrap;justify-content:flex-end}
+    @media(max-width:900px){.navlinks{display:none}.next-grid{grid-template-columns:1fr}}
+    @media(max-width:620px){
+      .hero{padding-top:3rem}.compare{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}
+      .footer-links{justify-content:flex-start}th,td{font-size:.87rem}
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="/" aria-label="Branch Mathematics home">
+      <span class="mark">BM</span>
+      <span>Branch Mathematics</span>
+    </a>
+    <nav class="navlinks" aria-label="Primary navigation">
+      <a href="/learn/">Learn</a>
+      <a href="/research/" aria-current="page">Research</a>
+      <a href="/applications/">Applications</a>
+      <a href="/examples/">Examples</a>
+      <a href="/calculator/">Calculator</a>
+      <a href="/reference/">Reference</a>
+      <a href="/book/">Book</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <div class="wrap breadcrumbs">
+    <a href="/">Home</a> / <a href="/research/">Research</a> / Infinite-Dimensional PDE Reduction
+  </div>
+
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">PDEs</span>
+      <h1>Can an Infinite-Dimensional PDE Have a Finite Reduced Interface?</h1>
+
+      <p class="lead">
+        Yes—at positive tolerance and for a declared receiver task, even when the native PDE state space is infinite-dimensional. The key question is not whether the entire PDE becomes finite-dimensional, but whether the receiver-visible profile family is compact enough to admit a finite cover.
+      </p>
+
+      <div class="meta">
+        <span class="tag cand">Volume II development</span>
+        <span class="tag classic">Uses classical PDE, compactness, and spectral theory</span>
+      </div>
+
+      <div class="abstract">
+        <strong>Abstract</strong>
+        <p>
+          Let K be a bounded admissible set of PDE states and P:K→Y the declared receiver-profile map. Positive-tolerance semantic width is finite for every ε&gt;0 exactly when P(K) is relatively compact. This simple criterion separates native infinite dimensionality from task-visible complexity. Heat-like smoothing can make positive-time profile sets compact and yield explicit width scaling under Weyl-type spectral assumptions. Wave-like dynamics need not provide the same smoothing. Boundary operators and ports further show that the correct reduced object can be a task-filtered transfer rather than the full PDE field.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <article class="article">
+    <div class="read">
+
+      <h2>1. The question is not “is the PDE finite-dimensional?”</h2>
+
+      <p>
+        Let the native PDE evolve on an infinite-dimensional state space <strong>X</strong>. A receiver rarely needs the entire field with arbitrary precision.
+      </p>
+
+      <p>
+        It may need:
+      </p>
+
+      <p>
+        a boundary flux, one sensor trace, an integrated quantity, a control-relevant output, a finite-time response, or a task-filtered boundary operator.
+      </p>
+
+      <div class="formula">
+        native field u
+        →
+        receiver profile P(u)
+      </div>
+
+      <p>
+        The BM question is therefore:
+      </p>
+
+      <div class="formula">
+        how complicated is P(K), not how complicated is K itself?
+      </div>
+
+      <h2>2. Receiver-profile formulation</h2>
+
+      <p>
+        Let <strong>K⊂X</strong> be the bounded admissible state set and:
+      </p>
+
+      <div class="formula">
+        P:K→Y
+      </div>
+
+      <p>
+        the receiver-visible profile map into a metric space <strong>Y</strong>.
+      </p>
+
+      <p>
+        At tolerance <strong>ε&gt;0</strong>, define:
+      </p>
+
+      <div class="formula">
+        N(ε)
+        =
+        𝒩(P(K),d<sub>Y</sub>,ε),
+      </div>
+
+      <p>
+        and:
+      </p>
+
+      <div class="formula">
+        w(ε)=log₂N(ε).
+      </div>
+
+      <p>
+        This is the positive-tolerance semantic width of the PDE under the declared receiver profile.
+      </p>
+
+      <h2>3. Compact profile criterion</h2>
+
+      <div class="theorem">
+        <div class="head">
+          <strong>Compact Receiver-Profile Criterion</strong>
+          <span class="mini">Classical compactness + BM placement</span>
+        </div>
+
+        <p>
+          In a complete metric profile space:
+        </p>
+
+        <div class="formula">
+          N(ε)&lt;∞ for every ε&gt;0
+          ⇔
+          P(K) is relatively compact.
+        </div>
+      </div>
+
+      <p>
+        This is the decisive structural test.
+      </p>
+
+      <p>
+        The native state space may be infinite-dimensional while the receiver-profile set is precompact and therefore finitely coverable at every positive tolerance.
+      </p>
+
+      <div class="firewall">
+        <strong>Firewall:</strong> finite positive-tolerance semantic width does not imply the underlying PDE is finite-dimensional.
+      </div>
+
+      <h2>4. Why positive time matters</h2>
+
+      <p>
+        Many dissipative PDE semigroups smooth their initial data.
+      </p>
+
+      <p>
+        At time <strong>t=0</strong>, a bounded unit ball in an infinite-dimensional Hilbert space is not compact.
+      </p>
+
+      <p>
+        At positive time, a smoothing semigroup can map that ball into a compact or precompact set in the receiver topology.
+      </p>
+
+      <div class="compare">
+        <div class="box">
+          <h3>At t=0</h3>
+          <p>
+            Full bounded state ball may remain nonprecompact, giving infinite positive-resolution width in the native norm.
+          </p>
+        </div>
+        <div class="box">
+          <h3>At t&gt;0</h3>
+          <p>
+            Smoothing can suppress high-frequency distinctions enough to make the receiver-profile image precompact.
+          </p>
+        </div>
+      </div>
+
+      <h2>5. Heat equation example</h2>
+
+      <p>
+        Consider a heat-type evolution:
+      </p>
+
+      <div class="formula">
+        ∂<sub>t</sub>u = Δu
+      </div>
+
+      <p>
+        on a bounded domain, with eigenpairs:
+      </p>
+
+      <div class="formula">
+        -Δφ<sub>k</sub>=λ<sub>k</sub>φ<sub>k</sub>.
+      </div>
+
+      <p>
+        The semigroup acts spectrally as:
+      </p>
+
+      <div class="formula">
+        e<sup>tΔ</sup>u
+        =
+        Σ<sub>k</sub>
+        e<sup>-tλ<sub>k</sub></sup>
+        u<sub>k</sub>φ<sub>k</sub>.
+      </div>
+
+      <p>
+        High-frequency modes are exponentially damped.
+      </p>
+
+      <p>
+        This immediately suggests finite positive-tolerance complexity at positive time.
+      </p>
+
+      <h2>6. Spectral truncation</h2>
+
+      <p>
+        If one truncates to the first <strong>n</strong> modes:
+      </p>
+
+      <div class="formula">
+        u<sub>n</sub>(t)
+        =
+        Σ<sub>k≤n</sub>
+        e<sup>-tλ<sub>k</sub></sup>
+        u<sub>k</sub>φ<sub>k</sub>,
+      </div>
+
+      <p>
+        then for initial data bounded in <strong>L²</strong>, the tail obeys a bound of the form:
+      </p>
+
+      <div class="formula">
+        ||u(t)-u<sub>n</sub>(t)||<sub>L²</sub>
+        ≤
+        e<sup>-tλ<sub>n+1</sub></sup>
+        ||u(0)||<sub>L²</sub>.
+      </div>
+
+      <p>
+        Thus, to achieve error at most <strong>ε</strong>, it is enough that:
+      </p>
+
+      <div class="formula">
+        tλ<sub>n+1</sub>
+        ≳
+        log(1/ε).
+      </div>
+
+      <h2>7. Width scaling for heat-like smoothing</h2>
+
+      <p>
+        Under Weyl-type spectral growth:
+      </p>
+
+      <div class="formula">
+        λ<sub>n</sub>
+        ~
+        c n<sup>2/d</sup>,
+      </div>
+
+      <p>
+        the number of dynamically relevant modes scales like:
+      </p>
+
+      <div class="formula">
+        n
+        ~
+        t<sup>-d/2</sup>
+        [log(1/ε)]<sup>d/2</sup>.
+      </div>
+
+      <p>
+        Accounting for amplitude quantization of the surviving coordinates gives the BM width scaling:
+      </p>
+
+      <div class="formula">
+        w<sub>t</sub>(ε)
+        =
+        Θ(
+        t<sup>-d/2</sup>
+        [log(1/ε)]<sup>1+d/2</sup>
+        )
+      </div>
+
+      <p>
+        under the declared spectral and boundedness assumptions.
+      </p>
+
+      <div class="callout">
+        This is a positive-time, positive-tolerance scaling statement under Weyl/spectral assumptions. It is not a claim that the exact heat state becomes finite-dimensional.
+      </div>
+
+      <h2>8. Exact width can remain infinite</h2>
+
+      <p>
+        Heat smoothing can make approximate width finite while exact width remains infinite.
+      </p>
+
+      <div class="formula">
+        finite w(ε) for every ε&gt;0
+        does not imply
+        finite w(0).
+      </div>
+
+      <p>
+        Infinitely many tiny high-frequency distinctions can survive exactly even though they are below any fixed positive tolerance.
+      </p>
+
+      <h2>9. Wave equations behave differently</h2>
+
+      <p>
+        A wave equation:
+      </p>
+
+      <div class="formula">
+        ∂<sub>tt</sub>u - c²Δu = 0
+      </div>
+
+      <p>
+        typically propagates energy without the same parabolic smoothing.
+      </p>
+
+      <p>
+        High-frequency modes are not exponentially suppressed merely by waiting a positive time.
+      </p>
+
+      <div class="compare">
+        <div class="box">
+          <h3>Heat-like dynamics</h3>
+          <p>
+            Strong positive-time smoothing can compress receiver-visible distinctions.
+          </p>
+        </div>
+        <div class="box">
+          <h3>Wave-like dynamics</h3>
+          <p>
+            Propagation need not reduce high-frequency complexity in the same way.
+          </p>
+        </div>
+      </div>
+
+      <div class="firewall">
+        <strong>Firewall:</strong> positive-time finite approximate width for one PDE class does not automatically transfer to another.
+      </div>
+
+      <h2>10. Task filtering can reduce width further</h2>
+
+      <p>
+        Even if the full state or full trace remains complicated, the receiver may observe only:
+      </p>
+
+      <div class="formula">
+        C u
+      </div>
+
+      <p>
+        for some output operator <strong>C</strong>.
+      </p>
+
+      <p>
+        Then the relevant profile map is:
+      </p>
+
+      <div class="formula">
+        P(u)=C S(t)u,
+      </div>
+
+      <p>
+        not necessarily the full state <strong>S(t)u</strong>.
+      </p>
+
+      <p>
+        A low-rank or compact output operator can substantially reduce task width even when the native evolution itself is not compact.
+      </p>
+
+      <h2>11. Boundary interfaces</h2>
+
+      <p>
+        In domain decomposition, the natural BM object is often not a reduced field but a reduced boundary interface.
+      </p>
+
+      <p>
+        Let:
+      </p>
+
+      <div class="formula">
+        γu
+      </div>
+
+      <p>
+        denote a boundary trace, and let the neighboring subsystem respond through a coupling operator <strong>Λ</strong>.
+      </p>
+
+      <p>
+        If the receiver task also uses a boundary functional <strong>L</strong>, then the exact interface must preserve:
+      </p>
+
+      <div class="formula">
+        ker(Λ) ∩ ker(L).
+      </div>
+
+      <p>
+        This is the coupling-before-task principle.
+      </p>
+
+      <div class="firewall">
+        <strong>Firewall:</strong> task-only boundary compression can fail when discarded boundary distinctions still alter the neighboring PDE or coupled subsystem.
+      </div>
+
+      <h2>12. Deployment-specific transfer</h2>
+
+      <p>
+        Consider a linear elliptic or steady operator equation:
+      </p>
+
+      <div class="formula">
+        Sg = Bg<sub>in</sub>,
+      </div>
+
+      <p>
+        with receiver output:
+      </p>
+
+      <div class="formula">
+        y = Cg.
+      </div>
+
+      <p>
+        The deployment-specific transfer from input to output is:
+      </p>
+
+      <div class="formula">
+        G = C S<sup>-1</sup>B.
+      </div>
+
+      <p>
+        For that fixed deployment, the exact receiver quotient is controlled by:
+      </p>
+
+      <div class="formula">
+        ker(G).
+      </div>
+
+      <p>
+        The interface need not preserve distinctions annihilated by the whole task-filtered transfer.
+      </p>
+
+      <h2>13. PDE ports</h2>
+
+      <p>
+        A port is a boundary representation designed to remain sufficient under a declared coupling and receiver family.
+      </p>
+
+      <p>
+        BM distinguishes:
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Port type</th>
+            <th>Requirement</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Deployment-specific</td>
+            <td>Exact or approximate only for one fixed external context.</td>
+          </tr>
+          <tr>
+            <td>Portable</td>
+            <td>Valid for every context allowed by the Passport.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        The portable port may be wider because more contexts can expose more distinctions.
+      </p>
+
+      <h2>14. Approximate port profiles</h2>
+
+      <p>
+        Let:
+      </p>
+
+      <div class="formula">
+        P(g)(c)
+        =
+        B(g,c)
+      </div>
+
+      <p>
+        be the contextual receiver profile of a boundary state <strong>g</strong>.
+      </p>
+
+      <p>
+        The approximate port width is:
+      </p>
+
+      <div class="formula">
+        w<sub>port</sub>(ε)
+        =
+        log₂
+        𝒩(P(G),d<sub>∞</sub>,ε).
+      </div>
+
+      <p>
+        This is the PDE analogue of contextual semantic width.
+      </p>
+
+      <h2>15. Galerkin and reduced-basis realization</h2>
+
+      <p>
+        Once the task profile is identified, standard numerical methods can realize it.
+      </p>
+
+      <p>
+        Suppose a variational problem is approximated in a subspace <strong>V<sub>n</sub></strong>. Céa's lemma gives:
+      </p>
+
+      <div class="formula">
+        ||u-u<sub>n</sub>||<sub>V</sub>
+        ≤
+        (M/α)
+        inf<sub>v∈V<sub>n</sub></sub>
+        ||u-v||<sub>V</sub>.
+      </div>
+
+      <p>
+        If the receiver output is <strong>C u</strong>, then:
+      </p>
+
+      <div class="formula">
+        ||C(u-u<sub>n</sub>)||
+        ≤
+        ||C|| (M/α)
+        inf<sub>v∈V<sub>n</sub></sub>
+        ||u-v||<sub>V</sub>.
+      </div>
+
+      <p>
+        This yields a task-error certificate for the reduced realization.
+      </p>
+
+      <h2>16. Representation width and numerical dimension are not identical</h2>
+
+      <p>
+        A finite ε-cover of receiver profiles does not say that one particular Galerkin space of the same cardinal complexity exists.
+      </p>
+
+      <div class="formula">
+        semantic width
+        ≠
+        linear reduced-basis dimension.
+      </div>
+
+      <p>
+        Nonlinear profile geometry can admit efficient covers without equally efficient linear subspaces.
+      </p>
+
+      <div class="firewall">
+        <strong>Firewall:</strong> finite semantic width does not automatically imply low Kolmogorov n-width or low linear reduced dimension.
+      </div>
+
+      <h2>17. Time-dependent ports</h2>
+
+      <p>
+        A boundary port can depend on a history rather than a single state.
+      </p>
+
+      <p>
+        Let <strong>R<sub>t</sub></strong> map admissible past boundary inputs into the current PDE state, and let <strong>O<sub>t,T</sub><sup>P</sup></strong> map current state into future receiver-visible output.
+      </p>
+
+      <p>
+        Define the task Hankel operator:
+      </p>
+
+      <div class="formula">
+        H<sub>t</sub><sup>P</sup>
+        =
+        O<sub>t,T</sub><sup>P</sup>
+        R<sub>t</sub>.
+      </div>
+
+      <p>
+        Two past histories are equivalent when they lie in the same kernel class of this task Hankel operator.
+      </p>
+
+      <p>
+        Finite positive-tolerance history width on a bounded past-input set occurs when the task Hankel image is relatively compact.
+      </p>
+
+      <h2>18. Transport equations and deadline-pruned memory</h2>
+
+      <p>
+        For transport-dominated systems, smoothing can be weak or absent, but finite task memory can arise from finite propagation speed and deadlines.
+      </p>
+
+      <p>
+        A past disturbance that cannot reach the receiver before the task horizon no longer needs to remain distinguished for that Passport.
+      </p>
+
+      <div class="formula">
+        task memory
+        =
+        causal past that can still influence the declared future response.
+      </div>
+
+      <p>
+        This is a different mechanism from heat smoothing.
+      </p>
+
+      <h2>19. Domain decomposition and composability</h2>
+
+      <p>
+        Suppose several PDE subdomains each expose a reduced port.
+      </p>
+
+      <p>
+        Local port correctness does not guarantee that all local ports can be glued into one globally realizable field.
+      </p>
+
+      <div class="firewall">
+        <strong>Firewall:</strong> pairwise or local PDE interface compatibility does not imply global realizability.
+      </div>
+
+      <p>
+        The assembled interface state must satisfy the actual global transmission and compatibility conditions.
+      </p>
+
+      <h2>20. Exact closure versus approximate PDE reduction</h2>
+
+      <p>
+        BM's continuous closure-price results show that exact low-dimensional continuous Euclidean closure can be impossible under explicit hypotheses.
+      </p>
+
+      <p>
+        Yet the same system can admit finite positive-tolerance semantic width.
+      </p>
+
+      <div class="formula">
+        exact low-dimensional continuous closure may fail
+        while
+        approximate task-specific reduction remains efficient.
+      </div>
+
+      <p>
+        This is one of the strongest reasons to keep exact and approximate sectors separate.
+      </p>
+
+      <h2>21. Positive tolerance is not a loophole</h2>
+
+      <p>
+        Approximation still requires a complete contract.
+      </p>
+
+      <p>
+        One must declare:
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Requirement</th>
+            <th>PDE question</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>State set</td>
+            <td>Which initial or boundary states are admissible?</td>
+          </tr>
+          <tr>
+            <td>Task</td>
+            <td>Which PDE output must be preserved?</td>
+          </tr>
+          <tr>
+            <td>Time</td>
+            <td>At what positive times or over what horizon?</td>
+          </tr>
+          <tr>
+            <td>Metric</td>
+            <td>In which norm or response metric is error measured?</td>
+          </tr>
+          <tr>
+            <td>Tolerance</td>
+            <td>What error is acceptable?</td>
+          </tr>
+          <tr>
+            <td>Context</td>
+            <td>Which neighboring systems or boundary conditions are allowed?</td>
+          </tr>
+          <tr>
+            <td>Realization</td>
+            <td>What numerical or physical implementation class is permitted?</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>22. A reusable PDE reduction test</h2>
+
+      <p>
+        For a new PDE problem, a practical BM analysis proceeds as follows.
+      </p>
+
+      <div class="formula">
+        PDE state
+        →
+        receiver profile
+        →
+        profile compactness
+        →
+        width estimate
+        →
+        candidate realization
+        →
+        coupling test
+        →
+        robustness test.
+      </div>
+
+      <p>
+        Each stage answers a different question and should not be collapsed into one dimension claim.
+      </p>
+
+      <h2>23. What heat teaches</h2>
+
+      <p>
+        Heat-like smoothing demonstrates a central BM idea:
+      </p>
+
+      <div class="callout">
+        Native infinite dimensionality does not determine receiver-visible complexity by itself. Dynamics and task choice can strongly compress the distinction geometry seen by the receiver.
+      </div>
+
+      <p>
+        This is not merely philosophical. Under spectral assumptions it yields concrete asymptotic width scaling.
+      </p>
+
+      <h2>24. What wave dynamics teach</h2>
+
+      <p>
+        Wave-like systems demonstrate the opposite lesson:
+      </p>
+
+      <div class="callout">
+        One cannot infer finite positive-time width just from the fact that a PDE evolves for positive time. The native regularization mechanism must actually exist in the receiver topology.
+      </div>
+
+      <p>
+        The correct criterion is compactness of the receiver profile family, not a generic appeal to time evolution.
+      </p>
+
+      <h2>25. Open PDE directions</h2>
+
+      <p>
+        Important open directions include sharper semantic-width asymptotics for nonlinear dissipative PDEs, transport-dominated systems, boundary-control systems, noncompact domains, mixed hyperbolic-parabolic equations, adaptive port synthesis, and scalable certification of portable interfaces.
+      </p>
+
+      <p>
+        The next step is to isolate the boundary-interface problem itself: PDE Port Reduction.
+      </p>
+
+    </div>
+  </article>
+
+  <section class="next">
+    <div class="wrap">
+      <span class="eyebrow">Continue</span>
+      <h2 style="font-size:clamp(2rem,5vw,3.4rem);line-height:1.04;letter-spacing:-.035em;margin:.7rem 0 .9rem">
+        Related research
+      </h2>
+
+      <div class="next-grid">
+        <a class="card" href="/research/pde-port-reduction/">
+          <small>Boundary interfaces</small>
+          <h3>PDE Port Reduction</h3>
+          <p>Focus on coupling-before-task compression, boundary operators, portable ports, and task-filtered transfer maps.</p>
+        </a>
+
+        <a class="card" href="/examples/heat-equation/">
+          <small>Worked example</small>
+          <h3>Heat Equation Semantic Width</h3>
+          <p>Walk through spectral damping, mode truncation, and positive-time width scaling.</p>
+        </a>
+
+        <a class="card" href="/examples/wave-equation/">
+          <small>Counterpoint</small>
+          <h3>Wave Equation Compression Limits</h3>
+          <p>See why propagation without comparable smoothing can preserve substantially more task-visible structure.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div>
+      <div class="brand" style="margin-bottom:.5rem">
+        <span class="mark">BM</span>
+        <span>Branch Mathematics</span>
+      </div>
+      <div>Mathematics of necessary distinctions.</div>
+    </div>
+    <div class="footer-links">
+      <a href="/learn/">Learn</a>
+      <a href="/research/">Research</a>
+      <a href="/applications/">Applications</a>
+      <a href="/reference/">Reference</a>
+      <a href="/book/">Book</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
