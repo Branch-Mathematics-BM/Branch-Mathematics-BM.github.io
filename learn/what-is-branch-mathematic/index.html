@@ -1,0 +1,730 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>What Is Branch Mathematics? | Branch Mathematics</title>
+  <meta name="description" content="Branch Mathematics is a mathematical metaframework for determining which distinctions a problem must preserve across tasks, dynamics, interfaces, observations, and receivers. Learn the core idea, formal structure, examples, and how BM relates to existing mathematics." />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <link rel="canonical" href="https://branch-mathematics-bm.github.io/learn/what-is-branch-mathematics/" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="What Is Branch Mathematics?" />
+  <meta property="og:description" content="A clear introduction to Branch Mathematics: necessary distinctions, dynamic closure, semantic width, interfaces, Passports, Roots, and the formal architecture." />
+  <meta property="og:url" content="https://branch-mathematics-bm.github.io/learn/what-is-branch-mathematics/" />
+  <meta property="og:site_name" content="Branch Mathematics" />
+
+  <meta name="theme-color" content="#07111f" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"What Is Branch Mathematics?",
+    "description":"An introduction to Branch Mathematics as a mathematical metaframework for necessary distinctions across tasks, dynamics, interfaces, observations, and receivers.",
+    "mainEntityOfPage":"https://branch-mathematics-bm.github.io/learn/what-is-branch-mathematics/",
+    "isPartOf":{
+      "@type":"WebSite",
+      "name":"Branch Mathematics",
+      "url":"https://branch-mathematics-bm.github.io/"
+    }
+  }
+  </script>
+
+  <style>
+    :root{
+      --bg:#07111f;
+      --bg-soft:#0b1728;
+      --panel:#101e31;
+      --text:#eef5ff;
+      --muted:#aabbd0;
+      --line:#27415e;
+      --accent:#7bdcff;
+      --accent-2:#b39cff;
+      --accent-3:#7ef0c5;
+      --max:1120px;
+      --read:820px;
+      --radius:22px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 12% -5%,rgba(123,220,255,.12),transparent 28rem),
+        radial-gradient(circle at 90% 4%,rgba(179,156,255,.09),transparent 24rem),
+        linear-gradient(180deg,#06101d,#07111f 45%,#081422);
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height:1.7;
+    }
+
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(calc(100% - 2rem),var(--max));margin-inline:auto}
+    .read{width:min(100%,var(--read));margin-inline:auto}
+
+    .site-header{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:blur(18px);
+      background:rgba(7,17,31,.84);
+      border-bottom:1px solid rgba(123,220,255,.12);
+    }
+
+    .nav{
+      min-height:72px;
+      display:flex;align-items:center;justify-content:space-between;gap:1rem;
+    }
+
+    .brand{
+      display:flex;align-items:center;gap:.75rem;font-weight:760;white-space:nowrap;
+    }
+
+    .mark{
+      width:34px;height:34px;border-radius:11px;
+      border:1px solid rgba(123,220,255,.5);
+      display:grid;place-items:center;
+      background:linear-gradient(135deg,rgba(123,220,255,.2),rgba(179,156,255,.12));
+    }
+
+    .navlinks{display:flex;gap:.15rem;flex-wrap:wrap;justify-content:flex-end}
+    .navlinks a{
+      color:var(--muted);padding:.55rem .68rem;border-radius:10px;font-size:.93rem;
+    }
+    .navlinks a:hover,.navlinks a[aria-current="page"]{
+      color:var(--text);background:rgba(255,255,255,.05);
+    }
+
+    .breadcrumbs{
+      padding:1.2rem 0 0;
+      color:#8397af;
+      font-size:.9rem;
+    }
+    .breadcrumbs a:hover{color:var(--text)}
+
+    .hero{
+      padding:4.2rem 0 4rem;
+      border-bottom:1px solid rgba(123,220,255,.1);
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      padding:.42rem .7rem;
+      border-radius:999px;
+      border:1px solid rgba(123,220,255,.3);
+      background:rgba(123,220,255,.06);
+      color:#c5efff;
+      font-size:.82rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+    }
+
+    h1{
+      font-size:clamp(3rem,8vw,6rem);
+      line-height:.94;
+      letter-spacing:-.055em;
+      margin:1rem 0 1.1rem;
+      max-width:11ch;
+    }
+
+    .hero .lead{
+      font-size:clamp(1.08rem,2vw,1.34rem);
+      color:#c4d4e6;
+      max-width:850px;
+      margin:0 0 1.4rem;
+    }
+
+    .summary-box{
+      margin-top:1.6rem;
+      padding:1.25rem 1.35rem;
+      border:1px solid rgba(123,220,255,.24);
+      border-radius:18px;
+      background:linear-gradient(145deg,rgba(123,220,255,.055),rgba(179,156,255,.03));
+    }
+    .summary-box strong{color:#dff7ff}
+
+    .article{
+      padding:4.8rem 0 5rem;
+    }
+
+    .article h2{
+      font-size:clamp(2rem,5vw,3.2rem);
+      line-height:1.05;
+      letter-spacing:-.035em;
+      margin:3.2rem 0 1rem;
+    }
+
+    .article h3{
+      font-size:1.35rem;
+      margin:2.1rem 0 .7rem;
+      line-height:1.25;
+    }
+
+    .article p{
+      color:#c4d2e2;
+      font-size:1.04rem;
+      margin:0 0 1.15rem;
+    }
+
+    .article strong{color:#f1f7ff}
+
+    .formula{
+      margin:1.4rem 0;
+      padding:1rem 1.1rem;
+      border-left:3px solid var(--accent);
+      background:rgba(123,220,255,.055);
+      border-radius:0 14px 14px 0;
+      color:#e0f1ff;
+      font-family:"Cambria Math","Times New Roman",serif;
+      font-size:1.08rem;
+      overflow:auto;
+    }
+
+    .quote{
+      margin:2rem 0;
+      padding:1.4rem 1.5rem;
+      border:1px solid rgba(179,156,255,.24);
+      border-radius:18px;
+      background:rgba(179,156,255,.045);
+      font-size:1.14rem;
+      color:#e4e4ff;
+    }
+
+    .flow{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:.65rem;
+      margin:1.5rem 0 2rem;
+    }
+
+    .flow .box{
+      border:1px solid var(--line);
+      border-radius:15px;
+      background:rgba(255,255,255,.02);
+      padding:.9rem .75rem;
+      text-align:center;
+      position:relative;
+      font-weight:720;
+    }
+
+    .flow .box:not(:last-child):after{
+      content:"→";
+      position:absolute;
+      right:-.52rem;
+      top:50%;
+      transform:translateY(-50%);
+      color:var(--accent);
+      z-index:2;
+    }
+
+    .compare{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:1rem;
+      margin:1.4rem 0 2rem;
+    }
+
+    .compare .box{
+      border:1px solid rgba(111,151,193,.22);
+      border-radius:18px;
+      background:rgba(255,255,255,.02);
+      padding:1.2rem;
+    }
+    .compare h3{margin-top:0}
+    .compare p{font-size:.97rem;margin-bottom:0}
+
+    .example{
+      margin:1.5rem 0 2rem;
+      padding:1.4rem;
+      border-radius:20px;
+      border:1px solid rgba(126,240,197,.22);
+      background:linear-gradient(145deg,rgba(126,240,197,.045),rgba(255,255,255,.015));
+    }
+
+    .example h3{margin-top:0;color:#dffcef}
+
+    .roles{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:.8rem;
+      margin:1.5rem 0 2rem;
+    }
+
+    .role{
+      padding:1rem;
+      border:1px solid rgba(111,151,193,.2);
+      background:rgba(255,255,255,.02);
+      border-radius:16px;
+    }
+
+    .role strong{
+      display:block;
+      color:var(--accent);
+      margin-bottom:.35rem;
+    }
+
+    .role span{
+      color:var(--muted);
+      font-size:.93rem;
+    }
+
+    .callout{
+      margin:2rem 0;
+      padding:1.2rem 1.3rem;
+      border-radius:18px;
+      border:1px solid rgba(255,217,140,.22);
+      background:rgba(255,217,140,.04);
+      color:#e9dcc2;
+    }
+
+    .next{
+      padding:4.5rem 0;
+      border-top:1px solid rgba(123,220,255,.1);
+      background:#050d18;
+    }
+
+    .next-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:1rem;
+      margin-top:1.6rem;
+    }
+
+    .card{
+      min-height:100%;
+      padding:1.2rem;
+      border-radius:20px;
+      border:1px solid rgba(111,151,193,.2);
+      background:rgba(255,255,255,.02);
+      transition:.2s ease;
+    }
+    .card:hover{
+      transform:translateY(-2px);
+      border-color:rgba(123,220,255,.42);
+      background:rgba(123,220,255,.04);
+    }
+    .card small{
+      color:var(--accent);
+      font-size:.75rem;
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+    .card h3{margin:.5rem 0 .45rem}
+    .card p{color:var(--muted);font-size:.93rem;margin:0}
+
+    footer{
+      padding:3rem 0;
+      border-top:1px solid rgba(255,255,255,.07);
+      background:#040a12;
+      color:#8fa3ba;
+    }
+
+    .footer-grid{
+      display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:end;
+    }
+
+    .footer-links{display:flex;gap:.7rem;flex-wrap:wrap;justify-content:flex-end}
+
+    @media(max-width:900px){
+      .navlinks{display:none}
+      .flow{grid-template-columns:1fr 1fr}
+      .flow .box:not(:last-child):after{display:none}
+      .roles{grid-template-columns:1fr 1fr}
+      .next-grid{grid-template-columns:1fr}
+    }
+
+    @media(max-width:620px){
+      .hero{padding-top:3rem}
+      .compare,.flow,.roles{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr}
+      .footer-links{justify-content:flex-start}
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="/" aria-label="Branch Mathematics home">
+      <span class="mark">BM</span>
+      <span>Branch Mathematics</span>
+    </a>
+
+    <nav class="navlinks" aria-label="Primary navigation">
+      <a href="/learn/" aria-current="page">Learn</a>
+      <a href="/research/">Research</a>
+      <a href="/applications/">Applications</a>
+      <a href="/examples/">Examples</a>
+      <a href="/calculator/">Calculator</a>
+      <a href="/reference/">Reference</a>
+      <a href="/book/">Book</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <div class="wrap breadcrumbs">
+    <a href="/">Home</a> / <a href="/learn/">Learn</a> / What Is Branch Mathematics?
+  </div>
+
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Introduction</span>
+      <h1>What Is Branch Mathematics?</h1>
+
+      <p class="lead">
+        Branch Mathematics is a mathematical metaframework for carrying one problem through multiple lawful mathematical branches while tracking exactly which distinctions must survive for the declared tasks, dynamics, interfaces, contexts, and receivers.
+      </p>
+
+      <div class="summary-box">
+        <strong>Short version:</strong>
+        BM asks a simple but demanding question: <em>what differences in the state of a problem are genuinely necessary to preserve, and which can be lawfully identified without breaking what the system must still do?</em>
+      </div>
+    </div>
+  </section>
+
+  <article class="article">
+    <div class="read">
+
+      <h2>Why would a mathematics like this be needed?</h2>
+
+      <p>
+        Many mathematical problems are not solved inside a single representation. A physical system may begin as a differential equation, be reduced to a finite model, passed through an interface, measured by a sensor, translated into a control variable, and finally judged by a receiver with a specific task.
+      </p>
+
+      <p>
+        Every step can preserve some distinctions and destroy others. The difficult question is not merely whether a representation is smaller or simpler. The difficult question is whether it has discarded something that will matter later.
+      </p>
+
+      <div class="quote">
+        A compression can be correct for the present task and still be wrong for the future dynamics.
+      </div>
+
+      <p>
+        BM treats that failure as a structural mathematical issue. It tracks distinctions across branches rather than assuming that one representation is automatically adequate for every later use.
+      </p>
+
+      <h2>The central question</h2>
+
+      <p>
+        Suppose two native states, <strong>x</strong> and <strong>x′</strong>, are mapped to the same reduced state. If every declared response treats them identically, then the distinction between them may be unnecessary for that task. If some lawful future, context, interaction, or receiver can still distinguish them in a required way, then the representation has merged states that must remain separate.
+      </p>
+
+      <div class="formula">
+        task sufficiency: &nbsp; T = T̄R &nbsp; ⇔ &nbsp; ker(R) ⊆ ker(T)
+      </div>
+
+      <p>
+        In plain language: whenever the representation <strong>R</strong> identifies two states, the task <strong>T</strong> must also identify them.
+      </p>
+
+      <p>
+        That is only the static version. Dynamics immediately make the problem harder.
+      </p>
+
+      <div class="formula">
+        dynamic closure: &nbsp; Rf = f̄R &nbsp; ⇔ &nbsp; ker(R) ⊆ ker(Rf)
+      </div>
+
+      <p>
+        Two states that look identical now must still produce identical reduced successors if the reduced state is expected to evolve autonomously.
+      </p>
+
+      <h2>Static correctness is not dynamic correctness</h2>
+
+      <div class="compare">
+        <div class="box">
+          <h3>Static sufficiency</h3>
+          <p>
+            The reduced state contains enough information to answer the declared task at the present moment.
+          </p>
+        </div>
+
+        <div class="box">
+          <h3>Dynamic closure</h3>
+          <p>
+            The reduced state contains enough information to determine its own lawful future evolution.
+          </p>
+        </div>
+      </div>
+
+      <p>
+        These are not the same condition. This separation is one of the recurring themes of Branch Mathematics.
+      </p>
+
+      <div class="example">
+        <h3>Simple example</h3>
+        <p>
+          Imagine a system with two native states that currently produce the same output. A reduced model merges them. If the next time step sends those two states to different outputs, the reduction was statically sufficient but dynamically incomplete.
+        </p>
+        <p>
+          BM records that distinction explicitly rather than treating the failure as an implementation detail.
+        </p>
+      </div>
+
+      <h2>BM carries the problem through branches</h2>
+
+      <p>
+        A <strong>Branch</strong> is a lawful mathematical focus or sector used to analyze part of the problem in its native mathematics. BM does not require every branch to use the same objects, assumptions, topology, geometry, algebra, or numerical representation.
+      </p>
+
+      <div class="flow">
+        <div class="box">Native problem</div>
+        <div class="box">Branch analysis</div>
+        <div class="box">Interaction</div>
+        <div class="box">Receiver response</div>
+      </div>
+
+      <p>
+        Results produced by branches can interact, but the interaction must be lawful. The point is not to erase mathematical differences for the sake of unification. The point is to know when structures can be connected and what must be preserved when they are.
+      </p>
+
+      <h2>The basic BM roles</h2>
+
+      <div class="roles">
+        <div class="role">
+          <strong>Branch</strong>
+          <span>A lawful mathematical focus that preserves its native structure.</span>
+        </div>
+
+        <div class="role">
+          <strong>Interaction</strong>
+          <span>A lawful relation connecting outputs or requirements from distinct branches.</span>
+        </div>
+
+        <div class="role">
+          <strong>Leaf</strong>
+          <span>A result produced inside a branch and available for later interaction.</span>
+        </div>
+
+        <div class="role">
+          <strong>Tree</strong>
+          <span>The assembled mathematical state of the problem across its branches.</span>
+        </div>
+
+        <div class="role">
+          <strong>Passport</strong>
+          <span>The declared requirements, tolerances, contexts, and receiver obligations relevant to admissibility.</span>
+        </div>
+
+        <div class="role">
+          <strong>Root</strong>
+          <span>A receiver-facing export accepted under a declared Passport.</span>
+        </div>
+      </div>
+
+      <p>
+        These are organizational roles inside BM. They do not replace the underlying mathematics of the native branches.
+      </p>
+
+      <h2>Why Passports matter</h2>
+
+      <p>
+        Whether a distinction matters depends on what the receiver is allowed to ask. A representation sufficient for one task can be insufficient for another.
+      </p>
+
+      <p>
+        BM therefore makes the receiver contract explicit through the idea of a <strong>Passport</strong>. A Passport can declare tasks, contexts, tolerances, admissible continuations, interface obligations, or other receiver-facing requirements.
+      </p>
+
+      <div class="formula">
+        same native system + different Passport ⇒ potentially different lawful quotient
+      </div>
+
+      <p>
+        This is why BM is task-relative without being arbitrary. The task is declared, and the mathematical consequences of that declaration are then tested.
+      </p>
+
+      <h2>Exactification</h2>
+
+      <p>
+        Once the required task family and admissible continuations are known, BM can ask for the coarsest equivalence that still preserves them all.
+      </p>
+
+      <div class="formula">
+        E* = ⋂ ker(T ∘ m)
+      </div>
+
+      <p>
+        Conceptually, exactification intersects all distinctions that must remain visible to every declared task after every declared admissible continuation.
+      </p>
+
+      <p>
+        This gives a mathematically precise version of the question:
+      </p>
+
+      <div class="quote">
+        What is the most aggressive compression that remains exactly lawful for everything the contract says must still be possible?
+      </div>
+
+      <h2>Exact and approximate Branch Mathematics</h2>
+
+      <p>
+        Exact equality is not always the appropriate requirement. In approximation problems, two responses may be allowed to differ by a tolerance.
+      </p>
+
+      <p>
+        That leads to <strong>semantic width</strong>: the size of the task-relevant behavior space at a declared resolution, rather than the raw size or dimension of the native state space.
+      </p>
+
+      <div class="formula">
+        approximate semantic width: &nbsp; w(ε) = log₂ N(ε)
+      </div>
+
+      <p>
+        Here, <strong>N(ε)</strong> is a covering number for the receiver-visible response profiles at tolerance <strong>ε</strong>.
+      </p>
+
+      <p>
+        This distinction becomes especially important in infinite-dimensional systems. An infinite-dimensional PDE can still have finite approximate semantic width if the receiver-visible profile family is sufficiently compact.
+      </p>
+
+      <h2>Why interfaces are central</h2>
+
+      <p>
+        An interface is where one part of a mathematical system must communicate enough structure to another part. Passing the entire native state is always one option, but it is often unnecessary.
+      </p>
+
+      <p>
+        BM asks for the minimal distinction structure required by the downstream contract.
+      </p>
+
+      <div class="formula">
+        interface state ≠ native state<br>
+        interface state = distinctions required across the cut
+      </div>
+
+      <p>
+        The same idea applies to PDE boundary ports, distributed networks, causal cuts, model reduction, and quantum carriers.
+      </p>
+
+      <h2>Can a discarded distinction come back?</h2>
+
+      <p>
+        Not by deterministic memory alone. If a representation has merged two states, later deterministic computation applied only to that representation cannot know which original state was present.
+      </p>
+
+      <p>
+        A distinction can become available again only if some later observation, context, or external source supplies new distinguishing information.
+      </p>
+
+      <div class="callout">
+        BM does not turn this into a universal physical law of information conservation. It is a mathematical statement about distinguishability under declared maps and sources.
+      </div>
+
+      <h2>How BM relates to existing mathematics</h2>
+
+      <p>
+        Branch Mathematics uses classical mathematics rather than attempting to replace it. Depending on the problem, its branches can involve topology, functional analysis, probability, operator theory, control theory, graph theory, PDEs, geometry, quantum information, optimization, numerical analysis, or other established fields.
+      </p>
+
+      <p>
+        The distinctive BM layer is the explicit organization of:
+      </p>
+
+      <div class="flow">
+        <div class="box">Task</div>
+        <div class="box">Distinction</div>
+        <div class="box">Descent</div>
+        <div class="box">Realization</div>
+      </div>
+
+      <p>
+        BM also distinguishes a mathematical quotient from its realization. A quotient can exist set-theoretically while failing to admit a continuous, smooth, physical, local, or otherwise required implementation.
+      </p>
+
+      <div class="quote">
+        Mathematical sufficiency and admissible realization are separate questions.
+      </div>
+
+      <h2>What BM is not claiming</h2>
+
+      <p>
+        BM does not claim that all mathematical fields are secretly one structure. It does not claim that every compression is physically realizable. It does not claim that established notions such as compactness, covering numbers, Hankel operators, operator systems, or error-correcting codes were invented by BM.
+      </p>
+
+      <p>
+        The framework instead places such mathematics into an explicit task-and-distinction architecture and records when transitions between representations are lawful.
+      </p>
+
+      <h2>The full pipeline</h2>
+
+      <div class="formula">
+        Specify → Distinguish → Descend → Synthesize → Realize → Quantify
+      </div>
+
+      <p>
+        In expanded form:
+      </p>
+
+      <div class="formula">
+        native problem → contract → required distinctions → lawful descent → interface synthesis → native realization → quantified cost → receiver export
+      </div>
+
+      <p>
+        This is the foundation of the public-facing BM story. The deeper theory develops exactification, closure price, semantic width, robustness, repair, causal memory, PDE interfaces, distributed cuts, quantum recovery, and GURF on top of it.
+      </p>
+
+      <h2>Where to continue</h2>
+
+      <p>
+        If the main idea is clear, the best next step is dynamic closure. It gives a compact example of why preserving the right distinctions at one instant is not enough.
+      </p>
+
+    </div>
+  </article>
+
+  <section class="next">
+    <div class="wrap">
+      <span class="eyebrow">Next</span>
+      <h2 style="font-size:clamp(2rem,5vw,3.4rem);line-height:1.04;letter-spacing:-.035em;margin:.7rem 0 .9rem">
+        Keep going
+      </h2>
+
+      <div class="next-grid">
+        <a class="card" href="/learn/dynamic-closure/">
+          <small>Recommended next</small>
+          <h3>Dynamic Closure Explained</h3>
+          <p>See why a representation can be correct now and still fail under evolution.</p>
+        </a>
+
+        <a class="card" href="/learn/semantic-width/">
+          <small>Approximation</small>
+          <h3>Semantic Width Explained</h3>
+          <p>Measure the complexity of task-relevant behavior rather than raw state size.</p>
+        </a>
+
+        <a class="card" href="/book/">
+          <small>Full treatment</small>
+          <h3>Read the Book</h3>
+          <p>Move from the public introduction into the long-form mathematical development.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div>
+      <div class="brand" style="margin-bottom:.5rem">
+        <span class="mark">BM</span>
+        <span>Branch Mathematics</span>
+      </div>
+      <div>Mathematics of necessary distinctions.</div>
+    </div>
+
+    <div class="footer-links">
+      <a href="/learn/">Learn</a>
+      <a href="/research/">Research</a>
+      <a href="/reference/">Reference</a>
+      <a href="/book/">Book</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
