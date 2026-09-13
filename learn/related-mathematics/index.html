@@ -1,0 +1,1013 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Branch Mathematics and Related Mathematics | Branch Mathematics</title>
+  <meta name="description" content="How Branch Mathematics relates to systems theory, control, quotient methods, automata, category theory, information theory, metric entropy, topology, operator algebras, quantum error correction, distributed computation, and model reduction—without conflating them." />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <link rel="canonical" href="https://branch-mathematics-bm.github.io/learn/related-mathematics/" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Branch Mathematics and Related Mathematics" />
+  <meta property="og:description" content="Where BM overlaps with established mathematics, where it differs, and how classical results are used without being relabeled." />
+  <meta property="og:url" content="https://branch-mathematics-bm.github.io/learn/related-mathematics/" />
+  <meta property="og:site_name" content="Branch Mathematics" />
+
+  <meta name="theme-color" content="#07111f" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"Branch Mathematics and Related Mathematics",
+    "description":"A comparison of Branch Mathematics with systems theory, control, quotient methods, automata, category theory, information theory, metric entropy, topology, operator algebras, quantum error correction, distributed computation, and model reduction.",
+    "mainEntityOfPage":"https://branch-mathematics-bm.github.io/learn/related-mathematics/",
+    "isPartOf":{
+      "@type":"WebSite",
+      "name":"Branch Mathematics",
+      "url":"https://branch-mathematics-bm.github.io/"
+    }
+  }
+  </script>
+
+  <style>
+    :root{
+      --bg:#07111f;
+      --text:#eef5ff;
+      --muted:#aabbd0;
+      --line:#27415e;
+      --accent:#7bdcff;
+      --accent2:#b39cff;
+      --green:#7ef0c5;
+      --warn:#ffd98c;
+      --max:1120px;
+      --read:860px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 12% -5%,rgba(123,220,255,.12),transparent 28rem),
+        radial-gradient(circle at 88% 4%,rgba(179,156,255,.09),transparent 24rem),
+        linear-gradient(180deg,#06101d,#07111f 45%,#081422);
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height:1.7;
+    }
+
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(calc(100% - 2rem),var(--max));margin-inline:auto}
+    .read{width:min(100%,var(--read));margin-inline:auto}
+
+    .site-header{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:blur(18px);
+      background:rgba(7,17,31,.84);
+      border-bottom:1px solid rgba(123,220,255,.12);
+    }
+
+    .nav{
+      min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:1rem;
+    }
+
+    .brand{
+      display:flex;align-items:center;gap:.75rem;font-weight:760;white-space:nowrap;
+    }
+
+    .mark{
+      width:34px;height:34px;border-radius:11px;
+      border:1px solid rgba(123,220,255,.5);
+      display:grid;place-items:center;
+      background:linear-gradient(135deg,rgba(123,220,255,.2),rgba(179,156,255,.12));
+    }
+
+    .navlinks{display:flex;gap:.15rem;flex-wrap:wrap;justify-content:flex-end}
+    .navlinks a{
+      color:var(--muted);padding:.55rem .68rem;border-radius:10px;font-size:.93rem;
+    }
+    .navlinks a:hover,.navlinks a[aria-current="page"]{
+      color:var(--text);background:rgba(255,255,255,.05);
+    }
+
+    .breadcrumbs{padding:1.2rem 0 0;color:#8397af;font-size:.9rem}
+
+    .hero{
+      padding:4.2rem 0 4rem;
+      border-bottom:1px solid rgba(123,220,255,.1);
+    }
+
+    .eyebrow{
+      display:inline-flex;padding:.42rem .7rem;border-radius:999px;
+      border:1px solid rgba(123,220,255,.3);
+      background:rgba(123,220,255,.06);
+      color:#c5efff;
+      font-size:.82rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+    }
+
+    h1{
+      font-size:clamp(3rem,8vw,5.8rem);
+      line-height:.94;letter-spacing:-.055em;
+      margin:1rem 0 1.1rem;max-width:13ch;
+    }
+
+    .hero .lead{
+      font-size:clamp(1.08rem,2vw,1.34rem);
+      color:#c4d4e6;max-width:920px;margin:0 0 1.4rem;
+    }
+
+    .summary{
+      margin-top:1.6rem;padding:1.25rem 1.35rem;
+      border:1px solid rgba(123,220,255,.24);
+      border-radius:18px;
+      background:linear-gradient(145deg,rgba(123,220,255,.055),rgba(179,156,255,.03));
+    }
+
+    .article{padding:4.8rem 0 5rem}
+
+    .article h2{
+      font-size:clamp(2rem,5vw,3.2rem);
+      line-height:1.05;letter-spacing:-.035em;
+      margin:3.2rem 0 1rem;
+    }
+
+    .article h3{
+      font-size:1.35rem;line-height:1.25;margin:2rem 0 .7rem;
+    }
+
+    .article p{
+      color:#c4d2e2;font-size:1.04rem;margin:0 0 1.15rem;
+    }
+
+    .formula{
+      margin:1.4rem 0;padding:1rem 1.1rem;
+      border-left:3px solid var(--accent);
+      background:rgba(123,220,255,.055);
+      border-radius:0 14px 14px 0;
+      color:#e0f1ff;
+      font-family:"Cambria Math","Times New Roman",serif;
+      font-size:1.08rem;overflow:auto;
+    }
+
+    .quote{
+      margin:2rem 0;padding:1.4rem 1.5rem;
+      border:1px solid rgba(179,156,255,.24);
+      border-radius:18px;background:rgba(179,156,255,.045);
+      font-size:1.14rem;color:#e4e4ff;
+    }
+
+    .callout{
+      margin:2rem 0;padding:1.2rem 1.3rem;
+      border-radius:18px;border:1px solid rgba(255,217,140,.22);
+      background:rgba(255,217,140,.04);color:#eadfc9;
+    }
+
+    .compare{
+      display:grid;grid-template-columns:1fr 1fr;
+      gap:1rem;margin:1.4rem 0 2rem;
+    }
+
+    .compare .box{
+      border:1px solid rgba(111,151,193,.22);
+      border-radius:18px;background:rgba(255,255,255,.02);
+      padding:1.2rem;
+    }
+
+    .compare h3{margin-top:0}
+    .compare p{font-size:.97rem;margin-bottom:0}
+
+    .map{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:.8rem;
+      margin:1.5rem 0 2rem;
+    }
+
+    .map-card{
+      border:1px solid rgba(111,151,193,.2);
+      border-radius:18px;
+      padding:1rem;
+      background:rgba(255,255,255,.02);
+    }
+
+    .map-card strong{
+      display:block;
+      color:var(--accent);
+      margin-bottom:.35rem;
+    }
+
+    .map-card span{
+      color:var(--muted);
+      font-size:.92rem;
+    }
+
+    table{
+      width:100%;border-collapse:collapse;margin:1.2rem 0 1.8rem;
+      border:1px solid rgba(111,151,193,.22);
+      background:rgba(255,255,255,.015);
+    }
+
+    th,td{
+      padding:.82rem;border-bottom:1px solid rgba(111,151,193,.16);
+      text-align:left;vertical-align:top;
+    }
+
+    th{
+      color:#dff7ff;background:rgba(123,220,255,.055);font-size:.92rem;
+    }
+
+    td{color:#c4d2e2;font-size:.95rem}
+
+    .example{
+      margin:1.5rem 0 2rem;padding:1.4rem;
+      border-radius:20px;border:1px solid rgba(126,240,197,.22);
+      background:linear-gradient(145deg,rgba(126,240,197,.045),rgba(255,255,255,.015));
+    }
+
+    .example h3{margin-top:0;color:#dffcef}
+
+    .next{
+      padding:4.5rem 0;
+      border-top:1px solid rgba(123,220,255,.1);
+      background:#050d18;
+    }
+
+    .next-grid{
+      display:grid;grid-template-columns:repeat(3,1fr);
+      gap:1rem;margin-top:1.6rem;
+    }
+
+    .card{
+      min-height:100%;padding:1.2rem;border-radius:20px;
+      border:1px solid rgba(111,151,193,.2);
+      background:rgba(255,255,255,.02);transition:.2s ease;
+    }
+
+    .card:hover{
+      transform:translateY(-2px);
+      border-color:rgba(123,220,255,.42);
+      background:rgba(123,220,255,.04);
+    }
+
+    .card small{
+      color:var(--accent);font-size:.75rem;font-weight:800;
+      letter-spacing:.08em;text-transform:uppercase;
+    }
+
+    .card h3{margin:.5rem 0 .45rem}
+    .card p{color:var(--muted);font-size:.93rem;margin:0}
+
+    footer{
+      padding:3rem 0;border-top:1px solid rgba(255,255,255,.07);
+      background:#040a12;color:#8fa3ba;
+    }
+
+    .footer-grid{
+      display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:end;
+    }
+
+    .footer-links{display:flex;gap:.7rem;flex-wrap:wrap;justify-content:flex-end}
+
+    @media(max-width:900px){
+      .navlinks{display:none}
+      .map{grid-template-columns:1fr 1fr}
+      .next-grid{grid-template-columns:1fr}
+    }
+
+    @media(max-width:620px){
+      .hero{padding-top:3rem}
+      .compare,.map{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr}
+      .footer-links{justify-content:flex-start}
+      th,td{font-size:.88rem}
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="/" aria-label="Branch Mathematics home">
+      <span class="mark">BM</span>
+      <span>Branch Mathematics</span>
+    </a>
+
+    <nav class="navlinks" aria-label="Primary navigation">
+      <a href="/learn/" aria-current="page">Learn</a>
+      <a href="/research/">Research</a>
+      <a href="/applications/">Applications</a>
+      <a href="/examples/">Examples</a>
+      <a href="/calculator/">Calculator</a>
+      <a href="/reference/">Reference</a>
+      <a href="/book/">Book</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <div class="wrap breadcrumbs">
+    <a href="/">Home</a> / <a href="/learn/">Learn</a> / Related Mathematics
+  </div>
+
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Context</span>
+      <h1>Branch Mathematics and Related Mathematics</h1>
+
+      <p class="lead">
+        Branch Mathematics uses established mathematics extensively. Its role is not to rename existing fields, but to organize task-relative distinctions, lawful descent, cross-Branch interaction, realization, and receiver-facing export across them.
+      </p>
+
+      <div class="summary">
+        <strong>Short version:</strong>
+        BM overlaps with systems theory, quotient methods, model reduction, automata, information theory, topology, operator theory, quantum error correction, distributed computation, and more—but it is not identical to any one of them.
+      </div>
+    </div>
+  </section>
+
+  <article class="article">
+    <div class="read">
+
+      <h2>Why comparisons matter</h2>
+
+      <p>
+        Any mathematical project that introduces new organization should be explicit about what is already known.
+      </p>
+
+      <p>
+        Many ingredients used in Branch Mathematics are classical. Quotients, kernels, congruences, covering numbers, compactness, Hankel operators, graph coloring, operator algebras, error correction, and control-theoretic notions all have established histories.
+      </p>
+
+      <div class="quote">
+        BM should earn its value from the way these ingredients are typed, connected, and constrained—not by relabeling classical theorems as BM discoveries.
+      </div>
+
+      <h2>A map of nearby mathematics</h2>
+
+      <div class="map">
+        <div class="map-card">
+          <strong>Systems & Control</strong>
+          <span>State, observation, realization, controllability, observability, reduction, Hankel structure.</span>
+        </div>
+
+        <div class="map-card">
+          <strong>Quotients & Congruences</strong>
+          <span>Equivalence relations, factorization, descent, invariance, quotient objects.</span>
+        </div>
+
+        <div class="map-card">
+          <strong>Automata & Formal Languages</strong>
+          <span>Behavioral equivalence, residual states, Myhill–Nerode style distinctions.</span>
+        </div>
+
+        <div class="map-card">
+          <strong>Information Theory</strong>
+          <span>Compression, coding, communication, rate and channel constraints.</span>
+        </div>
+
+        <div class="map-card">
+          <strong>Metric Entropy</strong>
+          <span>Covering numbers, packing, approximation scale, compactness.</span>
+        </div>
+
+        <div class="map-card">
+          <strong>Category Theory</strong>
+          <span>Maps, factorization, universal properties, compositional structure.</span>
+        </div>
+
+        <div class="map-card">
+          <strong>Topology & Geometry</strong>
+          <span>Embeddings, bundles, smooth realization, global obstructions.</span>
+        </div>
+
+        <div class="map-card">
+          <strong>Operator Algebras & QEC</strong>
+          <span>Observable algebras, channels, correctable algebras, commutants.</span>
+        </div>
+
+        <div class="map-card">
+          <strong>Distributed Computation</strong>
+          <span>Cuts, communication, locality, redundancy, causal scheduling.</span>
+        </div>
+      </div>
+
+      <h2>Systems theory and control</h2>
+
+      <p>
+        Systems theory already studies states, inputs, outputs, realizations, observability, controllability, reduction, transfer operators, and past-to-future behavior.
+      </p>
+
+      <p>
+        BM overlaps strongly here.
+      </p>
+
+      <p>
+        For example, BM's dynamic-closure question:
+      </p>
+
+      <div class="formula">
+        Rf = f̄R
+      </div>
+
+      <p>
+        asks whether a reduced state evolves autonomously.
+      </p>
+
+      <p>
+        Likewise, finite-horizon task maps:
+      </p>
+
+      <div class="formula">
+        β<sub>h</sub>(x)=(Tx,TΦx,…,TΦ<sup>h</sup>x)
+      </div>
+
+      <p>
+        are closely related in spirit to classical observability constructions.
+      </p>
+
+      <h3>What BM adds organizationally</h3>
+
+      <p>
+        BM places such constructions inside a broader receiver contract that can also include interface locality, multiple mathematical Branches, later context revelation, realization category, and provenance.
+      </p>
+
+      <div class="compare">
+        <div class="box">
+          <h3>Classical systems viewpoint</h3>
+          <p>Analyze state, dynamics, inputs, outputs, realization, observability, and reduction.</p>
+        </div>
+        <div class="box">
+          <h3>BM viewpoint</h3>
+          <p>Ask which distinctions must survive across the whole declared multi-Branch task and whether the chosen realization preserves them.</p>
+        </div>
+      </div>
+
+      <h2>Quotient mathematics and congruences</h2>
+
+      <p>
+        BM's exact sector relies heavily on a classical idea: if a map cannot distinguish two states, they may belong to the same equivalence class for that purpose.
+      </p>
+
+      <div class="formula">
+        T = T̄R ⇔ ker(R) ⊆ ker(T)
+      </div>
+
+      <p>
+        This is standard factorization logic.
+      </p>
+
+      <p>
+        Dynamic closure adds an invariance or congruence condition:
+      </p>
+
+      <div class="formula">
+        ker(R) ⊆ ker(Rf)
+      </div>
+
+      <p>
+        Again, the underlying mathematics is not invented by BM.
+      </p>
+
+      <p>
+        BM's role is to make quotient choice receiver-relative and to carry quotient obligations across multiple Branches, interfaces, horizons, and realization classes.
+      </p>
+
+      <h2>Automata and Myhill–Nerode style ideas</h2>
+
+      <p>
+        Formal-language and automata theory provide a powerful classical pattern: two histories are equivalent when no allowed future continuation can distinguish them with respect to acceptance behavior.
+      </p>
+
+      <p>
+        BM's residual-state and observation-memory constructions are closely related in spirit.
+      </p>
+
+      <div class="formula">
+        p ∼ p′ ⇔ every allowed future suffix produces the same declared residual response
+      </div>
+
+      <p>
+        In exact deterministic finite settings, this kind of future-response equivalence can yield canonical minimal causal states.
+      </p>
+
+      <div class="callout">
+        BM should credit Myhill–Nerode and related automata ideas where they are the mathematical source. The BM contribution is their placement inside a larger Passport, interface, realization, and multi-sector architecture.
+      </div>
+
+      <h2>Information theory</h2>
+
+      <p>
+        BM deals with compression and communication, so information theory is an obvious neighbor.
+      </p>
+
+      <p>
+        But BM's exact log-cardinality quantities are not automatically Shannon entropies.
+      </p>
+
+      <div class="formula">
+        log₂ |Q|
+      </div>
+
+      <p>
+        simply measures the number of exact states or classes in bits of label capacity.
+      </p>
+
+      <p>
+        No probability distribution is required.
+      </p>
+
+      <div class="compare">
+        <div class="box">
+          <h3>Shannon-style quantity</h3>
+          <p>Depends on a probability law and quantifies expected information or coding behavior under that law.</p>
+        </div>
+        <div class="box">
+          <h3>BM exact width</h3>
+          <p>Can be a worst-case log-cardinality of receiver-distinct classes with no probability model at all.</p>
+        </div>
+      </div>
+
+      <div class="callout">
+        BM firewall: log-cardinality is not automatically Shannon entropy, thermodynamic entropy, or Landauer cost.
+      </div>
+
+      <h2>Metric entropy and covering numbers</h2>
+
+      <p>
+        Approximate semantic width uses classical covering-number mathematics.
+      </p>
+
+      <div class="formula">
+        w(ε)=log₂ N(ε)
+      </div>
+
+      <p>
+        where <strong>N(ε)</strong> is the number of tolerance-scale representatives required to cover the declared response set.
+      </p>
+
+      <p>
+        This is classical metric-entropy territory.
+      </p>
+
+      <h3>What BM changes</h3>
+
+      <p>
+        BM applies covering geometry not automatically to the raw native state space, but to the receiver-visible profile set induced by a Passport.
+      </p>
+
+      <div class="formula">
+        native state → receiver profile → covering geometry
+      </div>
+
+      <p>
+        The novelty question therefore lies in the task-relative placement and interaction structure, not in the existence of covering numbers themselves.
+      </p>
+
+      <h2>Kolmogorov widths and approximation theory</h2>
+
+      <p>
+        Classical Kolmogorov <strong>n</strong>-width measures how well a set can be approximated by an <strong>n</strong>-dimensional linear subspace.
+      </p>
+
+      <p>
+        BM can use small <strong>n</strong>-width as evidence that a response set admits efficient finite-dimensional approximation.
+      </p>
+
+      <p>
+        But BM does not equate linear approximation dimension with semantic width.
+      </p>
+
+      <div class="formula">
+        low linear n-width can imply useful cover bounds<br>
+        but small cover width need not imply equally small linear dimension
+      </div>
+
+      <h2>Category theory</h2>
+
+      <p>
+        Category theory studies objects, morphisms, universal properties, composition, factorization, limits, colimits, adjunctions, and many other structural patterns.
+      </p>
+
+      <p>
+        BM has obvious conceptual contact with categorical language because it also cares about lawful maps and composition.
+      </p>
+
+      <p>
+        But BM is not simply category theory with renamed objects.
+      </p>
+
+      <div class="compare">
+        <div class="box">
+          <h3>Category theory</h3>
+          <p>Provides a general language for structure-preserving maps and universal constructions across mathematics.</p>
+        </div>
+        <div class="box">
+          <h3>Branch Mathematics</h3>
+          <p>Organizes receiver-relative distinctions, Branch-local laws, interactions, realizability, and export under explicit task contracts.</p>
+        </div>
+      </div>
+
+      <p>
+        Some BM constructions may admit categorical reformulations. That should be developed where mathematically useful rather than assumed from terminology alone.
+      </p>
+
+      <h2>Sheaves, descent, and local-to-global mathematics</h2>
+
+      <p>
+        BM uses the word <strong>descent</strong> in a broad task-relative sense: required structure must pass lawfully through a representation.
+      </p>
+
+      <p>
+        Classical mathematics already has sophisticated notions of descent, sheaves, gluing, cocycles, and local-to-global obstruction.
+      </p>
+
+      <p>
+        These areas are highly relevant whenever BM studies:
+      </p>
+
+      <p>
+        local compatibility, global realizability, bundle structure, contextuality, and interface gluing.
+      </p>
+
+      <div class="callout">
+        Terminology must be scoped carefully. A BM use of “descent” should not be presented as identical to Grothendieck descent, sheaf descent, or another established specialized notion unless the hypotheses and constructions actually match.
+      </div>
+
+      <h2>Topology and smooth realization</h2>
+
+      <p>
+        An abstract quotient can exist while a desired geometric realization fails.
+      </p>
+
+      <p>
+        This is classical topology and differential geometry territory.
+      </p>
+
+      <p>
+        BM uses these results to enforce a crucial separation:
+      </p>
+
+      <div class="formula">
+        abstract quotient existence ≠ smooth or Euclidean realization
+      </div>
+
+      <p>
+        Embedding obstructions, bundle topology, nontrivial global structure, and rank constraints can all prevent a low-dimensional smooth realization even when set-theoretic compression is exact.
+      </p>
+
+      <h2>Graph theory and combinatorics</h2>
+
+      <p>
+        Finite approximate distinction problems can become graph-coloring problems.
+      </p>
+
+      <p>
+        States are vertices, and incompatible pairs are connected by edges.
+      </p>
+
+      <div class="formula">
+        N(ε)=χ(G<sub>ε</sub>)
+      </div>
+
+      <p>
+        under the relevant pairwise semantics.
+      </p>
+
+      <p>
+        For general metric cell-radius constraints, pairwise graphs may be insufficient and hypergraphs can be required.
+      </p>
+
+      <p>
+        Again, graph coloring and hypergraph coloring are established mathematics. BM uses them as exact computational forms of receiver-relative representation problems.
+      </p>
+
+      <h2>Optimization and duality</h2>
+
+      <p>
+        Repair, robustness allocation, sensor placement, interface selection, and error-budget allocation naturally lead to optimization.
+      </p>
+
+      <p>
+        Linear programs, convex programs, semidefinite programs, mixed-integer programs, Lagrange multipliers, Farkas certificates, and duality all appear as classical tools.
+      </p>
+
+      <p>
+        BM's organizational role is to preserve the provenance of what is being optimized:
+      </p>
+
+      <div class="formula">
+        obligation → deficit → intervention → repair → certificate
+      </div>
+
+      <p>
+        rather than treating an optimization result as detached from the task contract that generated it.
+      </p>
+
+      <h2>Distributed computation and communication complexity</h2>
+
+      <p>
+        BM's semantic cuts and locality surcharges are closely related to classical questions about communication across network cuts, distributed computation, and communication complexity.
+      </p>
+
+      <div class="example">
+        <h3>Parity again</h3>
+
+        <p>
+          A centralized parity receiver needs one bit of final semantic output.
+        </p>
+
+        <p>
+          But if <strong>n</strong> separated sources must communicate before aggregation, the realized distributed cost can be much larger.
+        </p>
+
+        <div class="formula">
+          centralized semantic complexity ≠ distributed communication cost
+        </div>
+      </div>
+
+      <p>
+        BM treats this gap as an architectural distinction between semantic burden and realization burden.
+      </p>
+
+      <h2>Operator theory and Hankel methods</h2>
+
+      <p>
+        Classical systems theory uses observability, reachability, transfer, and Hankel operators to characterize past-to-future influence.
+      </p>
+
+      <p>
+        BM's finite-horizon history interfaces fit naturally into this mathematics.
+      </p>
+
+      <div class="formula">
+        H = O R
+      </div>
+
+      <p>
+        where <strong>R</strong> maps past inputs to current state and <strong>O</strong> maps state to future receiver-visible behavior.
+      </p>
+
+      <p>
+        The kernel of the resulting task-specific Hankel map identifies past histories that are indistinguishable to the declared future task.
+      </p>
+
+      <h2>Operator algebras and quantum error correction</h2>
+
+      <p>
+        In quantum systems, BM draws heavily on operator systems, C*-algebras, quantum channels, correctable algebras, and operator-algebra quantum error correction.
+      </p>
+
+      <p>
+        A task algebra <strong>A</strong> can remain recoverable even when the full logical algebra does not.
+      </p>
+
+      <div class="formula">
+        A correctable ⇔ [P E<sub>a</sub>† E<sub>b</sub> P, X]=0
+        for all X∈A
+      </div>
+
+      <p>
+        This is established QEC/OAQEC mathematics.
+      </p>
+
+      <p>
+        BM uses it to express receiver-relative quantum Passports and graceful degradation.
+      </p>
+
+      <div class="callout">
+        Quantum error-correction theorems remain quantum error-correction theorems. BM's contribution is the task-relative organization and connection to the wider distinction architecture.
+      </div>
+
+      <h2>No-broadcasting and access structures</h2>
+
+      <p>
+        Classical data can often be copied freely. Quantum information cannot.
+      </p>
+
+      <p>
+        No-broadcasting and no-cloning therefore constrain distributed quantum interfaces in ways that have no direct classical analogue.
+      </p>
+
+      <p>
+        BM preserves this sector distinction rather than importing classical redundancy logic unchanged into quantum Branches.
+      </p>
+
+      <div class="formula">
+        classical route redundancy ≠ quantum state duplication
+      </div>
+
+      <h2>PDE theory and compactness</h2>
+
+      <p>
+        BM's continuum work relies on established PDE and functional-analysis ideas: semigroups, smoothing, compactness, spectral decay, Sobolev embeddings, transfer operators, and boundary traces.
+      </p>
+
+      <p>
+        For example, positive-time heat evolution can make a receiver-visible profile set precompact.
+      </p>
+
+      <p>
+        BM then interprets that compactness in task-relative width language:
+      </p>
+
+      <div class="formula">
+        relative compactness of receiver profiles ⇔ finite ε-cover for every ε&gt;0
+      </div>
+
+      <p>
+        The compactness theorem is classical. The BM placement is the receiver-facing semantic interface interpretation.
+      </p>
+
+      <h2>Probability and stochastic systems</h2>
+
+      <p>
+        BM does not require probability as a primitive for every uncertainty problem.
+      </p>
+
+      <p>
+        But when a Branch is genuinely stochastic, probability law matters and must be preserved correctly.
+      </p>
+
+      <p>
+        For Markov or stochastic systems, support equality is weaker than equality of laws.
+      </p>
+
+      <div class="callout">
+        BM firewall: equal support does not imply equal probability law.
+      </div>
+
+      <p>
+        Stochastic lumpability, coupling, total-variation or Wasserstein metrics, and probabilistic recovery should therefore remain in their proper native probabilistic mathematics.
+      </p>
+
+      <h2>What BM is trying to contribute</h2>
+
+      <p>
+        The strongest case for BM is not “these mathematical ingredients never existed before.”
+      </p>
+
+      <p>
+        They did.
+      </p>
+
+      <p>
+        The proposed BM contribution is a systematic architecture for carrying one problem through several mathematical sectors while making the following explicit:
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>BM concern</th>
+            <th>Question</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Task</td>
+            <td>What must the receiver actually distinguish?</td>
+          </tr>
+          <tr>
+            <td>Branch</td>
+            <td>Which native mathematics governs each part?</td>
+          </tr>
+          <tr>
+            <td>Descent</td>
+            <td>Which laws and distinctions survive the representation?</td>
+          </tr>
+          <tr>
+            <td>Interaction</td>
+            <td>How may Branch outputs lawfully constrain one another?</td>
+          </tr>
+          <tr>
+            <td>Realization</td>
+            <td>Can the abstract representation be implemented in the required category?</td>
+          </tr>
+          <tr>
+            <td>Quantification</td>
+            <td>What width, error, robustness, memory, or locality price is paid?</td>
+          </tr>
+          <tr>
+            <td>Provenance</td>
+            <td>Which claims are classical, proved, candidate, obstructed, or open?</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>How the website should label mathematics</h2>
+
+      <p>
+        To keep the public presentation credible, the reference and Book should distinguish at least three layers:
+      </p>
+
+      <div class="compare">
+        <div class="box">
+          <h3>Classical ingredient</h3>
+          <p>
+            A theorem, construction, or method already established in the mathematical literature.
+          </p>
+        </div>
+
+        <div class="box">
+          <h3>BM synthesis</h3>
+          <p>
+            The role that ingredient plays inside BM's task, distinction, interface, realization, or provenance architecture.
+          </p>
+        </div>
+      </div>
+
+      <p>
+        A third category is genuinely new candidate mathematics developed inside BM, which must remain explicitly labeled as candidate until externally validated.
+      </p>
+
+      <div class="formula">
+        classical source ≠ BM synthesis ≠ BM candidate theorem
+      </div>
+
+      <h2>What BM should avoid</h2>
+
+      <p>
+        BM should avoid claiming novelty from vocabulary alone.
+      </p>
+
+      <p>
+        Calling an equivalence relation a Passport equivalence does not make the underlying quotient theorem new. Calling a covering number semantic width does not make metric entropy new. Calling an operator-algebra recovery structure a quantum Passport does not make QEC new.
+      </p>
+
+      <div class="quote">
+        The mathematical burden is to prove that the larger BM architecture produces useful theorems, obstructions, synthesis rules, or cross-sector deductions that are not merely renamings.
+      </div>
+
+      <h2>The healthy relationship</h2>
+
+      <p>
+        The strongest version of Branch Mathematics should be comfortable saying:
+      </p>
+
+      <p>
+        “This ingredient is classical. Here is the source mathematics. Here is exactly how BM uses it. Here is the additional BM statement, if any. Here is the proof status.”
+      </p>
+
+      <p>
+        That makes the project easier to audit and much more useful to researchers coming from established fields.
+      </p>
+
+    </div>
+  </article>
+
+  <section class="next">
+    <div class="wrap">
+      <span class="eyebrow">Next</span>
+      <h2 style="font-size:clamp(2rem,5vw,3.4rem);line-height:1.04;letter-spacing:-.035em;margin:.7rem 0 .9rem">
+        Continue the path
+      </h2>
+
+      <div class="next-grid">
+        <a class="card" href="/research/">
+          <small>Research</small>
+          <h3>Explore the Research</h3>
+          <p>Move from orientation into technical pages on dynamic closure, PDEs, distributed systems, locality, and quantum recovery.</p>
+        </a>
+
+        <a class="card" href="/reference/bibliography/">
+          <small>Sources</small>
+          <h3>Bibliography and Prior Art</h3>
+          <p>Track the established mathematical sources used by Branch Mathematics and separate them from BM synthesis.</p>
+        </a>
+
+        <a class="card" href="/book/">
+          <small>Long form</small>
+          <h3>Read the Book</h3>
+          <p>Follow the complete development with definitions, proofs, imported mathematics, provenance, and open problems.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div>
+      <div class="brand" style="margin-bottom:.5rem">
+        <span class="mark">BM</span>
+        <span>Branch Mathematics</span>
+      </div>
+      <div>Mathematics of necessary distinctions.</div>
+    </div>
+
+    <div class="footer-links">
+      <a href="/learn/">Learn</a>
+      <a href="/research/">Research</a>
+      <a href="/reference/">Reference</a>
+      <a href="/book/">Book</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
