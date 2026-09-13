@@ -1,0 +1,701 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Branch Mathematics Research | Dynamic Closure, PDEs, Networks, Quantum Systems</title>
+  <meta name="description" content="Explore Branch Mathematics research on dynamic closure, semantic width, model reduction, PDE interfaces, distributed cuts, causal memory, many-body locality, quantum task recovery, robustness, repair, and GURF." />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <link rel="canonical" href="https://branch-mathematics-bm.github.io/research/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Branch Mathematics Research" />
+  <meta property="og:description" content="Technical research pages covering exact and approximate distinction structure across dynamics, PDEs, networks, interfaces, quantum systems, and GURF." />
+  <meta property="og:url" content="https://branch-mathematics-bm.github.io/research/" />
+  <meta property="og:site_name" content="Branch Mathematics" />
+
+  <meta name="theme-color" content="#07111f" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"CollectionPage",
+    "name":"Branch Mathematics Research",
+    "description":"Research articles and technical developments in Branch Mathematics.",
+    "url":"https://branch-mathematics-bm.github.io/research/",
+    "isPartOf":{
+      "@type":"WebSite",
+      "name":"Branch Mathematics",
+      "url":"https://branch-mathematics-bm.github.io/"
+    }
+  }
+  </script>
+
+  <style>
+    :root{
+      --bg:#07111f;
+      --text:#eef5ff;
+      --muted:#aabbd0;
+      --line:#27415e;
+      --accent:#7bdcff;
+      --accent2:#b39cff;
+      --green:#7ef0c5;
+      --warn:#ffd98c;
+      --max:1180px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 12% -5%,rgba(123,220,255,.12),transparent 28rem),
+        radial-gradient(circle at 88% 4%,rgba(179,156,255,.09),transparent 24rem),
+        linear-gradient(180deg,#06101d,#07111f 45%,#081422);
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height:1.65;
+    }
+
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(calc(100% - 2rem),var(--max));margin-inline:auto}
+
+    .site-header{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:blur(18px);
+      background:rgba(7,17,31,.84);
+      border-bottom:1px solid rgba(123,220,255,.12);
+    }
+
+    .nav{
+      min-height:72px;
+      display:flex;align-items:center;justify-content:space-between;gap:1rem;
+    }
+
+    .brand{
+      display:flex;align-items:center;gap:.75rem;font-weight:760;white-space:nowrap;
+    }
+
+    .mark{
+      width:34px;height:34px;border-radius:11px;
+      border:1px solid rgba(123,220,255,.5);
+      display:grid;place-items:center;
+      background:linear-gradient(135deg,rgba(123,220,255,.2),rgba(179,156,255,.12));
+    }
+
+    .navlinks{display:flex;gap:.15rem;flex-wrap:wrap;justify-content:flex-end}
+    .navlinks a{
+      color:var(--muted);padding:.55rem .68rem;border-radius:10px;font-size:.93rem;
+    }
+    .navlinks a:hover,.navlinks a[aria-current="page"]{
+      color:var(--text);background:rgba(255,255,255,.05);
+    }
+
+    .hero{
+      padding:5rem 0 4.4rem;
+      border-bottom:1px solid rgba(123,220,255,.1);
+    }
+
+    .eyebrow{
+      display:inline-flex;padding:.42rem .7rem;border-radius:999px;
+      border:1px solid rgba(123,220,255,.3);
+      background:rgba(123,220,255,.06);
+      color:#c5efff;
+      font-size:.82rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+    }
+
+    h1{
+      font-size:clamp(3.2rem,8vw,6.5rem);
+      line-height:.92;
+      letter-spacing:-.055em;
+      max-width:11ch;
+      margin:1rem 0 1.15rem;
+    }
+
+    .hero .lead{
+      max-width:900px;
+      font-size:clamp(1.08rem,2vw,1.35rem);
+      color:#c4d4e6;
+      margin:0 0 1.35rem;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.4fr .8fr;
+      gap:1rem;
+      margin-top:1.8rem;
+    }
+
+    .hero-box{
+      padding:1.2rem 1.3rem;
+      border-radius:20px;
+      border:1px solid rgba(123,220,255,.2);
+      background:rgba(255,255,255,.02);
+    }
+
+    .hero-box strong{display:block;color:#dff7ff;margin-bottom:.35rem}
+    .hero-box p{color:var(--muted);margin:0}
+
+    section{padding:4.8rem 0}
+    section + section{border-top:1px solid rgba(255,255,255,.06)}
+
+    h2{
+      font-size:clamp(2.1rem,5vw,3.5rem);
+      line-height:1.03;
+      letter-spacing:-.04em;
+      margin:.65rem 0 1rem;
+    }
+
+    .section-lead{
+      color:#b8c9dd;
+      max-width:840px;
+      font-size:1.05rem;
+      margin:0 0 1.6rem;
+    }
+
+    .status-row{
+      display:flex;gap:.55rem;flex-wrap:wrap;margin:1rem 0 1.5rem;
+    }
+
+    .status{
+      display:inline-flex;
+      padding:.42rem .65rem;
+      border-radius:999px;
+      font-size:.75rem;
+      letter-spacing:.06em;
+      font-weight:800;
+      border:1px solid rgba(111,151,193,.25);
+      color:#d6e7f8;
+      background:rgba(255,255,255,.025);
+    }
+
+    .status.canon{border-color:rgba(126,240,197,.28);color:#dffcef;background:rgba(126,240,197,.045)}
+    .status.cand{border-color:rgba(255,217,140,.25);color:#f7e8c7;background:rgba(255,217,140,.035)}
+    .status.classic{border-color:rgba(179,156,255,.25);color:#ece5ff;background:rgba(179,156,255,.035)}
+
+    .featured{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:1rem;
+      margin-top:1.6rem;
+    }
+
+    .feature{
+      border:1px solid rgba(111,151,193,.22);
+      border-radius:22px;
+      padding:1.35rem;
+      background:linear-gradient(145deg,rgba(123,220,255,.035),rgba(255,255,255,.015));
+      min-height:100%;
+      transition:.2s ease;
+    }
+
+    .feature:hover{
+      transform:translateY(-2px);
+      border-color:rgba(123,220,255,.42);
+    }
+
+    .feature small{
+      color:var(--accent);
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+
+    .feature h3{
+      margin:.55rem 0 .55rem;
+      line-height:1.18;
+      font-size:1.45rem;
+    }
+
+    .feature p{color:var(--muted);margin:0}
+
+    .areas{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:1rem;
+      margin-top:1.5rem;
+    }
+
+    .area{
+      border:1px solid rgba(111,151,193,.2);
+      border-radius:20px;
+      padding:1.15rem;
+      background:rgba(255,255,255,.02);
+    }
+
+    .area .kicker{
+      color:var(--accent2);
+      font-size:.75rem;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+
+    .area h3{margin:.45rem 0 .5rem;font-size:1.2rem}
+    .area p{color:var(--muted);font-size:.93rem;margin:0 0 .75rem}
+    .area a{color:#dff7ff;font-weight:700;font-size:.92rem}
+
+    .pipeline{
+      display:grid;
+      grid-template-columns:repeat(6,1fr);
+      gap:.65rem;
+      margin:1.5rem 0 0;
+    }
+
+    .pipe{
+      border:1px solid rgba(111,151,193,.22);
+      border-radius:15px;
+      padding:.8rem .6rem;
+      text-align:center;
+      background:rgba(255,255,255,.02);
+      font-weight:720;
+      position:relative;
+    }
+
+    .pipe:not(:last-child):after{
+      content:"→";
+      position:absolute;
+      right:-.48rem;
+      top:50%;
+      transform:translateY(-50%);
+      color:var(--accent);
+      z-index:2;
+    }
+
+    .layer-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:1rem;
+      margin-top:1.5rem;
+    }
+
+    .layer{
+      border-radius:20px;
+      border:1px solid rgba(111,151,193,.2);
+      padding:1.2rem;
+      background:rgba(255,255,255,.02);
+    }
+
+    .layer strong{display:block;margin-bottom:.35rem}
+    .layer p{color:var(--muted);margin:0}
+
+    .open-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:1rem;
+      margin-top:1.4rem;
+    }
+
+    .open{
+      border:1px solid rgba(255,217,140,.18);
+      border-radius:18px;
+      padding:1rem;
+      background:rgba(255,217,140,.025);
+    }
+
+    .open strong{display:block;color:#f5e8c8;margin-bottom:.3rem}
+    .open span{color:var(--muted);font-size:.92rem}
+
+    .cta{
+      background:#050d18;
+      text-align:center;
+    }
+
+    .cta p{
+      max-width:760px;
+      margin:0 auto 1.2rem;
+      color:#b6c7db;
+    }
+
+    .buttons{
+      display:flex;
+      gap:.75rem;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+
+    .button{
+      display:inline-flex;
+      padding:.75rem 1rem;
+      border-radius:12px;
+      border:1px solid rgba(123,220,255,.28);
+      background:rgba(123,220,255,.06);
+      color:#e4f7ff;
+      font-weight:750;
+    }
+
+    .button.secondary{
+      border-color:rgba(179,156,255,.25);
+      background:rgba(179,156,255,.05);
+    }
+
+    footer{
+      padding:3rem 0;
+      border-top:1px solid rgba(255,255,255,.07);
+      background:#040a12;
+      color:#8fa3ba;
+    }
+
+    .footer-grid{
+      display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:end;
+    }
+
+    .footer-links{display:flex;gap:.7rem;flex-wrap:wrap;justify-content:flex-end}
+
+    @media(max-width:950px){
+      .navlinks{display:none}
+      .areas{grid-template-columns:1fr 1fr}
+      .pipeline{grid-template-columns:repeat(3,1fr)}
+      .pipe:not(:last-child):after{display:none}
+    }
+
+    @media(max-width:720px){
+      .hero-grid,.featured,.layer-grid,.areas,.open-grid{grid-template-columns:1fr}
+      .pipeline{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr}
+      .footer-links{justify-content:flex-start}
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="/" aria-label="Branch Mathematics home">
+      <span class="mark">BM</span>
+      <span>Branch Mathematics</span>
+    </a>
+
+    <nav class="navlinks" aria-label="Primary navigation">
+      <a href="/learn/">Learn</a>
+      <a href="/research/" aria-current="page">Research</a>
+      <a href="/applications/">Applications</a>
+      <a href="/examples/">Examples</a>
+      <a href="/calculator/">Calculator</a>
+      <a href="/reference/">Reference</a>
+      <a href="/book/">Book</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Research</span>
+      <h1>Branch Mathematics Research</h1>
+
+      <p class="lead">
+        Technical development of task-relative distinctions across dynamics, approximation, PDEs, interfaces, distributed systems, many-body structure, quantum recovery, robustness, repair, and GURF.
+      </p>
+
+      <div class="hero-grid">
+        <div class="hero-box">
+          <strong>Foundation is frozen.</strong>
+          <p>
+            Canonical Version 1 contains the foundational BM structure: task sufficiency, dynamic closure, exactification, descent, interface synthesis, realization, closure price, and permanent counterexample firewalls.
+          </p>
+        </div>
+
+        <div class="hero-box">
+          <strong>Research development continues above it.</strong>
+          <p>
+            Volume II developments remain separately labeled so active research is not presented as if every result were already canonical or externally validated.
+          </p>
+        </div>
+      </div>
+
+      <div class="status-row">
+        <span class="status canon">Canonical foundation</span>
+        <span class="status cand">Active candidate developments</span>
+        <span class="status classic">Classical mathematics credited</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <span class="eyebrow">Featured</span>
+      <h2>Start with the main research problems</h2>
+      <p class="section-lead">
+        These pages begin with recognizable mathematical questions and then show how Branch Mathematics formulates them in terms of necessary distinctions, receiver contracts, interfaces, dynamics, and realizability.
+      </p>
+
+      <div class="featured">
+        <a class="feature" href="/research/dynamic-closure/">
+          <small>Dynamical systems</small>
+          <h3>Dynamic Closure: When Does a Reduced State Evolve Autonomously?</h3>
+          <p>
+            Exact closure, successor fibres, approximate closure defect, temporal horizons, and the difference between static task sufficiency and autonomous reduced dynamics.
+          </p>
+        </a>
+
+        <a class="feature" href="/research/exact-vs-approximate-model-reduction/">
+          <small>Model reduction</small>
+          <h3>Exact vs Approximate Model Reduction</h3>
+          <p>
+            Quotients, positive-tolerance covers, task-specific behavior, error propagation, robustness, and admissible realization.
+          </p>
+        </a>
+
+        <a class="feature" href="/research/infinite-dimensional-pde-reduction/">
+          <small>PDEs</small>
+          <h3>Can an Infinite-Dimensional PDE Have a Finite Reduced Interface?</h3>
+          <p>
+            Compact receiver-visible profiles, covering numbers, positive-time smoothing, and finite task-specific width without claiming the native PDE becomes finite-dimensional.
+          </p>
+        </a>
+
+        <a class="feature" href="/research/quantum-task-recovery/">
+          <small>Quantum systems</small>
+          <h3>Quantum Error Correction for Observables Instead of Full States</h3>
+          <p>
+            Task-relative recovery, correctable operator algebras, authorized access structures, no-broadcasting, and graceful degradation.
+          </p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <span class="eyebrow">Research map</span>
+      <h2>Major areas</h2>
+      <p class="section-lead">
+        The research program has grown into several connected sectors. Each keeps its native mathematics while participating in the same distinction-and-receiver architecture.
+      </p>
+
+      <div class="areas">
+        <div class="area">
+          <span class="kicker">Dynamics</span>
+          <h3>Closure, memory and temporal distinctions</h3>
+          <p>Dynamic closure, successor fibres, temporal horizons, latent memory, observation-derived memory, residual states, and causal scheduling.</p>
+          <a href="/research/dynamic-closure/">Explore dynamics →</a>
+        </div>
+
+        <div class="area">
+          <span class="kicker">Approximation</span>
+          <h3>Semantic width and distinction geometry</h3>
+          <p>Behavioral pseudometrics, exact and approximate width, covering numbers, graph coloring, robustness reserve, and Pareto structure.</p>
+          <a href="/research/semantic-width/">Explore semantic width →</a>
+        </div>
+
+        <div class="area">
+          <span class="kicker">PDEs</span>
+          <h3>Continuum interfaces and smoothing</h3>
+          <p>Compact profile criteria, heat and wave behavior, spectral scaling, boundary operators, reduced ports, time-dependent ports, and transport memory.</p>
+          <a href="/research/infinite-dimensional-pde-reduction/">Explore PDE research →</a>
+        </div>
+
+        <div class="area">
+          <span class="kicker">Networks</span>
+          <h3>Distributed semantic cuts</h3>
+          <p>Cut lower bounds, route novelty, redundancy, erasure resilience, semantic min-cuts, locality surcharge, and causal communication.</p>
+          <a href="/research/distributed-semantic-cuts/">Explore network research →</a>
+        </div>
+
+        <div class="area">
+          <span class="kicker">Spacetime</span>
+          <h3>Causal width and coupling</h3>
+          <p>Residual-state machines, spacetime semantic width, coupling-induced distinction transitions, deadlines, and many-body locality.</p>
+          <a href="/research/spacetime-semantic-width/">Explore spacetime width →</a>
+        </div>
+
+        <div class="area">
+          <span class="kicker">Quantum</span>
+          <h3>Task-relative quantum structure</h3>
+          <p>Quantum semantic carriers, observable recovery, access geometry, no-broadcasting, maximal recoverable algebras, and approximate recovery.</p>
+          <a href="/research/quantum-task-recovery/">Explore quantum research →</a>
+        </div>
+
+        <div class="area">
+          <span class="kicker">Repair</span>
+          <h3>Failure localization and structured repair</h3>
+          <p>Obstruction carriers, repair provenance, compositional repair, minimal interventions, conditioning, and architecture-aware recovery.</p>
+          <a href="/research/repair/">Explore repair →</a>
+        </div>
+
+        <div class="area">
+          <span class="kicker">Robustness</span>
+          <h3>Perturbation and reserve</h3>
+          <p>Passport perturbation, tolerance reserve, decoder sensitivity, propagation factors, allocation, and robustness-aware interface design.</p>
+          <a href="/research/robustness/">Explore robustness →</a>
+        </div>
+
+        <div class="area">
+          <span class="kicker">GURF</span>
+          <h3>Response-specialized physics program</h3>
+          <p>Law Passports, completion fibres, obstruction and repair, distinguishability, tidal response, radiation transport, quantum response, and model tests.</p>
+          <a href="/research/gurf/">Explore GURF →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <span class="eyebrow">Foundation</span>
+      <h2>The research sits on a fixed pipeline</h2>
+      <p class="section-lead">
+        Volume II developments are built above the frozen Version 1 foundation rather than continuously changing foundational definitions.
+      </p>
+
+      <div class="pipeline">
+        <div class="pipe">Specify</div>
+        <div class="pipe">Distinguish</div>
+        <div class="pipe">Descend</div>
+        <div class="pipe">Synthesize</div>
+        <div class="pipe">Realize</div>
+        <div class="pipe">Quantify</div>
+      </div>
+
+      <div class="layer-grid">
+        <div class="layer">
+          <strong>Version 1 — Canonical foundation</strong>
+          <p>
+            Branches, Interactions, Leaves, Trees, Passports, Responses, Roots, exact task sufficiency, dynamic closure, exactification, descent, finite interface synthesis, realization, closure price, memory distinctions, and permanent firewalls.
+          </p>
+        </div>
+
+        <div class="layer">
+          <strong>Volume II — Developments and applications</strong>
+          <p>
+            Nonlinear repair, topology and bundles, stochastic systems, distinction geometry, semantic width, PDE ports, causal cuts, many-body locality, task-relative quantum recovery, approximate degradation, robustness, repair provenance, and further applications.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <span class="eyebrow">Status discipline</span>
+      <h2>Research claims are not all given the same status</h2>
+      <p class="section-lead">
+        The site separates source-certified foundation, internally verified developments, classical imports, synthesis, candidate results, counterexamples, repairs, and open problems.
+      </p>
+
+      <div class="areas">
+        <div class="area">
+          <span class="kicker">SC</span>
+          <h3>Source-certified</h3>
+          <p>Part of the canonical source material and carried into the frozen Version 1 foundation.</p>
+        </div>
+
+        <div class="area">
+          <span class="kicker">RP / CH-V</span>
+          <h3>Review-proved / hardened</h3>
+          <p>Proved or strengthened during internal review and verification, without implying independent peer review.</p>
+        </div>
+
+        <div class="area">
+          <span class="kicker">CI</span>
+          <h3>Classical / imported</h3>
+          <p>Established mathematics used inside BM and credited as such.</p>
+        </div>
+
+        <div class="area">
+          <span class="kicker">BM-SYN</span>
+          <h3>BM synthesis</h3>
+          <p>Placement or synthesis of known ingredients inside the BM task-and-distinction architecture.</p>
+        </div>
+
+        <div class="area">
+          <span class="kicker">CH-C</span>
+          <h3>Candidate</h3>
+          <p>Active development that has not yet been promoted to the canonical foundation.</p>
+        </div>
+
+        <div class="area">
+          <span class="kicker">FW / OPEN</span>
+          <h3>Firewalls and open problems</h3>
+          <p>Counterexamples that block overclaiming, plus explicitly unresolved research questions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <span class="eyebrow">Open frontier</span>
+      <h2>Current hard questions</h2>
+      <p class="section-lead">
+        The most useful research targets are the points where exact structure, approximation, realization, and physical admissibility still fail to line up cleanly.
+      </p>
+
+      <div class="open-grid">
+        <div class="open">
+          <strong>Nonlinear finite-ε realization</strong>
+          <span>Characterize the true optimum for nonlinear continuous trajectory compression below the exact Jordan obstruction threshold.</span>
+        </div>
+
+        <div class="open">
+          <strong>Dimension-aware quantum stability</strong>
+          <span>Relate approximate algebraic commutator defect to physically realizable CPTP recovery under explicit finite-dimensional assumptions.</span>
+        </div>
+
+        <div class="open">
+          <strong>Global smooth realization</strong>
+          <span>Determine when local factorization or repair data can be assembled into a global smooth low-dimensional realization.</span>
+        </div>
+
+        <div class="open">
+          <strong>Approximate causal compatibility</strong>
+          <span>Understand when independently optimal local covers can be made dynamically compatible without large global surcharge.</span>
+        </div>
+
+        <div class="open">
+          <strong>Semantic phase transitions</strong>
+          <span>Quantify when weak coupling creates new task-relevant distinctions and how positive tolerance delays those transitions.</span>
+        </div>
+
+        <div class="open">
+          <strong>Scalable interface synthesis</strong>
+          <span>Find tractable classes where minimal composable interfaces can be computed without combinatorial explosion.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <span class="eyebrow">Go deeper</span>
+      <h2>Read the research by problem, not by theorem number</h2>
+      <p>
+        The research pages are designed for discovery first. Formal theorem IDs, equation registries, provenance, and status labels live in the Reference and Book for readers who want the complete technical record.
+      </p>
+
+      <div class="buttons">
+        <a class="button" href="/applications/">Browse applications</a>
+        <a class="button secondary" href="/reference/">Open formal reference</a>
+        <a class="button secondary" href="/book/">Read the book</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div>
+      <div class="brand" style="margin-bottom:.5rem">
+        <span class="mark">BM</span>
+        <span>Branch Mathematics</span>
+      </div>
+      <div>Mathematics of necessary distinctions.</div>
+    </div>
+
+    <div class="footer-links">
+      <a href="/learn/">Learn</a>
+      <a href="/research/">Research</a>
+      <a href="/applications/">Applications</a>
+      <a href="/reference/">Reference</a>
+      <a href="/book/">Book</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
