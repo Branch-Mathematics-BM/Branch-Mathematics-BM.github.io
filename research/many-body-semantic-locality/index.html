@@ -1,0 +1,1184 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Many-Body Semantic Locality and Clusters | Branch Mathematics</title>
+  <meta name="description" content="A technical Branch Mathematics treatment of many-body semantic locality: task light cones, contextual collars, cluster decompositions, local versus global width, weak-coupling transitions, area-law style scaling, and interface costs." />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <link rel="canonical" href="https://branch-mathematics-bm.github.io/research/many-body-semantic-locality/" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Many-Body Semantic Locality and Clusters" />
+  <meta property="og:description" content="Task-specific collars, clusters, locality scaling, weak coupling, and many-body semantic width." />
+  <meta property="og:url" content="https://branch-mathematics-bm.github.io/research/many-body-semantic-locality/" />
+  <meta property="og:site_name" content="Branch Mathematics" />
+
+  <meta name="theme-color" content="#07111f" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"TechArticle",
+    "headline":"Many-Body Semantic Locality and Clusters",
+    "description":"A technical treatment of task-relative locality and cluster structure in Branch Mathematics.",
+    "mainEntityOfPage":"https://branch-mathematics-bm.github.io/research/many-body-semantic-locality/",
+    "isPartOf":{
+      "@type":"WebSite",
+      "name":"Branch Mathematics",
+      "url":"https://branch-mathematics-bm.github.io/"
+    }
+  }
+  </script>
+
+  <style>
+    :root{
+      --bg:#07111f;
+      --text:#eef5ff;
+      --muted:#aabbd0;
+      --accent:#7bdcff;
+      --accent2:#b39cff;
+      --green:#7ef0c5;
+      --warn:#ffd98c;
+      --red:#ff9d9d;
+      --max:1160px;
+      --read:860px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 10% -5%,rgba(123,220,255,.11),transparent 28rem),
+        radial-gradient(circle at 90% 4%,rgba(179,156,255,.08),transparent 24rem),
+        linear-gradient(180deg,#06101d,#07111f 45%,#081422);
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height:1.72;
+    }
+
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(calc(100% - 2rem),var(--max));margin-inline:auto}
+    .read{width:min(100%,var(--read));margin-inline:auto}
+
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter:blur(18px);
+      background:rgba(7,17,31,.84);
+      border-bottom:1px solid rgba(123,220,255,.12);
+    }
+
+    .nav{
+      min-height:72px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:.75rem;
+      font-weight:760;
+      white-space:nowrap;
+    }
+
+    .mark{
+      width:34px;height:34px;border-radius:11px;
+      border:1px solid rgba(123,220,255,.5);
+      display:grid;place-items:center;
+      background:linear-gradient(135deg,rgba(123,220,255,.2),rgba(179,156,255,.12));
+    }
+
+    .navlinks{display:flex;gap:.15rem;flex-wrap:wrap;justify-content:flex-end}
+    .navlinks a{
+      color:var(--muted);
+      padding:.55rem .68rem;
+      border-radius:10px;
+      font-size:.93rem;
+    }
+
+    .navlinks a:hover,.navlinks a[aria-current="page"]{
+      color:var(--text);
+      background:rgba(255,255,255,.05);
+    }
+
+    .breadcrumbs{
+      padding:1.2rem 0 0;
+      color:#8397af;
+      font-size:.9rem;
+    }
+
+    .hero{
+      padding:4.6rem 0 4rem;
+      border-bottom:1px solid rgba(123,220,255,.1);
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      padding:.42rem .7rem;
+      border-radius:999px;
+      border:1px solid rgba(123,220,255,.3);
+      background:rgba(123,220,255,.06);
+      color:#c5efff;
+      font-size:.82rem;
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    h1{
+      font-size:clamp(3rem,7vw,5.6rem);
+      line-height:.96;
+      letter-spacing:-.05em;
+      margin:1rem 0 1.15rem;
+      max-width:14ch;
+    }
+
+    .hero .lead{
+      font-size:clamp(1.08rem,2vw,1.3rem);
+      color:#c4d4e6;
+      max-width:950px;
+      margin:0 0 1.5rem;
+    }
+
+    .meta{
+      display:flex;
+      gap:.55rem;
+      flex-wrap:wrap;
+      margin-top:1.2rem;
+    }
+
+    .tag{
+      display:inline-flex;
+      padding:.42rem .66rem;
+      border-radius:999px;
+      font-size:.76rem;
+      font-weight:800;
+      letter-spacing:.06em;
+      border:1px solid rgba(111,151,193,.24);
+      background:rgba(255,255,255,.025);
+      color:#d8e7f7;
+    }
+
+    .tag.cand{
+      border-color:rgba(255,217,140,.25);
+      background:rgba(255,217,140,.035);
+      color:#f7e8c7;
+    }
+
+    .tag.classic{
+      border-color:rgba(179,156,255,.26);
+      background:rgba(179,156,255,.04);
+      color:#ece5ff;
+    }
+
+    .abstract{
+      margin-top:1.7rem;
+      padding:1.3rem 1.4rem;
+      border:1px solid rgba(123,220,255,.22);
+      border-radius:20px;
+      background:linear-gradient(145deg,rgba(123,220,255,.05),rgba(179,156,255,.025));
+    }
+
+    .abstract strong{display:block;margin-bottom:.35rem;color:#def6ff}
+    .abstract p{margin:0;color:#c3d3e4}
+
+    .article{padding:4.8rem 0 5rem}
+
+    .article h2{
+      font-size:clamp(2rem,5vw,3.15rem);
+      line-height:1.05;
+      letter-spacing:-.035em;
+      margin:3.3rem 0 1rem;
+    }
+
+    .article h3{
+      font-size:1.35rem;
+      line-height:1.25;
+      margin:2.2rem 0 .7rem;
+    }
+
+    .article p{
+      color:#c4d2e2;
+      font-size:1.035rem;
+      margin:0 0 1.15rem;
+    }
+
+    .formula{
+      margin:1.4rem 0;
+      padding:1.05rem 1.15rem;
+      border-left:3px solid var(--accent);
+      background:rgba(123,220,255,.055);
+      border-radius:0 14px 14px 0;
+      color:#e0f1ff;
+      font-family:"Cambria Math","Times New Roman",serif;
+      font-size:1.08rem;
+      overflow:auto;
+    }
+
+    .theorem{
+      margin:1.7rem 0 2rem;
+      padding:1.35rem;
+      border:1px solid rgba(126,240,197,.24);
+      border-radius:20px;
+      background:linear-gradient(145deg,rgba(126,240,197,.04),rgba(255,255,255,.012));
+    }
+
+    .theorem .head{
+      display:flex;
+      align-items:center;
+      gap:.55rem;
+      flex-wrap:wrap;
+      margin-bottom:.55rem;
+    }
+
+    .theorem .head strong{
+      font-size:1.08rem;
+      color:#e7fff5;
+    }
+
+    .theorem .mini{
+      padding:.25rem .5rem;
+      border-radius:999px;
+      border:1px solid rgba(126,240,197,.28);
+      color:#c7f9e7;
+      font-size:.72rem;
+      font-weight:800;
+      letter-spacing:.06em;
+    }
+
+    .theorem p{margin:.45rem 0;color:#cbd9e6}
+
+    .firewall{
+      margin:1.7rem 0;
+      padding:1.2rem 1.3rem;
+      border-radius:18px;
+      border:1px solid rgba(255,157,157,.2);
+      background:rgba(255,157,157,.035);
+      color:#f1cccc;
+    }
+
+    .firewall strong{color:#ffd6d6}
+
+    .callout{
+      margin:1.7rem 0;
+      padding:1.2rem 1.3rem;
+      border-radius:18px;
+      border:1px solid rgba(255,217,140,.22);
+      background:rgba(255,217,140,.04);
+      color:#eadfc9;
+    }
+
+    .compare{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:1rem;
+      margin:1.4rem 0 2rem;
+    }
+
+    .compare .box{
+      border:1px solid rgba(111,151,193,.22);
+      border-radius:18px;
+      background:rgba(255,255,255,.02);
+      padding:1.2rem;
+    }
+
+    .compare h3{margin-top:0}
+    .compare p{font-size:.96rem;margin-bottom:0}
+
+    .example{
+      margin:1.6rem 0 2rem;
+      padding:1.35rem;
+      border-radius:20px;
+      border:1px solid rgba(179,156,255,.22);
+      background:linear-gradient(145deg,rgba(179,156,255,.04),rgba(255,255,255,.015));
+    }
+
+    .example h3{margin-top:0;color:#efe8ff}
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin:1.25rem 0 1.9rem;
+      border:1px solid rgba(111,151,193,.22);
+      background:rgba(255,255,255,.015);
+    }
+
+    th,td{
+      padding:.82rem;
+      border-bottom:1px solid rgba(111,151,193,.16);
+      text-align:left;
+      vertical-align:top;
+    }
+
+    th{
+      color:#dff7ff;
+      background:rgba(123,220,255,.055);
+      font-size:.92rem;
+    }
+
+    td{
+      color:#c4d2e2;
+      font-size:.94rem;
+    }
+
+    .next{
+      padding:4.5rem 0;
+      border-top:1px solid rgba(123,220,255,.1);
+      background:#050d18;
+    }
+
+    .next-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:1rem;
+      margin-top:1.6rem;
+    }
+
+    .card{
+      min-height:100%;
+      padding:1.2rem;
+      border-radius:20px;
+      border:1px solid rgba(111,151,193,.2);
+      background:rgba(255,255,255,.02);
+      transition:.2s ease;
+    }
+
+    .card:hover{
+      transform:translateY(-2px);
+      border-color:rgba(123,220,255,.42);
+      background:rgba(123,220,255,.04);
+    }
+
+    .card small{
+      color:var(--accent);
+      font-size:.75rem;
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .card h3{margin:.5rem 0 .45rem}
+    .card p{color:var(--muted);font-size:.93rem;margin:0}
+
+    footer{
+      padding:3rem 0;
+      border-top:1px solid rgba(255,255,255,.07);
+      background:#040a12;
+      color:#8fa3ba;
+    }
+
+    .footer-grid{
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:1rem;
+      align-items:end;
+    }
+
+    .footer-links{
+      display:flex;
+      gap:.7rem;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    @media(max-width:900px){
+      .navlinks{display:none}
+      .next-grid{grid-template-columns:1fr}
+    }
+
+    @media(max-width:620px){
+      .hero{padding-top:3rem}
+      .compare{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr}
+      .footer-links{justify-content:flex-start}
+      th,td{font-size:.87rem}
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="/" aria-label="Branch Mathematics home">
+      <span class="mark">BM</span>
+      <span>Branch Mathematics</span>
+    </a>
+
+    <nav class="navlinks" aria-label="Primary navigation">
+      <a href="/learn/">Learn</a>
+      <a href="/research/" aria-current="page">Research</a>
+      <a href="/applications/">Applications</a>
+      <a href="/examples/">Examples</a>
+      <a href="/calculator/">Calculator</a>
+      <a href="/reference/">Reference</a>
+      <a href="/book/">Book</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <div class="wrap breadcrumbs">
+    <a href="/">Home</a> / <a href="/research/">Research</a> / Many-Body Semantic Locality
+  </div>
+
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Many-body systems</span>
+      <h1>Many-Body Semantic Locality and Clusters</h1>
+
+      <p class="lead">
+        A many-body system may contain an enormous number of microscopic degrees of freedom while a local receiver task depends only on a bounded causal collar, a small collection of task-active clusters, or a low-width boundary profile. Semantic locality asks which parts of the many-body state can actually change the declared response.
+      </p>
+
+      <div class="meta">
+        <span class="tag cand">Volume II development</span>
+        <span class="tag classic">Uses classical locality, cluster, and many-body mathematics</span>
+      </div>
+
+      <div class="abstract">
+        <strong>Abstract</strong>
+        <p>
+          Many-body semantic locality separates physical support from task support. For a local task on region A, the exact or approximate receiver-visible state may depend only on a backward causal collar determined by the native dynamics. In finite-depth local circuits this collar can be exact. In local Hamiltonian systems, Lieb–Robinson-type estimates can bound approximate influence outside a growing light cone. BM then asks how semantic width scales with region size, boundary size, coupling strength, context, and time; how weakly interacting components combine into task-active clusters; and when locality produces an area-law-like interface burden rather than volume-law growth. These are task-relative representation statements, not claims about entanglement entropy.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <article class="article">
+    <div class="read">
+
+      <h2>1. Physical support and task support are different</h2>
+
+      <p>
+        Let a many-body system occupy sites:
+      </p>
+
+      <div class="formula">
+        V={1,2,…,N}.
+      </div>
+
+      <p>
+        A native state can involve all sites, while the receiver task is supported only on a region:
+      </p>
+
+      <div class="formula">
+        A⊂V.
+      </div>
+
+      <p>
+        The first BM question is not how large the full system is. It is:
+      </p>
+
+      <div class="formula">
+        which sites can still change the task on A?
+      </div>
+
+      <p>
+        That defines the task support or causal support relevant to the Passport.
+      </p>
+
+      <h2>2. Local task profile</h2>
+
+      <p>
+        Let <strong>T<sub>A</sub></strong> be a task supported in region <strong>A</strong>.
+      </p>
+
+      <p>
+        For a global state <strong>x</strong>, define the task profile:
+      </p>
+
+      <div class="formula">
+        P<sub>A</sub>(x)=T<sub>A</sub>(x).
+      </div>
+
+      <p>
+        In contextual form:
+      </p>
+
+      <div class="formula">
+        P<sub>A</sub>(x)(c)=B<sub>A</sub>(x,c).
+      </div>
+
+      <p>
+        Two global states can differ throughout the bulk and still be task-equivalent if all allowed contexts produce the same response on <strong>A</strong>.
+      </p>
+
+      <h2>3. Exact task collar in finite-depth circuits</h2>
+
+      <p>
+        Consider a local circuit of depth <strong>D</strong> with finite interaction range <strong>r</strong>.
+      </p>
+
+      <p>
+        A final observable supported on <strong>A</strong> depends only on sites in its backward light cone.
+      </p>
+
+      <div class="formula">
+        A<sup>back</sup>
+        ⊂
+        neighborhood(A,rD).
+      </div>
+
+      <div class="theorem">
+        <div class="head">
+          <strong>Exact Circuit Collar Principle</strong>
+          <span class="mini">Classical locality + BM placement</span>
+        </div>
+
+        <p>
+          For bounded-depth local circuits, degrees of freedom outside the exact backward light cone cannot affect the declared final local task.
+        </p>
+      </div>
+
+      <p>
+        BM uses this to reduce the exact Passport from the full system to the task-active collar.
+      </p>
+
+      <h2>4. Approximate collars in continuous local dynamics</h2>
+
+      <p>
+        For local Hamiltonian systems, influence typically is not exactly zero outside a strict cone.
+      </p>
+
+      <p>
+        Lieb–Robinson-type bounds can suppress influence beyond an effective light cone.
+      </p>
+
+      <div class="formula">
+        ||[A(t),B]||
+        ≲
+        C e<sup>−μ(d−vt)</sup>
+      </div>
+
+      <p>
+        under the native theorem's assumptions.
+      </p>
+
+      <p>
+        For a declared tolerance <strong>ε</strong>, the task-active collar can be chosen large enough that influence outside it falls below the allowed error.
+      </p>
+
+      <div class="formula">
+        d
+        ≳
+        vt
+        +
+        μ<sup>−1</sup>log(C/ε).
+      </div>
+
+      <div class="callout">
+        The collar comes from the native locality theorem. BM uses it to bound task-specific semantic width; it does not claim the locality bound itself.
+      </div>
+
+      <h2>5. Exact locality versus approximate locality</h2>
+
+      <div class="compare">
+        <div class="box">
+          <h3>Exact locality</h3>
+          <p>
+            Outside the task light cone, influence is exactly zero. States may be merged exactly with respect to the local task.
+          </p>
+        </div>
+
+        <div class="box">
+          <h3>Approximate locality</h3>
+          <p>
+            Outside the collar, influence is small rather than zero. States may be merged only at positive tolerance.
+          </p>
+        </div>
+      </div>
+
+      <h2>6. Task-relative semantic width of a region</h2>
+
+      <p>
+        Let:
+      </p>
+
+      <div class="formula">
+        w<sub>A</sub>(ε,t)
+      </div>
+
+      <p>
+        denote the semantic width needed to preserve the declared task on region <strong>A</strong> through time <strong>t</strong>.
+      </p>
+
+      <p>
+        The quantity depends on:
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Parameter</th>
+            <th>Effect</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Task support A</td>
+            <td>Larger receiver region can expose more distinctions.</td>
+          </tr>
+          <tr>
+            <td>Time t</td>
+            <td>The backward light cone can grow.</td>
+          </tr>
+          <tr>
+            <td>Tolerance ε</td>
+            <td>Higher tolerance can shrink the effective collar.</td>
+          </tr>
+          <tr>
+            <td>Coupling strength λ</td>
+            <td>Weak interactions can activate new task-visible distinctions.</td>
+          </tr>
+          <tr>
+            <td>Context family C</td>
+            <td>Portable contexts can expose more distinctions than one deployment.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>7. Volume law is not automatic</h2>
+
+      <p>
+        Native state dimension can scale with system volume:
+      </p>
+
+      <div class="formula">
+        |V|.
+      </div>
+
+      <p>
+        Task width need not.
+      </p>
+
+      <p>
+        If only a bounded collar around <strong>A</strong> can influence the task before the deadline, then semantic width is controlled by that collar rather than by the full volume.
+      </p>
+
+      <div class="formula">
+        global state size
+        can scale with volume,
+        while task width scales with active support.
+      </div>
+
+      <h2>8. Semantic area-law idea</h2>
+
+      <p>
+        In interface-dominated tasks, the task-relevant burden may scale with the boundary between a region and its environment rather than the region's volume.
+      </p>
+
+      <div class="formula">
+        w<sub>A</sub>(ε)
+        ∝
+        |∂A|
+      </div>
+
+      <p>
+        can occur under suitable locality, finite-correlation, transfer, or interface assumptions.
+      </p>
+
+      <div class="firewall">
+        <strong>Firewall:</strong> a semantic area law is not automatically an entanglement-entropy area law, and one should not infer one from the other without a theorem connecting the specific quantities.
+      </div>
+
+      <h2>9. Why area scaling can appear</h2>
+
+      <p>
+        Suppose the downstream environment interacts with region <strong>A</strong> only through a boundary interface.
+      </p>
+
+      <p>
+        Then the portable task state may need to preserve only the distinctions that survive into that interface.
+      </p>
+
+      <div class="formula">
+        interior state
+        →
+        boundary task profile
+        →
+        outside receiver.
+      </div>
+
+      <p>
+        If the boundary profile has bounded local complexity, total width can scale approximately with boundary size.
+      </p>
+
+      <h2>10. Locality surcharge</h2>
+
+      <p>
+        A centralized observer with access to the entire many-body state may use a very small quotient.
+      </p>
+
+      <p>
+        A distributed architecture where each local region must export its own portable state can require more total width.
+      </p>
+
+      <div class="formula">
+        Γ<sub>loc</sub>
+        =
+        Σ<sub>i</sub>w<sub>i</sub>
+        -
+        w<sub>global</sub>
+        ≥0
+      </div>
+
+      <p>
+        whenever the local product representation refines the global semantic quotient.
+      </p>
+
+      <h2>11. Clusters</h2>
+
+      <p>
+        A cluster is a set of degrees of freedom that must be treated jointly because their task response cannot be factorized into independent local contributions at the declared tolerance.
+      </p>
+
+      <div class="formula">
+        cluster
+        =
+        minimal or useful task-active interaction block.
+      </div>
+
+      <p>
+        Cluster definitions are task-relative. A set that is coupled physically may still be semantically separable for one receiver and inseparable for another.
+      </p>
+
+      <h2>12. Exact cluster separability</h2>
+
+      <p>
+        Suppose the task profile on two subsystems factors:
+      </p>
+
+      <div class="formula">
+        P(x<sub>A</sub>,x<sub>B</sub>)
+        =
+        F(
+          P<sub>A</sub>(x<sub>A</sub>),
+          P<sub>B</sub>(x<sub>B</sub>)
+        ).
+      </div>
+
+      <p>
+        Then a product interface may suffice.
+      </p>
+
+      <p>
+        If no admissible factorization preserves the declared response, the subsystems must remain in one semantic cluster or exchange additional interface state.
+      </p>
+
+      <h2>13. Weak coupling and cluster activation</h2>
+
+      <p>
+        At <strong>λ=0</strong>, two regions can be semantically independent.
+      </p>
+
+      <p>
+        At nonzero coupling, cross-region task dependence can appear.
+      </p>
+
+      <div class="formula">
+        P<sub>λ</sub>(x<sub>A</sub>,x<sub>B</sub>)
+        =
+        P<sub>0</sub>
+        +
+        λV<sub>1</sub>
+        +
+        λ²V<sub>2</sub>
+        +···
+      </div>
+
+      <p>
+        The first nonzero cross term indicates the order at which the two regions become semantically coupled.
+      </p>
+
+      <h2>14. Approximate cluster threshold</h2>
+
+      <p>
+        If the first nonzero cross-cluster distinction occurs at order <strong>m</strong>, then a positive-tolerance cluster merger occurs near:
+      </p>
+
+      <div class="formula">
+        λ<sub>c</sub>(ε)
+        ~
+        (ε/||V<sub>m</sub>||)<sup>1/m</sup>.
+      </div>
+
+      <p>
+        Below this scale, independent cluster approximations may remain valid. Above it, cross-cluster distinctions become receiver-visible.
+      </p>
+
+      <h2>15. Cluster graph</h2>
+
+      <p>
+        One can build a task-dependent interaction graph whose nodes are candidate regions and whose edges represent receiver-visible coupling above tolerance.
+      </p>
+
+      <div class="formula">
+        edge(i,j)
+        ⇔
+        cross-task effect exceeds ε.
+      </div>
+
+      <p>
+        Connected components then provide one candidate cluster decomposition.
+      </p>
+
+      <div class="firewall">
+        <strong>Firewall:</strong> pairwise coupling graphs need not capture every higher-order many-body dependence. Hypergraph structure may be necessary.
+      </div>
+
+      <h2>16. Higher-order cluster dependence</h2>
+
+      <p>
+        Three or more regions can have a joint task effect even when no pair alone reveals the full dependence.
+      </p>
+
+      <p>
+        This can occur in parity-like tasks, contextual interactions, constrained systems, and higher-order perturbative responses.
+      </p>
+
+      <div class="formula">
+        pairwise semantic independence
+        does not imply
+        global semantic independence.
+      </div>
+
+      <p>
+        BM therefore preserves the same pairwise-versus-global firewall used elsewhere.
+      </p>
+
+      <h2>17. Correlation is not sufficient by itself</h2>
+
+      <p>
+        Physical correlation does not automatically imply semantic coupling.
+      </p>
+
+      <p>
+        Two regions can be strongly correlated yet irrelevant to the declared task, while weakly correlated regions can still carry a crucial receiver distinction.
+      </p>
+
+      <div class="formula">
+        correlation strength
+        ≠
+        task relevance.
+      </div>
+
+      <h2>18. Cluster width</h2>
+
+      <p>
+        For a cluster <strong>C</strong>, define:
+      </p>
+
+      <div class="formula">
+        w<sub>C</sub>(ε)
+        =
+        log₂
+        𝒩(P<sub>C</sub>(X<sub>C</sub>),d,ε).
+      </div>
+
+      <p>
+        A cluster decomposition:
+      </p>
+
+      <div class="formula">
+        V=C₁∪···∪C<sub>k</sub>
+      </div>
+
+      <p>
+        induces a candidate total local width:
+      </p>
+
+      <div class="formula">
+        W<sub>clusters</sub>
+        =
+        Σ<sub>j=1</sub><sup>k</sup>
+        w<sub>C<sub>j</sub></sub>(ε<sub>j</sub>).
+      </div>
+
+      <p>
+        The global task may require less if cluster outputs are redundant, or more if cross-cluster compatibility demands additional coordination state.
+      </p>
+
+      <h2>19. Hierarchical clustering</h2>
+
+      <p>
+        Many-body systems often admit nested scales:
+      </p>
+
+      <div class="formula">
+        sites
+        →
+        local blocks
+        →
+        mesoscopic clusters
+        →
+        global response.
+      </div>
+
+      <p>
+        BM can assign an approximate Passport to each level and propagate error upward.
+      </p>
+
+      <div class="formula">
+        ε<sub>root</sub>
+        ≤
+        Σ<sub>v</sub>
+        G<sub>v</sub> ε<sub>v</sub><sup>loc</sup>.
+      </div>
+
+      <p>
+        This gives a hierarchy-aware error budget.
+      </p>
+
+      <h2>20. Hierarchical semantic surcharge</h2>
+
+      <p>
+        If each level independently compresses its local state, the combined hierarchy can require more total width than one centralized reduction.
+      </p>
+
+      <div class="formula">
+        Γ<sub>hier</sub>
+        =
+        W<sub>hierarchical</sub>
+        -
+        w<sub>central</sub>
+        ≥0
+      </div>
+
+      <p>
+        when the hierarchy collectively refines the centralized task quotient.
+      </p>
+
+      <h2>21. Dynamic cluster growth</h2>
+
+      <p>
+        A task-active cluster can grow over time as the backward causal region expands.
+      </p>
+
+      <div class="formula">
+        C(t)
+        =
+        task-active region at horizon t.
+      </div>
+
+      <p>
+        In local systems:
+      </p>
+
+      <div class="formula">
+        C(t)
+        ⊂
+        neighborhood(A,vt+r<sub>ε</sub>)
+      </div>
+
+      <p>
+        under the native locality estimate.
+      </p>
+
+      <h2>22. Dynamic cluster shrinkage</h2>
+
+      <p>
+        Clusters can also shrink.
+      </p>
+
+      <p>
+        Dissipation, synchronization, contraction, or deadline expiration can remove distinctions that were previously task-relevant.
+      </p>
+
+      <div class="formula">
+        cluster structure need not grow monotonically in time.
+      </div>
+
+      <p>
+        This mirrors the nonmonotone coupling behavior of semantic width.
+      </p>
+
+      <h2>23. Many-body interface cuts</h2>
+
+      <p>
+        For a region <strong>A</strong>, the semantic cut across <strong>∂A</strong> is the task quotient of all interior states by equality of every exterior response allowed by the Passport.
+      </p>
+
+      <div class="formula">
+        Q<sub>∂A</sub><sup>*</sup>
+        =
+        X<sub>A</sub>
+        /
+        (same exterior task profile).
+      </div>
+
+      <p>
+        This is the many-body analogue of PDE port reduction and distributed semantic cuts.
+      </p>
+
+      <h2>24. Area law versus volume law as a receiver question</h2>
+
+      <div class="compare">
+        <div class="box">
+          <h3>Volume-like scaling</h3>
+          <p>
+            The receiver can distinguish information throughout the entire region or long-range dependencies keep the full bulk relevant.
+          </p>
+        </div>
+
+        <div class="box">
+          <h3>Area-like scaling</h3>
+          <p>
+            The receiver sees the region only through a bounded-complexity interface or finite causal collar near the boundary.
+          </p>
+        </div>
+      </div>
+
+      <p>
+        Which regime occurs is a theorem about the declared task, dynamics, context, tolerance, and native locality—not a universal BM axiom.
+      </p>
+
+      <h2>25. Quantum many-body sector</h2>
+
+      <p>
+        In quantum systems, task support is expressed through observables or operator systems rather than only classical variables.
+      </p>
+
+      <p>
+        A local quantum carrier must preserve the declared operator system and its required correlations.
+      </p>
+
+      <div class="formula">
+        task algebra / operator system
+        →
+        quantum semantic carrier.
+      </div>
+
+      <p>
+        Exact and approximate quantum locality require additional CPTP and operator-algebra constraints.
+      </p>
+
+      <p>
+        Those are developed separately in the quantum research pages.
+      </p>
+
+      <h2>26. Why entanglement entropy is not semantic width</h2>
+
+      <p>
+        Entanglement entropy quantifies a specific quantum correlation structure of a state and bipartition.
+      </p>
+
+      <p>
+        Semantic width quantifies the representation burden of a declared task, context, tolerance, and realization problem.
+      </p>
+
+      <div class="firewall">
+        <strong>Permanent firewall:</strong> entanglement entropy and semantic width are different quantities. Neither should be substituted for the other without a specific theorem.
+      </div>
+
+      <h2>27. A reusable many-body locality workflow</h2>
+
+      <p>
+        A practical BM analysis can proceed as:
+      </p>
+
+      <div class="formula">
+        declare local task
+        →
+        identify native causal collar
+        →
+        build receiver profile
+        →
+        estimate exact/approximate width
+        →
+        test factorization into clusters
+        →
+        measure locality surcharge
+        →
+        track coupling and horizon dependence.
+      </div>
+
+      <h2>28. What BM contributes here</h2>
+
+      <p>
+        Light cones, Lieb–Robinson bounds, cluster expansions, locality, tensor-network ideas, boundary transfer operators, and many-body correlation theory are established mathematics and physics.
+      </p>
+
+      <p>
+        The BM synthesis is to place them under one receiver-relative distinction question:
+      </p>
+
+      <div class="callout">
+        Which regions must remain jointly distinguishable for this task, at this horizon and tolerance, under these allowed contexts—and how much width is added by locality, coupling, clustering, and distributed realization?
+      </div>
+
+      <h2>29. Open directions</h2>
+
+      <p>
+        Important open problems include rigorous semantic area-law criteria, cluster stability under perturbation, higher-order hypergraph cluster detection, scalable hierarchical width bounds, nonlinear continuum-to-lattice interfaces, task-relative tensor-network compression, and many-body semantic phase diagrams.
+      </p>
+
+      <p>
+        The next natural research page is Quantum Semantic Carriers.
+      </p>
+
+    </div>
+  </article>
+
+  <section class="next">
+    <div class="wrap">
+      <span class="eyebrow">Continue</span>
+      <h2 style="font-size:clamp(2rem,5vw,3.4rem);line-height:1.04;letter-spacing:-.035em;margin:.7rem 0 .9rem">
+        Related research
+      </h2>
+
+      <div class="next-grid">
+        <a class="card" href="/research/quantum-semantic-carriers/">
+          <small>Quantum</small>
+          <h3>Quantum Semantic Carriers</h3>
+          <p>Move from classical many-body locality to operator-system carriers, observable preservation, and quantum access geometry.</p>
+        </a>
+
+        <a class="card" href="/research/coupling-semantic-transitions/">
+          <small>Coupling</small>
+          <h3>Coupling and Semantic Phase Transitions</h3>
+          <p>Study the thresholds at which weak interactions create new cross-cluster distinctions.</p>
+        </a>
+
+        <a class="card" href="/research/spacetime-semantic-width/">
+          <small>Causality</small>
+          <h3>Spacetime Semantic Width</h3>
+          <p>Connect clusters to causal collars, deadlines, residual states, and memory-versus-communication tradeoffs.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div>
+      <div class="brand" style="margin-bottom:.5rem">
+        <span class="mark">BM</span>
+        <span>Branch Mathematics</span>
+      </div>
+      <div>Mathematics of necessary distinctions.</div>
+    </div>
+
+    <div class="footer-links">
+      <a href="/learn/">Learn</a>
+      <a href="/research/">Research</a>
+      <a href="/applications/">Applications</a>
+      <a href="/reference/">Reference</a>
+      <a href="/book/">Book</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
