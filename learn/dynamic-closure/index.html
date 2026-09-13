@@ -1,0 +1,903 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Dynamic Closure Explained | Branch Mathematics</title>
+  <meta name="description" content="Dynamic closure asks whether a reduced state can evolve autonomously without hidden native distinctions. Learn the exact criterion, examples, failure modes, and how Branch Mathematics separates static sufficiency from dynamic closure." />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <link rel="canonical" href="https://branch-mathematics-bm.github.io/learn/dynamic-closure/" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Dynamic Closure Explained" />
+  <meta property="og:description" content="Why a representation that is correct now can still fail one time step later." />
+  <meta property="og:url" content="https://branch-mathematics-bm.github.io/learn/dynamic-closure/" />
+  <meta property="og:site_name" content="Branch Mathematics" />
+
+  <meta name="theme-color" content="#07111f" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"Dynamic Closure Explained",
+    "description":"An introduction to dynamic closure in Branch Mathematics, including exact criteria, examples, and its distinction from static task sufficiency.",
+    "mainEntityOfPage":"https://branch-mathematics-bm.github.io/learn/dynamic-closure/",
+    "isPartOf":{
+      "@type":"WebSite",
+      "name":"Branch Mathematics",
+      "url":"https://branch-mathematics-bm.github.io/"
+    }
+  }
+  </script>
+
+  <style>
+    :root{
+      --bg:#07111f;
+      --panel:#101e31;
+      --text:#eef5ff;
+      --muted:#aabbd0;
+      --line:#27415e;
+      --accent:#7bdcff;
+      --accent-2:#b39cff;
+      --accent-3:#7ef0c5;
+      --warn:#ffd98c;
+      --max:1120px;
+      --read:820px;
+      --radius:22px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 12% -5%,rgba(123,220,255,.12),transparent 28rem),
+        radial-gradient(circle at 88% 4%,rgba(179,156,255,.09),transparent 24rem),
+        linear-gradient(180deg,#06101d,#07111f 45%,#081422);
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height:1.7;
+    }
+
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(calc(100% - 2rem),var(--max));margin-inline:auto}
+    .read{width:min(100%,var(--read));margin-inline:auto}
+
+    .site-header{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:blur(18px);
+      background:rgba(7,17,31,.84);
+      border-bottom:1px solid rgba(123,220,255,.12);
+    }
+
+    .nav{
+      min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:1rem;
+    }
+
+    .brand{
+      display:flex;align-items:center;gap:.75rem;font-weight:760;white-space:nowrap;
+    }
+
+    .mark{
+      width:34px;height:34px;border-radius:11px;
+      border:1px solid rgba(123,220,255,.5);
+      display:grid;place-items:center;
+      background:linear-gradient(135deg,rgba(123,220,255,.2),rgba(179,156,255,.12));
+    }
+
+    .navlinks{display:flex;gap:.15rem;flex-wrap:wrap;justify-content:flex-end}
+    .navlinks a{
+      color:var(--muted);padding:.55rem .68rem;border-radius:10px;font-size:.93rem;
+    }
+    .navlinks a:hover,.navlinks a[aria-current="page"]{
+      color:var(--text);background:rgba(255,255,255,.05);
+    }
+
+    .breadcrumbs{
+      padding:1.2rem 0 0;
+      color:#8397af;
+      font-size:.9rem;
+    }
+
+    .hero{
+      padding:4.2rem 0 4rem;
+      border-bottom:1px solid rgba(123,220,255,.1);
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      padding:.42rem .7rem;
+      border-radius:999px;
+      border:1px solid rgba(123,220,255,.3);
+      background:rgba(123,220,255,.06);
+      color:#c5efff;
+      font-size:.82rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+    }
+
+    h1{
+      font-size:clamp(3rem,8vw,6rem);
+      line-height:.94;
+      letter-spacing:-.055em;
+      margin:1rem 0 1.1rem;
+      max-width:11ch;
+    }
+
+    .hero .lead{
+      font-size:clamp(1.08rem,2vw,1.34rem);
+      color:#c4d4e6;
+      max-width:850px;
+      margin:0 0 1.4rem;
+    }
+
+    .summary-box{
+      margin-top:1.6rem;
+      padding:1.25rem 1.35rem;
+      border:1px solid rgba(123,220,255,.24);
+      border-radius:18px;
+      background:linear-gradient(145deg,rgba(123,220,255,.055),rgba(179,156,255,.03));
+    }
+
+    .article{padding:4.8rem 0 5rem}
+
+    .article h2{
+      font-size:clamp(2rem,5vw,3.2rem);
+      line-height:1.05;
+      letter-spacing:-.035em;
+      margin:3.2rem 0 1rem;
+    }
+
+    .article h3{
+      font-size:1.35rem;
+      margin:2.1rem 0 .7rem;
+      line-height:1.25;
+    }
+
+    .article p{
+      color:#c4d2e2;
+      font-size:1.04rem;
+      margin:0 0 1.15rem;
+    }
+
+    .article strong{color:#f1f7ff}
+
+    .formula{
+      margin:1.4rem 0;
+      padding:1rem 1.1rem;
+      border-left:3px solid var(--accent);
+      background:rgba(123,220,255,.055);
+      border-radius:0 14px 14px 0;
+      color:#e0f1ff;
+      font-family:"Cambria Math","Times New Roman",serif;
+      font-size:1.08rem;
+      overflow:auto;
+    }
+
+    .quote{
+      margin:2rem 0;
+      padding:1.4rem 1.5rem;
+      border:1px solid rgba(179,156,255,.24);
+      border-radius:18px;
+      background:rgba(179,156,255,.045);
+      font-size:1.14rem;
+      color:#e4e4ff;
+    }
+
+    .compare{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:1rem;
+      margin:1.4rem 0 2rem;
+    }
+
+    .compare .box{
+      border:1px solid rgba(111,151,193,.22);
+      border-radius:18px;
+      background:rgba(255,255,255,.02);
+      padding:1.2rem;
+    }
+
+    .compare h3{margin-top:0}
+    .compare p{font-size:.97rem;margin-bottom:0}
+
+    .example{
+      margin:1.5rem 0 2rem;
+      padding:1.4rem;
+      border-radius:20px;
+      border:1px solid rgba(126,240,197,.22);
+      background:linear-gradient(145deg,rgba(126,240,197,.045),rgba(255,255,255,.015));
+    }
+
+    .example h3{margin-top:0;color:#dffcef}
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin:1.2rem 0 1.8rem;
+      border:1px solid rgba(111,151,193,.22);
+      border-radius:16px;
+      overflow:hidden;
+      background:rgba(255,255,255,.015);
+    }
+
+    th,td{
+      padding:.78rem .82rem;
+      border-bottom:1px solid rgba(111,151,193,.16);
+      text-align:left;
+      vertical-align:top;
+    }
+
+    th{
+      color:#dff7ff;
+      background:rgba(123,220,255,.055);
+      font-size:.92rem;
+    }
+
+    td{color:#c4d2e2;font-size:.95rem}
+
+    .callout{
+      margin:2rem 0;
+      padding:1.2rem 1.3rem;
+      border-radius:18px;
+      border:1px solid rgba(255,217,140,.22);
+      background:rgba(255,217,140,.04);
+      color:#eadfc9;
+    }
+
+    .steps{
+      display:grid;
+      gap:.7rem;
+      margin:1.4rem 0 2rem;
+    }
+
+    .step{
+      display:grid;
+      grid-template-columns:42px 1fr;
+      gap:.8rem;
+      align-items:start;
+      padding:1rem;
+      border:1px solid rgba(111,151,193,.2);
+      border-radius:16px;
+      background:rgba(255,255,255,.02);
+    }
+
+    .step .num{
+      width:34px;height:34px;border-radius:10px;
+      display:grid;place-items:center;
+      border:1px solid rgba(123,220,255,.28);
+      color:var(--accent);
+      background:rgba(123,220,255,.06);
+      font-weight:800;
+    }
+
+    .step strong{display:block;margin-bottom:.25rem}
+    .step span{color:var(--muted);font-size:.94rem}
+
+    .next{
+      padding:4.5rem 0;
+      border-top:1px solid rgba(123,220,255,.1);
+      background:#050d18;
+    }
+
+    .next-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:1rem;
+      margin-top:1.6rem;
+    }
+
+    .card{
+      min-height:100%;
+      padding:1.2rem;
+      border-radius:20px;
+      border:1px solid rgba(111,151,193,.2);
+      background:rgba(255,255,255,.02);
+      transition:.2s ease;
+    }
+
+    .card:hover{
+      transform:translateY(-2px);
+      border-color:rgba(123,220,255,.42);
+      background:rgba(123,220,255,.04);
+    }
+
+    .card small{
+      color:var(--accent);
+      font-size:.75rem;
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .card h3{margin:.5rem 0 .45rem}
+    .card p{color:var(--muted);font-size:.93rem;margin:0}
+
+    footer{
+      padding:3rem 0;
+      border-top:1px solid rgba(255,255,255,.07);
+      background:#040a12;
+      color:#8fa3ba;
+    }
+
+    .footer-grid{
+      display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:end;
+    }
+
+    .footer-links{display:flex;gap:.7rem;flex-wrap:wrap;justify-content:flex-end}
+
+    @media(max-width:900px){
+      .navlinks{display:none}
+      .next-grid{grid-template-columns:1fr}
+    }
+
+    @media(max-width:620px){
+      .hero{padding-top:3rem}
+      .compare{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr}
+      .footer-links{justify-content:flex-start}
+      th,td{font-size:.88rem}
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="/" aria-label="Branch Mathematics home">
+      <span class="mark">BM</span>
+      <span>Branch Mathematics</span>
+    </a>
+
+    <nav class="navlinks" aria-label="Primary navigation">
+      <a href="/learn/" aria-current="page">Learn</a>
+      <a href="/research/">Research</a>
+      <a href="/applications/">Applications</a>
+      <a href="/examples/">Examples</a>
+      <a href="/calculator/">Calculator</a>
+      <a href="/reference/">Reference</a>
+      <a href="/book/">Book</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <div class="wrap breadcrumbs">
+    <a href="/">Home</a> / <a href="/learn/">Learn</a> / Dynamic Closure Explained
+  </div>
+
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Dynamics</span>
+      <h1>Dynamic Closure Explained</h1>
+
+      <p class="lead">
+        Dynamic closure asks whether a reduced state can determine its own lawful future evolution without secretly depending on distinctions that were discarded during compression.
+      </p>
+
+      <div class="summary-box">
+        <strong>Short version:</strong>
+        a reduced model is dynamically closed only when any two native states represented as the same reduced state also produce the same reduced successor.
+      </div>
+    </div>
+  </section>
+
+  <article class="article">
+    <div class="read">
+
+      <h2>Why dynamic closure matters</h2>
+
+      <p>
+        A reduced representation can be perfectly adequate for answering a task at the current moment and still fail as a dynamical model.
+      </p>
+
+      <p>
+        The reason is simple: the representation may have merged native states that look identical now but evolve differently later.
+      </p>
+
+      <div class="quote">
+        A reduced state is not dynamically complete merely because it is currently correct.
+      </div>
+
+      <p>
+        This is one of the cleanest examples of why Branch Mathematics tracks distinctions through time rather than judging a compression only at the instant it is created.
+      </p>
+
+      <h2>Static sufficiency first</h2>
+
+      <p>
+        Suppose a native state space <strong>X</strong> is compressed by a representation
+        <strong>R : X → Q</strong>, and the current task is
+        <strong>T : X → Y</strong>.
+      </p>
+
+      <p>
+        The representation is statically sufficient for the task if the task factors through the representation:
+      </p>
+
+      <div class="formula">
+        T = T̄R
+      </div>
+
+      <p>
+        Equivalently:
+      </p>
+
+      <div class="formula">
+        ker(R) ⊆ ker(T)
+      </div>
+
+      <p>
+        If <strong>R(x)=R(x′)</strong>, then the task must also give
+        <strong>T(x)=T(x′)</strong>.
+      </p>
+
+      <p>
+        That says nothing yet about what happens after the system evolves.
+      </p>
+
+      <h2>Now add dynamics</h2>
+
+      <p>
+        Let the native dynamics be
+        <strong>f : X → X</strong>.
+      </p>
+
+      <p>
+        We want a reduced evolution
+        <strong>f̄ : Q → Q</strong>
+        satisfying:
+      </p>
+
+      <div class="formula">
+        Rf = f̄R
+      </div>
+
+      <p>
+        This commuting condition means that evolving first and then compressing gives the same result as compressing first and then evolving entirely inside the reduced state space.
+      </p>
+
+      <p>
+        The exact criterion is:
+      </p>
+
+      <div class="formula">
+        Rf = f̄R &nbsp; ⇔ &nbsp; ker(R) ⊆ ker(Rf)
+      </div>
+
+      <p>
+        In plain language:
+      </p>
+
+      <div class="quote">
+        If two native states look identical to the reduced model now, they must still look identical to the reduced model after one native update.
+      </div>
+
+      <h2>A tiny example</h2>
+
+      <div class="example">
+        <h3>Four native states</h3>
+
+        <p>Let the native states be:</p>
+
+        <div class="formula">
+          X = {a, b, c, d}
+        </div>
+
+        <p>Suppose the reduction merges them into two coarse states:</p>
+
+        <div class="formula">
+          R(a)=R(b)=0, &nbsp;&nbsp; R(c)=R(d)=1
+        </div>
+
+        <p>Now define the native dynamics:</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Native state</th>
+              <th>Successor</th>
+              <th>Reduced successor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>a</td>
+              <td>c</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>b</td>
+              <td>a</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td>c</td>
+              <td>c</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>d</td>
+              <td>d</td>
+              <td>1</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>
+          States <strong>a</strong> and <strong>b</strong> are represented identically because both map to 0. But after one native step:
+        </p>
+
+        <div class="formula">
+          R(f(a)) = 1, &nbsp;&nbsp; R(f(b)) = 0
+        </div>
+
+        <p>
+          So there is no single reduced update rule that knows what state 0 should do. The reduced model is not dynamically closed.
+        </p>
+      </div>
+
+      <h2>Why the reduced update does not exist</h2>
+
+      <p>
+        A reduced update rule would need to assign one successor to the reduced state 0.
+      </p>
+
+      <p>
+        But 0 stands for both <strong>a</strong> and <strong>b</strong>, and those states demand different reduced successors.
+      </p>
+
+      <div class="formula">
+        0 → 1 &nbsp; because of a<br>
+        0 → 0 &nbsp; because of b
+      </div>
+
+      <p>
+        The problem is not numerical error. It is structural ambiguity created by the quotient.
+      </p>
+
+      <h2>Static sufficiency and dynamic closure are different tests</h2>
+
+      <div class="compare">
+        <div class="box">
+          <h3>Static test</h3>
+          <p>
+            If two states are merged, do they give the same answer to the current task?
+          </p>
+        </div>
+
+        <div class="box">
+          <h3>Dynamic test</h3>
+          <p>
+            If two states are merged, do they produce the same reduced successor after evolution?
+          </p>
+        </div>
+      </div>
+
+      <p>
+        A representation can pass the first test and fail the second.
+      </p>
+
+      <div class="callout">
+        Permanent BM firewall: <strong>static sufficiency does not imply dynamic closure.</strong>
+      </div>
+
+      <h2>Successor fibres make the failure visible</h2>
+
+      <p>
+        For a reduced state <strong>q</strong>, define its successor fibre:
+      </p>
+
+      <div class="formula">
+        S<sub>R</sub>(q) = { R(Φx) : R(x)=q }
+      </div>
+
+      <p>
+        The reduced model is exactly closed at <strong>q</strong> if this set contains only one element.
+      </p>
+
+      <p>
+        Exact dynamic closure therefore becomes:
+      </p>
+
+      <div class="formula">
+        every successor fibre is a singleton
+      </div>
+
+      <p>
+        This viewpoint is useful because it also leads naturally to approximate closure.
+      </p>
+
+      <h2>Approximate closure</h2>
+
+      <p>
+        In many systems, exact equality is too strict. Instead, we ask how widely the possible reduced successors can spread.
+      </p>
+
+      <p>
+        One natural quantity is the maximum successor-fibre diameter:
+      </p>
+
+      <div class="formula">
+        α(R) = sup<sub>q</sub> diam S<sub>R</sub>(q)
+      </div>
+
+      <p>
+        Another is the smallest worst-case one-step prediction radius:
+      </p>
+
+      <div class="formula">
+        δ*<sub>1</sub> = sup<sub>q</sub> rad S<sub>R</sub>(q)
+      </div>
+
+      <p>
+        These satisfy:
+      </p>
+
+      <div class="formula">
+        α(R)/2 ≤ δ*<sub>1</sub> ≤ α(R)
+      </div>
+
+      <p>
+        Exact closure is the special case where the successor fibres collapse to singletons.
+      </p>
+
+      <h2>Dynamic closure is receiver-relative</h2>
+
+      <p>
+        The full native state may evolve differently even when the receiver does not care about those differences.
+      </p>
+
+      <p>
+        BM therefore does not require native-state equality after evolution. It requires equality only at the level that the declared reduced representation and Passport demand.
+      </p>
+
+      <div class="formula">
+        native successors may differ<br>
+        while receiver-relevant successors remain identical
+      </div>
+
+      <p>
+        This is why task-relative dynamics can sometimes close even when full-state dynamics do not.
+      </p>
+
+      <h2>Closure over longer horizons</h2>
+
+      <p>
+        One-step closure is only the beginning. A system can also be examined through finite temporal horizons.
+      </p>
+
+      <p>
+        For a task <strong>T</strong> and evolution <strong>Φ</strong>, BM uses horizon response maps of the form:
+      </p>
+
+      <div class="formula">
+        β<sub>h</sub>(x) = (Tx, TΦx, …, TΦ<sup>h</sup>x)
+      </div>
+
+      <p>
+        Two states are equivalent at horizon <strong>h</strong> only if their task responses agree throughout that horizon.
+      </p>
+
+      <div class="formula">
+        E<sub>h+1</sub> ⊆ E<sub>h</sub>
+      </div>
+
+      <p>
+        Longer horizons can only preserve or reveal more distinctions; they cannot erase distinctions already required by shorter horizons.
+      </p>
+
+      <h2>Memory enters when closure fails</h2>
+
+      <p>
+        If a coarse state cannot evolve autonomously, additional state may be needed.
+      </p>
+
+      <p>
+        That extra state can come from several very different sources:
+      </p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="num">1</div>
+          <div>
+            <strong>Latent native memory</strong>
+            <span>Keep hidden distinctions that the coarse output itself does not expose.</span>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="num">2</div>
+          <div>
+            <strong>Observation-derived memory</strong>
+            <span>Use a history of visible outputs or measurements to disambiguate the future.</span>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="num">3</div>
+          <div>
+            <strong>Contextual input</strong>
+            <span>Allow later information from the environment or another subsystem to restore distinctions.</span>
+          </div>
+        </div>
+      </div>
+
+      <p>
+        BM keeps these mechanisms separate because they are not mathematically interchangeable.
+      </p>
+
+      <h2>Dynamic closure in model reduction</h2>
+
+      <p>
+        Reduced-order models often seek a lower-dimensional state that can be updated without returning to the full system.
+      </p>
+
+      <p>
+        Dynamic closure gives a direct structural test for whether that ambition is even exact at the declared level.
+      </p>
+
+      <p>
+        If closure fails, one of several things must change:
+      </p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="num">A</div>
+          <div>
+            <strong>Refine the representation</strong>
+            <span>Keep more distinctions so the reduced successor becomes single-valued.</span>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="num">B</div>
+          <div>
+            <strong>Add memory</strong>
+            <span>Use additional state to carry distinctions that the visible reduction omitted.</span>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="num">C</div>
+          <div>
+            <strong>Relax exactness</strong>
+            <span>Accept bounded prediction error and move into approximate closure.</span>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="num">D</div>
+          <div>
+            <strong>Change the Passport</strong>
+            <span>Require less only if the receiver contract genuinely permits it.</span>
+          </div>
+        </div>
+      </div>
+
+      <h2>Dynamic closure does not guarantee physical realization</h2>
+
+      <p>
+        Even if the exact quotient exists mathematically, a required realization may fail to exist in the desired category.
+      </p>
+
+      <p>
+        A set-theoretic reduced state may fail to admit a continuous, smooth, local, quantum-CPTP, or otherwise admissible implementation.
+      </p>
+
+      <div class="callout">
+        Another permanent BM firewall: <strong>exact quotient does not imply admissible realization.</strong>
+      </div>
+
+      <h2>Why this matters across fields</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Field</th>
+            <th>Dynamic-closure question</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Control</td>
+            <td>Can the chosen reduced state be propagated without hidden variables?</td>
+          </tr>
+          <tr>
+            <td>PDE reduction</td>
+            <td>Does a reduced interface remain sufficient after the PDE evolves?</td>
+          </tr>
+          <tr>
+            <td>Networks</td>
+            <td>Do coarse node states determine the next coarse network state?</td>
+          </tr>
+          <tr>
+            <td>Stochastic systems</td>
+            <td>Do aggregated states determine the next aggregated law?</td>
+          </tr>
+          <tr>
+            <td>Quantum systems</td>
+            <td>Does the retained operator system remain sufficient under the channel dynamics?</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>The BM viewpoint</h2>
+
+      <p>
+        Dynamic closure is not a claim that every system should admit a reduced autonomous model. Sometimes it does not.
+      </p>
+
+      <p>
+        BM treats that failure as useful information. It tells us that some discarded distinction still has future consequences.
+      </p>
+
+      <div class="quote">
+        Failure of closure is evidence that the current representation is too coarse for the declared future task.
+      </div>
+
+      <p>
+        The next natural question is then: how much additional distinction must be preserved?
+      </p>
+
+      <p>
+        That leads directly to <strong>semantic width</strong>.
+      </p>
+
+    </div>
+  </article>
+
+  <section class="next">
+    <div class="wrap">
+      <span class="eyebrow">Next</span>
+      <h2 style="font-size:clamp(2rem,5vw,3.4rem);line-height:1.04;letter-spacing:-.035em;margin:.7rem 0 .9rem">
+        Continue the path
+      </h2>
+
+      <div class="next-grid">
+        <a class="card" href="/learn/semantic-width/">
+          <small>Recommended next</small>
+          <h3>Semantic Width Explained</h3>
+          <p>Measure how much task-relevant distinction a representation must preserve.</p>
+        </a>
+
+        <a class="card" href="/research/dynamic-closure/">
+          <small>Technical article</small>
+          <h3>Dynamic Closure: Formal Treatment</h3>
+          <p>Move from the introductory explanation into the more technical research-facing version.</p>
+        </a>
+
+        <a class="card" href="/examples/static-vs-dynamic-closure/">
+          <small>Worked example</small>
+          <h3>Static Sufficiency vs Dynamic Closure</h3>
+          <p>Follow a complete finite-state example from quotient to failure certificate.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div>
+      <div class="brand" style="margin-bottom:.5rem">
+        <span class="mark">BM</span>
+        <span>Branch Mathematics</span>
+      </div>
+      <div>Mathematics of necessary distinctions.</div>
+    </div>
+
+    <div class="footer-links">
+      <a href="/learn/">Learn</a>
+      <a href="/research/">Research</a>
+      <a href="/reference/">Reference</a>
+      <a href="/book/">Book</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
