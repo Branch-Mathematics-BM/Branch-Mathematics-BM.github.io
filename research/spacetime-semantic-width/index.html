@@ -1,0 +1,163 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Spacetime Semantic Width | Branch Mathematics</title>
+<meta name="description" content="A technical Branch Mathematics treatment of spacetime semantic width: residual states, continuation equivalence, causal machines, deadlines, causal cuts, reacquisition, and approximate compatibility.">
+<link rel="canonical" href="https://branch-mathematics-bm.github.io/research/spacetime-semantic-width/">
+<style>
+:root{--bg:#07111f;--text:#eef5ff;--muted:#aabbd0;--accent:#7bdcff;--accent2:#b39cff;--green:#7ef0c5;--warn:#ffd98c;--red:#ff9d9d;--max:1160px;--read:860px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--text);background:radial-gradient(circle at 10% -5%,rgba(123,220,255,.11),transparent 28rem),radial-gradient(circle at 90% 4%,rgba(179,156,255,.08),transparent 24rem),linear-gradient(180deg,#06101d,#07111f 45%,#081422);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.72}
+a{color:inherit;text-decoration:none}.wrap{width:min(calc(100% - 2rem),var(--max));margin:auto}.read{width:min(100%,var(--read));margin:auto}
+header{position:sticky;top:0;z-index:50;backdrop-filter:blur(18px);background:rgba(7,17,31,.84);border-bottom:1px solid rgba(123,220,255,.12)}
+.nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:1rem}.brand{display:flex;align-items:center;gap:.75rem;font-weight:760}.mark{width:34px;height:34px;border-radius:11px;border:1px solid rgba(123,220,255,.5);display:grid;place-items:center;background:linear-gradient(135deg,rgba(123,220,255,.2),rgba(179,156,255,.12))}
+.navlinks{display:flex;gap:.15rem;flex-wrap:wrap}.navlinks a{color:var(--muted);padding:.55rem .68rem;border-radius:10px;font-size:.93rem}.navlinks a:hover{color:var(--text);background:rgba(255,255,255,.05)}
+.breadcrumbs{padding:1.2rem 0 0;color:#8397af;font-size:.9rem}.hero{padding:4.6rem 0 4rem;border-bottom:1px solid rgba(123,220,255,.1)}
+.eyebrow{display:inline-flex;padding:.42rem .7rem;border-radius:999px;border:1px solid rgba(123,220,255,.3);background:rgba(123,220,255,.06);color:#c5efff;font-size:.82rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+h1{font-size:clamp(3rem,7vw,5.6rem);line-height:.96;letter-spacing:-.05em;margin:1rem 0 1.15rem;max-width:14ch}.lead{font-size:clamp(1.08rem,2vw,1.3rem);color:#c4d4e6;max-width:950px}
+.meta{display:flex;gap:.55rem;flex-wrap:wrap;margin-top:1.2rem}.tag{display:inline-flex;padding:.42rem .66rem;border-radius:999px;font-size:.76rem;font-weight:800;letter-spacing:.06em;border:1px solid rgba(111,151,193,.24);background:rgba(255,255,255,.025)}.cand{border-color:rgba(255,217,140,.25);color:#f7e8c7}.classic{border-color:rgba(179,156,255,.26);color:#ece5ff}
+.abstract{margin-top:1.7rem;padding:1.3rem 1.4rem;border:1px solid rgba(123,220,255,.22);border-radius:20px;background:linear-gradient(145deg,rgba(123,220,255,.05),rgba(179,156,255,.025))}.abstract p{margin:0;color:#c3d3e4}
+.article{padding:4.8rem 0 5rem}.article h2{font-size:clamp(2rem,5vw,3.15rem);line-height:1.05;letter-spacing:-.035em;margin:3.3rem 0 1rem}.article p{color:#c4d2e2;font-size:1.035rem;margin:0 0 1.15rem}
+.formula{margin:1.4rem 0;padding:1.05rem 1.15rem;border-left:3px solid var(--accent);background:rgba(123,220,255,.055);border-radius:0 14px 14px 0;color:#e0f1ff;font-family:"Cambria Math","Times New Roman",serif;font-size:1.08rem;overflow:auto}
+.theorem{margin:1.7rem 0 2rem;padding:1.35rem;border:1px solid rgba(126,240,197,.24);border-radius:20px;background:linear-gradient(145deg,rgba(126,240,197,.04),rgba(255,255,255,.012))}.theorem strong{color:#e7fff5}.theorem p{color:#cbd9e6}
+.firewall{margin:1.7rem 0;padding:1.2rem 1.3rem;border-radius:18px;border:1px solid rgba(255,157,157,.2);background:rgba(255,157,157,.035);color:#f1cccc}.firewall strong{color:#ffd6d6}
+.callout{margin:1.7rem 0;padding:1.2rem 1.3rem;border-radius:18px;border:1px solid rgba(255,217,140,.22);background:rgba(255,217,140,.04);color:#eadfc9}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.4rem 0 2rem}.box{border:1px solid rgba(111,151,193,.22);border-radius:18px;background:rgba(255,255,255,.02);padding:1.2rem}.box h3{margin-top:0}.box p{font-size:.96rem;margin-bottom:0}
+table{width:100%;border-collapse:collapse;margin:1.25rem 0 1.9rem;border:1px solid rgba(111,151,193,.22);background:rgba(255,255,255,.015)}th,td{padding:.82rem;border-bottom:1px solid rgba(111,151,193,.16);text-align:left;vertical-align:top}th{color:#dff7ff;background:rgba(123,220,255,.055);font-size:.92rem}td{color:#c4d2e2;font-size:.94rem}
+.next{padding:4.5rem 0;border-top:1px solid rgba(123,220,255,.1);background:#050d18}.next-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.6rem}.card{padding:1.2rem;border-radius:20px;border:1px solid rgba(111,151,193,.2);background:rgba(255,255,255,.02)}.card small{color:var(--accent);font-weight:800;text-transform:uppercase}.card p{color:var(--muted)}
+footer{padding:3rem 0;border-top:1px solid rgba(255,255,255,.07);background:#040a12;color:#8fa3ba}.footer-grid{display:grid;grid-template-columns:1fr auto;gap:1rem}.footer-links{display:flex;gap:.7rem;flex-wrap:wrap}
+@media(max-width:900px){.navlinks{display:none}.next-grid{grid-template-columns:1fr}}@media(max-width:620px){.compare,.footer-grid{grid-template-columns:1fr}}
+</style></head><body>
+<header><div class="wrap nav"><a class="brand" href="/"><span class="mark">BM</span><span>Branch Mathematics</span></a><nav class="navlinks"><a href="/learn/">Learn</a><a href="/research/">Research</a><a href="/applications/">Applications</a><a href="/examples/">Examples</a><a href="/calculator/">Calculator</a><a href="/reference/">Reference</a><a href="/book/">Book</a></nav></div></header>
+<main>
+<div class="wrap breadcrumbs"><a href="/">Home</a> / <a href="/research/">Research</a> / Spacetime Semantic Width</div>
+<section class="hero"><div class="wrap"><span class="eyebrow">Causality</span><h1>Spacetime Semantic Width</h1>
+<p class="lead">A causal state should remember exactly the past distinctions that can still change the declared future response. Spacetime semantic width measures the complexity of those residual future-response states across space, time, context, and deadlines.</p>
+<div class="meta"><span class="tag cand">Volume II development</span><span class="tag classic">Uses classical automata, quotient, and causal-state ideas</span></div>
+<div class="abstract"><strong>Abstract</strong><p>Given a past p and current state s, define the residual response ρp(s) as the complete future task map remaining after that past. Two states are equivalent when they induce the same residual response for every allowed continuation. In the exact deterministic sector this relation is a right congruence and yields a canonical causal machine. Approximate covers differ: independently optimal covers at successive times can be efficient yet causally incompatible. Spacetime semantic width therefore joins residual-state complexity, deadlines, cut obligations, retain-or-reacquire decisions, and approximation stability.</p></div></div></section>
+
+<article class="article"><div class="read">
+<h2>1. State should depend on the future task</h2>
+<p>A native state can contain distinctions that will never affect the declared receiver again. A causal task state should preserve only distinctions that can still change an allowed future response.</p>
+<div class="formula">past history → remaining future-response map → causal semantic state</div>
+
+<h2>2. Residual response</h2>
+<p>Let p denote an admissible past and s the current native state. Define the residual response</p>
+<div class="formula">ρ<sub>p</sub>(s)=T̂(p,s)</div>
+<p>as the complete map from allowed future continuations to future receiver-visible outputs. Exact equivalence is</p>
+<div class="formula">s E<sub>p</sub> s′ ⇔ ρ<sub>p</sub>(s)=ρ<sub>p</sub>(s′).</div>
+<p>The exact spacetime semantic state is the quotient S<sub>p</sub>/E<sub>p</sub>.</p>
+
+<h2>3. Right congruence and causal update</h2>
+<div class="theorem"><strong>Residual Right-Congruence Principle</strong>
+<p>If two states have identical residual response after past p, then after the same admissible next continuation a their successor states have identical residual response for the shortened future problem.</p>
+<div class="formula">ρ<sub>p</sub>(s)=ρ<sub>p</sub>(s′) ⇒ ρ<sub>pa</sub>(s<sub>a</sub>)=ρ<sub>pa</sub>(s′<sub>a</sub>)</div></div>
+<p>The exact quotient therefore carries an induced transition.</p>
+
+<h2>4. Canonical exact causal machine</h2>
+<div class="theorem"><strong>Exact Causal Machine</strong>
+<p>In the declared exact deterministic sector, residual equivalence yields a canonical causal quotient whose update is induced by continuation itself. Because the quotient is defined by complete future response, there is no extra exact stage-compatibility surcharge between successive residual quotients.</p></div>
+<p>This is closely related to residual-state and Myhill–Nerode constructions in automata theory; BM uses that pattern inside a broader Passport and multi-sector architecture.</p>
+
+<h2>5. Horizon residuals and countdown</h2>
+<p>For a finite deadline H, only futures inside the remaining horizon matter.</p>
+<div class="formula">ρ<sub>p,H</sub>(s)=remaining task behavior through H.</div>
+<p>As the deadline approaches, some distinctions can cease to matter. This is the spacetime form of countdown descent.</p>
+
+<h2>6. Distinction latency</h2>
+<p>Two states can be identical to the receiver now but become distinguishable later. Their distinction latency is the earliest horizon at which the future task separates them.</p>
+<div class="formula">ℓ(s,s′)=min{h : β<sub>h</sub>(s)≠β<sub>h</sub>(s′)}.</div>
+<p>Latency tells the architecture when a distinction first becomes operationally necessary.</p>
+
+<h2>7. Last-chance cuts</h2>
+<p>If a future task will require a distinction and no later observation, route, or external input can reacquire it, the current causal cut must preserve it.</p>
+<div class="formula">no later distinguishing source ⇒ current cut must preserve the distinction.</div>
+
+<h2>8. Keep or reacquire</h2>
+<div class="compare"><div class="box"><h3>Keep</h3><p>Carry the distinction in memory or communication until its final use.</p></div><div class="box"><h3>Reacquire</h3><p>Drop it now and obtain genuinely new distinguishing information later before the deadline.</p></div></div>
+<div class="firewall"><strong>Permanent firewall:</strong> later context revelation does not recover a discarded distinction unless the later context actually carries new distinguishing information.</div>
+
+<h2>9. Pre-revelation storage</h2>
+<p>If a future context Y will be revealed later, let E<sub>Y</sub> identify states that remain indistinguishable after all allowed values of that context. Any storage map S used before revelation must satisfy</p>
+<div class="formula">ker(S) ⊆ E<sub>Y</sub>.</div>
+<p>Otherwise the architecture can merge states that the later reveal cannot separate.</p>
+
+<h2>10. Approximate residual distance</h2>
+<p>At tolerance ε&gt;0, define a residual pseudometric over future continuations:</p>
+<div class="formula">D<sub>p</sub>(s,s′)=sup<sub>f∈F<sub>p</sub></sub>d(T̂(p,s;f),T̂(p,s′;f)).</div>
+<p>The approximate spacetime width is</p>
+<div class="formula">w<sub>p</sub>(ε)=log₂ 𝒩(ρ<sub>p</sub>(S<sub>p</sub>),d<sub>∞</sub>,ε).</div>
+
+<h2>11. Approximate covers are not automatically causal</h2>
+<p>An optimal ε-cover at time t and an optimal ε-cover at time t+1 can fail to map consistently into one another.</p>
+<div class="firewall"><strong>Permanent firewall:</strong> independently optimal approximate stage covers do not imply a compatible causal reduced dynamics.</div>
+
+<h2>12. Compatibility defect</h2>
+<p>For encoders R<sub>t</sub> and R<sub>t+1</sub>, a one-step compatibility defect can be written as</p>
+<div class="formula">δ<sub>t</sub>=sup{d(R<sub>t+1</sub>Φx,R<sub>t+1</sub>Φx′):R<sub>t</sub>x=R<sub>t</sub>x′}.</div>
+<p>Zero defect recovers exact stage compatibility.</p>
+
+<h2>13. Error propagation</h2>
+<p>If the reduced transition has amplification factor L<sub>t</sub>, then a typical bound is</p>
+<div class="formula">e<sub>t+1</sub>≤L<sub>t</sub>e<sub>t</sub>+δ<sub>t</sub>.</div>
+<p>Small local covers alone are therefore insufficient; the causal transitions must also be compatible and stable.</p>
+
+<h2>14. Spacetime width profile</h2>
+<p>A causal system naturally has a width profile rather than one fixed number:</p>
+<div class="formula">t ↦ w<sub>t</sub>(ε), &nbsp;&nbsp; or &nbsp;&nbsp; (t,H) ↦ w<sub>t,H</sub>(ε).</div>
+<p>This records how much task-relevant distinction must remain live at each point in the architecture.</p>
+
+<h2>15. Memory and communication are cut costs</h2>
+<div class="compare"><div class="box"><h3>Memory</h3><p>Carries a distinction across a temporal cut.</p></div><div class="box"><h3>Communication</h3><p>Carries a distinction across a spatial or network cut.</p></div></div>
+<p>A spacetime design can trade one against the other, subject to causality and reacquisition constraints.</p>
+
+<h2>16. Causal locality surcharge</h2>
+<p>If a centralized residual state has width w* but a distributed architecture requires several local memories and channels, the realized total can be larger:</p>
+<div class="formula">Γ<sub>causal</sub>=realized spacetime width−centralized residual width ≥ 0</div>
+<p>whenever the local states collectively refine the centralized residual state.</p>
+
+<h2>17. Finite propagation speed and light cones</h2>
+<p>In local systems, native locality theorems can confine influence to a backward task light cone over finite time.</p>
+<div class="formula">outside the backward task light cone ⇒ no effect before the deadline.</div>
+<p>In bounded-depth circuits this can be exact. In local Hamiltonian systems, Lieb–Robinson-type estimates can supply approximate collars when their hypotheses apply.</p>
+<div class="callout">BM uses those native theorems to bound task-specific causal width; it does not replace them.</div>
+
+<h2>18. Coupling can split residual equivalence</h2>
+<p>At coupling λ=0, two states can have identical future task response. Any nonzero coupling can create an exact distinction immediately, while positive tolerance can delay the transition until the induced difference exceeds ε.</p>
+<div class="formula">exact transition may occur at λ=0; approximate transition occurs at finite λ<sub>c</sub>(ε).</div>
+
+<h2>19. Perturbation stability</h2>
+<p>If behavioral distances satisfy</p>
+<div class="formula">|D<sub>λ</sub>−D<sub>0</sub>|≤2δ,</div>
+<p>then covering numbers obey the tolerance-shift sandwich</p>
+<div class="formula">N<sub>0</sub>(ε+δ)≤N<sub>λ</sub>(ε)≤N<sub>0</sub>(ε−δ)</div>
+<p>when the shifted tolerances remain valid.</p>
+
+<h2>20. Exact residual states are more canonical than approximate covers</h2>
+<div class="compare"><div class="box"><h3>Exact</h3><p>Equality of full residual response defines a canonical quotient once the Passport is fixed.</p></div><div class="box"><h3>Approximate</h3><p>Different equally small covers may cross, differ in robustness, and fail causal compatibility.</p></div></div>
+
+<h2>21. A practical causal workflow</h2>
+<table><thead><tr><th>Stage</th><th>Question</th></tr></thead><tbody>
+<tr><td>Passport</td><td>What future responses, contexts, deadlines, and tolerances matter?</td></tr>
+<tr><td>Residual map</td><td>What future behavior remains after each past?</td></tr>
+<tr><td>Exact quotient</td><td>Which current states have identical remaining futures?</td></tr>
+<tr><td>Cut placement</td><td>Where can future-relevant distinctions be lost?</td></tr>
+<tr><td>Keep/reacquire</td><td>Which distinctions must persist and which can be reacquired?</td></tr>
+<tr><td>Approximation</td><td>What residual metric and cover are allowed?</td></tr>
+<tr><td>Compatibility</td><td>Do stagewise covers admit a coherent causal update?</td></tr>
+<tr><td>Robustness</td><td>How much tolerance reserve survives perturbation?</td></tr>
+</tbody></table>
+
+<h2>22. What BM contributes here</h2>
+<div class="callout">The BM synthesis is to define state by remaining future distinctions; treat memory and communication as spacetime cut obligations; permit lawful reacquisition; separate exact canonical residual quotients from approximate noncanonical covers; and track locality, realization, robustness, and provenance explicitly.</div>
+
+<h2>23. Open directions</h2>
+<p>Open directions include scalable approximate causal-state synthesis, memory-versus-communication tradeoffs, continuous-time residual geometry, PDE spacetime width, stochastic future-law residuals, quantum causal Passports, and dimension-aware bounds for approximate stage compatibility.</p>
+<p>The next research page should examine how coupling creates or destroys task distinctions: Coupling Strength and Semantic Phase Transitions.</p>
+</div></article>
+
+<section class="next"><div class="wrap"><span class="eyebrow">Continue</span><h2>Related research</h2><div class="next-grid">
+<a class="card" href="/research/coupling-semantic-transitions/"><small>Coupling</small><h3>Coupling and Semantic Phase Transitions</h3><p>Study how weak interactions split exact equivalence classes and create tolerance-dependent width transitions.</p></a>
+<a class="card" href="/research/distributed-semantic-cuts/"><small>Networks</small><h3>Distributed Semantic Cuts</h3><p>Return to spatial cut lower bounds, route novelty, resilience, and reacquisition.</p></a>
+<a class="card" href="/research/hankel-task-memory/"><small>Memory</small><h3>Hankel Operators and Task-Specific Memory</h3><p>Analyze which past inputs remain distinguishable through their future task response.</p></a>
+</div></div></section>
+</main>
+<footer><div class="wrap footer-grid"><div><div class="brand"><span class="mark">BM</span><span>Branch Mathematics</span></div><div>Mathematics of necessary distinctions.</div></div><div class="footer-links"><a href="/learn/">Learn</a><a href="/research/">Research</a><a href="/applications/">Applications</a><a href="/reference/">Reference</a><a href="/book/">Book</a></div></div></footer>
+</body></html>
