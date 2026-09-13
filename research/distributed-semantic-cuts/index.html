@@ -1,0 +1,1020 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Distributed Semantic Cuts | Branch Mathematics</title>
+  <meta name="description" content="A technical Branch Mathematics treatment of distributed semantic cuts: task-specific cut lower bounds, route novelty, redundancy, resilience, erasure bounds, finite-field rank tasks, causal cuts, locality surcharge, and network realization." />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <link rel="canonical" href="https://branch-mathematics-bm.github.io/research/distributed-semantic-cuts/" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Distributed Semantic Cuts" />
+  <meta property="og:description" content="How much task-relevant distinction must cross a network cut, and when do routes add new semantic information rather than mere redundancy?" />
+  <meta property="og:url" content="https://branch-mathematics-bm.github.io/research/distributed-semantic-cuts/" />
+  <meta property="og:site_name" content="Branch Mathematics" />
+
+  <meta name="theme-color" content="#07111f" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"TechArticle",
+    "headline":"Distributed Semantic Cuts",
+    "description":"A technical treatment of task-specific communication across distributed cuts in Branch Mathematics.",
+    "mainEntityOfPage":"https://branch-mathematics-bm.github.io/research/distributed-semantic-cuts/",
+    "isPartOf":{
+      "@type":"WebSite",
+      "name":"Branch Mathematics",
+      "url":"https://branch-mathematics-bm.github.io/"
+    }
+  }
+  </script>
+
+  <style>
+    :root{
+      --bg:#07111f;
+      --text:#eef5ff;
+      --muted:#aabbd0;
+      --line:#27415e;
+      --accent:#7bdcff;
+      --accent2:#b39cff;
+      --green:#7ef0c5;
+      --warn:#ffd98c;
+      --red:#ff9d9d;
+      --max:1160px;
+      --read:860px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;color:var(--text);
+      background:
+        radial-gradient(circle at 10% -5%,rgba(123,220,255,.11),transparent 28rem),
+        radial-gradient(circle at 90% 4%,rgba(179,156,255,.08),transparent 24rem),
+        linear-gradient(180deg,#06101d,#07111f 45%,#081422);
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height:1.72;
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(calc(100% - 2rem),var(--max));margin-inline:auto}
+    .read{width:min(100%,var(--read));margin-inline:auto}
+
+    .site-header{
+      position:sticky;top:0;z-index:50;backdrop-filter:blur(18px);
+      background:rgba(7,17,31,.84);border-bottom:1px solid rgba(123,220,255,.12);
+    }
+    .nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .brand{display:flex;align-items:center;gap:.75rem;font-weight:760;white-space:nowrap}
+    .mark{
+      width:34px;height:34px;border-radius:11px;border:1px solid rgba(123,220,255,.5);
+      display:grid;place-items:center;background:linear-gradient(135deg,rgba(123,220,255,.2),rgba(179,156,255,.12));
+    }
+    .navlinks{display:flex;gap:.15rem;flex-wrap:wrap;justify-content:flex-end}
+    .navlinks a{color:var(--muted);padding:.55rem .68rem;border-radius:10px;font-size:.93rem}
+    .navlinks a:hover,.navlinks a[aria-current="page"]{color:var(--text);background:rgba(255,255,255,.05)}
+
+    .breadcrumbs{padding:1.2rem 0 0;color:#8397af;font-size:.9rem}
+    .hero{padding:4.6rem 0 4rem;border-bottom:1px solid rgba(123,220,255,.1)}
+    .eyebrow{
+      display:inline-flex;padding:.42rem .7rem;border-radius:999px;
+      border:1px solid rgba(123,220,255,.3);background:rgba(123,220,255,.06);
+      color:#c5efff;font-size:.82rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+    }
+    h1{
+      font-size:clamp(3rem,7vw,5.6rem);line-height:.96;letter-spacing:-.05em;
+      margin:1rem 0 1.15rem;max-width:14ch;
+    }
+    .hero .lead{font-size:clamp(1.08rem,2vw,1.3rem);color:#c4d4e6;max-width:950px;margin:0 0 1.5rem}
+    .meta{display:flex;gap:.55rem;flex-wrap:wrap;margin-top:1.2rem}
+    .tag{
+      display:inline-flex;padding:.42rem .66rem;border-radius:999px;font-size:.76rem;font-weight:800;
+      letter-spacing:.06em;border:1px solid rgba(111,151,193,.24);background:rgba(255,255,255,.025);color:#d8e7f7;
+    }
+    .tag.cand{border-color:rgba(255,217,140,.25);background:rgba(255,217,140,.035);color:#f7e8c7}
+    .tag.classic{border-color:rgba(179,156,255,.26);background:rgba(179,156,255,.04);color:#ece5ff}
+
+    .abstract{
+      margin-top:1.7rem;padding:1.3rem 1.4rem;border:1px solid rgba(123,220,255,.22);
+      border-radius:20px;background:linear-gradient(145deg,rgba(123,220,255,.05),rgba(179,156,255,.025));
+    }
+    .abstract strong{display:block;margin-bottom:.35rem;color:#def6ff}
+    .abstract p{margin:0;color:#c3d3e4}
+
+    .article{padding:4.8rem 0 5rem}
+    .article h2{font-size:clamp(2rem,5vw,3.15rem);line-height:1.05;letter-spacing:-.035em;margin:3.3rem 0 1rem}
+    .article h3{font-size:1.35rem;line-height:1.25;margin:2.2rem 0 .7rem}
+    .article p{color:#c4d2e2;font-size:1.035rem;margin:0 0 1.15rem}
+
+    .formula{
+      margin:1.4rem 0;padding:1.05rem 1.15rem;border-left:3px solid var(--accent);
+      background:rgba(123,220,255,.055);border-radius:0 14px 14px 0;color:#e0f1ff;
+      font-family:"Cambria Math","Times New Roman",serif;font-size:1.08rem;overflow:auto;
+    }
+
+    .theorem{
+      margin:1.7rem 0 2rem;padding:1.35rem;border:1px solid rgba(126,240,197,.24);
+      border-radius:20px;background:linear-gradient(145deg,rgba(126,240,197,.04),rgba(255,255,255,.012));
+    }
+    .theorem .head{display:flex;align-items:center;gap:.55rem;flex-wrap:wrap;margin-bottom:.55rem}
+    .theorem .head strong{font-size:1.08rem;color:#e7fff5}
+    .theorem .mini{
+      padding:.25rem .5rem;border-radius:999px;border:1px solid rgba(126,240,197,.28);
+      color:#c7f9e7;font-size:.72rem;font-weight:800;letter-spacing:.06em;
+    }
+    .theorem p{margin:.45rem 0;color:#cbd9e6}
+
+    .firewall{
+      margin:1.7rem 0;padding:1.2rem 1.3rem;border-radius:18px;
+      border:1px solid rgba(255,157,157,.2);background:rgba(255,157,157,.035);color:#f1cccc;
+    }
+    .firewall strong{color:#ffd6d6}
+
+    .callout{
+      margin:1.7rem 0;padding:1.2rem 1.3rem;border-radius:18px;
+      border:1px solid rgba(255,217,140,.22);background:rgba(255,217,140,.04);color:#eadfc9;
+    }
+
+    .compare{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.4rem 0 2rem}
+    .compare .box{border:1px solid rgba(111,151,193,.22);border-radius:18px;background:rgba(255,255,255,.02);padding:1.2rem}
+    .compare h3{margin-top:0}.compare p{font-size:.96rem;margin-bottom:0}
+
+    .example{
+      margin:1.6rem 0 2rem;padding:1.35rem;border-radius:20px;
+      border:1px solid rgba(179,156,255,.22);
+      background:linear-gradient(145deg,rgba(179,156,255,.04),rgba(255,255,255,.015));
+    }
+    .example h3{margin-top:0;color:#efe8ff}
+
+    table{
+      width:100%;border-collapse:collapse;margin:1.25rem 0 1.9rem;
+      border:1px solid rgba(111,151,193,.22);background:rgba(255,255,255,.015);
+    }
+    th,td{padding:.82rem;border-bottom:1px solid rgba(111,151,193,.16);text-align:left;vertical-align:top}
+    th{color:#dff7ff;background:rgba(123,220,255,.055);font-size:.92rem}
+    td{color:#c4d2e2;font-size:.94rem}
+
+    .pipeline{
+      display:grid;grid-template-columns:repeat(5,1fr);gap:.7rem;margin:1.5rem 0 2rem;
+    }
+    .pipe{
+      border:1px solid rgba(111,151,193,.2);border-radius:16px;padding:.9rem .65rem;
+      text-align:center;background:rgba(255,255,255,.02);font-weight:720;position:relative;
+    }
+    .pipe:not(:last-child):after{
+      content:"→";position:absolute;right:-.55rem;top:50%;transform:translateY(-50%);color:var(--accent);z-index:2;
+    }
+
+    .next{padding:4.5rem 0;border-top:1px solid rgba(123,220,255,.1);background:#050d18}
+    .next-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.6rem}
+    .card{
+      min-height:100%;padding:1.2rem;border-radius:20px;border:1px solid rgba(111,151,193,.2);
+      background:rgba(255,255,255,.02);transition:.2s ease;
+    }
+    .card:hover{transform:translateY(-2px);border-color:rgba(123,220,255,.42);background:rgba(123,220,255,.04)}
+    .card small{color:var(--accent);font-size:.75rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+    .card h3{margin:.5rem 0 .45rem}.card p{color:var(--muted);font-size:.93rem;margin:0}
+
+    footer{padding:3rem 0;border-top:1px solid rgba(255,255,255,.07);background:#040a12;color:#8fa3ba}
+    .footer-grid{display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:end}
+    .footer-links{display:flex;gap:.7rem;flex-wrap:wrap;justify-content:flex-end}
+
+    @media(max-width:900px){
+      .navlinks{display:none}.pipeline{grid-template-columns:1fr}.pipe:not(:last-child):after{display:none}.next-grid{grid-template-columns:1fr}
+    }
+    @media(max-width:620px){
+      .hero{padding-top:3rem}.compare{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}
+      .footer-links{justify-content:flex-start}th,td{font-size:.87rem}
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="/" aria-label="Branch Mathematics home">
+      <span class="mark">BM</span>
+      <span>Branch Mathematics</span>
+    </a>
+    <nav class="navlinks" aria-label="Primary navigation">
+      <a href="/learn/">Learn</a>
+      <a href="/research/" aria-current="page">Research</a>
+      <a href="/applications/">Applications</a>
+      <a href="/examples/">Examples</a>
+      <a href="/calculator/">Calculator</a>
+      <a href="/reference/">Reference</a>
+      <a href="/book/">Book</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <div class="wrap breadcrumbs">
+    <a href="/">Home</a> / <a href="/research/">Research</a> / Distributed Semantic Cuts
+  </div>
+
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Networks</span>
+      <h1>Distributed Semantic Cuts</h1>
+
+      <p class="lead">
+        A network cut does not need to carry every upstream variable. It must carry enough distinction to determine the downstream task under the allowed future context. The difficulty is that locality, routing, resilience, and deadlines can force the realized communication cost above the centralized semantic minimum.
+      </p>
+
+      <div class="meta">
+        <span class="tag cand">Volume II development</span>
+        <span class="tag classic">Uses classical graph, coding, and network-flow mathematics</span>
+      </div>
+
+      <div class="abstract">
+        <strong>Abstract</strong>
+        <p>
+          Distributed semantic cuts study the minimum task-relevant distinction that must cross a network separator. For an exact cut Σ, the aggregate interface alphabet must be at least as large as the minimal task quotient Q*Σ induced by all downstream contexts. This yields the lower bound Σe∈Σ log₂|Qe| ≥ log₂|Q*Σ|. Physical route count is not the same as semantic novelty: one route can be functionally redundant given others. Resilience introduces further lower bounds, including an erasure factor m/(m−f) under symmetric route assumptions. In finite-field linear tasks, quotient rank can connect exact semantic cut requirements to max-flow/min-cut style constructions. Causal cuts add deadlines and future reacquisition.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <article class="article">
+    <div class="read">
+
+      <h2>1. The cut question</h2>
+
+      <p>
+        Let a distributed system be divided into an upstream region <strong>A</strong> and downstream region <strong>B</strong>.
+      </p>
+
+      <p>
+        A cut <strong>Σ</strong> contains the communication channels crossing from <strong>A</strong> to <strong>B</strong>.
+      </p>
+
+      <p>
+        The raw upstream state may be enormous. The downstream task may depend on only a quotient of it.
+      </p>
+
+      <div class="formula">
+        upstream state
+        →
+        semantic cut state
+        →
+        downstream task.
+      </div>
+
+      <p>
+        The exact question is:
+      </p>
+
+      <div class="formula">
+        which upstream distinctions can still change the declared downstream response?
+      </div>
+
+      <h2>2. Minimal exact cut quotient</h2>
+
+      <p>
+        Let <strong>T</strong> denote the full declared downstream response under every allowed continuation and context.
+      </p>
+
+      <p>
+        Two upstream states <strong>x</strong> and <strong>x′</strong> are cut-equivalent when no allowed downstream continuation distinguishes them.
+      </p>
+
+      <div class="formula">
+        x∼<sub>Σ</sub>x′
+        ⇔
+        T(x,c)=T(x′,c)
+        for every allowed downstream context c.
+      </div>
+
+      <p>
+        The exact semantic cut state is:
+      </p>
+
+      <div class="formula">
+        Q<sub>Σ</sub><sup>*</sup>
+        =
+        X<sub>A</sub>/∼<sub>Σ</sub>.
+      </div>
+
+      <h2>3. Exact cut lower bound</h2>
+
+      <div class="theorem">
+        <div class="head">
+          <strong>Semantic Cut Lower Bound</strong>
+          <span class="mini">Volume II</span>
+        </div>
+
+        <p>
+          Suppose each cut edge <strong>e∈Σ</strong> carries an exact alphabet <strong>Q<sub>e</sub></strong>. If the combined cut messages determine the exact semantic cut state, then:
+        </p>
+
+        <div class="formula">
+          Σ<sub>e∈Σ</sub>
+          log₂|Q<sub>e</sub>|
+          ≥
+          log₂|Q<sub>Σ</sub><sup>*</sup>|.
+        </div>
+      </div>
+
+      <p>
+        This is a worst-case exact counting bound. It does not require a probability law.
+      </p>
+
+      <div class="firewall">
+        <strong>Firewall:</strong> this log-cardinality bound is not automatically a Shannon-rate theorem.
+      </div>
+
+      <h2>4. Why the lower bound can be strict</h2>
+
+      <p>
+        The centralized semantic quotient may be small while the distributed architecture forces larger edge alphabets.
+      </p>
+
+      <p>
+        Causes include:
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Cause</th>
+            <th>Why extra width appears</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Locality</td>
+            <td>No one edge initially sees the whole upstream state.</td>
+          </tr>
+          <tr>
+            <td>Routing</td>
+            <td>Different distinctions are available on different paths.</td>
+          </tr>
+          <tr>
+            <td>Resilience</td>
+            <td>Redundant distinctions must survive failures.</td>
+          </tr>
+          <tr>
+            <td>Causality</td>
+            <td>Future combining may occur after a deadline.</td>
+          </tr>
+          <tr>
+            <td>Realization constraints</td>
+            <td>The semantic quotient may not factor into the allowed local messages.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>5. Parity example</h2>
+
+      <div class="example">
+        <h3>One semantic bit, many distributed bits</h3>
+
+        <p>
+          Let <strong>m</strong> separated sources hold bits:
+        </p>
+
+        <div class="formula">
+          x₁,…,x<sub>m</sub>∈{0,1},
+        </div>
+
+        <p>
+          and let the downstream receiver require only:
+        </p>
+
+        <div class="formula">
+          x₁⊕···⊕x<sub>m</sub>.
+        </div>
+
+        <p>
+          The centralized semantic output has only two states:
+        </p>
+
+        <div class="formula">
+          log₂2 = 1 bit.
+        </div>
+
+        <p>
+          But if each source crosses the cut before aggregation, a direct local realization can require one bit from each source.
+        </p>
+
+        <div class="formula">
+          realized cut cost = m bits.
+        </div>
+
+        <p>
+          The architecture pays an <strong>m−1</strong> bit locality surcharge relative to the centralized task.
+        </p>
+      </div>
+
+      <h2>6. Physical routes are not semantic novelty</h2>
+
+      <p>
+        Two distinct routes can carry the same task-relevant distinction.
+      </p>
+
+      <p>
+        Counting routes therefore does not measure semantic dimension.
+      </p>
+
+      <div class="formula">
+        physical route count
+        ≠
+        number of new semantic directions.
+      </div>
+
+      <p>
+        The right question is whether a new route adds a response distinction not already determined by the existing routes.
+      </p>
+
+      <h2>7. Linear route novelty</h2>
+
+      <p>
+        Let a collection of route observations be represented linearly.
+      </p>
+
+      <p>
+        Suppose route set <strong>S</strong> provides:
+      </p>
+
+      <div class="formula">
+        H<sub>S</sub>x,
+      </div>
+
+      <p>
+        and candidate route <strong>j</strong> provides:
+      </p>
+
+      <div class="formula">
+        H<sub>j</sub>x.
+      </div>
+
+      <div class="theorem">
+        <div class="head">
+          <strong>Linear Route Redundancy Criterion</strong>
+          <span class="mini">Volume II</span>
+        </div>
+
+        <p>
+          Route <strong>j</strong> adds no new exact semantic distinction beyond <strong>S</strong> if:
+        </p>
+
+        <div class="formula">
+          H<sub>j</sub>
+          =
+          K<sub>j</sub>H<sub>S</sub>
+        </div>
+
+        <p>
+          for some linear map <strong>K<sub>j</sub></strong>.
+        </p>
+
+        <p>
+          Equivalently:
+        </p>
+
+        <div class="formula">
+          ker(H<sub>S</sub>)
+          ⊆
+          ker(H<sub>j</sub>).
+        </div>
+      </div>
+
+      <p>
+        The candidate route may still be valuable for reliability even though it adds no new semantic direction.
+      </p>
+
+      <h2>8. Semantic redundancy versus resilience</h2>
+
+      <div class="compare">
+        <div class="box">
+          <h3>Semantic redundancy</h3>
+          <p>
+            A route adds no new task distinction when all its outputs are determined by the surviving route set.
+          </p>
+        </div>
+
+        <div class="box">
+          <h3>Reliability redundancy</h3>
+          <p>
+            A route duplicates useful content so the task remains recoverable after route failure.
+          </p>
+        </div>
+      </div>
+
+      <p>
+        A route can be semantically redundant and operationally essential.
+      </p>
+
+      <h2>9. Erasure resilience lower bound</h2>
+
+      <p>
+        Suppose <strong>m</strong> comparable routes together carry a semantic payload of capacity <strong>C<sub>semantic</sub></strong>, and the design must tolerate any <strong>f</strong> route erasures.
+      </p>
+
+      <p>
+        Under symmetric route-capacity assumptions, every surviving set of <strong>m−f</strong> routes must still carry the full semantic payload.
+      </p>
+
+      <div class="theorem">
+        <div class="head">
+          <strong>Symmetric Erasure Lower Bound</strong>
+          <span class="mini">Volume II</span>
+        </div>
+
+        <div class="formula">
+          C<sub>total</sub>
+          ≥
+          m/(m-f)
+          ·
+          C<sub>semantic</sub>.
+        </div>
+      </div>
+
+      <p>
+        The factor is the price of route-erasure resilience under the stated symmetry assumptions.
+      </p>
+
+      <div class="callout">
+        This is not a universal coding theorem. It is a structural lower bound under the declared symmetric erasure model.
+      </div>
+
+      <h2>10. Minimal authorized route sets</h2>
+
+      <p>
+        Another way to describe resilience is through authorized route families.
+      </p>
+
+      <p>
+        A route subset <strong>S</strong> is authorized if the downstream task remains exactly recoverable from the messages on <strong>S</strong>.
+      </p>
+
+      <p>
+        Minimal authorized sets reveal the smallest route combinations that still carry the required task distinctions.
+      </p>
+
+      <div class="formula">
+        Auth
+        =
+        {S : task factors through messages on S}.
+      </div>
+
+      <p>
+        This mirrors access-structure ideas that also appear later in the quantum sector.
+      </p>
+
+      <h2>11. Finite-field linear tasks</h2>
+
+      <p>
+        Suppose the sources hold a vector:
+      </p>
+
+      <div class="formula">
+        x∈F<sub>q</sub><sup>n</sup>,
+      </div>
+
+      <p>
+        and the receiver task is:
+      </p>
+
+      <div class="formula">
+        T(x)=Mx
+      </div>
+
+      <p>
+        of rank:
+      </p>
+
+      <div class="formula">
+        rank(M)=k.
+      </div>
+
+      <p>
+        Then the exact semantic task space has:
+      </p>
+
+      <div class="formula">
+        q<sup>k</sup>
+      </div>
+
+      <p>
+        possible values, corresponding to:
+      </p>
+
+      <div class="formula">
+        k log₂q
+      </div>
+
+      <p>
+        bits of exact label capacity.
+      </p>
+
+      <h2>12. Quotient rank and cut capacity</h2>
+
+      <p>
+        In a network over <strong>F<sub>q</sub></strong>, one can seek edge messages carrying enough linear rank across each relevant cut to recover the quotient task <strong>Mx</strong>.
+      </p>
+
+      <p>
+        For suitably structured linear networks, this connects the BM semantic cut problem to classical linear network coding and max-flow/min-cut constructions.
+      </p>
+
+      <div class="formula">
+        task rank across cut
+        ≤
+        realizable linear cut rank.
+      </div>
+
+      <p>
+        The classical network-flow machinery supplies the construction where its hypotheses apply.
+      </p>
+
+      <h2>13. Semantic min-cut is task-specific</h2>
+
+      <p>
+        A full-state communication problem and a task-specific communication problem can have different effective cut requirements.
+      </p>
+
+      <div class="compare">
+        <div class="box">
+          <h3>Full-state cut</h3>
+          <p>
+            Preserve enough information to reconstruct the entire upstream source vector.
+          </p>
+        </div>
+
+        <div class="box">
+          <h3>Semantic cut</h3>
+          <p>
+            Preserve only the quotient needed to evaluate the declared task under allowed continuations.
+          </p>
+        </div>
+      </div>
+
+      <p>
+        Task-specific min-cuts can therefore be substantially smaller than full-state min-cuts.
+      </p>
+
+      <h2>14. Approximate distributed cuts</h2>
+
+      <p>
+        At positive tolerance, the cut message need only distinguish upstream states whose downstream response profiles are separated beyond the allowed error.
+      </p>
+
+      <p>
+        Define a cut-profile pseudometric:
+      </p>
+
+      <div class="formula">
+        D<sub>Σ</sub>(x,x′)
+        =
+        sup<sub>c∈C<sub>down</sub></sub>
+        d(T(x,c),T(x′,c)).
+      </div>
+
+      <p>
+        The approximate centralized cut width is:
+      </p>
+
+      <div class="formula">
+        w<sub>Σ</sub>(ε)
+        =
+        log₂
+        𝒩(P<sub>Σ</sub>(X<sub>A</sub>),d<sub>∞</sub>,ε).
+      </div>
+
+      <p>
+        A distributed realization may require more due to locality and route factorization.
+      </p>
+
+      <h2>15. Locality surcharge across a cut</h2>
+
+      <p>
+        If edge messages must be computed locally, the sum of local message widths can exceed the centralized cut width.
+      </p>
+
+      <div class="formula">
+        Γ<sub>cut</sub>
+        =
+        Σ<sub>e∈Σ</sub>w<sub>e</sub>
+        -
+        w<sub>Σ</sub>
+        ≥0
+      </div>
+
+      <p>
+        whenever the declared architecture makes the combined edge representation a refinement of the centralized semantic state.
+      </p>
+
+      <p>
+        This is the distributed analogue of the locality surcharge seen in product interfaces.
+      </p>
+
+      <h2>16. Routing can change where distinctions are paid</h2>
+
+      <p>
+        A distinction need not cross the first cut where it exists if it can be transported or reconstructed through another lawful path before the deadline.
+      </p>
+
+      <p>
+        Conversely, a distinction may need to cross early if no later route can reacquire it.
+      </p>
+
+      <div class="formula">
+        current cut obligation
+        depends on future routing and reveal opportunities.
+      </div>
+
+      <h2>17. Causal cut condition</h2>
+
+      <p>
+        Suppose a distinction matters to a future task and no later exogenous observation or route can distinguish the relevant upstream states.
+      </p>
+
+      <p>
+        Then that distinction must survive the current causal cut.
+      </p>
+
+      <div class="formula">
+        no later distinguishing source
+        ⇒
+        current cut must preserve the distinction.
+      </div>
+
+      <p>
+        This is the network form of the BM Last-Chance principle.
+      </p>
+
+      <h2>18. Reacquisition can reduce persistent communication</h2>
+
+      <p>
+        A distinction that matters again later does not necessarily need to be carried continuously.
+      </p>
+
+      <p>
+        If a later sensor, route, or boundary observation can reacquire it before the next deadline, the network can choose between:
+      </p>
+
+      <div class="compare">
+        <div class="box">
+          <h3>Retain</h3>
+          <p>
+            Carry the distinction through intermediate nodes and time steps.
+          </p>
+        </div>
+
+        <div class="box">
+          <h3>Reacquire</h3>
+          <p>
+            Drop it and obtain a fresh distinguishing observation later.
+          </p>
+        </div>
+      </div>
+
+      <p>
+        This creates a joint communication-memory-sensing design problem.
+      </p>
+
+      <h2>19. Route scheduling</h2>
+
+      <p>
+        Suppose several future tasks have different deadlines.
+      </p>
+
+      <p>
+        A route schedule can preserve each distinction only until its last required transmission or reacquisition point.
+      </p>
+
+      <div class="formula">
+        distinction lifetime
+        =
+        interval from first necessity to last unrecoverable deadline.
+      </div>
+
+      <p>
+        This can make the optimal network state explicitly time-dependent.
+      </p>
+
+      <h2>20. Distributed closure</h2>
+
+      <p>
+        A network representation is not enough if the reduced distributed state cannot evolve consistently.
+      </p>
+
+      <p>
+        Local node updates and edge messages must descend to a well-defined global reduced evolution.
+      </p>
+
+      <div class="firewall">
+        <strong>Permanent firewall:</strong> local closure does not imply coupled or distributed closure.
+      </div>
+
+      <p>
+        Coupling constraints and message timing can create failures even when every node reduction is individually valid.
+      </p>
+
+      <h2>21. Physical routes can be plentiful but semantically poor</h2>
+
+      <p>
+        A network may have many parallel edges yet carry little new task information if all routes depend on the same low-dimensional upstream summary.
+      </p>
+
+      <div class="formula">
+        route diversity
+        ≠
+        semantic diversity.
+      </div>
+
+      <p>
+        Conversely, one carefully chosen route can carry a high-rank task quotient if it has access to the right aggregate state.
+      </p>
+
+      <h2>22. Resilience changes the optimum</h2>
+
+      <p>
+        The minimum-width architecture without failures can be fragile.
+      </p>
+
+      <p>
+        Adding a semantically redundant route can move the design to a better robustness point.
+      </p>
+
+      <div class="formula">
+        minimize width
+        and
+        maximize resilience
+        need not select the same network.
+      </div>
+
+      <p>
+        The natural object is therefore often a Pareto frontier over:
+      </p>
+
+      <div class="formula">
+        communication, latency, route count, failure tolerance, and semantic reserve.
+      </div>
+
+      <h2>23. Approximate route reserve</h2>
+
+      <p>
+        If a route set currently resolves downstream profiles to radius <strong>r</strong> under tolerance <strong>ε</strong>, define:
+      </p>
+
+      <div class="formula">
+        reserve = ε-r.
+      </div>
+
+      <p>
+        Losing one route, adding noise, or changing coupling can consume this reserve.
+      </p>
+
+      <p>
+        A robust architecture should therefore track not just current admissibility but remaining margin.
+      </p>
+
+      <h2>24. Network coding belongs in the native Branch</h2>
+
+      <p>
+        Linear network coding, multicast theorems, cut bounds, coding matrices, and erasure codes are established mathematics.
+      </p>
+
+      <p>
+        BM should use them as native tools rather than rename them.
+      </p>
+
+      <div class="callout">
+        The BM contribution is the receiver-relative quotient: determine what task-specific distinction actually needs to cross before invoking the native network coding machinery.
+      </div>
+
+      <h2>25. A reusable semantic-cut workflow</h2>
+
+      <div class="pipeline">
+        <div class="pipe">Declare task</div>
+        <div class="pipe">Find cut quotient</div>
+        <div class="pipe">Test route novelty</div>
+        <div class="pipe">Add resilience</div>
+        <div class="pipe">Check causality</div>
+      </div>
+
+      <p>
+        In more detail:
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Stage</th>
+            <th>Question</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Passport</td>
+            <td>What downstream task, context, horizon, and tolerance are required?</td>
+          </tr>
+          <tr>
+            <td>Semantic quotient</td>
+            <td>Which upstream states are indistinguishable to all allowed downstream continuations?</td>
+          </tr>
+          <tr>
+            <td>Cut lower bound</td>
+            <td>How large must the combined message alphabet be?</td>
+          </tr>
+          <tr>
+            <td>Route factorization</td>
+            <td>Can the quotient be computed with the allowed local message structure?</td>
+          </tr>
+          <tr>
+            <td>Novelty test</td>
+            <td>Which routes add new task distinctions?</td>
+          </tr>
+          <tr>
+            <td>Resilience</td>
+            <td>Which route failures must the design tolerate?</td>
+          </tr>
+          <tr>
+            <td>Causality</td>
+            <td>Which distinctions must cross now because later reacquisition is impossible?</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>26. What BM contributes here</h2>
+
+      <p>
+        The core synthesis is:
+      </p>
+
+      <div class="callout">
+        separate semantic cut demand from physical route count; measure novelty relative to the declared task; distinguish centralized semantic width from distributed realization cost; include resilience and deadlines explicitly; and preserve the distinction between retained information and later reacquisition.
+      </div>
+
+      <h2>27. Open directions</h2>
+
+      <p>
+        Important open directions include approximate semantic min-cut theorems beyond linear settings, complexity of minimal local factorization, adaptive routing under changing Passports, joint sensing-and-routing optimization, hierarchical cut synthesis, semantic coding under stochastic uncertainty, and scalable resilience certification.
+      </p>
+
+      <p>
+        The next natural step is to move from spatial cuts to full causal state: Spacetime Semantic Width.
+      </p>
+
+    </div>
+  </article>
+
+  <section class="next">
+    <div class="wrap">
+      <span class="eyebrow">Continue</span>
+      <h2 style="font-size:clamp(2rem,5vw,3.4rem);line-height:1.04;letter-spacing:-.035em;margin:.7rem 0 .9rem">
+        Related research
+      </h2>
+
+      <div class="next-grid">
+        <a class="card" href="/research/spacetime-semantic-width/">
+          <small>Causality</small>
+          <h3>Spacetime Semantic Width</h3>
+          <p>Extend cut logic into residual states, deadlines, continuation equivalence, and canonical causal machines.</p>
+        </a>
+
+        <a class="card" href="/research/pde-port-reduction/">
+          <small>Continuum interfaces</small>
+          <h3>PDE Port Reduction</h3>
+          <p>See the same distinction logic at PDE boundaries and domain-decomposition interfaces.</p>
+        </a>
+
+        <a class="card" href="/examples/distributed-cut/">
+          <small>Worked example</small>
+          <h3>Distributed Cut Example</h3>
+          <p>Work through a finite task quotient, route novelty test, and resilience surcharge.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div>
+      <div class="brand" style="margin-bottom:.5rem">
+        <span class="mark">BM</span>
+        <span>Branch Mathematics</span>
+      </div>
+      <div>Mathematics of necessary distinctions.</div>
+    </div>
+
+    <div class="footer-links">
+      <a href="/learn/">Learn</a>
+      <a href="/research/">Research</a>
+      <a href="/applications/">Applications</a>
+      <a href="/reference/">Reference</a>
+      <a href="/book/">Book</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
