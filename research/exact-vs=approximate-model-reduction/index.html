@@ -1,0 +1,1016 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Exact vs Approximate Model Reduction | Branch Mathematics</title>
+  <meta name="description" content="A technical Branch Mathematics treatment of exact and approximate model reduction: task factorization, exact quotients, behavioral pseudometrics, covering numbers, graph and hypergraph formulations, horizon compatibility, error propagation, robustness, and realization." />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <link rel="canonical" href="https://branch-mathematics-bm.github.io/research/exact-vs-approximate-model-reduction/" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Exact vs Approximate Model Reduction" />
+  <meta property="og:description" content="Exact quotients, positive-tolerance covers, behavioral geometry, dynamic compatibility, error propagation, and admissible realization." />
+  <meta property="og:url" content="https://branch-mathematics-bm.github.io/research/exact-vs-approximate-model-reduction/" />
+  <meta property="og:site_name" content="Branch Mathematics" />
+
+  <meta name="theme-color" content="#07111f" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"TechArticle",
+    "headline":"Exact vs Approximate Model Reduction",
+    "description":"A technical treatment of exact and approximate task-relative model reduction in Branch Mathematics.",
+    "mainEntityOfPage":"https://branch-mathematics-bm.github.io/research/exact-vs-approximate-model-reduction/",
+    "isPartOf":{
+      "@type":"WebSite",
+      "name":"Branch Mathematics",
+      "url":"https://branch-mathematics-bm.github.io/"
+    }
+  }
+  </script>
+
+  <style>
+    :root{
+      --bg:#07111f;
+      --text:#eef5ff;
+      --muted:#aabbd0;
+      --line:#27415e;
+      --accent:#7bdcff;
+      --accent2:#b39cff;
+      --green:#7ef0c5;
+      --warn:#ffd98c;
+      --red:#ff9d9d;
+      --max:1160px;
+      --read:860px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;color:var(--text);
+      background:
+        radial-gradient(circle at 10% -5%,rgba(123,220,255,.11),transparent 28rem),
+        radial-gradient(circle at 90% 4%,rgba(179,156,255,.08),transparent 24rem),
+        linear-gradient(180deg,#06101d,#07111f 45%,#081422);
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height:1.72;
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(calc(100% - 2rem),var(--max));margin-inline:auto}
+    .read{width:min(100%,var(--read));margin-inline:auto}
+    .site-header{
+      position:sticky;top:0;z-index:50;backdrop-filter:blur(18px);
+      background:rgba(7,17,31,.84);border-bottom:1px solid rgba(123,220,255,.12);
+    }
+    .nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .brand{display:flex;align-items:center;gap:.75rem;font-weight:760;white-space:nowrap}
+    .mark{
+      width:34px;height:34px;border-radius:11px;border:1px solid rgba(123,220,255,.5);
+      display:grid;place-items:center;background:linear-gradient(135deg,rgba(123,220,255,.2),rgba(179,156,255,.12));
+    }
+    .navlinks{display:flex;gap:.15rem;flex-wrap:wrap;justify-content:flex-end}
+    .navlinks a{color:var(--muted);padding:.55rem .68rem;border-radius:10px;font-size:.93rem}
+    .navlinks a:hover,.navlinks a[aria-current="page"]{color:var(--text);background:rgba(255,255,255,.05)}
+    .breadcrumbs{padding:1.2rem 0 0;color:#8397af;font-size:.9rem}
+    .hero{padding:4.6rem 0 4rem;border-bottom:1px solid rgba(123,220,255,.1)}
+    .eyebrow{
+      display:inline-flex;padding:.42rem .7rem;border-radius:999px;border:1px solid rgba(123,220,255,.3);
+      background:rgba(123,220,255,.06);color:#c5efff;font-size:.82rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+    }
+    h1{
+      font-size:clamp(3rem,7vw,5.7rem);line-height:.96;letter-spacing:-.05em;
+      margin:1rem 0 1.15rem;max-width:13ch;
+    }
+    .hero .lead{font-size:clamp(1.08rem,2vw,1.3rem);color:#c4d4e6;max-width:940px;margin:0 0 1.5rem}
+    .meta{display:flex;gap:.55rem;flex-wrap:wrap;margin-top:1.2rem}
+    .tag{
+      display:inline-flex;padding:.42rem .66rem;border-radius:999px;font-size:.76rem;font-weight:800;
+      letter-spacing:.06em;border:1px solid rgba(111,151,193,.24);background:rgba(255,255,255,.025);color:#d8e7f7;
+    }
+    .tag.canon{border-color:rgba(126,240,197,.28);background:rgba(126,240,197,.045);color:#dffcef}
+    .tag.cand{border-color:rgba(255,217,140,.25);background:rgba(255,217,140,.035);color:#f7e8c7}
+    .tag.classic{border-color:rgba(179,156,255,.26);background:rgba(179,156,255,.04);color:#ece5ff}
+    .abstract{
+      margin-top:1.7rem;padding:1.3rem 1.4rem;border:1px solid rgba(123,220,255,.22);border-radius:20px;
+      background:linear-gradient(145deg,rgba(123,220,255,.05),rgba(179,156,255,.025));
+    }
+    .abstract strong{display:block;margin-bottom:.35rem;color:#def6ff}
+    .abstract p{margin:0;color:#c3d3e4}
+    .article{padding:4.8rem 0 5rem}
+    .article h2{font-size:clamp(2rem,5vw,3.15rem);line-height:1.05;letter-spacing:-.035em;margin:3.3rem 0 1rem}
+    .article h3{font-size:1.35rem;line-height:1.25;margin:2.2rem 0 .7rem}
+    .article p{color:#c4d2e2;font-size:1.035rem;margin:0 0 1.15rem}
+    .formula{
+      margin:1.4rem 0;padding:1.05rem 1.15rem;border-left:3px solid var(--accent);
+      background:rgba(123,220,255,.055);border-radius:0 14px 14px 0;color:#e0f1ff;
+      font-family:"Cambria Math","Times New Roman",serif;font-size:1.08rem;overflow:auto;
+    }
+    .theorem{
+      margin:1.7rem 0 2rem;padding:1.35rem;border:1px solid rgba(126,240,197,.24);
+      border-radius:20px;background:linear-gradient(145deg,rgba(126,240,197,.04),rgba(255,255,255,.012));
+    }
+    .theorem .head{display:flex;align-items:center;gap:.55rem;flex-wrap:wrap;margin-bottom:.55rem}
+    .theorem .head strong{font-size:1.08rem;color:#e7fff5}
+    .theorem .mini{
+      padding:.25rem .5rem;border-radius:999px;border:1px solid rgba(126,240,197,.28);
+      color:#c7f9e7;font-size:.72rem;font-weight:800;letter-spacing:.06em;
+    }
+    .theorem p{margin:.45rem 0;color:#cbd9e6}
+    .proof{margin:.9rem 0 0;padding-top:.9rem;border-top:1px dashed rgba(126,240,197,.2)}
+    .proof strong{color:#dffcef}
+    .proof p{font-size:.98rem}
+    .firewall{
+      margin:1.7rem 0;padding:1.2rem 1.3rem;border-radius:18px;border:1px solid rgba(255,157,157,.2);
+      background:rgba(255,157,157,.035);color:#f1cccc;
+    }
+    .firewall strong{color:#ffd6d6}
+    .callout{
+      margin:1.7rem 0;padding:1.2rem 1.3rem;border-radius:18px;border:1px solid rgba(255,217,140,.22);
+      background:rgba(255,217,140,.04);color:#eadfc9;
+    }
+    .compare{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.4rem 0 2rem}
+    .compare .box{border:1px solid rgba(111,151,193,.22);border-radius:18px;background:rgba(255,255,255,.02);padding:1.2rem}
+    .compare h3{margin-top:0}.compare p{font-size:.96rem;margin-bottom:0}
+    .example{
+      margin:1.6rem 0 2rem;padding:1.35rem;border-radius:20px;border:1px solid rgba(179,156,255,.22);
+      background:linear-gradient(145deg,rgba(179,156,255,.04),rgba(255,255,255,.015));
+    }
+    .example h3{margin-top:0;color:#efe8ff}
+    table{
+      width:100%;border-collapse:collapse;margin:1.25rem 0 1.9rem;border:1px solid rgba(111,151,193,.22);
+      background:rgba(255,255,255,.015);
+    }
+    th,td{padding:.82rem;border-bottom:1px solid rgba(111,151,193,.16);text-align:left;vertical-align:top}
+    th{color:#dff7ff;background:rgba(123,220,255,.055);font-size:.92rem}
+    td{color:#c4d2e2;font-size:.94rem}
+    .next{padding:4.5rem 0;border-top:1px solid rgba(123,220,255,.1);background:#050d18}
+    .next-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.6rem}
+    .card{
+      min-height:100%;padding:1.2rem;border-radius:20px;border:1px solid rgba(111,151,193,.2);
+      background:rgba(255,255,255,.02);transition:.2s ease;
+    }
+    .card:hover{transform:translateY(-2px);border-color:rgba(123,220,255,.42);background:rgba(123,220,255,.04)}
+    .card small{color:var(--accent);font-size:.75rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+    .card h3{margin:.5rem 0 .45rem}.card p{color:var(--muted);font-size:.93rem;margin:0}
+    footer{padding:3rem 0;border-top:1px solid rgba(255,255,255,.07);background:#040a12;color:#8fa3ba}
+    .footer-grid{display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:end}
+    .footer-links{display:flex;gap:.7rem;flex-wrap:wrap;justify-content:flex-end}
+    @media(max-width:900px){.navlinks{display:none}.next-grid{grid-template-columns:1fr}}
+    @media(max-width:620px){
+      .hero{padding-top:3rem}.compare{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}
+      .footer-links{justify-content:flex-start}th,td{font-size:.87rem}
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="/" aria-label="Branch Mathematics home">
+      <span class="mark">BM</span>
+      <span>Branch Mathematics</span>
+    </a>
+    <nav class="navlinks" aria-label="Primary navigation">
+      <a href="/learn/">Learn</a>
+      <a href="/research/" aria-current="page">Research</a>
+      <a href="/applications/">Applications</a>
+      <a href="/examples/">Examples</a>
+      <a href="/calculator/">Calculator</a>
+      <a href="/reference/">Reference</a>
+      <a href="/book/">Book</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <div class="wrap breadcrumbs">
+    <a href="/">Home</a> / <a href="/research/">Research</a> / Exact vs Approximate Model Reduction
+  </div>
+
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Model reduction</span>
+      <h1>Exact vs Approximate Model Reduction</h1>
+
+      <p class="lead">
+        Exact reduction identifies states only when every declared response agrees. Approximate reduction allows positive error, but that changes the structure from exact equivalence classes to metric cells, covers, compatibility constraints, and robustness tradeoffs.
+      </p>
+
+      <div class="meta">
+        <span class="tag canon">Exact foundation</span>
+        <span class="tag cand">Approximate developments</span>
+        <span class="tag classic">Uses classical approximation theory</span>
+      </div>
+
+      <div class="abstract">
+        <strong>Abstract</strong>
+        <p>
+          Branch Mathematics separates exact task quotients from positive-tolerance representations. Exact sufficiency is governed by factorization through a representation. Approximate sufficiency is governed by the geometry of receiver-visible response profiles. This page develops behavioral pseudometrics, cell-radius conditions, covering numbers, graph and hypergraph formulations, exact and approximate horizon reduction, SVD-based linear approximations, compatibility defects, error propagation, robustness reserve, and the separation between abstract semantic compression and admissible realization.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <article class="article">
+    <div class="read">
+
+      <h2>1. Exact reduction begins with the task</h2>
+
+      <p>
+        Let <strong>X</strong> be a native state space, <strong>R:X→Q</strong> a representation, and <strong>T:X→Y</strong> a declared task.
+      </p>
+
+      <div class="formula">
+        T = T̄R
+        ⇔
+        ker(R) ⊆ ker(T).
+      </div>
+
+      <p>
+        This condition is exact: any two states merged by <strong>R</strong> must produce exactly the same task response.
+      </p>
+
+      <div class="theorem">
+        <div class="head">
+          <strong>Exact Task Sufficiency</strong>
+          <span class="mini">Canonical foundation</span>
+        </div>
+        <p>
+          A representation <strong>R</strong> is sufficient for <strong>T</strong> if and only if the task factors through <strong>R</strong>.
+        </p>
+        <div class="proof">
+          <strong>Interpretation.</strong>
+          <p>
+            Exact reduction is not defined by low dimension alone. It is defined by the equivalence relation induced by the declared response.
+          </p>
+        </div>
+      </div>
+
+      <h2>2. The coarsest exact task quotient</h2>
+
+      <p>
+        For one exact task, the coarsest exact representation is the quotient by:
+      </p>
+
+      <div class="formula">
+        E<sub>T</sub> = ker(T).
+      </div>
+
+      <p>
+        For a family of tasks and admissible continuations, the exactification relation becomes:
+      </p>
+
+      <div class="formula">
+        E<sub>*</sub>
+        =
+        ⋂<sub>T∈Q, m∈M</sub>
+        ker(T∘m).
+      </div>
+
+      <p>
+        Two native states can be merged exactly only when no declared task after any declared admissible continuation distinguishes them.
+      </p>
+
+      <div class="quote" style="margin:2rem 0;padding:1.4rem 1.5rem;border:1px solid rgba(179,156,255,.24);border-radius:18px;background:rgba(179,156,255,.045);font-size:1.14rem;color:#e4e4ff">
+        Exactification asks for the most aggressive compression that remains exact for the whole declared contract.
+      </div>
+
+      <h2>3. Positive tolerance changes the mathematical object</h2>
+
+      <p>
+        At tolerance <strong>ε&gt;0</strong>, equality is no longer the right relation.
+      </p>
+
+      <p>
+        The receiver permits different outputs as long as one decoder representative can serve all states in the same cell within tolerance.
+      </p>
+
+      <div class="compare">
+        <div class="box">
+          <h3>Exact</h3>
+          <p>Representation cells are equivalence classes.</p>
+        </div>
+        <div class="box">
+          <h3>Approximate</h3>
+          <p>Representation cells are sets whose receiver-visible responses fit inside admissible error radius.</p>
+        </div>
+      </div>
+
+      <p>
+        Approximate reduction is therefore a covering problem rather than merely a quotient problem.
+      </p>
+
+      <h2>4. Behavioral pseudometric</h2>
+
+      <p>
+        Let the Passport declare responses <strong>B<sub>j</sub>:X→Y<sub>j</sub></strong>, each equipped with a metric <strong>d<sub>j</sub></strong>.
+      </p>
+
+      <p>
+        Define:
+      </p>
+
+      <div class="formula">
+        D<sub>P</sub>(x,x′)
+        =
+        max<sub>j</sub>
+        d<sub>j</sub>(B<sub>j</sub>(x),B<sub>j</sub>(x′)).
+      </div>
+
+      <p>
+        This is a receiver-relative behavioral pseudometric.
+      </p>
+
+      <p>
+        Native states can be far apart in the original geometry and still have zero behavioral distance if the declared receiver cannot distinguish them.
+      </p>
+
+      <h2>5. Diameter and radius semantics</h2>
+
+      <p>
+        Approximate cells can be constrained in at least two natural ways.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Semantics</th>
+            <th>Condition on a cell A</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Diameter</td>
+            <td>diam(A) ≤ ε</td>
+          </tr>
+          <tr>
+            <td>Decoder radius</td>
+            <td>rad(A) ≤ ε</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        The radius condition is the direct decoder condition because one representative must serve the whole cell.
+      </p>
+
+      <div class="formula">
+        rad(A)
+        =
+        inf<sub>z</sub>
+        sup<sub>y∈A</sub>
+        d(y,z).
+      </div>
+
+      <p>
+        General metric spaces satisfy:
+      </p>
+
+      <div class="formula">
+        ½ diam(A) ≤ rad(A) ≤ diam(A).
+      </div>
+
+      <h2>6. Why pairwise thresholding can fail</h2>
+
+      <div class="example">
+        <h3>Three-point obstruction</h3>
+        <p>
+          Place three task outputs at the vertices of an equilateral triangle of side length <strong>2ε</strong>.
+        </p>
+        <p>
+          Every pair fits inside some radius-ε ball, but the whole triple requires circumradius:
+        </p>
+        <div class="formula">
+          2ε/√3 &gt; ε.
+        </div>
+        <p>
+          Pairwise admissibility therefore does not imply joint decoder admissibility.
+        </p>
+      </div>
+
+      <div class="firewall">
+        <strong>Permanent firewall:</strong> pairwise approximate compatibility does not imply global cell realizability.
+      </div>
+
+      <h2>7. Graph and hypergraph formulations</h2>
+
+      <p>
+        Under diameter semantics in a finite system, define a conflict graph:
+      </p>
+
+      <div class="formula">
+        {x,x′}∈E(G<sub>ε</sub>)
+        ⇔
+        D<sub>P</sub>(x,x′)&gt;ε.
+      </div>
+
+      <p>
+        Then the minimum number of admissible cells is:
+      </p>
+
+      <div class="formula">
+        N(ε)=χ(G<sub>ε</sub>).
+      </div>
+
+      <p>
+        Under general radius semantics, pairwise conflicts can be insufficient. One can instead use a hypergraph whose hyperedges are subsets that fail the radius constraint.
+      </p>
+
+      <div class="formula">
+        A is a forbidden hyperedge
+        ⇔
+        rad(P(A))&gt;ε.
+      </div>
+
+      <p>
+        This distinction matters because approximate representation can be combinatorially harder than exact quotienting.
+      </p>
+
+      <h2>8. Semantic width</h2>
+
+      <p>
+        The approximate semantic width is:
+      </p>
+
+      <div class="formula">
+        w(ε)=log₂ N(ε).
+      </div>
+
+      <p>
+        For exact finite representations:
+      </p>
+
+      <div class="formula">
+        w(0)=log₂|X/E<sub>*</sub>|.
+      </div>
+
+      <p>
+        This is a log-cardinality or covering quantity, not automatically a Shannon entropy.
+      </p>
+
+      <div class="firewall">
+        <strong>Permanent firewall:</strong> semantic width is not automatically Shannon entropy, thermodynamic entropy, or Landauer cost.
+      </div>
+
+      <h2>9. Exact dimension and approximate width need not track one another</h2>
+
+      <p>
+        A system can require infinitely many exact receiver-distinct states while having finite positive-tolerance covering number.
+      </p>
+
+      <p>
+        Conversely, a finite exact quotient can have awkward or high-dimensional realization requirements.
+      </p>
+
+      <div class="formula">
+        exact quotient size
+        ≠
+        approximate covering width
+        ≠
+        Euclidean realization dimension.
+      </div>
+
+      <h2>10. Infinite-dimensional systems</h2>
+
+      <p>
+        Let a bounded admissible state set <strong>K</strong> be mapped into a receiver-profile space by:
+      </p>
+
+      <div class="formula">
+        P:K→Y.
+      </div>
+
+      <p>
+        Positive-tolerance semantic width is finite for every <strong>ε&gt;0</strong> exactly when the profile image is relatively compact:
+      </p>
+
+      <div class="theorem">
+        <div class="head">
+          <strong>Compact Profile Criterion</strong>
+          <span class="mini">Classical compactness + BM placement</span>
+        </div>
+        <div class="formula">
+          N(P(K),ε)&lt;∞ for every ε&gt;0
+          ⇔
+          P(K) is relatively compact.
+        </div>
+      </div>
+
+      <p>
+        Thus an infinite-dimensional native system can have finite approximate task width.
+      </p>
+
+      <h2>11. Linear compact operators and singular values</h2>
+
+      <p>
+        Suppose the receiver profile is generated by a compact linear operator:
+      </p>
+
+      <div class="formula">
+        T:H→Y
+      </div>
+
+      <p>
+        between Hilbert spaces, with singular values:
+      </p>
+
+      <div class="formula">
+        σ₁≥σ₂≥···→0.
+      </div>
+
+      <p>
+        Truncating after <strong>n</strong> singular directions yields an operator-norm error:
+      </p>
+
+      <div class="formula">
+        ||T-T<sub>n</sub>|| = σ<sub>n+1</sub>.
+      </div>
+
+      <p>
+        Singular-value decay therefore controls finite-dimensional approximation of the receiver-visible profile set.
+      </p>
+
+      <p>
+        This is classical approximation theory. BM's use is to apply it to the task-filtered profile rather than automatically to the full native state.
+      </p>
+
+      <h2>12. Free linear horizon approximation</h2>
+
+      <p>
+        For a linear dynamical system:
+      </p>
+
+      <div class="formula">
+        x<sub>t+1</sub>=Ax<sub>t</sub>,
+        &nbsp;
+        y<sub>t</sub>=Cx<sub>t</sub>,
+      </div>
+
+      <p>
+        define the horizon observability operator:
+      </p>
+
+      <div class="formula">
+        O<sub>h</sub>
+        =
+        [C;CA;···;CA<sup>h</sup>].
+      </div>
+
+      <p>
+        The best unconstrained rank-<strong>d</strong> approximation in operator norm is:
+      </p>
+
+      <div class="formula">
+        E<sub>h</sub><sup>free</sup>(d)
+        =
+        σ<sub>d+1</sub>(O<sub>h</sub>).
+      </div>
+
+      <p>
+        But this is only a stagewise approximation result.
+      </p>
+
+      <h2>13. Stagewise optimality is not dynamic compatibility</h2>
+
+      <p>
+        Let <strong>P<sub>h</sub></strong> project onto a horizon-<strong>h</strong> reduced subspace and <strong>R<sub>h-1</sub></strong> encode the next shorter horizon.
+      </p>
+
+      <p>
+        A compatibility defect can be measured by:
+      </p>
+
+      <div class="formula">
+        δ<sub>h</sub>
+        =
+        ||R<sub>h-1</sub>A(I-P<sub>h</sub>)||.
+      </div>
+
+      <p>
+        Even if each <strong>P<sub>h</sub></strong> is independently optimal for its horizon, the sequence can fail to support a coherent reduced dynamics.
+      </p>
+
+      <div class="firewall">
+        <strong>Permanent firewall:</strong> independent stage optimum does not imply compatible dynamics.
+      </div>
+
+      <h2>14. Error propagation</h2>
+
+      <p>
+        Approximate reduction must control how local defects accumulate.
+      </p>
+
+      <p>
+        A typical recurrence is:
+      </p>
+
+      <div class="formula">
+        e<sub>t+1</sub>
+        ≤
+        L<sub>H-t</sub>e<sub>t</sub>
+        +
+        δ<sub>H-t</sub>.
+      </div>
+
+      <p>
+        Here <strong>L</strong> captures reduced update amplification and <strong>δ</strong> captures local incompatibility.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Regime</th>
+            <th>Consequence</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>L&lt;1</td>
+            <td>Errors can contract.</td>
+          </tr>
+          <tr>
+            <td>L=1</td>
+            <td>Errors can accumulate roughly additively.</td>
+          </tr>
+          <tr>
+            <td>L&gt;1</td>
+            <td>Errors can amplify geometrically.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="firewall">
+        <strong>Permanent firewall:</strong> small local defect does not imply small global defect without conditioning.
+      </div>
+
+      <h2>15. Backward error budgets</h2>
+
+      <p>
+        If a final receiver tolerance is known, the admissible local budget can be propagated backward.
+      </p>
+
+      <div class="formula">
+        B<sub>t</sub>
+        =
+        (B<sub>t+1</sub>-δ<sub>t</sub>)/L<sub>t</sub>.
+      </div>
+
+      <p>
+        A negative budget is an infeasibility certificate: the architecture cannot meet the declared final tolerance under the current local defects and amplification factors.
+      </p>
+
+      <h2>16. Robustness reserve</h2>
+
+      <p>
+        Two approximate reductions can have the same width and nominal tolerance but different safety margins.
+      </p>
+
+      <p>
+        If a cell has current radius <strong>r</strong> and tolerance <strong>ε</strong>, define:
+      </p>
+
+      <div class="formula">
+        reserve = ε-r.
+      </div>
+
+      <p>
+        A slightly wider representation can have much larger robustness reserve.
+      </p>
+
+      <div class="quote" style="margin:2rem 0;padding:1.4rem 1.5rem;border:1px solid rgba(179,156,255,.24);border-radius:18px;background:rgba(179,156,255,.045);font-size:1.14rem;color:#e4e4ff">
+        Minimum width and maximum robustness need not coincide.
+      </div>
+
+      <h2>17. Pareto structure</h2>
+
+      <p>
+        Approximate design can involve competing objectives:
+      </p>
+
+      <div class="formula">
+        width, error, robustness, locality, memory, cost.
+      </div>
+
+      <p>
+        There need not be one representation that is simultaneously best in every coordinate.
+      </p>
+
+      <p>
+        The natural object can therefore be a Pareto frontier rather than a unique optimum.
+      </p>
+
+      <h2>18. Approximate quotients need not be nested canonically</h2>
+
+      <p>
+        Exact equivalence relations often admit a refinement order.
+      </p>
+
+      <p>
+        Positive-tolerance optimal covers can cross one another: two different optimal cellings may have the same size but neither refines the other.
+      </p>
+
+      <div class="formula">
+        approximate optimality need not form one canonical chain.
+      </div>
+
+      <p>
+        This is one reason approximate BM must use geometric and optimization language rather than exact quotient language alone.
+      </p>
+
+      <h2>19. Realization remains a separate stage</h2>
+
+      <p>
+        A small abstract cover or quotient does not guarantee an admissible realization.
+      </p>
+
+      <p>
+        The required representation may need to be:
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Possible obstruction</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Continuous</td>
+            <td>Topology of the quotient or profile set</td>
+          </tr>
+          <tr>
+            <td>Smooth</td>
+            <td>Bundle or rank obstruction</td>
+          </tr>
+          <tr>
+            <td>Distributed</td>
+            <td>Locality surcharge or incompatible product structure</td>
+          </tr>
+          <tr>
+            <td>Causal</td>
+            <td>Required future information is not yet available</td>
+          </tr>
+          <tr>
+            <td>Quantum</td>
+            <td>No CPTP realization of the desired abstract recovery</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="firewall">
+        <strong>Permanent firewall:</strong> set-theoretic or algebraic reduction does not imply admissible physical realization.
+      </div>
+
+      <h2>20. Exact versus approximate smooth realization</h2>
+
+      <p>
+        Exact quotienting can force a nontrivial quotient space that does not embed in a desired low-dimensional Euclidean target.
+      </p>
+
+      <p>
+        Approximation can sometimes bypass the exact topological obstruction by allowing controlled deformation or merging.
+      </p>
+
+      <p>
+        But positive tolerance does not automatically remove every obstruction. The required tolerance, regularity, locality, and decoder conditioning still matter.
+      </p>
+
+      <h2>21. A linear repair viewpoint</h2>
+
+      <p>
+        Suppose a nominal invariant splitting is perturbed by off-diagonal coupling of size <strong>Δ</strong>, and the relevant spectral separation is <strong>s&gt;0</strong>.
+      </p>
+
+      <p>
+        A Sylvester-type correction can produce an invariant graph with a bound of the form:
+      </p>
+
+      <div class="formula">
+        r = 2Δ/s.
+      </div>
+
+      <p>
+        The induced squared error surcharge can then scale like:
+      </p>
+
+      <div class="formula">
+        O(Δ²/s²).
+      </div>
+
+      <p>
+        The lesson is that repair cost depends not only on defect magnitude but also on conditioning or separation.
+      </p>
+
+      <h2>22. Why rescaling can hide instability</h2>
+
+      <p>
+        A representation can be numerically small in its encoded coordinates while its decoder is highly sensitive.
+      </p>
+
+      <p>
+        Rescaling can therefore make encoded error look arbitrarily small without improving the recovered native or task error.
+      </p>
+
+      <div class="firewall">
+        <strong>Permanent firewall:</strong> robust-width claims require decoder sensitivity or an equivalent normalization condition.
+      </div>
+
+      <h2>23. Exact and approximate reduction in stochastic systems</h2>
+
+      <p>
+        In stochastic sectors, equality of support is weaker than equality of law.
+      </p>
+
+      <p>
+        Exact aggregation must preserve the declared transition probabilities or laws, not merely the set of possible successors.
+      </p>
+
+      <div class="firewall">
+        <strong>Permanent firewall:</strong> support equality does not imply law equality.
+      </div>
+
+      <p>
+        Approximate stochastic reduction then needs a declared metric on probability laws, such as total variation, Wasserstein distance, or another native probabilistic metric.
+      </p>
+
+      <h2>24. Exact and approximate reduction in quantum systems</h2>
+
+      <p>
+        In the quantum sector, an abstract algebraic quotient is not enough.
+      </p>
+
+      <p>
+        Exact physical closure requires a completely positive trace-preserving reduced channel:
+      </p>
+
+      <div class="formula">
+        ΨE = EΦ.
+      </div>
+
+      <p>
+        Approximate physical closure can be quantified by:
+      </p>
+
+      <div class="formula">
+        δ<sub>Q</sub>
+        =
+        min<sub>Ψ CPTP</sub>
+        ||EΦ-ΨE||<sub>⋄</sub>.
+      </div>
+
+      <p>
+        This minimum is attained in finite dimension.
+      </p>
+
+      <div class="firewall">
+        <strong>Permanent firewall:</strong> algebraic or operator recovery does not imply CPTP recovery.
+      </div>
+
+      <h2>25. Exact versus approximate PDE reduction</h2>
+
+      <p>
+        For a PDE, exact state compression can be impossible at low continuous Euclidean dimension while positive-time, positive-tolerance receiver profiles can still be compact.
+      </p>
+
+      <div class="formula">
+        exact low-dimensional closure may fail
+        while
+        approximate task width is finite.
+      </div>
+
+      <p>
+        This makes the exact/approximate distinction especially important in continuum systems.
+      </p>
+
+      <h2>26. What a reduction certificate should contain</h2>
+
+      <p>
+        A serious reduction claim should state:
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Question</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Task</td>
+            <td>What response must be preserved?</td>
+          </tr>
+          <tr>
+            <td>Context</td>
+            <td>Under which environments or peer systems?</td>
+          </tr>
+          <tr>
+            <td>Horizon</td>
+            <td>How far into the future?</td>
+          </tr>
+          <tr>
+            <td>Metric</td>
+            <td>How is error measured?</td>
+          </tr>
+          <tr>
+            <td>Tolerance</td>
+            <td>What deviation is allowed?</td>
+          </tr>
+          <tr>
+            <td>Dynamics</td>
+            <td>How does local error propagate?</td>
+          </tr>
+          <tr>
+            <td>Realization</td>
+            <td>What implementation category is required?</td>
+          </tr>
+          <tr>
+            <td>Robustness</td>
+            <td>How much perturbation reserve remains?</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>27. The BM distinction</h2>
+
+      <p>
+        Branch Mathematics does not define model reduction by dimension alone.
+      </p>
+
+      <p>
+        It separates:
+      </p>
+
+      <div class="formula">
+        what may be merged exactly,
+        what may be blurred approximately,
+        how errors propagate,
+        whether local reductions compose,
+        and whether the abstract reduction can actually be realized.
+      </div>
+
+      <p>
+        That distinction is what connects exactification, semantic width, dynamic closure, robustness, PDE reduction, distributed interfaces, and quantum recovery.
+      </p>
+
+    </div>
+  </article>
+
+  <section class="next">
+    <div class="wrap">
+      <span class="eyebrow">Continue</span>
+      <h2 style="font-size:clamp(2rem,5vw,3.4rem);line-height:1.04;letter-spacing:-.035em;margin:.7rem 0 .9rem">
+        Related research
+      </h2>
+
+      <div class="next-grid">
+        <a class="card" href="/research/semantic-width/">
+          <small>Complexity</small>
+          <h3>Semantic Width</h3>
+          <p>Develop the covering-number and distinction-geometry side in greater depth.</p>
+        </a>
+
+        <a class="card" href="/research/infinite-dimensional-pde-reduction/">
+          <small>PDEs</small>
+          <h3>Infinite-Dimensional PDE Reduction</h3>
+          <p>Apply compact profile geometry to continuum systems and positive-time smoothing.</p>
+        </a>
+
+        <a class="card" href="/research/robustness/">
+          <small>Robustness</small>
+          <h3>Robustness and Reserve</h3>
+          <p>Study tolerance reserve, decoder sensitivity, propagation factors, and perturbation stability.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div>
+      <div class="brand" style="margin-bottom:.5rem">
+        <span class="mark">BM</span>
+        <span>Branch Mathematics</span>
+      </div>
+      <div>Mathematics of necessary distinctions.</div>
+    </div>
+
+    <div class="footer-links">
+      <a href="/learn/">Learn</a>
+      <a href="/research/">Research</a>
+      <a href="/applications/">Applications</a>
+      <a href="/reference/">Reference</a>
+      <a href="/book/">Book</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
