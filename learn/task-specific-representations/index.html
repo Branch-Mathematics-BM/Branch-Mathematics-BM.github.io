@@ -1,0 +1,978 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Task-Specific Representations | Branch Mathematics</title>
+  <meta name="description" content="A task-specific representation preserves the distinctions required by a declared receiver rather than every native difference. Learn the exact factorization test, examples, context dependence, dynamic consequences, and how Branch Mathematics uses Passports to define lawful reduction." />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <link rel="canonical" href="https://branch-mathematics-bm.github.io/learn/task-specific-representations/" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Task-Specific Representations" />
+  <meta property="og:description" content="Why the same native system can admit different lawful representations for different tasks and receivers." />
+  <meta property="og:url" content="https://branch-mathematics-bm.github.io/learn/task-specific-representations/" />
+  <meta property="og:site_name" content="Branch Mathematics" />
+
+  <meta name="theme-color" content="#07111f" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"Task-Specific Representations",
+    "description":"An introduction to task-specific representation in Branch Mathematics, including factorization, receiver-relative equivalence, Passports, context, dynamics, and interfaces.",
+    "mainEntityOfPage":"https://branch-mathematics-bm.github.io/learn/task-specific-representations/",
+    "isPartOf":{
+      "@type":"WebSite",
+      "name":"Branch Mathematics",
+      "url":"https://branch-mathematics-bm.github.io/"
+    }
+  }
+  </script>
+
+  <style>
+    :root{
+      --bg:#07111f;
+      --text:#eef5ff;
+      --muted:#aabbd0;
+      --line:#27415e;
+      --accent:#7bdcff;
+      --accent2:#b39cff;
+      --green:#7ef0c5;
+      --warn:#ffd98c;
+      --max:1120px;
+      --read:820px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 12% -5%,rgba(123,220,255,.12),transparent 28rem),
+        radial-gradient(circle at 88% 4%,rgba(179,156,255,.09),transparent 24rem),
+        linear-gradient(180deg,#06101d,#07111f 45%,#081422);
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height:1.7;
+    }
+
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(calc(100% - 2rem),var(--max));margin-inline:auto}
+    .read{width:min(100%,var(--read));margin-inline:auto}
+
+    .site-header{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:blur(18px);
+      background:rgba(7,17,31,.84);
+      border-bottom:1px solid rgba(123,220,255,.12);
+    }
+
+    .nav{
+      min-height:72px;
+      display:flex;align-items:center;justify-content:space-between;gap:1rem;
+    }
+
+    .brand{
+      display:flex;align-items:center;gap:.75rem;font-weight:760;white-space:nowrap;
+    }
+
+    .mark{
+      width:34px;height:34px;border-radius:11px;
+      border:1px solid rgba(123,220,255,.5);
+      display:grid;place-items:center;
+      background:linear-gradient(135deg,rgba(123,220,255,.2),rgba(179,156,255,.12));
+    }
+
+    .navlinks{display:flex;gap:.15rem;flex-wrap:wrap;justify-content:flex-end}
+    .navlinks a{
+      color:var(--muted);padding:.55rem .68rem;border-radius:10px;font-size:.93rem;
+    }
+    .navlinks a:hover,.navlinks a[aria-current="page"]{
+      color:var(--text);background:rgba(255,255,255,.05);
+    }
+
+    .breadcrumbs{
+      padding:1.2rem 0 0;
+      color:#8397af;
+      font-size:.9rem;
+    }
+
+    .hero{
+      padding:4.2rem 0 4rem;
+      border-bottom:1px solid rgba(123,220,255,.1);
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      padding:.42rem .7rem;
+      border-radius:999px;
+      border:1px solid rgba(123,220,255,.3);
+      background:rgba(123,220,255,.06);
+      color:#c5efff;
+      font-size:.82rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+    }
+
+    h1{
+      font-size:clamp(3rem,8vw,6rem);
+      line-height:.94;
+      letter-spacing:-.055em;
+      margin:1rem 0 1.1rem;
+      max-width:12ch;
+    }
+
+    .hero .lead{
+      font-size:clamp(1.08rem,2vw,1.34rem);
+      color:#c4d4e6;
+      max-width:900px;
+      margin:0 0 1.4rem;
+    }
+
+    .summary{
+      margin-top:1.6rem;
+      padding:1.25rem 1.35rem;
+      border:1px solid rgba(123,220,255,.24);
+      border-radius:18px;
+      background:linear-gradient(145deg,rgba(123,220,255,.055),rgba(179,156,255,.03));
+    }
+
+    .article{padding:4.8rem 0 5rem}
+
+    .article h2{
+      font-size:clamp(2rem,5vw,3.2rem);
+      line-height:1.05;
+      letter-spacing:-.035em;
+      margin:3.2rem 0 1rem;
+    }
+
+    .article h3{
+      font-size:1.35rem;
+      line-height:1.25;
+      margin:2rem 0 .7rem;
+    }
+
+    .article p{
+      color:#c4d2e2;
+      font-size:1.04rem;
+      margin:0 0 1.15rem;
+    }
+
+    .formula{
+      margin:1.4rem 0;
+      padding:1rem 1.1rem;
+      border-left:3px solid var(--accent);
+      background:rgba(123,220,255,.055);
+      border-radius:0 14px 14px 0;
+      color:#e0f1ff;
+      font-family:"Cambria Math","Times New Roman",serif;
+      font-size:1.08rem;
+      overflow:auto;
+    }
+
+    .quote{
+      margin:2rem 0;
+      padding:1.4rem 1.5rem;
+      border:1px solid rgba(179,156,255,.24);
+      border-radius:18px;
+      background:rgba(179,156,255,.045);
+      font-size:1.14rem;
+      color:#e4e4ff;
+    }
+
+    .compare{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:1rem;
+      margin:1.4rem 0 2rem;
+    }
+
+    .compare .box{
+      border:1px solid rgba(111,151,193,.22);
+      border-radius:18px;
+      background:rgba(255,255,255,.02);
+      padding:1.2rem;
+    }
+
+    .compare h3{margin-top:0}
+    .compare p{font-size:.97rem;margin-bottom:0}
+
+    .example{
+      margin:1.5rem 0 2rem;
+      padding:1.4rem;
+      border-radius:20px;
+      border:1px solid rgba(126,240,197,.22);
+      background:linear-gradient(145deg,rgba(126,240,197,.045),rgba(255,255,255,.015));
+    }
+
+    .example h3{margin-top:0;color:#dffcef}
+
+    .callout{
+      margin:2rem 0;
+      padding:1.2rem 1.3rem;
+      border-radius:18px;
+      border:1px solid rgba(255,217,140,.22);
+      background:rgba(255,217,140,.04);
+      color:#eadfc9;
+    }
+
+    .steps{
+      display:grid;
+      gap:.8rem;
+      margin:1.4rem 0 2rem;
+    }
+
+    .step{
+      display:grid;
+      grid-template-columns:42px 1fr;
+      gap:.8rem;
+      align-items:start;
+      padding:1rem;
+      border:1px solid rgba(111,151,193,.2);
+      border-radius:16px;
+      background:rgba(255,255,255,.02);
+    }
+
+    .step .num{
+      width:34px;height:34px;border-radius:10px;
+      display:grid;place-items:center;
+      border:1px solid rgba(123,220,255,.28);
+      color:var(--accent);
+      background:rgba(123,220,255,.06);
+      font-weight:800;
+    }
+
+    .step strong{display:block;margin-bottom:.25rem}
+    .step span{color:var(--muted);font-size:.94rem}
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin:1.2rem 0 1.8rem;
+      border:1px solid rgba(111,151,193,.22);
+      background:rgba(255,255,255,.015);
+    }
+
+    th,td{
+      padding:.8rem;
+      border-bottom:1px solid rgba(111,151,193,.16);
+      text-align:left;
+      vertical-align:top;
+    }
+
+    th{
+      color:#dff7ff;
+      background:rgba(123,220,255,.055);
+      font-size:.92rem;
+    }
+
+    td{color:#c4d2e2;font-size:.95rem}
+
+    .next{
+      padding:4.5rem 0;
+      border-top:1px solid rgba(123,220,255,.1);
+      background:#050d18;
+    }
+
+    .next-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:1rem;
+      margin-top:1.6rem;
+    }
+
+    .card{
+      min-height:100%;
+      padding:1.2rem;
+      border-radius:20px;
+      border:1px solid rgba(111,151,193,.2);
+      background:rgba(255,255,255,.02);
+      transition:.2s ease;
+    }
+
+    .card:hover{
+      transform:translateY(-2px);
+      border-color:rgba(123,220,255,.42);
+      background:rgba(123,220,255,.04);
+    }
+
+    .card small{
+      color:var(--accent);
+      font-size:.75rem;
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .card h3{margin:.5rem 0 .45rem}
+    .card p{color:var(--muted);font-size:.93rem;margin:0}
+
+    footer{
+      padding:3rem 0;
+      border-top:1px solid rgba(255,255,255,.07);
+      background:#040a12;
+      color:#8fa3ba;
+    }
+
+    .footer-grid{
+      display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:end;
+    }
+
+    .footer-links{display:flex;gap:.7rem;flex-wrap:wrap;justify-content:flex-end}
+
+    @media(max-width:900px){
+      .navlinks{display:none}
+      .next-grid{grid-template-columns:1fr}
+    }
+
+    @media(max-width:620px){
+      .hero{padding-top:3rem}
+      .compare{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr}
+      .footer-links{justify-content:flex-start}
+      th,td{font-size:.88rem}
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="/" aria-label="Branch Mathematics home">
+      <span class="mark">BM</span>
+      <span>Branch Mathematics</span>
+    </a>
+
+    <nav class="navlinks" aria-label="Primary navigation">
+      <a href="/learn/" aria-current="page">Learn</a>
+      <a href="/research/">Research</a>
+      <a href="/applications/">Applications</a>
+      <a href="/examples/">Examples</a>
+      <a href="/calculator/">Calculator</a>
+      <a href="/reference/">Reference</a>
+      <a href="/book/">Book</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <div class="wrap breadcrumbs">
+    <a href="/">Home</a> / <a href="/learn/">Learn</a> / Task-Specific Representations
+  </div>
+
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Representation</span>
+      <h1>Task-Specific Representations</h1>
+
+      <p class="lead">
+        A task-specific representation preserves the distinctions a declared receiver actually needs. It does not automatically preserve every native difference in the system.
+      </p>
+
+      <div class="summary">
+        <strong>Short version:</strong>
+        the same native system can have several different lawful reduced representations because different tasks require different distinctions.
+      </div>
+    </div>
+  </section>
+
+  <article class="article">
+    <div class="read">
+
+      <h2>The same system can support different lawful reductions</h2>
+
+      <p>
+        Suppose a native state contains many variables. One receiver may ask for parity, another may ask for the number of active components, and a third may demand full reconstruction.
+      </p>
+
+      <p>
+        Those tasks do not require the same distinctions.
+      </p>
+
+      <div class="quote">
+        There is no reason to require one representation to preserve information that its declared receiver will never lawfully use.
+      </div>
+
+      <p>
+        Branch Mathematics makes this dependence explicit instead of treating a representation as universally “good” or “bad.”
+      </p>
+
+      <h2>The exact factorization test</h2>
+
+      <p>
+        Let:
+      </p>
+
+      <div class="formula">
+        R : X → Q
+      </div>
+
+      <p>
+        be a representation of the native state space <strong>X</strong>, and let:
+      </p>
+
+      <div class="formula">
+        T : X → Y
+      </div>
+
+      <p>
+        be the declared task.
+      </p>
+
+      <p>
+        The representation is exactly sufficient when the task factors through the representation:
+      </p>
+
+      <div class="formula">
+        T = T̄R
+      </div>
+
+      <p>
+        for some map <strong>T̄ : Q → Y</strong>.
+      </p>
+
+      <p>
+        Equivalently:
+      </p>
+
+      <div class="formula">
+        ker(R) ⊆ ker(T)
+      </div>
+
+      <p>
+        Whenever the representation merges two native states, the task must also treat those states as identical.
+      </p>
+
+      <h2>A concrete example</h2>
+
+      <div class="example">
+        <h3>Three different receivers</h3>
+
+        <p>
+          Let the native state be a binary vector:
+        </p>
+
+        <div class="formula">
+          x = (x₁,…,xₙ) ∈ {0,1}<sup>n</sup>
+        </div>
+
+        <p>Now compare three tasks:</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Task</th>
+              <th>Required distinction</th>
+              <th>Possible exact representation size</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Parity</td>
+              <td>Even versus odd total</td>
+              <td>2 states</td>
+            </tr>
+            <tr>
+              <td>Count</td>
+              <td>0,1,…,n active bits</td>
+              <td>n+1 states</td>
+            </tr>
+            <tr>
+              <td>Full reconstruction</td>
+              <td>Every native bit pattern</td>
+              <td>2<sup>n</sup> states</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>
+          The native system is identical in all three cases. Only the receiver changes.
+        </p>
+      </div>
+
+      <h2>Task-relative does not mean arbitrary</h2>
+
+      <p>
+        A common misunderstanding is that if representation depends on the task, then one can choose any reduction one likes.
+      </p>
+
+      <p>
+        That is not the BM position.
+      </p>
+
+      <p>
+        Once the task is declared, the representation must satisfy a mathematical condition. The receiver chooses the contract; the mathematics determines what that contract permits.
+      </p>
+
+      <div class="formula">
+        declared task first → admissible quotient second
+      </div>
+
+      <h2>This is why Passports exist</h2>
+
+      <p>
+        A task by itself may not be enough to specify the real obligation.
+      </p>
+
+      <p>
+        The receiver may also care about:
+      </p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="num">1</div>
+          <div>
+            <strong>Future dynamics</strong>
+            <span>The representation may need to remain sufficient after lawful evolution.</span>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="num">2</div>
+          <div>
+            <strong>Context</strong>
+            <span>Different environments or peer subsystems may reveal different distinctions.</span>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="num">3</div>
+          <div>
+            <strong>Tolerance</strong>
+            <span>The receiver may allow bounded approximation rather than exact equality.</span>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="num">4</div>
+          <div>
+            <strong>Implementation class</strong>
+            <span>A quotient may need a smooth, local, stochastic, quantum, or otherwise admissible realization.</span>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="num">5</div>
+          <div>
+            <strong>Receiver acceptance</strong>
+            <span>The final export must satisfy the receiver-facing contract, not merely an internal mathematical condition.</span>
+          </div>
+        </div>
+      </div>
+
+      <p>
+        BM packages these declared obligations into a <strong>Passport</strong>.
+      </p>
+
+      <h2>Current task versus future task</h2>
+
+      <p>
+        A representation sufficient for the current task can still be too coarse for future evolution.
+      </p>
+
+      <div class="compare">
+        <div class="box">
+          <h3>Current task</h3>
+          <p>
+            Merge states when they give the same response now.
+          </p>
+        </div>
+
+        <div class="box">
+          <h3>Future-aware task</h3>
+          <p>
+            Keep states separate when a lawful future can make their task responses diverge.
+          </p>
+        </div>
+      </div>
+
+      <p>
+        This leads directly to dynamic closure and temporal exactification.
+      </p>
+
+      <div class="formula">
+        current sufficiency does not imply dynamic sufficiency
+      </div>
+
+      <h2>Context can change the quotient</h2>
+
+      <p>
+        Suppose a subsystem exports a compressed state to another subsystem. Whether two local states are safely mergeable may depend on what external context the peer subsystem can supply.
+      </p>
+
+      <p>
+        BM therefore uses contextual equivalence of the form:
+      </p>
+
+      <div class="formula">
+        x ∼ x′
+        ⇔
+        B(x,c)=B(x′,c) for every allowed context c
+      </div>
+
+      <p>
+        If two states agree only under one context but differ under another allowed context, a portable interface must preserve the distinction.
+      </p>
+
+      <div class="quote">
+        Portable representations must survive every context allowed by the contract, not merely the deployment used during one test.
+      </div>
+
+      <h2>Deployment-specific and portable representations are different</h2>
+
+      <p>
+        A representation designed for one known environment can sometimes be much smaller than one that must remain valid across many environments.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Representation type</th>
+            <th>What it must survive</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Deployment-specific</td>
+            <td>The declared fixed peer context or environment</td>
+          </tr>
+          <tr>
+            <td>Portable</td>
+            <td>Every allowed context in the Passport</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        The gap between them is a portability surcharge.
+      </p>
+
+      <h2>Interfaces are task-specific representations</h2>
+
+      <p>
+        A subsystem boundary is one of the most important places where task-specific representation appears.
+      </p>
+
+      <p>
+        The full internal state of a subsystem may be enormous, but the neighboring subsystem may only need a small interface variable.
+      </p>
+
+      <div class="formula">
+        internal state → task-relevant boundary profile → receiver
+      </div>
+
+      <p>
+        The minimal exact portable interface identifies two subsystem states only when every allowed external context produces the same declared global response.
+      </p>
+
+      <p>
+        This is one reason BM applies naturally to domain decomposition, network cuts, distributed systems, PDE ports, and quantum carriers.
+      </p>
+
+      <h2>Approximate task-specific representation</h2>
+
+      <p>
+        When tolerance is positive, equality is replaced by bounded response error.
+      </p>
+
+      <p>
+        Instead of exact quotient classes, one seeks cells whose receiver-visible profiles fit inside admissible radius-ε balls.
+      </p>
+
+      <div class="formula">
+        w(ε) = log₂ N(ε)
+      </div>
+
+      <p>
+        where <strong>N(ε)</strong> is the minimum number of task-profile representatives needed at tolerance <strong>ε</strong>.
+      </p>
+
+      <p>
+        The resulting width is task-, context-, metric-, and tolerance-dependent.
+      </p>
+
+      <h2>One native system can have several semantic widths</h2>
+
+      <p>
+        Consider the same physical or mathematical system under three Passports:
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Passport</th>
+            <th>Receiver obligation</th>
+            <th>Expected representation burden</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>P₁</td>
+            <td>Single scalar output</td>
+            <td>Potentially small</td>
+          </tr>
+          <tr>
+            <td>P₂</td>
+            <td>Finite-horizon trajectory</td>
+            <td>Potentially larger</td>
+          </tr>
+          <tr>
+            <td>P₃</td>
+            <td>Full-state reconstruction</td>
+            <td>Potentially much larger</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        There is no contradiction. They are different receiver problems.
+      </p>
+
+      <h2>Task-specific does not mean state-independent</h2>
+
+      <p>
+        BM is not saying the task can ignore native mathematics.
+      </p>
+
+      <p>
+        A valid representation still depends on what the native dynamics, topology, algebra, geometry, locality, and physical realization allow.
+      </p>
+
+      <div class="callout">
+        Receiver-relativity does not override native law. A Passport declares what must be preserved; it does not grant permission to violate the mathematics of the underlying sector.
+      </div>
+
+      <h2>A representation can be sufficient but unrealizable</h2>
+
+      <p>
+        Suppose an exact quotient exists abstractly. The quotient may still fail to admit the required implementation.
+      </p>
+
+      <p>
+        Examples include:
+      </p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="num">A</div>
+          <div>
+            <strong>Topological obstruction</strong>
+            <span>The quotient exists as a set but cannot be embedded into the desired Euclidean dimension.</span>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="num">B</div>
+          <div>
+            <strong>Smooth obstruction</strong>
+            <span>The required identification may fail to admit a global smooth realization.</span>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="num">C</div>
+          <div>
+            <strong>Distributed obstruction</strong>
+            <span>A centralized quotient may not decompose into the required local interfaces without extra width.</span>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="num">D</div>
+          <div>
+            <strong>Quantum physical obstruction</strong>
+            <span>An algebraic carrier may fail to correspond to a CPTP physical realization.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="formula">
+        sufficiency and realization are separate stages
+      </div>
+
+      <h2>Task-specific representation in PDEs</h2>
+
+      <p>
+        For a PDE, the native state may be an entire field <strong>u(x)</strong>, while the receiver only needs a boundary flux, integrated quantity, sensor trace, or finite-horizon output profile.
+      </p>
+
+      <p>
+        In that case, the receiver-visible profile rather than the entire field determines the semantic burden.
+      </p>
+
+      <div class="formula">
+        P(u) = declared receiver-visible PDE response
+      </div>
+
+      <p>
+        Two fields can be very different internally and still belong to the same exact or approximate task class if their declared profiles agree.
+      </p>
+
+      <h2>Task-specific representation in quantum systems</h2>
+
+      <p>
+        The same distinction appears in quantum information.
+      </p>
+
+      <p>
+        Recovering an entire quantum state is stronger than recovering one observable, one operator system, or one task algebra.
+      </p>
+
+      <p>
+        A code can therefore fail full-state recovery while remaining exact for a weaker declared observable task.
+      </p>
+
+      <div class="formula">
+        full-state recovery requirement ⊃ task-observable recovery requirement
+      </div>
+
+      <p>
+        BM treats these as different Passports rather than calling the code simply “working” or “broken.”
+      </p>
+
+      <h2>Task-specific representation in networks</h2>
+
+      <p>
+        In a network, a cut may not need to transmit every upstream variable. It needs enough distinction to determine the downstream task under the allowed future context.
+      </p>
+
+      <p>
+        The centralized semantic requirement can be smaller than the cost of realizing it across multiple local routes.
+      </p>
+
+      <div class="formula">
+        semantic content + locality constraints = realized interface cost
+      </div>
+
+      <h2>The BM design procedure</h2>
+
+      <p>
+        A task-specific representation should be built in the following order:
+      </p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="num">1</div>
+          <div>
+            <strong>Declare the native problem</strong>
+            <span>State the actual mathematical system before compression.</span>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="num">2</div>
+          <div>
+            <strong>Declare the Passport</strong>
+            <span>Specify task, receiver, context, horizon, tolerance, and realization requirements.</span>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="num">3</div>
+          <div>
+            <strong>Determine required distinctions</strong>
+            <span>Identify which native differences can change a declared response.</span>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="num">4</div>
+          <div>
+            <strong>Construct the quotient or cover</strong>
+            <span>Build the coarsest exact or admissible approximate representation allowed by the contract.</span>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="num">5</div>
+          <div>
+            <strong>Test dynamics and interactions</strong>
+            <span>Check that the representation remains lawful under future evolution and cross-branch coupling.</span>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="num">6</div>
+          <div>
+            <strong>Realize it natively</strong>
+            <span>Verify that the abstract representation has an admissible implementation in the required category.</span>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="num">7</div>
+          <div>
+            <strong>Quantify the cost</strong>
+            <span>Measure width, error, robustness, locality surcharge, memory, or other relevant price.</span>
+          </div>
+        </div>
+      </div>
+
+      <h2>The key idea</h2>
+
+      <div class="quote">
+        A representation is not good because it is small. It is good when it is as small as the declared task allows without destroying distinctions the system must still use.
+      </div>
+
+      <p>
+        That is the role of task-specific representation inside Branch Mathematics.
+      </p>
+
+    </div>
+  </article>
+
+  <section class="next">
+    <div class="wrap">
+      <span class="eyebrow">Next</span>
+      <h2 style="font-size:clamp(2rem,5vw,3.4rem);line-height:1.04;letter-spacing:-.035em;margin:.7rem 0 .9rem">
+        Continue the path
+      </h2>
+
+      <div class="next-grid">
+        <a class="card" href="/learn/interfaces-information-loss/">
+          <small>Recommended next</small>
+          <h3>Interfaces and Information Loss</h3>
+          <p>See what must survive when one subsystem exports a representation to another.</p>
+        </a>
+
+        <a class="card" href="/learn/recovery-after-compression/">
+          <small>Recovery</small>
+          <h3>Recovery After Compression</h3>
+          <p>Learn when discarded distinctions can and cannot become available later.</p>
+        </a>
+
+        <a class="card" href="/applications/model-reduction/">
+          <small>Application</small>
+          <h3>Branch Mathematics for Model Reduction</h3>
+          <p>Connect task-specific representation to reduced-order modeling and approximation.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div>
+      <div class="brand" style="margin-bottom:.5rem">
+        <span class="mark">BM</span>
+        <span>Branch Mathematics</span>
+      </div>
+      <div>Mathematics of necessary distinctions.</div>
+    </div>
+
+    <div class="footer-links">
+      <a href="/learn/">Learn</a>
+      <a href="/research/">Research</a>
+      <a href="/reference/">Reference</a>
+      <a href="/book/">Book</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
