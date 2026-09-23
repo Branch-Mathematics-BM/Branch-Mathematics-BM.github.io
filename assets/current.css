@@ -1,0 +1,252 @@
+:root{--panel:#f8fafc;--line:#d1d5db;--accent:#246348;--muted:#4b5563}
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.72;
+      color: #202124;
+      background: #ffffff;
+    }
+
+    header {
+      background: #111827;
+      color: #ffffff;
+      text-align: center;
+      padding: 64px 20px;
+    }
+
+    header h1 {
+      margin: 0 0 12px;
+      font-size: 2.75rem;
+    }
+
+    header p {
+      max-width: 1100px;
+      margin: auto;
+      color: #e5e7eb;
+      font-size: 1.1rem;
+    }
+
+    nav {
+      background: #1f2937;
+      text-align: center;
+      padding: 12px 10px;
+    }
+
+    nav a {
+      display: inline-block;
+      margin: 7px 10px;
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: auto;
+      padding: 42px 20px;
+    }
+
+    section {
+      margin-bottom: 62px;
+      scroll-margin-top: 18px;
+    }
+
+    h2 {
+      margin-top: 0;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #e5e7eb;
+    }
+
+    h3 {
+      margin-top: 30px;
+    }
+
+    h4 {
+      margin-top: 22px;
+      margin-bottom: 8px;
+    }
+
+    p {
+      margin: 10px 0;
+    }
+
+    ul,
+    ol {
+      padding-left: 26px;
+    }
+
+    li {
+      margin: 6px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 22px 0;
+    }
+
+    th,
+    td {
+      border: 1px solid #d1d5db;
+      padding: 11px 12px;
+      vertical-align: top;
+      text-align: left;
+    }
+
+    th {
+      background: #f3f4f6;
+    }
+
+    .schema {
+      background: #f8fafc;
+      border-left: 4px solid #374151;
+      padding: 18px 22px;
+      margin: 20px 0;
+      overflow-x: auto;
+    }
+
+    .example {
+      border: 1px solid #d1d5db;
+      border-radius: 10px;
+      padding: 24px;
+      margin: 24px 0;
+      background: #ffffff;
+    }
+
+    .simple {
+      border-left: 4px solid #4b5563;
+    }
+
+    .core {
+      border-left: 4px solid #166534;
+    }
+
+    .specialized {
+      border-left: 4px solid #1d4ed8;
+    }
+
+    .candidate {
+      border-left: 4px solid #92400e;
+    }
+
+    .research {
+      border-left: 4px solid #6b21a8;
+    }
+
+    .failure {
+      border-left: 4px solid #c2410c;
+    }
+
+    .limits {
+      background: #fafafa;
+      border-left: 4px solid #9ca3af;
+      padding: 16px 19px;
+      margin: 18px 0;
+    }
+
+    .warning {
+      background: #fff7ed;
+      border-left: 4px solid #c2410c;
+      padding: 16px 19px;
+      margin: 18px 0;
+    }
+
+    .teaching {
+      background: #f8fafc;
+      border-left: 4px solid #111827;
+      padding: 16px 19px;
+      margin: 18px 0;
+    }
+
+    .meta {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      padding: 12px 14px;
+      margin-bottom: 18px;
+      font-size: 0.94rem;
+    }
+
+    .index {
+      columns: 3 300px;
+      column-gap: 34px;
+    }
+
+    .index li {
+      break-inside: avoid;
+    }
+
+    .index a {
+      text-decoration: none;
+    }
+
+    .index a:hover {
+      text-decoration: underline;
+    }
+
+    .tag {
+      display: inline-block;
+      margin: 2px 4px 2px 0;
+      padding: 3px 8px;
+      border: 1px solid #d1d5db;
+      border-radius: 999px;
+      background: #f9fafb;
+      font-size: 0.84rem;
+      font-weight: bold;
+    }
+
+    .crosslinks {
+      border-top: 1px solid #d1d5db;
+      padding-top: 14px;
+      margin-top: 20px;
+      font-size: 0.94rem;
+    }
+
+    .crosslinks a {
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .crosslinks a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      margin-top: 55px;
+      background: #111827;
+      color: #ffffff;
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    @media (max-width: 760px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      main {
+        padding: 28px 16px;
+      }
+
+      .index {
+        columns: 1;
+      }
+
+      th,
+      td {
+        padding: 9px;
+      }
+    }
+  
+.wrap,.container{max-width:1200px;margin:auto;padding:0 20px} .math-band{overflow-x:auto;padding:16px}
