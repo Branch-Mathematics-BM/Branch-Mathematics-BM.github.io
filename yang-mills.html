@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Yang–Mills finite-lattice certificates · Branch Mathematics</title>
+  <meta name="description" content="Exact SU(2) gap certificates for four finite lattice geometries, with rational witnesses, source code, and explicit continuum proof boundaries.">
+  <meta name="theme-color" content="#071018">
+  <link rel="canonical" href="https://branch-mathematics-bm.github.io/yang-mills.html">
+  <link rel="stylesheet" href="assets/styles.css">
+  <script>window.MathJax={tex:{inlineMath:[["\\(","\\)"],["$","$"]],displayMath:[["\\[","\\]"]]}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<div data-site-header></div>
+<main id="main-content">
+<div class="wrap breadcrumbs"><a href="index.html">Home</a> / <a href="steadman.html">Steadman</a> / Yang–Mills</div>
+<section class="hero"><div class="wrap">
+<div class="eyebrow">Research continuation · 9 October 2026</div>
+<h1>Yang–Mills.<br>Finite-lattice certificates.</h1>
+<p>Exact gap bounds for a square, a shared-link strip, a 2×2 patch, and a cube. The calculation controls the infinite omitted sector and supplies the rational witnesses needed to check every reported interval.</p>
+<div class="hero-actions"><a class="btn primary" href="#results">Read the results</a><a class="btn" href="#downloads">Download &amp; reproduce</a></div>
+<p class="small">SU(2) multi-plaquette work · open boundaries · energies in units of \(c_K\)</p>
+</div></section>
+<div class="wrap"><nav class="toc" aria-label="On this page"><a href="#scope">Scope</a><a href="#model">Model</a><a href="#results">Results</a><a href="#method">Certificate method</a><a href="#locality">Local tail control</a><a href="#downloads">Downloads</a><a href="#open">Open targets</a></nav></div>
+<section class="section" id="scope"><div class="wrap"><div class="grid">
+<article class="card"><span class="status proved">Checked computation</span><div class="kpi">24</div><h3>Positive gap certificates</h3><p>Four geometries at β = 0.00348, 0.1, 0.5, 1, 2, and 3. Every spectral witness uses exact rational arithmetic.</p></article>
+<article class="card"><span class="status proved">Local improvement</span><div class="kpi">16 / 24</div><h3>Stronger omitted-sector floors</h3><p>Local plaquette energy allocation improves the crude global potential estimate in sixteen cases.</p></article>
+<article class="card"><span class="status open">Research boundary</span><h3>Continuum and universal model remain open</h3><p>These finite-geometry results establish neither a four-dimensional continuum mass gap nor a universal Steadman constitutive law.</p></article>
+</div>
+<p class="small">“Checked” describes the supplied internal mathematical and computational checks. It does not mean independent peer review or a claim of historical novelty. This continuation leaves the BM V1 / Edition 1.1 foundation and the 22 September V1.4.10-F freeze in place; it is not a V1.5 declaration.</p></div></section>
+<section class="section" id="model"><div class="wrap"><h2>The declared physical model</h2>
+<p>The starting dynamics are the standard Kogut–Susskind lattice Hamiltonian in the project's stated normalization. Steadman terminology does not supply an additional force or a newly derived Hamiltonian.</p>
+<div class="formula">\[H=c_Kh,\qquad h=K-\beta T,\qquad K=-\sum_{e\in E}\Delta_e,\qquad T=\sum_{p\in\mathcal P}\tfrac12\operatorname{Tr}U_p.\]</div>
+<p>SU(2) links use the unit-three-sphere metric: representation \(n=2j\) has link electric energy \(n(n+2)\). Gauge invariance is imposed at every vertex, including boundary vertices, with no external charges. The cube retains its shared-link constraints; its six faces are not six independent rotators.</p>
+<div class="table-wrap" role="region" aria-label="Lattice geometry and retained basis" tabindex="0"><table class="table"><caption>Complete physical electric sector below energy 24</caption><thead><tr><th scope="col">Geometry</th><th scope="col">Vertices</th><th scope="col">Links</th><th scope="col">Plaquettes</th><th scope="col">Retained dimension</th></tr></thead><tbody>
+<tr><th scope="row">Single square</th><td>4</td><td>4</td><td>1</td><td>2</td></tr>
+<tr><th scope="row">Two-square strip</th><td>6</td><td>7</td><td>2</td><td>4</td></tr>
+<tr><th scope="row">2×2 patch</th><td>9</td><td>12</td><td>4</td><td>9</td></tr>
+<tr><th scope="row">Single cube</th><td>8</td><td>12</td><td>6</td><td>23</td></tr>
+</tbody></table></div>
+<p>The retained space consists of the vacuum and every simple fundamental four- or six-cycle. Exhaustive representation and vertex-singlet checks establish completeness below 24 on these four graphs. The complement remains infinite dimensional.</p></div></section>
+<section class="section" id="results"><div class="wrap"><h2>Certified gap intervals</h2>
+<p class="lead">At β = 3, all four full Hamiltonians have a positive certified gap.</p>
+<div class="table-wrap" role="region" aria-label="Gap intervals at beta 3" tabindex="0"><table class="table"><caption>β = 3 · lower and upper bounds for Δ / c<sub>K</sub></caption><thead><tr><th scope="col">Geometry</th><th scope="col">Plaquettes</th><th scope="col">Lower bound</th><th scope="col">Upper bound</th></tr></thead><tbody>
+<tr><th scope="row">Single square</th><td>1</td><td class="number">12.1361289832</td><td class="number">12.3708820571</td></tr>
+<tr><th scope="row">Two-square strip</th><td>2</td><td class="number">11.8172865556</td><td class="number">12.3743614787</td></tr>
+<tr><th scope="row">2×2 patch</th><td>4</td><td class="number">10.6538121941</td><td class="number">12.5814219146</td></tr>
+<tr><th scope="row">Single cube</th><td>6</td><td class="number">8.9507786360</td><td class="number">12.8313069650</td></tr>
+</tbody></table></div>
+<div class="callout"><strong>What changes in the cube calculation.</strong> The crude omitted-sector floor is 6, below the retained first-excited energy, approximately 11.645898. The local floor exceeds 11.9403919206, enabling the full-Hamiltonian gap certificate <strong>8.9507786360 ≤ Δ / c<sub>K</sub> ≤ 12.8313069650</strong>.</div>
+<details class="results-details"><summary>All 24 certified intervals</summary><div class="table-wrap" role="region" aria-label="All certified gap intervals" tabindex="0"><table class="table" id="certificate-table"><caption>Conservative decimal endpoints from the downloadable rational certificates</caption><thead><tr><th scope="col">Geometry</th><th scope="col">β</th><th scope="col">Lower Δ / c<sub>K</sub></th><th scope="col">Upper Δ / c<sub>K</sub></th></tr></thead><tbody>
+<tr data-geometry="single" data-beta="0.00348"><th scope="row">Single square</th><td>0.00348</td><td class="number">12.0000002521</td><td class="number">12.0000005048</td></tr>
+<tr data-geometry="single" data-beta="0.1"><th scope="row">Single square</th><td>0.1</td><td class="number">12.0002065790</td><td class="number">12.0004166614</td></tr>
+<tr data-geometry="single" data-beta="0.5"><th scope="row">Single square</th><td>0.5</td><td class="number">12.0049798305</td><td class="number">12.0104133024</td></tr>
+<tr data-geometry="single" data-beta="1"><th scope="row">Single square</th><td>1</td><td class="number">12.0189386833</td><td class="number">12.0416133406</td></tr>
+<tr data-geometry="single" data-beta="2"><th scope="row">Single square</th><td>2</td><td class="number">12.0688832592</td><td class="number">12.1658306219</td></tr>
+<tr data-geometry="single" data-beta="3"><th scope="row">Single square</th><td>3</td><td class="number">12.1361289832</td><td class="number">12.3708820571</td></tr>
+<tr data-geometry="strip" data-beta="0.00348"><th scope="row">Two-square strip</th><td>0.00348</td><td class="number">12.0000001256</td><td class="number">12.0000005048</td></tr>
+<tr data-geometry="strip" data-beta="0.1"><th scope="row">Two-square strip</th><td>0.1</td><td class="number">12.0000953526</td><td class="number">12.0004166639</td></tr>
+<tr data-geometry="strip" data-beta="0.5"><th scope="row">Two-square strip</th><td>0.5</td><td class="number">12.0014503099</td><td class="number">12.0104150237</td></tr>
+<tr data-geometry="strip" data-beta="1"><th scope="row">Two-square strip</th><td>1</td><td class="number">12.0018639226</td><td class="number">12.0416434607</td></tr>
+<tr data-geometry="strip" data-beta="2"><th scope="row">Two-square strip</th><td>2</td><td class="number">11.9675573119</td><td class="number">12.1664104772</td></tr>
+<tr data-geometry="strip" data-beta="3"><th scope="row">Two-square strip</th><td>3</td><td class="number">11.8172865556</td><td class="number">12.3743614787</td></tr>
+<tr data-geometry="patch" data-beta="0.00348"><th scope="row">2×2 patch</th><td>0.00348</td><td class="number">11.9999999981</td><td class="number">12.0000007571</td></tr>
+<tr data-geometry="patch" data-beta="0.1"><th scope="row">2×2 patch</th><td>0.1</td><td class="number">11.9999570078</td><td class="number">12.0006250033</td></tr>
+<tr data-geometry="patch" data-beta="0.5"><th scope="row">2×2 patch</th><td>0.5</td><td class="number">11.9956622011</td><td class="number">12.0156282705</td></tr>
+<tr data-geometry="patch" data-beta="1"><th scope="row">2×2 patch</th><td>1</td><td class="number">11.9611151193</td><td class="number">12.0625832637</td></tr>
+<tr data-geometry="patch" data-beta="2"><th scope="row">2×2 patch</th><td>2</td><td class="number">11.6287588289</td><td class="number">12.2524274758</td></tr>
+<tr data-geometry="patch" data-beta="3"><th scope="row">2×2 patch</th><td>3</td><td class="number">10.6538121941</td><td class="number">12.5814219146</td></tr>
+<tr data-geometry="cube" data-beta="0.00348"><th scope="row">Single cube</th><td>0.00348</td><td class="number">11.9999997436</td><td class="number">12.0000010094</td></tr>
+<tr data-geometry="cube" data-beta="0.1"><th scope="row">Single cube</th><td>0.1</td><td class="number">11.9996941894</td><td class="number">12.0008333612</td></tr>
+<tr data-geometry="cube" data-beta="0.5"><th scope="row">Single cube</th><td>0.5</td><td class="number">11.9856430476</td><td class="number">12.0208545354</td></tr>
+<tr data-geometry="cube" data-beta="1"><th scope="row">Single cube</th><td>1</td><td class="number">11.8943102738</td><td class="number">12.0837676466</td></tr>
+<tr data-geometry="cube" data-beta="2"><th scope="row">Single cube</th><td>2</td><td class="number">11.0623146016</td><td class="number">12.3439944610</td></tr>
+<tr data-geometry="cube" data-beta="3"><th scope="row">Single cube</th><td>3</td><td class="number">8.9507786360</td><td class="number">12.8313069650</td></tr>
+</tbody></table></div></details>
+<p>At β = 0 the exact gap is 12 for all four graphs. The nonzero-coupling intervals overlap across geometries: a falling lower bound does not establish that the true gap falls. These different shapes and boundaries are not a controlled thermodynamic sequence.</p>
+<p>The bundle also includes the earlier twelve SU(2)/SU(3) single-plaquette cases. The new multi-plaquette calculation is SU(2) only.</p></div></section>
+<section class="section" id="method"><div class="wrap"><h2>How omitted states enter the certificate</h2>
+<p>Let \(\Pi=\mathbf1_{[0,24)}(K)\) on the physical Hilbert space and \(Q=I-\Pi\). Write \(A=\Pi h\Pi\), \(B=Qh\Pi\), and \(C=QhQ\). The finite calculation retains both the interaction matrix and the exact omitted-coupling Gram matrix:</p>
+<div class="formula">\[W_{ij}=\langle f_i,Tf_j\rangle,\qquad U_{ij}=\langle Tf_i,Tf_j\rangle,\qquad G=B^*B=\beta^2(U-W^2).\]</div>
+<p>Haar integrals are evaluated by an exact 24-point quaternion cubature for the required moments, using integer array operations. This is an integration rule for continuous SU(2), not a replacement by a finite gauge group or a Monte Carlo estimate. Patch and cube matrices were recomputed with different maximal trees and matched exactly.</p>
+<p>For a proved omitted-sector floor \(C\ge dI\), and \(E&lt;d\), the Schur complement satisfies</p>
+<div class="formula">\[S(E)=A-EI-B^*(C-EI)^{-1}B\ \ge\ F_d(E)=A-EI-\frac{G}{d-E}.\]</div>
+<p>Exact inertia checks bound the two lowest full energies from below by \(L_0,L_1\); retained Ritz upper bounds are \(a_0^+,a_1^+\). Consequently,</p>
+<div class="formula">\[L_1-a_0^+\ \le\ \Delta/c_K\ \le\ a_1^+-L_0.\]</div>
+<p>Both energies are enclosed separately. The certificate is not obtained by subtracting two uncontrolled truncated eigenvalues.</p>
+<h3>Connection to BM dynamic closure</h3>
+<p>Keeping only a projected state generally loses autonomous evolution. Eliminating the omitted sector produces an initial-state term and a memory integral for returning excursions. Energy reduction also changes the norm through \(M(E)=-S'(E)=I+B^*(C-EI)^{-2}B\). This gives a concrete application of BM's requirement to retain the distinctions and response data needed for the declared task.</p>
+<p><a href="branch-mathematics.html#finite-lattice-application">Read the BM connection →</a></p></div></section>
+<section class="section" id="locality"><div class="wrap"><h2>What the local estimate improves</h2>
+<p>Allocate a fraction of link electric energy to each plaquette, respecting the maximum plaquette incidence per link. Certified local square ground energies then give a stronger floor for \(QhQ\). The witness audit checks those auxiliary energy certificates too.</p>
+<p>A separate short-loop counting argument yields, for the retained vacuum plus all distinct simple four- and six-cycles including the plaquette faces,</p>
+<div class="formula">\[\|Q(-\beta T)\Pi\|^2\le\beta^2\min\{N_p^2,\ 3N_p+120z^2\}.\]</div>
+<p>Here the graph is finite and simple with girth at least four, the plaquettes have distinct four-edge supports, \(N_p\) is their number, and each edge belongs to at most \(z\) plaquettes. This general bound concerns that specified short-loop retained space; completeness below an electric threshold is a separate requirement.</p>
+<p>For bounded \(z\), the second estimate grows linearly with the number of plaquettes for the <strong>squared</strong> coupling. It still allows the coupling norm to grow as \(\sqrt{N_p}\), and the local energy floor retains an extensive vacuum-energy contribution. It is not a volume-independent gap bound.</p>
+<h3>Relation to the September freeze</h3>
+<p>The V1.4.10-F strong-coupling window \(|\beta|&lt;3/[128(e+2)]\approx0.00496738\) is a separate frozen result. The October calculations certify specific finite geometries at larger couplings; they do not extend that volume-uniform cluster theorem or independently recertify its entire proof chain.</p></div></section>
+<section class="section" id="downloads"><div class="wrap"><h2>Read, inspect, reproduce</h2>
+<p>The complete archive includes both reports, assemblers, witness checker, exact matrices, all certificate JSON files, audit results, dependency versions, and SHA-256 checksums.</p>
+<div class="hero-actions"><a class="btn primary" href="downloads/Steadman_Yang_Mills_Multi_Plaquette_Review_Bundle_2026-10-09.zip" download>Download complete review bundle · ZIP</a><a class="btn" href="downloads/steadman-yang-mills-2026-10-09/Steadman_Yang_Mills_Multi_Plaquette_2026-10-09.md" download>Multi-plaquette report · Markdown</a></div>
+<div class="grid download-grid">
+<article class="card"><h3>Reports and instructions</h3><ul><li><a href="downloads/steadman-yang-mills-2026-10-09/Steadman_Yang_Mills_Multi_Plaquette_2026-10-09.md">Multi-plaquette continuation</a></li><li><a href="downloads/steadman-yang-mills-2026-10-09/Steadman_Yang_Mills_Research_2026-10-09.md">Earlier finite-regulator continuation</a></li><li><a href="downloads/steadman-yang-mills-2026-10-09/README.md">Reproduction instructions</a></li><li><a href="downloads/steadman-yang-mills-2026-10-09/SHA256SUMS.txt">File checksums</a></li></ul></article>
+<article class="card"><h3>Code and recorded audit</h3><ul><li><a href="downloads/steadman-yang-mills-2026-10-09/multi_plaquette.py" download>Assembler and certificates</a></li><li><a href="downloads/steadman-yang-mills-2026-10-09/audit_multi_plaquette.py" download>Exact witness checker</a></li><li><a href="downloads/steadman-yang-mills-2026-10-09/single_plaquette_certificates.py" download>Single-plaquette program</a></li><li><a href="downloads/steadman-yang-mills-2026-10-09/audit_results.json">Recorded audit results</a></li></ul></article>
+<article class="card"><h3>Rational certificates</h3><ul><li><a href="downloads/steadman-yang-mills-2026-10-09/single_certificates.json">Single square · 6 cases</a></li><li><a href="downloads/steadman-yang-mills-2026-10-09/strip_certificates.json">Two-square strip · 6 cases</a></li><li><a href="downloads/steadman-yang-mills-2026-10-09/patch_certificates.json">2×2 patch · 6 cases</a></li><li><a href="downloads/steadman-yang-mills-2026-10-09/cube_certificates.json">Cube · 6 cases</a></li></ul></article>
+</div>
+<p>Extract the archive, enter its <code>steadman_multi_plaquette</code> folder, and run:</p>
+<pre class="formula"><code>python3 -m pip install -r requirements.txt
+python3 audit_multi_plaquette.py</code></pre>
+<p>To reconstruct the patch and cube matrices with alternate maximal trees as well:</p>
+<pre class="formula"><code>python3 audit_multi_plaquette.py --check-trees</code></pre>
+<p class="small">The saved audit records 24 checked certificates, exact alternate-tree matches for the patch and cube, and 16 local-floor improvements. No floating-point eigenvalue signs are used in the spectral checks.</p></div></section>
+<section class="section" id="open"><div class="wrap"><h2>The remaining targets</h2>
+<div class="grid"><article class="card wide"><span class="status open">Yang–Mills continuum</span><h3>Uniform control and construction</h3><p>A physical gap uniform in volume and lattice spacing, a nontrivial four-dimensional continuum construction, and the required field-theory axioms remain unresolved in this work. Fixed-regulator convergence of the certification method does not settle these tasks.</p></article>
+<article class="card wide"><span class="status open">Universal Steadman model</span><h3>A constitutive law and a prediction</h3><p>RD persistence, smoothing, and efficiency alone do not select a Hamiltonian. The present interpretation needs an independent constitutive law or derivation and a testable consequence beyond the imported dynamics.</p><a href="steadman.html#promotion-gates">Steadman promotion gates →</a></article></div>
+<h3>Sources and attribution</h3>
+<p>The proofs, assumptions, exact data, and project provenance are in the downloadable reports. Standard background includes <a href="https://doi.org/10.1103/PhysRevD.11.395">Kogut &amp; Susskind's Hamiltonian formulation</a>, <a href="https://arxiv.org/abs/2105.02058">the Feshbach–Schur method</a>, <a href="https://arxiv.org/abs/hep-lat/0510101">Mathur's gauge-invariant loop states</a>, and <a href="https://arxiv.org/abs/2307.11829">Bauer et al. on Hamiltonian SU(2) bases</a>. The <a href="https://www.claymath.org/wp-content/uploads/2022/06/yangmills.pdf">Jaffe–Witten problem statement</a> sets out the continuum target.</p></div></section>
+
+</main>
+<div data-site-footer></div>
+<script src="assets/site.js"></script>
+</body>
+</html>

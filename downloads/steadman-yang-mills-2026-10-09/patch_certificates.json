@@ -1,0 +1,302 @@
+{
+  "name": "patch",
+  "group": "SU(2)",
+  "boundary": "open",
+  "energy_units": "c_K",
+  "links": 12,
+  "vertices": 9,
+  "plaquettes": 4,
+  "retained_dimension": 9,
+  "omitted_electric_floor": 24,
+  "basis_audit": {
+    "electric_threshold": 24,
+    "allowed_assignments": 9,
+    "unique_intertwiner_each": true,
+    "search_nodes": 179,
+    "complete_low_sector_verified": true
+  },
+  "quadrature": {
+    "chord_count": 4,
+    "cubature_configurations": 331776,
+    "coordinate_moments_through_degree_four": true,
+    "orthonormality_diagonal_checks": true,
+    "zero_entries_by_original_link_center_parity": true,
+    "interaction_nonzero_candidates": 12,
+    "second_moment_candidates": 23,
+    "seconds": 0.145
+  },
+  "cases": [
+    {
+      "beta": "0.00348",
+      "ritz_ground": [
+        "-0.0000010093",
+        "-0.0000010091"
+      ],
+      "ritz_first": [
+        "11.9999997476",
+        "11.9999997478"
+      ],
+      "crude_tail_floor": "149913/6250",
+      "improved_tail_floor": [
+        "23.9860800000",
+        "23.9860800000"
+      ],
+      "local_floor_certificate": {
+        "type": "global potential norm"
+      },
+      "certified": true,
+      "gap_interval": [
+        "11.9999999981",
+        "12.0000007571"
+      ],
+      "ground_interval": [
+        "-0.0000010093",
+        "-0.0000010091"
+      ],
+      "first_interval": [
+        "11.9999989890",
+        "11.9999997478"
+      ],
+      "cross_norm_squared_upper": "22707/1250000000",
+      "witness": {
+        "tail_floor": "149913/6250",
+        "ground_ritz_lower": "-0.0000010093",
+        "ground_ritz_upper": "-0.0000010091",
+        "first_ritz_lower": "11.9999997476",
+        "first_ritz_upper": "11.9999997478",
+        "ground_schur_lower": "-0.0000010093",
+        "first_schur_lower": "11.9999989890"
+      }
+    },
+    {
+      "beta": "0.1",
+      "ritz_ground": [
+        "-0.0008332852",
+        "-0.0008332851"
+      ],
+      "ritz_first": [
+        "11.9997916738",
+        "11.9997916740"
+      ],
+      "crude_tail_floor": "118/5",
+      "improved_tail_floor": [
+        "23.6000000000",
+        "23.6000000000"
+      ],
+      "local_floor_certificate": {
+        "type": "global potential norm"
+      },
+      "certified": true,
+      "gap_interval": [
+        "11.9999570078",
+        "12.0006250033"
+      ],
+      "ground_interval": [
+        "-0.0008333293",
+        "-0.0008332851"
+      ],
+      "first_interval": [
+        "11.9991237227",
+        "11.9997916740"
+      ],
+      "cross_norm_squared_upper": "3/200",
+      "witness": {
+        "tail_floor": "118/5",
+        "ground_ritz_lower": "-0.0008332852",
+        "ground_ritz_upper": "-0.0008332851",
+        "first_ritz_lower": "11.9997916738",
+        "first_ritz_upper": "11.9997916740",
+        "ground_schur_lower": "-0.0008333293",
+        "first_schur_lower": "11.9991237227"
+      }
+    },
+    {
+      "beta": "0.5",
+      "ritz_ground": [
+        "-0.0208032812",
+        "-0.0208032811"
+      ],
+      "ritz_first": [
+        "11.9947961799",
+        "11.9947961800"
+      ],
+      "crude_tail_floor": "22",
+      "improved_tail_floor": [
+        "22.5074055751",
+        "22.5074055752"
+      ],
+      "local_floor_certificate": {
+        "type": "local plaquette energy allocation",
+        "t": "1/50",
+        "alpha": "1/100",
+        "local_beta": "50",
+        "local_cutoff": 13,
+        "local_ground_lower": "-1270787850423216988395172094009229561781/50199282918576003552810410759539392512"
+      },
+      "certified": true,
+      "gap_interval": [
+        "11.9956622011",
+        "12.0156282705"
+      ],
+      "ground_interval": [
+        "-0.0208320905",
+        "-0.0208032811"
+      ],
+      "first_interval": [
+        "11.9748589200",
+        "11.9947961800"
+      ],
+      "cross_norm_squared_upper": "3/8",
+      "witness": {
+        "tail_floor": "1129855620227978924026293977303997329411/50199282918576003552810410759539392512",
+        "ground_ritz_lower": "-0.0208032812",
+        "ground_ritz_upper": "-0.0208032811",
+        "first_ritz_lower": "11.9947961799",
+        "first_ritz_upper": "11.9947961800",
+        "ground_schur_lower": "-0.0208320905",
+        "first_schur_lower": "11.9748589200"
+      }
+    },
+    {
+      "beta": "1",
+      "ritz_ground": [
+        "-0.0828566903",
+        "-0.0828566902"
+      ],
+      "ritz_first": [
+        "11.9792385065",
+        "11.9792385067"
+      ],
+      "crude_tail_floor": "20",
+      "improved_tail_floor": [
+        "21.0053038803",
+        "21.0053038804"
+      ],
+      "local_floor_certificate": {
+        "type": "local plaquette energy allocation",
+        "t": "1/50",
+        "alpha": "1/100",
+        "local_beta": "100",
+        "local_cutoff": 15,
+        "local_ground_lower": "-164266849378899753998209381605635823053729/2612909736401591462626015329806949810176"
+      },
+      "certified": true,
+      "gap_interval": [
+        "11.9611151193",
+        "12.0625832637"
+      ],
+      "ground_interval": [
+        "-0.0833447570",
+        "-0.0828566902"
+      ],
+      "first_interval": [
+        "11.8782584291",
+        "11.9792385067"
+      ],
+      "cross_norm_squared_upper": "3/2",
+      "witness": {
+        "tail_floor": "1372124075625236026025887632320850665329759/65322743410039786565650383245173745254400",
+        "ground_ritz_lower": "-0.0828566903",
+        "ground_ritz_upper": "-0.0828566902",
+        "first_ritz_lower": "11.9792385065",
+        "first_ritz_upper": "11.9792385067",
+        "ground_schur_lower": "-0.0833447570",
+        "first_schur_lower": "11.8782584291"
+      }
+    },
+    {
+      "beta": "2",
+      "ritz_ground": [
+        "-0.3259613390",
+        "-0.3259613389"
+      ],
+      "ritz_first": [
+        "11.9177929985",
+        "11.9177929986"
+      ],
+      "crude_tail_floor": "16",
+      "improved_tail_floor": [
+        "18.0647725114",
+        "18.0647725115"
+      ],
+      "local_floor_certificate": {
+        "type": "local plaquette energy allocation",
+        "t": "1/20",
+        "alpha": "1/40",
+        "local_beta": "80",
+        "local_cutoff": 14,
+        "local_ground_lower": "-27170546251485610087432382293564767845179/573796007000921073809914290783305859072"
+      },
+      "certified": true,
+      "gap_interval": [
+        "11.6287588289",
+        "12.2524274758"
+      ],
+      "ground_interval": [
+        "-0.3346344772",
+        "-0.3259613389"
+      ],
+      "first_interval": [
+        "11.3027974900",
+        "11.9177929986"
+      ],
+      "cross_norm_squared_upper": "6",
+      "witness": {
+        "tail_floor": "103654943344724394741228076005028968023237/5737960070009210738099142907833058590720",
+        "ground_ritz_lower": "-0.3259613390",
+        "ground_ritz_upper": "-0.3259613389",
+        "first_ritz_lower": "11.9177929985",
+        "first_ritz_upper": "11.9177929986",
+        "ground_schur_lower": "-0.3346344772",
+        "first_schur_lower": "11.3027974900"
+      }
+    },
+    {
+      "beta": "3",
+      "ritz_ground": [
+        "-0.7146045853",
+        "-0.7146045852"
+      ],
+      "ritz_first": [
+        "11.8180194846",
+        "11.8180194847"
+      ],
+      "crude_tail_floor": "12",
+      "improved_tail_floor": [
+        "15.1109927968",
+        "15.1109927969"
+      ],
+      "local_floor_certificate": {
+        "type": "local plaquette energy allocation",
+        "t": "1/10",
+        "alpha": "1/20",
+        "local_beta": "60",
+        "local_cutoff": 13,
+        "local_ground_lower": "-1014080760917287375217958813139537423255/31255343973799663107751221032162164736"
+      },
+      "certified": true,
+      "gap_interval": [
+        "10.6538121941",
+        "12.5814219146"
+      ],
+      "ground_interval": [
+        "-0.7634024299",
+        "-0.7146045852"
+      ],
+      "first_interval": [
+        "9.9392076089",
+        "11.8180194847"
+      ],
+      "cross_norm_squared_upper": "27/2",
+      "witness": {
+        "tail_floor": "2361496388253076240419173058333976368233/156276719868998315538756105160810823680",
+        "ground_ritz_lower": "-0.7146045853",
+        "ground_ritz_upper": "-0.7146045852",
+        "first_ritz_lower": "11.8180194846",
+        "first_ritz_upper": "11.8180194847",
+        "ground_schur_lower": "-0.7634024299",
+        "first_schur_lower": "9.9392076089"
+      }
+    }
+  ]
+}

@@ -1,0 +1,481 @@
+{
+  "scope": "Single square plaquette; four links; gauge-invariant states; energies in c_K units.",
+  "method": "Exact rational LDL inertia, rational bisection and rigorous omitted-sector Schur bounds.",
+  "not_claimed": "No multi-plaquette or infinite-volume/continuum mass-gap computation.",
+  "checks": {
+    "rational_inertia_known_spectrum": true,
+    "su3_tail_shell_minima": true,
+    "schur_lower_endpoint_checks": true
+  },
+  "cases": [
+    {
+      "group": "SU(2)",
+      "beta": "0",
+      "cutoff": 9,
+      "matrix_dimension": 9,
+      "tail_floor_d": [
+        "396.0000000000",
+        "396.0000000000"
+      ],
+      "cross_norm_upper_b": [
+        "0E-10",
+        "0E-10"
+      ],
+      "ritz_ground": [
+        "0E-10",
+        "0E-10"
+      ],
+      "ritz_first_excited": [
+        "12.0000000000",
+        "12.0000000000"
+      ],
+      "ground_interval": [
+        "0E-10",
+        "0E-10"
+      ],
+      "first_excited_interval": [
+        "12.0000000000",
+        "12.0000000000"
+      ],
+      "scalar_gap_interval": [
+        "12.0000000000",
+        "12.0000000000"
+      ],
+      "gap_interval": [
+        "12.0000000000",
+        "12.0000000000"
+      ],
+      "certified_positive": true
+    },
+    {
+      "group": "SU(2)",
+      "beta": "0.00333",
+      "cutoff": 9,
+      "matrix_dimension": 9,
+      "tail_floor_d": [
+        "395.9966700000",
+        "395.9966700000"
+      ],
+      "cross_norm_upper_b": [
+        "0.0016650000",
+        "0.0016650000"
+      ],
+      "ritz_ground": [
+        "-2.311E-7",
+        "-2.310E-7"
+      ],
+      "ritz_first_excited": [
+        "12.0000000924",
+        "12.0000000925"
+      ],
+      "ground_interval": [
+        "-2.311E-7",
+        "-2.310E-7"
+      ],
+      "first_excited_interval": [
+        "12.0000000924",
+        "12.0000000925"
+      ],
+      "scalar_gap_interval": [
+        "12.0000003162",
+        "12.0000003305"
+      ],
+      "gap_interval": [
+        "12.0000003234",
+        "12.0000003235"
+      ],
+      "certified_positive": true
+    },
+    {
+      "group": "SU(2)",
+      "beta": "0.00348",
+      "cutoff": 9,
+      "matrix_dimension": 9,
+      "tail_floor_d": [
+        "395.9965200000",
+        "395.9965200000"
+      ],
+      "cross_norm_upper_b": [
+        "0.0017400000",
+        "0.0017400000"
+      ],
+      "ritz_ground": [
+        "-2.524E-7",
+        "-2.522E-7"
+      ],
+      "ritz_first_excited": [
+        "12.0000001009",
+        "12.0000001010"
+      ],
+      "ground_interval": [
+        "-2.524E-7",
+        "-2.522E-7"
+      ],
+      "first_excited_interval": [
+        "12.0000001009",
+        "12.0000001010"
+      ],
+      "scalar_gap_interval": [
+        "12.0000003453",
+        "12.0000003609"
+      ],
+      "gap_interval": [
+        "12.0000003532",
+        "12.0000003533"
+      ],
+      "certified_positive": true
+    },
+    {
+      "group": "SU(2)",
+      "beta": "1",
+      "cutoff": 9,
+      "matrix_dimension": 9,
+      "tail_floor_d": [
+        "395.0000000000",
+        "395.0000000000"
+      ],
+      "cross_norm_upper_b": [
+        "0.5000000000",
+        "0.5000000000"
+      ],
+      "ritz_ground": [
+        "-0.0208107843",
+        "-0.0208107842"
+      ],
+      "ritz_first_excited": [
+        "12.0083104597",
+        "12.0083104598"
+      ],
+      "ground_interval": [
+        "-0.0208107843",
+        "-0.0208107842"
+      ],
+      "first_excited_interval": [
+        "12.0083104597",
+        "12.0083104598"
+      ],
+      "scalar_gap_interval": [
+        "12.0284684882",
+        "12.0297541221"
+      ],
+      "gap_interval": [
+        "12.0291212439",
+        "12.0291212440"
+      ],
+      "certified_positive": true
+    },
+    {
+      "group": "SU(2)",
+      "beta": "10",
+      "cutoff": 9,
+      "matrix_dimension": 9,
+      "tail_floor_d": [
+        "386.0000000000",
+        "386.0000000000"
+      ],
+      "cross_norm_upper_b": [
+        "5.0000000000",
+        "5.0000000000"
+      ],
+      "ritz_ground": [
+        "-1.9005395546",
+        "-1.9005395545"
+      ],
+      "ritz_first_excited": [
+        "12.6482199371",
+        "12.6482199372"
+      ],
+      "ground_interval": [
+        "-1.9005395546",
+        "-1.9005395545"
+      ],
+      "first_excited_interval": [
+        "12.6482199371",
+        "12.6482199372"
+      ],
+      "scalar_gap_interval": [
+        "14.4817985145",
+        "14.6132090025"
+      ],
+      "gap_interval": [
+        "14.5487594916",
+        "14.5487594917"
+      ],
+      "certified_positive": true
+    },
+    {
+      "group": "SU(2)",
+      "beta": "100",
+      "cutoff": 9,
+      "matrix_dimension": 9,
+      "tail_floor_d": [
+        "296.0000000000",
+        "296.0000000000"
+      ],
+      "cross_norm_upper_b": [
+        "50.0000000000",
+        "50.0000000000"
+      ],
+      "ritz_ground": [
+        "-62.8674029517",
+        "-62.8674029516"
+      ],
+      "ritz_first_excited": [
+        "-11.7449317312",
+        "-11.7449317311"
+      ],
+      "ground_interval": [
+        "-62.8674030023",
+        "-62.8674029516"
+      ],
+      "first_excited_interval": [
+        "-11.7449378443",
+        "-11.7449317311"
+      ],
+      "scalar_gap_interval": [
+        "42.9988605863",
+        "58.0888325547"
+      ],
+      "gap_interval": [
+        "51.1224651073",
+        "51.1224712712"
+      ],
+      "certified_positive": true
+    },
+    {
+      "group": "SU(2)",
+      "beta": "100",
+      "cutoff": 18,
+      "matrix_dimension": 18,
+      "tail_floor_d": [
+        "1340.0000000000",
+        "1340.0000000000"
+      ],
+      "cross_norm_upper_b": [
+        "50.0000000000",
+        "50.0000000000"
+      ],
+      "ritz_ground": [
+        "-62.8674029916",
+        "-62.8674029915"
+      ],
+      "ritz_first_excited": [
+        "-11.7449363755",
+        "-11.7449363754"
+      ],
+      "ground_interval": [
+        "-62.8674029916",
+        "-62.8674029915"
+      ],
+      "first_excited_interval": [
+        "-11.7449363755",
+        "-11.7449363754"
+      ],
+      "scalar_gap_interval": [
+        "49.2730052770",
+        "52.9045309756"
+      ],
+      "gap_interval": [
+        "51.1224666160",
+        "51.1224666161"
+      ],
+      "certified_positive": true
+    },
+    {
+      "group": "SU(3)",
+      "beta": "0",
+      "cutoff": 4,
+      "matrix_dimension": 15,
+      "tail_floor_d": [
+        "181.3333333333",
+        "181.3333333334"
+      ],
+      "cross_norm_upper_b": [
+        "0E-10",
+        "0E-10"
+      ],
+      "ritz_ground": [
+        "0E-10",
+        "0E-10"
+      ],
+      "ritz_first_excited": [
+        "21.3333333333",
+        "21.3333333334"
+      ],
+      "ground_interval": [
+        "0E-10",
+        "0E-10"
+      ],
+      "first_excited_interval": [
+        "21.3333333333",
+        "21.3333333334"
+      ],
+      "scalar_gap_interval": [
+        "21.3333333333",
+        "21.3333333334"
+      ],
+      "gap_interval": [
+        "21.3333333333",
+        "21.3333333334"
+      ],
+      "certified_positive": true
+    },
+    {
+      "group": "SU(3)",
+      "beta": "0.00333",
+      "cutoff": 4,
+      "matrix_dimension": 15,
+      "tail_floor_d": [
+        "181.3300033333",
+        "181.3300033334"
+      ],
+      "cross_norm_upper_b": [
+        "0.0011100000",
+        "0.0011100000"
+      ],
+      "ritz_ground": [
+        "-2.89E-8",
+        "-2.88E-8"
+      ],
+      "ritz_first_excited": [
+        "21.3327783294",
+        "21.3327783295"
+      ],
+      "ground_interval": [
+        "-2.89E-8",
+        "-2.88E-8"
+      ],
+      "first_excited_interval": [
+        "21.3327783294",
+        "21.3327783295"
+      ],
+      "scalar_gap_interval": [
+        "21.3327783506",
+        "21.3327783652"
+      ],
+      "gap_interval": [
+        "21.3327783583",
+        "21.3327783584"
+      ],
+      "certified_positive": true
+    },
+    {
+      "group": "SU(3)",
+      "beta": "0.00348",
+      "cutoff": 4,
+      "matrix_dimension": 15,
+      "tail_floor_d": [
+        "181.3298533333",
+        "181.3298533334"
+      ],
+      "cross_norm_upper_b": [
+        "0.0011600000",
+        "0.0011600000"
+      ],
+      "ritz_ground": [
+        "-3.16E-8",
+        "-3.15E-8"
+      ],
+      "ritz_first_excited": [
+        "21.3327533291",
+        "21.3327533292"
+      ],
+      "ground_interval": [
+        "-3.16E-8",
+        "-3.15E-8"
+      ],
+      "first_excited_interval": [
+        "21.3327533291",
+        "21.3327533292"
+      ],
+      "scalar_gap_interval": [
+        "21.3327533522",
+        "21.3327533681"
+      ],
+      "gap_interval": [
+        "21.3327533606",
+        "21.3327533607"
+      ],
+      "certified_positive": true
+    },
+    {
+      "group": "SU(3)",
+      "beta": "1",
+      "cutoff": 4,
+      "matrix_dimension": 15,
+      "tail_floor_d": [
+        "180.3333333333",
+        "180.3333333334"
+      ],
+      "cross_norm_upper_b": [
+        "0.3333333333",
+        "0.3333333334"
+      ],
+      "ritz_ground": [
+        "-0.0026245555",
+        "-0.0026245554"
+      ],
+      "ritz_first_excited": [
+        "21.1663356713",
+        "21.1663356714"
+      ],
+      "ground_interval": [
+        "-0.0026245555",
+        "-0.0026245554"
+      ],
+      "first_excited_interval": [
+        "21.1663356713",
+        "21.1663356714"
+      ],
+      "scalar_gap_interval": [
+        "21.1682621479",
+        "21.1695763608"
+      ],
+      "gap_interval": [
+        "21.1689602267",
+        "21.1689602268"
+      ],
+      "certified_positive": true
+    },
+    {
+      "group": "SU(3)",
+      "beta": "10",
+      "cutoff": 4,
+      "matrix_dimension": 15,
+      "tail_floor_d": [
+        "171.3333333333",
+        "171.3333333334"
+      ],
+      "cross_norm_upper_b": [
+        "3.3333333333",
+        "3.3333333334"
+      ],
+      "ritz_ground": [
+        "-0.2809691635",
+        "-0.2809691634"
+      ],
+      "ritz_first_excited": [
+        "19.6483241561",
+        "19.6483241562"
+      ],
+      "ground_interval": [
+        "-0.2809691635",
+        "-0.2809691634"
+      ],
+      "first_excited_interval": [
+        "19.6483241549",
+        "19.6483241562"
+      ],
+      "scalar_gap_interval": [
+        "19.8560421054",
+        "19.9940379882"
+      ],
+      "gap_interval": [
+        "19.9292933184",
+        "19.9292933197"
+      ],
+      "certified_positive": true
+    }
+  ],
+  "status": "All exact rational certificates passed."
+}
