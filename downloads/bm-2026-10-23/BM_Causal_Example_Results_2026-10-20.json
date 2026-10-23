@@ -1,0 +1,1083 @@
+[
+  {
+    "mode": "history",
+    "frontier": [
+      {
+        "state_budget": 1,
+        "feasible": true,
+        "optimal_error_squared": "9/4",
+        "witness_states": 1,
+        "witness": {
+          "error_squared": "9/4",
+          "states": 1,
+          "cells": [
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          "predictor": [
+            [
+              0
+            ]
+          ],
+          "output": [
+            [
+              "3/2"
+            ]
+          ],
+          "initialization": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0
+          },
+          "cell_certificates": [
+            {
+              "center": [
+                "3/2"
+              ],
+              "radius_squared": "9/4",
+              "support": [
+                2,
+                3
+              ],
+              "weights": [
+                "1/2",
+                "1/2"
+              ]
+            }
+          ],
+          "legacy_output": null
+        },
+        "covers_checked": 15,
+        "valid_covers": 1
+      },
+      {
+        "state_budget": 2,
+        "feasible": true,
+        "optimal_error_squared": "1",
+        "witness_states": 2,
+        "witness": {
+          "error_squared": "1",
+          "states": 2,
+          "cells": [
+            [
+              0,
+              1,
+              2
+            ],
+            [
+              1,
+              3
+            ]
+          ],
+          "predictor": [
+            [
+              1
+            ],
+            [
+              0
+            ]
+          ],
+          "output": [
+            [
+              "5/2"
+            ],
+            [
+              "1"
+            ]
+          ],
+          "initialization": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 1
+          },
+          "cell_certificates": [
+            {
+              "center": [
+                "5/2"
+              ],
+              "radius_squared": "1/4",
+              "support": [
+                0,
+                2
+              ],
+              "weights": [
+                "1/2",
+                "1/2"
+              ]
+            },
+            {
+              "center": [
+                "1"
+              ],
+              "radius_squared": "1",
+              "support": [
+                1,
+                3
+              ],
+              "weights": [
+                "1/2",
+                "1/2"
+              ]
+            }
+          ],
+          "legacy_output": null
+        },
+        "covers_checked": 105,
+        "valid_covers": 22
+      }
+    ],
+    "best": {
+      "error_squared": "1",
+      "states": 2,
+      "cells": [
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "predictor": [
+        [
+          1
+        ],
+        [
+          0
+        ]
+      ],
+      "output": [
+        [
+          "5/2"
+        ],
+        [
+          "1"
+        ]
+      ],
+      "initialization": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 1
+      },
+      "cell_certificates": [
+        {
+          "center": [
+            "5/2"
+          ],
+          "radius_squared": "1/4",
+          "support": [
+            0,
+            2
+          ],
+          "weights": [
+            "1/2",
+            "1/2"
+          ]
+        },
+        {
+          "center": [
+            "1"
+          ],
+          "radius_squared": "1",
+          "support": [
+            1,
+            3
+          ],
+          "weights": [
+            "1/2",
+            "1/2"
+          ]
+        }
+      ],
+      "legacy_output": null
+    },
+    "requested_budget": 2,
+    "minimum_states_for_threshold": 2,
+    "epsilon_squared": "1",
+    "zero_error_from_budget": null,
+    "statistics": {
+      "reachable_native_states": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "admissible_cells": 15,
+      "covers_checked": 120,
+      "valid_covers": 23
+    },
+    "scope": "finite deterministic partial actions; Euclidean tasks; exact availability; infinite histories; unrestricted real predictor outputs; stated memory budget"
+  },
+  {
+    "mode": "closed_encoder",
+    "frontier": [
+      {
+        "state_budget": 1,
+        "feasible": true,
+        "optimal_error_squared": "9/4",
+        "witness_states": 1,
+        "witness": {
+          "error_squared": "9/4",
+          "states": 1,
+          "cells": [
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          "predictor": [
+            [
+              0
+            ]
+          ],
+          "output": [
+            [
+              "3/2"
+            ]
+          ],
+          "initialization": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0
+          },
+          "cell_certificates": [
+            {
+              "center": [
+                "3/2"
+              ],
+              "radius_squared": "9/4",
+              "support": [
+                2,
+                3
+              ],
+              "weights": [
+                "1/2",
+                "1/2"
+              ]
+            }
+          ],
+          "legacy_output": null
+        },
+        "covers_checked": 15,
+        "valid_covers": 1
+      },
+      {
+        "state_budget": 2,
+        "feasible": true,
+        "optimal_error_squared": "9/4",
+        "witness_states": 1,
+        "witness": {
+          "error_squared": "9/4",
+          "states": 1,
+          "cells": [
+            [
+              0,
+              1,
+              2,
+              3
+            ]
+          ],
+          "predictor": [
+            [
+              0
+            ]
+          ],
+          "output": [
+            [
+              "3/2"
+            ]
+          ],
+          "initialization": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0
+          },
+          "cell_certificates": [
+            {
+              "center": [
+                "3/2"
+              ],
+              "radius_squared": "9/4",
+              "support": [
+                2,
+                3
+              ],
+              "weights": [
+                "1/2",
+                "1/2"
+              ]
+            }
+          ],
+          "legacy_output": null
+        },
+        "covers_checked": 105,
+        "valid_covers": 1
+      }
+    ],
+    "best": {
+      "error_squared": "9/4",
+      "states": 1,
+      "cells": [
+        [
+          0,
+          1,
+          2,
+          3
+        ]
+      ],
+      "predictor": [
+        [
+          0
+        ]
+      ],
+      "output": [
+        [
+          "3/2"
+        ]
+      ],
+      "initialization": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0
+      },
+      "cell_certificates": [
+        {
+          "center": [
+            "3/2"
+          ],
+          "radius_squared": "9/4",
+          "support": [
+            2,
+            3
+          ],
+          "weights": [
+            "1/2",
+            "1/2"
+          ]
+        }
+      ],
+      "legacy_output": null
+    },
+    "requested_budget": 2,
+    "minimum_states_for_threshold": null,
+    "epsilon_squared": "1",
+    "zero_error_from_budget": null,
+    "statistics": {
+      "reachable_native_states": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "admissible_cells": 15,
+      "covers_checked": 120,
+      "valid_covers": 2
+    },
+    "scope": "finite deterministic partial actions; Euclidean tasks; exact availability; infinite histories; unrestricted real predictor outputs; stated memory budget"
+  },
+  {
+    "mode": "history",
+    "frontier": [
+      {
+        "state_budget": 1,
+        "feasible": false,
+        "optimal_error_squared": null,
+        "witness_states": null,
+        "witness": null,
+        "covers_checked": 3,
+        "valid_covers": 0
+      },
+      {
+        "state_budget": 2,
+        "feasible": false,
+        "optimal_error_squared": null,
+        "witness_states": null,
+        "witness": null,
+        "covers_checked": 3,
+        "valid_covers": 0
+      },
+      {
+        "state_budget": 3,
+        "feasible": true,
+        "optimal_error_squared": "0",
+        "witness_states": 3,
+        "witness": {
+          "error_squared": "0",
+          "states": 3,
+          "cells": [
+            [
+              0
+            ],
+            [
+              1
+            ],
+            [
+              2
+            ]
+          ],
+          "predictor": [
+            [
+              1,
+              null
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              null,
+              2
+            ]
+          ],
+          "output": [
+            [
+              "0",
+              "0"
+            ],
+            [
+              "1",
+              "1"
+            ],
+            [
+              "2",
+              "0"
+            ]
+          ],
+          "initialization": {
+            "0": 0,
+            "1": 1,
+            "2": 2
+          },
+          "cell_certificates": [
+            {
+              "center": [
+                "0",
+                "0"
+              ],
+              "radius_squared": "0",
+              "support": [
+                0
+              ],
+              "weights": [
+                1
+              ]
+            },
+            {
+              "center": [
+                "1",
+                "1"
+              ],
+              "radius_squared": "0",
+              "support": [
+                1
+              ],
+              "weights": [
+                1
+              ]
+            },
+            {
+              "center": [
+                "2",
+                "0"
+              ],
+              "radius_squared": "0",
+              "support": [
+                2
+              ],
+              "weights": [
+                1
+              ]
+            }
+          ],
+          "legacy_output": null
+        },
+        "covers_checked": 1,
+        "valid_covers": 1
+      }
+    ],
+    "best": {
+      "error_squared": "0",
+      "states": 3,
+      "cells": [
+        [
+          0
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "predictor": [
+        [
+          1,
+          null
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          null,
+          2
+        ]
+      ],
+      "output": [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "1",
+          "1"
+        ],
+        [
+          "2",
+          "0"
+        ]
+      ],
+      "initialization": {
+        "0": 0,
+        "1": 1,
+        "2": 2
+      },
+      "cell_certificates": [
+        {
+          "center": [
+            "0",
+            "0"
+          ],
+          "radius_squared": "0",
+          "support": [
+            0
+          ],
+          "weights": [
+            1
+          ]
+        },
+        {
+          "center": [
+            "1",
+            "1"
+          ],
+          "radius_squared": "0",
+          "support": [
+            1
+          ],
+          "weights": [
+            1
+          ]
+        },
+        {
+          "center": [
+            "2",
+            "0"
+          ],
+          "radius_squared": "0",
+          "support": [
+            2
+          ],
+          "weights": [
+            1
+          ]
+        }
+      ],
+      "legacy_output": null
+    },
+    "requested_budget": 3,
+    "minimum_states_for_threshold": 3,
+    "epsilon_squared": "1/4",
+    "zero_error_from_budget": 3,
+    "statistics": {
+      "reachable_native_states": [
+        0,
+        1,
+        2
+      ],
+      "admissible_cells": 3,
+      "covers_checked": 7,
+      "valid_covers": 1
+    },
+    "scope": "finite deterministic partial actions; Euclidean tasks; exact availability; infinite histories; unrestricted real predictor outputs; stated memory budget"
+  },
+  {
+    "mode": "history",
+    "frontier": [
+      {
+        "state_budget": 1,
+        "feasible": true,
+        "optimal_error_squared": "25/16",
+        "witness_states": 1,
+        "witness": {
+          "error_squared": "25/16",
+          "states": 1,
+          "cells": [
+            [
+              0,
+              1,
+              2
+            ]
+          ],
+          "predictor": [
+            [
+              0
+            ]
+          ],
+          "output": [
+            [
+              "1",
+              "3/4"
+            ]
+          ],
+          "initialization": {
+            "0": 0,
+            "1": 0,
+            "2": 0
+          },
+          "cell_certificates": [
+            {
+              "center": [
+                "1",
+                "3/4"
+              ],
+              "radius_squared": "25/16",
+              "support": [
+                0,
+                1,
+                2
+              ],
+              "weights": [
+                "5/16",
+                "5/16",
+                "3/8"
+              ]
+            }
+          ],
+          "legacy_output": null
+        },
+        "covers_checked": 7,
+        "valid_covers": 1
+      },
+      {
+        "state_budget": 2,
+        "feasible": true,
+        "optimal_error_squared": "1",
+        "witness_states": 2,
+        "witness": {
+          "error_squared": "1",
+          "states": 2,
+          "cells": [
+            [
+              0,
+              1
+            ],
+            [
+              2
+            ]
+          ],
+          "predictor": [
+            [
+              0
+            ],
+            [
+              1
+            ]
+          ],
+          "output": [
+            [
+              "1",
+              "0"
+            ],
+            [
+              "1",
+              "2"
+            ]
+          ],
+          "initialization": {
+            "0": 0,
+            "1": 0,
+            "2": 1
+          },
+          "cell_certificates": [
+            {
+              "center": [
+                "1",
+                "0"
+              ],
+              "radius_squared": "1",
+              "support": [
+                0,
+                1
+              ],
+              "weights": [
+                "1/2",
+                "1/2"
+              ]
+            },
+            {
+              "center": [
+                "1",
+                "2"
+              ],
+              "radius_squared": "0",
+              "support": [
+                2
+              ],
+              "weights": [
+                1
+              ]
+            }
+          ],
+          "legacy_output": null
+        },
+        "covers_checked": 21,
+        "valid_covers": 12
+      }
+    ],
+    "best": {
+      "error_squared": "1",
+      "states": 2,
+      "cells": [
+        [
+          0,
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "predictor": [
+        [
+          0
+        ],
+        [
+          1
+        ]
+      ],
+      "output": [
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "2"
+        ]
+      ],
+      "initialization": {
+        "0": 0,
+        "1": 0,
+        "2": 1
+      },
+      "cell_certificates": [
+        {
+          "center": [
+            "1",
+            "0"
+          ],
+          "radius_squared": "1",
+          "support": [
+            0,
+            1
+          ],
+          "weights": [
+            "1/2",
+            "1/2"
+          ]
+        },
+        {
+          "center": [
+            "1",
+            "2"
+          ],
+          "radius_squared": "0",
+          "support": [
+            2
+          ],
+          "weights": [
+            1
+          ]
+        }
+      ],
+      "legacy_output": null
+    },
+    "requested_budget": 2,
+    "minimum_states_for_threshold": null,
+    "epsilon_squared": null,
+    "zero_error_from_budget": null,
+    "statistics": {
+      "reachable_native_states": [
+        0,
+        1,
+        2
+      ],
+      "admissible_cells": 7,
+      "covers_checked": 28,
+      "valid_covers": 13
+    },
+    "scope": "finite deterministic partial actions; Euclidean tasks; exact availability; infinite histories; unrestricted real predictor outputs; stated memory budget"
+  },
+  {
+    "mode": "history",
+    "frontier": [
+      {
+        "state_budget": 1,
+        "feasible": true,
+        "optimal_error_squared": "1",
+        "witness_states": 1,
+        "witness": {
+          "error_squared": "1",
+          "states": 1,
+          "cells": [
+            [
+              0,
+              1,
+              2
+            ]
+          ],
+          "predictor": [
+            [
+              0
+            ]
+          ],
+          "output": [
+            [
+              "1"
+            ]
+          ],
+          "initialization": {
+            "0": 0
+          },
+          "cell_certificates": [
+            {
+              "center": [
+                "1"
+              ],
+              "radius_squared": "1",
+              "support": [
+                0,
+                2
+              ],
+              "weights": [
+                "1/2",
+                "1/2"
+              ]
+            }
+          ],
+          "legacy_output": null
+        },
+        "covers_checked": 7,
+        "valid_covers": 1
+      },
+      {
+        "state_budget": 2,
+        "feasible": true,
+        "optimal_error_squared": "1/4",
+        "witness_states": 2,
+        "witness": {
+          "error_squared": "1/4",
+          "states": 2,
+          "cells": [
+            [
+              0
+            ],
+            [
+              1,
+              2
+            ]
+          ],
+          "predictor": [
+            [
+              1
+            ],
+            [
+              1
+            ]
+          ],
+          "output": [
+            [
+              "0"
+            ],
+            [
+              "3/2"
+            ]
+          ],
+          "initialization": {
+            "0": 0
+          },
+          "cell_certificates": [
+            {
+              "center": [
+                "0"
+              ],
+              "radius_squared": "0",
+              "support": [
+                0
+              ],
+              "weights": [
+                1
+              ]
+            },
+            {
+              "center": [
+                "3/2"
+              ],
+              "radius_squared": "1/4",
+              "support": [
+                1,
+                2
+              ],
+              "weights": [
+                "1/2",
+                "1/2"
+              ]
+            }
+          ],
+          "legacy_output": null
+        },
+        "covers_checked": 21,
+        "valid_covers": 9
+      }
+    ],
+    "best": {
+      "error_squared": "1/4",
+      "states": 2,
+      "cells": [
+        [
+          0
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "predictor": [
+        [
+          1
+        ],
+        [
+          1
+        ]
+      ],
+      "output": [
+        [
+          "0"
+        ],
+        [
+          "3/2"
+        ]
+      ],
+      "initialization": {
+        "0": 0
+      },
+      "cell_certificates": [
+        {
+          "center": [
+            "0"
+          ],
+          "radius_squared": "0",
+          "support": [
+            0
+          ],
+          "weights": [
+            1
+          ]
+        },
+        {
+          "center": [
+            "3/2"
+          ],
+          "radius_squared": "1/4",
+          "support": [
+            1,
+            2
+          ],
+          "weights": [
+            "1/2",
+            "1/2"
+          ]
+        }
+      ],
+      "legacy_output": null
+    },
+    "requested_budget": 2,
+    "minimum_states_for_threshold": null,
+    "epsilon_squared": null,
+    "zero_error_from_budget": null,
+    "statistics": {
+      "reachable_native_states": [
+        0,
+        1,
+        2
+      ],
+      "admissible_cells": 7,
+      "covers_checked": 28,
+      "valid_covers": 10
+    },
+    "scope": "finite deterministic partial actions; Euclidean tasks; exact availability; infinite histories; unrestricted real predictor outputs; stated memory budget"
+  },
+  {
+    "mode": "history",
+    "frontier": [
+      {
+        "state_budget": 1,
+        "feasible": false,
+        "optimal_error_squared": null,
+        "witness_states": null,
+        "witness": null,
+        "covers_checked": 6,
+        "valid_covers": 0
+      },
+      {
+        "state_budget": 2,
+        "feasible": false,
+        "optimal_error_squared": null,
+        "witness_states": null,
+        "witness": null,
+        "covers_checked": 15,
+        "valid_covers": 0
+      },
+      {
+        "state_budget": 3,
+        "feasible": false,
+        "optimal_error_squared": null,
+        "witness_states": null,
+        "witness": null,
+        "covers_checked": 20,
+        "valid_covers": 0
+      }
+    ],
+    "best": null,
+    "requested_budget": 3,
+    "minimum_states_for_threshold": null,
+    "epsilon_squared": null,
+    "zero_error_from_budget": null,
+    "statistics": {
+      "reachable_native_states": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "admissible_cells": 6,
+      "covers_checked": 41,
+      "valid_covers": 0
+    },
+    "scope": "finite deterministic partial actions; Euclidean tasks; exact availability; infinite histories; unrestricted real predictor outputs; stated memory budget"
+  }
+]

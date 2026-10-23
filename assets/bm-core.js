@@ -78,5 +78,11 @@ function schur(input){
  if(upper.cmp(zero)<0)throw Error('These inputs produce inconsistent spectral bounds.');
  return{q,l0,l1,rawLower,lower:rawLower.cmp(zero)<0?zero:rawLower,upper,positive:rawLower.cmp(zero)>0};
 }
-const api={Q,csv,parse,analyze,schur};if(typeof module!=='undefined'&&module.exports)module.exports=api;root.BMCalc=api;
+function uniformGap(beta){
+ const original=Q.parse(beta),absolute=new Q(original.n<0n?-original.n:original.n,original.d),limit=Q.parse('3/64');
+ if(absolute.cmp(limit)>0)return{applicable:false};
+ const radicand=Q.parse('1').sub(absolute.div(limit));
+ return{applicable:true,radicand:radicand.toString(),lowerExpression:radicand.cmp(zero)===0?'1/2':radicand.cmp(Q.parse('1'))===0?'2':`1/2 + (3/2) sqrt(${radicand})`};
+}
+const api={Q,csv,parse,analyze,schur,uniformGap};if(typeof module!=='undefined'&&module.exports)module.exports=api;root.BMCalc=api;
 })(typeof window!=='undefined'?window:globalThis);

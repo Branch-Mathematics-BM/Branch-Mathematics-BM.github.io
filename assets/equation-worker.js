@@ -18,10 +18,24 @@ function outerEquals(s){let depth=0,found=[];for(let i=0;i<s.length;i++){if('(['
 function residuals(equations,substitutions){
  return equations.map(eq=>{try{const i=outerEquals(eq),l=engine(eq.slice(0,i),substitutions).toString(),r=engine(eq.slice(i+1),substitutions).toString();return engine(`(${l})-(${r})`).expand().simplify().toString();}catch{return 'not verified';}});
 }
+function splitStatements(input){
+ const chunks=[];let current='',depth=0;
+ const put=()=>{if(current.trim())chunks.push(current.trim());current='';};
+ input=input.replace(/\r\n?/g,'\n');
+ for(let i=0;i<input.length;i++){
+  const c=input[i];if('(['.includes(c))depth++;if(')]'.includes(c))depth--;
+  if(c===';'&&depth===0){put();continue;}
+  if(c==='\n'){
+   const continuation=depth!==0||/[+\-*/^=,]\s*$/.test(current)||/^\s*=/.test(input.slice(i+1));
+   if(continuation)current+=' ';else put();
+  }else current+=c;
+ }
+ put();return chunks;
+}
 function calculate(payload){
  if(typeof payload.text!=='string'||!payload.text.trim())throw Error('Paste at least one expression or equation.');
  if(payload.text.length>6000)throw Error('Please use at most 6,000 characters per calculation.');
- const chunks=payload.text.split(';').map(s=>s.trim()).filter(Boolean);if(chunks.length>30)throw Error('Please use at most 30 expressions or equations at once.');
+ const chunks=splitStatements(payload.text);if(chunks.length>30)throw Error('Please use at most 30 expressions or equations at once.');
  const requested=String(payload.target||'').split(',').map(s=>s.trim()).filter(Boolean);
  if(requested.length>12||requested.some(x=>!/^[_\p{L}][_\p{L}\p{N}]*$/u.test(x))||new Set(requested).size!==requested.length)throw Error('Optional unknowns must be distinct symbol names separated by commas, such as x,y.');
  const parsed=[],rows=[];
@@ -63,4 +77,4 @@ function calculate(payload){
  return{system,rows,substitutions,note:'Results use Nerdamer 2.0.0. Symbols have no automatic units; trigonometric angles are radians. This is a symbolic calculation, not an automatic proof of a physical model.'};
 }
 if(typeof self!=='undefined'&&typeof importScripts==='function')self.onmessage=e=>{try{self.postMessage({ok:true,result:calculate(e.data)});}catch(error){self.postMessage({ok:false,error:error.message});}};
-if(typeof module!=='undefined'&&module.exports)module.exports={calculate,normalize,outerEquals};
+if(typeof module!=='undefined'&&module.exports)module.exports={calculate,normalize,outerEquals,splitStatements};

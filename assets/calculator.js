@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   stop();answerText='';$('quick-result').hidden=true;$('copy-result').disabled=true;$('download-result').disabled=true;
   if(!$('equations-input').value.trim()){$('quick-status').textContent='Paste an expression or equation first.';$('equations-input').focus();return;}
   const id=requestId;$('quick-status').textContent='Calculating…';$('calculate').disabled=true;$('cancel').hidden=false;
-  try{worker=new Worker('assets/equation-worker.js');
+  try{worker=new Worker('assets/equation-worker.js?v=20261023');
    timer=setTimeout(()=>{if(id!==requestId)return;stop();$('quick-status').textContent='The time limit was reached. Try a smaller system or increase the limit under Advanced.';},Number($('time-limit').value));
    worker.onmessage=e=>{if(id!==requestId)return;stop();if(e.data.ok)renderQuick(e.data.result);else $('quick-status').textContent=e.data.error;};
    worker.onerror=()=>{if(id!==requestId)return;stop();$('quick-status').textContent='The calculation engine could not start. Refresh this page and try again.';};
@@ -66,19 +66,24 @@ document.addEventListener('DOMContentLoaded',()=>{
   try{if(!cache[g]){const response=await fetch(path);if(!response.ok)throw Error('Certificate download failed.');cache[g]=await response.json();}if(id!==spectralRequest)return;
    const data=cache[g],r=data.cases.find(c=>c.beta===b);if(!r?.certified)throw Error('No certified case found for this selection.');
    $('spectral-result').innerHTML=`<pre class="answer">${esc(r.gap_interval[0])} ≤ Δ / c_K ≤ ${esc(r.gap_interval[1])}</pre><p>${data.plaquettes} plaquettes · ${data.retained_dimension} retained states · open boundary</p><p>Crude omitted-sector floor: ${esc(r.crude_tail_floor)}<br>Selected floor interval: [${esc(r.improved_tail_floor.join(', '))}]</p><p><a href="${path}">View exact rational certificate JSON →</a></p>`;
+   const uniform=BMCalc.uniformGap(b);
+   $('spectral-result').innerHTML+=uniform.applicable?`<div class="callout"><strong>Separate volume-independent strong-coupling bound:</strong> Δ / c_K ≥ ${esc(uniform.lowerExpression)}. This uses the original Hamiltonian normalization and |β| ≤ 3/64. <a href="yang-mills.html#uniform-gap-update">Proof and fixed-spacing scope</a>.</div>`:'<p class="small">This coupling lies outside the separate |β| ≤ 3/64 volume-independent strong-coupling theorem. The finite-geometry certificate above retains its own scope.</p>';
    $('spectral-status').textContent='Published finite-geometry certificate loaded.';
   }catch(e){if(id===spectralRequest)$('spectral-status').textContent=e.message+' Retry by changing the selection.';}
  }
  $('spectral').addEventListener('toggle',()=>{if($('spectral').open)spectrum();});for(const id of ['geometry','coupling'])$(id).addEventListener('change',spectrum);
- const inputIds=['equations-input','solve-for','time-limit','state-data','geometry','coupling'];
- function session(){return{format:'BM-calculator-session',version:1,inputs:Object.fromEntries(inputIds.map(id=>[id,$(id).value])),checkDynamics:$('check-dynamics').checked};}
+ const baseInputIds=['equations-input','solve-for','time-limit','state-data','geometry','coupling'];
+ const extraInputIds=['causal-data','causal-budget','causal-mode','quantum-data','decay-M','decay-L','decay-epsilon','decay-dimension','decay-actions'];
+ const inputIds=[...baseInputIds,...extraInputIds];
+ function session(){return{format:'BM-calculator-session',version:2,inputs:Object.fromEntries(inputIds.map(id=>[id,$(id).value])),checkDynamics:$('check-dynamics').checked};}
  function restore(data){
-  if(data?.format!=='BM-calculator-session'||data.version!==1||typeof data.inputs!=='object'||data.inputs===null||typeof data.checkDynamics!=='boolean')throw Error('Not a supported BM calculator session.');
-  for(const id of inputIds){const value=data.inputs[id],element=$(id);if(typeof value!=='string'||value.length>(element.maxLength>0?element.maxLength:60000))throw Error('Invalid or oversized session input.');if(element.tagName==='SELECT'&&![...element.options].some(o=>o.value===value))throw Error('Invalid saved selection.');}
-  for(const id of inputIds)$(id).value=data.inputs[id];$('check-dynamics').checked=data.checkDynamics;invalidate();$('finite-result').textContent='Restored inputs. Run the checker to calculate their result.';if($('spectral').open)spectrum();
+  if(data?.format!=='BM-calculator-session'||![1,2].includes(data.version)||typeof data.inputs!=='object'||data.inputs===null||typeof data.checkDynamics!=='boolean')throw Error('Not a supported BM calculator session.');
+  const restoreIds=data.version===1?baseInputIds:inputIds;
+  for(const id of restoreIds){const value=data.inputs[id],element=$(id);if(typeof value!=='string'||value.length>(element.maxLength>0?element.maxLength:60000))throw Error('Invalid or oversized session input.');if(element.tagName==='SELECT'&&![...element.options].some(o=>o.value===value))throw Error('Invalid saved selection.');}
+  for(const id of restoreIds)$(id).value=data.inputs[id];$('check-dynamics').checked=data.checkDynamics;invalidate();$('finite-result').textContent='Restored inputs. Run the checker to calculate their result.';if($('spectral').open)spectrum();document.dispatchEvent(new Event('bm-session-restored'));
  }
  $('save-session').addEventListener('click',()=>{try{localStorage.setItem('bm-calculator-v1',JSON.stringify(session()));$('session-status').textContent='Inputs saved on this browser.';}catch{$('session-status').textContent='Browser storage is unavailable. Export the session instead.';}});
  $('load-session').addEventListener('click',()=>{try{const value=localStorage.getItem('bm-calculator-v1');if(!value)throw Error('No saved session on this browser.');restore(JSON.parse(value));$('session-status').textContent='Saved inputs restored.';}catch(e){$('session-status').textContent=e.message;}});
  $('export-session').addEventListener('click',()=>download('BM-calculator-session.json',JSON.stringify(session(),null,2),'application/json'));
- $('import-session').addEventListener('change',async e=>{const file=e.target.files[0];if(!file)return;try{if(file.size>150000)throw Error('Session files must be smaller than 150 KB.');restore(JSON.parse(await file.text()));$('session-status').textContent='Session imported. Press Calculate when ready.';}catch(e){$('session-status').textContent=e.message;}finally{$('import-session').value='';}});
+ $('import-session').addEventListener('change',async e=>{const file=e.target.files[0];if(!file)return;try{if(file.size>350000)throw Error('Session files must be smaller than 350 KB.');restore(JSON.parse(await file.text()));$('session-status').textContent='Session imported. Press Calculate when ready.';}catch(e){$('session-status').textContent=e.message;}finally{$('import-session').value='';}});
 });

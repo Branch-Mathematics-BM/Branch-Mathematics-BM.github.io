@@ -19,3 +19,22 @@ section[id],h2[id]{scroll-margin-top:95px}
 :focus-visible{outline:2px solid var(--accent2);outline-offset:4px}
 @media(max-width:600px){.changelog .registry-row,.encyclopedia .registry-row{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* Current audit and dated development record */
+.audit-filters{display:grid;grid-template-columns:minmax(220px,2fr) 1fr 1fr;gap:16px;align-items:start}
+.audit-filters label{display:block;font-weight:700;margin-bottom:8px}
+.audit-filters .search{margin:0}
+.audit-filters select{width:100%;min-height:50px;border:1px solid #315066;border-radius:12px;background:#091722;color:var(--text);padding:12px;font-size:1rem}
+.audit-results{display:grid;gap:12px;margin:20px 0}
+.audit-row{background:#0d1c27;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.audit-row>summary{padding:16px;cursor:pointer;display:grid;grid-template-columns:minmax(100px,140px) minmax(0,1fr) minmax(130px,170px);gap:14px;align-items:center}
+.audit-id{font-family:Consolas,monospace;color:var(--accent);overflow-wrap:anywhere}
+.audit-name{font-weight:700;overflow-wrap:anywhere}.audit-label{font-size:.82rem;color:var(--accent2)}
+.audit-row[open]>summary{border-bottom:1px solid var(--line)}
+.audit-detail{padding:4px 20px 16px;overflow-wrap:anywhere}
+.audit-detail dl{display:grid;grid-template-columns:170px minmax(0,1fr);gap:10px 16px}
+.audit-detail dt{font-weight:700;color:var(--muted)}.audit-detail dd{margin:0}
+#downloads table td{overflow-wrap:anywhere}
+@media(max-width:700px){.audit-filters{grid-template-columns:1fr}.audit-row>summary{grid-template-columns:1fr;gap:5px}.audit-detail dl{grid-template-columns:1fr;gap:4px}.audit-detail dd{margin-bottom:14px}}
+
+[hidden]{display:none!important}

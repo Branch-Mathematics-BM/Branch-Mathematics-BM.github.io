@@ -1,0 +1,39 @@
+[
+  {
+    "operation": "fragmentation",
+    "matrix": [[1,1,0,0,0,0],[0,1,1,0,0,0],[0,0,1,1,0,0],[0,0,0,1,1,0],[0,0,0,0,1,1],[1,0,1,0,1,0],[1,0,1,0,1,0]]
+  },
+  {
+    "operation": "join_lifting",
+    "sizes": [2,2],
+    "legal": [[0,0],[1,1]]
+  },
+  {
+    "operation": "interfaces",
+    "sizes": [2,2],
+    "legal": [[0,0],[1,1]],
+    "task": [0,1],
+    "actions": [[1,0]],
+    "weights": [1,2]
+  },
+  {
+    "operation": "causal_safety",
+    "native": [[1],[0]],
+    "predictor": [[0]],
+    "task": [0,1],
+    "output": [0],
+    "epsilon": "0"
+  },
+  {
+    "operation": "synthesize_predictor",
+    "native": [[1],[0]],
+    "task": [0,1],
+    "output_catalogue": [0,1],
+    "max_states": 2,
+    "epsilon": "0"
+  },
+  {
+    "operation": "pauli_recovery",
+    "probabilities": ["5/8","1/8","1/8","1/8"]
+  }
+]

@@ -1,0 +1,309 @@
+[
+  {
+    "frontier": [
+      {
+        "B": 2,
+        "D": 4,
+        "order": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      {
+        "B": 3,
+        "D": 3,
+        "order": [
+          1,
+          0,
+          2,
+          3,
+          4,
+          5
+        ]
+      }
+    ],
+    "D_k": [
+      {
+        "k": 0,
+        "D": null
+      },
+      {
+        "k": 1,
+        "D": null
+      },
+      {
+        "k": 2,
+        "D": 4
+      },
+      {
+        "k": 3,
+        "D": 3
+      },
+      {
+        "k": 4,
+        "D": 3
+      },
+      {
+        "k": 5,
+        "D": 3
+      },
+      {
+        "k": 6,
+        "D": 3
+      },
+      {
+        "k": 7,
+        "D": 3
+      }
+    ],
+    "statistics": {
+      "original_rows": 7,
+      "original_columns": 6,
+      "distinct_rows": 6,
+      "distinct_columns": 6,
+      "states": 966,
+      "transitions": 1356
+    }
+  },
+  {
+    "holds": false,
+    "families": 4,
+    "checked_pairs": 6,
+    "E": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "F": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "bad_legal_pair": [
+      1,
+      0
+    ],
+    "counterexample_task": [
+      0,
+      1
+    ]
+  },
+  {
+    "feasible_count": 3,
+    "enumerated": 4,
+    "greatest_exists": false,
+    "greatest": null,
+    "join_of_feasible": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "optimal_family": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "optimal_cost": "4",
+    "cost_name": "caller-supplied or weighted alphabet size"
+  },
+  {
+    "safe_relation": [],
+    "initialization_exists": false,
+    "initialization": {
+      "0": null,
+      "1": null
+    },
+    "deletion_rounds": 1,
+    "failures": [
+      {
+        "native": 0,
+        "predictor": 0,
+        "word": [
+          0
+        ],
+        "reason": "output error"
+      },
+      {
+        "native": 1,
+        "predictor": 0,
+        "word": [],
+        "reason": "output error"
+      }
+    ]
+  },
+  {
+    "feasible": true,
+    "minimum_states": 2,
+    "predictor": [
+      [
+        1
+      ],
+      [
+        0
+      ]
+    ],
+    "output": [
+      0,
+      1
+    ],
+    "verification": {
+      "safe_relation": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "initialization_exists": true,
+      "initialization": {
+        "0": 0,
+        "1": 1
+      },
+      "deletion_rounds": 0,
+      "failures": [
+        {
+          "native": 0,
+          "predictor": 1,
+          "word": [],
+          "reason": "output error"
+        },
+        {
+          "native": 1,
+          "predictor": 0,
+          "word": [],
+          "reason": "output error"
+        }
+      ]
+    },
+    "candidates_checked": 34
+  },
+  {
+    "noise": [
+      "5/8",
+      "1/8",
+      "1/8",
+      "1/8"
+    ],
+    "bloch_multipliers": [
+      "1/2",
+      "1/2",
+      "1/2"
+    ],
+    "recovery": [
+      "1",
+      "0",
+      "0",
+      "0"
+    ],
+    "optimal_error": "1/2",
+    "certificate": {
+      "active_inequalities": [
+        1,
+        2,
+        3,
+        6
+      ],
+      "multipliers": [
+        "0",
+        "1",
+        "1",
+        "1"
+      ],
+      "proven_lower_bound": "1/2"
+    },
+    "inequality_matrix": [
+      [
+        -1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        -1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        -1,
+        0
+      ],
+      [
+        1,
+        1,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        -1
+      ],
+      [
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        "-1",
+        "-1",
+        "0",
+        -1
+      ],
+      [
+        "-1",
+        "0",
+        "-1",
+        -1
+      ],
+      [
+        "0",
+        "1",
+        "1",
+        -1
+      ]
+    ],
+    "inequality_rhs": [
+      "0",
+      "0",
+      "0",
+      "1",
+      "0",
+      "2",
+      "-3/2",
+      "-3/2",
+      "-1/2"
+    ]
+  }
+]
