@@ -1,9 +1,16 @@
 # Branch Mathematics / GURF Website
 
-Static GitHub Pages site — rebuilt 22 September 2026; research and calculator update 23 October 2026.
+Static GitHub Pages site — rebuilt 22 September 2026; research synchronized 25 November 2026; source developments through 1 November.
 
 ## Upload
 Copy the site files, including the `assets/` and `downloads/` folders, into the root of the `branch-mathematics-bm.github.io` repository, commit, and push. GitHub Pages deploys from `main`; no local build step is required.
+
+## Current publication
+- `updates.html` — source-backed current research, comparison and downloads
+- `seed-closure.html` — November Seed proofs and counterexamples
+- `downloads/bm-2026-11-13/` — dated notes, source packages, combined reading collection, result supplement and fresh replay evidence
+- The 645-row October inventory remains immutable; the browser audit appends separately qualified November summaries.
+- Eight November programs and six October replay/demo commands passed. The original external-method benchmark was not rerun.
 
 ## Structure
 - `index.html` — home
@@ -37,10 +44,12 @@ Run:
 ```bash
 node tests/calculator.test.cjs
 node tests/verified-tools.test.cjs
+node tests/audit.test.cjs
 python3 tests/site.test.py
+python3 tests/publication.test.py
 ```
 
-The verified-tools suite compares finite synthesis with an independent machine oracle in 1,458 cases, verifies 15 rational quantum optima, and checks PSD against an independent principal-minor oracle. The site check verifies 932 internal references, source fingerprints and release checksums.
+The verified-tools suite compares finite synthesis with an independent machine oracle in 1,458 cases, verifies 15 rational quantum optima, and checks PSD against an independent principal-minor oracle. The site checks verify internal references, source fingerprints, both release manifests and immutable October content.
 
 The scalar causal synthesizer supports up to six native states and three predictor states. The quantum tool checks supplied real-rational label-channel certificates; general quantum quantifier elimination is proved but not implemented. The decay budget assumes an independently established uniform task-decay/effectivity contract. Open research stays visible in the audit.
 

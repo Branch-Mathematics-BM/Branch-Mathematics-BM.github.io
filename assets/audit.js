@@ -17,7 +17,10 @@ document.addEventListener('DOMContentLoaded',async()=>{
  function reset(){visible=100;render();}
  try{
   const response=await fetch('downloads/bm-2026-10-23/BM_Completeness_Public_2026-10-23.json');if(!response.ok)throw Error('Ledger download failed.');
-  const data=await response.json();rows=data.inventory.map(r=>({...r,_search:[r.id,r.name,r.framework,r.classification,r.lifecycle,r.statement,r.assumptions,r.evidence,r.remaining_work,r.sources].join(' ').toLowerCase()}));sourceMap=new Map(data.sources.map(s=>[s.id,s]));
+  const data=await response.json();
+  const extraResponse=await fetch('downloads/bm-2026-11-13/BM_November_Result_Supplement.json');if(!extraResponse.ok)throw Error('Supplement download failed.');
+  const extra=await extraResponse.json();data.inventory.push(...extra.inventory);data.sources.push(...extra.sources);
+  rows=data.inventory.map(r=>({...r,_search:[r.id,r.name,r.framework,r.classification,r.lifecycle,r.statement,r.assumptions,r.evidence,r.remaining_work,r.sources].join(' ').toLowerCase()}));sourceMap=new Map(data.sources.map(s=>[s.id,s]));
   $('audit-query').addEventListener('input',reset);$('audit-framework').addEventListener('change',reset);$('audit-label').addEventListener('change',reset);more.addEventListener('click',()=>{visible+=100;render();});render();
- }catch(error){$('audit-status').textContent='The searchable ledger could not load. Use the full JSON download above; the static summary remains available.';}
+ }catch(error){$('audit-status').textContent='The searchable ledger could not load. Use the dated JSON downloads above; the static summary remains available.';}
 });

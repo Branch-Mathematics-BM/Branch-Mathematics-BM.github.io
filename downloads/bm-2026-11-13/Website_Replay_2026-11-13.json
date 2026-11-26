@@ -1,0 +1,705 @@
+{
+  "date": "2026-11-13",
+  "scope": "Internal executable replay; not independent mathematical review or a fresh CLUE benchmark.",
+  "checks": [
+    {
+      "script": "BM_Active_Seed_Diagnostics_2026-11-01.py",
+      "exit_code": 0,
+      "seconds": 4.062,
+      "result": {
+        "activation_game": {
+          "beliefs": 15,
+          "iterations": 3,
+          "solvable_beliefs": 8,
+          "terminal_beliefs": 6
+        },
+        "activation_policy_records": 2,
+        "activation_then_read_worst_case_cost": "2",
+        "limitations": [
+          "Task is inherited along actions to preserve original question",
+          "Only finite worlds, finite actions, positive costs and worst-case outcomes",
+          "Allows interventions changing native world and legal query menu",
+          "No external world or physical accuracy inference",
+          "State and action relations must be supplied; no automatic law discovery"
+        ],
+        "noninformative_repeated_probe_guarantees_termination": false,
+        "original_task_mutating_action_rejected": true,
+        "random_backward_vs_explicit_tree_checks": 150,
+        "random_feasible_cases": 84,
+        "scope": "finite controlled task-preserving transitions with adversarial outcomes"
+      }
+    },
+    {
+      "script": "BM_Adaptive_Prefix_Gap_2026-11-01.py",
+      "exit_code": 0,
+      "seconds": 0.607,
+      "result": {
+        "theorem_scope": "finite prefix-restricted deterministic tests; positive unit costs",
+        "small_case_exhaustive_verification": [
+          {
+            "binary_seed_depth": 1,
+            "number_of_worlds": 2,
+            "number_of_declared_probes": 1,
+            "optimal_adaptive_worst_case_cost": "1",
+            "optimal_fixed_battery_cost": "1"
+          },
+          {
+            "binary_seed_depth": 2,
+            "number_of_worlds": 4,
+            "number_of_declared_probes": 3,
+            "optimal_adaptive_worst_case_cost": "2",
+            "optimal_fixed_battery_cost": "2"
+          },
+          {
+            "binary_seed_depth": 3,
+            "number_of_worlds": 8,
+            "number_of_declared_probes": 7,
+            "optimal_adaptive_worst_case_cost": "3",
+            "optimal_fixed_battery_cost": "4"
+          },
+          {
+            "binary_seed_depth": 4,
+            "number_of_worlds": 16,
+            "number_of_declared_probes": 15,
+            "optimal_adaptive_worst_case_cost": "4",
+            "optimal_fixed_battery_cost": "8"
+          }
+        ],
+        "proven_for_arbitrary_depth": {
+          "adaptive_cost": "depth",
+          "nonadaptive_cost": "2^(depth-1)",
+          "ratio": "2^(depth-1)/depth; unbounded"
+        }
+      }
+    },
+    {
+      "script": "BM_Adaptive_Seed_Diagnostics_2026-11-01.py",
+      "exit_code": 0,
+      "seconds": 0.052,
+      "result": {
+        "adaptive_vs_nonadaptive": {
+          "adaptive_policy": {
+            "ask": "region",
+            "branches": {
+              "0": {
+                "ask": "left-specific",
+                "branches": {
+                  "0": {
+                    "resolved": "'a'"
+                  },
+                  "1": {
+                    "resolved": "'b'"
+                  }
+                }
+              },
+              "1": {
+                "ask": "right-specific",
+                "branches": {
+                  "0": {
+                    "resolved": "'c'"
+                  },
+                  "1": {
+                    "resolved": "'d'"
+                  }
+                }
+              }
+            }
+          },
+          "computed_information_states": 10,
+          "minimum_fixed_bundle_cost": "3",
+          "minimum_worst_case_adaptive_cost": "2"
+        },
+        "limitations": [
+          "Probe outcome sets are adversarial, not probabilistic",
+          "Worlds remain static; active interventions change the contract",
+          "No joint correlation assumptions among separately specified probes",
+          "Only declared candidate worlds and receiver requirements are certified",
+          "Tests do not establish historical originality or field performance"
+        ],
+        "noisy_indefinite_ambiguity_without_fallback": true,
+        "noisy_with_certain_fallback_cost": "3",
+        "partial_availability_test": {
+          "safe_worst_case_cost": "4"
+        },
+        "passport_requires_extra_probe": true,
+        "persistent_hidden_witness": {
+          "with_joint_source_state_worst_case_cost": "2",
+          "with_only_unrelated_marginal_outcome_sets_certifiable": false
+        },
+        "random_explicit_policy_cross_checks": 200,
+        "random_infeasible_instances": 151,
+        "scope": "finite static source worlds, passive set-valued probes, no probabilities"
+      }
+    },
+    {
+      "script": "BM_Dynamic_Seed_Closure_Verifier_2026-11-01.py",
+      "exit_code": 0,
+      "seconds": 0.029,
+      "result": {
+        "scope": "finite deterministic shift registers with zero append",
+        "tested_native_register_lengths": [
+          3,
+          4,
+          5,
+          6
+        ],
+        "horizon_optimality_cases": 18,
+        "tested_nonclosure_coordinate_projections": 56,
+        "cases": [
+          {
+            "register_length": 3,
+            "native_worlds": 8,
+            "fixed_battery_horizons": [
+              {
+                "steps_ahead": 0,
+                "minimum_fixed_readings": 1
+              },
+              {
+                "steps_ahead": 1,
+                "minimum_fixed_readings": 2
+              },
+              {
+                "steps_ahead": 2,
+                "minimum_fixed_readings": 3
+              }
+            ],
+            "full_register_is_closed": true,
+            "last_bit_only_is_closed_but_cannot_recover_present_task": true
+          },
+          {
+            "register_length": 4,
+            "native_worlds": 16,
+            "fixed_battery_horizons": [
+              {
+                "steps_ahead": 0,
+                "minimum_fixed_readings": 1
+              },
+              {
+                "steps_ahead": 1,
+                "minimum_fixed_readings": 2
+              },
+              {
+                "steps_ahead": 2,
+                "minimum_fixed_readings": 3
+              },
+              {
+                "steps_ahead": 3,
+                "minimum_fixed_readings": 4
+              }
+            ],
+            "full_register_is_closed": true,
+            "last_bit_only_is_closed_but_cannot_recover_present_task": true
+          },
+          {
+            "register_length": 5,
+            "native_worlds": 32,
+            "fixed_battery_horizons": [
+              {
+                "steps_ahead": 0,
+                "minimum_fixed_readings": 1
+              },
+              {
+                "steps_ahead": 1,
+                "minimum_fixed_readings": 2
+              },
+              {
+                "steps_ahead": 2,
+                "minimum_fixed_readings": 3
+              },
+              {
+                "steps_ahead": 3,
+                "minimum_fixed_readings": 4
+              },
+              {
+                "steps_ahead": 4,
+                "minimum_fixed_readings": 5
+              }
+            ],
+            "full_register_is_closed": true,
+            "last_bit_only_is_closed_but_cannot_recover_present_task": true
+          },
+          {
+            "register_length": 6,
+            "native_worlds": 64,
+            "fixed_battery_horizons": [
+              {
+                "steps_ahead": 0,
+                "minimum_fixed_readings": 1
+              },
+              {
+                "steps_ahead": 1,
+                "minimum_fixed_readings": 2
+              },
+              {
+                "steps_ahead": 2,
+                "minimum_fixed_readings": 3
+              },
+              {
+                "steps_ahead": 3,
+                "minimum_fixed_readings": 4
+              },
+              {
+                "steps_ahead": 4,
+                "minimum_fixed_readings": 5
+              },
+              {
+                "steps_ahead": 5,
+                "minimum_fixed_readings": 6
+              }
+            ],
+            "full_register_is_closed": true,
+            "last_bit_only_is_closed_but_cannot_recover_present_task": true
+          }
+        ],
+        "warning": "No finite test establishes the theorem for the infinite shift space"
+      }
+    },
+    {
+      "script": "BM_Finite_Task_Closure_Verifier_2026-11-01.py",
+      "exit_code": 0,
+      "seconds": 0.059,
+      "result": {
+        "scope": "finite deterministic source maps, exact task and state partitions",
+        "randomized_source_instances": 600,
+        "small_size_full_partition_enumeration_instances": 176,
+        "sharp_bound_witnesses": [
+          {
+            "worlds": 2,
+            "distinct_current_outputs": 2,
+            "first_stable_horizon": 0
+          },
+          {
+            "worlds": 3,
+            "distinct_current_outputs": 2,
+            "first_stable_horizon": 1
+          },
+          {
+            "worlds": 4,
+            "distinct_current_outputs": 2,
+            "first_stable_horizon": 2
+          },
+          {
+            "worlds": 5,
+            "distinct_current_outputs": 2,
+            "first_stable_horizon": 3
+          },
+          {
+            "worlds": 6,
+            "distinct_current_outputs": 2,
+            "first_stable_horizon": 4
+          },
+          {
+            "worlds": 7,
+            "distinct_current_outputs": 2,
+            "first_stable_horizon": 5
+          },
+          {
+            "worlds": 8,
+            "distinct_current_outputs": 2,
+            "first_stable_horizon": 6
+          },
+          {
+            "worlds": 9,
+            "distinct_current_outputs": 2,
+            "first_stable_horizon": 7
+          },
+          {
+            "worlds": 10,
+            "distinct_current_outputs": 2,
+            "first_stable_horizon": 8
+          }
+        ],
+        "two_bit_present_task_is_not_autonomous": true,
+        "all_checked_partitions_refine_canonical_task_closed_quotient": true,
+        "no_originality_or_empirical_claim": true
+      }
+    },
+    {
+      "script": "BM_Joint_Receiver_Closure_Verifier_2026-11-01.py",
+      "exit_code": 0,
+      "seconds": 0.054,
+      "result": {
+        "scope": "one finite native source and total deterministic shared evolution",
+        "randomized_systems_checked": 800,
+        "randomized_systems_with_unrealizable_local_pairs": 705,
+        "three_state_ghost_pair_example": {
+          "a_classes": 2,
+          "b_classes": 2,
+          "joint_classes": 3,
+          "formal_product": 4,
+          "ghost_pairs": 1
+        },
+        "two_bit_swap_coupled_receiver_example": {
+          "a_classes": 4,
+          "b_classes": 4,
+          "joint_classes": 4,
+          "formal_product": 16,
+          "ghost_pairs": 12
+        },
+        "joint_future_equivalence_meet_verified": true,
+        "product_dynamics_preserves_native_joint_image": true,
+        "no_originality_or_empirical_claim": true
+      }
+    },
+    {
+      "script": "BM_Seed_Law_Tag_Verifier_2026-11-01.py",
+      "exit_code": 0,
+      "seconds": 0.38,
+      "result": {
+        "all_graph_realizations_through_5_vertices": 1099,
+        "changing_law": {
+          "impossible_with_only_law_tags": true,
+          "one_extra_source_seed_bit_repairs": true,
+          "random_pairwise_vs_full_closure_assignments": 4434,
+          "refinement_can_break_autonomous_closure": true,
+          "three_laws_autonomous_tags_needed": 3,
+          "three_laws_static_tags_needed": 2
+        },
+        "even_odd_triples_pairwise_indistinguishable": true,
+        "finite_horizon_stabilization_checks": 350,
+        "future": [
+          {
+            "edges": [],
+            "horizon": 0,
+            "tags": 1
+          },
+          {
+            "edges": [
+              [
+                0,
+                1
+              ]
+            ],
+            "horizon": 1,
+            "tags": 2
+          },
+          {
+            "edges": [
+              [
+                0,
+                1
+              ]
+            ],
+            "horizon": 2,
+            "tags": 2
+          },
+          {
+            "edges": [
+              [
+                0,
+                1
+              ]
+            ],
+            "horizon": 3,
+            "tags": 2
+          },
+          {
+            "edges": [
+              [
+                0,
+                1
+              ]
+            ],
+            "horizon": 4,
+            "tags": 2
+          },
+          {
+            "edges": [
+              [
+                0,
+                1
+              ]
+            ],
+            "horizon": 5,
+            "tags": 2
+          }
+        ],
+        "future_only_vs_autonomous_counterexample": {
+          "autonomous_seed_update_minimum_tags": 2,
+          "laws": [
+            "reset_zero",
+            "reset_one"
+          ],
+          "task_trace_minimum_tags": 1
+        },
+        "known_limits": [
+          "Output-trace and autonomous code-update requirements are separate",
+          "The law name must itself be available to whoever emits a tag",
+          "One total deterministic update per law; no partial or branching actions",
+          "An explicitly separate switching-law model handles changing law identities",
+          "Small exhaustive checks support but do not certify every theorem",
+          "Graph coloring and future equivalence are established native ideas"
+        ],
+        "nine_segment_geometry": {
+          "actual_polynomial_integral": "1/3",
+          "c2_interpolation_error_bound": "1/486",
+          "difference": "1/486",
+          "exact_polygonal_area": "163/486",
+          "point_only_method_recovers_every_smooth_curve_area": false
+        },
+        "random_closed_code_oracle_comparisons": 350,
+        "random_same_contract_oracle_comparisons": 1400,
+        "scope": "Finite deterministic typed Seed law and task models, not a universal law",
+        "simultaneous_receivers": {
+          "joint_minimum_tags": 3,
+          "receiver_1_minimum_tags": 2,
+          "receiver_2_minimum_tags": 2
+        },
+        "static": {
+          "coloring": [
+            1,
+            0,
+            1
+          ],
+          "conflicts": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              2
+            ]
+          ],
+          "laws": [
+            "copy",
+            "invert",
+            "restricted"
+          ],
+          "minimal_tags": 2,
+          "witnesses": {
+            "(0, 1)": "((0, 0), (0, 1))",
+            "(1, 2)": "((0, 1), (0, 0))"
+          }
+        },
+        "within_law_inadequacy_caught": true
+      }
+    },
+    {
+      "script": "BM_Set_Valued_Seed_Closure_Verifier_2026-11-01.py",
+      "exit_code": 0,
+      "seconds": 0.063,
+      "result": {
+        "scope": "finite, nonempty set-valued native successor relations",
+        "randomized_finite_systems": 525,
+        "exhaustive_partition_search_cases": 179,
+        "successful_candidate_partitions_exhaustively_checked": 246,
+        "same_complete_trace_sets_but_distinct_branch_structure": true,
+        "separate_receiver_bisimulation_meet_is_not_jointly_closed": true,
+        "declared_no_probabilities": true,
+        "no_historical_novelty_claim": true
+      }
+    },
+    {
+      "script": "BM_Source_Trace_2026-10-29.py",
+      "exit_code": 0,
+      "seconds": 0.042,
+      "result": {
+        "source_locators": 128,
+        "new_manually_reviewed": 128,
+        "still_requiring_dependency_review": 0
+      }
+    },
+    {
+      "script": "BM_Network_Seed_Verifier_2026-10-29.py",
+      "exit_code": 0,
+      "seconds": 0.581,
+      "result": {
+        "date": "2026-10-29",
+        "status": "passed",
+        "scope": "finite declared mathematical models; internal checks only",
+        "tests": {
+          "join_tree": {
+            "random_models": 250,
+            "local_tuples_with_global_extensions": 3009
+          },
+          "cycle_parity": {
+            "satisfiable": 4,
+            "unsatisfiable": 4,
+            "edge_deletion_checks": 12
+          },
+          "recurrence": {
+            "exact_equalities": 780,
+            "finite_crossing_checks": 20
+          },
+          "annotated_counterexample": {
+            "coefficient_monoid": "{0} union {integers >= 2}",
+            "left_masses": [
+              2,
+              2,
+              2
+            ],
+            "right_masses": [
+              3,
+              3
+            ],
+            "both_total": 6,
+            "row_valid_matrices_checked": 8,
+            "joint_matrices": 0,
+            "ordinary_nonnegative_integer_joint": [
+              [
+                1,
+                1
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                1,
+                1
+              ]
+            ]
+          },
+          "spatial_example": {
+            "path": {
+              "contributions": {
+                "A": "3",
+                "B": "3",
+                "C": "2",
+                "D": "0"
+              },
+              "active_sites": [
+                "A",
+                "B",
+                "C"
+              ],
+              "active_edges": [
+                [
+                  "A",
+                  "B"
+                ],
+                [
+                  "B",
+                  "C"
+                ]
+              ],
+              "components": 1,
+              "cycle_rank": 0,
+              "seed_to_seed_edges": [],
+              "threshold": "2"
+            },
+            "cycle": {
+              "contributions": {
+                "A": "2",
+                "B": "2",
+                "C": "2",
+                "D": "2"
+              },
+              "active_sites": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "active_edges": [
+                [
+                  "A",
+                  "B"
+                ],
+                [
+                  "B",
+                  "C"
+                ],
+                [
+                  "C",
+                  "D"
+                ],
+                [
+                  "D",
+                  "A"
+                ]
+              ],
+              "components": 1,
+              "cycle_rank": 1,
+              "seed_to_seed_edges": [],
+              "threshold": "2"
+            }
+          },
+          "coarse_memory_witness": {
+            "current_values": [
+              "3/5",
+              "9/10"
+            ],
+            "current_outputs": [
+              0,
+              0
+            ],
+            "next_values": [
+              "9/10",
+              "21/20"
+            ],
+            "next_outputs": [
+              0,
+              1
+            ]
+          },
+          "malformed_inputs_rejected": 4
+        }
+      }
+    },
+    {
+      "script": "BM_Proof_Examples_Verifier_2026-10-29.py",
+      "exit_code": 0,
+      "seconds": 0.044,
+      "result": {
+        "status": "passed",
+        "oracle_adversary_witnesses": 274,
+        "partition_examples": 2,
+        "integer_capacity_exhaustive_cases": 90,
+        "field_recovery_subsets": 14,
+        "insufficient_field_subsets": 11,
+        "repair_cost_cases": 5,
+        "quantizer_sizes": 12,
+        "capped_set_metric_triangles": 512,
+        "scope": "Finite checks of examples; written proofs establish general claims under their hypotheses."
+      }
+    },
+    {
+      "script": "BM_Comparison_Replay_2026-10-29.py",
+      "exit_code": 0,
+      "seconds": 0.047,
+      "result": {
+        "status": "passed",
+        "finite_distinguishing_words": 3569,
+        "interface_families": 36,
+        "linear_bases": 30,
+        "scalar_primal_dual_certificates": 40,
+        "maximum_float_gap": 1.1102230246251565e-16,
+        "scope": "Independent replay of outputs; does not rerun CLUE or prove general optimality."
+      }
+    },
+    {
+      "script": "BM_Build_Readiness_2026-10-29.py",
+      "exit_code": 0,
+      "seconds": 0.052,
+      "result": {
+        "BM_records": 336,
+        "reviewed": 128,
+        "remaining_in_review_set": 0,
+        "listed_links": 176,
+        "comparison_cases": 162
+      }
+    },
+    {
+      "script": "BM_Application_Demonstrations_2026-10-29.py",
+      "exit_code": 0,
+      "seconds": 0.035,
+      "result": {
+        "status": "passed",
+        "analyzer_contracts_verified": 9,
+        "summary": {
+          "migration_current_code_states": 2,
+          "migration_future_code_states": 3,
+          "additional_benchmark_probes": 1,
+          "diagnostic_feature_cost": "2",
+          "cache_old_code_states": 2,
+          "cache_new_code_states": 4,
+          "undo_code_states": 4,
+          "additional_curriculum_item_cost": "1",
+          "matching_low_order_marginals": 6
+        }
+      }
+    }
+  ]
+}

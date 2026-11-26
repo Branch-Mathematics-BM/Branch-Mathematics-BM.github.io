@@ -1,0 +1,144 @@
+{
+  "status": "passed",
+  "date": "2026-10-24",
+  "validation": "internal; not peer review or formal-kernel verification",
+  "versions": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "matplotlib": "3.10.8"
+  },
+  "finite_noisy_initialization": {
+    "instances": 524,
+    "exhaustive_two_state": 324,
+    "seeded": 200,
+    "feasible": 214,
+    "infeasible": 310,
+    "replayed_witnesses": 310,
+    "oracle": "enumeration of native congruence partitions, without refinement"
+  },
+  "linear_augmentation": {
+    "random_rational_systems": 60,
+    "exact_oscillator": 1,
+    "additional_channels_histogram": {
+      "0": 24,
+      "1": 17,
+      "2": 9,
+      "3": 7,
+      "4": 3
+    }
+  },
+  "oscillator": {
+    "scalar_optimization_comparisons": 160,
+    "scalar_max_gap": 2.220446049250313e-16,
+    "rank_and_small_phase_edge_checks": 4,
+    "history_svd_witnesses": 160,
+    "history_max_gap": 4.440892098500626e-16,
+    "exact_certificates": {
+      "scalar_value": "24/25",
+      "scalar_primal": "24/25",
+      "scalar_dual": "24/25",
+      "history_error_squared": "1/40"
+    },
+    "sampling_rows": [
+      {
+        "phase_fraction_of_period": 0,
+        "eta": 0.1,
+        "worst_case_state_error": 1.0
+      },
+      {
+        "phase_fraction_of_period": 0.01,
+        "eta": 0.1,
+        "worst_case_state_error": 1
+      },
+      {
+        "phase_fraction_of_period": 0.05,
+        "eta": 0.1,
+        "worst_case_state_error": 0.4520147021340202
+      },
+      {
+        "phase_fraction_of_period": 0.1,
+        "eta": 0.1,
+        "worst_case_state_error": 0.22882456112707375
+      },
+      {
+        "phase_fraction_of_period": 0.25,
+        "eta": 0.1,
+        "worst_case_state_error": 0.1
+      },
+      {
+        "phase_fraction_of_period": 0.4,
+        "eta": 0.1,
+        "worst_case_state_error": 0.22882456112707375
+      },
+      {
+        "phase_fraction_of_period": 0.49,
+        "eta": 0.1,
+        "worst_case_state_error": 1
+      },
+      {
+        "phase_fraction_of_period": 0.5,
+        "eta": 0.1,
+        "worst_case_state_error": 1.0
+      }
+    ]
+  },
+  "orbital": {
+    "exact_initial_specific_energy": "-3/8",
+    "exact_initial_specific_angular_momentum": "1",
+    "radial_velocities": [
+      "-1/2",
+      "1/2"
+    ],
+    "radius_separation_at_t_point1": 0.09983266728766005,
+    "any_shared_predictor_error_lower_bound_at_t_point1": 0.049916333643830024,
+    "numeric_max_energy_drift": 2.304378909911975e-12,
+    "numeric_max_angular_momentum_drift": 2.9036772986046344e-12,
+    "ellipse": {
+      "apoapsis": "8/5",
+      "periapsis": "2/5",
+      "apo_speed": "1/2",
+      "peri_speed": "2",
+      "specific_energy": "-1/2",
+      "specific_kinetic_gain": "15/8",
+      "specific_potential_change": "-15/8"
+    }
+  },
+  "other_witnesses": {
+    "global_compatibility_assignment_counts": {
+      "()": 8,
+      "(0,)": 4,
+      "(1,)": 4,
+      "(2,)": 4,
+      "(0, 1)": 2,
+      "(0, 2)": 2,
+      "(1, 2)": 2,
+      "(0, 1, 2)": 0
+    },
+    "causal_models": {
+      "same_observations": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "intervention_results": [
+        {
+          "u": 0,
+          "M1_Y_after_do_X_0": 0,
+          "M2_Y_after_do_X_0": 0
+        },
+        {
+          "u": 1,
+          "M1_Y_after_do_X_0": 0,
+          "M2_Y_after_do_X_0": 1
+        }
+      ]
+    },
+    "note": "Exact classical examples, not a Bell experiment or a new causal law."
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "date": "2026-10-29",
+  "status": "passed",
+  "scope": "finite declared mathematical models; internal checks only",
+  "tests": {
+    "join_tree": {
+      "random_models": 250,
+      "local_tuples_with_global_extensions": 3009
+    },
+    "cycle_parity": {
+      "satisfiable": 4,
+      "unsatisfiable": 4,
+      "edge_deletion_checks": 12
+    },
+    "recurrence": {
+      "exact_equalities": 780,
+      "finite_crossing_checks": 20
+    },
+    "annotated_counterexample": {
+      "coefficient_monoid": "{0} union {integers >= 2}",
+      "left_masses": [
+        2,
+        2,
+        2
+      ],
+      "right_masses": [
+        3,
+        3
+      ],
+      "both_total": 6,
+      "row_valid_matrices_checked": 8,
+      "joint_matrices": 0,
+      "ordinary_nonnegative_integer_joint": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    "spatial_example": {
+      "path": {
+        "contributions": {
+          "A": "3",
+          "B": "3",
+          "C": "2",
+          "D": "0"
+        },
+        "active_sites": [
+          "A",
+          "B",
+          "C"
+        ],
+        "active_edges": [
+          [
+            "A",
+            "B"
+          ],
+          [
+            "B",
+            "C"
+          ]
+        ],
+        "components": 1,
+        "cycle_rank": 0,
+        "seed_to_seed_edges": [],
+        "threshold": "2"
+      },
+      "cycle": {
+        "contributions": {
+          "A": "2",
+          "B": "2",
+          "C": "2",
+          "D": "2"
+        },
+        "active_sites": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "active_edges": [
+          [
+            "A",
+            "B"
+          ],
+          [
+            "B",
+            "C"
+          ],
+          [
+            "C",
+            "D"
+          ],
+          [
+            "D",
+            "A"
+          ]
+        ],
+        "components": 1,
+        "cycle_rank": 1,
+        "seed_to_seed_edges": [],
+        "threshold": "2"
+      }
+    },
+    "coarse_memory_witness": {
+      "current_values": [
+        "3/5",
+        "9/10"
+      ],
+      "current_outputs": [
+        0,
+        0
+      ],
+      "next_values": [
+        "9/10",
+        "21/20"
+      ],
+      "next_outputs": [
+        0,
+        1
+      ]
+    },
+    "malformed_inputs_rejected": 4
+  }
+}

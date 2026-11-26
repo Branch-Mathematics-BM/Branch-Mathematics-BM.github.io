@@ -1,0 +1,285 @@
+{
+  "delayed_velocity": {
+    "states": [
+      "(0, 0)",
+      "(0, 1)",
+      "(1, 0)",
+      "(1, 1)"
+    ],
+    "actions": {
+      "step": [
+        0,
+        3,
+        0,
+        3
+      ]
+    },
+    "tasks": {
+      "position": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    "observations": {
+      "position": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "velocity": [
+        0,
+        1,
+        0,
+        1
+      ]
+    }
+  },
+  "discard_nonpredictive_observation": {
+    "states": [
+      "(0, 0, 0)",
+      "(0, 0, 1)",
+      "(0, 1, 0)",
+      "(0, 1, 1)",
+      "(1, 0, 0)",
+      "(1, 0, 1)",
+      "(1, 1, 0)",
+      "(1, 1, 1)"
+    ],
+    "actions": {
+      "step": [
+        0,
+        3,
+        0,
+        3,
+        4,
+        7,
+        4,
+        7
+      ]
+    },
+    "tasks": {
+      "a": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "observations": {
+      "a": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "b": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1
+      ]
+    }
+  },
+  "duplicate_observations": {
+    "states": [
+      "0",
+      "1"
+    ],
+    "actions": {},
+    "tasks": {
+      "answer": [
+        0,
+        1
+      ]
+    },
+    "observations": {
+      "primary": [
+        0,
+        1
+      ],
+      "backup": [
+        0,
+        1
+      ]
+    },
+    "feature_costs": {
+      "primary": "2",
+      "backup": "1/2"
+    }
+  },
+  "availability_obstruction": {
+    "states": [
+      "enabled",
+      "disabled"
+    ],
+    "actions": {
+      "run": [
+        0,
+        null
+      ]
+    },
+    "tasks": {
+      "answer": [
+        0,
+        0
+      ]
+    },
+    "observations": {
+      "reading": [
+        0,
+        0
+      ]
+    }
+  },
+  "joint_xor": {
+    "states": [
+      "(0, 0)",
+      "(0, 1)",
+      "(1, 0)",
+      "(1, 1)"
+    ],
+    "actions": {},
+    "tasks": {
+      "xor": [
+        0,
+        1,
+        1,
+        0
+      ]
+    },
+    "observations": {
+      "a": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "b": [
+        0,
+        1,
+        0,
+        1
+      ]
+    }
+  },
+  "empty_observation_success": {
+    "states": [
+      "s"
+    ],
+    "actions": {},
+    "tasks": {},
+    "observations": {}
+  },
+  "empty_candidate_catalogue": {
+    "states": [
+      "0",
+      "1"
+    ],
+    "actions": {},
+    "tasks": {
+      "answer": [
+        0,
+        1
+      ]
+    },
+    "observations": {
+      "primary": [
+        0,
+        1
+      ],
+      "backup": [
+        0,
+        1
+      ]
+    },
+    "feature_costs": {
+      "primary": "2",
+      "backup": "1/2"
+    },
+    "candidates": [],
+    "comparison_scope": "empty supplied class; no infeasibility conclusion beyond that class"
+  },
+  "legacy_retention_changes_contract": {
+    "states": [
+      "(0, 0, 0)",
+      "(0, 0, 1)",
+      "(0, 1, 0)",
+      "(0, 1, 1)",
+      "(1, 0, 0)",
+      "(1, 0, 1)",
+      "(1, 1, 0)",
+      "(1, 1, 1)"
+    ],
+    "actions": {
+      "step": [
+        0,
+        3,
+        0,
+        3,
+        4,
+        7,
+        4,
+        7
+      ]
+    },
+    "tasks": {
+      "a": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "retained_b": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    "observations": {
+      "a": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "b": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1
+      ]
+    }
+  }
+}

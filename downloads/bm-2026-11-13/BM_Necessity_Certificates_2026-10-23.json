@@ -1,0 +1,1867 @@
+{
+  "delayed_velocity": {
+    "schema": "BM finite necessity certificate 1",
+    "input_sha256": "7e394ed944ca37d51220442f89e4ce4fb323ce66cfe223968c69bedc1b516d14",
+    "scope": "finite partial deterministic; all states initially possible; arbitrary deterministic postprocessing; exact tasks and availability for all finite words",
+    "quotient": {
+      "code_of_state": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "representatives": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "tasks": {
+        "position": [
+          0,
+          0,
+          1,
+          1
+        ]
+      },
+      "actions": {
+        "step": [
+          0,
+          3,
+          0,
+          3
+        ]
+      },
+      "separation_witnesses": [
+        {
+          "states": [
+            0,
+            1
+          ],
+          "word": [
+            "step"
+          ],
+          "reason": "task",
+          "terminal_states": [
+            0,
+            3
+          ]
+        },
+        {
+          "states": [
+            0,
+            2
+          ],
+          "word": [],
+          "reason": "task",
+          "terminal_states": [
+            0,
+            2
+          ]
+        },
+        {
+          "states": [
+            0,
+            3
+          ],
+          "word": [],
+          "reason": "task",
+          "terminal_states": [
+            0,
+            3
+          ]
+        },
+        {
+          "states": [
+            1,
+            2
+          ],
+          "word": [],
+          "reason": "task",
+          "terminal_states": [
+            1,
+            2
+          ]
+        },
+        {
+          "states": [
+            1,
+            3
+          ],
+          "word": [],
+          "reason": "task",
+          "terminal_states": [
+            1,
+            3
+          ]
+        },
+        {
+          "states": [
+            2,
+            3
+          ],
+          "word": [
+            "step"
+          ],
+          "reason": "task",
+          "terminal_states": [
+            0,
+            3
+          ]
+        }
+      ]
+    },
+    "minimum_code_states_if_feasible": 4,
+    "strict_refinement_rounds": 1,
+    "initial_task_blocks": 2,
+    "strict_round_bound": 2,
+    "catalogue_kind": "all observation subsets",
+    "candidates": [
+      {
+        "features": [],
+        "feasible": false,
+        "failure": {
+          "states": [
+            0,
+            1
+          ],
+          "word": [
+            "step"
+          ],
+          "reason": "task",
+          "terminal_states": [
+            0,
+            3
+          ]
+        },
+        "cost": "0"
+      },
+      {
+        "features": [
+          "position"
+        ],
+        "feasible": false,
+        "failure": {
+          "states": [
+            0,
+            1
+          ],
+          "word": [
+            "step"
+          ],
+          "reason": "task",
+          "terminal_states": [
+            0,
+            3
+          ]
+        },
+        "cost": "1"
+      },
+      {
+        "features": [
+          "velocity"
+        ],
+        "feasible": false,
+        "failure": {
+          "states": [
+            0,
+            2
+          ],
+          "word": [],
+          "reason": "task",
+          "terminal_states": [
+            0,
+            2
+          ]
+        },
+        "cost": "1"
+      },
+      {
+        "features": [
+          "position",
+          "velocity"
+        ],
+        "feasible": true,
+        "encoder": [
+          {
+            "observation": [
+              0,
+              0
+            ],
+            "code": 0
+          },
+          {
+            "observation": [
+              0,
+              1
+            ],
+            "code": 1
+          },
+          {
+            "observation": [
+              1,
+              0
+            ],
+            "code": 2
+          },
+          {
+            "observation": [
+              1,
+              1
+            ],
+            "code": 3
+          }
+        ],
+        "cost": "2"
+      }
+    ],
+    "full_observation": {
+      "features": [
+        "position",
+        "velocity"
+      ],
+      "feasible": true,
+      "encoder": [
+        {
+          "observation": [
+            0,
+            0
+          ],
+          "code": 0
+        },
+        {
+          "observation": [
+            0,
+            1
+          ],
+          "code": 1
+        },
+        {
+          "observation": [
+            1,
+            0
+          ],
+          "code": 2
+        },
+        {
+          "observation": [
+            1,
+            1
+          ],
+          "code": 3
+        }
+      ]
+    },
+    "leave_one_out": {
+      "position": {
+        "features": [
+          "velocity"
+        ],
+        "feasible": false,
+        "failure": {
+          "states": [
+            0,
+            2
+          ],
+          "word": [],
+          "reason": "task",
+          "terminal_states": [
+            0,
+            2
+          ]
+        }
+      },
+      "velocity": {
+        "features": [
+          "position"
+        ],
+        "feasible": false,
+        "failure": {
+          "states": [
+            0,
+            1
+          ],
+          "word": [
+            "step"
+          ],
+          "reason": "task",
+          "terminal_states": [
+            0,
+            3
+          ]
+        }
+      }
+    },
+    "essential_features": [
+      "position",
+      "velocity"
+    ],
+    "essentiality_status": "nonvacuous relative to observation removal",
+    "catalogue_has_feasible_candidate": true,
+    "inclusion_minimal_in_catalogue": [
+      [
+        "position",
+        "velocity"
+      ]
+    ],
+    "minimum_feature_cost": "2",
+    "minimum_cost_candidates": [
+      [
+        "position",
+        "velocity"
+      ]
+    ]
+  },
+  "discard_nonpredictive_observation": {
+    "schema": "BM finite necessity certificate 1",
+    "input_sha256": "334bef08be6e78dbe090f28b440edb1b47f19c0273ee9196ab24662f29acce4c",
+    "scope": "finite partial deterministic; all states initially possible; arbitrary deterministic postprocessing; exact tasks and availability for all finite words",
+    "quotient": {
+      "code_of_state": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "representatives": [
+        0,
+        4
+      ],
+      "tasks": {
+        "a": [
+          0,
+          1
+        ]
+      },
+      "actions": {
+        "step": [
+          0,
+          1
+        ]
+      },
+      "separation_witnesses": [
+        {
+          "states": [
+            0,
+            4
+          ],
+          "word": [],
+          "reason": "task",
+          "terminal_states": [
+            0,
+            4
+          ]
+        }
+      ]
+    },
+    "minimum_code_states_if_feasible": 2,
+    "strict_refinement_rounds": 0,
+    "initial_task_blocks": 2,
+    "strict_round_bound": 6,
+    "catalogue_kind": "all observation subsets",
+    "candidates": [
+      {
+        "features": [],
+        "feasible": false,
+        "failure": {
+          "states": [
+            0,
+            4
+          ],
+          "word": [],
+          "reason": "task",
+          "terminal_states": [
+            0,
+            4
+          ]
+        },
+        "cost": "0"
+      },
+      {
+        "features": [
+          "a"
+        ],
+        "feasible": true,
+        "encoder": [
+          {
+            "observation": [
+              0
+            ],
+            "code": 0
+          },
+          {
+            "observation": [
+              1
+            ],
+            "code": 1
+          }
+        ],
+        "cost": "1"
+      },
+      {
+        "features": [
+          "b"
+        ],
+        "feasible": false,
+        "failure": {
+          "states": [
+            0,
+            4
+          ],
+          "word": [],
+          "reason": "task",
+          "terminal_states": [
+            0,
+            4
+          ]
+        },
+        "cost": "1"
+      },
+      {
+        "features": [
+          "a",
+          "b"
+        ],
+        "feasible": true,
+        "encoder": [
+          {
+            "observation": [
+              0,
+              0
+            ],
+            "code": 0
+          },
+          {
+            "observation": [
+              0,
+              1
+            ],
+            "code": 0
+          },
+          {
+            "observation": [
+              1,
+              0
+            ],
+            "code": 1
+          },
+          {
+            "observation": [
+              1,
+              1
+            ],
+            "code": 1
+          }
+        ],
+        "cost": "2"
+      }
+    ],
+    "full_observation": {
+      "features": [
+        "a",
+        "b"
+      ],
+      "feasible": true,
+      "encoder": [
+        {
+          "observation": [
+            0,
+            0
+          ],
+          "code": 0
+        },
+        {
+          "observation": [
+            0,
+            1
+          ],
+          "code": 0
+        },
+        {
+          "observation": [
+            1,
+            0
+          ],
+          "code": 1
+        },
+        {
+          "observation": [
+            1,
+            1
+          ],
+          "code": 1
+        }
+      ]
+    },
+    "leave_one_out": {
+      "a": {
+        "features": [
+          "b"
+        ],
+        "feasible": false,
+        "failure": {
+          "states": [
+            0,
+            4
+          ],
+          "word": [],
+          "reason": "task",
+          "terminal_states": [
+            0,
+            4
+          ]
+        }
+      },
+      "b": {
+        "features": [
+          "a"
+        ],
+        "feasible": true,
+        "encoder": [
+          {
+            "observation": [
+              0
+            ],
+            "code": 0
+          },
+          {
+            "observation": [
+              1
+            ],
+            "code": 1
+          }
+        ]
+      }
+    },
+    "essential_features": [
+      "a"
+    ],
+    "essentiality_status": "nonvacuous relative to observation removal",
+    "catalogue_has_feasible_candidate": true,
+    "inclusion_minimal_in_catalogue": [
+      [
+        "a"
+      ]
+    ],
+    "minimum_feature_cost": "1",
+    "minimum_cost_candidates": [
+      [
+        "a"
+      ]
+    ]
+  },
+  "duplicate_observations": {
+    "schema": "BM finite necessity certificate 1",
+    "input_sha256": "57ae04cd945f19b6290b77c2261739cef7b56b60de084f800e305b11f32cf0ec",
+    "scope": "finite partial deterministic; all states initially possible; arbitrary deterministic postprocessing; exact tasks and availability for all finite words",
+    "quotient": {
+      "code_of_state": [
+        0,
+        1
+      ],
+      "representatives": [
+        0,
+        1
+      ],
+      "tasks": {
+        "answer": [
+          0,
+          1
+        ]
+      },
+      "actions": {},
+      "separation_witnesses": [
+        {
+          "states": [
+            0,
+            1
+          ],
+          "word": [],
+          "reason": "task",
+          "terminal_states": [
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "minimum_code_states_if_feasible": 2,
+    "strict_refinement_rounds": 0,
+    "initial_task_blocks": 2,
+    "strict_round_bound": 0,
+    "catalogue_kind": "all observation subsets",
+    "candidates": [
+      {
+        "features": [],
+        "feasible": false,
+        "failure": {
+          "states": [
+            0,
+            1
+          ],
+          "word": [],
+          "reason": "task",
+          "terminal_states": [
+            0,
+            1
+          ]
+        },
+        "cost": "0"
+      },
+      {
+        "features": [
+          "backup"
+        ],
+        "feasible": true,
+        "encoder": [
+          {
+            "observation": [
+              0
+            ],
+            "code": 0
+          },
+          {
+            "observation": [
+              1
+            ],
+            "code": 1
+          }
+        ],
+        "cost": "1/2"
+      },
+      {
+        "features": [
+          "primary"
+        ],
+        "feasible": true,
+        "encoder": [
+          {
+            "observation": [
+              0
+            ],
+            "code": 0
+          },
+          {
+            "observation": [
+              1
+            ],
+            "code": 1
+          }
+        ],
+        "cost": "2"
+      },
+      {
+        "features": [
+          "backup",
+          "primary"
+        ],
+        "feasible": true,
+        "encoder": [
+          {
+            "observation": [
+              0,
+              0
+            ],
+            "code": 0
+          },
+          {
+            "observation": [
+              1,
+              1
+            ],
+            "code": 1
+          }
+        ],
+        "cost": "5/2"
+      }
+    ],
+    "full_observation": {
+      "features": [
+        "backup",
+        "primary"
+      ],
+      "feasible": true,
+      "encoder": [
+        {
+          "observation": [
+            0,
+            0
+          ],
+          "code": 0
+        },
+        {
+          "observation": [
+            1,
+            1
+          ],
+          "code": 1
+        }
+      ]
+    },
+    "leave_one_out": {
+      "backup": {
+        "features": [
+          "primary"
+        ],
+        "feasible": true,
+        "encoder": [
+          {
+            "observation": [
+              0
+            ],
+            "code": 0
+          },
+          {
+            "observation": [
+              1
+            ],
+            "code": 1
+          }
+        ]
+      },
+      "primary": {
+        "features": [
+          "backup"
+        ],
+        "feasible": true,
+        "encoder": [
+          {
+            "observation": [
+              0
+            ],
+            "code": 0
+          },
+          {
+            "observation": [
+              1
+            ],
+            "code": 1
+          }
+        ]
+      }
+    },
+    "essential_features": [],
+    "essentiality_status": "nonvacuous relative to observation removal",
+    "catalogue_has_feasible_candidate": true,
+    "inclusion_minimal_in_catalogue": [
+      [
+        "backup"
+      ],
+      [
+        "primary"
+      ]
+    ],
+    "minimum_feature_cost": "1/2",
+    "minimum_cost_candidates": [
+      [
+        "backup"
+      ]
+    ]
+  },
+  "availability_obstruction": {
+    "schema": "BM finite necessity certificate 1",
+    "input_sha256": "a28040a6e56360285f0cf2aaf39dda27f8e958c5dcd29ca872a453b2d6e511ee",
+    "scope": "finite partial deterministic; all states initially possible; arbitrary deterministic postprocessing; exact tasks and availability for all finite words",
+    "quotient": {
+      "code_of_state": [
+        0,
+        1
+      ],
+      "representatives": [
+        0,
+        1
+      ],
+      "tasks": {
+        "answer": [
+          0,
+          0
+        ]
+      },
+      "actions": {
+        "run": [
+          0,
+          null
+        ]
+      },
+      "separation_witnesses": [
+        {
+          "states": [
+            0,
+            1
+          ],
+          "word": [
+            "run"
+          ],
+          "reason": "availability",
+          "terminal_states": [
+            0,
+            null
+          ]
+        }
+      ]
+    },
+    "minimum_code_states_if_feasible": 2,
+    "strict_refinement_rounds": 1,
+    "initial_task_blocks": 1,
+    "strict_round_bound": 1,
+    "catalogue_kind": "all observation subsets",
+    "candidates": [
+      {
+        "features": [],
+        "feasible": false,
+        "failure": {
+          "states": [
+            0,
+            1
+          ],
+          "word": [
+            "run"
+          ],
+          "reason": "availability",
+          "terminal_states": [
+            0,
+            null
+          ]
+        },
+        "cost": "0"
+      },
+      {
+        "features": [
+          "reading"
+        ],
+        "feasible": false,
+        "failure": {
+          "states": [
+            0,
+            1
+          ],
+          "word": [
+            "run"
+          ],
+          "reason": "availability",
+          "terminal_states": [
+            0,
+            null
+          ]
+        },
+        "cost": "1"
+      }
+    ],
+    "full_observation": {
+      "features": [
+        "reading"
+      ],
+      "feasible": false,
+      "failure": {
+        "states": [
+          0,
+          1
+        ],
+        "word": [
+          "run"
+        ],
+        "reason": "availability",
+        "terminal_states": [
+          0,
+          null
+        ]
+      }
+    },
+    "leave_one_out": {
+      "reading": {
+        "features": [],
+        "feasible": false,
+        "failure": {
+          "states": [
+            0,
+            1
+          ],
+          "word": [
+            "run"
+          ],
+          "reason": "availability",
+          "terminal_states": [
+            0,
+            null
+          ]
+        }
+      }
+    },
+    "essential_features": [],
+    "essentiality_status": "full observation insufficient; no essentiality claim",
+    "catalogue_has_feasible_candidate": false,
+    "inclusion_minimal_in_catalogue": [],
+    "minimum_feature_cost": null,
+    "minimum_cost_candidates": []
+  },
+  "joint_xor": {
+    "schema": "BM finite necessity certificate 1",
+    "input_sha256": "9fc43e9af0e3e778dcb187f33aafd399f247f034e9ce1c345f2d82bbf9af5992",
+    "scope": "finite partial deterministic; all states initially possible; arbitrary deterministic postprocessing; exact tasks and availability for all finite words",
+    "quotient": {
+      "code_of_state": [
+        0,
+        1,
+        1,
+        0
+      ],
+      "representatives": [
+        0,
+        1
+      ],
+      "tasks": {
+        "xor": [
+          0,
+          1
+        ]
+      },
+      "actions": {},
+      "separation_witnesses": [
+        {
+          "states": [
+            0,
+            1
+          ],
+          "word": [],
+          "reason": "task",
+          "terminal_states": [
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "minimum_code_states_if_feasible": 2,
+    "strict_refinement_rounds": 0,
+    "initial_task_blocks": 2,
+    "strict_round_bound": 2,
+    "catalogue_kind": "all observation subsets",
+    "candidates": [
+      {
+        "features": [],
+        "feasible": false,
+        "failure": {
+          "states": [
+            0,
+            1
+          ],
+          "word": [],
+          "reason": "task",
+          "terminal_states": [
+            0,
+            1
+          ]
+        },
+        "cost": "0"
+      },
+      {
+        "features": [
+          "a"
+        ],
+        "feasible": false,
+        "failure": {
+          "states": [
+            0,
+            1
+          ],
+          "word": [],
+          "reason": "task",
+          "terminal_states": [
+            0,
+            1
+          ]
+        },
+        "cost": "1"
+      },
+      {
+        "features": [
+          "b"
+        ],
+        "feasible": false,
+        "failure": {
+          "states": [
+            0,
+            2
+          ],
+          "word": [],
+          "reason": "task",
+          "terminal_states": [
+            0,
+            2
+          ]
+        },
+        "cost": "1"
+      },
+      {
+        "features": [
+          "a",
+          "b"
+        ],
+        "feasible": true,
+        "encoder": [
+          {
+            "observation": [
+              0,
+              0
+            ],
+            "code": 0
+          },
+          {
+            "observation": [
+              0,
+              1
+            ],
+            "code": 1
+          },
+          {
+            "observation": [
+              1,
+              0
+            ],
+            "code": 1
+          },
+          {
+            "observation": [
+              1,
+              1
+            ],
+            "code": 0
+          }
+        ],
+        "cost": "2"
+      }
+    ],
+    "full_observation": {
+      "features": [
+        "a",
+        "b"
+      ],
+      "feasible": true,
+      "encoder": [
+        {
+          "observation": [
+            0,
+            0
+          ],
+          "code": 0
+        },
+        {
+          "observation": [
+            0,
+            1
+          ],
+          "code": 1
+        },
+        {
+          "observation": [
+            1,
+            0
+          ],
+          "code": 1
+        },
+        {
+          "observation": [
+            1,
+            1
+          ],
+          "code": 0
+        }
+      ]
+    },
+    "leave_one_out": {
+      "a": {
+        "features": [
+          "b"
+        ],
+        "feasible": false,
+        "failure": {
+          "states": [
+            0,
+            2
+          ],
+          "word": [],
+          "reason": "task",
+          "terminal_states": [
+            0,
+            2
+          ]
+        }
+      },
+      "b": {
+        "features": [
+          "a"
+        ],
+        "feasible": false,
+        "failure": {
+          "states": [
+            0,
+            1
+          ],
+          "word": [],
+          "reason": "task",
+          "terminal_states": [
+            0,
+            1
+          ]
+        }
+      }
+    },
+    "essential_features": [
+      "a",
+      "b"
+    ],
+    "essentiality_status": "nonvacuous relative to observation removal",
+    "catalogue_has_feasible_candidate": true,
+    "inclusion_minimal_in_catalogue": [
+      [
+        "a",
+        "b"
+      ]
+    ],
+    "minimum_feature_cost": "2",
+    "minimum_cost_candidates": [
+      [
+        "a",
+        "b"
+      ]
+    ]
+  },
+  "empty_observation_success": {
+    "schema": "BM finite necessity certificate 1",
+    "input_sha256": "ff49ed1337801cefda6cd20e37c31af0e37bfe583271ad0c1fcc01496d574bf7",
+    "scope": "finite partial deterministic; all states initially possible; arbitrary deterministic postprocessing; exact tasks and availability for all finite words",
+    "quotient": {
+      "code_of_state": [
+        0
+      ],
+      "representatives": [
+        0
+      ],
+      "tasks": {},
+      "actions": {},
+      "separation_witnesses": []
+    },
+    "minimum_code_states_if_feasible": 1,
+    "strict_refinement_rounds": 0,
+    "initial_task_blocks": 1,
+    "strict_round_bound": 0,
+    "catalogue_kind": "all observation subsets",
+    "candidates": [
+      {
+        "features": [],
+        "feasible": true,
+        "encoder": [
+          {
+            "observation": [],
+            "code": 0
+          }
+        ],
+        "cost": "0"
+      }
+    ],
+    "full_observation": {
+      "features": [],
+      "feasible": true,
+      "encoder": [
+        {
+          "observation": [],
+          "code": 0
+        }
+      ]
+    },
+    "leave_one_out": {},
+    "essential_features": [],
+    "essentiality_status": "nonvacuous relative to observation removal",
+    "catalogue_has_feasible_candidate": true,
+    "inclusion_minimal_in_catalogue": [
+      []
+    ],
+    "minimum_feature_cost": "0",
+    "minimum_cost_candidates": [
+      []
+    ]
+  },
+  "empty_candidate_catalogue": {
+    "schema": "BM finite necessity certificate 1",
+    "input_sha256": "4d818339e6a2a41712f84ad2ed3ac5953643a91ba82a172ed6cadacd5cb505e2",
+    "scope": "finite partial deterministic; all states initially possible; arbitrary deterministic postprocessing; exact tasks and availability for all finite words",
+    "quotient": {
+      "code_of_state": [
+        0,
+        1
+      ],
+      "representatives": [
+        0,
+        1
+      ],
+      "tasks": {
+        "answer": [
+          0,
+          1
+        ]
+      },
+      "actions": {},
+      "separation_witnesses": [
+        {
+          "states": [
+            0,
+            1
+          ],
+          "word": [],
+          "reason": "task",
+          "terminal_states": [
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "minimum_code_states_if_feasible": 2,
+    "strict_refinement_rounds": 0,
+    "initial_task_blocks": 2,
+    "strict_round_bound": 0,
+    "catalogue_kind": "supplied observation subsets",
+    "candidates": [],
+    "full_observation": {
+      "features": [
+        "backup",
+        "primary"
+      ],
+      "feasible": true,
+      "encoder": [
+        {
+          "observation": [
+            0,
+            0
+          ],
+          "code": 0
+        },
+        {
+          "observation": [
+            1,
+            1
+          ],
+          "code": 1
+        }
+      ]
+    },
+    "leave_one_out": {
+      "backup": {
+        "features": [
+          "primary"
+        ],
+        "feasible": true,
+        "encoder": [
+          {
+            "observation": [
+              0
+            ],
+            "code": 0
+          },
+          {
+            "observation": [
+              1
+            ],
+            "code": 1
+          }
+        ]
+      },
+      "primary": {
+        "features": [
+          "backup"
+        ],
+        "feasible": true,
+        "encoder": [
+          {
+            "observation": [
+              0
+            ],
+            "code": 0
+          },
+          {
+            "observation": [
+              1
+            ],
+            "code": 1
+          }
+        ]
+      }
+    },
+    "essential_features": [],
+    "essentiality_status": "nonvacuous relative to observation removal",
+    "catalogue_has_feasible_candidate": false,
+    "inclusion_minimal_in_catalogue": [],
+    "minimum_feature_cost": null,
+    "minimum_cost_candidates": []
+  },
+  "legacy_retention_changes_contract": {
+    "schema": "BM finite necessity certificate 1",
+    "input_sha256": "60593f91e50481db78e31301b9d15410e70fadaf0a56248896fd255e38f12cd5",
+    "scope": "finite partial deterministic; all states initially possible; arbitrary deterministic postprocessing; exact tasks and availability for all finite words",
+    "quotient": {
+      "code_of_state": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "representatives": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "tasks": {
+        "a": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "retained_b": [
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1
+        ]
+      },
+      "actions": {
+        "step": [
+          0,
+          3,
+          0,
+          3,
+          4,
+          7,
+          4,
+          7
+        ]
+      },
+      "separation_witnesses": [
+        {
+          "states": [
+            0,
+            1
+          ],
+          "word": [
+            "step"
+          ],
+          "reason": "task",
+          "terminal_states": [
+            0,
+            3
+          ]
+        },
+        {
+          "states": [
+            0,
+            2
+          ],
+          "word": [],
+          "reason": "task",
+          "terminal_states": [
+            0,
+            2
+          ]
+        },
+        {
+          "states": [
+            0,
+            3
+          ],
+          "word": [],
+          "reason": "task",
+          "terminal_states": [
+            0,
+            3
+          ]
+        },
+        {
+          "states": [
+            0,
+            4
+          ],
+          "word": [],
+          "reason": "task",
+          "terminal_states": [
+            0,
+            4
+          ]
+        },
+        {
+          "states": [
+            0,
+            5
+          ],
+          "word": [],
+          "reason": "task",
+          "terminal_states": [
+            0,
+            5
+          ]
+        },
+        {
+          "states": [
+            0,
+            6
+          ],
+          "word": [],
+          "reason": "task",
+          "terminal_states": [
+            0,
+            6
+          ]
+        },
+        {
+          "states": [
+            0,
+            7
+          ],
+          "word": [],
+          "reason": "task",
+          "terminal_states": [
+            0,
+            7
+          ]
+        },
+        {
+          "states": [
+            1,
+            2
+          ],
+          "word": [],
+          "reason": "task",
+          "terminal_states": [
+            1,
+            2
+          ]
+        },
+        {
+          "states": [
+            1,
+            3
+          ],
+          "word": [],
+          "reason": "task",
+          "terminal_states": [
+            1,
+            3
+          ]
+        },
+        {
+          "states": [
+            1,
+            4
+          ],
+          "word": [],
+          "reason": "task",
+          "terminal_states": [
+            1,
+            4
+          ]
+        },
+        {
+          "states": [
+            1,
+            5
+          ],
+          "word": [],
+          "reason": "task",
+          "terminal_states": [
+            1,
+            5
+          ]
+        },
+        {
+          "states": [
+            1,
+            6
+          ],
+          "word": [],
+          "reason": "task",
+          "terminal_states": [
+            1,
+            6
+          ]
+        },
+        {
+          "states": [
+            1,
+            7
+          ],
+          "word": [],
+          "reason": "task",
+          "terminal_states": [
+            1,
+            7
+          ]
+        },
+        {
+          "states": [
+            2,
+            3
+          ],
+          "word": [
+            "step"
+          ],
+          "reason": "task",
+          "terminal_states": [
+            0,
+            3
+          ]
+        },
+        {
+          "states": [
+            2,
+            4
+          ],
+          "word": [],
+          "reason": "task",
+          "terminal_states": [
+            2,
+            4
+          ]
+        },
+        {
+          "states": [
+            2,
+            5
+          ],
+          "word": [],
+          "reason": "task",
+          "terminal_states": [
+            2,
+            5
+          ]
+        },
+        {
+          "states": [
+            2,
+            6
+          ],
+          "word": [],
+          "reason": "task",
+          "terminal_states": [
+            2,
+            6
+          ]
+        },
+        {
+          "states": [
+            2,
+            7
+          ],
+          "word": [],
+          "reason": "task",
+          "terminal_states": [
+            2,
+            7
+          ]
+        },
+        {
+          "states": [
+            3,
+            4
+          ],
+          "word": [],
+          "reason": "task",
+          "terminal_states": [
+            3,
+            4
+          ]
+        },
+        {
+          "states": [
+            3,
+            5
+          ],
+          "word": [],
+          "reason": "task",
+          "terminal_states": [
+            3,
+            5
+          ]
+        },
+        {
+          "states": [
+            3,
+            6
+          ],
+          "word": [],
+          "reason": "task",
+          "terminal_states": [
+            3,
+            6
+          ]
+        },
+        {
+          "states": [
+            3,
+            7
+          ],
+          "word": [],
+          "reason": "task",
+          "terminal_states": [
+            3,
+            7
+          ]
+        },
+        {
+          "states": [
+            4,
+            5
+          ],
+          "word": [
+            "step"
+          ],
+          "reason": "task",
+          "terminal_states": [
+            4,
+            7
+          ]
+        },
+        {
+          "states": [
+            4,
+            6
+          ],
+          "word": [],
+          "reason": "task",
+          "terminal_states": [
+            4,
+            6
+          ]
+        },
+        {
+          "states": [
+            4,
+            7
+          ],
+          "word": [],
+          "reason": "task",
+          "terminal_states": [
+            4,
+            7
+          ]
+        },
+        {
+          "states": [
+            5,
+            6
+          ],
+          "word": [],
+          "reason": "task",
+          "terminal_states": [
+            5,
+            6
+          ]
+        },
+        {
+          "states": [
+            5,
+            7
+          ],
+          "word": [],
+          "reason": "task",
+          "terminal_states": [
+            5,
+            7
+          ]
+        },
+        {
+          "states": [
+            6,
+            7
+          ],
+          "word": [
+            "step"
+          ],
+          "reason": "task",
+          "terminal_states": [
+            4,
+            7
+          ]
+        }
+      ]
+    },
+    "minimum_code_states_if_feasible": 8,
+    "strict_refinement_rounds": 1,
+    "initial_task_blocks": 4,
+    "strict_round_bound": 4,
+    "catalogue_kind": "all observation subsets",
+    "candidates": [
+      {
+        "features": [],
+        "feasible": false,
+        "failure": {
+          "states": [
+            0,
+            1
+          ],
+          "word": [
+            "step"
+          ],
+          "reason": "task",
+          "terminal_states": [
+            0,
+            3
+          ]
+        },
+        "cost": "0"
+      },
+      {
+        "features": [
+          "a"
+        ],
+        "feasible": false,
+        "failure": {
+          "states": [
+            0,
+            1
+          ],
+          "word": [
+            "step"
+          ],
+          "reason": "task",
+          "terminal_states": [
+            0,
+            3
+          ]
+        },
+        "cost": "1"
+      },
+      {
+        "features": [
+          "b"
+        ],
+        "feasible": false,
+        "failure": {
+          "states": [
+            0,
+            1
+          ],
+          "word": [
+            "step"
+          ],
+          "reason": "task",
+          "terminal_states": [
+            0,
+            3
+          ]
+        },
+        "cost": "1"
+      },
+      {
+        "features": [
+          "a",
+          "b"
+        ],
+        "feasible": false,
+        "failure": {
+          "states": [
+            0,
+            1
+          ],
+          "word": [
+            "step"
+          ],
+          "reason": "task",
+          "terminal_states": [
+            0,
+            3
+          ]
+        },
+        "cost": "2"
+      }
+    ],
+    "full_observation": {
+      "features": [
+        "a",
+        "b"
+      ],
+      "feasible": false,
+      "failure": {
+        "states": [
+          0,
+          1
+        ],
+        "word": [
+          "step"
+        ],
+        "reason": "task",
+        "terminal_states": [
+          0,
+          3
+        ]
+      }
+    },
+    "leave_one_out": {
+      "a": {
+        "features": [
+          "b"
+        ],
+        "feasible": false,
+        "failure": {
+          "states": [
+            0,
+            1
+          ],
+          "word": [
+            "step"
+          ],
+          "reason": "task",
+          "terminal_states": [
+            0,
+            3
+          ]
+        }
+      },
+      "b": {
+        "features": [
+          "a"
+        ],
+        "feasible": false,
+        "failure": {
+          "states": [
+            0,
+            1
+          ],
+          "word": [
+            "step"
+          ],
+          "reason": "task",
+          "terminal_states": [
+            0,
+            3
+          ]
+        }
+      }
+    },
+    "essential_features": [],
+    "essentiality_status": "full observation insufficient; no essentiality claim",
+    "catalogue_has_feasible_candidate": false,
+    "inclusion_minimal_in_catalogue": [],
+    "minimum_feature_cost": null,
+    "minimum_cost_candidates": []
+  }
+}

@@ -1,0 +1,4416 @@
+{
+  "date": "2026-10-29",
+  "status": "passed",
+  "scope": "Exact finite illustrations, not empirical application trials or proof of BM exclusivity.",
+  "analyzer_source_sha256": "c6c62b009f463f0ce4f0dcf4542492e534c2239667b9d4c3481b5c4756fb2021",
+  "analyzer_contracts_verified": 9,
+  "finite_contracts": {
+    "migration_current_query": {
+      "input": {
+        "states": [
+          "stock_0",
+          "stock_1",
+          "stock_2"
+        ],
+        "actions": {},
+        "tasks": {
+          "in_stock": [
+            false,
+            true,
+            true
+          ]
+        },
+        "observations": {
+          "in_stock": [
+            false,
+            true,
+            true
+          ],
+          "count": [
+            0,
+            1,
+            2
+          ]
+        }
+      },
+      "certificate": {
+        "schema": "BM finite necessity certificate 1",
+        "input_sha256": "f56d88c5042f074ca88a9f3ba94b496ef264c0b588476ca8541f08b35315b0b7",
+        "scope": "finite partial deterministic; all states initially possible; arbitrary deterministic postprocessing; exact tasks and availability for all finite words",
+        "quotient": {
+          "code_of_state": [
+            0,
+            1,
+            1
+          ],
+          "representatives": [
+            0,
+            1
+          ],
+          "tasks": {
+            "in_stock": [
+              false,
+              true
+            ]
+          },
+          "actions": {},
+          "separation_witnesses": [
+            {
+              "states": [
+                0,
+                1
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                0,
+                1
+              ]
+            }
+          ]
+        },
+        "minimum_code_states_if_feasible": 2,
+        "strict_refinement_rounds": 0,
+        "initial_task_blocks": 2,
+        "strict_round_bound": 1,
+        "catalogue_kind": "all observation subsets",
+        "candidates": [
+          {
+            "features": [],
+            "feasible": false,
+            "failure": {
+              "states": [
+                0,
+                1
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                0,
+                1
+              ]
+            },
+            "cost": "0"
+          },
+          {
+            "features": [
+              "count"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  0
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  1
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  2
+                ],
+                "code": 1
+              }
+            ],
+            "cost": "1"
+          },
+          {
+            "features": [
+              "in_stock"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  false
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  true
+                ],
+                "code": 1
+              }
+            ],
+            "cost": "1"
+          },
+          {
+            "features": [
+              "count",
+              "in_stock"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  0,
+                  false
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  1,
+                  true
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  2,
+                  true
+                ],
+                "code": 1
+              }
+            ],
+            "cost": "2"
+          }
+        ],
+        "full_observation": {
+          "features": [
+            "count",
+            "in_stock"
+          ],
+          "feasible": true,
+          "encoder": [
+            {
+              "observation": [
+                0,
+                false
+              ],
+              "code": 0
+            },
+            {
+              "observation": [
+                1,
+                true
+              ],
+              "code": 1
+            },
+            {
+              "observation": [
+                2,
+                true
+              ],
+              "code": 1
+            }
+          ]
+        },
+        "leave_one_out": {
+          "count": {
+            "features": [
+              "in_stock"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  false
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  true
+                ],
+                "code": 1
+              }
+            ]
+          },
+          "in_stock": {
+            "features": [
+              "count"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  0
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  1
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  2
+                ],
+                "code": 1
+              }
+            ]
+          }
+        },
+        "essential_features": [],
+        "essentiality_status": "nonvacuous relative to observation removal",
+        "catalogue_has_feasible_candidate": true,
+        "inclusion_minimal_in_catalogue": [
+          [
+            "count"
+          ],
+          [
+            "in_stock"
+          ]
+        ],
+        "minimum_feature_cost": "1",
+        "minimum_cost_candidates": [
+          [
+            "count"
+          ],
+          [
+            "in_stock"
+          ]
+        ]
+      }
+    },
+    "migration_future_updates": {
+      "input": {
+        "states": [
+          "stock_0",
+          "stock_1",
+          "stock_2"
+        ],
+        "actions": {
+          "reserve": [
+            null,
+            0,
+            1
+          ]
+        },
+        "tasks": {
+          "in_stock": [
+            false,
+            true,
+            true
+          ]
+        },
+        "observations": {
+          "in_stock": [
+            false,
+            true,
+            true
+          ],
+          "count": [
+            0,
+            1,
+            2
+          ]
+        }
+      },
+      "certificate": {
+        "schema": "BM finite necessity certificate 1",
+        "input_sha256": "e210dd0f19610f0111cafcb035f459fe61058f77237e6dde520431421edcde12",
+        "scope": "finite partial deterministic; all states initially possible; arbitrary deterministic postprocessing; exact tasks and availability for all finite words",
+        "quotient": {
+          "code_of_state": [
+            0,
+            1,
+            2
+          ],
+          "representatives": [
+            0,
+            1,
+            2
+          ],
+          "tasks": {
+            "in_stock": [
+              false,
+              true,
+              true
+            ]
+          },
+          "actions": {
+            "reserve": [
+              null,
+              0,
+              1
+            ]
+          },
+          "separation_witnesses": [
+            {
+              "states": [
+                0,
+                1
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                0,
+                1
+              ]
+            },
+            {
+              "states": [
+                0,
+                2
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                0,
+                2
+              ]
+            },
+            {
+              "states": [
+                1,
+                2
+              ],
+              "word": [
+                "reserve"
+              ],
+              "reason": "task",
+              "terminal_states": [
+                0,
+                1
+              ]
+            }
+          ]
+        },
+        "minimum_code_states_if_feasible": 3,
+        "strict_refinement_rounds": 1,
+        "initial_task_blocks": 2,
+        "strict_round_bound": 1,
+        "catalogue_kind": "all observation subsets",
+        "candidates": [
+          {
+            "features": [],
+            "feasible": false,
+            "failure": {
+              "states": [
+                0,
+                1
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                0,
+                1
+              ]
+            },
+            "cost": "0"
+          },
+          {
+            "features": [
+              "count"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  0
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  1
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  2
+                ],
+                "code": 2
+              }
+            ],
+            "cost": "1"
+          },
+          {
+            "features": [
+              "in_stock"
+            ],
+            "feasible": false,
+            "failure": {
+              "states": [
+                1,
+                2
+              ],
+              "word": [
+                "reserve"
+              ],
+              "reason": "task",
+              "terminal_states": [
+                0,
+                1
+              ]
+            },
+            "cost": "1"
+          },
+          {
+            "features": [
+              "count",
+              "in_stock"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  0,
+                  false
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  1,
+                  true
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  2,
+                  true
+                ],
+                "code": 2
+              }
+            ],
+            "cost": "2"
+          }
+        ],
+        "full_observation": {
+          "features": [
+            "count",
+            "in_stock"
+          ],
+          "feasible": true,
+          "encoder": [
+            {
+              "observation": [
+                0,
+                false
+              ],
+              "code": 0
+            },
+            {
+              "observation": [
+                1,
+                true
+              ],
+              "code": 1
+            },
+            {
+              "observation": [
+                2,
+                true
+              ],
+              "code": 2
+            }
+          ]
+        },
+        "leave_one_out": {
+          "count": {
+            "features": [
+              "in_stock"
+            ],
+            "feasible": false,
+            "failure": {
+              "states": [
+                1,
+                2
+              ],
+              "word": [
+                "reserve"
+              ],
+              "reason": "task",
+              "terminal_states": [
+                0,
+                1
+              ]
+            }
+          },
+          "in_stock": {
+            "features": [
+              "count"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  0
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  1
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  2
+                ],
+                "code": 2
+              }
+            ]
+          }
+        },
+        "essential_features": [
+          "count"
+        ],
+        "essentiality_status": "nonvacuous relative to observation removal",
+        "catalogue_has_feasible_candidate": true,
+        "inclusion_minimal_in_catalogue": [
+          [
+            "count"
+          ]
+        ],
+        "minimum_feature_cost": "1",
+        "minimum_cost_candidates": [
+          [
+            "count"
+          ]
+        ]
+      }
+    },
+    "benchmark_missing_distinction": {
+      "input": {
+        "states": [
+          "rule_A",
+          "rule_B",
+          "always_zero",
+          "always_one"
+        ],
+        "actions": {},
+        "tasks": {
+          "deployment_truth_table": [
+            "0011",
+            "0101",
+            "0000",
+            "1111"
+          ]
+        },
+        "observations": {
+          "old_tests_00_11": [
+            "01",
+            "01",
+            "00",
+            "11"
+          ],
+          "probe_01": [
+            0,
+            1,
+            0,
+            1
+          ],
+          "probe_10": [
+            1,
+            0,
+            0,
+            1
+          ]
+        },
+        "feature_costs": {
+          "old_tests_00_11": 0,
+          "probe_01": 1,
+          "probe_10": 1
+        }
+      },
+      "certificate": {
+        "schema": "BM finite necessity certificate 1",
+        "input_sha256": "0d1b6c54fd6d4b7104e0002735753ceaa740e50936c5270e2ec943fed228e126",
+        "scope": "finite partial deterministic; all states initially possible; arbitrary deterministic postprocessing; exact tasks and availability for all finite words",
+        "quotient": {
+          "code_of_state": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "representatives": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "tasks": {
+            "deployment_truth_table": [
+              "0011",
+              "0101",
+              "0000",
+              "1111"
+            ]
+          },
+          "actions": {},
+          "separation_witnesses": [
+            {
+              "states": [
+                0,
+                1
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                0,
+                1
+              ]
+            },
+            {
+              "states": [
+                0,
+                2
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                0,
+                2
+              ]
+            },
+            {
+              "states": [
+                0,
+                3
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                0,
+                3
+              ]
+            },
+            {
+              "states": [
+                1,
+                2
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                1,
+                2
+              ]
+            },
+            {
+              "states": [
+                1,
+                3
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                1,
+                3
+              ]
+            },
+            {
+              "states": [
+                2,
+                3
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                2,
+                3
+              ]
+            }
+          ]
+        },
+        "minimum_code_states_if_feasible": 4,
+        "strict_refinement_rounds": 0,
+        "initial_task_blocks": 4,
+        "strict_round_bound": 0,
+        "catalogue_kind": "all observation subsets",
+        "candidates": [
+          {
+            "features": [],
+            "feasible": false,
+            "failure": {
+              "states": [
+                0,
+                1
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                0,
+                1
+              ]
+            },
+            "cost": "0"
+          },
+          {
+            "features": [
+              "old_tests_00_11"
+            ],
+            "feasible": false,
+            "failure": {
+              "states": [
+                0,
+                1
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                0,
+                1
+              ]
+            },
+            "cost": "0"
+          },
+          {
+            "features": [
+              "probe_01"
+            ],
+            "feasible": false,
+            "failure": {
+              "states": [
+                0,
+                2
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                0,
+                2
+              ]
+            },
+            "cost": "1"
+          },
+          {
+            "features": [
+              "probe_10"
+            ],
+            "feasible": false,
+            "failure": {
+              "states": [
+                1,
+                2
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                1,
+                2
+              ]
+            },
+            "cost": "1"
+          },
+          {
+            "features": [
+              "old_tests_00_11",
+              "probe_01"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  "01",
+                  0
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  "01",
+                  1
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  "00",
+                  0
+                ],
+                "code": 2
+              },
+              {
+                "observation": [
+                  "11",
+                  1
+                ],
+                "code": 3
+              }
+            ],
+            "cost": "1"
+          },
+          {
+            "features": [
+              "old_tests_00_11",
+              "probe_10"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  "01",
+                  1
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  "01",
+                  0
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  "00",
+                  0
+                ],
+                "code": 2
+              },
+              {
+                "observation": [
+                  "11",
+                  1
+                ],
+                "code": 3
+              }
+            ],
+            "cost": "1"
+          },
+          {
+            "features": [
+              "probe_01",
+              "probe_10"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  0,
+                  1
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  1,
+                  0
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  0,
+                  0
+                ],
+                "code": 2
+              },
+              {
+                "observation": [
+                  1,
+                  1
+                ],
+                "code": 3
+              }
+            ],
+            "cost": "2"
+          },
+          {
+            "features": [
+              "old_tests_00_11",
+              "probe_01",
+              "probe_10"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  "01",
+                  0,
+                  1
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  "01",
+                  1,
+                  0
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  "00",
+                  0,
+                  0
+                ],
+                "code": 2
+              },
+              {
+                "observation": [
+                  "11",
+                  1,
+                  1
+                ],
+                "code": 3
+              }
+            ],
+            "cost": "2"
+          }
+        ],
+        "full_observation": {
+          "features": [
+            "old_tests_00_11",
+            "probe_01",
+            "probe_10"
+          ],
+          "feasible": true,
+          "encoder": [
+            {
+              "observation": [
+                "01",
+                0,
+                1
+              ],
+              "code": 0
+            },
+            {
+              "observation": [
+                "01",
+                1,
+                0
+              ],
+              "code": 1
+            },
+            {
+              "observation": [
+                "00",
+                0,
+                0
+              ],
+              "code": 2
+            },
+            {
+              "observation": [
+                "11",
+                1,
+                1
+              ],
+              "code": 3
+            }
+          ]
+        },
+        "leave_one_out": {
+          "old_tests_00_11": {
+            "features": [
+              "probe_01",
+              "probe_10"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  0,
+                  1
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  1,
+                  0
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  0,
+                  0
+                ],
+                "code": 2
+              },
+              {
+                "observation": [
+                  1,
+                  1
+                ],
+                "code": 3
+              }
+            ]
+          },
+          "probe_01": {
+            "features": [
+              "old_tests_00_11",
+              "probe_10"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  "01",
+                  1
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  "01",
+                  0
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  "00",
+                  0
+                ],
+                "code": 2
+              },
+              {
+                "observation": [
+                  "11",
+                  1
+                ],
+                "code": 3
+              }
+            ]
+          },
+          "probe_10": {
+            "features": [
+              "old_tests_00_11",
+              "probe_01"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  "01",
+                  0
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  "01",
+                  1
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  "00",
+                  0
+                ],
+                "code": 2
+              },
+              {
+                "observation": [
+                  "11",
+                  1
+                ],
+                "code": 3
+              }
+            ]
+          }
+        },
+        "essential_features": [],
+        "essentiality_status": "nonvacuous relative to observation removal",
+        "catalogue_has_feasible_candidate": true,
+        "inclusion_minimal_in_catalogue": [
+          [
+            "old_tests_00_11",
+            "probe_01"
+          ],
+          [
+            "old_tests_00_11",
+            "probe_10"
+          ],
+          [
+            "probe_01",
+            "probe_10"
+          ]
+        ],
+        "minimum_feature_cost": "1",
+        "minimum_cost_candidates": [
+          [
+            "old_tests_00_11",
+            "probe_01"
+          ],
+          [
+            "old_tests_00_11",
+            "probe_10"
+          ]
+        ]
+      }
+    },
+    "minimum_diagnostic_logging": {
+      "input": {
+        "states": [
+          "healthy",
+          "sensor_fault",
+          "actuator_fault",
+          "both_faults"
+        ],
+        "actions": {},
+        "tasks": {
+          "fault_class": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        "observations": {
+          "alarm": [
+            0,
+            1,
+            1,
+            1
+          ],
+          "sensor_test": [
+            0,
+            1,
+            0,
+            1
+          ],
+          "actuator_test": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "verbose_trace": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        "feature_costs": {
+          "alarm": 1,
+          "sensor_test": 1,
+          "actuator_test": 1,
+          "verbose_trace": 10
+        }
+      },
+      "certificate": {
+        "schema": "BM finite necessity certificate 1",
+        "input_sha256": "f3becf9fbc3840d23e7954b623ab7d751f2c72ee303b61248e3b0f2f2281c630",
+        "scope": "finite partial deterministic; all states initially possible; arbitrary deterministic postprocessing; exact tasks and availability for all finite words",
+        "quotient": {
+          "code_of_state": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "representatives": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "tasks": {
+            "fault_class": [
+              0,
+              1,
+              2,
+              3
+            ]
+          },
+          "actions": {},
+          "separation_witnesses": [
+            {
+              "states": [
+                0,
+                1
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                0,
+                1
+              ]
+            },
+            {
+              "states": [
+                0,
+                2
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                0,
+                2
+              ]
+            },
+            {
+              "states": [
+                0,
+                3
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                0,
+                3
+              ]
+            },
+            {
+              "states": [
+                1,
+                2
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                1,
+                2
+              ]
+            },
+            {
+              "states": [
+                1,
+                3
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                1,
+                3
+              ]
+            },
+            {
+              "states": [
+                2,
+                3
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                2,
+                3
+              ]
+            }
+          ]
+        },
+        "minimum_code_states_if_feasible": 4,
+        "strict_refinement_rounds": 0,
+        "initial_task_blocks": 4,
+        "strict_round_bound": 0,
+        "catalogue_kind": "all observation subsets",
+        "candidates": [
+          {
+            "features": [],
+            "feasible": false,
+            "failure": {
+              "states": [
+                0,
+                1
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                0,
+                1
+              ]
+            },
+            "cost": "0"
+          },
+          {
+            "features": [
+              "actuator_test"
+            ],
+            "feasible": false,
+            "failure": {
+              "states": [
+                0,
+                1
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                0,
+                1
+              ]
+            },
+            "cost": "1"
+          },
+          {
+            "features": [
+              "alarm"
+            ],
+            "feasible": false,
+            "failure": {
+              "states": [
+                1,
+                2
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                1,
+                2
+              ]
+            },
+            "cost": "1"
+          },
+          {
+            "features": [
+              "sensor_test"
+            ],
+            "feasible": false,
+            "failure": {
+              "states": [
+                0,
+                2
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                0,
+                2
+              ]
+            },
+            "cost": "1"
+          },
+          {
+            "features": [
+              "verbose_trace"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  0
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  1
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  2
+                ],
+                "code": 2
+              },
+              {
+                "observation": [
+                  3
+                ],
+                "code": 3
+              }
+            ],
+            "cost": "10"
+          },
+          {
+            "features": [
+              "actuator_test",
+              "alarm"
+            ],
+            "feasible": false,
+            "failure": {
+              "states": [
+                2,
+                3
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                2,
+                3
+              ]
+            },
+            "cost": "2"
+          },
+          {
+            "features": [
+              "actuator_test",
+              "sensor_test"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  0,
+                  0
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  0,
+                  1
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  1,
+                  0
+                ],
+                "code": 2
+              },
+              {
+                "observation": [
+                  1,
+                  1
+                ],
+                "code": 3
+              }
+            ],
+            "cost": "2"
+          },
+          {
+            "features": [
+              "actuator_test",
+              "verbose_trace"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  0,
+                  0
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  0,
+                  1
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  1,
+                  2
+                ],
+                "code": 2
+              },
+              {
+                "observation": [
+                  1,
+                  3
+                ],
+                "code": 3
+              }
+            ],
+            "cost": "11"
+          },
+          {
+            "features": [
+              "alarm",
+              "sensor_test"
+            ],
+            "feasible": false,
+            "failure": {
+              "states": [
+                1,
+                3
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                1,
+                3
+              ]
+            },
+            "cost": "2"
+          },
+          {
+            "features": [
+              "alarm",
+              "verbose_trace"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  0,
+                  0
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  1,
+                  1
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  1,
+                  2
+                ],
+                "code": 2
+              },
+              {
+                "observation": [
+                  1,
+                  3
+                ],
+                "code": 3
+              }
+            ],
+            "cost": "11"
+          },
+          {
+            "features": [
+              "sensor_test",
+              "verbose_trace"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  0,
+                  0
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  1,
+                  1
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  0,
+                  2
+                ],
+                "code": 2
+              },
+              {
+                "observation": [
+                  1,
+                  3
+                ],
+                "code": 3
+              }
+            ],
+            "cost": "11"
+          },
+          {
+            "features": [
+              "actuator_test",
+              "alarm",
+              "sensor_test"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  0,
+                  0,
+                  0
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  0,
+                  1,
+                  1
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  1,
+                  1,
+                  0
+                ],
+                "code": 2
+              },
+              {
+                "observation": [
+                  1,
+                  1,
+                  1
+                ],
+                "code": 3
+              }
+            ],
+            "cost": "3"
+          },
+          {
+            "features": [
+              "actuator_test",
+              "alarm",
+              "verbose_trace"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  0,
+                  0,
+                  0
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  0,
+                  1,
+                  1
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  1,
+                  1,
+                  2
+                ],
+                "code": 2
+              },
+              {
+                "observation": [
+                  1,
+                  1,
+                  3
+                ],
+                "code": 3
+              }
+            ],
+            "cost": "12"
+          },
+          {
+            "features": [
+              "actuator_test",
+              "sensor_test",
+              "verbose_trace"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  0,
+                  0,
+                  0
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  0,
+                  1,
+                  1
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  1,
+                  0,
+                  2
+                ],
+                "code": 2
+              },
+              {
+                "observation": [
+                  1,
+                  1,
+                  3
+                ],
+                "code": 3
+              }
+            ],
+            "cost": "12"
+          },
+          {
+            "features": [
+              "alarm",
+              "sensor_test",
+              "verbose_trace"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  0,
+                  0,
+                  0
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  1,
+                  1,
+                  1
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  1,
+                  0,
+                  2
+                ],
+                "code": 2
+              },
+              {
+                "observation": [
+                  1,
+                  1,
+                  3
+                ],
+                "code": 3
+              }
+            ],
+            "cost": "12"
+          },
+          {
+            "features": [
+              "actuator_test",
+              "alarm",
+              "sensor_test",
+              "verbose_trace"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  0,
+                  1,
+                  1,
+                  1
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  1,
+                  1,
+                  0,
+                  2
+                ],
+                "code": 2
+              },
+              {
+                "observation": [
+                  1,
+                  1,
+                  1,
+                  3
+                ],
+                "code": 3
+              }
+            ],
+            "cost": "13"
+          }
+        ],
+        "full_observation": {
+          "features": [
+            "actuator_test",
+            "alarm",
+            "sensor_test",
+            "verbose_trace"
+          ],
+          "feasible": true,
+          "encoder": [
+            {
+              "observation": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "code": 0
+            },
+            {
+              "observation": [
+                0,
+                1,
+                1,
+                1
+              ],
+              "code": 1
+            },
+            {
+              "observation": [
+                1,
+                1,
+                0,
+                2
+              ],
+              "code": 2
+            },
+            {
+              "observation": [
+                1,
+                1,
+                1,
+                3
+              ],
+              "code": 3
+            }
+          ]
+        },
+        "leave_one_out": {
+          "actuator_test": {
+            "features": [
+              "alarm",
+              "sensor_test",
+              "verbose_trace"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  0,
+                  0,
+                  0
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  1,
+                  1,
+                  1
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  1,
+                  0,
+                  2
+                ],
+                "code": 2
+              },
+              {
+                "observation": [
+                  1,
+                  1,
+                  3
+                ],
+                "code": 3
+              }
+            ]
+          },
+          "alarm": {
+            "features": [
+              "actuator_test",
+              "sensor_test",
+              "verbose_trace"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  0,
+                  0,
+                  0
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  0,
+                  1,
+                  1
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  1,
+                  0,
+                  2
+                ],
+                "code": 2
+              },
+              {
+                "observation": [
+                  1,
+                  1,
+                  3
+                ],
+                "code": 3
+              }
+            ]
+          },
+          "sensor_test": {
+            "features": [
+              "actuator_test",
+              "alarm",
+              "verbose_trace"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  0,
+                  0,
+                  0
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  0,
+                  1,
+                  1
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  1,
+                  1,
+                  2
+                ],
+                "code": 2
+              },
+              {
+                "observation": [
+                  1,
+                  1,
+                  3
+                ],
+                "code": 3
+              }
+            ]
+          },
+          "verbose_trace": {
+            "features": [
+              "actuator_test",
+              "alarm",
+              "sensor_test"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  0,
+                  0,
+                  0
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  0,
+                  1,
+                  1
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  1,
+                  1,
+                  0
+                ],
+                "code": 2
+              },
+              {
+                "observation": [
+                  1,
+                  1,
+                  1
+                ],
+                "code": 3
+              }
+            ]
+          }
+        },
+        "essential_features": [],
+        "essentiality_status": "nonvacuous relative to observation removal",
+        "catalogue_has_feasible_candidate": true,
+        "inclusion_minimal_in_catalogue": [
+          [
+            "verbose_trace"
+          ],
+          [
+            "actuator_test",
+            "sensor_test"
+          ]
+        ],
+        "minimum_feature_cost": "2",
+        "minimum_cost_candidates": [
+          [
+            "actuator_test",
+            "sensor_test"
+          ]
+        ]
+      }
+    },
+    "cache_original_task": {
+      "input": {
+        "states": [
+          "00",
+          "01",
+          "10",
+          "11"
+        ],
+        "actions": {},
+        "tasks": {
+          "parity": [
+            0,
+            1,
+            1,
+            0
+          ]
+        },
+        "observations": {
+          "parity_cache": [
+            0,
+            1,
+            1,
+            0
+          ],
+          "component_A": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "component_B": [
+            0,
+            1,
+            0,
+            1
+          ]
+        }
+      },
+      "certificate": {
+        "schema": "BM finite necessity certificate 1",
+        "input_sha256": "f86e58e39ba9a6d4ef401561e23c04f841a1b33f539a3d2bb5e473e6e15e60da",
+        "scope": "finite partial deterministic; all states initially possible; arbitrary deterministic postprocessing; exact tasks and availability for all finite words",
+        "quotient": {
+          "code_of_state": [
+            0,
+            1,
+            1,
+            0
+          ],
+          "representatives": [
+            0,
+            1
+          ],
+          "tasks": {
+            "parity": [
+              0,
+              1
+            ]
+          },
+          "actions": {},
+          "separation_witnesses": [
+            {
+              "states": [
+                0,
+                1
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                0,
+                1
+              ]
+            }
+          ]
+        },
+        "minimum_code_states_if_feasible": 2,
+        "strict_refinement_rounds": 0,
+        "initial_task_blocks": 2,
+        "strict_round_bound": 2,
+        "catalogue_kind": "all observation subsets",
+        "candidates": [
+          {
+            "features": [],
+            "feasible": false,
+            "failure": {
+              "states": [
+                0,
+                1
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                0,
+                1
+              ]
+            },
+            "cost": "0"
+          },
+          {
+            "features": [
+              "component_A"
+            ],
+            "feasible": false,
+            "failure": {
+              "states": [
+                0,
+                1
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                0,
+                1
+              ]
+            },
+            "cost": "1"
+          },
+          {
+            "features": [
+              "component_B"
+            ],
+            "feasible": false,
+            "failure": {
+              "states": [
+                0,
+                2
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                0,
+                2
+              ]
+            },
+            "cost": "1"
+          },
+          {
+            "features": [
+              "parity_cache"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  0
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  1
+                ],
+                "code": 1
+              }
+            ],
+            "cost": "1"
+          },
+          {
+            "features": [
+              "component_A",
+              "component_B"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  0,
+                  0
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  0,
+                  1
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  1,
+                  0
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  1,
+                  1
+                ],
+                "code": 0
+              }
+            ],
+            "cost": "2"
+          },
+          {
+            "features": [
+              "component_A",
+              "parity_cache"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  0,
+                  0
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  0,
+                  1
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  1,
+                  1
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  1,
+                  0
+                ],
+                "code": 0
+              }
+            ],
+            "cost": "2"
+          },
+          {
+            "features": [
+              "component_B",
+              "parity_cache"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  0,
+                  0
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  1,
+                  1
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  0,
+                  1
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  1,
+                  0
+                ],
+                "code": 0
+              }
+            ],
+            "cost": "2"
+          },
+          {
+            "features": [
+              "component_A",
+              "component_B",
+              "parity_cache"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  0,
+                  0,
+                  0
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  0,
+                  1,
+                  1
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  1,
+                  0,
+                  1
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  1,
+                  1,
+                  0
+                ],
+                "code": 0
+              }
+            ],
+            "cost": "3"
+          }
+        ],
+        "full_observation": {
+          "features": [
+            "component_A",
+            "component_B",
+            "parity_cache"
+          ],
+          "feasible": true,
+          "encoder": [
+            {
+              "observation": [
+                0,
+                0,
+                0
+              ],
+              "code": 0
+            },
+            {
+              "observation": [
+                0,
+                1,
+                1
+              ],
+              "code": 1
+            },
+            {
+              "observation": [
+                1,
+                0,
+                1
+              ],
+              "code": 1
+            },
+            {
+              "observation": [
+                1,
+                1,
+                0
+              ],
+              "code": 0
+            }
+          ]
+        },
+        "leave_one_out": {
+          "component_A": {
+            "features": [
+              "component_B",
+              "parity_cache"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  0,
+                  0
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  1,
+                  1
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  0,
+                  1
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  1,
+                  0
+                ],
+                "code": 0
+              }
+            ]
+          },
+          "component_B": {
+            "features": [
+              "component_A",
+              "parity_cache"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  0,
+                  0
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  0,
+                  1
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  1,
+                  1
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  1,
+                  0
+                ],
+                "code": 0
+              }
+            ]
+          },
+          "parity_cache": {
+            "features": [
+              "component_A",
+              "component_B"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  0,
+                  0
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  0,
+                  1
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  1,
+                  0
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  1,
+                  1
+                ],
+                "code": 0
+              }
+            ]
+          }
+        },
+        "essential_features": [],
+        "essentiality_status": "nonvacuous relative to observation removal",
+        "catalogue_has_feasible_candidate": true,
+        "inclusion_minimal_in_catalogue": [
+          [
+            "parity_cache"
+          ],
+          [
+            "component_A",
+            "component_B"
+          ]
+        ],
+        "minimum_feature_cost": "1",
+        "minimum_cost_candidates": [
+          [
+            "parity_cache"
+          ]
+        ]
+      }
+    },
+    "cache_expanded_task": {
+      "input": {
+        "states": [
+          "00",
+          "01",
+          "10",
+          "11"
+        ],
+        "actions": {},
+        "tasks": {
+          "parity": [
+            0,
+            1,
+            1,
+            0
+          ],
+          "first_component": [
+            0,
+            0,
+            1,
+            1
+          ]
+        },
+        "observations": {
+          "parity_cache": [
+            0,
+            1,
+            1,
+            0
+          ],
+          "component_A": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "component_B": [
+            0,
+            1,
+            0,
+            1
+          ]
+        }
+      },
+      "certificate": {
+        "schema": "BM finite necessity certificate 1",
+        "input_sha256": "6c7241775c4463d0eeeef79a527a2c12569c1ae4774f2eae2b580e67e1523f09",
+        "scope": "finite partial deterministic; all states initially possible; arbitrary deterministic postprocessing; exact tasks and availability for all finite words",
+        "quotient": {
+          "code_of_state": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "representatives": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "tasks": {
+            "first_component": [
+              0,
+              0,
+              1,
+              1
+            ],
+            "parity": [
+              0,
+              1,
+              1,
+              0
+            ]
+          },
+          "actions": {},
+          "separation_witnesses": [
+            {
+              "states": [
+                0,
+                1
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                0,
+                1
+              ]
+            },
+            {
+              "states": [
+                0,
+                2
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                0,
+                2
+              ]
+            },
+            {
+              "states": [
+                0,
+                3
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                0,
+                3
+              ]
+            },
+            {
+              "states": [
+                1,
+                2
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                1,
+                2
+              ]
+            },
+            {
+              "states": [
+                1,
+                3
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                1,
+                3
+              ]
+            },
+            {
+              "states": [
+                2,
+                3
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                2,
+                3
+              ]
+            }
+          ]
+        },
+        "minimum_code_states_if_feasible": 4,
+        "strict_refinement_rounds": 0,
+        "initial_task_blocks": 4,
+        "strict_round_bound": 0,
+        "catalogue_kind": "all observation subsets",
+        "candidates": [
+          {
+            "features": [],
+            "feasible": false,
+            "failure": {
+              "states": [
+                0,
+                1
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                0,
+                1
+              ]
+            },
+            "cost": "0"
+          },
+          {
+            "features": [
+              "component_A"
+            ],
+            "feasible": false,
+            "failure": {
+              "states": [
+                0,
+                1
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                0,
+                1
+              ]
+            },
+            "cost": "1"
+          },
+          {
+            "features": [
+              "component_B"
+            ],
+            "feasible": false,
+            "failure": {
+              "states": [
+                0,
+                2
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                0,
+                2
+              ]
+            },
+            "cost": "1"
+          },
+          {
+            "features": [
+              "parity_cache"
+            ],
+            "feasible": false,
+            "failure": {
+              "states": [
+                1,
+                2
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                1,
+                2
+              ]
+            },
+            "cost": "1"
+          },
+          {
+            "features": [
+              "component_A",
+              "component_B"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  0,
+                  0
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  0,
+                  1
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  1,
+                  0
+                ],
+                "code": 2
+              },
+              {
+                "observation": [
+                  1,
+                  1
+                ],
+                "code": 3
+              }
+            ],
+            "cost": "2"
+          },
+          {
+            "features": [
+              "component_A",
+              "parity_cache"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  0,
+                  0
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  0,
+                  1
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  1,
+                  1
+                ],
+                "code": 2
+              },
+              {
+                "observation": [
+                  1,
+                  0
+                ],
+                "code": 3
+              }
+            ],
+            "cost": "2"
+          },
+          {
+            "features": [
+              "component_B",
+              "parity_cache"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  0,
+                  0
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  1,
+                  1
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  0,
+                  1
+                ],
+                "code": 2
+              },
+              {
+                "observation": [
+                  1,
+                  0
+                ],
+                "code": 3
+              }
+            ],
+            "cost": "2"
+          },
+          {
+            "features": [
+              "component_A",
+              "component_B",
+              "parity_cache"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  0,
+                  0,
+                  0
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  0,
+                  1,
+                  1
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  1,
+                  0,
+                  1
+                ],
+                "code": 2
+              },
+              {
+                "observation": [
+                  1,
+                  1,
+                  0
+                ],
+                "code": 3
+              }
+            ],
+            "cost": "3"
+          }
+        ],
+        "full_observation": {
+          "features": [
+            "component_A",
+            "component_B",
+            "parity_cache"
+          ],
+          "feasible": true,
+          "encoder": [
+            {
+              "observation": [
+                0,
+                0,
+                0
+              ],
+              "code": 0
+            },
+            {
+              "observation": [
+                0,
+                1,
+                1
+              ],
+              "code": 1
+            },
+            {
+              "observation": [
+                1,
+                0,
+                1
+              ],
+              "code": 2
+            },
+            {
+              "observation": [
+                1,
+                1,
+                0
+              ],
+              "code": 3
+            }
+          ]
+        },
+        "leave_one_out": {
+          "component_A": {
+            "features": [
+              "component_B",
+              "parity_cache"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  0,
+                  0
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  1,
+                  1
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  0,
+                  1
+                ],
+                "code": 2
+              },
+              {
+                "observation": [
+                  1,
+                  0
+                ],
+                "code": 3
+              }
+            ]
+          },
+          "component_B": {
+            "features": [
+              "component_A",
+              "parity_cache"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  0,
+                  0
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  0,
+                  1
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  1,
+                  1
+                ],
+                "code": 2
+              },
+              {
+                "observation": [
+                  1,
+                  0
+                ],
+                "code": 3
+              }
+            ]
+          },
+          "parity_cache": {
+            "features": [
+              "component_A",
+              "component_B"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  0,
+                  0
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  0,
+                  1
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  1,
+                  0
+                ],
+                "code": 2
+              },
+              {
+                "observation": [
+                  1,
+                  1
+                ],
+                "code": 3
+              }
+            ]
+          }
+        },
+        "essential_features": [],
+        "essentiality_status": "nonvacuous relative to observation removal",
+        "catalogue_has_feasible_candidate": true,
+        "inclusion_minimal_in_catalogue": [
+          [
+            "component_A",
+            "component_B"
+          ],
+          [
+            "component_A",
+            "parity_cache"
+          ],
+          [
+            "component_B",
+            "parity_cache"
+          ]
+        ],
+        "minimum_feature_cost": "2",
+        "minimum_cost_candidates": [
+          [
+            "component_A",
+            "component_B"
+          ],
+          [
+            "component_A",
+            "parity_cache"
+          ],
+          [
+            "component_B",
+            "parity_cache"
+          ]
+        ]
+      }
+    },
+    "undo_save_state": {
+      "input": {
+        "states": [
+          "previous_0_current_0",
+          "previous_0_current_1",
+          "previous_1_current_0",
+          "previous_1_current_1"
+        ],
+        "actions": {
+          "undo": [
+            0,
+            0,
+            3,
+            3
+          ]
+        },
+        "tasks": {
+          "display": [
+            0,
+            1,
+            0,
+            1
+          ]
+        },
+        "observations": {
+          "current": [
+            0,
+            1,
+            0,
+            1
+          ],
+          "previous": [
+            0,
+            0,
+            1,
+            1
+          ]
+        }
+      },
+      "certificate": {
+        "schema": "BM finite necessity certificate 1",
+        "input_sha256": "f36e56a14818a042da37b7faf9cb98c901ebd26fba0097a1a24c0fc9bfd38a4f",
+        "scope": "finite partial deterministic; all states initially possible; arbitrary deterministic postprocessing; exact tasks and availability for all finite words",
+        "quotient": {
+          "code_of_state": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "representatives": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "tasks": {
+            "display": [
+              0,
+              1,
+              0,
+              1
+            ]
+          },
+          "actions": {
+            "undo": [
+              0,
+              0,
+              3,
+              3
+            ]
+          },
+          "separation_witnesses": [
+            {
+              "states": [
+                0,
+                1
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                0,
+                1
+              ]
+            },
+            {
+              "states": [
+                0,
+                2
+              ],
+              "word": [
+                "undo"
+              ],
+              "reason": "task",
+              "terminal_states": [
+                0,
+                3
+              ]
+            },
+            {
+              "states": [
+                0,
+                3
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                0,
+                3
+              ]
+            },
+            {
+              "states": [
+                1,
+                2
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                1,
+                2
+              ]
+            },
+            {
+              "states": [
+                1,
+                3
+              ],
+              "word": [
+                "undo"
+              ],
+              "reason": "task",
+              "terminal_states": [
+                0,
+                3
+              ]
+            },
+            {
+              "states": [
+                2,
+                3
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                2,
+                3
+              ]
+            }
+          ]
+        },
+        "minimum_code_states_if_feasible": 4,
+        "strict_refinement_rounds": 1,
+        "initial_task_blocks": 2,
+        "strict_round_bound": 2,
+        "catalogue_kind": "all observation subsets",
+        "candidates": [
+          {
+            "features": [],
+            "feasible": false,
+            "failure": {
+              "states": [
+                0,
+                1
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                0,
+                1
+              ]
+            },
+            "cost": "0"
+          },
+          {
+            "features": [
+              "current"
+            ],
+            "feasible": false,
+            "failure": {
+              "states": [
+                0,
+                2
+              ],
+              "word": [
+                "undo"
+              ],
+              "reason": "task",
+              "terminal_states": [
+                0,
+                3
+              ]
+            },
+            "cost": "1"
+          },
+          {
+            "features": [
+              "previous"
+            ],
+            "feasible": false,
+            "failure": {
+              "states": [
+                0,
+                1
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                0,
+                1
+              ]
+            },
+            "cost": "1"
+          },
+          {
+            "features": [
+              "current",
+              "previous"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  0,
+                  0
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  1,
+                  0
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  0,
+                  1
+                ],
+                "code": 2
+              },
+              {
+                "observation": [
+                  1,
+                  1
+                ],
+                "code": 3
+              }
+            ],
+            "cost": "2"
+          }
+        ],
+        "full_observation": {
+          "features": [
+            "current",
+            "previous"
+          ],
+          "feasible": true,
+          "encoder": [
+            {
+              "observation": [
+                0,
+                0
+              ],
+              "code": 0
+            },
+            {
+              "observation": [
+                1,
+                0
+              ],
+              "code": 1
+            },
+            {
+              "observation": [
+                0,
+                1
+              ],
+              "code": 2
+            },
+            {
+              "observation": [
+                1,
+                1
+              ],
+              "code": 3
+            }
+          ]
+        },
+        "leave_one_out": {
+          "current": {
+            "features": [
+              "previous"
+            ],
+            "feasible": false,
+            "failure": {
+              "states": [
+                0,
+                1
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                0,
+                1
+              ]
+            }
+          },
+          "previous": {
+            "features": [
+              "current"
+            ],
+            "feasible": false,
+            "failure": {
+              "states": [
+                0,
+                2
+              ],
+              "word": [
+                "undo"
+              ],
+              "reason": "task",
+              "terminal_states": [
+                0,
+                3
+              ]
+            }
+          }
+        },
+        "essential_features": [
+          "current",
+          "previous"
+        ],
+        "essentiality_status": "nonvacuous relative to observation removal",
+        "catalogue_has_feasible_candidate": true,
+        "inclusion_minimal_in_catalogue": [
+          [
+            "current",
+            "previous"
+          ]
+        ],
+        "minimum_feature_cost": "2",
+        "minimum_cost_candidates": [
+          [
+            "current",
+            "previous"
+          ]
+        ]
+      }
+    },
+    "reward_metric_gap": {
+      "input": {
+        "states": [
+          "not_done_not_reported",
+          "not_done_reported",
+          "done_not_reported",
+          "done_reported"
+        ],
+        "actions": {},
+        "tasks": {
+          "completed": [
+            0,
+            0,
+            1,
+            1
+          ]
+        },
+        "observations": {
+          "score_reported_completion": [
+            0,
+            1,
+            0,
+            1
+          ],
+          "verified_completion": [
+            0,
+            0,
+            1,
+            1
+          ]
+        }
+      },
+      "certificate": {
+        "schema": "BM finite necessity certificate 1",
+        "input_sha256": "903844e569dfbbd3f5c6382ab12d2cc7bc710d7508e95146e3eeaa1e44c3fba8",
+        "scope": "finite partial deterministic; all states initially possible; arbitrary deterministic postprocessing; exact tasks and availability for all finite words",
+        "quotient": {
+          "code_of_state": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "representatives": [
+            0,
+            2
+          ],
+          "tasks": {
+            "completed": [
+              0,
+              1
+            ]
+          },
+          "actions": {},
+          "separation_witnesses": [
+            {
+              "states": [
+                0,
+                2
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                0,
+                2
+              ]
+            }
+          ]
+        },
+        "minimum_code_states_if_feasible": 2,
+        "strict_refinement_rounds": 0,
+        "initial_task_blocks": 2,
+        "strict_round_bound": 2,
+        "catalogue_kind": "all observation subsets",
+        "candidates": [
+          {
+            "features": [],
+            "feasible": false,
+            "failure": {
+              "states": [
+                0,
+                2
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                0,
+                2
+              ]
+            },
+            "cost": "0"
+          },
+          {
+            "features": [
+              "score_reported_completion"
+            ],
+            "feasible": false,
+            "failure": {
+              "states": [
+                0,
+                2
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                0,
+                2
+              ]
+            },
+            "cost": "1"
+          },
+          {
+            "features": [
+              "verified_completion"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  0
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  1
+                ],
+                "code": 1
+              }
+            ],
+            "cost": "1"
+          },
+          {
+            "features": [
+              "score_reported_completion",
+              "verified_completion"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  0,
+                  0
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  1,
+                  0
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  0,
+                  1
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  1,
+                  1
+                ],
+                "code": 1
+              }
+            ],
+            "cost": "2"
+          }
+        ],
+        "full_observation": {
+          "features": [
+            "score_reported_completion",
+            "verified_completion"
+          ],
+          "feasible": true,
+          "encoder": [
+            {
+              "observation": [
+                0,
+                0
+              ],
+              "code": 0
+            },
+            {
+              "observation": [
+                1,
+                0
+              ],
+              "code": 0
+            },
+            {
+              "observation": [
+                0,
+                1
+              ],
+              "code": 1
+            },
+            {
+              "observation": [
+                1,
+                1
+              ],
+              "code": 1
+            }
+          ]
+        },
+        "leave_one_out": {
+          "score_reported_completion": {
+            "features": [
+              "verified_completion"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  0
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  1
+                ],
+                "code": 1
+              }
+            ]
+          },
+          "verified_completion": {
+            "features": [
+              "score_reported_completion"
+            ],
+            "feasible": false,
+            "failure": {
+              "states": [
+                0,
+                2
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                0,
+                2
+              ]
+            }
+          }
+        },
+        "essential_features": [
+          "verified_completion"
+        ],
+        "essentiality_status": "nonvacuous relative to observation removal",
+        "catalogue_has_feasible_candidate": true,
+        "inclusion_minimal_in_catalogue": [
+          [
+            "verified_completion"
+          ]
+        ],
+        "minimum_feature_cost": "1",
+        "minimum_cost_candidates": [
+          [
+            "verified_completion"
+          ]
+        ]
+      }
+    },
+    "curriculum_diagnostic": {
+      "input": {
+        "states": [
+          "neither_skill",
+          "only_B",
+          "only_A",
+          "both_skills"
+        ],
+        "actions": {},
+        "tasks": {
+          "next_lesson": [
+            "A_and_B",
+            "A",
+            "B",
+            "advanced"
+          ]
+        },
+        "observations": {
+          "total_score": [
+            0,
+            1,
+            1,
+            2
+          ],
+          "item_A": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "item_B": [
+            0,
+            1,
+            0,
+            1
+          ]
+        },
+        "feature_costs": {
+          "total_score": 0,
+          "item_A": 1,
+          "item_B": 1
+        }
+      },
+      "certificate": {
+        "schema": "BM finite necessity certificate 1",
+        "input_sha256": "c305b41b986a9b33e46a924da2b655db50aa8392829e93da7dc2be51517f2fad",
+        "scope": "finite partial deterministic; all states initially possible; arbitrary deterministic postprocessing; exact tasks and availability for all finite words",
+        "quotient": {
+          "code_of_state": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "representatives": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "tasks": {
+            "next_lesson": [
+              "A_and_B",
+              "A",
+              "B",
+              "advanced"
+            ]
+          },
+          "actions": {},
+          "separation_witnesses": [
+            {
+              "states": [
+                0,
+                1
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                0,
+                1
+              ]
+            },
+            {
+              "states": [
+                0,
+                2
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                0,
+                2
+              ]
+            },
+            {
+              "states": [
+                0,
+                3
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                0,
+                3
+              ]
+            },
+            {
+              "states": [
+                1,
+                2
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                1,
+                2
+              ]
+            },
+            {
+              "states": [
+                1,
+                3
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                1,
+                3
+              ]
+            },
+            {
+              "states": [
+                2,
+                3
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                2,
+                3
+              ]
+            }
+          ]
+        },
+        "minimum_code_states_if_feasible": 4,
+        "strict_refinement_rounds": 0,
+        "initial_task_blocks": 4,
+        "strict_round_bound": 0,
+        "catalogue_kind": "all observation subsets",
+        "candidates": [
+          {
+            "features": [],
+            "feasible": false,
+            "failure": {
+              "states": [
+                0,
+                1
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                0,
+                1
+              ]
+            },
+            "cost": "0"
+          },
+          {
+            "features": [
+              "item_A"
+            ],
+            "feasible": false,
+            "failure": {
+              "states": [
+                0,
+                1
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                0,
+                1
+              ]
+            },
+            "cost": "1"
+          },
+          {
+            "features": [
+              "item_B"
+            ],
+            "feasible": false,
+            "failure": {
+              "states": [
+                0,
+                2
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                0,
+                2
+              ]
+            },
+            "cost": "1"
+          },
+          {
+            "features": [
+              "total_score"
+            ],
+            "feasible": false,
+            "failure": {
+              "states": [
+                1,
+                2
+              ],
+              "word": [],
+              "reason": "task",
+              "terminal_states": [
+                1,
+                2
+              ]
+            },
+            "cost": "0"
+          },
+          {
+            "features": [
+              "item_A",
+              "item_B"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  0,
+                  0
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  0,
+                  1
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  1,
+                  0
+                ],
+                "code": 2
+              },
+              {
+                "observation": [
+                  1,
+                  1
+                ],
+                "code": 3
+              }
+            ],
+            "cost": "2"
+          },
+          {
+            "features": [
+              "item_A",
+              "total_score"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  0,
+                  0
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  0,
+                  1
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  1,
+                  1
+                ],
+                "code": 2
+              },
+              {
+                "observation": [
+                  1,
+                  2
+                ],
+                "code": 3
+              }
+            ],
+            "cost": "1"
+          },
+          {
+            "features": [
+              "item_B",
+              "total_score"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  0,
+                  0
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  1,
+                  1
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  0,
+                  1
+                ],
+                "code": 2
+              },
+              {
+                "observation": [
+                  1,
+                  2
+                ],
+                "code": 3
+              }
+            ],
+            "cost": "1"
+          },
+          {
+            "features": [
+              "item_A",
+              "item_B",
+              "total_score"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  0,
+                  0,
+                  0
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  0,
+                  1,
+                  1
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  1,
+                  0,
+                  1
+                ],
+                "code": 2
+              },
+              {
+                "observation": [
+                  1,
+                  1,
+                  2
+                ],
+                "code": 3
+              }
+            ],
+            "cost": "2"
+          }
+        ],
+        "full_observation": {
+          "features": [
+            "item_A",
+            "item_B",
+            "total_score"
+          ],
+          "feasible": true,
+          "encoder": [
+            {
+              "observation": [
+                0,
+                0,
+                0
+              ],
+              "code": 0
+            },
+            {
+              "observation": [
+                0,
+                1,
+                1
+              ],
+              "code": 1
+            },
+            {
+              "observation": [
+                1,
+                0,
+                1
+              ],
+              "code": 2
+            },
+            {
+              "observation": [
+                1,
+                1,
+                2
+              ],
+              "code": 3
+            }
+          ]
+        },
+        "leave_one_out": {
+          "item_A": {
+            "features": [
+              "item_B",
+              "total_score"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  0,
+                  0
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  1,
+                  1
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  0,
+                  1
+                ],
+                "code": 2
+              },
+              {
+                "observation": [
+                  1,
+                  2
+                ],
+                "code": 3
+              }
+            ]
+          },
+          "item_B": {
+            "features": [
+              "item_A",
+              "total_score"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  0,
+                  0
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  0,
+                  1
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  1,
+                  1
+                ],
+                "code": 2
+              },
+              {
+                "observation": [
+                  1,
+                  2
+                ],
+                "code": 3
+              }
+            ]
+          },
+          "total_score": {
+            "features": [
+              "item_A",
+              "item_B"
+            ],
+            "feasible": true,
+            "encoder": [
+              {
+                "observation": [
+                  0,
+                  0
+                ],
+                "code": 0
+              },
+              {
+                "observation": [
+                  0,
+                  1
+                ],
+                "code": 1
+              },
+              {
+                "observation": [
+                  1,
+                  0
+                ],
+                "code": 2
+              },
+              {
+                "observation": [
+                  1,
+                  1
+                ],
+                "code": 3
+              }
+            ]
+          }
+        },
+        "essential_features": [],
+        "essentiality_status": "nonvacuous relative to observation removal",
+        "catalogue_has_feasible_candidate": true,
+        "inclusion_minimal_in_catalogue": [
+          [
+            "item_A",
+            "item_B"
+          ],
+          [
+            "item_A",
+            "total_score"
+          ],
+          [
+            "item_B",
+            "total_score"
+          ]
+        ],
+        "minimum_feature_cost": "1",
+        "minimum_cost_candidates": [
+          [
+            "item_A",
+            "total_score"
+          ],
+          [
+            "item_B",
+            "total_score"
+          ]
+        ]
+      }
+    }
+  },
+  "synthetic_data": {
+    "even_corpus": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        1
+      ],
+      [
+        1,
+        0,
+        1
+      ],
+      [
+        1,
+        1,
+        0
+      ]
+    ],
+    "odd_corpus": [
+      [
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        1,
+        0
+      ],
+      [
+        1,
+        0,
+        0
+      ],
+      [
+        1,
+        1,
+        1
+      ]
+    ],
+    "equal_single_and_pair_marginals": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ]
+    ],
+    "parity_task_means": [
+      "0",
+      "1"
+    ]
+  },
+  "provenance": {
+    "source_lists": {
+      "three_copies": [
+        "source_A",
+        "source_A",
+        "source_A"
+      ],
+      "three_sources": [
+        "source_A",
+        "source_B",
+        "source_C"
+      ]
+    },
+    "distinct_source_counts": [
+      1,
+      3
+    ],
+    "limitation": "Distinct source identifiers do not prove statistical independence or truth."
+  },
+  "summary": {
+    "migration_current_code_states": 2,
+    "migration_future_code_states": 3,
+    "additional_benchmark_probes": 1,
+    "diagnostic_feature_cost": "2",
+    "cache_old_code_states": 2,
+    "cache_new_code_states": 4,
+    "undo_code_states": 4,
+    "additional_curriculum_item_cost": "1",
+    "matching_low_order_marginals": 6
+  }
+}

@@ -1,6 +1,6 @@
 
 const pages=[
- ["Home","index.html"],["BM","branch-mathematics.html"],["GURF","gurf.html"],["Steadman","steadman.html"],["Encyclopedia","encyclopedia.html"],["Theorems","theorems.html"],["Research","research.html"],["Calculator","calculator.html"],["Book","book.html"],["Audit","audit.html"]
+ ["Home","index.html"],["BM","branch-mathematics.html"],["GURF","gurf.html"],["Steadman","steadman.html"],["Encyclopedia","encyclopedia.html"],["Theorems","theorems.html"],["Research","research.html"],["Updates","updates.html"],["Calculator","calculator.html"],["Book","book.html"],["Audit","audit.html"]
 ];
 function mountChrome(){
  const cur=location.pathname.split('/').pop()||'index.html';
@@ -8,7 +8,7 @@ function mountChrome(){
  if(header) header.innerHTML=`<header class="site-header"><div class="wrap nav"><a class="brand" href="index.html"><span class="brand-mark">BM</span><span>Branch Mathematics</span></a><button class="menu" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-navigation">Menu</button><nav id="primary-navigation" class="navlinks">${pages.map(([n,u])=>`<a href="${u}" ${cur===u?'aria-current="page"':''}>${n}</a>`).join('')}</nav></div></header>`;
  const btn=document.querySelector('.menu'); if(btn) btn.onclick=()=>{const open=btn.closest('.nav').classList.toggle('open');btn.setAttribute('aria-expanded',String(open));};
  const footer=document.querySelector('[data-site-footer]');
- if(footer) footer.innerHTML=`<footer class="site-footer"><div class="wrap footer-grid"><div><strong>Branch Mathematics / GURF</strong><div class="small">Public technical reference · updated 23 October 2026</div></div><div class="footer-links"><a href="definitions.html">Definitions</a><a href="equations.html">Equations</a><a href="structures.html">Structures</a><a href="passports.html">Passports</a><a href="roots.html">Roots</a><a href="yang-mills.html">Yang–Mills</a><a href="status.html">Status</a><a href="changelog.html">Changelog</a></div></div></footer>`;
+ if(footer) footer.innerHTML=`<footer class="site-footer"><div class="wrap footer-grid"><div><strong>Branch Mathematics / GURF</strong><div class="small">Public technical reference · updated 25 November 2026</div></div><div class="footer-links"><a href="definitions.html">Definitions</a><a href="equations.html">Equations</a><a href="structures.html">Structures</a><a href="passports.html">Passports</a><a href="roots.html">Roots</a><a href="yang-mills.html">Yang–Mills</a><a href="seed-closure.html">Seed closure</a><a href="status.html">Status</a><a href="changelog.html">Changelog</a></div></div></footer>`;
 }
 function mountRegistry(){
  const host=document.querySelector('[data-registry]'); if(!host||!window.BM_REGISTRIES)return;

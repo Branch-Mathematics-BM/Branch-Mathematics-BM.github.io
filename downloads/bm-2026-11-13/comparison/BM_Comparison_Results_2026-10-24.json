@@ -1,0 +1,3322 @@
+{
+  "scope": "internal controlled comparison; same contracts; no independent peer review",
+  "inputs_sha256": "b6e7aff6db9fd8fa24cbbc57f284aca88edb8ee12b4e13bb1791e61c735edb0c",
+  "finite": [
+    {
+      "name": "delayed_velocity",
+      "states": 4,
+      "code_states": 4,
+      "bm_cost": "2",
+      "native": {
+        "full_feasible": true,
+        "essential": [
+          "position",
+          "velocity"
+        ],
+        "minimum_cost": "2",
+        "selected": [
+          "position",
+          "velocity"
+        ],
+        "route": "SciPy/HiGHS binary weighted set cover"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 6,
+      "bm_full_analyzer_ms": 0.9927929999946628,
+      "bm_partition_ms": 0.0163,
+      "native_partition_ms": 0.020837
+    },
+    {
+      "name": "discard_nonpredictive_observation",
+      "states": 8,
+      "code_states": 2,
+      "bm_cost": "1",
+      "native": {
+        "full_feasible": true,
+        "essential": [
+          "a"
+        ],
+        "minimum_cost": "1",
+        "selected": [
+          "a"
+        ],
+        "route": "SciPy/HiGHS binary weighted set cover"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 16,
+      "bm_full_analyzer_ms": 0.5368160000216449,
+      "bm_partition_ms": 0.025059,
+      "native_partition_ms": 0.067144
+    },
+    {
+      "name": "duplicate_observations",
+      "states": 2,
+      "code_states": 2,
+      "bm_cost": "1/2",
+      "native": {
+        "full_feasible": true,
+        "essential": [],
+        "minimum_cost": "1/2",
+        "selected": [
+          "backup"
+        ],
+        "route": "SciPy/HiGHS binary weighted set cover"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 1,
+      "bm_full_analyzer_ms": 0.235866999986456,
+      "bm_partition_ms": 0.007092,
+      "native_partition_ms": 0.005899
+    },
+    {
+      "name": "availability_obstruction",
+      "states": 2,
+      "code_states": 2,
+      "bm_cost": null,
+      "native": {
+        "full_feasible": false,
+        "essential": [],
+        "minimum_cost": null,
+        "selected": null,
+        "route": "uncovered separating pair"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 1,
+      "bm_full_analyzer_ms": 0.3079580000076021,
+      "bm_partition_ms": 0.008672,
+      "native_partition_ms": 0.007569
+    },
+    {
+      "name": "joint_xor",
+      "states": 4,
+      "code_states": 2,
+      "bm_cost": "2",
+      "native": {
+        "full_feasible": true,
+        "essential": [
+          "a",
+          "b"
+        ],
+        "minimum_cost": "2",
+        "selected": [
+          "a",
+          "b"
+        ],
+        "route": "SciPy/HiGHS binary weighted set cover"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 4,
+      "bm_full_analyzer_ms": 0.6257570000229862,
+      "bm_partition_ms": 0.012017,
+      "native_partition_ms": 0.012854
+    },
+    {
+      "name": "empty_observation_success",
+      "states": 1,
+      "code_states": 1,
+      "bm_cost": "0",
+      "native": {
+        "full_feasible": true,
+        "essential": [],
+        "minimum_cost": "0",
+        "selected": [],
+        "route": "no distinctions required"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 0,
+      "bm_full_analyzer_ms": 0.2038659999925585,
+      "bm_partition_ms": 0.006206,
+      "native_partition_ms": 0.003686
+    },
+    {
+      "name": "empty_candidate_catalogue",
+      "states": 2,
+      "code_states": 2,
+      "bm_cost": null,
+      "native": {
+        "full_feasible": true,
+        "essential": [],
+        "minimum_cost": null,
+        "selected": null,
+        "route": "exact supplied-catalogue scan"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 1,
+      "bm_full_analyzer_ms": 0.42152899999337023,
+      "bm_partition_ms": 0.006477,
+      "native_partition_ms": 0.005534
+    },
+    {
+      "name": "legacy_retention_changes_contract",
+      "states": 8,
+      "code_states": 8,
+      "bm_cost": null,
+      "native": {
+        "full_feasible": false,
+        "essential": [],
+        "minimum_cost": null,
+        "selected": null,
+        "route": "uncovered separating pair"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 28,
+      "bm_full_analyzer_ms": 0.5432130000144753,
+      "bm_partition_ms": 0.090555,
+      "native_partition_ms": 0.036663
+    },
+    {
+      "name": "seeded_00",
+      "states": 8,
+      "code_states": 1,
+      "bm_cost": "0",
+      "native": {
+        "full_feasible": true,
+        "essential": [],
+        "minimum_cost": "0",
+        "selected": [],
+        "route": "no distinctions required"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 0,
+      "bm_full_analyzer_ms": 3.541888999990306,
+      "bm_partition_ms": 0.021604,
+      "native_partition_ms": 0.031373
+    },
+    {
+      "name": "seeded_01",
+      "states": 7,
+      "code_states": 5,
+      "bm_cost": null,
+      "native": {
+        "full_feasible": false,
+        "essential": [],
+        "minimum_cost": null,
+        "selected": null,
+        "route": "uncovered separating pair"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 19,
+      "bm_full_analyzer_ms": 0.2779900000007274,
+      "bm_partition_ms": 0.023981,
+      "native_partition_ms": 0.029803
+    },
+    {
+      "name": "seeded_02",
+      "states": 12,
+      "code_states": 3,
+      "bm_cost": null,
+      "native": {
+        "full_feasible": false,
+        "essential": [],
+        "minimum_cost": null,
+        "selected": null,
+        "route": "uncovered separating pair"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 45,
+      "bm_full_analyzer_ms": 3.8560139999788134,
+      "bm_partition_ms": 0.030316,
+      "native_partition_ms": 0.257943
+    },
+    {
+      "name": "seeded_03",
+      "states": 16,
+      "code_states": 16,
+      "bm_cost": "3",
+      "native": {
+        "full_feasible": true,
+        "essential": [
+          "s0"
+        ],
+        "minimum_cost": "3",
+        "selected": [
+          "s0"
+        ],
+        "route": "SciPy/HiGHS binary weighted set cover"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 120,
+      "bm_full_analyzer_ms": 4.545261000004075,
+      "bm_partition_ms": 0.190472,
+      "native_partition_ms": 1.815474
+    },
+    {
+      "name": "seeded_04",
+      "states": 24,
+      "code_states": 1,
+      "bm_cost": "0",
+      "native": {
+        "full_feasible": true,
+        "essential": [],
+        "minimum_cost": "0",
+        "selected": [],
+        "route": "no distinctions required"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 0,
+      "bm_full_analyzer_ms": 0.7575810000162164,
+      "bm_partition_ms": 0.05534,
+      "native_partition_ms": 0.798163
+    },
+    {
+      "name": "seeded_05",
+      "states": 10,
+      "code_states": 10,
+      "bm_cost": null,
+      "native": {
+        "full_feasible": false,
+        "essential": [],
+        "minimum_cost": null,
+        "selected": null,
+        "route": "uncovered separating pair"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 45,
+      "bm_full_analyzer_ms": 1.1596269999927244,
+      "bm_partition_ms": 0.051757,
+      "native_partition_ms": 0.060218
+    },
+    {
+      "name": "seeded_06",
+      "states": 6,
+      "code_states": 5,
+      "bm_cost": "2",
+      "native": {
+        "full_feasible": true,
+        "essential": [],
+        "minimum_cost": "2",
+        "selected": [
+          "s0"
+        ],
+        "route": "SciPy/HiGHS binary weighted set cover"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 14,
+      "bm_full_analyzer_ms": 0.4798660000062682,
+      "bm_partition_ms": 0.021485,
+      "native_partition_ms": 0.025829
+    },
+    {
+      "name": "seeded_07",
+      "states": 13,
+      "code_states": 4,
+      "bm_cost": null,
+      "native": {
+        "full_feasible": false,
+        "essential": [],
+        "minimum_cost": null,
+        "selected": null,
+        "route": "uncovered separating pair"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 63,
+      "bm_full_analyzer_ms": 2.1695710000244617,
+      "bm_partition_ms": 0.032733,
+      "native_partition_ms": 0.248955
+    },
+    {
+      "name": "seeded_08",
+      "states": 8,
+      "code_states": 8,
+      "bm_cost": null,
+      "native": {
+        "full_feasible": false,
+        "essential": [],
+        "minimum_cost": null,
+        "selected": null,
+        "route": "uncovered separating pair"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 28,
+      "bm_full_analyzer_ms": 2.371806000013521,
+      "bm_partition_ms": 0.03435,
+      "native_partition_ms": 0.073722
+    },
+    {
+      "name": "seeded_09",
+      "states": 5,
+      "code_states": 2,
+      "bm_cost": "2",
+      "native": {
+        "full_feasible": true,
+        "essential": [],
+        "minimum_cost": "2",
+        "selected": [
+          "s0"
+        ],
+        "route": "SciPy/HiGHS binary weighted set cover"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 4,
+      "bm_full_analyzer_ms": 8.107335000005378,
+      "bm_partition_ms": 0.025688,
+      "native_partition_ms": 0.018422
+    },
+    {
+      "name": "seeded_10",
+      "states": 4,
+      "code_states": 4,
+      "bm_cost": "2",
+      "native": {
+        "full_feasible": true,
+        "essential": [],
+        "minimum_cost": "2",
+        "selected": [
+          "s2"
+        ],
+        "route": "SciPy/HiGHS binary weighted set cover"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 6,
+      "bm_full_analyzer_ms": 0.8444359999941753,
+      "bm_partition_ms": 0.023147,
+      "native_partition_ms": 0.023406
+    },
+    {
+      "name": "seeded_11",
+      "states": 4,
+      "code_states": 4,
+      "bm_cost": "2",
+      "native": {
+        "full_feasible": true,
+        "essential": [
+          "s0",
+          "s1"
+        ],
+        "minimum_cost": "2",
+        "selected": [
+          "s0",
+          "s1"
+        ],
+        "route": "SciPy/HiGHS binary weighted set cover"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 6,
+      "bm_full_analyzer_ms": 0.9527450000064164,
+      "bm_partition_ms": 0.019922,
+      "native_partition_ms": 0.020522
+    },
+    {
+      "name": "seeded_12",
+      "states": 15,
+      "code_states": 1,
+      "bm_cost": "0",
+      "native": {
+        "full_feasible": true,
+        "essential": [],
+        "minimum_cost": "0",
+        "selected": [],
+        "route": "no distinctions required"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 0,
+      "bm_full_analyzer_ms": 2.816647999992483,
+      "bm_partition_ms": 0.036524,
+      "native_partition_ms": 0.061516
+    },
+    {
+      "name": "seeded_13",
+      "states": 12,
+      "code_states": 12,
+      "bm_cost": null,
+      "native": {
+        "full_feasible": false,
+        "essential": [],
+        "minimum_cost": null,
+        "selected": null,
+        "route": "uncovered separating pair"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 66,
+      "bm_full_analyzer_ms": 2.7928300000041872,
+      "bm_partition_ms": 0.050778,
+      "native_partition_ms": 0.125039
+    },
+    {
+      "name": "seeded_14",
+      "states": 15,
+      "code_states": 3,
+      "bm_cost": null,
+      "native": {
+        "full_feasible": false,
+        "essential": [],
+        "minimum_cost": null,
+        "selected": null,
+        "route": "uncovered separating pair"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 68,
+      "bm_full_analyzer_ms": 7.245726000007835,
+      "bm_partition_ms": 0.038681,
+      "native_partition_ms": 0.378628
+    },
+    {
+      "name": "seeded_15",
+      "states": 8,
+      "code_states": 4,
+      "bm_cost": "9",
+      "native": {
+        "full_feasible": true,
+        "essential": [
+          "s0"
+        ],
+        "minimum_cost": "9",
+        "selected": [
+          "s0"
+        ],
+        "route": "SciPy/HiGHS binary weighted set cover"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 23,
+      "bm_full_analyzer_ms": 1.8922190000125738,
+      "bm_partition_ms": 0.021688,
+      "native_partition_ms": 0.026971
+    },
+    {
+      "name": "seeded_16",
+      "states": 13,
+      "code_states": 1,
+      "bm_cost": "0",
+      "native": {
+        "full_feasible": true,
+        "essential": [],
+        "minimum_cost": "0",
+        "selected": [],
+        "route": "no distinctions required"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 0,
+      "bm_full_analyzer_ms": 7.446891000000733,
+      "bm_partition_ms": 0.034228,
+      "native_partition_ms": 0.074788
+    },
+    {
+      "name": "seeded_17",
+      "states": 20,
+      "code_states": 20,
+      "bm_cost": null,
+      "native": {
+        "full_feasible": false,
+        "essential": [],
+        "minimum_cost": null,
+        "selected": null,
+        "route": "uncovered separating pair"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 190,
+      "bm_full_analyzer_ms": 5.246076999981142,
+      "bm_partition_ms": 0.302568,
+      "native_partition_ms": 1.574021
+    },
+    {
+      "name": "seeded_18",
+      "states": 17,
+      "code_states": 3,
+      "bm_cost": "8",
+      "native": {
+        "full_feasible": true,
+        "essential": [
+          "s0"
+        ],
+        "minimum_cost": "8",
+        "selected": [
+          "s0"
+        ],
+        "route": "SciPy/HiGHS binary weighted set cover"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 86,
+      "bm_full_analyzer_ms": 2.9884439999818824,
+      "bm_partition_ms": 0.042225,
+      "native_partition_ms": 0.093117
+    },
+    {
+      "name": "seeded_19",
+      "states": 10,
+      "code_states": 8,
+      "bm_cost": "11",
+      "native": {
+        "full_feasible": true,
+        "essential": [],
+        "minimum_cost": "11",
+        "selected": [
+          "s2",
+          "s4",
+          "s5"
+        ],
+        "route": "SciPy/HiGHS binary weighted set cover"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 43,
+      "bm_full_analyzer_ms": 11.62091999998438,
+      "bm_partition_ms": 0.032006,
+      "native_partition_ms": 0.05429
+    },
+    {
+      "name": "seeded_20",
+      "states": 21,
+      "code_states": 4,
+      "bm_cost": null,
+      "native": {
+        "full_feasible": false,
+        "essential": [],
+        "minimum_cost": null,
+        "selected": null,
+        "route": "uncovered separating pair"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 87,
+      "bm_full_analyzer_ms": 0.660841999973627,
+      "bm_partition_ms": 0.079144,
+      "native_partition_ms": 0.210344
+    },
+    {
+      "name": "seeded_21",
+      "states": 24,
+      "code_states": 24,
+      "bm_cost": "2",
+      "native": {
+        "full_feasible": true,
+        "essential": [
+          "s0"
+        ],
+        "minimum_cost": "2",
+        "selected": [
+          "s0"
+        ],
+        "route": "SciPy/HiGHS binary weighted set cover"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 276,
+      "bm_full_analyzer_ms": 18.31128699998885,
+      "bm_partition_ms": 0.090285,
+      "native_partition_ms": 0.779088
+    },
+    {
+      "name": "seeded_22",
+      "states": 11,
+      "code_states": 11,
+      "bm_cost": "14",
+      "native": {
+        "full_feasible": true,
+        "essential": [
+          "s0",
+          "s1",
+          "s2"
+        ],
+        "minimum_cost": "14",
+        "selected": [
+          "s0",
+          "s1",
+          "s2"
+        ],
+        "route": "SciPy/HiGHS binary weighted set cover"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 55,
+      "bm_full_analyzer_ms": 2.1349929999985306,
+      "bm_partition_ms": 0.06141,
+      "native_partition_ms": 0.122418
+    },
+    {
+      "name": "seeded_23",
+      "states": 15,
+      "code_states": 4,
+      "bm_cost": "25",
+      "native": {
+        "full_feasible": true,
+        "essential": [
+          "s2",
+          "s3"
+        ],
+        "minimum_cost": "25",
+        "selected": [
+          "s1",
+          "s2",
+          "s3",
+          "s4"
+        ],
+        "route": "SciPy/HiGHS binary weighted set cover"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 84,
+      "bm_full_analyzer_ms": 7.352661999988186,
+      "bm_partition_ms": 0.205573,
+      "native_partition_ms": 0.070327
+    },
+    {
+      "name": "seeded_24",
+      "states": 23,
+      "code_states": 1,
+      "bm_cost": "0",
+      "native": {
+        "full_feasible": true,
+        "essential": [],
+        "minimum_cost": "0",
+        "selected": [],
+        "route": "no distinctions required"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 0,
+      "bm_full_analyzer_ms": 1.3003310000101465,
+      "bm_partition_ms": 0.056268,
+      "native_partition_ms": 0.120189
+    },
+    {
+      "name": "seeded_25",
+      "states": 23,
+      "code_states": 23,
+      "bm_cost": "21",
+      "native": {
+        "full_feasible": true,
+        "essential": [
+          "s4",
+          "s5"
+        ],
+        "minimum_cost": "21",
+        "selected": [
+          "s0",
+          "s2",
+          "s3",
+          "s4",
+          "s5"
+        ],
+        "route": "SciPy/HiGHS binary weighted set cover"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 253,
+      "bm_full_analyzer_ms": 9.386058999979241,
+      "bm_partition_ms": 0.088535,
+      "native_partition_ms": 0.421248
+    },
+    {
+      "name": "seeded_26",
+      "states": 8,
+      "code_states": 3,
+      "bm_cost": "7",
+      "native": {
+        "full_feasible": true,
+        "essential": [
+          "s1",
+          "s2"
+        ],
+        "minimum_cost": "7",
+        "selected": [
+          "s1",
+          "s2"
+        ],
+        "route": "SciPy/HiGHS binary weighted set cover"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 21,
+      "bm_full_analyzer_ms": 0.5152319999979227,
+      "bm_partition_ms": 0.022736,
+      "native_partition_ms": 0.024353
+    },
+    {
+      "name": "seeded_27",
+      "states": 4,
+      "code_states": 4,
+      "bm_cost": "3",
+      "native": {
+        "full_feasible": true,
+        "essential": [],
+        "minimum_cost": "3",
+        "selected": [
+          "s0"
+        ],
+        "route": "SciPy/HiGHS binary weighted set cover"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 6,
+      "bm_full_analyzer_ms": 1.7194460000098388,
+      "bm_partition_ms": 0.05456,
+      "native_partition_ms": 0.019463
+    },
+    {
+      "name": "seeded_28",
+      "states": 8,
+      "code_states": 7,
+      "bm_cost": "11",
+      "native": {
+        "full_feasible": true,
+        "essential": [
+          "s0",
+          "s1",
+          "s2"
+        ],
+        "minimum_cost": "11",
+        "selected": [
+          "s0",
+          "s1",
+          "s2"
+        ],
+        "route": "SciPy/HiGHS binary weighted set cover"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 27,
+      "bm_full_analyzer_ms": 1.3736660000063239,
+      "bm_partition_ms": 0.036581,
+      "native_partition_ms": 0.044522
+    },
+    {
+      "name": "seeded_29",
+      "states": 18,
+      "code_states": 18,
+      "bm_cost": null,
+      "native": {
+        "full_feasible": false,
+        "essential": [],
+        "minimum_cost": null,
+        "selected": null,
+        "route": "uncovered separating pair"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 153,
+      "bm_full_analyzer_ms": 2.3607649999917157,
+      "bm_partition_ms": 0.066434,
+      "native_partition_ms": 0.295689
+    },
+    {
+      "name": "seeded_30",
+      "states": 6,
+      "code_states": 5,
+      "bm_cost": "5",
+      "native": {
+        "full_feasible": true,
+        "essential": [],
+        "minimum_cost": "5",
+        "selected": [
+          "s0"
+        ],
+        "route": "SciPy/HiGHS binary weighted set cover"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 14,
+      "bm_full_analyzer_ms": 4.602718000001005,
+      "bm_partition_ms": 0.025027,
+      "native_partition_ms": 0.051385
+    },
+    {
+      "name": "seeded_31",
+      "states": 15,
+      "code_states": 14,
+      "bm_cost": "20",
+      "native": {
+        "full_feasible": true,
+        "essential": [
+          "s6"
+        ],
+        "minimum_cost": "20",
+        "selected": [
+          "s2",
+          "s4",
+          "s5",
+          "s6"
+        ],
+        "route": "SciPy/HiGHS binary weighted set cover"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 104,
+      "bm_full_analyzer_ms": 22.292380000010326,
+      "bm_partition_ms": 0.056111,
+      "native_partition_ms": 0.164627
+    },
+    {
+      "name": "seeded_32",
+      "states": 14,
+      "code_states": 14,
+      "bm_cost": null,
+      "native": {
+        "full_feasible": false,
+        "essential": [],
+        "minimum_cost": null,
+        "selected": null,
+        "route": "uncovered separating pair"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 91,
+      "bm_full_analyzer_ms": 4.0789020000033815,
+      "bm_partition_ms": 0.059545,
+      "native_partition_ms": 0.262075
+    },
+    {
+      "name": "seeded_33",
+      "states": 11,
+      "code_states": 11,
+      "bm_cost": "6",
+      "native": {
+        "full_feasible": true,
+        "essential": [
+          "s0"
+        ],
+        "minimum_cost": "6",
+        "selected": [
+          "s0"
+        ],
+        "route": "SciPy/HiGHS binary weighted set cover"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 55,
+      "bm_full_analyzer_ms": 1.3693430000216722,
+      "bm_partition_ms": 0.087644,
+      "native_partition_ms": 0.07981
+    },
+    {
+      "name": "seeded_34",
+      "states": 11,
+      "code_states": 3,
+      "bm_cost": null,
+      "native": {
+        "full_feasible": false,
+        "essential": [],
+        "minimum_cost": null,
+        "selected": null,
+        "route": "uncovered separating pair"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 40,
+      "bm_full_analyzer_ms": 0.2109650000079455,
+      "bm_partition_ms": 0.02767,
+      "native_partition_ms": 0.039678
+    },
+    {
+      "name": "seeded_35",
+      "states": 8,
+      "code_states": 4,
+      "bm_cost": "14",
+      "native": {
+        "full_feasible": true,
+        "essential": [
+          "s0",
+          "s1",
+          "s2"
+        ],
+        "minimum_cost": "14",
+        "selected": [
+          "s0",
+          "s1",
+          "s2"
+        ],
+        "route": "SciPy/HiGHS binary weighted set cover"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 23,
+      "bm_full_analyzer_ms": 0.40001200000006065,
+      "bm_partition_ms": 0.021506,
+      "native_partition_ms": 0.025754
+    },
+    {
+      "name": "seeded_36",
+      "states": 4,
+      "code_states": 1,
+      "bm_cost": "0",
+      "native": {
+        "full_feasible": true,
+        "essential": [],
+        "minimum_cost": "0",
+        "selected": [],
+        "route": "no distinctions required"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 0,
+      "bm_full_analyzer_ms": 0.3189779999956954,
+      "bm_partition_ms": 0.012334,
+      "native_partition_ms": 0.013192
+    },
+    {
+      "name": "seeded_37",
+      "states": 10,
+      "code_states": 10,
+      "bm_cost": null,
+      "native": {
+        "full_feasible": false,
+        "essential": [],
+        "minimum_cost": null,
+        "selected": null,
+        "route": "uncovered separating pair"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 45,
+      "bm_full_analyzer_ms": 1.3118100000042432,
+      "bm_partition_ms": 0.039076,
+      "native_partition_ms": 0.081491
+    },
+    {
+      "name": "seeded_38",
+      "states": 14,
+      "code_states": 14,
+      "bm_cost": null,
+      "native": {
+        "full_feasible": false,
+        "essential": [],
+        "minimum_cost": null,
+        "selected": null,
+        "route": "uncovered separating pair"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 91,
+      "bm_full_analyzer_ms": 2.7751289999855544,
+      "bm_partition_ms": 0.052655,
+      "native_partition_ms": 0.253023
+    },
+    {
+      "name": "seeded_39",
+      "states": 24,
+      "code_states": 21,
+      "bm_cost": "6",
+      "native": {
+        "full_feasible": true,
+        "essential": [],
+        "minimum_cost": "6",
+        "selected": [
+          "s0"
+        ],
+        "route": "SciPy/HiGHS binary weighted set cover"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 273,
+      "bm_full_analyzer_ms": 140.43099699998152,
+      "bm_partition_ms": 0.085163,
+      "native_partition_ms": 0.376733
+    },
+    {
+      "name": "seeded_40",
+      "states": 5,
+      "code_states": 1,
+      "bm_cost": "0",
+      "native": {
+        "full_feasible": true,
+        "essential": [],
+        "minimum_cost": "0",
+        "selected": [],
+        "route": "no distinctions required"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 0,
+      "bm_full_analyzer_ms": 1.0147060000065267,
+      "bm_partition_ms": 0.017073,
+      "native_partition_ms": 0.021494
+    },
+    {
+      "name": "seeded_41",
+      "states": 17,
+      "code_states": 17,
+      "bm_cost": "22",
+      "native": {
+        "full_feasible": true,
+        "essential": [
+          "s0"
+        ],
+        "minimum_cost": "22",
+        "selected": [
+          "s0",
+          "s1",
+          "s2",
+          "s4"
+        ],
+        "route": "SciPy/HiGHS binary weighted set cover"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 136,
+      "bm_full_analyzer_ms": 14.891946000005873,
+      "bm_partition_ms": 0.068185,
+      "native_partition_ms": 0.310411
+    },
+    {
+      "name": "seeded_42",
+      "states": 13,
+      "code_states": 3,
+      "bm_cost": "1",
+      "native": {
+        "full_feasible": true,
+        "essential": [
+          "s0"
+        ],
+        "minimum_cost": "1",
+        "selected": [
+          "s0"
+        ],
+        "route": "SciPy/HiGHS binary weighted set cover"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 52,
+      "bm_full_analyzer_ms": 2.85429100000556,
+      "bm_partition_ms": 0.033957,
+      "native_partition_ms": 0.052285
+    },
+    {
+      "name": "seeded_43",
+      "states": 24,
+      "code_states": 21,
+      "bm_cost": null,
+      "native": {
+        "full_feasible": false,
+        "essential": [],
+        "minimum_cost": null,
+        "selected": null,
+        "route": "uncovered separating pair"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 273,
+      "bm_full_analyzer_ms": 3.646007000014606,
+      "bm_partition_ms": 0.086754,
+      "native_partition_ms": 0.508888
+    },
+    {
+      "name": "seeded_44",
+      "states": 22,
+      "code_states": 22,
+      "bm_cost": null,
+      "native": {
+        "full_feasible": false,
+        "essential": [],
+        "minimum_cost": null,
+        "selected": null,
+        "route": "uncovered separating pair"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 231,
+      "bm_full_analyzer_ms": 27.697462999981326,
+      "bm_partition_ms": 0.120744,
+      "native_partition_ms": 0.298515
+    },
+    {
+      "name": "seeded_45",
+      "states": 16,
+      "code_states": 16,
+      "bm_cost": "5",
+      "native": {
+        "full_feasible": true,
+        "essential": [
+          "s0"
+        ],
+        "minimum_cost": "5",
+        "selected": [
+          "s0"
+        ],
+        "route": "SciPy/HiGHS binary weighted set cover"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 120,
+      "bm_full_analyzer_ms": 5.097952999989275,
+      "bm_partition_ms": 0.061166,
+      "native_partition_ms": 0.220427
+    },
+    {
+      "name": "seeded_46",
+      "states": 24,
+      "code_states": 3,
+      "bm_cost": null,
+      "native": {
+        "full_feasible": false,
+        "essential": [],
+        "minimum_cost": null,
+        "selected": null,
+        "route": "uncovered separating pair"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 165,
+      "bm_full_analyzer_ms": 1.406548000005614,
+      "bm_partition_ms": 0.061075,
+      "native_partition_ms": 0.211481
+    },
+    {
+      "name": "seeded_47",
+      "states": 6,
+      "code_states": 3,
+      "bm_cost": null,
+      "native": {
+        "full_feasible": false,
+        "essential": [],
+        "minimum_cost": null,
+        "selected": null,
+        "route": "uncovered separating pair"
+      },
+      "agreement": true,
+      "native_pair_witnesses": 11,
+      "bm_full_analyzer_ms": 0.19013400000744696,
+      "bm_partition_ms": 0.017026,
+      "native_partition_ms": 0.017103
+    }
+  ],
+  "interfaces": [
+    {
+      "name": "full_xor",
+      "bm_cost": "4",
+      "native": {
+        "family": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "cost": "4",
+        "binary_variables": 6,
+        "constraints": 10
+      },
+      "agreement": true,
+      "bm_families_enumerated": 4,
+      "bm_greatest_exists": true,
+      "bm_full_report_ms": 0.12469099999634636,
+      "native_minimum_only_ms": 1.6267320000054042
+    },
+    {
+      "name": "diagonal_copy",
+      "bm_cost": "4",
+      "native": {
+        "family": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "cost": "4",
+        "binary_variables": 6,
+        "constraints": 7
+      },
+      "agreement": true,
+      "bm_families_enumerated": 4,
+      "bm_greatest_exists": false,
+      "bm_full_report_ms": 0.10473899999396963,
+      "native_minimum_only_ms": 2.2995799999989686
+    },
+    {
+      "name": "three_way_parity",
+      "bm_cost": "6",
+      "native": {
+        "family": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "cost": "6",
+        "binary_variables": 9,
+        "constraints": 25
+      },
+      "agreement": true,
+      "bm_families_enumerated": 8,
+      "bm_greatest_exists": true,
+      "bm_full_report_ms": 0.14860600001043167,
+      "native_minimum_only_ms": 1.3170670000022255
+    },
+    {
+      "name": "correlated_parity",
+      "bm_cost": "4",
+      "native": {
+        "family": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "cost": "4",
+        "binary_variables": 9,
+        "constraints": 13
+      },
+      "agreement": true,
+      "bm_families_enumerated": 8,
+      "bm_greatest_exists": false,
+      "bm_full_report_ms": 0.14512499998886597,
+      "native_minimum_only_ms": 2.5212879999969573
+    },
+    {
+      "name": "availability",
+      "bm_cost": "3",
+      "native": {
+        "family": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "cost": "3",
+        "binary_variables": 6,
+        "constraints": 11
+      },
+      "agreement": true,
+      "bm_families_enumerated": 4,
+      "bm_greatest_exists": true,
+      "bm_full_report_ms": 0.09840500001701002,
+      "native_minimum_only_ms": 2.846941999990804
+    },
+    {
+      "name": "retained_legacy",
+      "bm_cost": "4",
+      "native": {
+        "family": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "cost": "4",
+        "binary_variables": 9,
+        "constraints": 23
+      },
+      "agreement": true,
+      "bm_families_enumerated": 2,
+      "bm_greatest_exists": true,
+      "bm_full_report_ms": 0.09054899999227928,
+      "native_minimum_only_ms": 1.7629429999885815
+    },
+    {
+      "name": "seeded_00",
+      "bm_cost": "6",
+      "native": {
+        "family": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "cost": "6",
+        "binary_variables": 12,
+        "constraints": 18
+      },
+      "agreement": true,
+      "bm_families_enumerated": 25,
+      "bm_greatest_exists": true,
+      "bm_full_report_ms": 0.9465340000076594,
+      "native_minimum_only_ms": 4.783004999978857
+    },
+    {
+      "name": "seeded_01",
+      "bm_cost": "8",
+      "native": {
+        "family": [
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "cost": "8",
+        "binary_variables": 9,
+        "constraints": 17
+      },
+      "agreement": true,
+      "bm_families_enumerated": 10,
+      "bm_greatest_exists": false,
+      "bm_full_report_ms": 0.12217500000133441,
+      "native_minimum_only_ms": 1.3421129999926507
+    },
+    {
+      "name": "seeded_02",
+      "bm_cost": "4",
+      "native": {
+        "family": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            2
+          ]
+        ],
+        "cost": "4",
+        "binary_variables": 9,
+        "constraints": 22
+      },
+      "agreement": true,
+      "bm_families_enumerated": 10,
+      "bm_greatest_exists": false,
+      "bm_full_report_ms": 0.1642719999779274,
+      "native_minimum_only_ms": 1.662331000005679
+    },
+    {
+      "name": "seeded_03",
+      "bm_cost": "4",
+      "native": {
+        "family": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "cost": "4",
+        "binary_variables": 15,
+        "constraints": 21
+      },
+      "agreement": true,
+      "bm_families_enumerated": 50,
+      "bm_greatest_exists": true,
+      "bm_full_report_ms": 1.6120170000135658,
+      "native_minimum_only_ms": 3.6155199999825527
+    },
+    {
+      "name": "seeded_04",
+      "bm_cost": "9",
+      "native": {
+        "family": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "cost": "9",
+        "binary_variables": 6,
+        "constraints": 7
+      },
+      "agreement": true,
+      "bm_families_enumerated": 4,
+      "bm_greatest_exists": true,
+      "bm_full_report_ms": 0.08200100000976818,
+      "native_minimum_only_ms": 5.147746000005782
+    },
+    {
+      "name": "seeded_05",
+      "bm_cost": "6",
+      "native": {
+        "family": [
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "cost": "6",
+        "binary_variables": 9,
+        "constraints": 29
+      },
+      "agreement": true,
+      "bm_families_enumerated": 10,
+      "bm_greatest_exists": true,
+      "bm_full_report_ms": 2.737702999979774,
+      "native_minimum_only_ms": 2.9180049999979474
+    },
+    {
+      "name": "seeded_06",
+      "bm_cost": "8",
+      "native": {
+        "family": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "cost": "8",
+        "binary_variables": 15,
+        "constraints": 21
+      },
+      "agreement": true,
+      "bm_families_enumerated": 50,
+      "bm_greatest_exists": true,
+      "bm_full_report_ms": 1.3860530000044946,
+      "native_minimum_only_ms": 3.082917000000407
+    },
+    {
+      "name": "seeded_07",
+      "bm_cost": "17",
+      "native": {
+        "family": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "cost": "17",
+        "binary_variables": 12,
+        "constraints": 70
+      },
+      "agreement": true,
+      "bm_families_enumerated": 20,
+      "bm_greatest_exists": true,
+      "bm_full_report_ms": 0.19522899998491994,
+      "native_minimum_only_ms": 2.0363169999768616
+    },
+    {
+      "name": "seeded_08",
+      "bm_cost": "10",
+      "native": {
+        "family": [
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            0,
+            1,
+            2
+          ]
+        ],
+        "cost": "10",
+        "binary_variables": 12,
+        "constraints": 45
+      },
+      "agreement": true,
+      "bm_families_enumerated": 25,
+      "bm_greatest_exists": false,
+      "bm_full_report_ms": 0.226228000002493,
+      "native_minimum_only_ms": 3.25942000000623
+    },
+    {
+      "name": "seeded_09",
+      "bm_cost": "4",
+      "native": {
+        "family": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "cost": "4",
+        "binary_variables": 12,
+        "constraints": 18
+      },
+      "agreement": true,
+      "bm_families_enumerated": 25,
+      "bm_greatest_exists": true,
+      "bm_full_report_ms": 1.1690510000050836,
+      "native_minimum_only_ms": 3.8298609999856126
+    },
+    {
+      "name": "seeded_10",
+      "bm_cost": "10",
+      "native": {
+        "family": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "cost": "10",
+        "binary_variables": 6,
+        "constraints": 17
+      },
+      "agreement": true,
+      "bm_families_enumerated": 4,
+      "bm_greatest_exists": true,
+      "bm_full_report_ms": 0.06561299997542847,
+      "native_minimum_only_ms": 2.6608729999964
+    },
+    {
+      "name": "seeded_11",
+      "bm_cost": "16",
+      "native": {
+        "family": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "cost": "16",
+        "binary_variables": 15,
+        "constraints": 547
+      },
+      "agreement": true,
+      "bm_families_enumerated": 50,
+      "bm_greatest_exists": true,
+      "bm_full_report_ms": 1.085824000000457,
+      "native_minimum_only_ms": 6.199338000016041
+    },
+    {
+      "name": "seeded_12",
+      "bm_cost": "5",
+      "native": {
+        "family": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "cost": "5",
+        "binary_variables": 15,
+        "constraints": 21
+      },
+      "agreement": true,
+      "bm_families_enumerated": 50,
+      "bm_greatest_exists": true,
+      "bm_full_report_ms": 1.1935880000066845,
+      "native_minimum_only_ms": 4.667735000026596
+    },
+    {
+      "name": "seeded_13",
+      "bm_cost": "18",
+      "native": {
+        "family": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "cost": "18",
+        "binary_variables": 9,
+        "constraints": 57
+      },
+      "agreement": true,
+      "bm_families_enumerated": 8,
+      "bm_greatest_exists": true,
+      "bm_full_report_ms": 0.10397500000181026,
+      "native_minimum_only_ms": 2.7405419999979586
+    },
+    {
+      "name": "seeded_14",
+      "bm_cost": "8",
+      "native": {
+        "family": [
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "cost": "8",
+        "binary_variables": 15,
+        "constraints": 53
+      },
+      "agreement": true,
+      "bm_families_enumerated": 50,
+      "bm_greatest_exists": false,
+      "bm_full_report_ms": 0.5005639999922096,
+      "native_minimum_only_ms": 4.420429999981934
+    },
+    {
+      "name": "seeded_15",
+      "bm_cost": "2",
+      "native": {
+        "family": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "cost": "2",
+        "binary_variables": 12,
+        "constraints": 18
+      },
+      "agreement": true,
+      "bm_families_enumerated": 25,
+      "bm_greatest_exists": true,
+      "bm_full_report_ms": 0.5721400000027188,
+      "native_minimum_only_ms": 6.925620999993498
+    },
+    {
+      "name": "seeded_16",
+      "bm_cost": "12",
+      "native": {
+        "family": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "cost": "12",
+        "binary_variables": 9,
+        "constraints": 42
+      },
+      "agreement": true,
+      "bm_families_enumerated": 8,
+      "bm_greatest_exists": true,
+      "bm_full_report_ms": 0.10568100000796221,
+      "native_minimum_only_ms": 9.574881999981244
+    },
+    {
+      "name": "seeded_17",
+      "bm_cost": "12",
+      "native": {
+        "family": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            1
+          ]
+        ],
+        "cost": "12",
+        "binary_variables": 12,
+        "constraints": 89
+      },
+      "agreement": true,
+      "bm_families_enumerated": 20,
+      "bm_greatest_exists": true,
+      "bm_full_report_ms": 0.27833400000076836,
+      "native_minimum_only_ms": 2.539113000011639
+    },
+    {
+      "name": "seeded_18",
+      "bm_cost": "2",
+      "native": {
+        "family": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "cost": "2",
+        "binary_variables": 6,
+        "constraints": 6
+      },
+      "agreement": true,
+      "bm_families_enumerated": 4,
+      "bm_greatest_exists": true,
+      "bm_full_report_ms": 3.5754750000194235,
+      "native_minimum_only_ms": 7.647222999992209
+    },
+    {
+      "name": "seeded_19",
+      "bm_cost": "9",
+      "native": {
+        "family": [
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "cost": "9",
+        "binary_variables": 12,
+        "constraints": 22
+      },
+      "agreement": true,
+      "bm_families_enumerated": 25,
+      "bm_greatest_exists": false,
+      "bm_full_report_ms": 0.668614999995043,
+      "native_minimum_only_ms": 15.239499999978534
+    },
+    {
+      "name": "seeded_20",
+      "bm_cost": "10",
+      "native": {
+        "family": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            2
+          ]
+        ],
+        "cost": "10",
+        "binary_variables": 12,
+        "constraints": 267
+      },
+      "agreement": true,
+      "bm_families_enumerated": 20,
+      "bm_greatest_exists": true,
+      "bm_full_report_ms": 0.41875299999105664,
+      "native_minimum_only_ms": 7.972821000009844
+    },
+    {
+      "name": "seeded_21",
+      "bm_cost": "5",
+      "native": {
+        "family": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "cost": "5",
+        "binary_variables": 12,
+        "constraints": 15
+      },
+      "agreement": true,
+      "bm_families_enumerated": 20,
+      "bm_greatest_exists": true,
+      "bm_full_report_ms": 0.7372839999959524,
+      "native_minimum_only_ms": 2.8558900000064114
+    },
+    {
+      "name": "seeded_22",
+      "bm_cost": "10",
+      "native": {
+        "family": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "cost": "10",
+        "binary_variables": 9,
+        "constraints": 38
+      },
+      "agreement": true,
+      "bm_families_enumerated": 10,
+      "bm_greatest_exists": true,
+      "bm_full_report_ms": 0.18053599998779646,
+      "native_minimum_only_ms": 4.051410000016631
+    },
+    {
+      "name": "seeded_23",
+      "bm_cost": "3",
+      "native": {
+        "family": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "cost": "3",
+        "binary_variables": 12,
+        "constraints": 18
+      },
+      "agreement": true,
+      "bm_families_enumerated": 25,
+      "bm_greatest_exists": true,
+      "bm_full_report_ms": 0.5848419999949783,
+      "native_minimum_only_ms": 5.747658999979421
+    },
+    {
+      "name": "seeded_24",
+      "bm_cost": "7",
+      "native": {
+        "family": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "cost": "7",
+        "binary_variables": 15,
+        "constraints": 21
+      },
+      "agreement": true,
+      "bm_families_enumerated": 50,
+      "bm_greatest_exists": true,
+      "bm_full_report_ms": 1.018296000012242,
+      "native_minimum_only_ms": 5.2802550000023984
+    },
+    {
+      "name": "seeded_25",
+      "bm_cost": "19",
+      "native": {
+        "family": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ]
+        ],
+        "cost": "19",
+        "binary_variables": 15,
+        "constraints": 139
+      },
+      "agreement": true,
+      "bm_families_enumerated": 50,
+      "bm_greatest_exists": true,
+      "bm_full_report_ms": 5.69412100000477,
+      "native_minimum_only_ms": 9.175866999981963
+    },
+    {
+      "name": "seeded_26",
+      "bm_cost": "22",
+      "native": {
+        "family": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            1,
+            2
+          ]
+        ],
+        "cost": "22",
+        "binary_variables": 15,
+        "constraints": 334
+      },
+      "agreement": true,
+      "bm_families_enumerated": 50,
+      "bm_greatest_exists": true,
+      "bm_full_report_ms": 6.3252329999841095,
+      "native_minimum_only_ms": 7.143554000009544
+    },
+    {
+      "name": "seeded_27",
+      "bm_cost": "6",
+      "native": {
+        "family": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "cost": "6",
+        "binary_variables": 9,
+        "constraints": 12
+      },
+      "agreement": true,
+      "bm_families_enumerated": 10,
+      "bm_greatest_exists": true,
+      "bm_full_report_ms": 0.2515950000088196,
+      "native_minimum_only_ms": 3.8860399999975925
+    },
+    {
+      "name": "seeded_28",
+      "bm_cost": "7",
+      "native": {
+        "family": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        "cost": "7",
+        "binary_variables": 9,
+        "constraints": 13
+      },
+      "agreement": true,
+      "bm_families_enumerated": 10,
+      "bm_greatest_exists": false,
+      "bm_full_report_ms": 0.42501800001559786,
+      "native_minimum_only_ms": 5.13876099998356
+    },
+    {
+      "name": "seeded_29",
+      "bm_cost": "11",
+      "native": {
+        "family": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "cost": "11",
+        "binary_variables": 9,
+        "constraints": 20
+      },
+      "agreement": true,
+      "bm_families_enumerated": 10,
+      "bm_greatest_exists": true,
+      "bm_full_report_ms": 0.09235499999249441,
+      "native_minimum_only_ms": 4.117963999988206
+    }
+  ],
+  "linear": [
+    {
+      "name": "oscillator",
+      "native_dimension": 2,
+      "bm_dimension": 2,
+      "clue_dimension": 2,
+      "same_row_space": true,
+      "clue_exact_consistency": true,
+      "basis": [
+        [
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "1"
+        ]
+      ],
+      "bm_core_ms": 0.02195,
+      "clue_core_ms": 0.171318
+    },
+    {
+      "name": "shear",
+      "native_dimension": 2,
+      "bm_dimension": 2,
+      "clue_dimension": 2,
+      "same_row_space": true,
+      "clue_exact_consistency": true,
+      "basis": [
+        [
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "1"
+        ]
+      ],
+      "bm_core_ms": 0.021738,
+      "clue_core_ms": 0.054948
+    },
+    {
+      "name": "diagonal",
+      "native_dimension": 3,
+      "bm_dimension": 1,
+      "clue_dimension": 1,
+      "same_row_space": true,
+      "clue_exact_consistency": true,
+      "basis": [
+        [
+          "1",
+          "0",
+          "0"
+        ]
+      ],
+      "bm_core_ms": 0.053881,
+      "clue_core_ms": 0.070376
+    },
+    {
+      "name": "repeated_eigenvalue",
+      "native_dimension": 3,
+      "bm_dimension": 1,
+      "clue_dimension": 1,
+      "same_row_space": true,
+      "clue_exact_consistency": true,
+      "basis": [
+        [
+          "1",
+          "1",
+          "0"
+        ]
+      ],
+      "bm_core_ms": 0.05549,
+      "clue_core_ms": 0.07949
+    },
+    {
+      "name": "zero",
+      "native_dimension": 3,
+      "bm_dimension": 1,
+      "clue_dimension": 1,
+      "same_row_space": true,
+      "clue_exact_consistency": true,
+      "basis": [
+        [
+          "1",
+          "0",
+          "0"
+        ]
+      ],
+      "bm_core_ms": 0.049431,
+      "clue_core_ms": 0.041063
+    },
+    {
+      "name": "chain7",
+      "native_dimension": 7,
+      "bm_dimension": 7,
+      "clue_dimension": 7,
+      "same_row_space": true,
+      "clue_exact_consistency": true,
+      "basis": [
+        [
+          "1",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "1",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "1"
+        ]
+      ],
+      "bm_core_ms": 0.612619,
+      "clue_core_ms": 0.177527
+    },
+    {
+      "name": "dense_00",
+      "native_dimension": 2,
+      "bm_dimension": 1,
+      "clue_dimension": 1,
+      "same_row_space": true,
+      "clue_exact_consistency": true,
+      "basis": [
+        [
+          "1",
+          "0"
+        ]
+      ],
+      "bm_core_ms": 0.021926,
+      "clue_core_ms": 0.067382
+    },
+    {
+      "name": "dense_01",
+      "native_dimension": 2,
+      "bm_dimension": 1,
+      "clue_dimension": 1,
+      "same_row_space": true,
+      "clue_exact_consistency": true,
+      "basis": [
+        [
+          "1",
+          "0"
+        ]
+      ],
+      "bm_core_ms": 0.054094,
+      "clue_core_ms": 0.055533
+    },
+    {
+      "name": "dense_02",
+      "native_dimension": 6,
+      "bm_dimension": 6,
+      "clue_dimension": 6,
+      "same_row_space": true,
+      "clue_exact_consistency": true,
+      "basis": [
+        [
+          "1",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "1",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "1"
+        ]
+      ],
+      "bm_core_ms": 0.673243,
+      "clue_core_ms": 0.837345
+    },
+    {
+      "name": "dense_03",
+      "native_dimension": 3,
+      "bm_dimension": 3,
+      "clue_dimension": 3,
+      "same_row_space": true,
+      "clue_exact_consistency": true,
+      "basis": [
+        [
+          "1",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "1"
+        ]
+      ],
+      "bm_core_ms": 0.061184,
+      "clue_core_ms": 0.142478
+    },
+    {
+      "name": "dense_04",
+      "native_dimension": 5,
+      "bm_dimension": 5,
+      "clue_dimension": 5,
+      "same_row_space": true,
+      "clue_exact_consistency": true,
+      "basis": [
+        [
+          "1",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "1",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "1",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "1"
+        ]
+      ],
+      "bm_core_ms": 0.31263,
+      "clue_core_ms": 0.843942
+    },
+    {
+      "name": "dense_05",
+      "native_dimension": 5,
+      "bm_dimension": 5,
+      "clue_dimension": 5,
+      "same_row_space": true,
+      "clue_exact_consistency": true,
+      "basis": [
+        [
+          "1",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "1",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "1",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "1"
+        ]
+      ],
+      "bm_core_ms": 0.30288,
+      "clue_core_ms": 0.309377
+    },
+    {
+      "name": "dense_06",
+      "native_dimension": 2,
+      "bm_dimension": 2,
+      "clue_dimension": 2,
+      "same_row_space": true,
+      "clue_exact_consistency": true,
+      "basis": [
+        [
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "1"
+        ]
+      ],
+      "bm_core_ms": 0.026491,
+      "clue_core_ms": 0.068008
+    },
+    {
+      "name": "dense_07",
+      "native_dimension": 2,
+      "bm_dimension": 2,
+      "clue_dimension": 2,
+      "same_row_space": true,
+      "clue_exact_consistency": true,
+      "basis": [
+        [
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "1"
+        ]
+      ],
+      "bm_core_ms": 0.020852,
+      "clue_core_ms": 0.067284
+    },
+    {
+      "name": "dense_08",
+      "native_dimension": 5,
+      "bm_dimension": 5,
+      "clue_dimension": 5,
+      "same_row_space": true,
+      "clue_exact_consistency": true,
+      "basis": [
+        [
+          "1",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "1",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "1",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "1"
+        ]
+      ],
+      "bm_core_ms": 0.333488,
+      "clue_core_ms": 0.254149
+    },
+    {
+      "name": "dense_09",
+      "native_dimension": 2,
+      "bm_dimension": 2,
+      "clue_dimension": 2,
+      "same_row_space": true,
+      "clue_exact_consistency": true,
+      "basis": [
+        [
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "1"
+        ]
+      ],
+      "bm_core_ms": 0.02391,
+      "clue_core_ms": 0.325735
+    },
+    {
+      "name": "dense_10",
+      "native_dimension": 3,
+      "bm_dimension": 3,
+      "clue_dimension": 3,
+      "same_row_space": true,
+      "clue_exact_consistency": true,
+      "basis": [
+        [
+          "1",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "1"
+        ]
+      ],
+      "bm_core_ms": 0.067086,
+      "clue_core_ms": 0.102687
+    },
+    {
+      "name": "dense_11",
+      "native_dimension": 5,
+      "bm_dimension": 5,
+      "clue_dimension": 5,
+      "same_row_space": true,
+      "clue_exact_consistency": true,
+      "basis": [
+        [
+          "1",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "1",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "1",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "1"
+        ]
+      ],
+      "bm_core_ms": 0.43983,
+      "clue_core_ms": 0.481854
+    },
+    {
+      "name": "reducible_00",
+      "native_dimension": 2,
+      "bm_dimension": 1,
+      "clue_dimension": 1,
+      "same_row_space": true,
+      "clue_exact_consistency": true,
+      "basis": [
+        [
+          "1",
+          "2"
+        ]
+      ],
+      "bm_core_ms": 0.021578,
+      "clue_core_ms": 0.065557
+    },
+    {
+      "name": "reducible_01",
+      "native_dimension": 6,
+      "bm_dimension": 2,
+      "clue_dimension": 2,
+      "same_row_space": true,
+      "clue_exact_consistency": true,
+      "basis": [
+        [
+          "1",
+          "0",
+          "-4",
+          "0",
+          "-4",
+          "-1"
+        ],
+        [
+          "0",
+          "1",
+          "-2",
+          "-1",
+          "-2",
+          "0"
+        ]
+      ],
+      "bm_core_ms": 1.093542,
+      "clue_core_ms": 0.793517
+    },
+    {
+      "name": "reducible_02",
+      "native_dimension": 6,
+      "bm_dimension": 3,
+      "clue_dimension": 3,
+      "same_row_space": true,
+      "clue_exact_consistency": true,
+      "basis": [
+        [
+          "1",
+          "0",
+          "0",
+          "-3",
+          "1",
+          "-1"
+        ],
+        [
+          "0",
+          "1",
+          "0",
+          "-1",
+          "4",
+          "-3"
+        ],
+        [
+          "0",
+          "0",
+          "1",
+          "-1",
+          "1",
+          "-1"
+        ]
+      ],
+      "bm_core_ms": 0.484682,
+      "clue_core_ms": 0.354469
+    },
+    {
+      "name": "reducible_03",
+      "native_dimension": 5,
+      "bm_dimension": 4,
+      "clue_dimension": 4,
+      "same_row_space": true,
+      "clue_exact_consistency": true,
+      "basis": [
+        [
+          "1",
+          "0",
+          "0",
+          "0",
+          "-6"
+        ],
+        [
+          "0",
+          "1",
+          "0",
+          "0",
+          "2"
+        ],
+        [
+          "0",
+          "0",
+          "1",
+          "0",
+          "-3"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "1",
+          "2"
+        ]
+      ],
+      "bm_core_ms": 0.81,
+      "clue_core_ms": 0.200968
+    },
+    {
+      "name": "reducible_04",
+      "native_dimension": 4,
+      "bm_dimension": 1,
+      "clue_dimension": 1,
+      "same_row_space": true,
+      "clue_exact_consistency": true,
+      "basis": [
+        [
+          "1",
+          "0",
+          "0",
+          "0"
+        ]
+      ],
+      "bm_core_ms": 0.115768,
+      "clue_core_ms": 0.07926
+    },
+    {
+      "name": "reducible_05",
+      "native_dimension": 2,
+      "bm_dimension": 1,
+      "clue_dimension": 1,
+      "same_row_space": true,
+      "clue_exact_consistency": true,
+      "basis": [
+        [
+          "1",
+          "-2"
+        ]
+      ],
+      "bm_core_ms": 0.14118,
+      "clue_core_ms": 0.224475
+    },
+    {
+      "name": "reducible_06",
+      "native_dimension": 5,
+      "bm_dimension": 1,
+      "clue_dimension": 1,
+      "same_row_space": true,
+      "clue_exact_consistency": true,
+      "basis": [
+        [
+          "1",
+          "0",
+          "0",
+          "0",
+          "2"
+        ]
+      ],
+      "bm_core_ms": 0.67389,
+      "clue_core_ms": 0.34967
+    },
+    {
+      "name": "reducible_07",
+      "native_dimension": 2,
+      "bm_dimension": 1,
+      "clue_dimension": 1,
+      "same_row_space": true,
+      "clue_exact_consistency": true,
+      "basis": [
+        [
+          "1",
+          "2"
+        ]
+      ],
+      "bm_core_ms": 0.021675,
+      "clue_core_ms": 0.076966
+    },
+    {
+      "name": "reducible_08",
+      "native_dimension": 5,
+      "bm_dimension": 3,
+      "clue_dimension": 3,
+      "same_row_space": true,
+      "clue_exact_consistency": true,
+      "basis": [
+        [
+          "1",
+          "0",
+          "0",
+          "0",
+          "-1"
+        ],
+        [
+          "0",
+          "1",
+          "0",
+          "-1",
+          "1"
+        ],
+        [
+          "0",
+          "0",
+          "1",
+          "-1",
+          "0"
+        ]
+      ],
+      "bm_core_ms": 0.238901,
+      "clue_core_ms": 0.408181
+    },
+    {
+      "name": "reducible_09",
+      "native_dimension": 3,
+      "bm_dimension": 2,
+      "clue_dimension": 2,
+      "same_row_space": true,
+      "clue_exact_consistency": true,
+      "basis": [
+        [
+          "1",
+          "0",
+          "-1"
+        ],
+        [
+          "0",
+          "1",
+          "0"
+        ]
+      ],
+      "bm_core_ms": 0.0609,
+      "clue_core_ms": 0.090889
+    },
+    {
+      "name": "reducible_10",
+      "native_dimension": 4,
+      "bm_dimension": 2,
+      "clue_dimension": 2,
+      "same_row_space": true,
+      "clue_exact_consistency": true,
+      "basis": [
+        [
+          "1",
+          "0",
+          "3",
+          "-2"
+        ],
+        [
+          "0",
+          "1",
+          "-1",
+          "0"
+        ]
+      ],
+      "bm_core_ms": 0.127851,
+      "clue_core_ms": 0.129982
+    },
+    {
+      "name": "reducible_11",
+      "native_dimension": 3,
+      "bm_dimension": 2,
+      "clue_dimension": 2,
+      "same_row_space": true,
+      "clue_exact_consistency": true,
+      "basis": [
+        [
+          "1",
+          "0",
+          "-2"
+        ],
+        [
+          "0",
+          "1",
+          "-1"
+        ]
+      ],
+      "bm_core_ms": 0.16978,
+      "clue_core_ms": 0.100104
+    }
+  ],
+  "robust": [
+    {
+      "theta": 0,
+      "eta": 0,
+      "bm_error": 0.0,
+      "optimal_recovery_error": 0.0,
+      "difference": 0.0
+    },
+    {
+      "theta": 0,
+      "eta": 0.01,
+      "bm_error": 0.01,
+      "optimal_recovery_error": 0.01,
+      "difference": 0.0
+    },
+    {
+      "theta": 0,
+      "eta": 0.1,
+      "bm_error": 0.1,
+      "optimal_recovery_error": 0.1,
+      "difference": 0.0
+    },
+    {
+      "theta": 0,
+      "eta": 0.5,
+      "bm_error": 0.5,
+      "optimal_recovery_error": 0.5,
+      "difference": 0.0
+    },
+    {
+      "theta": 0,
+      "eta": 1,
+      "bm_error": 1.0,
+      "optimal_recovery_error": 1.0,
+      "difference": 0.0
+    },
+    {
+      "theta": 0.2617993877991494,
+      "eta": 0,
+      "bm_error": 0.25881904510252074,
+      "optimal_recovery_error": 0.25881904510252074,
+      "difference": 0.0
+    },
+    {
+      "theta": 0.2617993877991494,
+      "eta": 0.01,
+      "bm_error": 0.2684653620896163,
+      "optimal_recovery_error": 0.2684653620896163,
+      "difference": 0.0
+    },
+    {
+      "theta": 0.2617993877991494,
+      "eta": 0.1,
+      "bm_error": 0.35411428098984665,
+      "optimal_recovery_error": 0.35411428098984665,
+      "difference": 0.0
+    },
+    {
+      "theta": 0.2617993877991494,
+      "eta": 0.5,
+      "bm_error": 0.7071067811865475,
+      "optimal_recovery_error": 0.7071067811865475,
+      "difference": 0.0
+    },
+    {
+      "theta": 0.2617993877991494,
+      "eta": 1,
+      "bm_error": 1.0,
+      "optimal_recovery_error": 1.0,
+      "difference": 0.0
+    },
+    {
+      "theta": 0.5235987755982988,
+      "eta": 0,
+      "bm_error": 0.49999999999999994,
+      "optimal_recovery_error": 0.49999999999999994,
+      "difference": 0.0
+    },
+    {
+      "theta": 0.5235987755982988,
+      "eta": 0.01,
+      "bm_error": 0.5086352534128131,
+      "optimal_recovery_error": 0.5086352534128131,
+      "difference": 0.0
+    },
+    {
+      "theta": 0.5235987755982988,
+      "eta": 0.1,
+      "bm_error": 0.5840962589317538,
+      "optimal_recovery_error": 0.5840962589317538,
+      "difference": 0.0
+    },
+    {
+      "theta": 0.5235987755982988,
+      "eta": 0.5,
+      "bm_error": 0.8660254037844386,
+      "optimal_recovery_error": 0.8660254037844386,
+      "difference": 0.0
+    },
+    {
+      "theta": 0.5235987755982988,
+      "eta": 1,
+      "bm_error": 1.0,
+      "optimal_recovery_error": 1.0,
+      "difference": 0.0
+    },
+    {
+      "theta": 0.7853981633974483,
+      "eta": 0,
+      "bm_error": 0.7071067811865475,
+      "optimal_recovery_error": 0.7071067811865475,
+      "difference": 0.0
+    },
+    {
+      "theta": 0.7853981633974483,
+      "eta": 0.01,
+      "bm_error": 0.714142492775426,
+      "optimal_recovery_error": 0.714142492775426,
+      "difference": 0.0
+    },
+    {
+      "theta": 0.7853981633974483,
+      "eta": 0.1,
+      "bm_error": 0.7742730420921691,
+      "optimal_recovery_error": 0.7742730420921692,
+      "difference": 1.1102230246251565e-16
+    },
+    {
+      "theta": 0.7853981633974483,
+      "eta": 0.5,
+      "bm_error": 0.9659258262890682,
+      "optimal_recovery_error": 0.9659258262890682,
+      "difference": 0.0
+    },
+    {
+      "theta": 0.7853981633974483,
+      "eta": 1,
+      "bm_error": 1.0,
+      "optimal_recovery_error": 1.0,
+      "difference": 0.0
+    },
+    {
+      "theta": 1.0471975511965976,
+      "eta": 0,
+      "bm_error": 0.8660254037844386,
+      "optimal_recovery_error": 0.8660254037844386,
+      "difference": 0.0
+    },
+    {
+      "theta": 1.0471975511965976,
+      "eta": 0.01,
+      "bm_error": 0.8709821014316635,
+      "optimal_recovery_error": 0.8709821014316634,
+      "difference": 1.1102230246251565e-16
+    },
+    {
+      "theta": 1.0471975511965976,
+      "eta": 0.1,
+      "bm_error": 0.9116843969807042,
+      "optimal_recovery_error": 0.9116843969807042,
+      "difference": 0.0
+    },
+    {
+      "theta": 1.0471975511965976,
+      "eta": 0.5,
+      "bm_error": 1.0,
+      "optimal_recovery_error": 1.0,
+      "difference": 0.0
+    },
+    {
+      "theta": 1.0471975511965976,
+      "eta": 1,
+      "bm_error": 1.0,
+      "optimal_recovery_error": 1.0,
+      "difference": 0.0
+    },
+    {
+      "theta": 1.5707963267948966,
+      "eta": 0,
+      "bm_error": 1.0,
+      "optimal_recovery_error": 1.0,
+      "difference": 0.0
+    },
+    {
+      "theta": 1.5707963267948966,
+      "eta": 0.01,
+      "bm_error": 1.0,
+      "optimal_recovery_error": 1.0,
+      "difference": 0.0
+    },
+    {
+      "theta": 1.5707963267948966,
+      "eta": 0.1,
+      "bm_error": 1.0,
+      "optimal_recovery_error": 1.0,
+      "difference": 0.0
+    },
+    {
+      "theta": 1.5707963267948966,
+      "eta": 0.5,
+      "bm_error": 1.0,
+      "optimal_recovery_error": 1.0,
+      "difference": 0.0
+    },
+    {
+      "theta": 1.5707963267948966,
+      "eta": 1,
+      "bm_error": 1.0,
+      "optimal_recovery_error": 1.0,
+      "difference": 0.0
+    },
+    {
+      "theta": 2.0943951023931953,
+      "eta": 0,
+      "bm_error": 0.8660254037844387,
+      "optimal_recovery_error": 0.8660254037844387,
+      "difference": 0.0
+    },
+    {
+      "theta": 2.0943951023931953,
+      "eta": 0.01,
+      "bm_error": 0.8709821014316637,
+      "optimal_recovery_error": 0.8709821014316635,
+      "difference": 1.1102230246251565e-16
+    },
+    {
+      "theta": 2.0943951023931953,
+      "eta": 0.1,
+      "bm_error": 0.9116843969807042,
+      "optimal_recovery_error": 0.9116843969807042,
+      "difference": 0.0
+    },
+    {
+      "theta": 2.0943951023931953,
+      "eta": 0.5,
+      "bm_error": 1.0,
+      "optimal_recovery_error": 0.9999999999999999,
+      "difference": 1.1102230246251565e-16
+    },
+    {
+      "theta": 2.0943951023931953,
+      "eta": 1,
+      "bm_error": 1.0,
+      "optimal_recovery_error": 0.9999999999999999,
+      "difference": 1.1102230246251565e-16
+    },
+    {
+      "theta": 3.141592653589793,
+      "eta": 0,
+      "bm_error": 1.2246467991473532e-16,
+      "optimal_recovery_error": 1.2246467991473532e-16,
+      "difference": 0.0
+    },
+    {
+      "theta": 3.141592653589793,
+      "eta": 0.01,
+      "bm_error": 0.010000000000000123,
+      "optimal_recovery_error": 0.010000000000000123,
+      "difference": 0.0
+    },
+    {
+      "theta": 3.141592653589793,
+      "eta": 0.1,
+      "bm_error": 0.10000000000000013,
+      "optimal_recovery_error": 0.10000000000000013,
+      "difference": 0.0
+    },
+    {
+      "theta": 3.141592653589793,
+      "eta": 0.5,
+      "bm_error": 0.5000000000000001,
+      "optimal_recovery_error": 0.5000000000000001,
+      "difference": 0.0
+    },
+    {
+      "theta": 3.141592653589793,
+      "eta": 1,
+      "bm_error": 1.0,
+      "optimal_recovery_error": 1.0,
+      "difference": 0.0
+    }
+  ],
+  "nonlinear_clue": {
+    "dimension": 2,
+    "observables": [
+      "x1",
+      "x2 + 2*x3"
+    ],
+    "equations": [
+      "y1**2",
+      "2*y1"
+    ],
+    "exact_consistency": true,
+    "bm_general_nonlinear_reducer_ran": false
+  },
+  "integration": [
+    {
+      "case": "initialize oscillator from position only",
+      "bm": "infeasible",
+      "complete_native_workflow": "infeasible",
+      "incomplete_stage": "CLUE reduction alone supplies a two-dimensional state; initialization is outside that call"
+    },
+    {
+      "case": "two near-coincident samples; noise .1; tolerance .2",
+      "bm": "infeasible",
+      "complete_native_workflow": "infeasible",
+      "error": 1,
+      "incomplete_stage": "rank alone passes; bounded-noise recovery is an additional obligation"
+    },
+    {
+      "case": "three jointly contradictory Boolean constraints",
+      "bm": "infeasible",
+      "complete_native_workflow": "infeasible",
+      "incomplete_stage": "each single constraint and each pair is satisfiable"
+    }
+  ],
+  "negative_control": {
+    "case": "oscillator position at initialization only",
+    "required_code_dimension": 1,
+    "full_future_code_dimension": 2,
+    "interpretation": "Overstating the task makes either workflow retain unnecessary information."
+  },
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Linux-6.18.55-x86_64-with-glibc2.39",
+    "packages": {
+      "numpy": "2.3.5",
+      "scipy": "1.17.0",
+      "sympy": "1.14.0",
+      "matplotlib": "3.10.8",
+      "natsort": "8.4.0",
+      "requests": "2.34.2",
+      "beautifulsoup4": "4.15.0"
+    },
+    "clue_commit": "0576e9b8477bc511e3fea29a3c296c5d30b688aa",
+    "clue_version_from_setup": "1.7.3",
+    "clue_core_cache_cleared_each_call": true,
+    "timing_repetitions": 3
+  },
+  "summary": {
+    "finite_cases": 56,
+    "interface_cases": 36,
+    "linear_cases": 30,
+    "noisy_cases": 40,
+    "mathematical_disagreements": 0,
+    "native_witnesses_replayed": 3569,
+    "maximum_noisy_error_difference": 1.1102230246251565e-16,
+    "finite_core_median_ms": {
+      "bm": 0.0365525,
+      "native": 0.0687355
+    },
+    "linear_core_median_ms": {
+      "bm": 0.09142700000000001,
+      "clue": 0.13623
+    }
+  },
+  "status": "passed"
+}
